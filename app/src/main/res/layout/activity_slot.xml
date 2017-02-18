@@ -9,16 +9,22 @@
     tools:context="uk.co.jakelee.blacksmithslots.main.SlotActivity">
 
     <TextView
-        android:id="@+id/oresStaked"
+        android:id="@+id/amountGambled"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/rowsActive"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Ores staked: 1"/>
+        android:layout_below="@id/amountGambled"/>
 
     <LinearLayout
         android:id="@+id/inventoryContainer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/oresStaked"
+        android:layout_marginTop="15dp"
+        android:layout_below="@id/rowsActive"
         android:orientation="vertical"/>
 
     <TextView android:id="@+id/slotResult"

@@ -1,12 +1,14 @@
 package uk.co.jakelee.blacksmithslots.helper;
 
-import android.util.Log;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Locale;
+import java.util.Map;
 
 import kankan.wheel.widget.OnWheelScrollListener;
 import kankan.wheel.widget.WheelView;
@@ -20,6 +22,8 @@ import uk.co.jakelee.blacksmithslots.model.Slot;
 
 public class SlotHelper {
     private int amountGambled = 1;
+    private int activeRows = 5;
+
     private int stillSpinningSlots = 0;
     private SlotActivity activity;
     private int numSlots;
@@ -60,8 +64,10 @@ public class SlotHelper {
 
             container.addView(wheel, new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
             slots.add(wheel);
-
         }
+
+        ((TextView)activity.findViewById(R.id.rowsActive)).setText(activeRows + " active rows");
+        ((TextView)activity.findViewById(R.id.amountGambled)).setText(amountGambled + " ores gambled per row");
     }
 
     private void updateStatus() {
@@ -69,12 +75,35 @@ public class SlotHelper {
         List<List<SlotResult>> results = getResults();
         List<SlotResult> wonItems = getWinnings(results);
         if (wonItems.size() > 0) {
-            text.setText("You win (" + wonItems.get(0).getResourceMultiplier() + "x" + amountGambled + ") " + Resource.getName(activity, wonItems.get(0).getResourceId()));
-            Inventory.addInventory(wonItems.get(0).getResourceId(), wonItems.get(0).getResourceMultiplier() * amountGambled);
+            text.setText(applyWinnings(wonItems, amountGambled));
             updateResourceCount();
         } else {
             text.setText("No match!");
         }
+    }
+
+    private String applyWinnings(List<SlotResult> unmergedWinnings, int amountGambled) {
+        LinkedHashMap<Integer, Integer> dataStore = new LinkedHashMap<>();
+        for (SlotResult winning : unmergedWinnings) {
+            Integer temp;
+            if (dataStore.containsKey(winning.getResourceId())) {
+                temp = dataStore.get(winning.getResourceId()) + winning.getResourceMultiplier();
+                dataStore.put(winning.getResourceId(), temp);
+            } else {
+                dataStore.put(winning.getResourceId(), winning.getResourceMultiplier());
+            }
+        }
+
+        StringBuilder winningsText = new StringBuilder().append("Won: ");
+        for (Map.Entry<Integer, Integer> winning : dataStore.entrySet()) {
+            Resource resource = Resource.get(winning.getKey());
+            if (resource != null) {
+                int quantity = winning.getValue() * amountGambled;
+                Inventory.addInventory(resource.getResourceId(), quantity);
+                winningsText.append(String.format(Locale.ENGLISH, "%dx %s, ", quantity, resource.getName(activity)));
+            }
+        }
+        return winningsText.substring(0, winningsText.length() - 2);
     }
 
     private List<SlotResult> getWinnings(List<List<SlotResult>> rows) {
@@ -95,7 +124,6 @@ public class SlotHelper {
 
             if (!matchFailure) {
                 winningResults.add(checkedResult);
-                Log.d("Won", checkedResult.getResourceMultiplier() + "x " + checkedResult.getResourceId());
             }
         }
         return winningResults;
@@ -112,18 +140,20 @@ public class SlotHelper {
     }
 
     private List<List<SlotResult>> getResults() {
+        int numRows = 5;
+        int topRowPosition = -2;
+
         // Setup data holder
         List<List<SlotResult>> rows = new ArrayList<>();
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < numRows; i++) {
             rows.add(new ArrayList<SlotResult>());
         }
 
         // Add data
         for (WheelView wheel : slots) {
-            for (int i = 0; i < 5; i++) {
-                Log.d("Lookup", "Curr: " + wheel.getCurrentItem() + ", i: " + i);
-                int targetPosition = (wheel.getCurrentItem() + (i-2) + items.size()) % items.size();
-                rows.get(i).add(items.get(targetPosition));
+            for (int i = 0; i < numRows; i++) {
+                int position = (wheel.getCurrentItem() + (i + topRowPosition) + items.size()) % items.size();
+                rows.get(i).add(items.get(position));
             }
         }
 
@@ -134,8 +164,10 @@ public class SlotHelper {
         if (stillSpinningSlots <= 0) {
             stillSpinningSlots = numSlots;
             Inventory inventory = Inventory.getInventory(resourceUsed);
-            if (inventory.getQuantity() >= amountGambled) {
-                inventory.setQuantity(inventory.getQuantity() - amountGambled);
+
+            int spinCost = amountGambled * activeRows;
+            if (inventory.getQuantity() >= spinCost) {
+                inventory.setQuantity(inventory.getQuantity() - spinCost);
                 inventory.save();
 
                 for (WheelView wheel : slots) {
