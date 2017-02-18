@@ -2,7 +2,7 @@ package uk.co.jakelee.blacksmithslots.helper;
 
 public class Enums {
     public enum Type {
-        Weapon(1), Tool(2), Armour(3), Accessory(4), Misc(5);
+        Weapon(1), Tool(2), Armour(3), Accessory(4), Misc(5), Crafting(6);
         private int type;
         Type(int type) {
             this.type = type;

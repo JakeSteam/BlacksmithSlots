@@ -11,10 +11,18 @@ public class Statistic extends SugarRecord {
     public Statistic() {
     }
 
-    public Statistic(int statisticId, int intValue, boolean boolValue, String stringValue) {
+    public Statistic(int statisticId, int intValue) {
         this.statisticId = statisticId;
         this.intValue = intValue;
+    }
+
+    public Statistic(int statisticId, boolean boolValue) {
+        this.statisticId = statisticId;
         this.boolValue = boolValue;
+    }
+
+    public Statistic(int statisticId, String stringValue) {
+        this.statisticId = statisticId;
         this.stringValue = stringValue;
     }
 
