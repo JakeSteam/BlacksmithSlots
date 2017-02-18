@@ -1,5 +1,6 @@
 package uk.co.jakelee.blacksmithslots.helper;
 
+import android.util.Log;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -7,16 +8,16 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
-import kankan.wheel.widget.OnWheelChangedListener;
 import kankan.wheel.widget.OnWheelScrollListener;
 import kankan.wheel.widget.WheelView;
 import uk.co.jakelee.blacksmithslots.R;
+import uk.co.jakelee.blacksmithslots.constructs.SlotResult;
 import uk.co.jakelee.blacksmithslots.main.SlotActivity;
 import uk.co.jakelee.blacksmithslots.model.Reward;
 import uk.co.jakelee.blacksmithslots.model.Slot;
 
 public class SlotHelper {
-    private boolean currentlySpinning = false;
+    private int stillSpinningSlots = 0;
     private boolean buttonPressed = false;
     private SlotActivity activity;
     private int numSlots;
@@ -34,27 +35,23 @@ public class SlotHelper {
         for (int i = 0; i < numSlots; i++) {
             WheelView wheel = new WheelView(activity);
             wheel.setViewAdapter(new SlotAdapter(wheel.getContext(), items));
-            wheel.setCurrentItem((int) (Math.random() * 10));
+            wheel.setCurrentItem(0);
 
-            wheel.addChangingListener(new OnWheelChangedListener() {
-                @Override
-                public void onChanged(WheelView wheel, int oldValue, int newValue) {
-                    if (!currentlySpinning) {
-                        updateStatus();
-                    }
-                }
-            });
             wheel.addScrollingListener(new OnWheelScrollListener() {
                 @Override
                 public void onScrollingStarted(WheelView wheel) {
-                    currentlySpinning = true;
+                    stillSpinningSlots = numSlots;
                 }
 
                 @Override
                 public void onScrollingFinished(WheelView wheel) {
-                    currentlySpinning = false;
-                    buttonPressed = false;
-                    updateStatus();
+                    if (stillSpinningSlots <= 1) {
+                        buttonPressed = false;
+                        Log.d("Slot", "Calling finished");
+                        updateStatus();
+                    } else {
+                        stillSpinningSlots--;
+                    }
                 }
             });
             wheel.setCyclic(true);
@@ -77,14 +74,18 @@ public class SlotHelper {
 
     private boolean test() {
         int targetedValue = 0;
+        List<SlotResult> results = new ArrayList<>();
         for (WheelView wheel : slots) {
+            results.add(new SlotResult(items.get(wheel.getCurrentItem()).getResourceId(), items.get(wheel.getCurrentItem()).getQuantity()));
+            /*Log.d("Slot", "Selected: " + wheel.getViewAdapter().getItem(wheel.getCurrentItem(), null, (ViewGroup)wheel.getParent()).toString());
+            //Log.d("Slot", "Selected: " + items.get(wheel.getCurrentItem()).getQuantity() + "x " + Resource.getName(activity, items.get(wheel.getCurrentItem()).getResourceId()));
             if (targetedValue == 0) {
                 targetedValue = wheel.getCurrentItem();
             } else {
                 if (targetedValue != wheel.getCurrentItem()) {
                     return false;
                 }
-            }
+            }*/
         }
         return true;
     }

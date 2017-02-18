@@ -4,6 +4,8 @@ public class Constants {
     // Items
     public final static int BRONZE_ORE = 1;
     public final static int BRONZE_BAR = 2;
+    public final static int BRONZE_DAGGER = 3;
+    public final static int BRONZE_SWORD = 4;
 
     // Slots
     public final static int BRONZE_CRAFTING = 1;

@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Blacksmith Slots</string>
+
+    <string name="resource_1">Bronze Ore</string>
+    <string name="resource_2">Bronze Bar</string>
+    <string name="resource_3">Bronze Dagger</string>
+    <string name="resource_4">Bronze Sword</string>
 </resources>

@@ -17,12 +17,13 @@ public class DatabaseHelper {
 
         List<Reward> rewards = new ArrayList<>();
             rewards.add(new Reward(Constants.BRONZE_CRAFTING, Constants.BRONZE_ORE, 10, 10));
-            rewards.add(new Reward(Constants.BRONZE_CRAFTING, Constants.BRONZE_ORE, 20, 10));
             rewards.add(new Reward(Constants.BRONZE_CRAFTING, Constants.BRONZE_BAR, 10, 10));
+            rewards.add(new Reward(Constants.BRONZE_CRAFTING, Constants.BRONZE_DAGGER, 10, 10));
+            rewards.add(new Reward(Constants.BRONZE_CRAFTING, Constants.BRONZE_SWORD, 10, 10));
         Reward.saveInTx(rewards);
 
         List<Slot> slots = new ArrayList<>();
-            slots.add(new Slot(Constants.BRONZE_CRAFTING, 1, Constants.BRONZE_ORE, 5, Enums.Type.Crafting, Enums.Tier.Bronze));
+            slots.add(new Slot(Constants.BRONZE_CRAFTING, 1, Constants.BRONZE_ORE, 3, Enums.Type.Crafting, Enums.Tier.Bronze));
         Slot.saveInTx(slots);
 
         List<Statistic> statistics = new ArrayList<>();
