@@ -8,16 +8,15 @@ import android.view.View;
 import uk.co.jakelee.blacksmithslots.R;
 import uk.co.jakelee.blacksmithslots.helper.DatabaseHelper;
 import uk.co.jakelee.blacksmithslots.helper.SlotHelper;
+import uk.co.jakelee.blacksmithslots.model.Slot;
 
 public class SlotActivity extends AppCompatActivity {
-    private int[] items = new int[] { R.drawable.item_1, R.drawable.item_2};
     private SlotHelper slotHelper;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_slot);
-        onWindowFocusChanged(true);
 
         SharedPreferences prefs = getSharedPreferences("uk.co.jakelee.blacksmithslots", MODE_PRIVATE);
         if (prefs.getBoolean("firstRun", true)) {
@@ -25,8 +24,19 @@ public class SlotActivity extends AppCompatActivity {
             prefs.edit().putBoolean("firstRun", false).apply();
         }
 
-        slotHelper = new SlotHelper(this, 3, items);
-        slotHelper.createWheel();
+        Slot slot = Slot.get(1);
+        if (slot == null) {
+            finish();
+        } else {
+            slotHelper = new SlotHelper(this, slot);
+            slotHelper.createWheel();
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        onWindowFocusChanged(true);
     }
 
     public void spin(View v) {

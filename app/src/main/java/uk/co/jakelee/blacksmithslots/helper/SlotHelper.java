@@ -5,24 +5,28 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import kankan.wheel.widget.OnWheelChangedListener;
 import kankan.wheel.widget.OnWheelScrollListener;
 import kankan.wheel.widget.WheelView;
 import uk.co.jakelee.blacksmithslots.R;
 import uk.co.jakelee.blacksmithslots.main.SlotActivity;
+import uk.co.jakelee.blacksmithslots.model.Reward;
+import uk.co.jakelee.blacksmithslots.model.Slot;
 
 public class SlotHelper {
-    private boolean currentlySpinning  = false;
+    private boolean currentlySpinning = false;
+    private boolean buttonPressed = false;
     private SlotActivity activity;
     private int numSlots;
-    private ArrayList<WheelView> slots = new ArrayList<>();
-    private int[] items;
+    private List<WheelView> slots = new ArrayList<>();
+    private List<Reward> items;
 
-    public SlotHelper(SlotActivity activity, int numSlots, int[] items) {
+    public SlotHelper(SlotActivity activity, Slot slot) {
         this.activity = activity;
-        this.numSlots = numSlots;
-        this.items = items;
+        this.numSlots = slot.getSlots();
+        this.items = slot.getRewards();
     }
 
     public void createWheel() {
@@ -49,6 +53,7 @@ public class SlotHelper {
                 @Override
                 public void onScrollingFinished(WheelView wheel) {
                     currentlySpinning = false;
+                    buttonPressed = false;
                     updateStatus();
                 }
             });
@@ -85,8 +90,11 @@ public class SlotHelper {
     }
 
     public void mixWheel() {
-        for (WheelView wheel : slots) {
-            wheel.scroll(-350 + (int) (Math.random() * 50), 2000);
+        if (!buttonPressed) {
+            buttonPressed = true;
+            for (WheelView wheel : slots) {
+                wheel.scroll(-350 + (int) (Math.random() * 50), 2000);
+            }
         }
     }
 

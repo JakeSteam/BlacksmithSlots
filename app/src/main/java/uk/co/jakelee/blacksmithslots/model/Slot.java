@@ -1,6 +1,10 @@
 package uk.co.jakelee.blacksmithslots.model;
 
 import com.orm.SugarRecord;
+import com.orm.query.Condition;
+import com.orm.query.Select;
+
+import java.util.List;
 
 import uk.co.jakelee.blacksmithslots.helper.Enums;
 
@@ -22,6 +26,12 @@ public class Slot extends SugarRecord {
         this.slots = slots;
         this.type = type;
         this.tier = tier;
+    }
+
+    public static Slot get(int slotId) {
+        List<Slot> slots = Select.from(Slot.class).where(
+                Condition.prop("slot_id").eq(slotId)).list();
+        return slots.size() > 0 ? slots.get(0) : null;
     }
 
     public int getSlotId() {
@@ -70,5 +80,10 @@ public class Slot extends SugarRecord {
 
     public void setTier(Enums.Tier tier) {
         this.tier = tier;
+    }
+
+    public List<Reward> getRewards() {
+        return Select.from(Reward.class).where(
+                Condition.prop("slot_id").eq(slotId)).list();
     }
 }

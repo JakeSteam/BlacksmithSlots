@@ -1,6 +1,7 @@
 package uk.co.jakelee.blacksmithslots.helper;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.view.View;
@@ -12,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import kankan.wheel.widget.adapters.AbstractWheelAdapter;
+import uk.co.jakelee.blacksmithslots.model.Reward;
 
 public class SlotAdapter extends AbstractWheelAdapter {
     // Image size
@@ -19,7 +21,7 @@ public class SlotAdapter extends AbstractWheelAdapter {
     final int IMAGE_HEIGHT = 160;
 
     // Slot machine symbols
-    private final int items[];
+    private final List<Reward> rewards;
 
     // Cached images
     private List<SoftReference<Bitmap>> images;
@@ -30,17 +32,18 @@ public class SlotAdapter extends AbstractWheelAdapter {
     /**
      * Constructor
      */
-    public SlotAdapter(Context context, int[] items) {
+    public SlotAdapter(Context context, List<Reward> rewards) {
         this.context = context;
-        this.items = items;
-        images = new ArrayList<>(items.length);
-        for (int id : items) {
-            images.add(new SoftReference<>(loadImage(id)));
+        this.rewards = rewards;
+        images = new ArrayList<>(rewards.size());
+        for (Reward reward : rewards) {
+            images.add(new SoftReference<>(loadImage(reward.getResourceId())));
         }
     }
 
-    private Bitmap loadImage(int id) {
-        Bitmap bitmap = BitmapFactory.decodeResource(context.getResources(), id);
+    private Bitmap loadImage(int itemId) {
+        Resources resources = context.getResources();
+        Bitmap bitmap = BitmapFactory.decodeResource(resources, resources.getIdentifier("item_" + itemId, "drawable", context.getPackageName()));
         Bitmap scaled = Bitmap.createScaledBitmap(bitmap, IMAGE_WIDTH, IMAGE_HEIGHT, true);
         bitmap.recycle();
         return scaled;
@@ -48,7 +51,7 @@ public class SlotAdapter extends AbstractWheelAdapter {
 
     @Override
     public int getItemsCount() {
-        return items.length;
+        return rewards.size();
     }
 
     @Override
@@ -63,7 +66,7 @@ public class SlotAdapter extends AbstractWheelAdapter {
         SoftReference<Bitmap> bitmapRef = images.get(index);
         Bitmap bitmap = bitmapRef.get();
         if (bitmap == null) {
-            bitmap = loadImage(items[index]);
+            bitmap = loadImage(rewards.get(index).getResourceId());
             images.set(index, new SoftReference<>(bitmap));
         }
         img.setImageBitmap(bitmap);
