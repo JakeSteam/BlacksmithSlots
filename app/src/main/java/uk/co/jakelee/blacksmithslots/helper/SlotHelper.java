@@ -19,7 +19,7 @@ import uk.co.jakelee.blacksmithslots.model.Reward;
 import uk.co.jakelee.blacksmithslots.model.Slot;
 
 public class SlotHelper {
-    private int amountGambled = 2;
+    private int amountGambled = 1;
     private int stillSpinningSlots = 0;
     private SlotActivity activity;
     private int numSlots;
@@ -66,28 +66,39 @@ public class SlotHelper {
 
     private void updateStatus() {
         TextView text = (TextView) activity.findViewById(R.id.slotResult);
-        List<SlotResult> results = getResults();
-        if (doResultsMatch(results)) {
-            text.setText("You win (" + results.get(0).getResourceMultiplier() + "x" + amountGambled + ") " + Resource.getName(activity, results.get(0).getResourceId()));
-            Inventory.addInventory(results.get(0).getResourceId(), results.get(0).getResourceMultiplier() * amountGambled);
+        List<List<SlotResult>> results = getResults();
+        List<SlotResult> wonItems = getWinnings(results);
+        if (wonItems.size() > 0) {
+            text.setText("You win (" + wonItems.get(0).getResourceMultiplier() + "x" + amountGambled + ") " + Resource.getName(activity, wonItems.get(0).getResourceId()));
+            Inventory.addInventory(wonItems.get(0).getResourceId(), wonItems.get(0).getResourceMultiplier() * amountGambled);
             updateResourceCount();
         } else {
             text.setText("No match!");
         }
     }
 
-    private boolean doResultsMatch(List<SlotResult> results) {
-        SlotResult checkedResult = new SlotResult();
-        for (SlotResult result : results) {
-            if (checkedResult.getResourceId() == 0) {
-                checkedResult = result;
-            } else {
-                if (result.getResourceId() != checkedResult.getResourceId() || result.getResourceMultiplier() != checkedResult.getResourceMultiplier()) {
-                    return false;
+    private List<SlotResult> getWinnings(List<List<SlotResult>> rows) {
+        List<SlotResult> winningResults = new ArrayList<>();
+        for (List<SlotResult> row : rows) {
+            boolean matchFailure = false;
+            SlotResult checkedResult = new SlotResult();
+            for (SlotResult result : row) {
+                if (checkedResult.getResourceId() == 0) {
+                    checkedResult = result;
+                } else {
+                    if (result.getResourceId() != checkedResult.getResourceId() || result.getResourceMultiplier() != checkedResult.getResourceMultiplier()) {
+                        matchFailure = true;
+                        break;
+                    }
                 }
             }
+
+            if (!matchFailure) {
+                winningResults.add(checkedResult);
+                Log.d("Won", checkedResult.getResourceMultiplier() + "x " + checkedResult.getResourceId());
+            }
         }
-        return true;
+        return winningResults;
     }
 
     private List<SlotResult> convertToSlots(List<Reward> dbRewards) {
@@ -100,12 +111,22 @@ public class SlotHelper {
         return rewards;
     }
 
-    private List<SlotResult> getResults() {
-        List<SlotResult> results = new ArrayList<>();
-        for (WheelView wheel : slots) {
-            results.add(items.get(wheel.getCurrentItem()));
+    private List<List<SlotResult>> getResults() {
+        // Setup data holder
+        List<List<SlotResult>> allResults = new ArrayList<>();
+        for (int i = 0; i < 3; i++) {
+            allResults.add(new ArrayList<SlotResult>());
         }
-        return results;
+
+        for (WheelView wheel : slots) {
+            for (int i = 0; i < 3; i++) {
+                Log.d("Lookup", "Curr: " + wheel.getCurrentItem() + ", i: " + i);
+                int targetPosition = (wheel.getCurrentItem() + i) % items.size();
+                allResults.get(i).add(items.get(targetPosition));
+            }
+        }
+
+        return allResults;
     }
 
     public void mixWheel() {
@@ -117,9 +138,7 @@ public class SlotHelper {
                 inventory.save();
 
                 for (WheelView wheel : slots) {
-                    int scrollItems = -350 + (int) (Math.random() * 150);
-                    Log.d("Scroll", scrollItems + "");
-                    wheel.scroll(scrollItems, 2250);
+                    wheel.scroll(-350 + (int) (Math.random() * 150), 2250);
                 }
             }
             updateResourceCount();
