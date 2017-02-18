@@ -1,10 +1,12 @@
-package main;
+package uk.co.jakelee.blacksmithslots.main;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import uk.co.jakelee.blacksmithslots.R;
+import uk.co.jakelee.blacksmithslots.helper.DatabaseHelper;
 
 public class SlotActivity extends AppCompatActivity {
 
@@ -13,6 +15,12 @@ public class SlotActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_slot);
         onWindowFocusChanged(true);
+
+        SharedPreferences prefs = getSharedPreferences("uk.co.jakelee.blacksmithslots", MODE_PRIVATE);
+        if (prefs.getBoolean("firstRun", true)) {
+            DatabaseHelper.testSetup();
+            prefs.edit().putBoolean("firstRun", false).apply();
+        }
     }
 
     @Override
