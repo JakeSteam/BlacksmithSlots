@@ -15,16 +15,11 @@ import kankan.wheel.widget.adapters.AbstractWheelAdapter;
 
 public class SlotAdapter extends AbstractWheelAdapter {
     // Image size
-    final int IMAGE_WIDTH = 60;
-    final int IMAGE_HEIGHT = 36;
+    final int IMAGE_WIDTH = 160;
+    final int IMAGE_HEIGHT = 160;
 
     // Slot machine symbols
-    private final int items[] = new int[] {
-            android.R.drawable.star_big_on,
-            android.R.drawable.stat_sys_warning,
-            android.R.drawable.radiobutton_on_background,
-            android.R.drawable.ic_delete
-    };
+    private final int items[];
 
     // Cached images
     private List<SoftReference<Bitmap>> images;
@@ -35,17 +30,15 @@ public class SlotAdapter extends AbstractWheelAdapter {
     /**
      * Constructor
      */
-    public SlotAdapter(Context context) {
+    public SlotAdapter(Context context, int[] items) {
         this.context = context;
-        images = new ArrayList<SoftReference<Bitmap>>(items.length);
+        this.items = items;
+        images = new ArrayList<>(items.length);
         for (int id : items) {
-            images.add(new SoftReference<Bitmap>(loadImage(id)));
+            images.add(new SoftReference<>(loadImage(id)));
         }
     }
 
-    /**
-     * Loads image from resources
-     */
     private Bitmap loadImage(int id) {
         Bitmap bitmap = BitmapFactory.decodeResource(context.getResources(), id);
         Bitmap scaled = Bitmap.createScaledBitmap(bitmap, IMAGE_WIDTH, IMAGE_HEIGHT, true);
@@ -58,9 +51,6 @@ public class SlotAdapter extends AbstractWheelAdapter {
         return items.length;
     }
 
-    // Layout params for image view
-    final ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(IMAGE_WIDTH, IMAGE_HEIGHT);
-
     @Override
     public View getItem(int index, View cachedView, ViewGroup parent) {
         ImageView img;
@@ -69,12 +59,12 @@ public class SlotAdapter extends AbstractWheelAdapter {
         } else {
             img = new ImageView(context);
         }
-        img.setLayoutParams(params);
+        img.setLayoutParams(new ViewGroup.LayoutParams(IMAGE_WIDTH, IMAGE_HEIGHT));
         SoftReference<Bitmap> bitmapRef = images.get(index);
         Bitmap bitmap = bitmapRef.get();
         if (bitmap == null) {
             bitmap = loadImage(items[index]);
-            images.set(index, new SoftReference<Bitmap>(bitmap));
+            images.set(index, new SoftReference<>(bitmap));
         }
         img.setImageBitmap(bitmap);
 

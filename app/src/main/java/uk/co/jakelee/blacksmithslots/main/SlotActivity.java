@@ -4,15 +4,15 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.Button;
 
-import kankan.wheel.widget.WheelView;
 import uk.co.jakelee.blacksmithslots.R;
 import uk.co.jakelee.blacksmithslots.helper.DatabaseHelper;
 import uk.co.jakelee.blacksmithslots.helper.SlotHelper;
 
 public class SlotActivity extends AppCompatActivity {
     private int[] slots = new int[] {R.id.slot_1, R.id.slot_2, R.id.slot_3};
+    private int[] items = new int[] { R.drawable.item_1, R.drawable.item_2};
+    private SlotHelper slotHelper;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -26,22 +26,14 @@ public class SlotActivity extends AppCompatActivity {
             prefs.edit().putBoolean("firstRun", false).apply();
         }
 
-        final SlotHelper slotHelper = new SlotHelper(this);
+        slotHelper = new SlotHelper(this, slots, items);
+        slotHelper.createWheel();
+    }
 
+    public void spin(View v) {
         for (int slot : slots) {
-            slotHelper.initWheel((WheelView)findViewById(slot));
+            slotHelper.mixWheel(slot);
         }
-
-        Button mix = (Button)findViewById(R.id.btn_mix);
-        mix.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                for (int slot : slots) {
-                    slotHelper.mixWheel(slot);
-                }
-
-            }
-        });
     }
 
     @Override
