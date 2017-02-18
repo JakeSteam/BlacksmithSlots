@@ -8,16 +8,18 @@ public class Slot extends SugarRecord {
     private int slotId;
     private int minimumLevel;
     private int resourceNeeded;
+    private int slots;
     private Enums.Type type;
     private Enums.Tier tier;
 
     public Slot() {
     }
 
-    public Slot(int slotId, int minimumLevel, int resourceNeeded, Enums.Type type, Enums.Tier tier) {
+    public Slot(int slotId, int minimumLevel, int resourceNeeded, int slots, Enums.Type type, Enums.Tier tier) {
         this.slotId = slotId;
         this.minimumLevel = minimumLevel;
         this.resourceNeeded = resourceNeeded;
+        this.slots = slots;
         this.type = type;
         this.tier = tier;
     }
@@ -44,6 +46,14 @@ public class Slot extends SugarRecord {
 
     public void setResourceNeeded(int resourceNeeded) {
         this.resourceNeeded = resourceNeeded;
+    }
+
+    public int getSlots() {
+        return slots;
+    }
+
+    public void setSlots(int slots) {
+        this.slots = slots;
     }
 
     public Enums.Type getType() {

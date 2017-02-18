@@ -10,7 +10,6 @@ import uk.co.jakelee.blacksmithslots.helper.DatabaseHelper;
 import uk.co.jakelee.blacksmithslots.helper.SlotHelper;
 
 public class SlotActivity extends AppCompatActivity {
-    private int[] slots = new int[] {R.id.slot_1, R.id.slot_2, R.id.slot_3};
     private int[] items = new int[] { R.drawable.item_1, R.drawable.item_2};
     private SlotHelper slotHelper;
 
@@ -26,14 +25,12 @@ public class SlotActivity extends AppCompatActivity {
             prefs.edit().putBoolean("firstRun", false).apply();
         }
 
-        slotHelper = new SlotHelper(this, slots, items);
+        slotHelper = new SlotHelper(this, 3, items);
         slotHelper.createWheel();
     }
 
     public void spin(View v) {
-        for (int slot : slots) {
-            slotHelper.mixWheel(slot);
-        }
+        slotHelper.mixWheel();
     }
 
     @Override

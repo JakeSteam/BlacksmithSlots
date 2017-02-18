@@ -21,7 +21,7 @@ public class DatabaseHelper {
         Reward.saveInTx(rewards);
 
         List<Slot> slots = new ArrayList<>();
-            slots.add(new Slot(Constants.BRONZE_CRAFTING, 1, Constants.BRONZE_ORE, Enums.Type.Crafting, Enums.Tier.Bronze));
+            slots.add(new Slot(Constants.BRONZE_CRAFTING, 1, Constants.BRONZE_ORE, 5, Enums.Type.Crafting, Enums.Tier.Bronze));
         Slot.saveInTx(slots);
 
         List<Statistic> statistics = new ArrayList<>();

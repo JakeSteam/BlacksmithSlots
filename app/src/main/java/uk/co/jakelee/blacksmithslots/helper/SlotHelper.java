@@ -1,6 +1,10 @@
 package uk.co.jakelee.blacksmithslots.helper;
 
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import java.util.ArrayList;
 
 import kankan.wheel.widget.OnWheelChangedListener;
 import kankan.wheel.widget.OnWheelScrollListener;
@@ -11,18 +15,20 @@ import uk.co.jakelee.blacksmithslots.main.SlotActivity;
 public class SlotHelper {
     private boolean currentlySpinning  = false;
     private SlotActivity activity;
-    private int[] slots;
+    private int numSlots;
+    private ArrayList<WheelView> slots = new ArrayList<>();
     private int[] items;
 
-    public SlotHelper(SlotActivity activity, int[] slots, int[] items) {
+    public SlotHelper(SlotActivity activity, int numSlots, int[] items) {
         this.activity = activity;
-        this.slots = slots;
+        this.numSlots = numSlots;
         this.items = items;
     }
 
     public void createWheel() {
-        for (int slot : slots) {
-            WheelView wheel = (WheelView) activity.findViewById(slot);
+        LinearLayout container = (LinearLayout)activity.findViewById(R.id.slotContainer);
+        for (int i = 0; i < numSlots; i++) {
+            WheelView wheel = new WheelView(activity);
             wheel.setViewAdapter(new SlotAdapter(wheel.getContext(), items));
             wheel.setCurrentItem((int) (Math.random() * 10));
 
@@ -48,6 +54,10 @@ public class SlotHelper {
             });
             wheel.setCyclic(true);
             wheel.setEnabled(false);
+
+            container.addView(wheel, new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+            slots.add(wheel);
+
         }
     }
 
@@ -61,21 +71,23 @@ public class SlotHelper {
     }
 
     private boolean test() {
-        int value = getWheel(R.id.slot_1).getCurrentItem();
-        return testWheelValue(R.id.slot_2, value) && testWheelValue(R.id.slot_3, value);
+        int targetedValue = 0;
+        for (WheelView wheel : slots) {
+            if (targetedValue == 0) {
+                targetedValue = wheel.getCurrentItem();
+            } else {
+                if (targetedValue != wheel.getCurrentItem()) {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 
-    private boolean testWheelValue(int id, int value) {
-        return getWheel(id).getCurrentItem() == value;
-    }
-
-    private WheelView getWheel(int id) {
-        return (WheelView) activity.findViewById(id);
-    }
-
-    public void mixWheel(int id) {
-        WheelView wheel = getWheel(id);
-        wheel.scroll(-350 + (int)(Math.random() * 50), 2000);
+    public void mixWheel() {
+        for (WheelView wheel : slots) {
+            wheel.scroll(-350 + (int) (Math.random() * 50), 2000);
+        }
     }
 
 }
