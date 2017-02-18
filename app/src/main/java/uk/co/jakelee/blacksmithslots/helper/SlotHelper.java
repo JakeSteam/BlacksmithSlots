@@ -13,6 +13,7 @@ import kankan.wheel.widget.WheelView;
 import uk.co.jakelee.blacksmithslots.R;
 import uk.co.jakelee.blacksmithslots.constructs.SlotResult;
 import uk.co.jakelee.blacksmithslots.main.SlotActivity;
+import uk.co.jakelee.blacksmithslots.model.Resource;
 import uk.co.jakelee.blacksmithslots.model.Reward;
 import uk.co.jakelee.blacksmithslots.model.Slot;
 
@@ -65,29 +66,35 @@ public class SlotHelper {
 
     private void updateStatus() {
         TextView text = (TextView) activity.findViewById(R.id.pwd_status);
-        if (test()) {
-            text.setText("Match!");
+        List<SlotResult> results = getResults();
+        if (isResultsMatch(results)) {
+            text.setText("You win " + results.get(0).getResourceQuantity() + "x " + Resource.getName(activity, results.get(0).getResourceId()));
+
         } else {
             text.setText("No match!");
         }
     }
 
-    private boolean test() {
-        int targetedValue = 0;
+    private boolean isResultsMatch(List<SlotResult> results) {
+        SlotResult checkedResult = new SlotResult();
+        for (SlotResult result : results) {
+            if (checkedResult.getResourceId() == 0) {
+                checkedResult = result;
+            } else {
+                if (result.getResourceId() != checkedResult.getResourceId() || result.getResourceQuantity() != checkedResult.getResourceQuantity()) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    private List<SlotResult> getResults() {
         List<SlotResult> results = new ArrayList<>();
         for (WheelView wheel : slots) {
             results.add(new SlotResult(items.get(wheel.getCurrentItem()).getResourceId(), items.get(wheel.getCurrentItem()).getQuantity()));
-            /*Log.d("Slot", "Selected: " + wheel.getViewAdapter().getItem(wheel.getCurrentItem(), null, (ViewGroup)wheel.getParent()).toString());
-            //Log.d("Slot", "Selected: " + items.get(wheel.getCurrentItem()).getQuantity() + "x " + Resource.getName(activity, items.get(wheel.getCurrentItem()).getResourceId()));
-            if (targetedValue == 0) {
-                targetedValue = wheel.getCurrentItem();
-            } else {
-                if (targetedValue != wheel.getCurrentItem()) {
-                    return false;
-                }
-            }*/
         }
-        return true;
+        return results;
     }
 
     public void mixWheel() {
