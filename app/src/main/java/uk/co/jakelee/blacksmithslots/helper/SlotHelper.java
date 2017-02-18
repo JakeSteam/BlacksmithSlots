@@ -113,20 +113,21 @@ public class SlotHelper {
 
     private List<List<SlotResult>> getResults() {
         // Setup data holder
-        List<List<SlotResult>> allResults = new ArrayList<>();
-        for (int i = 0; i < 3; i++) {
-            allResults.add(new ArrayList<SlotResult>());
+        List<List<SlotResult>> rows = new ArrayList<>();
+        for (int i = 0; i < 5; i++) {
+            rows.add(new ArrayList<SlotResult>());
         }
 
+        // Add data
         for (WheelView wheel : slots) {
-            for (int i = 0; i < 3; i++) {
+            for (int i = 0; i < 5; i++) {
                 Log.d("Lookup", "Curr: " + wheel.getCurrentItem() + ", i: " + i);
-                int targetPosition = (wheel.getCurrentItem() + i) % items.size();
-                allResults.get(i).add(items.get(targetPosition));
+                int targetPosition = (wheel.getCurrentItem() + (i-2) + items.size()) % items.size();
+                rows.get(i).add(items.get(targetPosition));
             }
         }
 
-        return allResults;
+        return rows;
     }
 
     public void mixWheel() {
