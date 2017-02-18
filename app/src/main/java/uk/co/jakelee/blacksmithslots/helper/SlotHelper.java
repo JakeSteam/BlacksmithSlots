@@ -69,8 +69,8 @@ public class SlotHelper {
         TextView text = (TextView) activity.findViewById(R.id.slotResult);
         List<SlotResult> results = getResults();
         if (doResultsMatch(results)) {
-            text.setText("You win " + results.get(0).getResourceQuantity() + "x " + Resource.getName(activity, results.get(0).getResourceId()));
-            Inventory.addInventory(results.get(0).getResourceId(), results.get(0).getResourceQuantity());
+            text.setText("You win (" + results.get(0).getResourceMultiplier() + "x1) " + Resource.getName(activity, results.get(0).getResourceId()));
+            Inventory.addInventory(results.get(0).getResourceId(), results.get(0).getResourceMultiplier() * 1);
             updateResourceCount();
         } else {
             text.setText("No match!");
@@ -83,7 +83,7 @@ public class SlotHelper {
             if (checkedResult.getResourceId() == 0) {
                 checkedResult = result;
             } else {
-                if (result.getResourceId() != checkedResult.getResourceId() || result.getResourceQuantity() != checkedResult.getResourceQuantity()) {
+                if (result.getResourceId() != checkedResult.getResourceId() || result.getResourceMultiplier() != checkedResult.getResourceMultiplier()) {
                     return false;
                 }
             }
@@ -95,7 +95,7 @@ public class SlotHelper {
         List<SlotResult> rewards = new ArrayList<>();
         for (Reward dbReward : dbRewards) {
             for (int i = 0; i < dbReward.getWeighting(); i++) {
-                rewards.add(new SlotResult(dbReward.getResourceId(), dbReward.getQuantity()));
+                rewards.add(new SlotResult(dbReward.getResourceId(), dbReward.getQuantityMultiplier()));
             }
         }
         return rewards;
@@ -126,6 +126,7 @@ public class SlotHelper {
 
     public void updateResourceCount() {
         ((TextView)activity.findViewById(R.id.resourceCount)).setText(Inventory.getInventory(resourceUsed).getQuantity() + "x");
+        ((TextView)activity.findViewById(R.id.barCount)).setText(Inventory.getInventory(Constants.BRONZE_BAR).getQuantity() + "x");
     }
 
 }

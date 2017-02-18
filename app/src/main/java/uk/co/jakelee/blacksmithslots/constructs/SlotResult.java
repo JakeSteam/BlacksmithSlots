@@ -2,14 +2,14 @@ package uk.co.jakelee.blacksmithslots.constructs;
 
 public class SlotResult {
     private int resourceId;
-    private int resourceQuantity;
+    private int resourceMultiplier;
 
     public SlotResult() {
     }
 
     public SlotResult(int resourceId, int resourceQuantity) {
         this.resourceId = resourceId;
-        this.resourceQuantity = resourceQuantity;
+        this.resourceMultiplier = resourceQuantity;
     }
 
     public int getResourceId() {
@@ -20,11 +20,11 @@ public class SlotResult {
         this.resourceId = resourceId;
     }
 
-    public int getResourceQuantity() {
-        return resourceQuantity;
+    public int getResourceMultiplier() {
+        return resourceMultiplier;
     }
 
-    public void setResourceQuantity(int resourceQuantity) {
-        this.resourceQuantity = resourceQuantity;
+    public void setResourceMultiplier(int resourceMultiplier) {
+        this.resourceMultiplier = resourceMultiplier;
     }
 }

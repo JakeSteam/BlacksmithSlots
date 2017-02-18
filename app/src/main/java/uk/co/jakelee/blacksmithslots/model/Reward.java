@@ -5,16 +5,16 @@ import com.orm.SugarRecord;
 public class Reward extends SugarRecord {
     private int slotId;
     private int resourceId;
-    private int quantity;
+    private int quantityMultiplier;
     private int weighting;
 
     public Reward() {
     }
 
-    public Reward(int slotId, int resourceId, int quantity, int weighting) {
+    public Reward(int slotId, int resourceId, int quantityMultiplier, int weighting) {
         this.slotId = slotId;
         this.resourceId = resourceId;
-        this.quantity = quantity;
+        this.quantityMultiplier = quantityMultiplier;
         this.weighting = weighting;
     }
 
@@ -34,12 +34,12 @@ public class Reward extends SugarRecord {
         this.resourceId = resourceId;
     }
 
-    public int getQuantity() {
-        return quantity;
+    public int getQuantityMultiplier() {
+        return quantityMultiplier;
     }
 
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
+    public void setQuantityMultiplier(int quantityMultiplier) {
+        this.quantityMultiplier = quantityMultiplier;
     }
 
     public int getWeighting() {
