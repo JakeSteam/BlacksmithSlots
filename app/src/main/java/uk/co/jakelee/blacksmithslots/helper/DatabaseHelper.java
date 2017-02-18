@@ -21,14 +21,14 @@ public class DatabaseHelper {
         Resource.saveInTx(resources);
 
         List<Reward> rewards = new ArrayList<>();
-            rewards.add(new Reward(Constants.BRONZE_CRAFTING, Constants.BRONZE_ORE, 1, 3));
-            rewards.add(new Reward(Constants.BRONZE_CRAFTING, Constants.BRONZE_BAR, 5, 1));
-            //rewards.add(new Reward(Constants.BRONZE_CRAFTING, Constants.BRONZE_DAGGER, 10, 10));
-            //rewards.add(new Reward(Constants.BRONZE_CRAFTING, Constants.BRONZE_SWORD, 10, 10));
+            rewards.add(new Reward(Constants.BRONZE_CRAFTING, Constants.BRONZE_ORE, 10, 1));
+            rewards.add(new Reward(Constants.BRONZE_CRAFTING, Constants.BRONZE_BAR, 4, 5));
+            rewards.add(new Reward(Constants.BRONZE_CRAFTING, Constants.BRONZE_DAGGER, 3, 1));
+            rewards.add(new Reward(Constants.BRONZE_CRAFTING, Constants.BRONZE_SWORD, 3, 1));
         Reward.saveInTx(rewards);
 
         List<Slot> slots = new ArrayList<>();
-            slots.add(new Slot(Constants.BRONZE_CRAFTING, 1, Constants.BRONZE_ORE, 2, Enums.Type.Crafting, Enums.Tier.Bronze));
+            slots.add(new Slot(Constants.BRONZE_CRAFTING, 1, Constants.BRONZE_ORE, 3, Enums.Type.Crafting, Enums.Tier.Bronze));
         Slot.saveInTx(slots);
 
         List<Statistic> statistics = new ArrayList<>();

@@ -8,53 +8,18 @@
     android:layout_width="match_parent"
     tools:context="uk.co.jakelee.blacksmithslots.main.SlotActivity">
 
-    <LinearLayout
-        android:id="@+id/topBar"
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/oresStaked"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Ore:"/>
-            <TextView
-                android:id="@+id/resourceCount"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="0"/>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Bar:"/>
-            <TextView
-                android:id="@+id/barCount"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="0"/>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Amount gambled:"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="1"/>
-        </LinearLayout>
-    </LinearLayout>
+        android:text="Ores staked: 2"/>
+
+    <LinearLayout
+        android:id="@+id/inventoryContainer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/oresStaked"
+        android:orientation="vertical"/>
 
     <TextView android:id="@+id/slotResult"
         android:layout_width="wrap_content"

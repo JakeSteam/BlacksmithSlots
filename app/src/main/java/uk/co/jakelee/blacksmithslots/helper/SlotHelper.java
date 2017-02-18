@@ -18,6 +18,7 @@ import uk.co.jakelee.blacksmithslots.model.Reward;
 import uk.co.jakelee.blacksmithslots.model.Slot;
 
 public class SlotHelper {
+    private int amountGambled = 10;
     private int stillSpinningSlots = 0;
     private boolean buttonPressed = false;
     private SlotActivity activity;
@@ -69,8 +70,8 @@ public class SlotHelper {
         TextView text = (TextView) activity.findViewById(R.id.slotResult);
         List<SlotResult> results = getResults();
         if (doResultsMatch(results)) {
-            text.setText("You win (" + results.get(0).getResourceMultiplier() + "x1) " + Resource.getName(activity, results.get(0).getResourceId()));
-            Inventory.addInventory(results.get(0).getResourceId(), results.get(0).getResourceMultiplier() * 1);
+            text.setText("You win (" + results.get(0).getResourceMultiplier() + "x" + amountGambled + ") " + Resource.getName(activity, results.get(0).getResourceId()));
+            Inventory.addInventory(results.get(0).getResourceId(), results.get(0).getResourceMultiplier() * amountGambled);
             updateResourceCount();
         } else {
             text.setText("No match!");
@@ -112,8 +113,8 @@ public class SlotHelper {
     public void mixWheel() {
         if (!buttonPressed) {
             Inventory inventory = Inventory.getInventory(resourceUsed);
-            if (inventory.getQuantity() > 0) {
-                inventory.setQuantity(inventory.getQuantity() - 1);
+            if (inventory.getQuantity() >= amountGambled) {
+                inventory.setQuantity(inventory.getQuantity() - amountGambled);
                 inventory.save();
                 buttonPressed = true;
                 for (WheelView wheel : slots) {
@@ -125,8 +126,16 @@ public class SlotHelper {
     }
 
     public void updateResourceCount() {
-        ((TextView)activity.findViewById(R.id.resourceCount)).setText(Inventory.getInventory(resourceUsed).getQuantity() + "x");
-        ((TextView)activity.findViewById(R.id.barCount)).setText(Inventory.getInventory(Constants.BRONZE_BAR).getQuantity() + "x");
+        List<Inventory> items = Inventory.listAll(Inventory.class);
+        LinearLayout container = (LinearLayout)activity.findViewById(R.id.inventoryContainer);
+        container.removeAllViews();
+
+        for (Inventory inventory : items) {
+            String name = Resource.getName(activity, inventory.getItemId());
+            TextView textView = new TextView(activity);
+            textView.setText(inventory.getQuantity() + "x " + name);
+            container.addView(textView);
+        }
     }
 
 }
