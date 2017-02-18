@@ -30,6 +30,7 @@ public class SlotActivity extends AppCompatActivity {
         } else {
             slotHelper = new SlotHelper(this, slot);
             slotHelper.createWheel();
+            slotHelper.updateResourceCount();
         }
     }
 

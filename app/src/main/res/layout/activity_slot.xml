@@ -8,21 +8,35 @@
     android:layout_width="match_parent"
     tools:context="uk.co.jakelee.blacksmithslots.main.SlotActivity">
 
-    <TextView android:id="@+id/pwd_status"
+    <LinearLayout
+        android:id="@+id/topBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ore:"/>
+        <TextView
+            android:id="@+id/resourceCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Unknown"/>
+    </LinearLayout>
+
+    <TextView android:id="@+id/slotResult"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:textSize="18sp"
-        android:textColor="#F00"
-        android:text=""/>
+        android:textColor="#F00"/>
 
-    <Button android:id="@+id/btn_mix"
+    <Button android:id="@+id/spinButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_above="@id/pwd_status"
+        android:layout_above="@id/slotResult"
         android:layout_centerHorizontal="true"
         android:textSize="18sp"
         android:onClick="spin"
@@ -34,7 +48,8 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_centerHorizontal="true"
-        android:layout_above="@id/btn_mix">
+        android:layout_below="@id/topBar"
+        android:layout_above="@id/spinButton">
     </LinearLayout>
 
 

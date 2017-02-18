@@ -1,6 +1,5 @@
 package uk.co.jakelee.blacksmithslots.helper;
 
-import android.util.Log;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -13,6 +12,7 @@ import kankan.wheel.widget.WheelView;
 import uk.co.jakelee.blacksmithslots.R;
 import uk.co.jakelee.blacksmithslots.constructs.SlotResult;
 import uk.co.jakelee.blacksmithslots.main.SlotActivity;
+import uk.co.jakelee.blacksmithslots.model.Inventory;
 import uk.co.jakelee.blacksmithslots.model.Resource;
 import uk.co.jakelee.blacksmithslots.model.Reward;
 import uk.co.jakelee.blacksmithslots.model.Slot;
@@ -22,13 +22,15 @@ public class SlotHelper {
     private boolean buttonPressed = false;
     private SlotActivity activity;
     private int numSlots;
+    private int resourceUsed;
     private List<WheelView> slots = new ArrayList<>();
-    private List<Reward> items;
+    private List<SlotResult> items;
 
     public SlotHelper(SlotActivity activity, Slot slot) {
         this.activity = activity;
         this.numSlots = slot.getSlots();
-        this.items = slot.getRewards();
+        this.items = convertToSlots(slot.getRewards());
+        this.resourceUsed = slot.getResourceNeeded();
     }
 
     public void createWheel() {
@@ -48,7 +50,6 @@ public class SlotHelper {
                 public void onScrollingFinished(WheelView wheel) {
                     if (stillSpinningSlots <= 1) {
                         buttonPressed = false;
-                        Log.d("Slot", "Calling finished");
                         updateStatus();
                     } else {
                         stillSpinningSlots--;
@@ -65,17 +66,18 @@ public class SlotHelper {
     }
 
     private void updateStatus() {
-        TextView text = (TextView) activity.findViewById(R.id.pwd_status);
+        TextView text = (TextView) activity.findViewById(R.id.slotResult);
         List<SlotResult> results = getResults();
-        if (isResultsMatch(results)) {
+        if (doResultsMatch(results)) {
             text.setText("You win " + results.get(0).getResourceQuantity() + "x " + Resource.getName(activity, results.get(0).getResourceId()));
-
+            Inventory.addInventory(results.get(0).getResourceId(), results.get(0).getResourceQuantity());
+            updateResourceCount();
         } else {
             text.setText("No match!");
         }
     }
 
-    private boolean isResultsMatch(List<SlotResult> results) {
+    private boolean doResultsMatch(List<SlotResult> results) {
         SlotResult checkedResult = new SlotResult();
         for (SlotResult result : results) {
             if (checkedResult.getResourceId() == 0) {
@@ -89,21 +91,41 @@ public class SlotHelper {
         return true;
     }
 
+    private List<SlotResult> convertToSlots(List<Reward> dbRewards) {
+        List<SlotResult> rewards = new ArrayList<>();
+        for (Reward dbReward : dbRewards) {
+            for (int i = 0; i < dbReward.getWeighting(); i++) {
+                rewards.add(new SlotResult(dbReward.getResourceId(), dbReward.getQuantity()));
+            }
+        }
+        return rewards;
+    }
+
     private List<SlotResult> getResults() {
         List<SlotResult> results = new ArrayList<>();
         for (WheelView wheel : slots) {
-            results.add(new SlotResult(items.get(wheel.getCurrentItem()).getResourceId(), items.get(wheel.getCurrentItem()).getQuantity()));
+            results.add(items.get(wheel.getCurrentItem()));
         }
         return results;
     }
 
     public void mixWheel() {
         if (!buttonPressed) {
-            buttonPressed = true;
-            for (WheelView wheel : slots) {
-                wheel.scroll(-350 + (int) (Math.random() * 50), 2000);
+            Inventory inventory = Inventory.getInventory(resourceUsed);
+            if (inventory.getQuantity() > 0) {
+                inventory.setQuantity(inventory.getQuantity() - 1);
+                inventory.save();
+                buttonPressed = true;
+                for (WheelView wheel : slots) {
+                    wheel.scroll(-350 + (int) (Math.random() * 50), 2000);
+                }
             }
+            updateResourceCount();
         }
+    }
+
+    public void updateResourceCount() {
+        ((TextView)activity.findViewById(R.id.resourceCount)).setText(Inventory.getInventory(resourceUsed).getQuantity() + "x");
     }
 
 }

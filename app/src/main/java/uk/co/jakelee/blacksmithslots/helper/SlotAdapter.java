@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import kankan.wheel.widget.adapters.AbstractWheelAdapter;
-import uk.co.jakelee.blacksmithslots.model.Reward;
+import uk.co.jakelee.blacksmithslots.constructs.SlotResult;
 
 public class SlotAdapter extends AbstractWheelAdapter {
     // Image size
@@ -21,7 +21,7 @@ public class SlotAdapter extends AbstractWheelAdapter {
     final int IMAGE_HEIGHT = 160;
 
     // Slot machine symbols
-    private final List<Reward> rewards;
+    private final List<SlotResult> rewards;
 
     // Cached images
     private List<SoftReference<Bitmap>> images;
@@ -32,11 +32,11 @@ public class SlotAdapter extends AbstractWheelAdapter {
     /**
      * Constructor
      */
-    public SlotAdapter(Context context, List<Reward> rewards) {
+    public SlotAdapter(Context context, List<SlotResult> rewards) {
         this.context = context;
         this.rewards = rewards;
         images = new ArrayList<>(rewards.size());
-        for (Reward reward : rewards) {
+        for (SlotResult reward : rewards) {
             images.add(new SoftReference<>(loadImage(reward.getResourceId())));
         }
     }
