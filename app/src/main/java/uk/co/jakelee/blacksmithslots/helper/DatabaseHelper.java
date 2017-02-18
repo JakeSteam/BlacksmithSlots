@@ -21,8 +21,8 @@ public class DatabaseHelper {
         Resource.saveInTx(resources);
 
         List<Reward> rewards = new ArrayList<>();
-            rewards.add(new Reward(Constants.BRONZE_CRAFTING, Constants.BRONZE_ORE, 10, 1));
-            rewards.add(new Reward(Constants.BRONZE_CRAFTING, Constants.BRONZE_BAR, 4, 5));
+            rewards.add(new Reward(Constants.BRONZE_CRAFTING, Constants.BRONZE_ORE, 3, 2));
+            rewards.add(new Reward(Constants.BRONZE_CRAFTING, Constants.BRONZE_BAR, 3, 9));
             rewards.add(new Reward(Constants.BRONZE_CRAFTING, Constants.BRONZE_DAGGER, 3, 1));
             rewards.add(new Reward(Constants.BRONZE_CRAFTING, Constants.BRONZE_SWORD, 3, 1));
         Reward.saveInTx(rewards);

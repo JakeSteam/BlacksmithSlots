@@ -1,5 +1,6 @@
 package uk.co.jakelee.blacksmithslots.helper;
 
+import android.util.Log;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -18,9 +19,8 @@ import uk.co.jakelee.blacksmithslots.model.Reward;
 import uk.co.jakelee.blacksmithslots.model.Slot;
 
 public class SlotHelper {
-    private int amountGambled = 10;
+    private int amountGambled = 2;
     private int stillSpinningSlots = 0;
-    private boolean buttonPressed = false;
     private SlotActivity activity;
     private int numSlots;
     private int resourceUsed;
@@ -44,21 +44,19 @@ public class SlotHelper {
             wheel.addScrollingListener(new OnWheelScrollListener() {
                 @Override
                 public void onScrollingStarted(WheelView wheel) {
-                    stillSpinningSlots = numSlots;
                 }
 
                 @Override
                 public void onScrollingFinished(WheelView wheel) {
-                    if (stillSpinningSlots <= 1) {
-                        buttonPressed = false;
+                    stillSpinningSlots--;
+                    if (stillSpinningSlots <= 0) {
                         updateStatus();
-                    } else {
-                        stillSpinningSlots--;
                     }
                 }
             });
             wheel.setCyclic(true);
             wheel.setEnabled(false);
+            wheel.setVisibleItems(5);
 
             container.addView(wheel, new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
             slots.add(wheel);
@@ -111,14 +109,17 @@ public class SlotHelper {
     }
 
     public void mixWheel() {
-        if (!buttonPressed) {
+        if (stillSpinningSlots <= 0) {
+            stillSpinningSlots = numSlots;
             Inventory inventory = Inventory.getInventory(resourceUsed);
             if (inventory.getQuantity() >= amountGambled) {
                 inventory.setQuantity(inventory.getQuantity() - amountGambled);
                 inventory.save();
-                buttonPressed = true;
+
                 for (WheelView wheel : slots) {
-                    wheel.scroll(-350 + (int) (Math.random() * 50), 2000);
+                    int scrollItems = -350 + (int) (Math.random() * 150);
+                    Log.d("Scroll", scrollItems + "");
+                    wheel.scroll(scrollItems, 2250);
                 }
             }
             updateResourceCount();

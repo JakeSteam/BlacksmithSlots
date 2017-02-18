@@ -17,8 +17,8 @@ import uk.co.jakelee.blacksmithslots.constructs.SlotResult;
 
 public class SlotAdapter extends AbstractWheelAdapter {
     // Image size
-    final int IMAGE_WIDTH = 160;
-    final int IMAGE_HEIGHT = 160;
+    final int IMAGE_WIDTH = 120;
+    final int IMAGE_HEIGHT = 120;
 
     // Slot machine symbols
     private final List<SlotResult> rewards;
@@ -62,7 +62,7 @@ public class SlotAdapter extends AbstractWheelAdapter {
         } else {
             img = new ImageView(context);
         }
-        img.setLayoutParams(new ViewGroup.LayoutParams(IMAGE_WIDTH, IMAGE_HEIGHT));
+        img.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
         SoftReference<Bitmap> bitmapRef = images.get(index);
         Bitmap bitmap = bitmapRef.get();
         if (bitmap == null) {
