@@ -1,5 +1,6 @@
 package uk.co.jakelee.blacksmithslots.helper;
 
+import android.util.Pair;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -60,7 +61,7 @@ public class SlotHelper {
             });
             wheel.setCyclic(true);
             wheel.setEnabled(false);
-            wheel.setVisibleItems(5);
+            wheel.setVisibleItems(Constants.ROWS);
 
             container.addView(wheel, new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
             slots.add(wheel);
@@ -108,25 +109,39 @@ public class SlotHelper {
 
     private List<SlotResult> getWinnings(List<List<SlotResult>> rows) {
         List<SlotResult> winningResults = new ArrayList<>();
-        for (List<SlotResult> row : rows) {
-            boolean matchFailure = false;
-            SlotResult checkedResult = new SlotResult();
-            for (SlotResult result : row) {
-                if (checkedResult.getResourceId() == 0) {
-                    checkedResult = result;
-                } else {
-                    if (result.getResourceId() != checkedResult.getResourceId() || result.getResourceMultiplier() != checkedResult.getResourceMultiplier()) {
-                        matchFailure = true;
-                        break;
-                    }
-                }
+        List<List<Pair<Integer, Integer>>> winningRoutes = new ArrayList<>();
+
+        // Loop through possible win paths
+        List<List<Pair<Integer, Integer>>> routes = MatchHelper.getRoutes(rows.get(0).size(), activeRows);
+        for (List<Pair<Integer, Integer>> route : routes) {
+            List<SlotResult> results = new ArrayList<>();
+
+            // Loop through positions in win paths
+            for (Pair<Integer, Integer> coord : route) {
+                results.add(rows.get(coord.first).get(coord.second));
             }
 
-            if (!matchFailure) {
-                winningResults.add(checkedResult);
+            if (isAMatch(results)) {
+                winningRoutes.add(route);
+                winningResults.add(results.get(0));
             }
         }
+
         return winningResults;
+    }
+
+    private boolean isAMatch(List<SlotResult> routeTiles) {
+        SlotResult checkedResult = new SlotResult();
+        for (SlotResult routeTile : routeTiles) {
+            if (checkedResult.getResourceId() == 0) {
+                checkedResult = routeTile;
+            } else {
+                if (routeTile.getResourceId() != checkedResult.getResourceId() || routeTile.getResourceMultiplier() != checkedResult.getResourceMultiplier()) {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 
     private List<SlotResult> convertToSlots(List<Reward> dbRewards) {

@@ -1,9 +1,56 @@
 package uk.co.jakelee.blacksmithslots.helper;
 
+import android.util.Pair;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class MatchHelper {
-    // top row = -2, -2, -2
-    // 2nd row = -1, -1, -1
-    // mid row = 0, 0, 0
-    // 4th row = 1, 1, 1
-    // 5th row = 2, 2, 2
+    public static List<List<Pair<Integer, Integer>>> getRoutes(int numColumns, int maxRoutes) {
+        switch (numColumns) {
+            case 3: return get3ColumnRoutes().subList(0, maxRoutes);
+            case 2: return get2ColumnRoutes().subList(0, maxRoutes);
+            default: return get2ColumnRoutes().subList(0, maxRoutes);
+        }
+    }
+
+    private static List<List<Pair<Integer, Integer>>> get2ColumnRoutes() {
+        // Total routes: 5
+        List<List<Pair<Integer, Integer>>> allRoutes = new ArrayList<>();
+
+        // Straight rows
+        for (int i = 0; i < Constants.ROWS; i++) {
+            List<Pair<Integer, Integer>> route = new ArrayList<>();
+            route.add(new Pair<>(i, 0));
+            route.add(new Pair<>(i, 1));
+            allRoutes.add(route);
+        }
+
+        return allRoutes;
+    }
+
+    private static List<List<Pair<Integer, Integer>>> get3ColumnRoutes() {
+        // Total routes: 5
+        List<List<Pair<Integer, Integer>>> allRoutes = new ArrayList<>();
+
+        // Straight rows
+        for (int i = 0; i < Constants.ROWS; i++) {
+            List<Pair<Integer, Integer>> route = new ArrayList<>();
+            route.add(new Pair<>(i, 0));
+            route.add(new Pair<>(i, 1));
+            route.add(new Pair<>(i, 2));
+            allRoutes.add(route);
+        }
+
+        // Middle dipping down
+        for (int i = 0; i < Constants.ROWS - 1; i++) {
+            List<Pair<Integer, Integer>> route = new ArrayList<>();
+            route.add(new Pair<>(i, 0));
+            route.add(new Pair<>(i + 1, 1));
+            route.add(new Pair<>(i, 2));
+            allRoutes.add(route);
+        }
+
+        return allRoutes;
+    }
 }

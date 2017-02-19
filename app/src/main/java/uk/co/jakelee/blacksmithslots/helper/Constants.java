@@ -1,6 +1,9 @@
 package uk.co.jakelee.blacksmithslots.helper;
 
 public class Constants {
+    // Game constants
+    public final static int ROWS = 5;
+
     // Items
     public final static int RES_BRONZE_ORE = 1;
     public final static int RES_BRONZE_BAR = 2;
