@@ -31,6 +31,7 @@ public class SlotHelper {
     private int resourceUsed;
     private List<WheelView> slots = new ArrayList<>();
     private List<SlotResult> items;
+    private List<List<Integer>> highlightedRoutes;
 
     public SlotHelper(SlotActivity activity, Slot slot) {
         this.activity = activity;
@@ -71,9 +72,9 @@ public class SlotHelper {
         ((TextView)activity.findViewById(R.id.amountGambled)).setText(amountGambled + " ores gambled per row");
     }
 
-    private void highlightTile(int row, int column) {
+    private void highlightTile(int row, int column, boolean applyEffect) {
         Log.d("Highlight", "Row: " + row + " Col: " + column);
-        ((WheelView)((LinearLayout) activity.findViewById(R.id.slotContainer)).getChildAt(row)).itemsLayout.getChildAt(column).setAlpha(0.5f);
+        ((WheelView)((LinearLayout) activity.findViewById(R.id.slotContainer)).getChildAt(row)).itemsLayout.getChildAt(column).setAlpha(applyEffect ? 0.5f : 1.0f);
     }
 
     private void updateStatus() {
@@ -132,7 +133,9 @@ public class SlotHelper {
             }
         }
 
-        updateResults(winningRoutes);
+        this.highlightedRoutes = winningRoutes;
+        highlightResults(true);
+
         return winningResults;
     }
 
@@ -183,6 +186,9 @@ public class SlotHelper {
 
     public void mixWheel() {
         if (stillSpinningSlots <= 0) {
+            if (highlightedRoutes != null) {
+                highlightResults(false);
+            }
             stillSpinningSlots = numSlots;
             Inventory inventory = Inventory.getInventory(resourceUsed);
 
@@ -213,15 +219,15 @@ public class SlotHelper {
         }
     }
 
-    public void updateResults(List<List<Integer>> routes) {
+    public void highlightResults(boolean applyEffect) {
         LinearLayout container = (LinearLayout)activity.findViewById(R.id.routesContainer);
         container.removeAllViews();
 
-        for (List<Integer> route : routes) {
+        for (List<Integer> route : highlightedRoutes) {
             String winningRoute = "";
             for (int i = 0; i < route.size(); i++) {
                 winningRoute += route.get(i) + ", ";
-                highlightTile(i, route.get(i));
+                highlightTile(i, route.get(i), applyEffect);
             }
             TextView textView = new TextView(activity);
             textView.setText(winningRoute);
