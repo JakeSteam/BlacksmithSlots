@@ -1,5 +1,6 @@
 package uk.co.jakelee.blacksmithslots.helper;
 
+import android.util.Log;
 import android.util.Pair;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
@@ -112,7 +113,8 @@ public class SlotHelper {
         List<List<Pair<Integer, Integer>>> winningRoutes = new ArrayList<>();
 
         // Loop through possible win paths
-        List<List<Pair<Integer, Integer>>> routes = MatchHelper.getRoutes(rows.get(0).size(), activeRows);
+        List<List<Pair<Integer, Integer>>> routes = MatchHelper.getRoutes(rows.get(0).size(), 999); //, activeRows);
+        Log.d("Routes", "Total: " + routes.size());
         for (List<Pair<Integer, Integer>> route : routes) {
             List<SlotResult> results = new ArrayList<>();
 
@@ -127,6 +129,7 @@ public class SlotHelper {
             }
         }
 
+        updateResults(winningRoutes);
         return winningResults;
     }
 
@@ -202,6 +205,21 @@ public class SlotHelper {
             String name = Resource.getName(activity, inventory.getItemId());
             TextView textView = new TextView(activity);
             textView.setText(inventory.getQuantity() + "x " + name);
+            container.addView(textView);
+        }
+    }
+
+    public void updateResults(List<List<Pair<Integer, Integer>>> routes) {
+        LinearLayout container = (LinearLayout)activity.findViewById(R.id.routesContainer);
+        container.removeAllViews();
+
+        for (List<Pair<Integer, Integer>> route : routes) {
+            String winningRoute = "";
+            for (Pair<Integer, Integer> coord : route) {
+                winningRoute += "(" + coord.first + ", " + coord.second + ") ";
+            }
+            TextView textView = new TextView(activity);
+            textView.setText(winningRoute);
             container.addView(textView);
         }
     }

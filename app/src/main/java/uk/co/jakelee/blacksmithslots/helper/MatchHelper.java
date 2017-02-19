@@ -7,11 +7,23 @@ import java.util.List;
 
 public class MatchHelper {
     public static List<List<Pair<Integer, Integer>>> getRoutes(int numColumns, int maxRoutes) {
+        List<List<Pair<Integer, Integer>>> routes;
         switch (numColumns) {
-            case 3: return get3ColumnRoutes().subList(0, maxRoutes);
-            case 2: return get2ColumnRoutes().subList(0, maxRoutes);
-            default: return get2ColumnRoutes().subList(0, maxRoutes);
+            case 3:
+                routes = get3ColumnRoutes();
+                break;
+            case 2:
+                routes = get2ColumnRoutes();
+                break;
+            default:
+                routes = get3ColumnRoutes();
+                break;
         }
+
+        if (maxRoutes <= routes.size()) {
+            return routes.subList(0, maxRoutes);
+        }
+        return routes;
     }
 
     private static List<List<Pair<Integer, Integer>>> get2ColumnRoutes() {
@@ -30,7 +42,7 @@ public class MatchHelper {
     }
 
     private static List<List<Pair<Integer, Integer>>> get3ColumnRoutes() {
-        // Total routes: 5
+        // Total routes: 9
         List<List<Pair<Integer, Integer>>> allRoutes = new ArrayList<>();
 
         // Straight rows

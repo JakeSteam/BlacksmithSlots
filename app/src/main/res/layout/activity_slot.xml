@@ -27,6 +27,14 @@
         android:layout_below="@id/rowsActive"
         android:orientation="vertical"/>
 
+    <LinearLayout
+        android:id="@+id/routesContainer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_below="@id/inventoryContainer"
+        android:orientation="vertical"/>
+
     <TextView android:id="@+id/slotResult"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
