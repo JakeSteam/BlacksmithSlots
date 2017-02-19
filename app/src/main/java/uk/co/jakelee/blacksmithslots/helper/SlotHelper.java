@@ -71,6 +71,11 @@ public class SlotHelper {
         ((TextView)activity.findViewById(R.id.amountGambled)).setText(amountGambled + " ores gambled per row");
     }
 
+    private void highlightTile(int row, int column) {
+        Log.d("Highlight", "Row: " + row + " Col: " + column);
+        ((WheelView)((LinearLayout) activity.findViewById(R.id.slotContainer)).getChildAt(row)).itemsLayout.getChildAt(column).setAlpha(0.5f);
+    }
+
     private void updateStatus() {
         TextView text = (TextView) activity.findViewById(R.id.slotResult);
         List<List<SlotResult>> results = getResults();
@@ -113,7 +118,6 @@ public class SlotHelper {
 
         // Loop through possible win paths
         List<List<Integer>> routes = MatchHelper.getRoutes(rows.get(0).size(), activeRows);
-        Log.d("Routes", "Total: " + routes.size());
         for (List<Integer> route : routes) {
             List<SlotResult> results = new ArrayList<>();
 
@@ -188,6 +192,7 @@ public class SlotHelper {
                 inventory.save();
 
                 for (WheelView wheel : slots) {
+                    wheel.invalidateWheel(false);
                     wheel.scroll(-350 + (int) (Math.random() * 150), 2250);
                 }
             }
@@ -216,6 +221,7 @@ public class SlotHelper {
             String winningRoute = "";
             for (int i = 0; i < route.size(); i++) {
                 winningRoute += route.get(i) + ", ";
+                highlightTile(i, route.get(i));
             }
             TextView textView = new TextView(activity);
             textView.setText(winningRoute);
