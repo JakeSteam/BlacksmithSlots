@@ -1,13 +1,11 @@
 package uk.co.jakelee.blacksmithslots.helper;
 
-import android.util.Pair;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class MatchHelper {
-    public static List<List<Pair<Integer, Integer>>> getRoutes(int numColumns, int maxRoutes) {
-        List<List<Pair<Integer, Integer>>> routes;
+    public static List<List<Integer>> getRoutes(int numColumns, int maxRoutes) {
+        List<List<Integer>> routes;
         switch (numColumns) {
             case 3:
                 routes = get3ColumnRoutes();
@@ -26,40 +24,40 @@ public class MatchHelper {
         return routes;
     }
 
-    private static List<List<Pair<Integer, Integer>>> get2ColumnRoutes() {
+    private static List<List<Integer>> get2ColumnRoutes() {
         // Total routes: 5
-        List<List<Pair<Integer, Integer>>> allRoutes = new ArrayList<>();
+        List<List<Integer>> allRoutes = new ArrayList<>();
 
         // Straight rows
         for (int i = 0; i < Constants.ROWS; i++) {
-            List<Pair<Integer, Integer>> route = new ArrayList<>();
-            route.add(new Pair<>(i, 0));
-            route.add(new Pair<>(i, 1));
+            List<Integer> route = new ArrayList<>();
+            route.add(i);
+            route.add(i);
             allRoutes.add(route);
         }
 
         return allRoutes;
     }
 
-    private static List<List<Pair<Integer, Integer>>> get3ColumnRoutes() {
+    private static List<List<Integer>> get3ColumnRoutes() {
         // Total routes: 9
-        List<List<Pair<Integer, Integer>>> allRoutes = new ArrayList<>();
+        List<List<Integer>> allRoutes = new ArrayList<>();
 
         // Straight rows
         for (int i = 0; i < Constants.ROWS; i++) {
-            List<Pair<Integer, Integer>> route = new ArrayList<>();
-            route.add(new Pair<>(i, 0));
-            route.add(new Pair<>(i, 1));
-            route.add(new Pair<>(i, 2));
+            List<Integer> route = new ArrayList<>();
+            route.add(i);
+            route.add(i);
+            route.add(i);
             allRoutes.add(route);
         }
 
         // Middle dipping down
         for (int i = 0; i < Constants.ROWS - 1; i++) {
-            List<Pair<Integer, Integer>> route = new ArrayList<>();
-            route.add(new Pair<>(i, 0));
-            route.add(new Pair<>(i + 1, 1));
-            route.add(new Pair<>(i, 2));
+            List<Integer> route = new ArrayList<>();
+            route.add(i);
+            route.add(i + 1);
+            route.add(i);
             allRoutes.add(route);
         }
 

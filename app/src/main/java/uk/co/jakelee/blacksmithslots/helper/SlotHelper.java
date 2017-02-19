@@ -1,7 +1,6 @@
 package uk.co.jakelee.blacksmithslots.helper;
 
 import android.util.Log;
-import android.util.Pair;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -24,7 +23,7 @@ import uk.co.jakelee.blacksmithslots.model.Slot;
 
 public class SlotHelper {
     private int amountGambled = 1;
-    private int activeRows = 5;
+    private int activeRows = 9;
 
     private int stillSpinningSlots = 0;
     private SlotActivity activity;
@@ -110,17 +109,17 @@ public class SlotHelper {
 
     private List<SlotResult> getWinnings(List<List<SlotResult>> rows) {
         List<SlotResult> winningResults = new ArrayList<>();
-        List<List<Pair<Integer, Integer>>> winningRoutes = new ArrayList<>();
+        List<List<Integer>> winningRoutes = new ArrayList<>();
 
         // Loop through possible win paths
-        List<List<Pair<Integer, Integer>>> routes = MatchHelper.getRoutes(rows.get(0).size(), 999); //, activeRows);
+        List<List<Integer>> routes = MatchHelper.getRoutes(rows.get(0).size(), activeRows);
         Log.d("Routes", "Total: " + routes.size());
-        for (List<Pair<Integer, Integer>> route : routes) {
+        for (List<Integer> route : routes) {
             List<SlotResult> results = new ArrayList<>();
 
             // Loop through positions in win paths
-            for (Pair<Integer, Integer> coord : route) {
-                results.add(rows.get(coord.first).get(coord.second));
+            for (int i = 0; i < route.size(); i++) {
+                results.add(rows.get(route.get(i)).get(i));
             }
 
             if (isAMatch(results)) {
@@ -209,14 +208,14 @@ public class SlotHelper {
         }
     }
 
-    public void updateResults(List<List<Pair<Integer, Integer>>> routes) {
+    public void updateResults(List<List<Integer>> routes) {
         LinearLayout container = (LinearLayout)activity.findViewById(R.id.routesContainer);
         container.removeAllViews();
 
-        for (List<Pair<Integer, Integer>> route : routes) {
+        for (List<Integer> route : routes) {
             String winningRoute = "";
-            for (Pair<Integer, Integer> coord : route) {
-                winningRoute += "(" + coord.first + ", " + coord.second + ") ";
+            for (int i = 0; i < route.size(); i++) {
+                winningRoute += route.get(i) + ", ";
             }
             TextView textView = new TextView(activity);
             textView.setText(winningRoute);
