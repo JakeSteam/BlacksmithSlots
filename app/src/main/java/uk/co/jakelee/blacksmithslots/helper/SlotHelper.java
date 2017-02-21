@@ -24,7 +24,7 @@ import uk.co.jakelee.blacksmithslots.model.Slot;
 
 public class SlotHelper {
     private int amountGambled = 1;
-    private int activeRows = 9;
+    private int activeRows = 29;
 
     private int stillSpinningSlots = 0;
     private SlotActivity activity;
@@ -42,6 +42,16 @@ public class SlotHelper {
         this.resourceUsed = slot.getResourceNeeded();
     }
 
+    private List<SlotResult> convertToSlots(List<Reward> dbRewards) {
+        List<SlotResult> rewards = new ArrayList<>();
+        for (Reward dbReward : dbRewards) {
+            for (int i = 0; i < dbReward.getWeighting(); i++) {
+                rewards.add(new SlotResult(dbReward.getResourceId(), dbReward.getQuantityMultiplier()));
+            }
+        }
+        return rewards;
+    }
+
     public void createWheel() {
         LinearLayout container = (LinearLayout)activity.findViewById(R.id.slotContainer);
         for (int i = 0; i < numSlots; i++) {
@@ -50,7 +60,6 @@ public class SlotHelper {
             // Create + store shuffled list of items
             items.add(new ArrayList(baseItems));
             Collections.shuffle(items.get(i));
-
             wheel.setViewAdapter(new SlotAdapter(wheel.getContext(), items.get(i)));
             wheel.setCurrentItem(0);
 
@@ -77,11 +86,6 @@ public class SlotHelper {
 
         ((TextView)activity.findViewById(R.id.rowsActive)).setText(activeRows + " active rows");
         ((TextView)activity.findViewById(R.id.amountGambled)).setText(amountGambled + " ores gambled per row");
-    }
-
-    private void highlightTile(int row, int column, boolean applyEffect) {
-        Log.d("Highlight", "Row: " + row + " Col: " + column);
-        ((WheelView)((LinearLayout) activity.findViewById(R.id.slotContainer)).getChildAt(row)).itemsLayout.getChildAt(column).setAlpha(applyEffect ? 0.5f : 1.0f);
     }
 
     private void updateStatus() {
@@ -161,16 +165,6 @@ public class SlotHelper {
         return true;
     }
 
-    private List<SlotResult> convertToSlots(List<Reward> dbRewards) {
-        List<SlotResult> rewards = new ArrayList<>();
-        for (Reward dbReward : dbRewards) {
-            for (int i = 0; i < dbReward.getWeighting(); i++) {
-                rewards.add(new SlotResult(dbReward.getResourceId(), dbReward.getQuantityMultiplier()));
-            }
-        }
-        return rewards;
-    }
-
     private List<List<SlotResult>> getResults() {
         int numRows = 5;
         int topRowPosition = -2;
@@ -227,20 +221,27 @@ public class SlotHelper {
         }
     }
 
-    public void highlightResults(boolean applyEffect) {
+    private void highlightResults(boolean applyEffect) {
         LinearLayout container = (LinearLayout)activity.findViewById(R.id.routesContainer);
         container.removeAllViews();
 
+        LinearLayout slotContainer = (LinearLayout)activity.findViewById(R.id.slotContainer);
         for (List<Integer> route : highlightedRoutes) {
-            String winningRoute = "";
+            StringBuilder winningRoute = new StringBuilder();
             for (int i = 0; i < route.size(); i++) {
-                winningRoute += route.get(i) + ", ";
-                highlightTile(i, route.get(i), applyEffect);
+                winningRoute.append(route.get(i));
+                winningRoute.append(", ");
+                highlightTile(slotContainer, i, route.get(i), applyEffect);
             }
             TextView textView = new TextView(activity);
-            textView.setText(winningRoute);
+            textView.setText(winningRoute.toString());
             container.addView(textView);
         }
+    }
+
+    private void highlightTile(LinearLayout slotContainer, int row, int column, boolean applyEffect) {
+        Log.d("Highlight", "Row: " + row + " Col: " + column);
+        ((WheelView)slotContainer.getChildAt(row)).itemsLayout.getChildAt(column).setAlpha(applyEffect ? 0.5f : 1.0f);
     }
 
 }

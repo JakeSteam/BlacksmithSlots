@@ -12,7 +12,7 @@ import uk.co.jakelee.blacksmithslots.model.Statistic;
 public class DatabaseHelper {
     public static void testSetup() {
         List<Inventory> inventories = new ArrayList<>();
-            inventories.add(new Inventory(Constants.RES_BRONZE_ORE, 100));
+            inventories.add(new Inventory(Constants.RES_BRONZE_ORE, 10000));
         Inventory.saveInTx(inventories);
 
         List<Resource> resources = new ArrayList<>();
@@ -32,7 +32,7 @@ public class DatabaseHelper {
         Reward.saveInTx(rewards);
 
         List<Slot> slots = new ArrayList<>();
-            slots.add(new Slot(Constants.SLOT_BRONZE_CRAFTING, 1, Constants.RES_BRONZE_ORE, 3, Enums.Type.Crafting, Enums.Tier.Bronze));
+            slots.add(new Slot(Constants.SLOT_BRONZE_CRAFTING, 1, Constants.RES_BRONZE_ORE, 5, Enums.Type.Crafting, Enums.Tier.Bronze));
         Slot.saveInTx(slots);
 
         List<Statistic> statistics = new ArrayList<>();
