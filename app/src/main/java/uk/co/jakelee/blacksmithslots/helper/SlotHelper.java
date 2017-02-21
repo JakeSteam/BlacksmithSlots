@@ -145,7 +145,7 @@ public class SlotHelper {
             if (checkedResult.getResourceId() == 0) {
                 checkedResult = routeTile;
             } else {
-                if (routeTile.getResourceId() != checkedResult.getResourceId() || routeTile.getResourceMultiplier() != checkedResult.getResourceMultiplier()) {
+                if (routeTile.getResourceId() != checkedResult.getResourceId()) {
                     return false;
                 }
             }
