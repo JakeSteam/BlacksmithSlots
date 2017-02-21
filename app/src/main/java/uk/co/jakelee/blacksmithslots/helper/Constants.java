@@ -5,6 +5,7 @@ public class Constants {
     public final static int ROWS = 5;
 
     // Items
+    public final static int RES_WILDCARD = 3;
     public final static int RES_BRONZE_ORE = 1;
     public final static int RES_BRONZE_BAR = 2;
     public final static int RES_BRONZE_DAGGER = 3;

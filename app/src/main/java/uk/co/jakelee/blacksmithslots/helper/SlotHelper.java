@@ -6,6 +6,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Locale;
@@ -30,13 +31,14 @@ public class SlotHelper {
     private int numSlots;
     private int resourceUsed;
     private List<WheelView> slots = new ArrayList<>();
-    private List<SlotResult> items;
+    private List<SlotResult> baseItems;
+    private List<List<SlotResult>> items = new ArrayList<>();
     private List<List<Integer>> highlightedRoutes;
 
     public SlotHelper(SlotActivity activity, Slot slot) {
         this.activity = activity;
         this.numSlots = slot.getSlots();
-        this.items = convertToSlots(slot.getRewards());
+        this.baseItems = convertToSlots(slot.getRewards());
         this.resourceUsed = slot.getResourceNeeded();
     }
 
@@ -44,7 +46,12 @@ public class SlotHelper {
         LinearLayout container = (LinearLayout)activity.findViewById(R.id.slotContainer);
         for (int i = 0; i < numSlots; i++) {
             WheelView wheel = new WheelView(activity);
-            wheel.setViewAdapter(new SlotAdapter(wheel.getContext(), items));
+
+            // Create + store shuffled list of items
+            items.add(new ArrayList(baseItems));
+            Collections.shuffle(items.get(i));
+
+            wheel.setViewAdapter(new SlotAdapter(wheel.getContext(), items.get(i)));
             wheel.setCurrentItem(0);
 
             wheel.addScrollingListener(new OnWheelScrollListener() {
@@ -89,6 +96,30 @@ public class SlotHelper {
         }
     }
 
+    private String applyWinnings(List<SlotResult> unmergedWinnings, int amountGambled) {
+        LinkedHashMap<Integer, Integer> dataStore = new LinkedHashMap<>();
+        for (SlotResult winning : unmergedWinnings) {
+            Integer temp;
+            if (dataStore.containsKey(winning.getResourceId())) {
+                temp = dataStore.get(winning.getResourceId()) + winning.getResourceMultiplier();
+                dataStore.put(winning.getResourceId(), temp);
+            } else {
+                dataStore.put(winning.getResourceId(), winning.getResourceMultiplier());
+            }
+        }
+
+        StringBuilder winningsText = new StringBuilder().append("Won: ");
+        for (Map.Entry<Integer, Integer> winning : dataStore.entrySet()) {
+            Resource resource = Resource.get(winning.getKey());
+            if (resource != null && resource.getResourceId() != Constants.RES_WILDCARD) {
+                int quantity = winning.getValue() * amountGambled;
+                Inventory.addInventory(resource.getResourceId(), quantity);
+                winningsText.append(String.format(Locale.ENGLISH, "%dx %s, ", quantity, resource.getName(activity)));
+            }
+        }
+        return winningsText.substring(0, winningsText.length() - 2);
+    }
+
     private List<SlotResult> getWinnings(List<List<SlotResult>> rows) {
         List<SlotResult> winningResults = new ArrayList<>();
         List<List<Integer>> winningRoutes = new ArrayList<>();
@@ -105,7 +136,7 @@ public class SlotHelper {
 
             if (isAMatch(results)) {
                 winningRoutes.add(route);
-                winningResults.add(results.get(0));
+                winningResults.addAll(results);
             }
         }
 
@@ -142,10 +173,11 @@ public class SlotHelper {
     private boolean isAMatch(List<SlotResult> routeTiles) {
         SlotResult checkedResult = new SlotResult();
         for (SlotResult routeTile : routeTiles) {
-            if (checkedResult.getResourceId() == 0) {
+            // If there's no tile to check, set it to current
+            if (checkedResult.getResourceId() == 0 && routeTile.getResourceId() != Constants.RES_WILDCARD) {
                 checkedResult = routeTile;
             } else {
-                if (routeTile.getResourceId() != checkedResult.getResourceId() || routeTile.getResourceMultiplier() != checkedResult.getResourceMultiplier()) {
+                if (routeTile.getResourceId() != checkedResult.getResourceId() && routeTile.getResourceId() != Constants.RES_WILDCARD) {
                     return false;
                 }
             }
@@ -174,10 +206,10 @@ public class SlotHelper {
         }
 
         // Add data
-        for (WheelView wheel : slots) {
-            for (int i = 0; i < numRows; i++) {
-                int position = (wheel.getCurrentItem() + (i + topRowPosition) + items.size()) % items.size();
-                rows.get(i).add(items.get(position));
+        for (int i = 0; i < slots.size(); i++) {
+            for (int j = 0; j < numRows; j++) {
+                int position = (slots.get(i).getCurrentItem() + (j + topRowPosition) + items.get(i).size()) % items.get(i).size();
+                rows.get(j).add(items.get(i).get(position));
             }
         }
 
