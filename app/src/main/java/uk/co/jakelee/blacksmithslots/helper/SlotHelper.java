@@ -1,10 +1,19 @@
 package uk.co.jakelee.blacksmithslots.helper;
 
 import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TableLayout;
+import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.orm.query.Condition;
+import com.orm.query.Select;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -35,12 +44,16 @@ public class SlotHelper {
     private List<SlotResult> baseItems;
     private List<List<SlotResult>> items = new ArrayList<>();
     private List<List<Integer>> highlightedRoutes;
+    private Picasso picasso;
+    private LayoutInflater inflater;
 
     public SlotHelper(SlotActivity activity, Slot slot) {
         this.activity = activity;
         this.numSlots = slot.getSlots();
         this.baseItems = convertToSlots(slot.getRewards());
         this.resourceUsed = slot.getResourceNeeded();
+        this.picasso = Picasso.with(activity);
+        this.inflater = LayoutInflater.from(activity);
     }
 
     private List<SlotResult> convertToSlots(List<Reward> dbRewards) {
@@ -209,34 +222,41 @@ public class SlotHelper {
     }
 
     public void updateResourceCount() {
-        List<Inventory> items = Inventory.listAll(Inventory.class);
-        LinearLayout container = (LinearLayout)activity.findViewById(R.id.inventoryContainer);
-        container.removeAllViews();
+        List<Inventory> items = Select.from(Inventory.class).where(
+                Condition.prop("item_id").notEq(resourceUsed)).list();
 
-        for (Inventory inventory : items) {
-            String name = Resource.getName(activity, inventory.getItemId());
-            TextView textView = new TextView(activity);
-            textView.setText(inventory.getQuantity() + "x " + name);
-            container.addView(textView);
+        Inventory inventory = Inventory.getInventory(resourceUsed);
+        picasso.load(R.drawable.item_1).into((ImageView)activity.findViewById(R.id.resourceImage));
+        ((TextView)activity.findViewById(R.id.resourceInfo)).setText(inventory.getQuantity() + "x " + Resource.getName(activity, resourceUsed));
+
+        TableLayout.LayoutParams params = new TableLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        params.setMargins(0, 5, 0, 5);
+
+        TableLayout layout = (TableLayout)activity.findViewById(R.id.inventoryDisplay);
+        layout.removeAllViews();
+        for (Inventory item : items) {
+            View inflatedView = inflater.inflate(R.layout.custom_resource_info, null);
+            TableRow itemRow = (TableRow) inflatedView.findViewById(R.id.itemRow);
+
+            picasso.load(item.getDrawableId(activity)).into((ImageView)itemRow.findViewById(R.id.itemImage));
+            ((TextView)itemRow.findViewById(R.id.itemInfo)).setText(item.getQuantity() + "x " + Resource.getName(activity, item.getItemId()));
+
+            layout.addView(itemRow, params);
         }
     }
 
     private void highlightResults(boolean applyEffect) {
-        LinearLayout container = (LinearLayout)activity.findViewById(R.id.routesContainer);
-        container.removeAllViews();
-
+        StringBuilder winningRoutes = new StringBuilder();
         LinearLayout slotContainer = (LinearLayout)activity.findViewById(R.id.slotContainer);
         for (List<Integer> route : highlightedRoutes) {
-            StringBuilder winningRoute = new StringBuilder();
             for (int i = 0; i < route.size(); i++) {
-                winningRoute.append(route.get(i));
-                winningRoute.append(", ");
+                winningRoutes.append(route.get(i));
+                winningRoutes.append(", ");
                 highlightTile(slotContainer, i, route.get(i), applyEffect);
             }
-            TextView textView = new TextView(activity);
-            textView.setText(winningRoute.toString());
-            container.addView(textView);
+            winningRoutes.append("\n");
         }
+        Log.d("Routes", winningRoutes.toString());
     }
 
     private void highlightTile(LinearLayout slotContainer, int row, int column, boolean applyEffect) {

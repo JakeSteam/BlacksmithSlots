@@ -41,4 +41,8 @@ public class Resource extends SugarRecord {
     public static String getName(Context context, int resourceId) {
         return TextHelper.getInstance(context).getText("resource_" + resourceId);
     }
+
+    public static int getDrawableId(Context context, long item) {
+        return context.getResources().getIdentifier("item_" + item, "drawable", context.getPackageName());
+    }
 }
