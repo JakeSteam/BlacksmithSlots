@@ -8,60 +8,77 @@
     android:layout_width="match_parent"
     tools:context="uk.co.jakelee.blacksmithslots.main.SlotActivity">
 
-    <TextView
-        android:id="@+id/amountGambled"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-
-    <TextView
-        android:id="@+id/rowsActive"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/topBar"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/amountGambled"/>
+        android:orientation="horizontal">
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:text="Close"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:text="Info"/>
+    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/inventoryContainer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
-        android:layout_below="@id/rowsActive"
+        android:layout_below="@id/topBar"
         android:orientation="vertical"/>
+
+    <RelativeLayout
+        android:id="@+id/slotArea"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_toRightOf="@id/inventoryContainer"
+        android:layout_below="@id/topBar">
+        <LinearLayout
+            android:id="@+id/bottomBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true">
+            <TextView
+                android:id="@+id/amountGambled"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"/>
+            <TextView
+                android:id="@+id/rowsActive"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"/>
+            <Button android:id="@+id/spinButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:onClick="spin"
+                android:text="Spin"/>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/slotContainer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_centerHorizontal="true"
+            android:layout_above="@id/bottomBar">
+        </LinearLayout>
+    </RelativeLayout>
 
     <LinearLayout
         android:id="@+id/routesContainer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
-        android:layout_below="@id/inventoryContainer"
-        android:orientation="vertical"/>
-
-    <TextView android:id="@+id/slotResult"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:textSize="18sp"
-        android:textColor="#F00"/>
-
-    <Button android:id="@+id/spinButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_above="@id/slotResult"
-        android:layout_centerHorizontal="true"
-        android:textSize="18sp"
-        android:onClick="spin"
-        android:text="Spin wheels"/>
-
-    <LinearLayout
-        android:id="@+id/slotContainer"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:orientation="horizontal"
-        android:layout_centerHorizontal="true"
-        android:layout_above="@id/spinButton">
-    </LinearLayout>
-
-
+        android:orientation="vertical"
+        android:visibility="invisible"/>
 
 </RelativeLayout>

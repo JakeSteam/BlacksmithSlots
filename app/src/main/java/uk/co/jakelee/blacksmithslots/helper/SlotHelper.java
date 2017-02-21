@@ -4,6 +4,7 @@ import android.util.Log;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -84,19 +85,18 @@ public class SlotHelper {
             slots.add(wheel);
         }
 
-        ((TextView)activity.findViewById(R.id.rowsActive)).setText(activeRows + " active rows");
-        ((TextView)activity.findViewById(R.id.amountGambled)).setText(amountGambled + " ores gambled per row");
+        ((TextView)activity.findViewById(R.id.rowsActive)).setText("Rows: " + activeRows);
+        ((TextView)activity.findViewById(R.id.amountGambled)).setText("Stake: " + amountGambled);
     }
 
     private void updateStatus() {
-        TextView text = (TextView) activity.findViewById(R.id.slotResult);
         List<List<SlotResult>> results = getResults();
         List<SlotResult> wonItems = getWinnings(results);
         if (wonItems.size() > 0) {
-            text.setText(applyWinnings(wonItems, amountGambled));
+            Toast.makeText(activity, applyWinnings(wonItems, amountGambled), Toast.LENGTH_SHORT).show();
             updateResourceCount();
         } else {
-            text.setText("No match!");
+            Toast.makeText(activity, "No matches!", Toast.LENGTH_SHORT).show();
         }
     }
 
