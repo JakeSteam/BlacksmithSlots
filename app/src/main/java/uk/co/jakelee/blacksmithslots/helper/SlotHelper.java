@@ -129,7 +129,7 @@ public class SlotHelper {
 
             if (isAMatch(results)) {
                 winningRoutes.add(route);
-                winningResults.add(results.get(0));
+                winningResults.addAll(results);
             }
         }
 
