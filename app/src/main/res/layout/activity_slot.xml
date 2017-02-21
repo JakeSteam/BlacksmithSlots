@@ -6,7 +6,8 @@
     android:id="@+id/parent"
     android:layout_height="match_parent"
     android:layout_width="match_parent"
-    tools:context="uk.co.jakelee.blacksmithslots.main.SlotActivity">
+    tools:context="uk.co.jakelee.blacksmithslots.main.SlotActivity"
+    android:background="@drawable/square_tan">
 
     <LinearLayout
         android:id="@+id/topBar"
@@ -35,7 +36,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_margin="20dp">
+            android:layout_margin="5dp"
+            android:background="@drawable/background_brown">
             <ImageView
                 android:id="@+id/resourceImage"
                 android:layout_width="30dp"
@@ -53,9 +55,9 @@
                 android:id="@+id/inventoryDisplay"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:shrinkColumns="0"/>
+                android:shrinkColumns="0"
+                android:layout_margin="5dp"
+                android:background="@drawable/background_brown"/>
         </ScrollView>
     </LinearLayout>
 
@@ -71,7 +73,8 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_centerHorizontal="true"
-            android:layout_alignParentBottom="true">
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/background_brown">
             <TextView
                 android:id="@+id/amountGambled"
                 android:layout_width="wrap_content"
@@ -98,13 +101,5 @@
             android:layout_above="@id/bottomBar">
         </LinearLayout>
     </RelativeLayout>
-
-    <LinearLayout
-        android:id="@+id/routesContainer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:orientation="vertical"
-        android:visibility="invisible"/>
 
 </RelativeLayout>

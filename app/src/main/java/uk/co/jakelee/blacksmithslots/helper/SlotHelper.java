@@ -93,6 +93,7 @@ public class SlotHelper {
             wheel.setCyclic(true);
             wheel.setEnabled(false);
             wheel.setVisibleItems(Constants.ROWS);
+            wheel.setBackgroundResource(R.drawable.background_white);
 
             container.addView(wheel, new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
             slots.add(wheel);
@@ -230,7 +231,6 @@ public class SlotHelper {
         ((TextView)activity.findViewById(R.id.resourceInfo)).setText(inventory.getQuantity() + "x " + Resource.getName(activity, resourceUsed));
 
         TableLayout.LayoutParams params = new TableLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        params.setMargins(0, 5, 0, 5);
 
         TableLayout layout = (TableLayout)activity.findViewById(R.id.inventoryDisplay);
         layout.removeAllViews();
@@ -260,7 +260,6 @@ public class SlotHelper {
     }
 
     private void highlightTile(LinearLayout slotContainer, int row, int column, boolean applyEffect) {
-        Log.d("Highlight", "Row: " + row + " Col: " + column);
         ((WheelView)slotContainer.getChildAt(row)).itemsLayout.getChildAt(column).setAlpha(applyEffect ? 0.5f : 1.0f);
     }
 
