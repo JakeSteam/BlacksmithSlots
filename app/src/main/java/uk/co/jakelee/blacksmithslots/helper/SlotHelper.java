@@ -6,6 +6,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Locale;
@@ -30,13 +31,14 @@ public class SlotHelper {
     private int numSlots;
     private int resourceUsed;
     private List<WheelView> slots = new ArrayList<>();
-    private List<SlotResult> items;
+    private List<SlotResult> baseItems;
+    private List<List<SlotResult>> items = new ArrayList<>();
     private List<List<Integer>> highlightedRoutes;
 
     public SlotHelper(SlotActivity activity, Slot slot) {
         this.activity = activity;
         this.numSlots = slot.getSlots();
-        this.items = convertToSlots(slot.getRewards());
+        this.baseItems = convertToSlots(slot.getRewards());
         this.resourceUsed = slot.getResourceNeeded();
     }
 
@@ -44,7 +46,12 @@ public class SlotHelper {
         LinearLayout container = (LinearLayout)activity.findViewById(R.id.slotContainer);
         for (int i = 0; i < numSlots; i++) {
             WheelView wheel = new WheelView(activity);
-            wheel.setViewAdapter(new SlotAdapter(wheel.getContext(), items));
+
+            // Create + store shuffled list of items
+            items.add(new ArrayList(baseItems));
+            Collections.shuffle(items.get(i));
+
+            wheel.setViewAdapter(new SlotAdapter(wheel.getContext(), items.get(i)));
             wheel.setCurrentItem(0);
 
             wheel.addScrollingListener(new OnWheelScrollListener() {
@@ -175,10 +182,10 @@ public class SlotHelper {
         }
 
         // Add data
-        for (WheelView wheel : slots) {
-            for (int i = 0; i < numRows; i++) {
-                int position = (wheel.getCurrentItem() + (i + topRowPosition) + items.size()) % items.size();
-                rows.get(i).add(items.get(position));
+        for (int i = 0; i < slots.size(); i++) {
+            for (int j = 0; j < numRows; j++) {
+                int position = (slots.get(i).getCurrentItem() + (j + topRowPosition) + items.get(i).size()) % items.get(i).size();
+                rows.get(j).add(items.get(i).get(position));
             }
         }
 
