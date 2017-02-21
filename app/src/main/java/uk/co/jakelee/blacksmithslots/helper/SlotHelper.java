@@ -104,7 +104,7 @@ public class SlotHelper {
         StringBuilder winningsText = new StringBuilder().append("Won: ");
         for (Map.Entry<Integer, Integer> winning : dataStore.entrySet()) {
             Resource resource = Resource.get(winning.getKey());
-            if (resource != null) {
+            if (resource != null && resource.getResourceId() != Constants.RES_WILDCARD) {
                 int quantity = winning.getValue() * amountGambled;
                 Inventory.addInventory(resource.getResourceId(), quantity);
                 winningsText.append(String.format(Locale.ENGLISH, "%dx %s, ", quantity, resource.getName(activity)));
@@ -142,10 +142,11 @@ public class SlotHelper {
     private boolean isAMatch(List<SlotResult> routeTiles) {
         SlotResult checkedResult = new SlotResult();
         for (SlotResult routeTile : routeTiles) {
-            if (checkedResult.getResourceId() == 0) {
+            // If there's no tile to check, set it to current
+            if (checkedResult.getResourceId() == 0 && routeTile.getResourceId() != Constants.RES_WILDCARD) {
                 checkedResult = routeTile;
             } else {
-                if (routeTile.getResourceId() != checkedResult.getResourceId()) {
+                if (routeTile.getResourceId() != checkedResult.getResourceId() && routeTile.getResourceId() != Constants.RES_WILDCARD) {
                     return false;
                 }
             }
