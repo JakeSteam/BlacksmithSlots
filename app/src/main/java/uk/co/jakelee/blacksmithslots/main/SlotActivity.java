@@ -41,7 +41,7 @@ public class SlotActivity extends AppCompatActivity {
     }
 
     public void spin(View v) {
-        slotHelper.mixWheel();
+        slotHelper.spin();
     }
 
     @Override

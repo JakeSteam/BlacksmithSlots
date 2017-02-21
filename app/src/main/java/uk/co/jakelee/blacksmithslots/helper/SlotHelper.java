@@ -89,30 +89,6 @@ public class SlotHelper {
         }
     }
 
-    private String applyWinnings(List<SlotResult> unmergedWinnings, int amountGambled) {
-        LinkedHashMap<Integer, Integer> dataStore = new LinkedHashMap<>();
-        for (SlotResult winning : unmergedWinnings) {
-            Integer temp;
-            if (dataStore.containsKey(winning.getResourceId())) {
-                temp = dataStore.get(winning.getResourceId()) + winning.getResourceMultiplier();
-                dataStore.put(winning.getResourceId(), temp);
-            } else {
-                dataStore.put(winning.getResourceId(), winning.getResourceMultiplier());
-            }
-        }
-
-        StringBuilder winningsText = new StringBuilder().append("Won: ");
-        for (Map.Entry<Integer, Integer> winning : dataStore.entrySet()) {
-            Resource resource = Resource.get(winning.getKey());
-            if (resource != null) {
-                int quantity = winning.getValue() * amountGambled;
-                Inventory.addInventory(resource.getResourceId(), quantity);
-                winningsText.append(String.format(Locale.ENGLISH, "%dx %s, ", quantity, resource.getName(activity)));
-            }
-        }
-        return winningsText.substring(0, winningsText.length() - 2);
-    }
-
     private List<SlotResult> getWinnings(List<List<SlotResult>> rows) {
         List<SlotResult> winningResults = new ArrayList<>();
         List<List<Integer>> winningRoutes = new ArrayList<>();
@@ -137,6 +113,30 @@ public class SlotHelper {
         highlightResults(true);
 
         return winningResults;
+    }
+
+    private String applyWinnings(List<SlotResult> unmergedWinnings, int amountGambled) {
+        LinkedHashMap<Integer, Integer> dataStore = new LinkedHashMap<>();
+        for (SlotResult winning : unmergedWinnings) {
+            Integer temp;
+            if (dataStore.containsKey(winning.getResourceId())) {
+                temp = dataStore.get(winning.getResourceId()) + winning.getResourceMultiplier();
+                dataStore.put(winning.getResourceId(), temp);
+            } else {
+                dataStore.put(winning.getResourceId(), winning.getResourceMultiplier());
+            }
+        }
+
+        StringBuilder winningsText = new StringBuilder().append("Won: ");
+        for (Map.Entry<Integer, Integer> winning : dataStore.entrySet()) {
+            Resource resource = Resource.get(winning.getKey());
+            if (resource != null) {
+                int quantity = winning.getValue() * amountGambled;
+                Inventory.addInventory(resource.getResourceId(), quantity);
+                winningsText.append(String.format(Locale.ENGLISH, "%dx %s, ", quantity, resource.getName(activity)));
+            }
+        }
+        return winningsText.substring(0, winningsText.length() - 2);
     }
 
     private boolean isAMatch(List<SlotResult> routeTiles) {
@@ -184,7 +184,7 @@ public class SlotHelper {
         return rows;
     }
 
-    public void mixWheel() {
+    public void spin() {
         if (stillSpinningSlots <= 0) {
             if (highlightedRoutes != null) {
                 highlightResults(false);
