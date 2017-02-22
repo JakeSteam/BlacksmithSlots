@@ -155,8 +155,12 @@ public class SlotHelper {
             if (isAMatch(results)) {
                 winningRoutes.add(route);
                 winningResults.addAll(results);
+                // This is where the route .bringToFront() should happen!
             }
         }
+
+        activity.findViewById(R.id.route1).bringToFront();
+        activity.findViewById(R.id.route2).bringToFront();
 
         this.highlightedRoutes = winningRoutes;
         highlightResults(true);
@@ -227,7 +231,7 @@ public class SlotHelper {
                 Condition.prop("item_id").notEq(resourceUsed)).list();
 
         Inventory inventory = Inventory.getInventory(resourceUsed);
-        picasso.load(R.drawable.item_1).into((ImageView)activity.findViewById(R.id.resourceImage));
+        picasso.load(R.drawable.item_1_1).into((ImageView)activity.findViewById(R.id.resourceImage));
         ((TextView)activity.findViewById(R.id.resourceInfo)).setText(inventory.getQuantity() + "x " + Resource.getName(activity, resourceUsed));
 
         TableLayout.LayoutParams params = new TableLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);

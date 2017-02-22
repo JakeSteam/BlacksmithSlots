@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -37,13 +38,17 @@ public class SlotAdapter extends AbstractWheelAdapter {
         this.rewards = rewards;
         images = new ArrayList<>(rewards.size());
         for (SlotResult reward : rewards) {
-            images.add(new SoftReference<>(loadImage(reward.getResourceId())));
+            images.add(new SoftReference<>(loadImage(reward)));
         }
     }
 
-    private Bitmap loadImage(int itemId) {
+    private Bitmap loadImage(SlotResult reward) {
         Resources resources = context.getResources();
-        Bitmap bitmap = BitmapFactory.decodeResource(resources, resources.getIdentifier("item_" + itemId, "drawable", context.getPackageName()));
+        Bitmap bitmap = BitmapFactory.decodeResource(resources, resources.getIdentifier("item_" + reward.getResourceId() + "_" + reward.getResourceMultiplier(), "drawable", context.getPackageName()));
+        if (bitmap == null) {
+            Log.d("Reward", "Failed to load " + reward.getResourceMultiplier() + "x " + reward.getResourceId());
+            bitmap = BitmapFactory.decodeResource(resources, resources.getIdentifier("item_" + reward.getResourceId() + "_1", "drawable", context.getPackageName()));
+        }
         Bitmap scaled = Bitmap.createScaledBitmap(bitmap, IMAGE_WIDTH, IMAGE_HEIGHT, true);
         bitmap.recycle();
         return scaled;
@@ -66,7 +71,7 @@ public class SlotAdapter extends AbstractWheelAdapter {
         SoftReference<Bitmap> bitmapRef = images.get(index);
         Bitmap bitmap = bitmapRef.get();
         if (bitmap == null) {
-            bitmap = loadImage(rewards.get(index).getResourceId());
+            bitmap = loadImage(rewards.get(index));
             images.set(index, new SoftReference<>(bitmap));
         }
         img.setImageBitmap(bitmap);

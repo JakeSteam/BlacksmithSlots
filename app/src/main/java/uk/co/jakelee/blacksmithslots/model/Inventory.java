@@ -64,6 +64,6 @@ public class Inventory extends SugarRecord {
     }
 
     public int getDrawableId(Context context) {
-        return context.getResources().getIdentifier("item_" + itemId, "drawable", context.getPackageName());
+        return context.getResources().getIdentifier("item_" + itemId + "_1", "drawable", context.getPackageName());
     }
 }

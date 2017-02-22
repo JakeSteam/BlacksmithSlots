@@ -41,6 +41,7 @@ public class SlotActivity extends AppCompatActivity {
     }
 
     public void spin(View v) {
+        findViewById(R.id.slotContainer).bringToFront();
         slotHelper.spin();
     }
 
