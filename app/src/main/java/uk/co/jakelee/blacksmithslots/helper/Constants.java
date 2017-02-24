@@ -20,6 +20,10 @@ public class Constants {
     public final static int SLOT_BRONZE_ACCESSORY = 5;
     public final static int SLOT_BRONZE_MISC = 6;
 
+    // Slots routes
+    public final static int SLOTS_3_MAX_ROUTES = 9;
+    public final static int SLOTS_5_MAX_ROUTES = 29;
+
     // Statistics
     public final static int STATISTIC_XP = 1;
 }

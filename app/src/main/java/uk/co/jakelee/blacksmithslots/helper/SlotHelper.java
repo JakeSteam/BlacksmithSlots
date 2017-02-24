@@ -37,13 +37,10 @@ import uk.co.jakelee.blacksmithslots.model.Reward;
 import uk.co.jakelee.blacksmithslots.model.Slot;
 
 public class SlotHelper {
-    private int amountGambled = 1;
-    private int activeRows = 9;
-
     private int stillSpinningSlots = 0;
     private SlotActivity activity;
-    private int numSlots;
     private int resourceUsed;
+    private Slot slot;
     private List<WheelView> slots = new ArrayList<>();
     private List<SlotResult> baseItems;
     private List<List<SlotResult>> items = new ArrayList<>();
@@ -54,7 +51,7 @@ public class SlotHelper {
 
     public SlotHelper(SlotActivity activity, Slot slot) {
         this.activity = activity;
-        this.numSlots = slot.getSlots();
+        this.slot = slot;
         this.baseItems = convertToSlots(slot.getRewards());
         this.resourceUsed = slot.getResourceNeeded();
         this.picasso = Picasso.with(activity);
@@ -80,14 +77,14 @@ public class SlotHelper {
         params.addRule(RelativeLayout.ALIGN_RIGHT, slotContainerId);
         params.addRule(RelativeLayout.ALIGN_BOTTOM, slotContainerId);
 
-        allRoutes = MatchHelper.getRoutes(numSlots, 0);
+        allRoutes = MatchHelper.getRoutes(slot.getSlots(), 0);
         for (int i = 1; i <= allRoutes.size(); i++) {
-            int routeResource = activity.getResources().getIdentifier("route_" + numSlots + "_" + i, "drawable", activity.getPackageName());
+            int routeResource = activity.getResources().getIdentifier("route_" + slot.getSlots() + "_" + i, "drawable", activity.getPackageName());
 
             ImageView routeIndicator = (ImageView)inflater.inflate(R.layout.custom_route_indicator, null);
             routeIndicator.setId(activity.getResources().getIdentifier("route_" + i, "id", activity.getPackageName()));
             routeIndicator.setImageResource(routeResource);
-            if (i <= activeRows) {
+            if (i <= slot.getCurrentRows()) {
                 routeIndicator.setColorFilter(ContextCompat.getColor(activity, R.color.routeActive), PorterDuff.Mode.MULTIPLY);
             }
             container.addView(routeIndicator, params);
@@ -96,7 +93,7 @@ public class SlotHelper {
 
     public void createWheel() {
         LinearLayout container = (LinearLayout)activity.findViewById(R.id.slotContainer);
-        for (int i = 0; i < numSlots; i++) {
+        for (int i = 0; i < slot.getSlots(); i++) {
             WheelView wheel = new WheelView(activity);
 
             // Create + store shuffled list of items
@@ -127,22 +124,22 @@ public class SlotHelper {
             slots.add(wheel);
         }
 
-        ((TextView)activity.findViewById(R.id.rowsActive)).setText("Rows: " + activeRows);
-        ((TextView)activity.findViewById(R.id.amountGambled)).setText("Stake: " + amountGambled);
+        ((TextView)activity.findViewById(R.id.rowsActive)).setText("Rows: " + slot.getCurrentRows());
+        ((TextView)activity.findViewById(R.id.amountGambled)).setText("Stake: " + slot.getCurrentStake());
     }
 
     private void updateStatus() {
         List<List<SlotResult>> results = getResults();
         List<SlotResult> wonItems = getWinnings(results);
         if (wonItems.size() > 0) {
-            Toast.makeText(activity, applyWinnings(wonItems, amountGambled), Toast.LENGTH_SHORT).show();
+            Toast.makeText(activity, applyWinnings(wonItems), Toast.LENGTH_SHORT).show();
             updateResourceCount();
         } else {
             Toast.makeText(activity, "No matches!", Toast.LENGTH_SHORT).show();
         }
     }
 
-    private String applyWinnings(List<SlotResult> unmergedWinnings, int amountGambled) {
+    private String applyWinnings(List<SlotResult> unmergedWinnings) {
         LinkedHashMap<Integer, Integer> dataStore = new LinkedHashMap<>();
         for (SlotResult winning : unmergedWinnings) {
             Integer temp;
@@ -158,7 +155,7 @@ public class SlotHelper {
         for (Map.Entry<Integer, Integer> winning : dataStore.entrySet()) {
             Resource resource = Resource.get(winning.getKey());
             if (resource != null && resource.getResourceId() != Constants.RES_WILDCARD) {
-                int quantity = winning.getValue() * amountGambled;
+                int quantity = winning.getValue() * slot.getCurrentStake();
                 Inventory.addInventory(resource.getResourceId(), quantity);
                 winningsText.append(String.format(Locale.ENGLISH, "%dx %s, ", quantity, resource.getName(activity)));
             }
@@ -171,7 +168,7 @@ public class SlotHelper {
         List<WinRoute> winningRoutes = new ArrayList<>();
 
         // Loop through possible win paths
-        List<WinRoute> routes = MatchHelper.getRoutes(rows.get(0).size(), activeRows);
+        List<WinRoute> routes = MatchHelper.getRoutes(rows.get(0).size(), slot.getCurrentRows());
         for (int i = 0; i < routes.size(); i++) {
             List<SlotResult> results = new ArrayList<>();
 
@@ -216,19 +213,18 @@ public class SlotHelper {
     }
 
     private List<List<SlotResult>> getResults() {
-        int numRows = 5;
-        int topRowPosition = -2;
 
         // Setup data holder
         List<List<SlotResult>> rows = new ArrayList<>();
-        for (int i = 0; i < numRows; i++) {
+        for (int i = 0; i < Constants.ROWS; i++) {
             rows.add(new ArrayList<SlotResult>());
         }
 
         // Add data
         for (int i = 0; i < slots.size(); i++) {
-            for (int j = 0; j < numRows; j++) {
-                int position = (slots.get(i).getCurrentItem() + (j + topRowPosition) + items.get(i).size()) % items.get(i).size();
+            for (int j = 0; j < Constants.ROWS; j++) {
+                // -2 is to offset, so top row is 0 not -2.
+                int position = (slots.get(i).getCurrentItem() + (j - 2) + items.get(i).size()) % items.get(i).size();
                 rows.get(j).add(items.get(i).get(position));
             }
         }
@@ -242,10 +238,10 @@ public class SlotHelper {
                 resetRouteColours();
                 //highlightResults(false);
             }
-            stillSpinningSlots = numSlots;
+            stillSpinningSlots = slot.getSlots();
             Inventory inventory = Inventory.getInventory(resourceUsed);
 
-            int spinCost = amountGambled * activeRows;
+            int spinCost = slot.getCurrentStake() * slot.getCurrentRows();
             if (inventory.getQuantity() >= spinCost) {
                 inventory.setQuantity(inventory.getQuantity() - spinCost);
                 inventory.save();
@@ -282,9 +278,9 @@ public class SlotHelper {
     }
 
     private void resetRouteColours() {
-        for (int i = 1; i <= activeRows; i++) {
+        for (int i = 1; i <= slot.getCurrentRows(); i++) {
             ImageView routeImage = (ImageView)activity.findViewById(activity.getResources().getIdentifier("route_" + (i), "id", activity.getPackageName()));
-            if (routeImage != null && i <= activeRows) {
+            if (routeImage != null) {
                 routeImage.setColorFilter(ContextCompat.getColor(activity, R.color.routeActive), PorterDuff.Mode.MULTIPLY);
             }
         }
