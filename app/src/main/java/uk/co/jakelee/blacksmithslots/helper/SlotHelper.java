@@ -38,7 +38,7 @@ import uk.co.jakelee.blacksmithslots.model.Slot;
 
 public class SlotHelper {
     private int amountGambled = 1;
-    private int activeRows = 5;
+    private int activeRows = 9;
 
     private int stillSpinningSlots = 0;
     private SlotActivity activity;
