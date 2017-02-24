@@ -47,6 +47,7 @@ public class SlotHelper {
     private List<WheelView> slots = new ArrayList<>();
     private List<SlotResult> baseItems;
     private List<List<SlotResult>> items = new ArrayList<>();
+    private List<WinRoute> allRoutes;
     private List<WinRoute> highlightedRoutes;
     private Picasso picasso;
     private LayoutInflater inflater;
@@ -79,8 +80,8 @@ public class SlotHelper {
         params.addRule(RelativeLayout.ALIGN_RIGHT, slotContainerId);
         params.addRule(RelativeLayout.ALIGN_BOTTOM, slotContainerId);
 
-        List<WinRoute> routes = MatchHelper.getRoutes(numSlots, 0);
-        for (int i = 1; i <= routes.size(); i++) {
+        allRoutes = MatchHelper.getRoutes(numSlots, 0);
+        for (int i = 1; i <= allRoutes.size(); i++) {
             int routeResource = activity.getResources().getIdentifier("route_" + numSlots + "_" + i, "drawable", activity.getPackageName());
 
             ImageView routeIndicator = (ImageView)inflater.inflate(R.layout.custom_route_indicator, null);
@@ -185,8 +186,9 @@ public class SlotHelper {
                 winningResults.addAll(results);
 
                 // Bring winning route to front. +1 due to bottom bar
-                View routeImage = activity.findViewById(activity.getResources().getIdentifier("route_" + (i + 1), "id", activity.getPackageName()));
+                ImageView routeImage = (ImageView)activity.findViewById(activity.getResources().getIdentifier("route_" + (i + 1), "id", activity.getPackageName()));
                 if (routeImage != null) {
+                    routeImage.setColorFilter(ContextCompat.getColor(activity, R.color.routeWinning), PorterDuff.Mode.MULTIPLY);
                     routeImage.bringToFront();
                 }
             }
@@ -237,6 +239,7 @@ public class SlotHelper {
     public void spin() {
         if (stillSpinningSlots <= 0) {
             if (highlightedRoutes != null) {
+                resetRouteColours();
                 //highlightResults(false);
             }
             stillSpinningSlots = numSlots;
@@ -275,6 +278,15 @@ public class SlotHelper {
             ((TextView)itemRow.findViewById(R.id.itemInfo)).setText(item.getQuantity() + "x " + Resource.getName(activity, item.getItemId()));
 
             layout.addView(itemRow, params);
+        }
+    }
+
+    private void resetRouteColours() {
+        for (int i = 1; i <= activeRows; i++) {
+            ImageView routeImage = (ImageView)activity.findViewById(activity.getResources().getIdentifier("route_" + (i), "id", activity.getPackageName()));
+            if (routeImage != null && i <= activeRows) {
+                routeImage.setColorFilter(ContextCompat.getColor(activity, R.color.routeActive), PorterDuff.Mode.MULTIPLY);
+            }
         }
     }
 
