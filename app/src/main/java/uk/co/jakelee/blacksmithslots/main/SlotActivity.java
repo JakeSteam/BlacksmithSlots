@@ -60,4 +60,20 @@ public class SlotActivity extends AppCompatActivity {
                             | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
         }
     }
+
+    public void increaseStake(View v) {
+        slotHelper.increaseStake();
+    }
+
+    public void decreaseStake(View v) {
+        slotHelper.decreaseStake();
+    }
+
+    public void increaseRows(View v) {
+        slotHelper.increaseRows();
+    }
+
+    public void decreaseRows(View v) {
+        slotHelper.decreaseRows();
+    }
 }

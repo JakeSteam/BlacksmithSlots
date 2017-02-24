@@ -124,8 +124,13 @@ public class SlotHelper {
             slots.add(wheel);
         }
 
-        ((TextView)activity.findViewById(R.id.rowsActive)).setText("Rows: " + slot.getCurrentRows());
-        ((TextView)activity.findViewById(R.id.amountGambled)).setText("Stake: " + slot.getCurrentStake());
+        updateSpinInfo();
+    }
+
+    private void updateSpinInfo() {
+        ((TextView)activity.findViewById(R.id.spinButton)).setText(Integer.toString(slot.getCurrentRows() * slot.getCurrentStake()));
+        ((TextView)activity.findViewById(R.id.rowsActive)).setText(Integer.toString(slot.getCurrentRows()));
+        ((TextView)activity.findViewById(R.id.amountGambled)).setText(Integer.toString(slot.getCurrentStake()));
     }
 
     private void updateStatus() {
@@ -278,10 +283,14 @@ public class SlotHelper {
     }
 
     private void resetRouteColours() {
-        for (int i = 1; i <= slot.getCurrentRows(); i++) {
+        for (int i = 1; i <= slot.getMaximumRows(); i++) {
             ImageView routeImage = (ImageView)activity.findViewById(activity.getResources().getIdentifier("route_" + (i), "id", activity.getPackageName()));
             if (routeImage != null) {
-                routeImage.setColorFilter(ContextCompat.getColor(activity, R.color.routeActive), PorterDuff.Mode.MULTIPLY);
+                if (i <= slot.getCurrentRows()) {
+                    routeImage.setColorFilter(ContextCompat.getColor(activity, R.color.routeActive), PorterDuff.Mode.MULTIPLY);
+                } else {
+                    routeImage.clearColorFilter();
+                }
             }
         }
     }
@@ -301,6 +310,42 @@ public class SlotHelper {
 
     private void highlightTile(LinearLayout slotContainer, int row, int column, boolean applyEffect) {
         ((WheelView)slotContainer.getChildAt(row)).itemsLayout.getChildAt(column).setAlpha(applyEffect ? 0.5f : 1.0f);
+    }
+
+    public void increaseStake() {
+        if (slot.getCurrentStake() < slot.getMaximumStake()) {
+            slot.setCurrentStake(slot.getCurrentStake() + 1);
+            slot.save();
+            updateSpinInfo();
+            resetRouteColours();
+        }
+    }
+
+    public void decreaseStake() {
+        if (slot.getCurrentStake() > slot.getMinimumStake()) {
+            slot.setCurrentStake(slot.getCurrentStake() - 1);
+            slot.save();
+            updateSpinInfo();
+            resetRouteColours();
+        }
+    }
+
+    public void increaseRows() {
+        if (slot.getCurrentRows() < slot.getMaximumRows()) {
+            slot.setCurrentRows(slot.getCurrentRows() + 1);
+            slot.save();
+            updateSpinInfo();
+            resetRouteColours();
+        }
+    }
+
+    public void decreaseRows() {
+        if (slot.getCurrentRows() > slot.getMinimumRows()) {
+            slot.setCurrentRows(slot.getCurrentRows() - 1);
+            slot.save();
+            updateSpinInfo();
+            resetRouteColours();
+        }
     }
 
 }

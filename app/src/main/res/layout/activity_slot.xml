@@ -76,21 +76,60 @@
             android:layout_alignParentBottom="true"
             android:background="@drawable/background_brown">
             <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="decreaseStake"
+                android:textSize="18sp"
+                android:textColor="@color/white"
+                android:background="@color/black"
+                android:text="-"
+                android:padding="5dp"/>
+            <TextView
                 android:id="@+id/amountGambled"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:textColor="@color/white"
+                android:padding="5dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="increaseStake"
+                android:textSize="18sp"
+                android:textColor="@color/white"
+                android:background="@color/black"
+                android:text="+"
+                android:padding="5dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="decreaseRows"
+                android:textSize="18sp"
+                android:textColor="@color/white"
+                android:background="@color/black"
+                android:text="-"
                 android:padding="5dp"/>
             <TextView
                 android:id="@+id/rowsActive"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:textColor="@color/white"
+                android:padding="5dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="increaseRows"
+                android:text="+"
+                android:textSize="18sp"
+                android:textColor="@color/white"
+                android:background="@color/black"
                 android:padding="5dp"/>
             <Button android:id="@+id/spinButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="18sp"
-                android:onClick="spin"
-                android:text="Spin"/>
+                android:onClick="spin"/>
         </LinearLayout>
         <LinearLayout
             android:id="@+id/slotContainer"
