@@ -1,5 +1,7 @@
 package uk.co.jakelee.blacksmithslots.helper;
 
+import android.graphics.PorterDuff;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -36,7 +38,7 @@ import uk.co.jakelee.blacksmithslots.model.Slot;
 
 public class SlotHelper {
     private int amountGambled = 1;
-    private int activeRows = 9;
+    private int activeRows = 5;
 
     private int stillSpinningSlots = 0;
     private SlotActivity activity;
@@ -84,6 +86,9 @@ public class SlotHelper {
             ImageView routeIndicator = (ImageView)inflater.inflate(R.layout.custom_route_indicator, null);
             routeIndicator.setId(activity.getResources().getIdentifier("route_" + i, "id", activity.getPackageName()));
             routeIndicator.setImageResource(routeResource);
+            if (i <= activeRows) {
+                routeIndicator.setColorFilter(ContextCompat.getColor(activity, R.color.routeActive), PorterDuff.Mode.MULTIPLY);
+            }
             container.addView(routeIndicator, params);
         }
     }

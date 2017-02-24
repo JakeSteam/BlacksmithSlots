@@ -3,4 +3,7 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+
+    <color name="routeActive">#3630d3</color>
+    <color name="routeWinning">#73d655</color>
 </resources>
