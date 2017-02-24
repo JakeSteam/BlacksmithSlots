@@ -27,6 +27,7 @@ import kankan.wheel.widget.OnWheelScrollListener;
 import kankan.wheel.widget.WheelView;
 import uk.co.jakelee.blacksmithslots.R;
 import uk.co.jakelee.blacksmithslots.constructs.SlotResult;
+import uk.co.jakelee.blacksmithslots.constructs.WinRoute;
 import uk.co.jakelee.blacksmithslots.main.SlotActivity;
 import uk.co.jakelee.blacksmithslots.model.Inventory;
 import uk.co.jakelee.blacksmithslots.model.Resource;
@@ -44,7 +45,7 @@ public class SlotHelper {
     private List<WheelView> slots = new ArrayList<>();
     private List<SlotResult> baseItems;
     private List<List<SlotResult>> items = new ArrayList<>();
-    private List<List<Integer>> highlightedRoutes;
+    private List<WinRoute> highlightedRoutes;
     private Picasso picasso;
     private LayoutInflater inflater;
 
@@ -69,7 +70,7 @@ public class SlotHelper {
 
     public void createRoutes() {
         RelativeLayout container = (RelativeLayout)activity.findViewById(R.id.slotArea);
-        List<List<Integer>> routes = MatchHelper.getRoutes(numSlots, 0);
+        List<WinRoute> routes = MatchHelper.getRoutes(numSlots, 0);
         for (int i = 1; i <= routes.size(); i++) {
             int routeResource = activity.getResources().getIdentifier("route_" + numSlots + "_" + i, "drawable", activity.getPackageName());
 
@@ -154,15 +155,15 @@ public class SlotHelper {
 
     private List<SlotResult> getWinnings(List<List<SlotResult>> rows) {
         List<SlotResult> winningResults = new ArrayList<>();
-        List<List<Integer>> winningRoutes = new ArrayList<>();
+        List<WinRoute> winningRoutes = new ArrayList<>();
 
         // Loop through possible win paths
         RelativeLayout container = (RelativeLayout)activity.findViewById(R.id.slotArea);
-        List<List<Integer>> routes = MatchHelper.getRoutes(rows.get(0).size(), activeRows);
+        List<WinRoute> routes = MatchHelper.getRoutes(rows.get(0).size(), activeRows);
         for (int i = 0; i < routes.size(); i++) {
             List<SlotResult> results = new ArrayList<>();
 
-            List<Integer> route = routes.get(i);
+            WinRoute route = routes.get(i);
             // Loop through positions in win paths
             for (int j = 0; j < route.size(); j++) {
                 results.add(rows.get(route.get(j)).get(j));
@@ -266,12 +267,11 @@ public class SlotHelper {
     private void highlightResults(boolean applyEffect) {
         StringBuilder winningRoutes = new StringBuilder();
         LinearLayout slotContainer = (LinearLayout)activity.findViewById(R.id.slotContainer);
-        for (List<Integer> route : highlightedRoutes) {
+        for (WinRoute route : highlightedRoutes) {
             for (int i = 0; i < route.size(); i++) {
-                winningRoutes.append(route.get(i));
-                winningRoutes.append(", ");
                 highlightTile(slotContainer, i, route.get(i), applyEffect);
             }
+            winningRoutes.append(route.toString());
             winningRoutes.append("\n");
         }
         Log.d("Routes", winningRoutes.toString());
