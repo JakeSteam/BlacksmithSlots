@@ -36,7 +36,7 @@ import uk.co.jakelee.blacksmithslots.model.Slot;
 
 public class SlotHelper {
     private int amountGambled = 1;
-    private int activeRows = 5;
+    private int activeRows = 9;
 
     private int stillSpinningSlots = 0;
     private SlotActivity activity;
@@ -70,6 +70,13 @@ public class SlotHelper {
 
     public void createRoutes() {
         RelativeLayout container = (RelativeLayout)activity.findViewById(R.id.slotArea);
+        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        int slotContainerId = container.findViewById(R.id.slotContainer).getId();
+        params.addRule(RelativeLayout.ALIGN_TOP, slotContainerId);
+        params.addRule(RelativeLayout.ALIGN_LEFT, slotContainerId);
+        params.addRule(RelativeLayout.ALIGN_RIGHT, slotContainerId);
+        params.addRule(RelativeLayout.ALIGN_BOTTOM, slotContainerId);
+
         List<WinRoute> routes = MatchHelper.getRoutes(numSlots, 0);
         for (int i = 1; i <= routes.size(); i++) {
             int routeResource = activity.getResources().getIdentifier("route_" + numSlots + "_" + i, "drawable", activity.getPackageName());
@@ -77,7 +84,7 @@ public class SlotHelper {
             ImageView routeIndicator = (ImageView)inflater.inflate(R.layout.custom_route_indicator, null);
             routeIndicator.setId(activity.getResources().getIdentifier("route_" + i, "id", activity.getPackageName()));
             routeIndicator.setImageResource(routeResource);
-            container.addView(routeIndicator);
+            container.addView(routeIndicator, params);
         }
     }
 
@@ -158,7 +165,6 @@ public class SlotHelper {
         List<WinRoute> winningRoutes = new ArrayList<>();
 
         // Loop through possible win paths
-        RelativeLayout container = (RelativeLayout)activity.findViewById(R.id.slotArea);
         List<WinRoute> routes = MatchHelper.getRoutes(rows.get(0).size(), activeRows);
         for (int i = 0; i < routes.size(); i++) {
             List<SlotResult> results = new ArrayList<>();
@@ -177,15 +183,12 @@ public class SlotHelper {
                 View routeImage = activity.findViewById(activity.getResources().getIdentifier("route_" + (i + 1), "id", activity.getPackageName()));
                 if (routeImage != null) {
                     routeImage.bringToFront();
-                    Log.d("Invisible", "Making " + i + " invisible");
-                } else {
-                    Log.d("Invisible", "Failed to invisiblise" + i);
                 }
             }
         }
 
         this.highlightedRoutes = winningRoutes;
-        highlightResults(true);
+        //highlightResults(true);
 
         return winningResults;
     }
@@ -229,7 +232,7 @@ public class SlotHelper {
     public void spin() {
         if (stillSpinningSlots <= 0) {
             if (highlightedRoutes != null) {
-                highlightResults(false);
+                //highlightResults(false);
             }
             stillSpinningSlots = numSlots;
             Inventory inventory = Inventory.getInventory(resourceUsed);
