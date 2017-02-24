@@ -102,56 +102,6 @@
             android:layout_centerHorizontal="true"
             android:layout_above="@id/bottomBar">
         </LinearLayout>
-        <ImageView
-            android:id="@+id/route1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignTop="@id/slotContainer"
-            android:layout_alignLeft="@id/slotContainer"
-            android:layout_alignRight="@id/slotContainer"
-            android:layout_alignBottom="@id/slotContainer"
-            android:scaleType="fitXY"
-            android:src="@drawable/route_5_1"/>
-        <ImageView
-            android:id="@+id/route2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignTop="@id/slotContainer"
-            android:layout_alignLeft="@id/slotContainer"
-            android:layout_alignRight="@id/slotContainer"
-            android:layout_alignBottom="@id/slotContainer"
-            android:scaleType="fitXY"
-            android:src="@drawable/route_5_2"/>
-        <ImageView
-            android:id="@+id/route3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignTop="@id/slotContainer"
-            android:layout_alignLeft="@id/slotContainer"
-            android:layout_alignRight="@id/slotContainer"
-            android:layout_alignBottom="@id/slotContainer"
-            android:scaleType="fitXY"
-            android:src="@drawable/route_5_3"/>
-        <ImageView
-            android:id="@+id/route4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignTop="@id/slotContainer"
-            android:layout_alignLeft="@id/slotContainer"
-            android:layout_alignRight="@id/slotContainer"
-            android:layout_alignBottom="@id/slotContainer"
-            android:scaleType="fitXY"
-            android:src="@drawable/route_5_4"/>
-        <ImageView
-            android:id="@+id/route5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignTop="@id/slotContainer"
-            android:layout_alignLeft="@id/slotContainer"
-            android:layout_alignRight="@id/slotContainer"
-            android:layout_alignBottom="@id/slotContainer"
-            android:scaleType="fitXY"
-            android:src="@drawable/route_5_5"/>
     </RelativeLayout>
 
 </RelativeLayout>

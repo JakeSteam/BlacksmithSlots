@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="route_1" type="id"/>
+    <item name="route_2" type="id"/>
+    <item name="route_3" type="id"/>
+    <item name="route_4" type="id"/>
+    <item name="route_5" type="id"/>
+    <item name="route_6" type="id"/>
+    <item name="route_7" type="id"/>
+    <item name="route_8" type="id"/>
+    <item name="route_9" type="id"/>
+</resources>

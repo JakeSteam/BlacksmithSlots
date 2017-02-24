@@ -36,7 +36,7 @@ import uk.co.jakelee.blacksmithslots.model.Slot;
 
 public class SlotHelper {
     private int amountGambled = 1;
-    private int activeRows = 29;
+    private int activeRows = 5;
 
     private int stillSpinningSlots = 0;
     private SlotActivity activity;
@@ -74,10 +74,10 @@ public class SlotHelper {
         for (int i = 1; i <= routes.size(); i++) {
             int routeResource = activity.getResources().getIdentifier("route_" + numSlots + "_" + i, "drawable", activity.getPackageName());
 
-            ImageView imageView = new ImageView(activity);
-            imageView.setImageResource(routeResource);
-
-            container.addView(imageView);
+            ImageView routeIndicator = (ImageView)inflater.inflate(R.layout.custom_route_indicator, null);
+            routeIndicator.setId(activity.getResources().getIdentifier("route_" + i, "id", activity.getPackageName()));
+            routeIndicator.setImageResource(routeResource);
+            container.addView(routeIndicator);
         }
     }
 
@@ -173,8 +173,14 @@ public class SlotHelper {
                 winningRoutes.add(route);
                 winningResults.addAll(results);
 
-                // Bring winning route to front. +2 due to slot + bottom bar views.
-                container.getChildAt(i + 2).bringToFront();
+                // Bring winning route to front. +1 due to bottom bar
+                View routeImage = activity.findViewById(activity.getResources().getIdentifier("route_" + (i + 1), "id", activity.getPackageName()));
+                if (routeImage != null) {
+                    routeImage.bringToFront();
+                    Log.d("Invisible", "Making " + i + " invisible");
+                } else {
+                    Log.d("Invisible", "Failed to invisiblise" + i);
+                }
             }
         }
 
