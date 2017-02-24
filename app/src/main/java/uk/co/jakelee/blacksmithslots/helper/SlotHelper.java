@@ -159,8 +159,8 @@ public class SlotHelper {
             }
         }
 
-        activity.findViewById(R.id.route1).bringToFront();
-        activity.findViewById(R.id.route2).bringToFront();
+        /*activity.findViewById(R.id.route1).bringToFront();
+        activity.findViewById(R.id.route2).bringToFront();*/
 
         this.highlightedRoutes = winningRoutes;
         highlightResults(true);
@@ -218,7 +218,6 @@ public class SlotHelper {
                 inventory.save();
 
                 for (WheelView wheel : slots) {
-                    wheel.invalidateWheel(false);
                     wheel.scroll(-350 + (int) (Math.random() * 150), 2250);
                 }
             }
