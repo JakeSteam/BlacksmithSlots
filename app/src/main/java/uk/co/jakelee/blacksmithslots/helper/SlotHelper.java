@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -64,6 +65,19 @@ public class SlotHelper {
             }
         }
         return rewards;
+    }
+
+    public void createRoutes() {
+        RelativeLayout container = (RelativeLayout)activity.findViewById(R.id.slotArea);
+        List<List<Integer>> routes = MatchHelper.getRoutes(numSlots, 0);
+        for (int i = 1; i <= routes.size(); i++) {
+            int routeResource = activity.getResources().getIdentifier("route_" + numSlots + "_" + i, "drawable", activity.getPackageName());
+
+            ImageView imageView = new ImageView(activity);
+            imageView.setImageResource(routeResource);
+
+            container.addView(imageView);
+        }
     }
 
     public void createWheel() {
@@ -143,24 +157,25 @@ public class SlotHelper {
         List<List<Integer>> winningRoutes = new ArrayList<>();
 
         // Loop through possible win paths
+        RelativeLayout container = (RelativeLayout)activity.findViewById(R.id.slotArea);
         List<List<Integer>> routes = MatchHelper.getRoutes(rows.get(0).size(), activeRows);
-        for (List<Integer> route : routes) {
+        for (int i = 0; i < routes.size(); i++) {
             List<SlotResult> results = new ArrayList<>();
 
+            List<Integer> route = routes.get(i);
             // Loop through positions in win paths
-            for (int i = 0; i < route.size(); i++) {
-                results.add(rows.get(route.get(i)).get(i));
+            for (int j = 0; j < route.size(); j++) {
+                results.add(rows.get(route.get(j)).get(j));
             }
 
             if (isAMatch(results)) {
                 winningRoutes.add(route);
                 winningResults.addAll(results);
-                // This is where the route .bringToFront() should happen!
+
+                // Bring winning route to front. +2 due to slot + bottom bar views.
+                container.getChildAt(i + 2).bringToFront();
             }
         }
-
-        /*activity.findViewById(R.id.route1).bringToFront();
-        activity.findViewById(R.id.route2).bringToFront();*/
 
         this.highlightedRoutes = winningRoutes;
         highlightResults(true);

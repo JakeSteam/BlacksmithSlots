@@ -14,7 +14,7 @@ public class MatchHelper {
                 break;
         }
 
-        if (maxRoutes <= routes.size()) {
+        if (maxRoutes <= routes.size() && maxRoutes > 0) {
             return routes.subList(0, maxRoutes);
         }
         return routes;
