@@ -132,7 +132,7 @@ public class SlotHelper {
     }
 
     private void updateSpinInfo() {
-        ((TextView)activity.findViewById(R.id.spinButton)).setText(Integer.toString(slot.getCurrentRows() * slot.getCurrentStake()));
+        ((TextView)activity.findViewById(R.id.spinButton)).setText("Spin (" + (slot.getCurrentRows() * slot.getCurrentStake()) + ")");
         ((TextView)activity.findViewById(R.id.rowsActive)).setText(Integer.toString(slot.getCurrentRows()));
         ((TextView)activity.findViewById(R.id.amountGambled)).setText(Integer.toString(slot.getCurrentStake()));
     }
