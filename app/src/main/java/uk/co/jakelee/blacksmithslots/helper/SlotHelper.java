@@ -118,9 +118,8 @@ public class SlotHelper {
             wheel.setCyclic(true);
             wheel.setEnabled(false);
             wheel.setVisibleItems(Constants.ROWS);
-            wheel.setBackgroundResource(R.drawable.background_white);
 
-            container.addView(wheel, new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+            container.addView(wheel, new LinearLayout.LayoutParams(0, ViewGroup.LayoutParams.MATCH_PARENT, 1f));
             slots.add(wheel);
         }
 
