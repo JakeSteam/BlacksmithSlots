@@ -317,7 +317,7 @@ public class SlotHelper {
     }
 
     public void increaseStake() {
-        if (slot.getCurrentStake() < slot.getMaximumStake()) {
+        if (slot.getCurrentStake() < slot.getMaximumStake() && stillSpinningSlots == 0) {
             slot.setCurrentStake(slot.getCurrentStake() + 1);
             slot.save();
             updateSpinInfo();
@@ -326,7 +326,7 @@ public class SlotHelper {
     }
 
     public void decreaseStake() {
-        if (slot.getCurrentStake() > slot.getMinimumStake()) {
+        if (slot.getCurrentStake() > slot.getMinimumStake() && stillSpinningSlots == 0) {
             slot.setCurrentStake(slot.getCurrentStake() - 1);
             slot.save();
             updateSpinInfo();
@@ -335,7 +335,7 @@ public class SlotHelper {
     }
 
     public void increaseRows() {
-        if (slot.getCurrentRows() < slot.getMaximumRows()) {
+        if (slot.getCurrentRows() < slot.getMaximumRows() && stillSpinningSlots == 0) {
             slot.setCurrentRows(slot.getCurrentRows() + 1);
             slot.save();
             updateSpinInfo();
@@ -344,7 +344,7 @@ public class SlotHelper {
     }
 
     public void decreaseRows() {
-        if (slot.getCurrentRows() > slot.getMinimumRows()) {
+        if (slot.getCurrentRows() > slot.getMinimumRows() && stillSpinningSlots == 0) {
             slot.setCurrentRows(slot.getCurrentRows() - 1);
             slot.save();
             updateSpinInfo();

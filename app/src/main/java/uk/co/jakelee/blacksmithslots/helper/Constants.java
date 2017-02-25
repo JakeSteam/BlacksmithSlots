@@ -22,6 +22,7 @@ public class Constants {
 
     // Slots routes
     public final static int SLOTS_3_MAX_ROUTES = 9;
+    public final static int SLOTS_4_MAX_ROUTES = 9;
     public final static int SLOTS_5_MAX_ROUTES = 29;
 
     // Statistics
