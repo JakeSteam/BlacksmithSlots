@@ -14,16 +14,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
-        <Button
+        <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="18sp"
-            android:text="Close"/>
-        <Button
+            android:src="@drawable/close"
+            android:onClick="close"/>
+        <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="18sp"
-            android:text="Info"/>
+            android:src="@drawable/info"/>
     </LinearLayout>
 
     <LinearLayout
@@ -111,7 +110,7 @@
             <TextView
                 android:id="@+id/spinButton"
                 android:layout_width="100dp"
-                android:background="@drawable/box_green"
+                android:background="@drawable/box_filled_green"
                 android:onClick="spin"
                 style="@style/SlotText"/>
         </LinearLayout>

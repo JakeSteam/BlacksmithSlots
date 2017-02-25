@@ -76,4 +76,8 @@ public class SlotActivity extends AppCompatActivity {
     public void decreaseRows(View v) {
         slotHelper.decreaseRows();
     }
+
+    public void close(View v) {
+        finish();
+    }
 }
