@@ -2,6 +2,7 @@ package uk.co.jakelee.blacksmithslots.helper;
 
 import android.graphics.PorterDuff;
 import android.support.v4.content.ContextCompat;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -99,7 +100,11 @@ public class SlotHelper {
             // Create + store shuffled list of items
             items.add(new ArrayList(baseItems));
             Collections.shuffle(items.get(i));
-            wheel.setViewAdapter(new SlotAdapter(wheel.getContext(), items.get(i)));
+
+            DisplayMetrics displayMetrics = new DisplayMetrics();
+            activity.getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+
+            wheel.setViewAdapter(new SlotAdapter(wheel.getContext(), displayMetrics, items.get(i)));
             wheel.setCurrentItem(0);
 
             wheel.addScrollingListener(new OnWheelScrollListener() {

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,8 +19,8 @@ import uk.co.jakelee.blacksmithslots.constructs.SlotResult;
 
 public class SlotAdapter extends AbstractWheelAdapter {
     // Image size
-    final int IMAGE_WIDTH = 120;
-    final int IMAGE_HEIGHT = 120;
+    int IMAGE_WIDTH = 120;
+    int IMAGE_HEIGHT = 120;
 
     // Slot machine symbols
     private final List<SlotResult> rewards;
@@ -33,9 +34,11 @@ public class SlotAdapter extends AbstractWheelAdapter {
     /**
      * Constructor
      */
-    public SlotAdapter(Context context, List<SlotResult> rewards) {
+    public SlotAdapter(Context context, DisplayMetrics displayMetrics, List<SlotResult> rewards) {
         this.context = context;
         this.rewards = rewards;
+        this.IMAGE_WIDTH = (int)Math.ceil(displayMetrics.heightPixels / 7.5);
+        this.IMAGE_HEIGHT = (int)Math.ceil(displayMetrics.heightPixels / 7.5);
         images = new ArrayList<>(rewards.size());
         for (SlotResult reward : rewards) {
             images.add(new SoftReference<>(loadImage(reward)));
