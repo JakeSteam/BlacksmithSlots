@@ -86,7 +86,7 @@ public class SlotHelper {
             routeIndicator.setId(activity.getResources().getIdentifier("route_" + i, "id", activity.getPackageName()));
             routeIndicator.setImageResource(routeResource);
             if (i <= slot.getCurrentRows()) {
-                routeIndicator.setColorFilter(ContextCompat.getColor(activity, R.color.routeActive), PorterDuff.Mode.MULTIPLY);
+                routeIndicator.setColorFilter(ContextCompat.getColor(activity, R.color.blue), PorterDuff.Mode.MULTIPLY);
             }
             container.addView(routeIndicator, params);
         }
@@ -194,7 +194,7 @@ public class SlotHelper {
                 // Bring winning route to front. +1 due to bottom bar
                 ImageView routeImage = (ImageView)activity.findViewById(activity.getResources().getIdentifier("route_" + (i + 1), "id", activity.getPackageName()));
                 if (routeImage != null) {
-                    routeImage.setColorFilter(ContextCompat.getColor(activity, R.color.routeWinning), PorterDuff.Mode.MULTIPLY);
+                    routeImage.setColorFilter(ContextCompat.getColor(activity, R.color.green), PorterDuff.Mode.MULTIPLY);
                     routeImage.bringToFront();
                 }
             }
@@ -291,7 +291,7 @@ public class SlotHelper {
             ImageView routeImage = (ImageView)activity.findViewById(activity.getResources().getIdentifier("route_" + (i), "id", activity.getPackageName()));
             if (routeImage != null) {
                 if (i <= slot.getCurrentRows()) {
-                    routeImage.setColorFilter(ContextCompat.getColor(activity, R.color.routeActive), PorterDuff.Mode.MULTIPLY);
+                    routeImage.setColorFilter(ContextCompat.getColor(activity, R.color.blue), PorterDuff.Mode.MULTIPLY);
                 } else {
                     routeImage.clearColorFilter();
                 }

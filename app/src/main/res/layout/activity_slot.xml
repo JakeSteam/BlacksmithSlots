@@ -7,12 +7,14 @@
     android:layout_height="match_parent"
     android:layout_width="match_parent"
     tools:context="uk.co.jakelee.blacksmithslots.main.SlotActivity"
-    android:background="@drawable/square_tan">
+    android:padding="5dp"
+    android:background="@drawable/background_main">
 
     <LinearLayout
         android:id="@+id/topBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center_vertical"
         android:orientation="horizontal">
         <ImageView
             android:layout_width="wrap_content"
@@ -23,6 +25,33 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/info"/>
+        <TextView
+            android:id="@+id/vipLevel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="VIP 3"
+            android:textSize="18sp"
+            android:background="@drawable/box_metal"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"/>
+        <TextView
+            android:id="@+id/currentLevel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Lev 13"
+            android:textSize="20sp"
+            android:layout_margin="3dp"/>
+        <ProgressBar
+            android:id="@+id/currentLevelProgress"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:indeterminate="false"
+            android:progress="50"
+            android:progressDrawable="@drawable/custom_progress_bar"
+            android:padding="3dp"/>
     </LinearLayout>
 
     <LinearLayout
@@ -36,28 +65,33 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_margin="5dp"
-            android:background="@drawable/background_brown">
+            android:background="@drawable/background_resource"
+            android:paddingTop="7dp"
+            android:paddingLeft="7dp"
+            android:paddingRight="7dp"
+            android:paddingBottom="10dp">
             <ImageView
                 android:id="@+id/resourceImage"
                 android:layout_width="30dp"
-                android:layout_height="30dp" />
+                android:layout_height="30dp"
+                android:padding="2dp"/>
             <TextView
                 android:id="@+id/resourceInfo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="20sp"/>
+                android:textSize="18sp"/>
         </LinearLayout>
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="5dp"
-            android:background="@drawable/background_brown">
+            android:background="@drawable/background_inventory"
+            android:padding="7dp">
             <TableLayout
                 android:id="@+id/inventoryDisplay"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:shrinkColumns="0"
-                android:background="@drawable/background_white"/>
+                android:shrinkColumns="0"/>
         </ScrollView>
     </LinearLayout>
 
@@ -112,6 +146,12 @@
                 android:layout_width="100dp"
                 android:background="@drawable/box_filled_green"
                 android:onClick="spin"
+                style="@style/SlotText"/>
+            <TextView
+                android:id="@+id/autospinButton"
+                android:layout_width="wrap_content"
+                android:background="@drawable/box_filled_green"
+                android:text="A"
                 style="@style/SlotText"/>
         </LinearLayout>
         <LinearLayout

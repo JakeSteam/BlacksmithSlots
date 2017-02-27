@@ -7,6 +7,6 @@
     <color name="white">#FFFFFF</color>
     <color name="black">#000000</color>
 
-    <color name="routeActive">#3630d3</color>
-    <color name="routeWinning">#73d655</color>
+    <color name="blue">#3630d3</color>
+    <color name="green">#73d655</color>
 </resources>
