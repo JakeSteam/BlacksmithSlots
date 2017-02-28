@@ -4,12 +4,18 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Toast;
 
 import uk.co.jakelee.blacksmithslots.R;
 import uk.co.jakelee.blacksmithslots.helper.AlertDialogHelper;
 import uk.co.jakelee.blacksmithslots.helper.DatabaseHelper;
+import uk.co.jakelee.blacksmithslots.helper.LevelHelper;
 import uk.co.jakelee.blacksmithslots.helper.SlotHelper;
 import uk.co.jakelee.blacksmithslots.model.Slot;
+
+import static uk.co.jakelee.blacksmithslots.helper.LevelHelper.convertLevelToXp;
+import static uk.co.jakelee.blacksmithslots.helper.LevelHelper.getLevel;
+import static uk.co.jakelee.blacksmithslots.helper.LevelHelper.getXp;
 
 public class SlotActivity extends AppCompatActivity {
     private SlotHelper slotHelper;
@@ -90,5 +96,10 @@ public class SlotActivity extends AppCompatActivity {
 
     public void autospin(View v) {
         AlertDialogHelper.autospin(this, slotHelper);
+    }
+
+    public void levelInfo(View v) {
+        int nextLevelXP = convertLevelToXp(getLevel() + 1);
+        Toast.makeText(this, getXp() + "/" + nextLevelXP + " (" + (LevelHelper.getLevelProgress() / 100d) + "%)", Toast.LENGTH_SHORT).show();
     }
 }
