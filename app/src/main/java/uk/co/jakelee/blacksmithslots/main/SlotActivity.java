@@ -37,13 +37,19 @@ public class SlotActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onPause() {
+        super.onPause();
+        slotHelper.pause();
+    }
+
+    @Override
     protected void onResume() {
         super.onResume();
         onWindowFocusChanged(true);
     }
 
     public void spin(View v) {
-        slotHelper.spin();
+        slotHelper.spin(true);
     }
 
     @Override

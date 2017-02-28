@@ -1,6 +1,7 @@
 package uk.co.jakelee.blacksmithslots.helper;
 
 import android.graphics.PorterDuff;
+import android.os.Handler;
 import android.support.v4.content.ContextCompat;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -49,6 +50,7 @@ public class SlotHelper {
     private List<WinRoute> highlightedRoutes;
     private Picasso picasso;
     private LayoutInflater inflater;
+    private Handler handler = new Handler();
 
     public SlotHelper(SlotActivity activity, Slot slot) {
         this.activity = activity;
@@ -67,6 +69,11 @@ public class SlotHelper {
             }
         }
         return rewards;
+    }
+
+    public void pause() {
+        autospinsLeft = 0;
+        handler.removeCallbacksAndMessages(null);
     }
 
     public void createRoutes() {
@@ -116,12 +123,20 @@ public class SlotHelper {
                 @Override
                 public void onScrollingFinished(WheelView wheel) {
                     stillSpinningSlots--;
-                    Log.d("SpinFin1", "Left:" + autospinsLeft + ", Slots:" + stillSpinningSlots);
                     if (stillSpinningSlots <= 1) {
                         updateStatus();
-                        Log.d("SpinFin2", "Left:" + autospinsLeft + ", Slots:" + stillSpinningSlots);
                         if (autospinsLeft > 0) {
-                            spin();
+                            handler.postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    activity.runOnUiThread(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            spin(false);
+                                        }
+                                    });
+                                }
+                            }, 1500);
                         }
                     }
                 }
@@ -247,8 +262,8 @@ public class SlotHelper {
         return rows;
     }
 
-    public void spin() {
-        if (stillSpinningSlots <= 1) {
+    public void spin(boolean checkNotAutospinning) {
+        if (stillSpinningSlots <= 1 && (!checkNotAutospinning || autospinsLeft <= 0)) {
             activity.findViewById(R.id.slotContainer).bringToFront();
             if (highlightedRoutes != null) {
                 resetRouteColours();
@@ -271,7 +286,6 @@ public class SlotHelper {
             if (autospinsLeft > 0) {
                 autospinsLeft--;
             }
-            Log.d("Spin", "Left:" + autospinsLeft + ", Slots:" + stillSpinningSlots);
         }
     }
 
@@ -370,7 +384,7 @@ public class SlotHelper {
         }
 
         autospinsLeft = spins;
-        spin();
+        spin(false);
     }
 
 }
