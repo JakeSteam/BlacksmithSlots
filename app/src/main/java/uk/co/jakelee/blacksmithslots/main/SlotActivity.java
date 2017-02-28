@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import uk.co.jakelee.blacksmithslots.R;
+import uk.co.jakelee.blacksmithslots.helper.AlertDialogHelper;
 import uk.co.jakelee.blacksmithslots.helper.DatabaseHelper;
 import uk.co.jakelee.blacksmithslots.helper.SlotHelper;
 import uk.co.jakelee.blacksmithslots.model.Slot;
@@ -42,7 +43,6 @@ public class SlotActivity extends AppCompatActivity {
     }
 
     public void spin(View v) {
-        findViewById(R.id.slotContainer).bringToFront();
         slotHelper.spin();
     }
 
@@ -79,5 +79,9 @@ public class SlotActivity extends AppCompatActivity {
 
     public void close(View v) {
         finish();
+    }
+
+    public void autospin(View v) {
+        AlertDialogHelper.autospin(this, slotHelper);
     }
 }

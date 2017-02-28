@@ -39,13 +39,13 @@ import uk.co.jakelee.blacksmithslots.model.Slot;
 
 public class SlotHelper {
     private int stillSpinningSlots = 0;
+    private int autospinsLeft = 0;
     private SlotActivity activity;
     private int resourceUsed;
     private Slot slot;
     private List<WheelView> slots = new ArrayList<>();
     private List<SlotResult> baseItems;
     private List<List<SlotResult>> items = new ArrayList<>();
-    private List<WinRoute> allRoutes;
     private List<WinRoute> highlightedRoutes;
     private Picasso picasso;
     private LayoutInflater inflater;
@@ -78,7 +78,7 @@ public class SlotHelper {
         params.addRule(RelativeLayout.ALIGN_RIGHT, slotContainerId);
         params.addRule(RelativeLayout.ALIGN_BOTTOM, slotContainerId);
 
-        allRoutes = MatchHelper.getRoutes(slot.getSlots(), 0);
+        List<WinRoute> allRoutes = MatchHelper.getRoutes(slot.getSlots(), 0);
         for (int i = 1; i <= allRoutes.size(); i++) {
             int routeResource = activity.getResources().getIdentifier("route_" + slot.getSlots() + "_" + i, "drawable", activity.getPackageName());
 
@@ -110,13 +110,19 @@ public class SlotHelper {
             wheel.addScrollingListener(new OnWheelScrollListener() {
                 @Override
                 public void onScrollingStarted(WheelView wheel) {
+                    stillSpinningSlots = slot.getSlots();
                 }
 
                 @Override
                 public void onScrollingFinished(WheelView wheel) {
                     stillSpinningSlots--;
-                    if (stillSpinningSlots <= 0) {
+                    Log.d("SpinFin1", "Left:" + autospinsLeft + ", Slots:" + stillSpinningSlots);
+                    if (stillSpinningSlots <= 1) {
                         updateStatus();
+                        Log.d("SpinFin2", "Left:" + autospinsLeft + ", Slots:" + stillSpinningSlots);
+                        if (autospinsLeft > 0) {
+                            spin();
+                        }
                     }
                 }
             });
@@ -242,7 +248,8 @@ public class SlotHelper {
     }
 
     public void spin() {
-        if (stillSpinningSlots <= 0) {
+        if (stillSpinningSlots <= 1) {
+            activity.findViewById(R.id.slotContainer).bringToFront();
             if (highlightedRoutes != null) {
                 resetRouteColours();
                 //highlightResults(false);
@@ -260,6 +267,11 @@ public class SlotHelper {
                 }
             }
             updateResourceCount();
+
+            if (autospinsLeft > 0) {
+                autospinsLeft--;
+            }
+            Log.d("Spin", "Left:" + autospinsLeft + ", Slots:" + stillSpinningSlots);
         }
     }
 
@@ -350,6 +362,15 @@ public class SlotHelper {
             updateSpinInfo();
             resetRouteColours();
         }
+    }
+
+    public void autospin(int spins) {
+        if (stillSpinningSlots > 0) {
+            return;
+        }
+
+        autospinsLeft = spins;
+        spin();
     }
 
 }
