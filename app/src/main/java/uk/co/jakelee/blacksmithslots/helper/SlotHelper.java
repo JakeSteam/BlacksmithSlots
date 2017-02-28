@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
@@ -125,6 +126,7 @@ public class SlotHelper {
                     stillSpinningSlots--;
                     if (stillSpinningSlots <= 1) {
                         updateStatus();
+                        afterSpinUpdate();
                         if (autospinsLeft > 0) {
                             handler.postDelayed(new Runnable() {
                                 @Override
@@ -149,13 +151,21 @@ public class SlotHelper {
             slots.add(wheel);
         }
 
-        updateSpinInfo();
+        afterStakeChangeUpdate();
     }
 
-    private void updateSpinInfo() {
+    private void afterStakeChangeUpdate() {
         ((TextView)activity.findViewById(R.id.spinButton)).setText("Spin (" + (slot.getCurrentRows() * slot.getCurrentStake()) + ")");
         ((TextView)activity.findViewById(R.id.rowsActive)).setText(Integer.toString(slot.getCurrentRows()));
         ((TextView)activity.findViewById(R.id.amountGambled)).setText(Integer.toString(slot.getCurrentStake()));
+    }
+
+    public void afterSpinUpdate() {
+        ((TextView)activity.findViewById(R.id.autospinButton)).setText(autospinsLeft > 0 ? "" + autospinsLeft : "A");
+        ((TextView)activity.findViewById(R.id.currentLevel)).setText("Lev " + LevelHelper.getLevel());
+        int levelProgress = LevelHelper.getLevelProgress();
+        Log.d("Progress", "" + levelProgress);
+        ((ProgressBar)activity.findViewById(R.id.currentLevelProgress)).setProgress(levelProgress);
     }
 
     private void updateStatus() {
@@ -277,6 +287,8 @@ public class SlotHelper {
                 inventory.setQuantity(inventory.getQuantity() - spinCost);
                 inventory.save();
 
+                LevelHelper.addXp(spinCost);
+
                 for (WheelView wheel : slots) {
                     wheel.scroll(-350 + (int) (Math.random() * 150), 2250);
                 }
@@ -287,6 +299,7 @@ public class SlotHelper {
                 autospinsLeft--;
             }
         }
+        afterSpinUpdate();
     }
 
     public void updateResourceCount() {
@@ -346,7 +359,7 @@ public class SlotHelper {
         if (slot.getCurrentStake() < slot.getMaximumStake() && stillSpinningSlots == 0) {
             slot.setCurrentStake(slot.getCurrentStake() + 1);
             slot.save();
-            updateSpinInfo();
+            afterStakeChangeUpdate();
             resetRouteColours();
         }
     }
@@ -355,7 +368,7 @@ public class SlotHelper {
         if (slot.getCurrentStake() > slot.getMinimumStake() && stillSpinningSlots == 0) {
             slot.setCurrentStake(slot.getCurrentStake() - 1);
             slot.save();
-            updateSpinInfo();
+            afterStakeChangeUpdate();
             resetRouteColours();
         }
     }
@@ -364,7 +377,7 @@ public class SlotHelper {
         if (slot.getCurrentRows() < slot.getMaximumRows() && stillSpinningSlots == 0) {
             slot.setCurrentRows(slot.getCurrentRows() + 1);
             slot.save();
-            updateSpinInfo();
+            afterStakeChangeUpdate();
             resetRouteColours();
         }
     }
@@ -373,7 +386,7 @@ public class SlotHelper {
         if (slot.getCurrentRows() > slot.getMinimumRows() && stillSpinningSlots == 0) {
             slot.setCurrentRows(slot.getCurrentRows() - 1);
             slot.save();
-            updateSpinInfo();
+            afterStakeChangeUpdate();
             resetRouteColours();
         }
     }

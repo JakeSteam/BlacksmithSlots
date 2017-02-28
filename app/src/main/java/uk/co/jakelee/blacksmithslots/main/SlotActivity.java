@@ -33,6 +33,7 @@ public class SlotActivity extends AppCompatActivity {
             slotHelper.createWheel();
             slotHelper.createRoutes();
             slotHelper.updateResourceCount();
+            slotHelper.afterSpinUpdate();
         }
     }
 

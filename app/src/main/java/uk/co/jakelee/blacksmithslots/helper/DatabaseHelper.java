@@ -37,7 +37,7 @@ public class DatabaseHelper {
         Slot.saveInTx(slots);
 
         List<Statistic> statistics = new ArrayList<>();
-            statistics.add(new Statistic(Constants.STATISTIC_XP, 100));
+            statistics.add(new Statistic(Constants.STATISTIC_XP, Constants.STARTING_XP));
         Statistic.saveInTx(statistics);
     }
 }

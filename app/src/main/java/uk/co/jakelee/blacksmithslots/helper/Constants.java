@@ -3,7 +3,8 @@ package uk.co.jakelee.blacksmithslots.helper;
 public class Constants {
     // Game constants
     public final static int ROWS = 5;
-    public final static Double LEVEL_MODIFIER = 0.75;
+    public final static Double LEVEL_MODIFIER = 0.07;
+    public final static int STARTING_XP = 205;
 
     // Items
     public final static int RES_WILDCARD = 999;

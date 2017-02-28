@@ -57,4 +57,5 @@ public class Statistic extends SugarRecord {
     public void setStringValue(String stringValue) {
         this.stringValue = stringValue;
     }
+
 }
