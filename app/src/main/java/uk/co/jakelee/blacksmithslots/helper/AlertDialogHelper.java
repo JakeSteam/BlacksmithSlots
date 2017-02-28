@@ -29,7 +29,5 @@ public class AlertDialogHelper {
         });
 
         alertDialog.show();
-
-
     }
 }

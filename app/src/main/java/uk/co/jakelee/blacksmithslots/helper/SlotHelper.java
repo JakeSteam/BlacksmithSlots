@@ -307,10 +307,10 @@ public class SlotHelper {
                 Condition.prop("item_id").notEq(resourceUsed)).list();
 
         Inventory inventory = Inventory.getInventory(resourceUsed);
-        picasso.load(R.drawable.item_1_1).into((ImageView)activity.findViewById(R.id.resourceImage));
+        picasso.load(inventory.getDrawableId(activity)).into((ImageView)activity.findViewById(R.id.resourceImage));
         ((TextView)activity.findViewById(R.id.resourceInfo)).setText(inventory.getQuantity() + "x " + Resource.getName(activity, resourceUsed));
 
-        TableLayout.LayoutParams params = new TableLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        TableLayout.LayoutParams params = new TableLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
 
         TableLayout layout = (TableLayout)activity.findViewById(R.id.inventoryDisplay);
         layout.removeAllViews();

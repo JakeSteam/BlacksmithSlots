@@ -50,7 +50,7 @@ public class SlotAdapter extends AbstractWheelAdapter {
         Bitmap bitmap = BitmapFactory.decodeResource(resources, resources.getIdentifier("item_" + reward.getResourceId() + "_" + reward.getResourceMultiplier(), "drawable", context.getPackageName()));
         if (bitmap == null) {
             Log.d("Reward", "Failed to load " + reward.getResourceMultiplier() + "x " + reward.getResourceId());
-            bitmap = BitmapFactory.decodeResource(resources, resources.getIdentifier("item_" + reward.getResourceId() + "_1", "drawable", context.getPackageName()));
+            bitmap = BitmapFactory.decodeResource(resources, resources.getIdentifier("item_" + reward.getResourceId(), "drawable", context.getPackageName()));
         }
         Bitmap scaled = Bitmap.createScaledBitmap(bitmap, IMAGE_WIDTH, IMAGE_HEIGHT, true);
         bitmap.recycle();
