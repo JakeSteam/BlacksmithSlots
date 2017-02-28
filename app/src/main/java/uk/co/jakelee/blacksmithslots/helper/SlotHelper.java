@@ -304,7 +304,7 @@ public class SlotHelper {
 
     public void updateResourceCount() {
         List<Inventory> items = Select.from(Inventory.class).where(
-                Condition.prop("item_id").notEq(resourceUsed)).list();
+                Condition.prop("item_id").notEq(resourceUsed)).orderBy("quantity DESC").list();
 
         Inventory inventory = Inventory.getInventory(resourceUsed);
         picasso.load(inventory.getDrawableId(activity)).into((ImageView)activity.findViewById(R.id.resourceImage));
