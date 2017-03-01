@@ -1,23 +1,35 @@
 package uk.co.jakelee.blacksmithslots.constructs;
 
+import uk.co.jakelee.blacksmithslots.helper.Enums;
+
 public class SlotResult {
-    private int resourceId;
+    private Enums.Tier resourceTier;
+    private Enums.Type resourceType;
     private int resourceMultiplier;
 
     public SlotResult() {
     }
 
-    public SlotResult(int resourceId, int resourceQuantity) {
-        this.resourceId = resourceId;
-        this.resourceMultiplier = resourceQuantity;
+    public SlotResult(Enums.Tier resourceTier, Enums.Type resourceType, int resourceMultiplier) {
+        this.resourceTier = resourceTier;
+        this.resourceType = resourceType;
+        this.resourceMultiplier = resourceMultiplier;
     }
 
-    public int getResourceId() {
-        return resourceId;
+    public Enums.Tier getResourceTier() {
+        return resourceTier;
     }
 
-    public void setResourceId(int resourceId) {
-        this.resourceId = resourceId;
+    public void setResourceTier(Enums.Tier resourceTier) {
+        this.resourceTier = resourceTier;
+    }
+
+    public Enums.Type getResourceType() {
+        return resourceType;
+    }
+
+    public void setResourceType(Enums.Type resourceType) {
+        this.resourceType = resourceType;
     }
 
     public int getResourceMultiplier() {

@@ -31,6 +31,22 @@ public class Resource extends SugarRecord {
         return resources.size() > 0 ? resources.get(0) : null;
     }
 
+    public Enums.Tier getTier() {
+        return tier;
+    }
+
+    public void setTier(Enums.Tier tier) {
+        this.tier = tier;
+    }
+
+    public Enums.Type getType() {
+        return type;
+    }
+
+    public void setType(Enums.Type type) {
+        this.type = type;
+    }
+
     public String getName(Context context) {
         return TextHelper.getInstance(context).getText("item_" + tier + "_" + type);
     }

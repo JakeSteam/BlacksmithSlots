@@ -5,6 +5,7 @@ import android.os.Handler;
 import android.support.v4.content.ContextCompat;
 import android.util.DisplayMetrics;
 import android.util.Log;
+import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,7 +44,8 @@ public class SlotHelper {
     private int stillSpinningSlots = 0;
     private int autospinsLeft = 0;
     private SlotActivity activity;
-    private int resourceUsed;
+    private Enums.Tier resourceTier;
+    private Enums.Type resourceType;
     private Slot slot;
     private List<WheelView> slots = new ArrayList<>();
     private List<SlotResult> baseItems;
@@ -52,12 +54,14 @@ public class SlotHelper {
     private Picasso picasso;
     private LayoutInflater inflater;
     private Handler handler = new Handler();
+    private int wildcardId = (int)(long)Resource.get(Enums.Tier.Internal, Enums.Type.Wildcard).getId();
 
     public SlotHelper(SlotActivity activity, Slot slot) {
         this.activity = activity;
         this.slot = slot;
         this.baseItems = convertToSlots(slot.getRewards());
-        this.resourceUsed = slot.getResourceNeeded();
+        this.resourceTier = slot.getResourceTier();
+        this.resourceType = slot.getResourceType();
         this.picasso = Picasso.with(activity);
         this.inflater = LayoutInflater.from(activity);
     }
@@ -66,7 +70,7 @@ public class SlotHelper {
         List<SlotResult> rewards = new ArrayList<>();
         for (Reward dbReward : dbRewards) {
             for (int i = 0; i < dbReward.getWeighting(); i++) {
-                rewards.add(new SlotResult(dbReward.getResourceId(), dbReward.getQuantityMultiplier()));
+                rewards.add(new SlotResult(dbReward.getTier(), dbReward.getType(), dbReward.getQuantityMultiplier()));
             }
         }
         return rewards;
@@ -180,23 +184,24 @@ public class SlotHelper {
     }
 
     private String applyWinnings(List<SlotResult> unmergedWinnings) {
-        LinkedHashMap<Integer, Integer> dataStore = new LinkedHashMap<>();
+        LinkedHashMap<Pair<Enums.Tier, Enums.Type>, Integer> dataStore = new LinkedHashMap<>();
         for (SlotResult winning : unmergedWinnings) {
             Integer temp;
-            if (dataStore.containsKey(winning.getResourceId())) {
-                temp = dataStore.get(winning.getResourceId()) + winning.getResourceMultiplier();
-                dataStore.put(winning.getResourceId(), temp);
+            Pair<Enums.Tier, Enums.Type> pair = new Pair<>(winning.getResourceTier(), winning.getResourceType());
+            if (dataStore.containsKey(pair)) {
+                temp = dataStore.get(pair) + winning.getResourceMultiplier();
+                dataStore.put(pair, temp);
             } else {
-                dataStore.put(winning.getResourceId(), winning.getResourceMultiplier());
+                dataStore.put(pair, winning.getResourceMultiplier());
             }
         }
 
         StringBuilder winningsText = new StringBuilder().append("Won: ");
-        for (Map.Entry<Integer, Integer> winning : dataStore.entrySet()) {
-            Resource resource = Resource.get(winning.getKey());
-            if (resource != null && resource.getResourceId() != Constants.RES_WILDCARD) {
+        for (Map.Entry<Pair<Enums.Tier, Enums.Type>, Integer> winning : dataStore.entrySet()) {
+            Resource resource = Resource.get(winning.getKey().first, winning.getKey().second);
+            if (resource != null && resource.getId() != wildcardId) {
                 int quantity = winning.getValue() * slot.getCurrentStake();
-                Inventory.addInventory(resource.getResourceId(), quantity);
+                Inventory.addInventory(resource.getTier(), resource.getType(), quantity);
                 winningsText.append(String.format(Locale.ENGLISH, "%dx %s, ", quantity, resource.getName(activity)));
             }
         }
@@ -241,10 +246,12 @@ public class SlotHelper {
         SlotResult checkedResult = new SlotResult();
         for (SlotResult routeTile : routeTiles) {
             // If there's no tile to check, set it to current
-            if (checkedResult.getResourceId() == 0 && routeTile.getResourceId() != Constants.RES_WILDCARD) {
+            if (checkedResult.getResourceTier() == Enums.Tier.None && checkedResult.getResourceType() == Enums.Type.None
+                    && (routeTile.getResourceTier() != Enums.Tier.Internal && routeTile.getResourceType() != Enums.Type.Wildcard)) {
                 checkedResult = routeTile;
             } else {
-                if (routeTile.getResourceId() != checkedResult.getResourceId() && routeTile.getResourceId() != Constants.RES_WILDCARD) {
+                if ((routeTile.getResourceType() != checkedResult.getResourceType() && routeTile.getResourceType() != checkedResult.getResourceType())
+                        && (routeTile.getResourceTier() != Enums.Tier.Internal && routeTile.getResourceType() != Enums.Type.Wildcard)) {
                     return false;
                 }
             }
@@ -280,7 +287,7 @@ public class SlotHelper {
                 //highlightResults(false);
             }
             stillSpinningSlots = slot.getSlots();
-            Inventory inventory = Inventory.getInventory(resourceUsed);
+            Inventory inventory = Inventory.getInventory(slot.getResourceTier(), slot.getResourceType());
 
             int spinCost = slot.getCurrentStake() * slot.getCurrentRows();
             if (inventory.getQuantity() >= spinCost) {
@@ -304,11 +311,13 @@ public class SlotHelper {
 
     public void updateResourceCount() {
         List<Inventory> items = Select.from(Inventory.class).where(
-                Condition.prop("item_id").notEq(resourceUsed)).orderBy("quantity DESC").list();
+                Condition.prop("tier").notEq(resourceTier),
+                Condition.prop("type").notEq(resourceType)
+        ).orderBy("quantity DESC").list();
 
-        Inventory inventory = Inventory.getInventory(resourceUsed);
+        Inventory inventory = Inventory.getInventory(resourceTier, resourceType);
         picasso.load(inventory.getDrawableId(activity)).into((ImageView)activity.findViewById(R.id.resourceImage));
-        ((TextView)activity.findViewById(R.id.resourceInfo)).setText(inventory.getQuantity() + "x " + Resource.getName(activity, resourceUsed));
+        ((TextView)activity.findViewById(R.id.resourceInfo)).setText(inventory.getQuantity() + "x " + Resource.getName(activity, resourceTier, resourceType));
 
         TableLayout.LayoutParams params = new TableLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
 
@@ -319,7 +328,7 @@ public class SlotHelper {
             TableRow itemRow = (TableRow) inflatedView.findViewById(R.id.itemRow);
 
             picasso.load(item.getDrawableId(activity)).into((ImageView)itemRow.findViewById(R.id.itemImage));
-            ((TextView)itemRow.findViewById(R.id.itemInfo)).setText(item.getQuantity() + "x " + Resource.getName(activity, item.getItemId()));
+            ((TextView)itemRow.findViewById(R.id.itemInfo)).setText(item.getQuantity() + "x " + item.getName(activity));
 
             layout.addView(itemRow, params);
         }
