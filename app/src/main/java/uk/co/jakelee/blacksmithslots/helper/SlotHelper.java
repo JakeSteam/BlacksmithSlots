@@ -36,7 +36,7 @@ import uk.co.jakelee.blacksmithslots.constructs.SlotResult;
 import uk.co.jakelee.blacksmithslots.constructs.WinRoute;
 import uk.co.jakelee.blacksmithslots.main.SlotActivity;
 import uk.co.jakelee.blacksmithslots.model.Inventory;
-import uk.co.jakelee.blacksmithslots.model.Resource;
+import uk.co.jakelee.blacksmithslots.model.Item;
 import uk.co.jakelee.blacksmithslots.model.Reward;
 import uk.co.jakelee.blacksmithslots.model.Slot;
 
@@ -54,7 +54,7 @@ public class SlotHelper {
     private Picasso picasso;
     private LayoutInflater inflater;
     private Handler handler = new Handler();
-    private int wildcardId = (int)(long)Resource.get(Enums.Tier.Internal, Enums.Type.Wildcard).getId();
+    private int wildcardId = (int)(long) Item.get(Enums.Tier.Internal, Enums.Type.Wildcard).getId();
 
     public SlotHelper(SlotActivity activity, Slot slot) {
         this.activity = activity;
@@ -198,11 +198,11 @@ public class SlotHelper {
 
         StringBuilder winningsText = new StringBuilder().append("Won: ");
         for (Map.Entry<Pair<Enums.Tier, Enums.Type>, Integer> winning : dataStore.entrySet()) {
-            Resource resource = Resource.get(winning.getKey().first, winning.getKey().second);
-            if (resource != null && resource.getId() != wildcardId) {
+            Item item = Item.get(winning.getKey().first, winning.getKey().second);
+            if (item != null && item.getId() != wildcardId) {
                 int quantity = winning.getValue() * slot.getCurrentStake();
-                Inventory.addInventory(resource.getTier(), resource.getType(), quantity);
-                winningsText.append(String.format(Locale.ENGLISH, "%dx %s, ", quantity, resource.getName(activity)));
+                Inventory.addInventory(item.getTier(), item.getType(), quantity);
+                winningsText.append(String.format(Locale.ENGLISH, "%dx %s, ", quantity, item.getName(activity)));
             }
         }
         return winningsText.substring(0, winningsText.length() - 2);
@@ -317,7 +317,7 @@ public class SlotHelper {
 
         Inventory inventory = Inventory.getInventory(resourceTier, resourceType);
         picasso.load(inventory.getDrawableId(activity)).into((ImageView)activity.findViewById(R.id.resourceImage));
-        ((TextView)activity.findViewById(R.id.resourceInfo)).setText(inventory.getQuantity() + "x " + Resource.getName(activity, resourceTier, resourceType));
+        ((TextView)activity.findViewById(R.id.resourceInfo)).setText(inventory.getQuantity() + "x " + Item.getName(activity, resourceTier, resourceType));
 
         TableLayout.LayoutParams params = new TableLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
 

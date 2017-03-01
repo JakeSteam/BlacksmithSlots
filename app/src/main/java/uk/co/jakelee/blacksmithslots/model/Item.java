@@ -12,24 +12,24 @@ import uk.co.jakelee.blacksmithslots.helper.DisplayHelper;
 import uk.co.jakelee.blacksmithslots.helper.Enums;
 import uk.co.jakelee.blacksmithslots.helper.TextHelper;
 
-public class Resource extends SugarRecord {
+public class Item extends SugarRecord {
     private Enums.Tier tier;
     private Enums.Type type;
 
-    public Resource() {
+    public Item() {
     }
 
-    public Resource(Enums.Tier tier, Enums.Type type) {
+    public Item(Enums.Tier tier, Enums.Type type) {
         this.tier = tier;
         this.type = type;
     }
 
-    public static Resource get(Enums.Tier tier, Enums.Type type) {
-        List<Resource> resources = Select.from(Resource.class).where(
+    public static Item get(Enums.Tier tier, Enums.Type type) {
+        List<Item> items = Select.from(Item.class).where(
                 Condition.prop("tier").eq(tier),
                 Condition.prop("type").eq(type)
         ).list();
-        return resources.size() > 0 ? resources.get(0) : null;
+        return items.size() > 0 ? items.get(0) : null;
     }
 
     public Enums.Tier getTier() {
@@ -49,11 +49,11 @@ public class Resource extends SugarRecord {
     }
 
     public String getName(Context context) {
-        return TextHelper.getInstance(context).getText(DisplayHelper.getItemNameId(tier, type));
+        return TextHelper.getInstance(context).getText(DisplayHelper.getItemNameLookupString(tier, type));
     }
 
     public static String getName(Context context, Enums.Tier tier, Enums.Type type) {
-        return TextHelper.getInstance(context).getText(DisplayHelper.getItemNameId(tier, type));
+        return TextHelper.getInstance(context).getText(DisplayHelper.getItemNameLookupString(tier, type));
     }
 
     public static int getDrawableId(Context context, Enums.Tier tier, Enums.Type type) {

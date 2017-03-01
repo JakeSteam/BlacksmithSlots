@@ -5,7 +5,7 @@ import java.util.List;
 
 import uk.co.jakelee.blacksmithslots.model.Event;
 import uk.co.jakelee.blacksmithslots.model.Inventory;
-import uk.co.jakelee.blacksmithslots.model.Resource;
+import uk.co.jakelee.blacksmithslots.model.Item;
 import uk.co.jakelee.blacksmithslots.model.Reward;
 import uk.co.jakelee.blacksmithslots.model.Slot;
 import uk.co.jakelee.blacksmithslots.model.Statistic;
@@ -20,28 +20,28 @@ public class DatabaseHelper {
             inventories.add(new Inventory(Enums.Tier.Bronze, Enums.Type.Ore, 9999));
         Inventory.saveInTx(inventories);
 
-        List<Resource> resources = new ArrayList<>();
-            resources.add(new Resource(Enums.Tier.Bronze, Enums.Type.Ore));
-            resources.add(new Resource(Enums.Tier.Bronze, Enums.Type.Bar));
-            resources.add(new Resource(Enums.Tier.Bronze, Enums.Type.Dagger));
-            resources.add(new Resource(Enums.Tier.Bronze, Enums.Type.Sword));
-            resources.add(new Resource(Enums.Tier.Bronze, Enums.Type.Longsword));
-            resources.add(new Resource(Enums.Tier.Bronze, Enums.Type.Bow));
-            resources.add(new Resource(Enums.Tier.Bronze, Enums.Type.Halfshield));
-            resources.add(new Resource(Enums.Tier.Bronze, Enums.Type.Fullshield));
-            resources.add(new Resource(Enums.Tier.Bronze, Enums.Type.Chainmail));
-            resources.add(new Resource(Enums.Tier.Bronze, Enums.Type.Platebody));
-            resources.add(new Resource(Enums.Tier.Bronze, Enums.Type.HalfHelmet));
-            resources.add(new Resource(Enums.Tier.Bronze, Enums.Type.FullHelmet));
-            resources.add(new Resource(Enums.Tier.Bronze, Enums.Type.Boots));
-            resources.add(new Resource(Enums.Tier.Bronze, Enums.Type.Gloves));
-            resources.add(new Resource(Enums.Tier.Bronze, Enums.Type.Pickaxe));
-            resources.add(new Resource(Enums.Tier.Bronze, Enums.Type.Hatchet));
-            resources.add(new Resource(Enums.Tier.Bronze, Enums.Type.FishingRod));
-            resources.add(new Resource(Enums.Tier.Bronze, Enums.Type.Hammer));
+        List<Item> items = new ArrayList<>();
+            items.add(new Item(Enums.Tier.Bronze, Enums.Type.Ore));
+            items.add(new Item(Enums.Tier.Bronze, Enums.Type.Bar));
+            items.add(new Item(Enums.Tier.Bronze, Enums.Type.Dagger));
+            items.add(new Item(Enums.Tier.Bronze, Enums.Type.Sword));
+            items.add(new Item(Enums.Tier.Bronze, Enums.Type.Longsword));
+            items.add(new Item(Enums.Tier.Bronze, Enums.Type.Bow));
+            items.add(new Item(Enums.Tier.Bronze, Enums.Type.Halfshield));
+            items.add(new Item(Enums.Tier.Bronze, Enums.Type.Fullshield));
+            items.add(new Item(Enums.Tier.Bronze, Enums.Type.Chainmail));
+            items.add(new Item(Enums.Tier.Bronze, Enums.Type.Platebody));
+            items.add(new Item(Enums.Tier.Bronze, Enums.Type.HalfHelmet));
+            items.add(new Item(Enums.Tier.Bronze, Enums.Type.FullHelmet));
+            items.add(new Item(Enums.Tier.Bronze, Enums.Type.Boots));
+            items.add(new Item(Enums.Tier.Bronze, Enums.Type.Gloves));
+            items.add(new Item(Enums.Tier.Bronze, Enums.Type.Pickaxe));
+            items.add(new Item(Enums.Tier.Bronze, Enums.Type.Hatchet));
+            items.add(new Item(Enums.Tier.Bronze, Enums.Type.FishingRod));
+            items.add(new Item(Enums.Tier.Bronze, Enums.Type.Hammer));
 
-            resources.add(new Resource(Enums.Tier.Internal, Enums.Type.Wildcard));
-        Resource.saveInTx(resources);
+            items.add(new Item(Enums.Tier.Internal, Enums.Type.Wildcard));
+        Item.saveInTx(items);
 
         List<Slot> slots = new ArrayList<>();
         List<Reward> rewards = new ArrayList<>();
