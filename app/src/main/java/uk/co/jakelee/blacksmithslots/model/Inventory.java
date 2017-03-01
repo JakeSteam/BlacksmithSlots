@@ -8,6 +8,7 @@ import com.orm.query.Select;
 
 import java.util.List;
 
+import uk.co.jakelee.blacksmithslots.helper.DisplayHelper;
 import uk.co.jakelee.blacksmithslots.helper.Enums;
 import uk.co.jakelee.blacksmithslots.helper.TextHelper;
 
@@ -58,14 +59,14 @@ public class Inventory extends SugarRecord {
     }
 
     public String getName(Context context) {
-        return TextHelper.getInstance(context).getText("item_" + tier + "_" + type);
+        return TextHelper.getInstance(context).getText(DisplayHelper.getItemImageFile(tier, type));
     }
 
     public static String getName(Context context, Enums.Tier tier, Enums.Type type) {
-        return TextHelper.getInstance(context).getText("item_" + tier + "_" + type);
+        return TextHelper.getInstance(context).getText(DisplayHelper.getItemImageFile(tier, type));
     }
 
     public int getDrawableId(Context context) {
-        return context.getResources().getIdentifier("item_" + tier + "_" + type, "drawable", context.getPackageName());
+        return context.getResources().getIdentifier(DisplayHelper.getItemImageFile(tier, type), "drawable", context.getPackageName());
     }
 }
