@@ -19,13 +19,15 @@ public class Slot extends SugarRecord {
     private int maximumRows;
     private int resourceNeeded;
     private int slots;
-    private Enums.Type type;
+    private Enums.SlotType slotType;
     private Enums.Tier tier;
+    private int townId;
+    private int taskRequired;
 
     public Slot() {
     }
 
-    public Slot(int slotId, int minimumLevel, int minimumStake, int currentStake, int maximumStake, int minimumRows, int currentRows, int maximumRows, int resourceNeeded, int slots, Enums.Type type, Enums.Tier tier) {
+    public Slot(int slotId, int minimumLevel, int minimumStake, int currentStake, int maximumStake, int minimumRows, int currentRows, int maximumRows, int resourceNeeded, int slots, Enums.SlotType slotType, Enums.Tier tier, int townId, int taskRequired) {
         this.slotId = slotId;
         this.minimumLevel = minimumLevel;
         this.minimumStake = minimumStake;
@@ -36,8 +38,10 @@ public class Slot extends SugarRecord {
         this.maximumRows = maximumRows;
         this.resourceNeeded = resourceNeeded;
         this.slots = slots;
-        this.type = type;
+        this.slotType = slotType;
         this.tier = tier;
+        this.townId = townId;
+        this.taskRequired = taskRequired;
     }
 
     public static Slot get(int slotId) {
@@ -126,12 +130,12 @@ public class Slot extends SugarRecord {
         this.slots = slots;
     }
 
-    public Enums.Type getType() {
-        return type;
+    public Enums.SlotType getSlotType() {
+        return slotType;
     }
 
-    public void setType(Enums.Type type) {
-        this.type = type;
+    public void setSlotType(Enums.SlotType slotType) {
+        this.slotType = slotType;
     }
 
     public Enums.Tier getTier() {
@@ -140,6 +144,22 @@ public class Slot extends SugarRecord {
 
     public void setTier(Enums.Tier tier) {
         this.tier = tier;
+    }
+
+    public int getTownId() {
+        return townId;
+    }
+
+    public void setTownId(int townId) {
+        this.townId = townId;
+    }
+
+    public int getTaskRequired() {
+        return taskRequired;
+    }
+
+    public void setTaskRequired(int taskRequired) {
+        this.taskRequired = taskRequired;
     }
 
     public List<Reward> getRewards() {
