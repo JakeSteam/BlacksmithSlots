@@ -2,8 +2,10 @@ package uk.co.jakelee.blacksmithslots.model;
 
 import com.orm.SugarRecord;
 
+import uk.co.jakelee.blacksmithslots.helper.Enums;
+
 public class Statistic extends SugarRecord {
-    private int statisticId;
+    private Enums.Statistic statistic;
     private int intValue;
     private boolean boolValue;
     private String stringValue;
@@ -11,27 +13,27 @@ public class Statistic extends SugarRecord {
     public Statistic() {
     }
 
-    public Statistic(int statisticId, int intValue) {
-        this.statisticId = statisticId;
+    public Statistic(Enums.Statistic statistic, int intValue) {
+        this.statistic = statistic;
         this.intValue = intValue;
     }
 
-    public Statistic(int statisticId, boolean boolValue) {
-        this.statisticId = statisticId;
+    public Statistic(Enums.Statistic statistic, boolean boolValue) {
+        this.statistic = statistic;
         this.boolValue = boolValue;
     }
 
-    public Statistic(int statisticId, String stringValue) {
-        this.statisticId = statisticId;
+    public Statistic(Enums.Statistic statistic, String stringValue) {
+        this.statistic = statistic;
         this.stringValue = stringValue;
     }
 
-    public int getStatisticId() {
-        return statisticId;
+    public Enums.Statistic getStatistic() {
+        return statistic;
     }
 
-    public void setStatisticId(int statisticId) {
-        this.statisticId = statisticId;
+    public void setStatistic(Enums.Statistic statistic) {
+        this.statistic = statistic;
     }
 
     public int getIntValue() {

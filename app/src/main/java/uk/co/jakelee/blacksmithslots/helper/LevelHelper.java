@@ -20,7 +20,7 @@ public class LevelHelper {
 
     public static int getXp() {
         Statistic xpInfo = Select.from(Statistic.class).where(
-                Condition.prop("statistic_id").eq(Constants.STATISTIC_XP)).first();
+                Condition.prop("statistic").eq(Enums.Statistic.Xp)).first();
 
         return xpInfo.getIntValue();
     }
@@ -42,7 +42,7 @@ public class LevelHelper {
 
     public static void addXp(int xp) {
         Log.d("XP", "Added: " + xp);
-        Statistic xpInfo = Select.from(Statistic.class).where(Condition.prop("statistic_id").eq(Constants.STATISTIC_XP)).first();
+        Statistic xpInfo = Select.from(Statistic.class).where(Condition.prop("statistic_").eq(Enums.Statistic.Xp)).first();
 
         xpInfo.setIntValue(xpInfo.getIntValue() + xp);
         xpInfo.save();

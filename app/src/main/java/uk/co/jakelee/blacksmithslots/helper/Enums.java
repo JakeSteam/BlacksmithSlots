@@ -9,11 +9,27 @@ public class Enums {
         }
     }
 
+    public enum RequirementType {
+        Resource(1), Event(2);
+        private int requirementType;
+        RequirementType(int requirementType) {
+            this.requirementType = requirementType;
+        }
+    }
+
     public enum SlotType {
         Furnace(1), Weapon(2), Tool(3), Armour(4), Accessory(5), Misc(6);
         private int slotType;
         SlotType(int slotType) {
             this.slotType = slotType;
+        }
+    }
+
+    public enum Statistic {
+        Xp(1);
+        private int statistic;
+        Statistic(int statistic) {
+            this.statistic = statistic;
         }
     }
 
@@ -30,14 +46,6 @@ public class Enums {
         private int type;
         Type(int type) {
             this.type = type;
-        }
-    }
-
-    public enum RequirementType {
-        Resource(1), Event(2);
-        private int requirementType;
-        RequirementType(int requirementType) {
-            this.requirementType = requirementType;
         }
     }
 }

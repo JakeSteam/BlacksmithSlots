@@ -84,7 +84,7 @@ public class DatabaseHelper {
         Reward.saveInTx(rewards);
 
         List<Statistic> statistics = new ArrayList<>();
-            statistics.add(new Statistic(Constants.STATISTIC_XP, Constants.STARTING_XP));
+            statistics.add(new Statistic(Enums.Statistic.Xp, Constants.STARTING_XP));
         Statistic.saveInTx(statistics);
     }
 }
