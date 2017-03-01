@@ -8,26 +8,26 @@ import com.orm.query.Select;
 
 import java.util.List;
 
+import uk.co.jakelee.blacksmithslots.helper.Enums;
 import uk.co.jakelee.blacksmithslots.helper.TextHelper;
 
 public class Inventory extends SugarRecord {
-    private int itemId;
+    private Enums.Tier tier;
+    private Enums.Type type;
     private int quantity;
 
     public Inventory() {
     }
 
-    public Inventory(int itemId, int quantity) {
-        this.itemId = itemId;
+    public Inventory(Enums.Tier tier, Enums.Type type, int quantity) {
+        this.tier = tier;
+        this.type = type;
         this.quantity = quantity;
     }
 
-    public int getItemId() {
-        return itemId;
-    }
-
-    public void setItemId(int itemId) {
-        this.itemId = itemId;
+    public Inventory(Enums.Tier tier, Enums.Type type) {
+        this.tier = tier;
+        this.type = type;
     }
 
     public int getQuantity() {
@@ -38,32 +38,34 @@ public class Inventory extends SugarRecord {
         this.quantity = quantity;
     }
 
-    public static void addInventory(int itemId, int quantity) {
-        Inventory inventory = getInventory(itemId);
+    public static void addInventory(Enums.Tier tier, Enums.Type type, int quantity) {
+        Inventory inventory = getInventory(tier, type);
         inventory.setQuantity(inventory.getQuantity() + quantity);
         inventory.save();
     }
 
-    public static Inventory getInventory(int itemId) {
+    public static Inventory getInventory(Enums.Tier tier, Enums.Type type) {
         List<Inventory> inventories = Select.from(Inventory.class).where(
-                Condition.prop("item_id").eq(itemId)).list();
+                Condition.prop("type").eq(type),
+                Condition.prop("tier").eq(tier)
+        ).list();
 
         if (inventories.size() > 0) {
             return inventories.get(0);
         } else {
-            return new Inventory(itemId, 0);
+            return new Inventory(tier, type, 0);
         }
     }
 
     public String getName(Context context) {
-        return TextHelper.getInstance(context).getText("resource_" + itemId);
+        return TextHelper.getInstance(context).getText("item_" + tier + "_" + type);
     }
 
-    public static String getName(Context context, int resourceId) {
-        return TextHelper.getInstance(context).getText("resource_" + resourceId);
+    public static String getName(Context context, Enums.Tier tier, Enums.Type type) {
+        return TextHelper.getInstance(context).getText("item_" + tier + "_" + type);
     }
 
     public int getDrawableId(Context context) {
-        return context.getResources().getIdentifier("item_" + itemId, "drawable", context.getPackageName());
+        return context.getResources().getIdentifier("item_" + tier + "_" + type, "drawable", context.getPackageName());
     }
 }

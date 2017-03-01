@@ -2,18 +2,22 @@ package uk.co.jakelee.blacksmithslots.model;
 
 import com.orm.SugarRecord;
 
+import uk.co.jakelee.blacksmithslots.helper.Enums;
+
 public class Reward extends SugarRecord {
     private int slotId;
-    private int resourceId;
+    private Enums.Tier tier;
+    private Enums.Type type;
     private int quantityMultiplier;
     private int weighting;
 
     public Reward() {
     }
 
-    public Reward(int slotId, int resourceId, int quantityMultiplier, int weighting) {
+    public Reward(int slotId, Enums.Tier tier, Enums.Type type, int quantityMultiplier, int weighting) {
         this.slotId = slotId;
-        this.resourceId = resourceId;
+        this.tier = tier;
+        this.type = type;
         this.quantityMultiplier = quantityMultiplier;
         this.weighting = weighting;
     }
@@ -26,12 +30,20 @@ public class Reward extends SugarRecord {
         this.slotId = slotId;
     }
 
-    public int getResourceId() {
-        return resourceId;
+    public Enums.Tier getTier() {
+        return tier;
     }
 
-    public void setResourceId(int resourceId) {
-        this.resourceId = resourceId;
+    public void setTier(Enums.Tier tier) {
+        this.tier = tier;
+    }
+
+    public Enums.Type getType() {
+        return type;
+    }
+
+    public void setType(Enums.Type type) {
+        this.type = type;
     }
 
     public int getQuantityMultiplier() {

@@ -8,41 +8,38 @@ import com.orm.query.Select;
 
 import java.util.List;
 
+import uk.co.jakelee.blacksmithslots.helper.Enums;
 import uk.co.jakelee.blacksmithslots.helper.TextHelper;
 
 public class Resource extends SugarRecord {
-    private int resourceId;
+    private Enums.Tier tier;
+    private Enums.Type type;
 
     public Resource() {
     }
 
-    public Resource(int resourceId) {
-        this.resourceId = resourceId;
+    public Resource(Enums.Tier tier, Enums.Type type) {
+        this.tier = tier;
+        this.type = type;
     }
 
-    public static Resource get(int resourceId) {
+    public static Resource get(Enums.Tier tier, Enums.Type type) {
         List<Resource> resources = Select.from(Resource.class).where(
-                Condition.prop("resource_id").eq(resourceId)).list();
+                Condition.prop("tier").eq(tier),
+                Condition.prop("type").eq(type)
+        ).list();
         return resources.size() > 0 ? resources.get(0) : null;
     }
 
-    public int getResourceId() {
-        return resourceId;
-    }
-
-    public void setResourceId(int resourceId) {
-        this.resourceId = resourceId;
-    }
-
     public String getName(Context context) {
-        return TextHelper.getInstance(context).getText("resource_" + resourceId);
+        return TextHelper.getInstance(context).getText("item_" + tier + "_" + type);
     }
 
-    public static String getName(Context context, int resourceId) {
-        return TextHelper.getInstance(context).getText("resource_" + resourceId);
+    public static String getName(Context context, Enums.Tier tier, Enums.Type type) {
+        return TextHelper.getInstance(context).getText("item_" + tier + "_" + type);
     }
 
-    public static int getDrawableId(Context context, long item) {
-        return context.getResources().getIdentifier("item_" + item, "drawable", context.getPackageName());
+    public static int getDrawableId(Context context, Enums.Tier tier, Enums.Type type) {
+        return context.getResources().getIdentifier("item_" + tier + "_" + type, "drawable", context.getPackageName());
     }
 }

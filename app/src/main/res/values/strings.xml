@@ -1,22 +1,22 @@
 <resources>
     <string name="app_name">Blacksmith Slots</string>
 
-    <string name="resource_1">Bronze Ore</string>
-    <string name="resource_2">Bronze Bar</string>
-    <string name="resource_3">Bronze Dagger</string>
-    <string name="resource_4">Bronze Sword</string>
-    <string name="resource_5">Bronze Longsword</string>
-    <string name="resource_6">Bronze Bow</string>
-    <string name="resource_7">Bronze Half Shield</string>
-    <string name="resource_8">Bronze Full Shield</string>
-    <string name="resource_9">Bronze Chainmail</string>
-    <string name="resource_10">Bronze Platebody</string>
-    <string name="resource_11">Bronze Half Helmet</string>
-    <string name="resource_12">Bronze Full Helmet</string>
-    <string name="resource_13">Bronze Boots</string>
-    <string name="resource_14">Bronze Gloves</string>
-    <string name="resource_15">Bronze Pickaxe</string>
-    <string name="resource_16">Bronze Hatchet</string>
-    <string name="resource_17">Bronze Fishing Rod</string>
-    <string name="resource_18">Bronze Hammer</string>
+    <string name="item_1_1">Bronze Ore</string>
+    <string name="item_1_2">Bronze Bar</string>
+    <string name="item_1_3">Bronze Dagger</string>
+    <string name="item_1_4">Bronze Sword</string>
+    <string name="item_1_5">Bronze Longsword</string>
+    <string name="item_1_6">Bronze Bow</string>
+    <string name="item_1_7">Bronze Half Shield</string>
+    <string name="item_1_8">Bronze Full Shield</string>
+    <string name="item_1_9">Bronze Chainmail</string>
+    <string name="item_1_10">Bronze Platebody</string>
+    <string name="item_1_11">Bronze Half Helmet</string>
+    <string name="item_1_12">Bronze Full Helmet</string>
+    <string name="item_1_13">Bronze Boots</string>
+    <string name="item_1_14">Bronze Gloves</string>
+    <string name="item_1_15">Bronze Pickaxe</string>
+    <string name="item_1_16">Bronze Hatchet</string>
+    <string name="item_1_17">Bronze Fishing Rod</string>
+    <string name="item_1_18">Bronze Hammer</string>
 </resources>
