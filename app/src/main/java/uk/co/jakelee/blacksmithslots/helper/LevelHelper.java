@@ -42,7 +42,7 @@ public class LevelHelper {
 
     public static void addXp(int xp) {
         Log.d("XP", "Added: " + xp);
-        Statistic xpInfo = Select.from(Statistic.class).where(Condition.prop("statistic_").eq(Enums.Statistic.Xp)).first();
+        Statistic xpInfo = Select.from(Statistic.class).where(Condition.prop("statistic").eq(Enums.Statistic.Xp)).first();
 
         xpInfo.setIntValue(xpInfo.getIntValue() + xp);
         xpInfo.save();

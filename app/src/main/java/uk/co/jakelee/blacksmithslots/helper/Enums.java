@@ -3,49 +3,49 @@ package uk.co.jakelee.blacksmithslots.helper;
 public class Enums {
     public enum Event {
         Spin(1);
-        private int event;
-        Event(int event) {
-            this.event = event;
+        private int value;
+        Event(int value) {
+            this.value = value;
         }
     }
 
     public enum RequirementType {
         Resource(1), Event(2);
-        private int requirementType;
-        RequirementType(int requirementType) {
-            this.requirementType = requirementType;
+        private int value;
+        RequirementType(int value) {
+            this.value = value;
         }
     }
 
     public enum SlotType {
         Furnace(1), Weapon(2), Tool(3), Armour(4), Accessory(5), Misc(6);
-        private int slotType;
-        SlotType(int slotType) {
-            this.slotType = slotType;
+        private int value;
+        SlotType(int value) {
+            this.value = value;
         }
     }
 
     public enum Statistic {
         Xp(1);
-        private int statistic;
-        Statistic(int statistic) {
-            this.statistic = statistic;
+        private int value;
+        Statistic(int value) {
+            this.value = value;
         }
     }
 
     public enum Tier {
-        Internal(-1), None(0), Bronze(1), Iron(2), Steel(3), Mithril(4);
-        private int tier;
-        Tier(int tier) {
-            this.tier = tier;
+        Internal(999), None(0), Bronze(1), Iron(2), Steel(3), Mithril(4);
+        public int value;
+        Tier(int value) {
+            this.value = value;
         }
     }
 
     public enum Type {
-        Wildcard (-1), None(0), Ore(1), Bar(2), Dagger(3), Sword(4), Longsword(5), Bow(6), Halfshield(7), Fullshield(8), Chainmail(9), Platebody(10), HalfHelmet(11), FullHelmet(12), Boots(13), Gloves(14), Pickaxe(15), Hatchet(16), FishingRod(17), Hammer(18);
-        private int type;
-        Type(int type) {
-            this.type = type;
+        Wildcard (999), None(0), Ore(1), Bar(2), Dagger(3), Sword(4), Longsword(5), Bow(6), Halfshield(7), Fullshield(8), Chainmail(9), Platebody(10), HalfHelmet(11), FullHelmet(12), Boots(13), Gloves(14), Pickaxe(15), Hatchet(16), FishingRod(17), Hammer(18);
+        public int value;
+        Type(int value) {
+            this.value = value;
         }
     }
 }

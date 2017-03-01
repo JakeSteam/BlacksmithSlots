@@ -26,11 +26,6 @@ public class Inventory extends SugarRecord {
         this.quantity = quantity;
     }
 
-    public Inventory(Enums.Tier tier, Enums.Type type) {
-        this.tier = tier;
-        this.type = type;
-    }
-
     public int getQuantity() {
         return quantity;
     }

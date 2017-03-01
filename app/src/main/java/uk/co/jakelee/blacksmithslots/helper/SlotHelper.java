@@ -246,7 +246,7 @@ public class SlotHelper {
         SlotResult checkedResult = new SlotResult();
         for (SlotResult routeTile : routeTiles) {
             // If there's no tile to check, set it to current
-            if (checkedResult.getResourceTier() == Enums.Tier.None && checkedResult.getResourceType() == Enums.Type.None
+            if (checkedResult.getResourceTier() == null && checkedResult.getResourceType() == null
                     && (routeTile.getResourceTier() != Enums.Tier.Internal && routeTile.getResourceType() != Enums.Type.Wildcard)) {
                 checkedResult = routeTile;
             } else {
@@ -311,8 +311,8 @@ public class SlotHelper {
 
     public void updateResourceCount() {
         List<Inventory> items = Select.from(Inventory.class).where(
-                Condition.prop("tier").notEq(resourceTier),
-                Condition.prop("type").notEq(resourceType)
+                Condition.prop("tier").notEq(resourceTier.name())).or(
+                Condition.prop("type").notEq(resourceType.name())
         ).orderBy("quantity DESC").list();
 
         Inventory inventory = Inventory.getInventory(resourceTier, resourceType);
