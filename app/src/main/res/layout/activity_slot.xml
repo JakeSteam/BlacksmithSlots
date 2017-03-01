@@ -30,7 +30,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="VIP 0"
-            android:textSize="18sp"
+            style="@style/SlotText"
             android:background="@drawable/box_metal"
             android:paddingTop="5dp"
             android:paddingBottom="5dp"
@@ -41,7 +41,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Lev 0"
-            android:textSize="20sp"
+            style="@style/SlotText"
             android:onClick="levelInfo"
             android:layout_margin="3dp"/>
         <ProgressBar
@@ -81,7 +81,7 @@
                 android:id="@+id/resourceInfo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="18sp"/>
+                style="@style/SlotText"/>
         </LinearLayout>
         <ScrollView
             android:layout_width="match_parent"

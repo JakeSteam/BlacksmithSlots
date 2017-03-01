@@ -20,7 +20,7 @@ public class FontTextView extends TextView {
         super(context, attrs, defStyle);
 
         if (mTypeface == null) {
-            mTypeface = Typeface.createFromAsset(context.getAssets(), "fonts/KenPixel Mini.ttf");
+            mTypeface = Typeface.createFromAsset(context.getAssets(), "fonts/Kenney Pixel.ttf");
         }
         setTypeface(mTypeface);
     }

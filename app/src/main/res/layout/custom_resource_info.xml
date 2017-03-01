@@ -14,7 +14,8 @@
         android:id="@+id/itemInfo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="18sp"
+        android:textAppearance="@style/FontSize"
         android:maxLines="3"
+        android:layout_gravity="center_vertical"
         android:paddingRight="13dp"/>
 </TableRow>
