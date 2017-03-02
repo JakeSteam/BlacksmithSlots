@@ -26,7 +26,7 @@ public class Enums {
     }
 
     public enum Statistic {
-        Xp(1);
+        Xp(1), TotalSpins(2);
         private int value;
         Statistic(int value) {
             this.value = value;

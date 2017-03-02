@@ -39,6 +39,7 @@ import uk.co.jakelee.blacksmithslots.model.Inventory;
 import uk.co.jakelee.blacksmithslots.model.Item;
 import uk.co.jakelee.blacksmithslots.model.Reward;
 import uk.co.jakelee.blacksmithslots.model.Slot;
+import uk.co.jakelee.blacksmithslots.model.Statistic;
 
 public class SlotHelper {
     private int stillSpinningSlots = 0;
@@ -295,6 +296,7 @@ public class SlotHelper {
                 inventory.save();
 
                 LevelHelper.addXp(spinCost);
+                Statistic.add(Enums.Statistic.TotalSpins);
 
                 for (WheelView wheel : slots) {
                     wheel.scroll(-350 + (int) (Math.random() * 150), 2250);

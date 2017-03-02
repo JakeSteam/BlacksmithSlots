@@ -76,7 +76,7 @@
                 android:id="@+id/resourceImage"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:padding="2dp"/>
+                android:layout_margin="2dp"/>
             <uk.co.jakelee.blacksmithslots.components.FontTextView
                 android:id="@+id/resourceInfo"
                 android:layout_width="wrap_content"

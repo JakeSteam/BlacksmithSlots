@@ -1,6 +1,5 @@
 package uk.co.jakelee.blacksmithslots.main;
 
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -9,7 +8,6 @@ import android.widget.Toast;
 import uk.co.jakelee.blacksmithslots.R;
 import uk.co.jakelee.blacksmithslots.helper.AlertDialogHelper;
 import uk.co.jakelee.blacksmithslots.helper.Constants;
-import uk.co.jakelee.blacksmithslots.helper.DatabaseHelper;
 import uk.co.jakelee.blacksmithslots.helper.LevelHelper;
 import uk.co.jakelee.blacksmithslots.helper.SlotHelper;
 import uk.co.jakelee.blacksmithslots.model.Slot;
@@ -25,12 +23,6 @@ public class SlotActivity extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_slot);
-
-        SharedPreferences prefs = getSharedPreferences("uk.co.jakelee.blacksmithslots", MODE_PRIVATE);
-        if (prefs.getBoolean("firstRun", true)) {
-            DatabaseHelper.testSetup();
-            prefs.edit().putBoolean("firstRun", false).apply();
-        }
 
         Slot slot = Slot.get(getIntent().getIntExtra(Constants.INTENT_SLOT, 0));
         if (slot == null) {

@@ -22,12 +22,11 @@ public class Slot extends SugarRecord {
     private Enums.SlotType slotType;
     private int slots;
     private int townId;
-    private int taskRequired;
 
     public Slot() {
     }
 
-    public Slot(int slotId, int minimumLevel, int minimumStake, int currentStake, int maximumStake, int minimumRows, int currentRows, int maximumRows, Enums.Tier resourceTier, Enums.Type resourceType, Enums.SlotType slotType, int slots, int townId, int taskRequired) {
+    public Slot(int slotId, int minimumLevel, int minimumStake, int currentStake, int maximumStake, int minimumRows, int currentRows, int maximumRows, Enums.Tier resourceTier, Enums.Type resourceType, Enums.SlotType slotType, int slots, int townId) {
         this.slotId = slotId;
         this.minimumLevel = minimumLevel;
         this.minimumStake = minimumStake;
@@ -41,7 +40,6 @@ public class Slot extends SugarRecord {
         this.slotType = slotType;
         this.slots = slots;
         this.townId = townId;
-        this.taskRequired = taskRequired;
     }
 
     public static Slot get(int slotId) {
@@ -152,14 +150,6 @@ public class Slot extends SugarRecord {
 
     public void setTownId(int townId) {
         this.townId = townId;
-    }
-
-    public int getTaskRequired() {
-        return taskRequired;
-    }
-
-    public void setTaskRequired(int taskRequired) {
-        this.taskRequired = taskRequired;
     }
 
     public List<Reward> getRewards() {

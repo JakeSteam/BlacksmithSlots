@@ -1,6 +1,12 @@
 package uk.co.jakelee.blacksmithslots.model;
 
+import android.util.Log;
+
 import com.orm.SugarRecord;
+import com.orm.query.Condition;
+import com.orm.query.Select;
+
+import java.util.List;
 
 import uk.co.jakelee.blacksmithslots.helper.Enums;
 
@@ -58,6 +64,41 @@ public class Statistic extends SugarRecord {
 
     public void setStringValue(String stringValue) {
         this.stringValue = stringValue;
+    }
+
+    public static void add(Enums.Statistic stat) {
+        add(stat, 1);
+    }
+
+    public static void add(Enums.Statistic stat, int amount) {
+        Statistic statistic = Select.from(Statistic.class).where(Condition.prop("statistic").eq(stat)).first();
+
+        if (statistic == null) {
+            return;
+        }
+
+        statistic.setIntValue(statistic.getIntValue() + amount);
+        statistic.save();
+
+        List<TaskRequirement> taskRequirements = Select.from(TaskRequirement.class).where(
+                Condition.prop("statistic").eq(stat),
+                Condition.prop("started").gt(0),
+                Condition.prop("completed").eq(0)).list();
+
+        for (TaskRequirement task : taskRequirements) {
+            Log.d("Task", "Remaining: " + task.getRemaining() + ", removing " + amount);
+            if (task.getRemaining() <= amount) {
+                task.setRemaining(0);
+                task.setCompleted(System.currentTimeMillis());
+                Log.d("Task", "Completed!");
+            } else {
+                task.setRemaining(task.getRemaining() - amount);
+            }
+        }
+
+        if (taskRequirements.size() > 0) {
+            TaskRequirement.saveInTx(taskRequirements);
+        }
     }
 
 }

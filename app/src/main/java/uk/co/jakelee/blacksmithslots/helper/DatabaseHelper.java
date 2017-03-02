@@ -9,6 +9,8 @@ import uk.co.jakelee.blacksmithslots.model.Item;
 import uk.co.jakelee.blacksmithslots.model.Reward;
 import uk.co.jakelee.blacksmithslots.model.Slot;
 import uk.co.jakelee.blacksmithslots.model.Statistic;
+import uk.co.jakelee.blacksmithslots.model.Task;
+import uk.co.jakelee.blacksmithslots.model.TaskRequirement;
 
 public class DatabaseHelper {
     public static void testSetup() {
@@ -45,7 +47,7 @@ public class DatabaseHelper {
 
         List<Slot> slots = new ArrayList<>();
         List<Reward> rewards = new ArrayList<>();
-            slots.add(new Slot(Constants.SLOT_BRONZE_FURNACE, 1, 1, 2, 5, 1, 5, Constants.SLOTS_4_MAX_ROUTES, Enums.Tier.Bronze, Enums.Type.Ore, Enums.SlotType.Furnace, 4, 1, 0));
+            slots.add(new Slot(Constants.SLOT_BRONZE_FURNACE, 1, 1, 2, 5, 1, 5, Constants.SLOTS_4_MAX_ROUTES, Enums.Tier.Bronze, Enums.Type.Ore, Enums.SlotType.Furnace, 4, 1));
             rewards.add(new Reward(Constants.SLOT_BRONZE_FURNACE, Enums.Tier.Bronze, Enums.Type.Ore, 1, 1));
             rewards.add(new Reward(Constants.SLOT_BRONZE_FURNACE, Enums.Tier.Bronze, Enums.Type.Bar, 1, 8));
             rewards.add(new Reward(Constants.SLOT_BRONZE_FURNACE, Enums.Tier.Bronze, Enums.Type.Bar, 10, 1));
@@ -53,28 +55,28 @@ public class DatabaseHelper {
             rewards.add(new Reward(Constants.SLOT_BRONZE_FURNACE, Enums.Tier.Bronze, Enums.Type.Sword, 1, 1));
             rewards.add(new Reward(Constants.SLOT_BRONZE_FURNACE, Enums.Tier.Internal, Enums.Type.Wildcard, 1, 1));
 
-            slots.add(new Slot(Constants.SLOT_BRONZE_WEAPON, 1, 1, 2, 5, 1, 5, Constants.SLOTS_3_MAX_ROUTES, Enums.Tier.Bronze, Enums.Type.Bar, Enums.SlotType.Weapon, 3, 1, 0));
+            slots.add(new Slot(Constants.SLOT_BRONZE_WEAPON, 1, 1, 2, 5, 1, 5, Constants.SLOTS_3_MAX_ROUTES, Enums.Tier.Bronze, Enums.Type.Bar, Enums.SlotType.Weapon, 3, 1));
             rewards.add(new Reward(Constants.SLOT_BRONZE_WEAPON, Enums.Tier.Bronze, Enums.Type.Dagger, 1, 1));
             rewards.add(new Reward(Constants.SLOT_BRONZE_WEAPON, Enums.Tier.Bronze, Enums.Type.Sword, 1, 1));
             rewards.add(new Reward(Constants.SLOT_BRONZE_WEAPON, Enums.Tier.Bronze, Enums.Type.Longsword, 1, 1));
             rewards.add(new Reward(Constants.SLOT_BRONZE_WEAPON, Enums.Tier.Bronze, Enums.Type.Bow, 1, 1));
             rewards.add(new Reward(Constants.SLOT_BRONZE_WEAPON, Enums.Tier.Internal, Enums.Type.Wildcard, 1, 1));
 
-            slots.add(new Slot(Constants.SLOT_BRONZE_ARMOUR, 1, 1, 2, 5, 1, 5, Constants.SLOTS_3_MAX_ROUTES, Enums.Tier.Bronze, Enums.Type.Bar, Enums.SlotType.Armour, 3, 1, 0));
+            slots.add(new Slot(Constants.SLOT_BRONZE_ARMOUR, 1, 1, 2, 5, 1, 5, Constants.SLOTS_3_MAX_ROUTES, Enums.Tier.Bronze, Enums.Type.Bar, Enums.SlotType.Armour, 3, 1));
             rewards.add(new Reward(Constants.SLOT_BRONZE_ARMOUR, Enums.Tier.Bronze, Enums.Type.Chainmail, 1, 1));
             rewards.add(new Reward(Constants.SLOT_BRONZE_ARMOUR, Enums.Tier.Bronze, Enums.Type.Platebody, 1, 1));
             rewards.add(new Reward(Constants.SLOT_BRONZE_ARMOUR, Enums.Tier.Bronze, Enums.Type.Halfshield, 1, 1));
             rewards.add(new Reward(Constants.SLOT_BRONZE_ARMOUR, Enums.Tier.Bronze, Enums.Type.Fullshield, 1, 1));
             rewards.add(new Reward(Constants.SLOT_BRONZE_ARMOUR, Enums.Tier.Internal, Enums.Type.Wildcard, 1, 2));
 
-            slots.add(new Slot(Constants.SLOT_BRONZE_TOOL, 1, 1, 2, 5, 1, 5, Constants.SLOTS_3_MAX_ROUTES, Enums.Tier.Bronze, Enums.Type.Bar, Enums.SlotType.Tool, 3, 1, 0));
+            slots.add(new Slot(Constants.SLOT_BRONZE_TOOL, 1, 1, 2, 5, 1, 5, Constants.SLOTS_3_MAX_ROUTES, Enums.Tier.Bronze, Enums.Type.Bar, Enums.SlotType.Tool, 3, 1));
             rewards.add(new Reward(Constants.SLOT_BRONZE_TOOL, Enums.Tier.Bronze, Enums.Type.Pickaxe, 1, 1));
             rewards.add(new Reward(Constants.SLOT_BRONZE_TOOL, Enums.Tier.Bronze, Enums.Type.Hatchet, 1, 1));
             rewards.add(new Reward(Constants.SLOT_BRONZE_TOOL, Enums.Tier.Bronze, Enums.Type.FishingRod, 1, 1));
             rewards.add(new Reward(Constants.SLOT_BRONZE_TOOL, Enums.Tier.Bronze, Enums.Type.Hammer, 1, 1));
             rewards.add(new Reward(Constants.SLOT_BRONZE_TOOL, Enums.Tier.Internal, Enums.Type.Wildcard, 1, 1));
 
-            slots.add(new Slot(Constants.SLOT_BRONZE_ACCESSORY, 1, 1, 2, 5, 1, 5, Constants.SLOTS_3_MAX_ROUTES, Enums.Tier.Bronze, Enums.Type.Bar, Enums.SlotType.Accessory, 3, 1, 0));
+            slots.add(new Slot(Constants.SLOT_BRONZE_ACCESSORY, 1, 1, 2, 5, 1, 5, Constants.SLOTS_3_MAX_ROUTES, Enums.Tier.Bronze, Enums.Type.Bar, Enums.SlotType.Accessory, 3, 1));
             rewards.add(new Reward(Constants.SLOT_BRONZE_ACCESSORY, Enums.Tier.Bronze, Enums.Type.Boots, 1, 1));
             rewards.add(new Reward(Constants.SLOT_BRONZE_ACCESSORY, Enums.Tier.Bronze, Enums.Type.Gloves, 1, 1));
             rewards.add(new Reward(Constants.SLOT_BRONZE_ACCESSORY, Enums.Tier.Bronze, Enums.Type.HalfHelmet, 1, 1));
@@ -85,6 +87,17 @@ public class DatabaseHelper {
 
         List<Statistic> statistics = new ArrayList<>();
             statistics.add(new Statistic(Enums.Statistic.Xp, Constants.STARTING_XP));
+            statistics.add(new Statistic(Enums.Statistic.TotalSpins, 0));
         Statistic.saveInTx(statistics);
+
+        // Task to unlock slot 5
+        List<Task> tasks = new ArrayList<>();
+        List<TaskRequirement> taskRequirements = new ArrayList<>();
+            tasks.add(new Task(1, Constants.SLOT_BRONZE_ACCESSORY, 0));
+                taskRequirements.add(new TaskRequirement(1, Enums.Statistic.TotalSpins, 3));
+                taskRequirements.add(new TaskRequirement(1, Enums.Tier.Bronze, Enums.Type.Bar, 10));
+                taskRequirements.add(new TaskRequirement(1, Enums.Tier.Bronze, Enums.Type.Ore, 10));
+        Task.saveInTx(tasks);
+        TaskRequirement.saveInTx(taskRequirements);
     }
 }
