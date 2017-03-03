@@ -19,4 +19,26 @@
     <string name="item_1_16">Bronze Hatchet</string>
     <string name="item_1_17">Bronze Fishing Rod</string>
     <string name="item_1_18">Bronze Hammer</string>
+
+    <string name="slot_1_name">Bronze Furnace</string>
+    <string name="slot_2_name">Bronze Weapon</string>
+    <string name="slot_3_name">Bronze Armour</string>
+    <string name="slot_4_name">Bronze Tool</string>
+    <string name="slot_5_name">Bronze Accessory</string>
+
+    <string name="slot_1_locked">Slot 1 is locked!</string>
+    <string name="slot_2_locked">Slot 2 is locked!</string>
+    <string name="slot_3_locked">Slot 3 is locked!</string>
+    <string name="slot_4_locked">Slot 4 is locked!</string>
+    <string name="slot_5_locked">Slot 5 is locked!</string>
+
+    <string name="slot_1_unlocked">Slot 1 is unlocked!</string>
+    <string name="slot_2_unlocked">Slot 2 is unlocked!</string>
+    <string name="slot_3_unlocked">Slot 3 is unlocked!</string>
+    <string name="slot_4_unlocked">Slot 4 is unlocked!</string>
+    <string name="slot_5_unlocked">Slot 5 is unlocked!</string>
+
+    <string name="task_5_1_text">Please do something!</string>
+    <string name="task_5_2_text">Please do something else!</string>
+    <string name="task_5_3_text">Please do something more!</string>
 </resources>

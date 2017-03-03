@@ -1,5 +1,7 @@
 package uk.co.jakelee.blacksmithslots.model;
 
+import android.content.Context;
+
 import com.orm.SugarRecord;
 import com.orm.query.Condition;
 import com.orm.query.Select;
@@ -7,6 +9,7 @@ import com.orm.query.Select;
 import java.util.List;
 
 import uk.co.jakelee.blacksmithslots.helper.Enums;
+import uk.co.jakelee.blacksmithslots.helper.TextHelper;
 
 public class Slot extends SugarRecord {
     private int slotId;
@@ -155,5 +158,48 @@ public class Slot extends SugarRecord {
     public List<Reward> getRewards() {
         return Select.from(Reward.class).where(
                 Condition.prop("slot_id").eq(slotId)).list();
+    }
+
+    public List<Task> getTasks() {
+        return Select.from(Task.class).where(
+                Condition.prop("slot_id").eq(slotId))
+                .orderBy("position ASC")
+                .list();
+    }
+
+    public String getName(Context context) {
+        return TextHelper.getInstance(context).getText("slot_" + slotId + "_name");
+    }
+
+    public String getLockedText(Context context) {
+        return TextHelper.getInstance(context).getText("slot_" + slotId + "_locked");
+    }
+
+    public String getUnlockedText(Context context) {
+        return TextHelper.getInstance(context).getText("slot_" + slotId + "_unlocked");
+    }
+
+    public String getResourceText(Context context) {
+        Item resourceItem = Item.get(getResourceTier(), getResourceType());
+        if (resourceItem != null) {
+            return resourceItem.getName(context);
+        } else {
+            return "";
+        }
+    }
+
+    public String getRewardText(Context context) {
+        StringBuilder rewardText = new StringBuilder();
+        List<Reward> rewards = getRewards();
+        for (Reward reward : rewards) {
+            Item item = Item.get(reward.getTier(), reward.getType());
+            if (item != null && item.getTier() != Enums.Tier.Internal) {
+                rewardText.append(item.getName(context));
+                rewardText.append(", ");
+            }
+        }
+
+        String rewardString = rewardText.toString();
+        return rewardString.length() > 0 ? rewardString.substring(0, rewardString.length() - 2) : "";
     }
 }

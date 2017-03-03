@@ -91,9 +91,9 @@ public class DatabaseHelper {
 
 
         List<Task> tasks = new ArrayList<>();
-            tasks.add(new Task(Constants.SLOT_BRONZE_ACCESSORY, Enums.Statistic.TotalSpins, 3));
-            tasks.add(new Task(Constants.SLOT_BRONZE_ACCESSORY, Enums.Tier.Bronze, Enums.Type.Bar, 10));
-            tasks.add(new Task(Constants.SLOT_BRONZE_ACCESSORY, Enums.Tier.Bronze, Enums.Type.Ore, 10));
+            tasks.add(new Task(Constants.SLOT_BRONZE_ACCESSORY, 1, Enums.Statistic.TotalSpins, 3));
+            tasks.add(new Task(Constants.SLOT_BRONZE_ACCESSORY, 2, Enums.Tier.Bronze, Enums.Type.Bar, 10));
+            tasks.add(new Task(Constants.SLOT_BRONZE_ACCESSORY, 3, Enums.Tier.Bronze, Enums.Type.Ore, 10));
         Task.saveInTx(tasks);
     }
 }

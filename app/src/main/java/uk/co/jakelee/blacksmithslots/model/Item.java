@@ -55,8 +55,4 @@ public class Item extends SugarRecord {
     public static String getName(Context context, Enums.Tier tier, Enums.Type type) {
         return TextHelper.getInstance(context).getText(DisplayHelper.getItemNameLookupString(tier, type));
     }
-
-    public static int getDrawableId(Context context, Enums.Tier tier, Enums.Type type) {
-        return context.getResources().getIdentifier(DisplayHelper.getItemImageFile(tier, type), "drawable", context.getPackageName());
-    }
 }

@@ -1,11 +1,15 @@
 package uk.co.jakelee.blacksmithslots.model;
 
+import android.content.Context;
+
 import com.orm.SugarRecord;
 
 import uk.co.jakelee.blacksmithslots.helper.Enums;
+import uk.co.jakelee.blacksmithslots.helper.TextHelper;
 
 public class Task extends SugarRecord {
     private int slotId;
+    private int position;
     private Enums.Statistic statistic;
     private Enums.Tier tier;
     private Enums.Type type;
@@ -16,16 +20,18 @@ public class Task extends SugarRecord {
     public Task() {
     }
 
-    public Task(int slotId, Enums.Statistic statistic, int remaining) {
+    public Task(int slotId, int position, Enums.Statistic statistic, int remaining) {
         this.slotId = slotId;
+        this.position = position;
         this.statistic = statistic;
         this.remaining = remaining;
         this.started = 0;
         this.completed = 0;
     }
 
-    public Task(int slotId, Enums.Tier tier, Enums.Type type, int remaining) {
+    public Task(int slotId, int position, Enums.Tier tier, Enums.Type type, int remaining) {
         this.slotId = slotId;
+        this.position = position;
         this.tier = tier;
         this.type = type;
         this.remaining = remaining;
@@ -39,6 +45,14 @@ public class Task extends SugarRecord {
 
     public void setSlotId(int slotId) {
         this.slotId = slotId;
+    }
+
+    public int getPosition() {
+        return position;
+    }
+
+    public void setPosition(int position) {
+        this.position = position;
     }
 
     public Enums.Statistic getStatistic() {
@@ -87,5 +101,17 @@ public class Task extends SugarRecord {
 
     public void setCompleted(long completed) {
         this.completed = completed;
+    }
+
+    public String getText(Context context) {
+        return TextHelper.getInstance(context).getText("task_" + slotId + "_" + position + "_text");
+    }
+
+    public String getRequirement(Context context) {
+        if (statistic != null) {
+            return "A statistic";
+        } else {
+            return "Not a stat";
+        }
     }
 }
