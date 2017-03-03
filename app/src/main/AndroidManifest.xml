@@ -24,8 +24,7 @@
 
         <activity
             android:name=".main.SlotActivity"
-            android:screenOrientation="landscape">
-        </activity>
+            android:screenOrientation="landscape" />
         <activity
             android:name=".main.CreditsActivity"
             android:screenOrientation="landscape" />

@@ -80,12 +80,14 @@ public class Statistic extends SugarRecord {
         statistic.setIntValue(statistic.getIntValue() + amount);
         statistic.save();
 
-        List<TaskRequirement> taskRequirements = Select.from(TaskRequirement.class).where(
-                Condition.prop("statistic").eq(stat),
-                Condition.prop("started").gt(0),
-                Condition.prop("completed").eq(0)).list();
+        List<Task> tasks = Select.from(Task.class).where(
+                Condition.prop("statistic").eq(stat), // Tasks of this stat
+                Condition.prop("started").gt(0), // That have been started
+                Condition.prop("completed").eq(0), // And not completed
+                Condition.prop("remaining").eq(0) // And not handed in
+        ).list();
 
-        for (TaskRequirement task : taskRequirements) {
+        for (Task task : tasks) {
             Log.d("Task", "Remaining: " + task.getRemaining() + ", removing " + amount);
             if (task.getRemaining() <= amount) {
                 task.setRemaining(0);
@@ -96,8 +98,8 @@ public class Statistic extends SugarRecord {
             }
         }
 
-        if (taskRequirements.size() > 0) {
-            TaskRequirement.saveInTx(taskRequirements);
+        if (tasks.size() > 0) {
+            Task.saveInTx(tasks);
         }
     }
 

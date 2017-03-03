@@ -10,7 +10,6 @@ import uk.co.jakelee.blacksmithslots.model.Reward;
 import uk.co.jakelee.blacksmithslots.model.Slot;
 import uk.co.jakelee.blacksmithslots.model.Statistic;
 import uk.co.jakelee.blacksmithslots.model.Task;
-import uk.co.jakelee.blacksmithslots.model.TaskRequirement;
 
 public class DatabaseHelper {
     public static void testSetup() {
@@ -90,14 +89,11 @@ public class DatabaseHelper {
             statistics.add(new Statistic(Enums.Statistic.TotalSpins, 0));
         Statistic.saveInTx(statistics);
 
-        // Task to unlock slot 5
+
         List<Task> tasks = new ArrayList<>();
-        List<TaskRequirement> taskRequirements = new ArrayList<>();
-            tasks.add(new Task(1, Constants.SLOT_BRONZE_ACCESSORY, 0));
-                taskRequirements.add(new TaskRequirement(1, Enums.Statistic.TotalSpins, 3));
-                taskRequirements.add(new TaskRequirement(1, Enums.Tier.Bronze, Enums.Type.Bar, 10));
-                taskRequirements.add(new TaskRequirement(1, Enums.Tier.Bronze, Enums.Type.Ore, 10));
+            tasks.add(new Task(Constants.SLOT_BRONZE_ACCESSORY, Enums.Statistic.TotalSpins, 3));
+            tasks.add(new Task(Constants.SLOT_BRONZE_ACCESSORY, Enums.Tier.Bronze, Enums.Type.Bar, 10));
+            tasks.add(new Task(Constants.SLOT_BRONZE_ACCESSORY, Enums.Tier.Bronze, Enums.Type.Ore, 10));
         Task.saveInTx(tasks);
-        TaskRequirement.saveInTx(taskRequirements);
     }
 }

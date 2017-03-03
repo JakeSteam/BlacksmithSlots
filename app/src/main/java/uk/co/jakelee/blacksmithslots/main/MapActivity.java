@@ -12,7 +12,7 @@ import uk.co.jakelee.blacksmithslots.R;
 import uk.co.jakelee.blacksmithslots.helper.Constants;
 import uk.co.jakelee.blacksmithslots.helper.DatabaseHelper;
 import uk.co.jakelee.blacksmithslots.helper.TaskHelper;
-import uk.co.jakelee.blacksmithslots.model.TaskRequirement;
+import uk.co.jakelee.blacksmithslots.model.Task;
 
 public class MapActivity extends AppCompatActivity {
 
@@ -26,8 +26,8 @@ public class MapActivity extends AppCompatActivity {
             DatabaseHelper.testSetup();
 
             // Temporarily start the quest
-            List<TaskRequirement> stats = TaskRequirement.listAll(TaskRequirement.class);
-            for (TaskRequirement stat : stats) {
+            List<Task> stats = Task.listAll(Task.class);
+            for (Task stat : stats) {
                 stat.setStarted(System.currentTimeMillis());
                 stat.save();
             }

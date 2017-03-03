@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.percent.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/activity_map"
@@ -7,10 +7,91 @@
     android:layout_height="match_parent"
     tools:context="uk.co.jakelee.blacksmithslots.main.MapActivity">
 
+    <RelativeLayout
+        android:id="@+id/sidebar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_widthPercent="33%"
+        android:layout_alignParentRight="true">
+        <uk.co.jakelee.blacksmithslots.components.FontTextView
+            android:id="@+id/slotTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="The Big Slot"
+            android:textSize="30sp"
+            android:gravity="left"
+            style="@style/SlotText"/>
+        <uk.co.jakelee.blacksmithslots.components.FontTextView
+            android:id="@+id/slotDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="A long description of the unlock quest goes here. Story story? Story! Story story."
+            android:layout_below="@id/slotTitle"
+            android:maxLines="999"
+            android:gravity="left"
+            style="@style/SlotText"/>
+        <RelativeLayout
+            android:id="@+id/lockedSlot"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/slotDescription"
+            android:visibility="gone">
+            <uk.co.jakelee.blacksmithslots.components.FontTextView
+                android:id="@+id/taskProgress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Task 2/3:"
+                android:gravity="left"
+                style="@style/SlotText"/>
+            <uk.co.jakelee.blacksmithslots.components.FontTextView
+                android:id="@+id/taskDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Spin 10 times"
+                android:layout_below="@id/taskProgress"
+                android:gravity="left"
+                style="@style/SlotText"/>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hand in?"
+                android:layout_alignParentBottom="true"/>
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/unlockedSlot"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/slotDescription">
+            <uk.co.jakelee.blacksmithslots.components.FontTextView
+                android:id="@+id/slotResource"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Resource: Bronze Ore"
+                android:gravity="left"
+                style="@style/SlotText"/>
+            <uk.co.jakelee.blacksmithslots.components.FontTextView
+                android:id="@+id/slotReward"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Reward: Bronze Bar"
+                android:layout_below="@id/slotResource"
+                android:gravity="left"
+                style="@style/SlotText"/>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Go!"
+                android:layout_alignParentBottom="true"
+                android:onClick="openSlot"/>
+        </RelativeLayout>
+
+    </RelativeLayout>
+
     <HorizontalScrollView xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/mainScroller"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_toLeftOf="@id/sidebar">
 
             <android.support.percent.PercentRelativeLayout
                 android:id="@+id/shapeLayout"
@@ -82,4 +163,4 @@
 
             </android.support.percent.PercentRelativeLayout>
         </HorizontalScrollView>
-</RelativeLayout>
+</android.support.percent.PercentRelativeLayout>

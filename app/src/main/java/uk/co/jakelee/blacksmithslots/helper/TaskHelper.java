@@ -3,10 +3,12 @@ package uk.co.jakelee.blacksmithslots.helper;
 import com.orm.query.Condition;
 import com.orm.query.Select;
 
-import uk.co.jakelee.blacksmithslots.model.TaskRequirement;
+import uk.co.jakelee.blacksmithslots.model.Task;
 
 public class TaskHelper {
     public static boolean isSlotUnlocked(int slot) {
-        return Select.from(TaskRequirement.class).where(Condition.prop("completed").eq(0)).count() > 0;
+        return Select.from(Task.class).where(
+                Condition.prop("completed").eq(0),
+                Condition.prop("slot_id").eq(slot)).count() > 0;
     }
 }
