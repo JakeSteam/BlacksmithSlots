@@ -1,6 +1,5 @@
 package uk.co.jakelee.blacksmithslots.main;
 
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -9,12 +8,12 @@ import android.view.View;
 import java.util.List;
 
 import uk.co.jakelee.blacksmithslots.R;
-import uk.co.jakelee.blacksmithslots.helper.Constants;
 import uk.co.jakelee.blacksmithslots.helper.DatabaseHelper;
 import uk.co.jakelee.blacksmithslots.helper.TaskHelper;
 import uk.co.jakelee.blacksmithslots.model.Task;
 
 public class MapActivity extends AppCompatActivity {
+    private int selectedSlot = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,11 +35,24 @@ public class MapActivity extends AppCompatActivity {
     }
 
     public void openSlot(View v) {
-        int slot = Integer.parseInt((String)v.getTag());
-        if (TaskHelper.isSlotUnlocked(slot)) {
+        selectedSlot = Integer.parseInt((String)v.getTag());
+        populateSlotInfo();
+        /*if (TaskHelper.isSlotUnlocked(slot)) {
             startActivity(new Intent(this, SlotActivity.class)
                     .putExtra(Constants.INTENT_SLOT, slot)
                     .addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT));
+        }*/
+    }
+
+    private void populateSlotInfo() {
+        if (selectedSlot > 0) {
+            if (TaskHelper.isSlotLocked(selectedSlot)) {
+                findViewById(R.id.lockedSlot).setVisibility(View.VISIBLE);
+                findViewById(R.id.unlockedSlot).setVisibility(View.GONE);
+            } else {
+                findViewById(R.id.lockedSlot).setVisibility(View.GONE);
+                findViewById(R.id.unlockedSlot).setVisibility(View.VISIBLE);
+            }
         }
     }
 
