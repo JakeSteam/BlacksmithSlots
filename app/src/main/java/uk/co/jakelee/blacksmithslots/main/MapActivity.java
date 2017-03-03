@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.List;
@@ -12,13 +13,14 @@ import java.util.List;
 import uk.co.jakelee.blacksmithslots.R;
 import uk.co.jakelee.blacksmithslots.helper.Constants;
 import uk.co.jakelee.blacksmithslots.helper.DatabaseHelper;
+import uk.co.jakelee.blacksmithslots.helper.DisplayHelper;
 import uk.co.jakelee.blacksmithslots.helper.TaskHelper;
-import uk.co.jakelee.blacksmithslots.helper.TextHelper;
+import uk.co.jakelee.blacksmithslots.model.Reward;
 import uk.co.jakelee.blacksmithslots.model.Slot;
 import uk.co.jakelee.blacksmithslots.model.Task;
 
 public class MapActivity extends AppCompatActivity {
-    private int selectedSlot = 0;
+    private int selectedSlot = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +39,8 @@ public class MapActivity extends AppCompatActivity {
             }
             prefs.edit().putBoolean("firstRun", false).apply();
         }
+
+        populateSlotInfo();
     }
 
     public void openSlot(View v) {
@@ -53,7 +57,6 @@ public class MapActivity extends AppCompatActivity {
     }
 
     private void populateSlotInfo() {
-        TextHelper th = TextHelper.getInstance(this);
         if (selectedSlot > 0) {
             Slot slot = Slot.get(selectedSlot);
             if (slot != null) {
@@ -72,8 +75,17 @@ public class MapActivity extends AppCompatActivity {
                     findViewById(R.id.unlockedSlot).setVisibility(View.GONE);
                 } else {
                     ((TextView) findViewById(R.id.slotDescription)).setText(slot.getUnlockedText(this));
-                    ((TextView) findViewById(R.id.slotResource)).setText("Resource: " + slot.getResourceText(this));
-                    ((TextView) findViewById(R.id.slotReward)).setText("Rewards: " + slot.getRewardText(this));
+
+                    LinearLayout resourceContainer = (LinearLayout)findViewById(R.id.resourceContainer);
+                    resourceContainer.removeAllViews();
+                    resourceContainer.addView(DisplayHelper.createImageView(this, DisplayHelper.getItemImageFile(slot.getResourceTier(), slot.getResourceType()), 30, 30));
+
+                    LinearLayout rewardContainer = (LinearLayout)findViewById(R.id.rewardContainer);
+                    rewardContainer.removeAllViews();
+                    List<Reward> rewards = slot.getRewards();
+                    for (Reward reward : rewards) {
+                        rewardContainer.addView(DisplayHelper.createImageView(this, DisplayHelper.getItemImageFile(reward.getTier(), reward.getType(), reward.getQuantityMultiplier()), 30, 30));
+                    }
 
                     findViewById(R.id.lockedSlot).setVisibility(View.GONE);
                     findViewById(R.id.unlockedSlot).setVisibility(View.VISIBLE);

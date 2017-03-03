@@ -12,22 +12,21 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_widthPercent="33%"
+        android:padding="10dp"
         android:layout_alignParentRight="true">
         <uk.co.jakelee.blacksmithslots.components.FontTextView
             android:id="@+id/slotTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="30sp"
-            android:gravity="left"
-            style="@style/SlotText"/>
+            style="@style/SidebarText"/>
         <uk.co.jakelee.blacksmithslots.components.FontTextView
             android:id="@+id/slotDescription"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/slotTitle"
             android:maxLines="999"
-            android:gravity="left"
-            style="@style/SlotText"/>
+            style="@style/SidebarText"/>
         <RelativeLayout
             android:id="@+id/lockedSlot"
             android:layout_width="match_parent"
@@ -38,24 +37,21 @@
                 android:id="@+id/taskProgress"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="left"
-                style="@style/SlotText"/>
+                style="@style/SidebarText"/>
             <uk.co.jakelee.blacksmithslots.components.FontTextView
                 android:id="@+id/taskText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/taskProgress"
-                android:gravity="left"
-                style="@style/SlotText"/>
+                style="@style/SidebarText"/>
             <uk.co.jakelee.blacksmithslots.components.FontTextView
                 android:id="@+id/taskRequirement"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/taskText"
-                android:gravity="left"
-                style="@style/SlotText"/>
+                style="@style/SidebarText"/>
             <Button
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Hand in?"
                 android:layout_alignParentBottom="true"/>
@@ -69,17 +65,41 @@
                 android:id="@+id/slotResource"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="left"
-                style="@style/SlotText"/>
+                android:layout_marginBottom="0dp"
+                android:text="Resource:"
+                style="@style/SidebarText"/>
+            <HorizontalScrollView
+                android:id="@+id/resourceRow"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/slotResource">
+                <LinearLayout
+                    android:id="@+id/resourceContainer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal" />
+            </HorizontalScrollView>
             <uk.co.jakelee.blacksmithslots.components.FontTextView
                 android:id="@+id/slotReward"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/slotResource"
-                android:gravity="left"
-                style="@style/SlotText"/>
+                android:layout_marginBottom="0dp"
+                android:layout_below="@id/resourceRow"
+                android:text="Rewards:"
+                style="@style/SidebarText"/>
+            <HorizontalScrollView
+                android:id="@+id/rewardRow"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/slotReward">
+                <LinearLayout
+                    android:id="@+id/rewardContainer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal" />
+            </HorizontalScrollView>
             <Button
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Go!"
                 android:layout_alignParentBottom="true"
@@ -112,8 +132,6 @@
                     android:layout_marginLeft="140dp"
                     android:onClick="selectSlot"
                     android:tag="1"
-                    android:alpha="0.6"
-                    android:src="@color/white"
                     app:layout_heightPercent="13%"
                     app:layout_marginTopPercent="58%" />
 
@@ -123,8 +141,6 @@
                     android:layout_marginLeft="140dp"
                     android:onClick="selectSlot"
                     android:tag="2"
-                    android:alpha="0.6"
-                    android:src="@color/white"
                     app:layout_heightPercent="13%"
                     app:layout_marginTopPercent="43%" />
 
@@ -134,8 +150,6 @@
                     android:layout_marginLeft="140dp"
                     android:onClick="selectSlot"
                     android:tag="3"
-                    android:alpha="0.6"
-                    android:src="@color/white"
                     app:layout_heightPercent="13%"
                     app:layout_marginTopPercent="28%" />
 
@@ -145,8 +159,6 @@
                     android:layout_marginLeft="270dp"
                     android:onClick="selectSlot"
                     android:tag="4"
-                    android:alpha="0.6"
-                    android:src="@color/white"
                     app:layout_heightPercent="13%"
                     app:layout_marginTopPercent="43%" />
 
@@ -156,11 +168,8 @@
                     android:layout_marginLeft="330dp"
                     android:onClick="selectSlot"
                     android:tag="5"
-                    android:alpha="0.6"
-                    android:src="@color/white"
                     app:layout_heightPercent="13%"
                     app:layout_marginTopPercent="43%" />
-
 
             </android.support.percent.PercentRelativeLayout>
         </HorizontalScrollView>

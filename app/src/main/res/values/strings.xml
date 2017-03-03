@@ -32,11 +32,11 @@
     <string name="slot_4_locked">Slot 4 is locked!</string>
     <string name="slot_5_locked">Slot 5 is locked!</string>
 
-    <string name="slot_1_unlocked">Slot 1 is unlocked!</string>
-    <string name="slot_2_unlocked">Slot 2 is unlocked!</string>
-    <string name="slot_3_unlocked">Slot 3 is unlocked!</string>
-    <string name="slot_4_unlocked">Slot 4 is unlocked!</string>
-    <string name="slot_5_unlocked">Slot 5 is unlocked!</string>
+    <string name="slot_1_unlocked">Come into the furnace!</string>
+    <string name="slot_2_unlocked">Get your weapons here!</string>
+    <string name="slot_3_unlocked">Feeling vulnerable? Armour in here!</string>
+    <string name="slot_4_unlocked">Tools to do things with.</string>
+    <string name="slot_5_unlocked">Accessorise, yo.</string>
 
     <string name="task_5_1_text">Please do something!</string>
     <string name="task_5_2_text">Please do something else!</string>
