@@ -36,6 +36,13 @@ public class Statistic extends SugarRecord {
         this.stringValue = stringValue;
     }
 
+    public static Statistic get(Enums.Statistic statistic) {
+        List<Statistic> statisticList = Select.from(Statistic.class).where(
+                Condition.prop("statistic").eq(statistic)
+        ).list();
+        return statisticList.size() > 0 ? statisticList.get(0) : null;
+    }
+
     public Enums.Statistic getStatistic() {
         return statistic;
     }
@@ -84,10 +91,19 @@ public class Statistic extends SugarRecord {
 
         List<Task> tasks = Select.from(Task.class).where(
                 Condition.prop("statistic").eq(stat), // Tasks of this stat
+                Condition.prop("statistic").notEq(Enums.Statistic.Level), // Except levels
                 Condition.prop("started").gt(0), // That have been started
                 Condition.prop("completed").eq(0), // And not completed
                 Condition.prop("remaining").gt(0) // And not waiting to be handed in
         ).list();
+
+        // Level tasks are updated independently
+        if (stat == Enums.Statistic.Level) {
+            tasks.addAll(Select.from(Task.class).where(
+                    Condition.prop("statistic").eq(Enums.Statistic.Level),
+                    Condition.prop("completed").eq(0),
+                    Condition.prop("remaining").gt(0)).list());
+        }
 
         for (Task task : tasks) {
             Log.d("Task", "Remaining: " + task.getRemaining() + ", removing " + amount);

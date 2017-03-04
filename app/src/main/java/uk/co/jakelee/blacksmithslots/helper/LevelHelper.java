@@ -42,9 +42,13 @@ public class LevelHelper {
 
     public static void addXp(int xp) {
         Log.d("XP", "Added: " + xp);
-        Statistic xpInfo = Select.from(Statistic.class).where(Condition.prop("statistic").eq(Enums.Statistic.Xp)).first();
+        Statistic.add(Enums.Statistic.Xp, xp);
 
-        xpInfo.setIntValue(xpInfo.getIntValue() + xp);
-        xpInfo.save();
+        Statistic savedLevel = Statistic.get(Enums.Statistic.Level);
+        int level = LevelHelper.getLevel();
+        if (savedLevel != null && savedLevel.getIntValue() < level) {
+            Statistic.add(Enums.Statistic.Level, level - savedLevel.getIntValue());
+            Log.d("Level", "Levelled up to " + level);
+        }
     }
 }

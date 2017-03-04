@@ -93,8 +93,8 @@ public class DatabaseHelper {
 
         List<Task> tasks = new ArrayList<>();
             tasks.add(new Task(Constants.SLOT_BRONZE_ACCESSORY, 1, Enums.Statistic.Xp, 100));
-            //tasks.add(new Task(Constants.SLOT_BRONZE_ACCESSORY, 2, Enums.Statistic.TotalSpins, 3));
-            //tasks.add(new Task(Constants.SLOT_BRONZE_ACCESSORY, 3, Enums.Statistic.TotalSpins, 2));
+            tasks.add(new Task(Constants.SLOT_BRONZE_ACCESSORY, 3, Enums.Statistic.TotalSpins, 2));
+            tasks.add(new Task(Constants.SLOT_BRONZE_ACCESSORY, 1, Enums.Statistic.Level, 2));
         Task.saveInTx(tasks);
     }
 }
