@@ -107,72 +107,11 @@
                 android:layout_alignParentBottom="true"
                 android:onClick="openSlot"/>
         </RelativeLayout>
-
     </RelativeLayout>
 
-    <HorizontalScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/mainScroller"
+    <android.support.v4.view.ViewPager
+        android:id="@+id/townScroller"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_toLeftOf="@id/sidebar">
-
-            <android.support.percent.PercentRelativeLayout
-                android:id="@+id/shapeLayout"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent">
-
-                <ImageView
-                    android:id="@+id/wallpaper_id"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:scaleType="fitXY"
-                    android:src="@drawable/map"/>
-
-                <ImageView
-                    android:layout_width="40dp"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginLeft="140dp"
-                    android:onClick="selectSlot"
-                    android:tag="1"
-                    app:layout_heightPercent="13%"
-                    app:layout_marginTopPercent="58%" />
-
-                <ImageView
-                    android:layout_width="40dp"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginLeft="140dp"
-                    android:onClick="selectSlot"
-                    android:tag="2"
-                    app:layout_heightPercent="13%"
-                    app:layout_marginTopPercent="43%" />
-
-                <ImageView
-                    android:layout_width="40dp"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginLeft="140dp"
-                    android:onClick="selectSlot"
-                    android:tag="3"
-                    app:layout_heightPercent="13%"
-                    app:layout_marginTopPercent="28%" />
-
-                <ImageView
-                    android:layout_width="40dp"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginLeft="270dp"
-                    android:onClick="selectSlot"
-                    android:tag="4"
-                    app:layout_heightPercent="13%"
-                    app:layout_marginTopPercent="43%" />
-
-                <ImageView
-                    android:layout_width="40dp"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginLeft="330dp"
-                    android:onClick="selectSlot"
-                    android:tag="5"
-                    app:layout_heightPercent="13%"
-                    app:layout_marginTopPercent="43%" />
-
-            </android.support.percent.PercentRelativeLayout>
-        </HorizontalScrollView>
+        android:layout_height="wrap_content"
+        android:layout_toLeftOf="@id/sidebar"/>
 </android.support.percent.PercentRelativeLayout>

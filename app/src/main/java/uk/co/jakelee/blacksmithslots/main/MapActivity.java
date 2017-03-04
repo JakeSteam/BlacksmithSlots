@@ -1,10 +1,17 @@
 package uk.co.jakelee.blacksmithslots.main;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.v4.view.PagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -21,6 +28,8 @@ import uk.co.jakelee.blacksmithslots.model.Task;
 
 public class MapActivity extends AppCompatActivity {
     private int selectedSlot = 1;
+    private ViewPager mViewPager;
+    private CustomPagerAdapter mCustomPagerAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +43,19 @@ public class MapActivity extends AppCompatActivity {
         }
 
         populateSlotInfo();
+
+
+        mCustomPagerAdapter = new CustomPagerAdapter(this);
+
+        mViewPager = (ViewPager) findViewById(R.id.townScroller);
+        mViewPager.setClipToPadding(false);
+        mViewPager.setOffscreenPageLimit(4);
+        mViewPager.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
+            public void onPageSelected(int position) {
+                Log.d("Position", "Selected:" + position);
+            }
+        });
+        mViewPager.setAdapter(mCustomPagerAdapter);
     }
 
     public void openSlot(View v) {
@@ -107,13 +129,50 @@ public class MapActivity extends AppCompatActivity {
         super.onWindowFocusChanged(hasFocus);
 
         if (hasFocus) {
-            findViewById(R.id.mainScroller).setSystemUiVisibility(
+            findViewById(R.id.townScroller).setSystemUiVisibility(
                     View.SYSTEM_UI_FLAG_LAYOUT_STABLE
                             | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
                             | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
                             | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
                             | View.SYSTEM_UI_FLAG_FULLSCREEN
                             | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
+        }
+    }
+
+    class CustomPagerAdapter extends PagerAdapter {
+        Context mContext;
+        LayoutInflater mLayoutInflater;
+
+        public CustomPagerAdapter(Context context) {
+            mContext = context;
+            mLayoutInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        }
+
+        @Override
+        public int getCount() {
+            return 2;
+        }
+
+        @Override
+        public boolean isViewFromObject(View view, Object object) {
+            return view == object;
+        }
+
+        @Override
+        public Object instantiateItem(ViewGroup container, int position) {
+            View itemView = mLayoutInflater.inflate(R.layout.custom_town_1, container, false);
+
+            ImageView imageView = (ImageView) itemView.findViewById(R.id.imageView);
+            imageView.setImageResource(R.drawable.map);
+
+            container.addView(itemView);
+
+            return itemView;
+        }
+
+        @Override
+        public void destroyItem(ViewGroup container, int position, Object object) {
+            container.removeView((LinearLayout) object);
         }
     }
 }
