@@ -51,9 +51,11 @@
                 android:layout_below="@id/taskText"
                 style="@style/SidebarText"/>
             <Button
+                android:id="@+id/handInButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Hand in?"
+                android:onClick="handIn"
                 android:layout_alignParentBottom="true"/>
         </RelativeLayout>
         <RelativeLayout

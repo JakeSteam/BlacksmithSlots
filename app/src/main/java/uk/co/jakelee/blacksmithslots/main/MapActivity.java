@@ -30,13 +30,6 @@ public class MapActivity extends AppCompatActivity {
         SharedPreferences prefs = getSharedPreferences("uk.co.jakelee.blacksmithslots", MODE_PRIVATE);
         if (prefs.getBoolean("firstRun", true)) {
             DatabaseHelper.testSetup();
-
-            // Temporarily start the quest
-            List<Task> stats = Task.listAll(Task.class);
-            for (Task stat : stats) {
-                stat.setStarted(System.currentTimeMillis());
-                stat.save();
-            }
             prefs.edit().putBoolean("firstRun", false).apply();
         }
 
@@ -56,6 +49,15 @@ public class MapActivity extends AppCompatActivity {
         populateSlotInfo();
     }
 
+    public void handIn(View v) {
+        Task task = Task.findById(Task.class, (int)(long)v.getTag());
+        if (task.isCompleteable()) {
+            task.setCompleted(System.currentTimeMillis());
+            task.save();
+        }
+        populateSlotInfo();
+    }
+
     private void populateSlotInfo() {
         if (selectedSlot > 0) {
             Slot slot = Slot.get(selectedSlot);
@@ -65,11 +67,16 @@ public class MapActivity extends AppCompatActivity {
                 if (TaskHelper.isSlotLocked(selectedSlot)) {
                     List<Task> tasks = slot.getTasks();
                     Task currentTask = TaskHelper.getCurrentTask(tasks);
+                    if (currentTask.getStarted() == 0) {
+                        currentTask.setStarted(System.currentTimeMillis());
+                        currentTask.save();
+                    }
 
                     ((TextView) findViewById(R.id.slotDescription)).setText(slot.getLockedText(this));
                     ((TextView) findViewById(R.id.taskProgress)).setText("Task " + currentTask.getPosition() + "/" + tasks.size());
                     ((TextView) findViewById(R.id.taskText)).setText(currentTask.getText(this));
                     ((TextView) findViewById(R.id.taskRequirement)).setText(currentTask.getRequirement(this));
+                    findViewById(R.id.handInButton).setTag(currentTask.getId());
 
                     findViewById(R.id.lockedSlot).setVisibility(View.VISIBLE);
                     findViewById(R.id.unlockedSlot).setVisibility(View.GONE);

@@ -13,6 +13,7 @@ public class Task extends SugarRecord {
     private Enums.Statistic statistic;
     private Enums.Tier tier;
     private Enums.Type type;
+    private int target;
     private int remaining;
     private long started;
     private long completed;
@@ -20,21 +21,23 @@ public class Task extends SugarRecord {
     public Task() {
     }
 
-    public Task(int slotId, int position, Enums.Statistic statistic, int remaining) {
+    public Task(int slotId, int position, Enums.Statistic statistic, int target) {
         this.slotId = slotId;
         this.position = position;
         this.statistic = statistic;
-        this.remaining = remaining;
+        this.target = target;
+        this.remaining = target;
         this.started = 0;
         this.completed = 0;
     }
 
-    public Task(int slotId, int position, Enums.Tier tier, Enums.Type type, int remaining) {
+    public Task(int slotId, int position, Enums.Tier tier, Enums.Type type, int target) {
         this.slotId = slotId;
         this.position = position;
         this.tier = tier;
         this.type = type;
-        this.remaining = remaining;
+        this.target = target;
+        this.remaining = target;
         this.started = 0;
         this.completed = 0;
     }
@@ -79,6 +82,14 @@ public class Task extends SugarRecord {
         this.type = type;
     }
 
+    public int getTarget() {
+        return target;
+    }
+
+    public void setTarget(int target) {
+        this.target = target;
+    }
+
     public int getRemaining() {
         return remaining;
     }
@@ -109,9 +120,17 @@ public class Task extends SugarRecord {
 
     public String getRequirement(Context context) {
         if (statistic != null) {
-            return "A statistic";
+            return Statistic.getName(context, statistic) + ": " + (target-remaining) + "/" + target;
         } else {
             return "Not a stat";
+        }
+    }
+
+    public boolean isCompleteable() {
+        if (statistic != null) {
+            return remaining == 0 && completed == 0;
+        } else {
+            return false;
         }
     }
 }

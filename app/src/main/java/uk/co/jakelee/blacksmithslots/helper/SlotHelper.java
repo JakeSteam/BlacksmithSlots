@@ -296,6 +296,8 @@ public class SlotHelper {
                 inventory.save();
 
                 LevelHelper.addXp(spinCost);
+
+                Statistic.add(Enums.Statistic.Xp, spinCost);
                 Statistic.add(Enums.Statistic.TotalSpins);
 
                 for (WheelView wheel : slots) {

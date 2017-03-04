@@ -86,14 +86,15 @@ public class DatabaseHelper {
 
         List<Statistic> statistics = new ArrayList<>();
             statistics.add(new Statistic(Enums.Statistic.Xp, Constants.STARTING_XP));
+            statistics.add(new Statistic(Enums.Statistic.Level, 0));
             statistics.add(new Statistic(Enums.Statistic.TotalSpins, 0));
         Statistic.saveInTx(statistics);
 
 
         List<Task> tasks = new ArrayList<>();
-            tasks.add(new Task(Constants.SLOT_BRONZE_ACCESSORY, 1, Enums.Statistic.TotalSpins, 3));
-            tasks.add(new Task(Constants.SLOT_BRONZE_ACCESSORY, 2, Enums.Tier.Bronze, Enums.Type.Bar, 10));
-            tasks.add(new Task(Constants.SLOT_BRONZE_ACCESSORY, 3, Enums.Tier.Bronze, Enums.Type.Ore, 10));
+            tasks.add(new Task(Constants.SLOT_BRONZE_ACCESSORY, 1, Enums.Statistic.Xp, 100));
+            //tasks.add(new Task(Constants.SLOT_BRONZE_ACCESSORY, 2, Enums.Statistic.TotalSpins, 3));
+            //tasks.add(new Task(Constants.SLOT_BRONZE_ACCESSORY, 3, Enums.Statistic.TotalSpins, 2));
         Task.saveInTx(tasks);
     }
 }

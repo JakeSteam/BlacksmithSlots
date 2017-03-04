@@ -1,5 +1,6 @@
 package uk.co.jakelee.blacksmithslots.model;
 
+import android.content.Context;
 import android.util.Log;
 
 import com.orm.SugarRecord;
@@ -9,6 +10,7 @@ import com.orm.query.Select;
 import java.util.List;
 
 import uk.co.jakelee.blacksmithslots.helper.Enums;
+import uk.co.jakelee.blacksmithslots.helper.TextHelper;
 
 public class Statistic extends SugarRecord {
     private Enums.Statistic statistic;
@@ -84,14 +86,13 @@ public class Statistic extends SugarRecord {
                 Condition.prop("statistic").eq(stat), // Tasks of this stat
                 Condition.prop("started").gt(0), // That have been started
                 Condition.prop("completed").eq(0), // And not completed
-                Condition.prop("remaining").eq(0) // And not handed in
+                Condition.prop("remaining").gt(0) // And not waiting to be handed in
         ).list();
 
         for (Task task : tasks) {
             Log.d("Task", "Remaining: " + task.getRemaining() + ", removing " + amount);
             if (task.getRemaining() <= amount) {
                 task.setRemaining(0);
-                task.setCompleted(System.currentTimeMillis());
                 Log.d("Task", "Completed!");
             } else {
                 task.setRemaining(task.getRemaining() - amount);
@@ -101,6 +102,10 @@ public class Statistic extends SugarRecord {
         if (tasks.size() > 0) {
             Task.saveInTx(tasks);
         }
+    }
+
+    public static String getName(Context context, Enums.Statistic statistic) {
+        return TextHelper.getInstance(context).getText("statistic_" + statistic.value + "_name");
     }
 
 }
