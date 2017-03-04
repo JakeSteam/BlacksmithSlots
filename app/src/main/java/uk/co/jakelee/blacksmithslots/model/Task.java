@@ -118,7 +118,7 @@ public class Task extends SugarRecord {
         return TextHelper.getInstance(context).getText("task_" + slotId + "_" + position + "_text");
     }
 
-    public String getRequirement(Context context) {
+    public String toString(Context context) {
         if (statistic != null) {
             return Statistic.getName(context, statistic) + ": " + (target-remaining) + "/" + target;
         } else {

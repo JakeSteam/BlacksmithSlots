@@ -129,7 +129,7 @@ public class SlotHelper {
                 @Override
                 public void onScrollingFinished(WheelView wheel) {
                     stillSpinningSlots--;
-                    if (stillSpinningSlots <= 1) {
+                    if (stillSpinningSlots <= 0) {
                         updateStatus();
                         afterSpinUpdate();
                         if (autospinsLeft > 0) {

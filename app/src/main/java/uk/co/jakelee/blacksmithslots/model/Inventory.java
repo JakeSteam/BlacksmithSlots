@@ -57,10 +57,6 @@ public class Inventory extends SugarRecord {
         return TextHelper.getInstance(context).getText(DisplayHelper.getItemImageFile(tier, type));
     }
 
-    public static String getName(Context context, Enums.Tier tier, Enums.Type type) {
-        return TextHelper.getInstance(context).getText(DisplayHelper.getItemImageFile(tier, type));
-    }
-
     public int getDrawableId(Context context) {
         return context.getResources().getIdentifier(DisplayHelper.getItemImageFile(tier, type), "drawable", context.getPackageName());
     }

@@ -106,10 +106,9 @@ public class Statistic extends SugarRecord {
         }
 
         for (Task task : tasks) {
-            Log.d("Task", "Remaining: " + task.getRemaining() + ", removing " + amount);
             if (task.getRemaining() <= amount) {
                 task.setRemaining(0);
-                Log.d("Task", "Completed!");
+                Log.d("Task", "Completed: " + task.toString());
             } else {
                 task.setRemaining(task.getRemaining() - amount);
             }

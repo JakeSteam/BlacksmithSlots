@@ -75,7 +75,7 @@ public class MapActivity extends AppCompatActivity {
                     ((TextView) findViewById(R.id.slotDescription)).setText(slot.getLockedText(this));
                     ((TextView) findViewById(R.id.taskProgress)).setText("Task " + currentTask.getPosition() + "/" + tasks.size());
                     ((TextView) findViewById(R.id.taskText)).setText(currentTask.getText(this));
-                    ((TextView) findViewById(R.id.taskRequirement)).setText(currentTask.getRequirement(this));
+                    ((TextView) findViewById(R.id.taskRequirement)).setText(currentTask.toString(this));
                     findViewById(R.id.handInButton).setTag(currentTask.getId());
 
                     findViewById(R.id.lockedSlot).setVisibility(View.VISIBLE);
