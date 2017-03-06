@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -70,9 +71,14 @@ public class MapActivity extends AppCompatActivity {
 
     public void handIn(View v) {
         Task task = Task.findById(Task.class, (int)(long)v.getTag());
-        if (task.isCompleteable()) {
+        if (task.getTier() != null && task.itemsCanBeSubmitted()) {
+            task.submitItems();
+            Toast.makeText(this, "Items submitted!", Toast.LENGTH_SHORT).show();
+        } else if (task.isCompleteable()) {
             task.setCompleted(System.currentTimeMillis());
             task.save();
+        } else {
+            Toast.makeText(this, "Can't hand in an unfinished task!", Toast.LENGTH_SHORT).show();
         }
         populateSlotInfo();
     }

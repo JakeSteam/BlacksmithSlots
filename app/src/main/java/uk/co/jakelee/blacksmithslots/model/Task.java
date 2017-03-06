@@ -122,15 +122,31 @@ public class Task extends SugarRecord {
         if (statistic != null) {
             return Statistic.getName(context, statistic) + ": " + (target-remaining) + "/" + target;
         } else {
-            return "Not a stat";
+            return Item.getName(context, tier, type) + ": " + (target-remaining) + "/" + target;
         }
     }
 
     public boolean isCompleteable() {
-        if (statistic != null) {
-            return remaining == 0 && completed == 0;
+        return remaining == 0 && completed == 0;
+    }
+
+    public boolean itemsCanBeSubmitted() {
+        return statistic == null
+            && remaining > 0
+            && Inventory.getInventory(tier, type).getQuantity() > 0;
+    }
+
+    public void submitItems() {
+        Inventory inventory = Inventory.getInventory(tier, type);
+
+        if (remaining > inventory.getQuantity()) {
+            remaining = remaining - inventory.getQuantity();
+            inventory.setQuantity(0);
         } else {
-            return false;
+            inventory.setQuantity(inventory.getQuantity() - remaining);
+            remaining = 0;
         }
+        inventory.save();
+        save();
     }
 }

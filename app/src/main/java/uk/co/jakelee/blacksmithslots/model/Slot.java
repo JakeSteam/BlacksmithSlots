@@ -20,6 +20,7 @@ public class Slot extends SugarRecord {
     private int minimumRows;
     private int currentRows;
     private int maximumRows;
+    private int resourceQuantity;
     private Enums.Tier resourceTier;
     private Enums.Type resourceType;
     private Enums.SlotType slotType;
@@ -29,7 +30,7 @@ public class Slot extends SugarRecord {
     public Slot() {
     }
 
-    public Slot(int slotId, int minimumLevel, int minimumStake, int currentStake, int maximumStake, int minimumRows, int currentRows, int maximumRows, Enums.Tier resourceTier, Enums.Type resourceType, Enums.SlotType slotType, int slots, int townId) {
+    public Slot(int slotId, int minimumLevel, int minimumStake, int currentStake, int maximumStake, int minimumRows, int currentRows, int maximumRows, int resourceQuantity, Enums.Tier resourceTier, Enums.Type resourceType, Enums.SlotType slotType, int slots, int townId) {
         this.slotId = slotId;
         this.minimumLevel = minimumLevel;
         this.minimumStake = minimumStake;
@@ -38,6 +39,7 @@ public class Slot extends SugarRecord {
         this.minimumRows = minimumRows;
         this.currentRows = currentRows;
         this.maximumRows = maximumRows;
+        this.resourceQuantity = resourceQuantity;
         this.resourceTier = resourceTier;
         this.resourceType = resourceType;
         this.slotType = slotType;
@@ -113,6 +115,14 @@ public class Slot extends SugarRecord {
 
     public void setMaximumRows(int maximumRows) {
         this.maximumRows = maximumRows;
+    }
+
+    public int getResourceQuantity() {
+        return resourceQuantity;
+    }
+
+    public void setResourceQuantity(int resourceQuantity) {
+        this.resourceQuantity = resourceQuantity;
     }
 
     public Enums.Tier getResourceTier() {

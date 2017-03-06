@@ -160,7 +160,7 @@ public class SlotHelper {
     }
 
     private void afterStakeChangeUpdate() {
-        ((TextView)activity.findViewById(R.id.spinButton)).setText("Spin (" + (slot.getCurrentRows() * slot.getCurrentStake()) + ")");
+        ((TextView)activity.findViewById(R.id.spinButton)).setText("Spin (" + (slot.getCurrentRows() * slot.getCurrentStake() * slot.getResourceQuantity()) + ")");
         ((TextView)activity.findViewById(R.id.rowsActive)).setText(Integer.toString(slot.getCurrentRows()));
         ((TextView)activity.findViewById(R.id.amountGambled)).setText(Integer.toString(slot.getCurrentStake()));
     }
@@ -290,7 +290,7 @@ public class SlotHelper {
             stillSpinningSlots = slot.getSlots();
             Inventory inventory = Inventory.getInventory(slot.getResourceTier(), slot.getResourceType());
 
-            int spinCost = slot.getCurrentStake() * slot.getCurrentRows();
+            int spinCost = slot.getCurrentStake() * slot.getCurrentRows() * slot.getResourceQuantity();
             if (inventory.getQuantity() >= spinCost) {
                 inventory.setQuantity(inventory.getQuantity() - spinCost);
                 inventory.save();

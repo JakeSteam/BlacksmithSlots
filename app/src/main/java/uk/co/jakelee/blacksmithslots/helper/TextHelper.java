@@ -21,6 +21,7 @@ public class TextHelper {
     }
 
     public String getText(String identifier) {
-        return (String)resources.getText(resources.getIdentifier(identifier, "string", packageName));
+        int resourceId = resources.getIdentifier(identifier, "string", packageName);
+        return resourceId > 0 ? (String)resources.getText(resourceId) : "";
     }
 }
