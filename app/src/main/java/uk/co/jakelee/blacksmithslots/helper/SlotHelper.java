@@ -297,6 +297,7 @@ public class SlotHelper {
 
                 LevelHelper.addXp(spinCost);
                 Statistic.add(Enums.Statistic.TotalSpins);
+                GooglePlayHelper.addEvent(Enums.Event.Spin);
 
                 for (WheelView wheel : slots) {
                     wheel.scroll(-350 + (int) (Math.random() * 150), 2250);

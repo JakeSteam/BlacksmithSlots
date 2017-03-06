@@ -7,6 +7,13 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
+
+    <style name="Theme.AlertDialog" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="android:background">@color/white</item>
+        <item name="colorAccent">@color/blue</item>  <!--Buttons -->
+        <item name="android:textColorPrimary">@color/black</item> <!-- Main text -->
+        <item name="android:windowFullscreen">true</item>
+    </style>
     
     <style name="SlotText" parent="FontSize">
         <item name="android:layout_width">60dp</item>

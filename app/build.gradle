@@ -20,10 +20,17 @@ android {
 }
 
 dependencies {
-    compile project(path: ':wheel')
-    compile 'com.android.support:appcompat-v7:25.1.0'
-    compile "com.android.support:percent:25.1.0"
+    compile project(':wheel')
+    compile project(':BaseGameUtils')
 
+    compile "com.android.support:appcompat-v7:$supportLibraryVersion"
+    compile "com.android.support:percent:$supportLibraryVersion"
+    compile "com.google.android.gms:play-services-games:$playLibraryVersion"
+    compile "com.google.android.gms:play-services-auth:$playLibraryVersion"
+
+    compile 'com.google.code.gson:gson:2.6.2'
     compile 'com.github.satyan:sugar:1.5'
     compile 'com.squareup.picasso:picasso:2.5.2'
+    compile 'com.anjlab.android.iab.v3:library:1.0.31'
+    compile 'com.github.hotchemi:android-rate:1.0.1'
 }

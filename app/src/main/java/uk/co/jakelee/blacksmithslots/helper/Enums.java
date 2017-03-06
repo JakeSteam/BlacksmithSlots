@@ -1,10 +1,18 @@
 package uk.co.jakelee.blacksmithslots.helper;
 
 public class Enums {
+    public enum Achievement {
+        UnlockSlot1("achievementcode");
+        public String value;
+        Achievement(String value) {
+            this.value = value;
+        }
+    }
+
     public enum Event {
-        Spin(1);
-        private int value;
-        Event(int value) {
+        Spin("atext"), QuestCompleted("bbb");
+        public String value;
+        Event(String value) {
             this.value = value;
         }
     }
@@ -13,6 +21,14 @@ public class Enums {
         Resource(1), Event(2);
         private int value;
         RequirementType(int value) {
+            this.value = value;
+        }
+    }
+
+    public enum Setting {
+        Music(1), Sound(2), AttemptLogin(3), AutosaveMinutes(4);
+        private int value;
+        Setting(int value) {
             this.value = value;
         }
     }
@@ -26,7 +42,7 @@ public class Enums {
     }
 
     public enum Statistic {
-        Xp(1), Level(2), TotalSpins(3);
+        Xp(1), Level(2), TotalSpins(3), QuestsCompleted(4), LastAutosave(5);
         public int value;
         Statistic(int value) {
             this.value = value;

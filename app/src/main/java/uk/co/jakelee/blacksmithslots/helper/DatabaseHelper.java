@@ -1,26 +1,112 @@
 package uk.co.jakelee.blacksmithslots.helper;
 
+import android.app.Activity;
+import android.content.SharedPreferences;
+import android.os.AsyncTask;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import android.widget.Toast;
+
 import java.util.ArrayList;
 import java.util.List;
 
-import uk.co.jakelee.blacksmithslots.model.Event;
 import uk.co.jakelee.blacksmithslots.model.Inventory;
 import uk.co.jakelee.blacksmithslots.model.Item;
 import uk.co.jakelee.blacksmithslots.model.Reward;
+import uk.co.jakelee.blacksmithslots.model.Setting;
 import uk.co.jakelee.blacksmithslots.model.Slot;
 import uk.co.jakelee.blacksmithslots.model.Statistic;
 import uk.co.jakelee.blacksmithslots.model.Task;
 
-public class DatabaseHelper {
-    public static void testSetup() {
-        List<Event> events = new ArrayList<>();
-            events.add(new Event(Enums.Event.Spin));
-        Event.saveInTx(events);
+import static android.content.Context.MODE_PRIVATE;
 
+public class DatabaseHelper extends AsyncTask<String, String, String> {
+    public final static int NO_DATABASE = 0;
+    public final static int V0_0_1 = 1;
+
+    public final static int LATEST_PATCH = V0_0_1;
+
+    private Activity callingActivity;
+    private TextView progressText;
+    private ProgressBar progressBar;
+
+    public DatabaseHelper(Activity activity, boolean runningFromMain) {
+        this.callingActivity = activity;
+        if (runningFromMain) {
+            //this.progressText = (TextView) activity.findViewById(R.id.progressText);
+            //this.progressBar = (ProgressBar) activity.findViewById(R.id.progressBar);
+        }
+    }
+
+    private void createDatabase() {
+        setProgress("Inventory", 0);
+        createInventories();
+        setProgress("Items", 0);
+        createItems();
+        setProgress("Settings", 0);
+        createSettings();
+        setProgress("Slots", 0);
+        createSlots();
+        setProgress("Statistics", 0);
+        createStatistics();
+        setProgress("Tasks", 0);
+        createTasks();
+    }
+
+    private void setProgress(String currentTask, int percentage) {
+        if (progressText != null && progressBar != null) {
+            publishProgress(currentTask);
+            progressBar.setProgress(percentage);
+        }
+    }
+
+    @Override
+    protected String doInBackground(String... params) {
+        SharedPreferences prefs = callingActivity.getSharedPreferences("uk.co.jakelee.blacksmithslots", MODE_PRIVATE);
+
+        if (prefs.getInt("databaseVersion", DatabaseHelper.NO_DATABASE) <= DatabaseHelper.NO_DATABASE) {
+            createDatabase();
+            prefs.edit().putInt("databaseVersion", V0_0_1).apply();
+        }
+
+        /*if (prefs.getInt("databaseVersion", DatabaseHelper.NO_DATABASE) < DatabaseHelper.V0_0_2) {
+            setProgress("Patch 0.0.2", 60);
+            patchTo002();
+            prefs.edit().putInt("databaseVersion", DatabaseHelper.V0_0_2).apply();
+        }*/
+        return "";
+    }
+
+    @Override
+    protected void onPostExecute(String result) {
+        if (result.length() > 0) {
+            Toast.makeText(callingActivity, result, Toast.LENGTH_SHORT).show();
+        }
+
+        /*RelativeLayout mainMenuWrapper = (RelativeLayout) callingActivity.findViewById(R.id.mainMenuWrapper);
+        RelativeLayout progressWrapper = (RelativeLayout) callingActivity.findViewById(R.id.progressWrapper);
+        if (mainMenuWrapper != null && progressWrapper != null) {
+            progressWrapper.setVisibility(View.GONE);
+            mainMenuWrapper.setVisibility(View.VISIBLE);
+        }*/
+    }
+
+    @Override
+    protected void onPreExecute() {
+    }
+
+    @Override
+    protected void onProgressUpdate(String... values) {
+        progressText.setText("Installing:\n" + values[0]);
+    }
+
+    private void createInventories() {
         List<Inventory> inventories = new ArrayList<>();
             inventories.add(new Inventory(Enums.Tier.Bronze, Enums.Type.Ore, 9999));
         Inventory.saveInTx(inventories);
+    }
 
+    private void createItems() {
         List<Item> items = new ArrayList<>();
             items.add(new Item(Enums.Tier.Bronze, Enums.Type.Ore));
             items.add(new Item(Enums.Tier.Bronze, Enums.Type.Bar));
@@ -43,7 +129,18 @@ public class DatabaseHelper {
 
             items.add(new Item(Enums.Tier.Internal, Enums.Type.Wildcard));
         Item.saveInTx(items);
+    }
 
+    private void createSettings() {
+        List<Setting> settings = new ArrayList<>();
+            settings.add(new Setting(Enums.Setting.Music, true));
+            settings.add(new Setting(Enums.Setting.Sound, true));
+            settings.add(new Setting(Enums.Setting.AttemptLogin, true));
+            settings.add(new Setting(Enums.Setting.AutosaveMinutes, 10));
+        Setting.saveInTx(settings);
+    }
+
+    private void createSlots() {
         List<Slot> slots = new ArrayList<>();
         List<Reward> rewards = new ArrayList<>();
             slots.add(new Slot(Constants.SLOT_BRONZE_FURNACE, 1, 1, 2, 5, 1, 5, Constants.SLOTS_4_MAX_ROUTES, 2, Enums.Tier.Bronze, Enums.Type.Ore, Enums.SlotType.Furnace, 4, 1));
@@ -83,13 +180,19 @@ public class DatabaseHelper {
             rewards.add(new Reward(Constants.SLOT_BRONZE_ACCESSORY, Enums.Tier.Internal, Enums.Type.Wildcard, 1, 1));
         Slot.saveInTx(slots);
         Reward.saveInTx(rewards);
+    }
 
+    private void createStatistics() {
         List<Statistic> statistics = new ArrayList<>();
             statistics.add(new Statistic(Enums.Statistic.Xp, Constants.STARTING_XP));
             statistics.add(new Statistic(Enums.Statistic.Level, 0));
             statistics.add(new Statistic(Enums.Statistic.TotalSpins, 0));
+            statistics.add(new Statistic(Enums.Statistic.QuestsCompleted, 0));
+            statistics.add(new Statistic(Enums.Statistic.LastAutosave, 0));
         Statistic.saveInTx(statistics);
+    }
 
+    private void createTasks() {
         int position;
         List<Task> tasks = new ArrayList<>();
             position = 1;

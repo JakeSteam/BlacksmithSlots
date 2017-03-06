@@ -15,18 +15,34 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.drive.Drive;
+import com.google.android.gms.games.Games;
+import com.google.android.gms.games.quest.Quest;
+import com.google.android.gms.games.quest.QuestUpdateListener;
+
 import java.util.List;
 
+import hotchemi.android.rate.AppRate;
 import uk.co.jakelee.blacksmithslots.R;
 import uk.co.jakelee.blacksmithslots.helper.Constants;
 import uk.co.jakelee.blacksmithslots.helper.DatabaseHelper;
 import uk.co.jakelee.blacksmithslots.helper.DisplayHelper;
+import uk.co.jakelee.blacksmithslots.helper.Enums;
+import uk.co.jakelee.blacksmithslots.helper.GooglePlayHelper;
 import uk.co.jakelee.blacksmithslots.helper.TaskHelper;
 import uk.co.jakelee.blacksmithslots.model.Reward;
+import uk.co.jakelee.blacksmithslots.model.Setting;
 import uk.co.jakelee.blacksmithslots.model.Slot;
 import uk.co.jakelee.blacksmithslots.model.Task;
 
-public class MapActivity extends AppCompatActivity {
+public class MapActivity extends AppCompatActivity implements
+        GoogleApiClient.ConnectionCallbacks,
+        GoogleApiClient.OnConnectionFailedListener,
+        QuestUpdateListener {
+    public static SharedPreferences prefs;
+
     private int selectedSlot = 1;
     private ViewPager mViewPager;
     private CustomPagerAdapter mCustomPagerAdapter;
@@ -35,14 +51,21 @@ public class MapActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map);
+        prefs = getSharedPreferences("uk.co.jakelee.blacksmithslots", MODE_PRIVATE);
 
-        SharedPreferences prefs = getSharedPreferences("uk.co.jakelee.blacksmithslots", MODE_PRIVATE);
-        if (prefs.getBoolean("firstRun", true)) {
-            DatabaseHelper.testSetup();
-            prefs.edit().putBoolean("firstRun", false).apply();
-        }
+        new DatabaseHelper(this, true).execute();
+
+        ratingPrompt();
 
         populateSlotInfo();
+
+        GooglePlayHelper.mGoogleApiClient = new GoogleApiClient.Builder(this)
+                .addConnectionCallbacks(this)
+                .addOnConnectionFailedListener(this)
+                .addApi(Games.API).addScope(Games.SCOPE_GAMES)
+                .addApi(Drive.API).addScope(Drive.SCOPE_APPFOLDER)
+                .build();
+        tryGoogleLogin();
 
 
         mCustomPagerAdapter = new CustomPagerAdapter(this);
@@ -54,6 +77,27 @@ public class MapActivity extends AppCompatActivity {
             }
         });
         mViewPager.setAdapter(mCustomPagerAdapter);
+    }
+
+    public void tryGoogleLogin() {
+        // If we've got all we need, and we need to sign in, or it is first run.
+        if (GooglePlayHelper.AreGooglePlayServicesInstalled(this) &&
+                !GooglePlayHelper.IsConnected() &&
+                !GooglePlayHelper.mGoogleApiClient.isConnecting() &&
+                (Setting.getBoolean(Enums.Setting.AttemptLogin) || prefs.getInt("databaseVersion", DatabaseHelper.NO_DATABASE) <= DatabaseHelper.NO_DATABASE)) {
+            GooglePlayHelper.mGoogleApiClient.connect();
+        }
+    }
+
+    private void ratingPrompt() {
+        AppRate.with(this)
+                .setInstallDays(3)
+                .setLaunchTimes(3)
+                .setRemindInterval(3)
+                .setShowLaterButton(true)
+                .monitor();
+
+        AppRate.showRateDialogIfMeetsConditions(this);
     }
 
     public void openSlot(View v) {
@@ -178,5 +222,30 @@ public class MapActivity extends AppCompatActivity {
         public void destroyItem(ViewGroup container, int position, Object object) {
             container.removeView((LinearLayout) object);
         }
+    }
+
+    @Override
+    public void onConnected(Bundle connectionHint) {
+        if (GooglePlayHelper.IsConnected()) {
+            Games.Quests.registerQuestUpdateListener(GooglePlayHelper.mGoogleApiClient, this);
+        }
+    }
+
+    @Override
+    public void onConnectionFailed(ConnectionResult connectionResult) {
+        GooglePlayHelper.ConnectionFailed(this, connectionResult);
+    }
+
+    @Override
+    public void onConnectionSuspended(int i) {
+        GooglePlayHelper.mGoogleApiClient.connect();
+    }
+
+    public void onQuestCompleted(Quest quest) {
+        Toast.makeText(this, "Quest completed", Toast.LENGTH_SHORT).show();
+    }
+
+    protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
+        GooglePlayHelper.ActivityResult(this, requestCode, resultCode);
     }
 }

@@ -15,6 +15,7 @@ import uk.co.jakelee.blacksmithslots.helper.TextHelper;
 public class Statistic extends SugarRecord {
     private Enums.Statistic statistic;
     private int intValue;
+    private long longValue;
     private boolean boolValue;
     private String stringValue;
 
@@ -24,6 +25,11 @@ public class Statistic extends SugarRecord {
     public Statistic(Enums.Statistic statistic, int intValue) {
         this.statistic = statistic;
         this.intValue = intValue;
+    }
+
+    public Statistic(Enums.Statistic statistic, long longValue) {
+        this.statistic = statistic;
+        this.longValue = longValue;
     }
 
     public Statistic(Enums.Statistic statistic, boolean boolValue) {
@@ -57,6 +63,14 @@ public class Statistic extends SugarRecord {
 
     public void setIntValue(int intValue) {
         this.intValue = intValue;
+    }
+
+    public long getLongValue() {
+        return longValue;
+    }
+
+    public void setLongValue(long longValue) {
+        this.longValue = longValue;
     }
 
     public boolean isBoolValue() {
