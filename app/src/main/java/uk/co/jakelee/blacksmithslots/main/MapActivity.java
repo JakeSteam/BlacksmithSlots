@@ -11,7 +11,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -48,8 +47,6 @@ public class MapActivity extends AppCompatActivity {
         mCustomPagerAdapter = new CustomPagerAdapter(this);
 
         mViewPager = (ViewPager) findViewById(R.id.townScroller);
-        mViewPager.setClipToPadding(false);
-        mViewPager.setOffscreenPageLimit(4);
         mViewPager.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
             public void onPageSelected(int position) {
                 Log.d("Position", "Selected:" + position);
@@ -160,14 +157,15 @@ public class MapActivity extends AppCompatActivity {
 
         @Override
         public Object instantiateItem(ViewGroup container, int position) {
-            View itemView = mLayoutInflater.inflate(R.layout.custom_town_1, container, false);
-
-            ImageView imageView = (ImageView) itemView.findViewById(R.id.imageView);
-            imageView.setImageResource(R.drawable.map);
-
-            container.addView(itemView);
-
-            return itemView;
+            if (position == 0) {
+                View itemView = mLayoutInflater.inflate(R.layout.custom_town_1, container, false);
+                container.addView(itemView);
+                return itemView;
+            } else {
+                View itemView = mLayoutInflater.inflate(R.layout.custom_town_2, container, false);
+                container.addView(itemView);
+                return itemView;
+            }
         }
 
         @Override

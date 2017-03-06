@@ -1,11 +1,69 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
+<android.support.percent.PercentRelativeLayout android:id="@+id/shapeLayout"
+    android:layout_width="wrap_content"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:scaleType="centerCrop"/>
-</LinearLayout>
+        android:id="@+id/wallpaper_id"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:scaleType="fitXY"
+        android:src="@drawable/map1"/>
+
+    <ImageView
+        android:layout_width="40dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="140dp"
+        android:onClick="selectSlot"
+        android:tag="1"
+        android:src="@color/white"
+        android:alpha="0.5"
+        app:layout_heightPercent="13%"
+        app:layout_marginTopPercent="58%" />
+
+    <ImageView
+        android:layout_width="40dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="140dp"
+        android:onClick="selectSlot"
+        android:tag="2"
+        android:src="@color/white"
+        android:alpha="0.5"
+        app:layout_heightPercent="13%"
+        app:layout_marginTopPercent="43%" />
+
+    <ImageView
+        android:layout_width="40dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="140dp"
+        android:onClick="selectSlot"
+        android:tag="3"
+        android:src="@color/white"
+        android:alpha="0.5"
+        app:layout_heightPercent="13%"
+        app:layout_marginTopPercent="28%" />
+
+    <ImageView
+        android:layout_width="40dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="270dp"
+        android:onClick="selectSlot"
+        android:tag="4"
+        android:src="@color/white"
+        android:alpha="0.5"
+        app:layout_heightPercent="13%"
+        app:layout_marginTopPercent="43%" />
+
+    <ImageView
+        android:layout_width="40dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="330dp"
+        android:onClick="selectSlot"
+        android:tag="5"
+        android:src="@color/white"
+        android:alpha="0.5"
+        app:layout_heightPercent="13%"
+        app:layout_marginTopPercent="43%" />
+
+</android.support.percent.PercentRelativeLayout>
