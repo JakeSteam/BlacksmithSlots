@@ -14,7 +14,7 @@ import uk.co.jakelee.blacksmithslots.helper.GooglePlayHelper;
 import uk.co.jakelee.blacksmithslots.helper.TextHelper;
 
 public class Statistic extends SugarRecord {
-    private Enums.Statistic statistic;
+    private int statistic;
     private String eventId;
     private String leaderboardId;
     private int intValue;
@@ -26,28 +26,28 @@ public class Statistic extends SugarRecord {
     }
 
     public Statistic(Enums.Statistic statistic, String eventId, String leaderboardId, int intValue) {
-        this.statistic = statistic;
+        this.statistic = statistic.value;
         this.eventId = eventId;
         this.leaderboardId = leaderboardId;
         this.intValue = intValue;
     }
 
     public Statistic(Enums.Statistic statistic, String eventId, String leaderboardId, long longValue) {
-        this.statistic = statistic;
+        this.statistic = statistic.value;
         this.eventId = eventId;
         this.leaderboardId = leaderboardId;
         this.longValue = longValue;
     }
 
     public Statistic(Enums.Statistic statistic, String eventId, String leaderboardId, boolean boolValue) {
-        this.statistic = statistic;
+        this.statistic = statistic.value;
         this.eventId = eventId;
         this.leaderboardId = leaderboardId;
         this.boolValue = boolValue;
     }
 
     public Statistic(Enums.Statistic statistic, String eventId, String leaderboardId, String stringValue) {
-        this.statistic = statistic;
+        this.statistic = statistic.value;
         this.eventId = eventId;
         this.leaderboardId = leaderboardId;
         this.stringValue = stringValue;
@@ -61,11 +61,11 @@ public class Statistic extends SugarRecord {
     }
 
     public Enums.Statistic getStatistic() {
-        return statistic;
+        return Enums.Statistic.get(statistic);
     }
 
     public void setStatistic(Enums.Statistic statistic) {
-        this.statistic = statistic;
+        this.statistic = statistic.value;
     }
 
     public String getEventId() {
@@ -121,7 +121,7 @@ public class Statistic extends SugarRecord {
     }
 
     public static void add(Enums.Statistic stat, int amount) {
-        Statistic statistic = Select.from(Statistic.class).where(Condition.prop("statistic").eq(stat)).first();
+        Statistic statistic = Select.from(Statistic.class).where(Condition.prop("statistic").eq(stat.value)).first();
 
         if (statistic == null) {
             return;

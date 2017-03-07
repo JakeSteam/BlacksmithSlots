@@ -39,6 +39,14 @@ public class Enums {
         Statistic(int value) {
             this.value = value;
         }
+        public static Statistic get(int code) {
+            for (Statistic statistic : Statistic.values()) {
+                if (code == statistic.value) {
+                    return statistic;
+                }
+            }
+            return null;
+        }
     }
 
     public enum Tier {
