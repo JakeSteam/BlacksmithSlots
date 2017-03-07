@@ -1,16 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:id="@android:id/background">
-        <shape>
-            <solid android:color="@color/white" />
-        </shape>
+        <nine-patch android:src="@drawable/background_white" android:dither="true" />
     </item>
-
     <item android:id="@android:id/progress">
         <clip>
-            <shape>
-                <solid android:color="@color/green" />
-            </shape>
+            <nine-patch android:src="@drawable/box_filled_green" android:dither="true" />
         </clip>
     </item>
 
