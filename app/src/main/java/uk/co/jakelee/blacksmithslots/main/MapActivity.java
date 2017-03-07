@@ -53,8 +53,6 @@ public class MapActivity extends AppCompatActivity implements
         setContentView(R.layout.activity_map);
         prefs = getSharedPreferences("uk.co.jakelee.blacksmithslots", MODE_PRIVATE);
 
-        new DatabaseHelper(this, true).execute();
-
         ratingPrompt();
 
         GooglePlayHelper.mGoogleApiClient = new GoogleApiClient.Builder(this)

@@ -1,6 +1,5 @@
 package uk.co.jakelee.blacksmithslots.helper;
 
-import android.app.Activity;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.widget.ProgressBar;
@@ -10,6 +9,8 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
+import uk.co.jakelee.blacksmithslots.R;
+import uk.co.jakelee.blacksmithslots.main.SplashScreenActivity;
 import uk.co.jakelee.blacksmithslots.model.Inventory;
 import uk.co.jakelee.blacksmithslots.model.Item;
 import uk.co.jakelee.blacksmithslots.model.Reward;
@@ -26,15 +27,17 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
 
     public final static int LATEST_PATCH = V0_0_1;
 
-    private Activity callingActivity;
+    private SplashScreenActivity callingActivity;
     private TextView progressText;
     private ProgressBar progressBar;
 
-    public DatabaseHelper(Activity activity, boolean runningFromMain) {
+    public DatabaseHelper() {}
+
+    public DatabaseHelper(SplashScreenActivity activity, boolean runningFromMain) {
         this.callingActivity = activity;
         if (runningFromMain) {
-            //this.progressText = (TextView) activity.findViewById(R.id.progressText);
-            //this.progressBar = (ProgressBar) activity.findViewById(R.id.progressBar);
+            this.progressText = (TextView) activity.findViewById(R.id.progressText);
+            this.progressBar = (ProgressBar) activity.findViewById(R.id.progressBar);
         }
     }
 
@@ -83,12 +86,9 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
             Toast.makeText(callingActivity, result, Toast.LENGTH_SHORT).show();
         }
 
-        /*RelativeLayout mainMenuWrapper = (RelativeLayout) callingActivity.findViewById(R.id.mainMenuWrapper);
-        RelativeLayout progressWrapper = (RelativeLayout) callingActivity.findViewById(R.id.progressWrapper);
-        if (mainMenuWrapper != null && progressWrapper != null) {
-            progressWrapper.setVisibility(View.GONE);
-            mainMenuWrapper.setVisibility(View.VISIBLE);
-        }*/
+        if (callingActivity != null) {
+            callingActivity.startGame();
+        }
     }
 
     @Override
