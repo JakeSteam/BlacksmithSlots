@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <TableRow xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/itemRow"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content">
 
     <ImageView
@@ -12,10 +12,11 @@
 
     <uk.co.jakelee.blacksmithslots.components.FontTextView
         android:id="@+id/itemInfo"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
+        android:layout_weight="1"
         android:layout_height="wrap_content"
         android:textAppearance="@style/FontSize"
         android:maxLines="3"
         android:layout_gravity="center_vertical"
-        android:paddingRight="13dp"/>
+        android:paddingLeft="5dp"/>
 </TableRow>

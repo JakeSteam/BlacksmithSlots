@@ -69,7 +69,7 @@
             android:layout_margin="5dp"
             android:background="@drawable/background_resource"
             android:paddingTop="7dp"
-            android:paddingLeft="7dp"
+            android:paddingLeft="2dp"
             android:paddingRight="7dp"
             android:paddingBottom="10dp">
             <ImageView
