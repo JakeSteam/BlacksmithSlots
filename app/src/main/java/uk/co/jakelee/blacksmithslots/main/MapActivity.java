@@ -57,9 +57,6 @@ public class MapActivity extends AppCompatActivity implements
 
         ratingPrompt();
 
-        // Will fail first time because DB doesn't exist!
-        populateSlotInfo();
-
         GooglePlayHelper.mGoogleApiClient = new GoogleApiClient.Builder(this)
                 .addConnectionCallbacks(this)
                 .addOnConnectionFailedListener(this)
@@ -117,6 +114,20 @@ public class MapActivity extends AppCompatActivity implements
         populateSlotInfo();
     }
 
+    public void openSettings(View v) {
+        startActivity(new Intent(this, SettingsActivity.class)
+                .addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT));
+    }
+
+    public void openStatistics(View v) {
+        startActivity(new Intent(this, StatisticsActivity.class)
+                .addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT));
+    }
+
+    public void loadSidebar(View v) {
+        findViewById(R.id.noSlotSelected).setVisibility(View.VISIBLE);
+    }
+
     public void handIn(View v) {
         Task task = Task.findById(Task.class, (int)(long)v.getTag());
         if (task.getTier() != null && task.itemsCanBeSubmitted()) {
@@ -133,6 +144,7 @@ public class MapActivity extends AppCompatActivity implements
 
     private void populateSlotInfo() {
         if (selectedSlot > 0) {
+            findViewById(R.id.noSlotSelected).setVisibility(View.GONE);
             Slot slot = Slot.get(selectedSlot);
             if (slot != null) {
                 ((TextView) findViewById(R.id.slotTitle)).setText(slot.getName(this));
