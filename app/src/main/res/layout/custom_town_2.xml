@@ -19,31 +19,31 @@
         app:layout_marginLeftPercent="11.1%" />
 
     <ImageView
-        android:tag="2"
+        android:tag="1"
         style="@style/SlotClickArea"
         app:layout_marginTopPercent="37.5%"
         app:layout_marginLeftPercent="11.1%" />
 
     <ImageView
-        android:tag="3"
+        android:tag="1"
         style="@style/SlotClickArea"
         app:layout_marginTopPercent="37.5%"
         app:layout_marginLeftPercent="33.3%" />
 
     <ImageView
-        android:tag="4"
+        android:tag="1"
         style="@style/SlotClickArea"
         app:layout_marginTopPercent="50%"
         app:layout_marginLeftPercent="44.4%" />
 
     <ImageView
-        android:tag="6"
+        android:tag="1"
         style="@style/SlotClickArea"
         app:layout_marginTopPercent="25%"
         app:layout_marginLeftPercent="44.4%" />
 
     <ImageView
-        android:tag="6"
+        android:tag="1"
         style="@style/SlotClickArea"
         app:layout_marginTopPercent="25%"
         app:layout_marginLeftPercent="66.6%" />
