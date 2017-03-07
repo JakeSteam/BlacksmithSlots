@@ -10,9 +10,9 @@ import uk.co.jakelee.blacksmithslots.helper.TextHelper;
 public class Task extends SugarRecord {
     private int slotId;
     private int position;
-    private Enums.Statistic statistic;
-    private Enums.Tier tier;
-    private Enums.Type type;
+    private int statistic;
+    private int tier;
+    private int type;
     private int target;
     private int remaining;
     private long started;
@@ -24,7 +24,7 @@ public class Task extends SugarRecord {
     public Task(int slotId, int position, Enums.Statistic statistic, int target) {
         this.slotId = slotId;
         this.position = position;
-        this.statistic = statistic;
+        this.statistic = statistic.value;
         this.target = target;
         this.remaining = target;
         this.started = 0;
@@ -34,8 +34,8 @@ public class Task extends SugarRecord {
     public Task(int slotId, int position, Enums.Tier tier, Enums.Type type, int target) {
         this.slotId = slotId;
         this.position = position;
-        this.tier = tier;
-        this.type = type;
+        this.tier = tier.value;
+        this.type = type.value;
         this.target = target;
         this.remaining = target;
         this.started = 0;
@@ -59,27 +59,27 @@ public class Task extends SugarRecord {
     }
 
     public Enums.Statistic getStatistic() {
-        return statistic;
+        return Enums.Statistic.get(statistic);
     }
 
     public void setStatistic(Enums.Statistic statistic) {
-        this.statistic = statistic;
+        this.statistic = statistic.value;
     }
 
     public Enums.Tier getTier() {
-        return tier;
+        return Enums.Tier.get(tier);
     }
 
     public void setTier(Enums.Tier tier) {
-        this.tier = tier;
+        this.tier = tier.value;
     }
 
     public Enums.Type getType() {
-        return type;
+        return Enums.Type.get(type);
     }
 
     public void setType(Enums.Type type) {
-        this.type = type;
+        this.type = type.value;
     }
 
     public int getTarget() {
@@ -119,7 +119,7 @@ public class Task extends SugarRecord {
     }
 
     public String toString(Context context) {
-        if (statistic != null) {
+        if (statistic > 0) {
             return Statistic.getName(context, statistic) + ": " + (target-remaining) + "/" + target;
         } else {
             return Item.getName(context, tier, type) + ": " + (target-remaining) + "/" + target;
@@ -131,7 +131,7 @@ public class Task extends SugarRecord {
     }
 
     public boolean itemsCanBeSubmitted() {
-        return statistic == null
+        return statistic == 0
             && remaining > 0
             && Inventory.getInventory(tier, type).getQuantity() > 0;
     }

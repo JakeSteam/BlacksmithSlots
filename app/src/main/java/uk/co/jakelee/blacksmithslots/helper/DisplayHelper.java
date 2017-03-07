@@ -12,24 +12,24 @@ import android.widget.ImageView;
 import uk.co.jakelee.blacksmithslots.constructs.SlotResult;
 
 public class DisplayHelper {
-    public static String getItemNameLookupString(Enums.Tier tier, Enums.Type type) {
-        return "item_" + tier.value + "_" + type.value;
+    public static String getItemNameLookupString(int tier, int type) {
+        return "item_" + tier + "_" + type;
     }
 
     public static String getItemImageFile(SlotResult result, boolean useDefault) {
-        return getItemImageFile(result.getResourceTier(), result.getResourceType(), 1);
+        return getItemImageFile(result.getResourceTier().value, result.getResourceType().value, 1);
     }
 
     public static String getItemImageFile(SlotResult result) {
-        return getItemImageFile(result.getResourceTier(), result.getResourceType(), result.getResourceMultiplier());
+        return getItemImageFile(result.getResourceTier().value, result.getResourceType().value, result.getResourceMultiplier());
     }
 
-    public static String getItemImageFile(Enums.Tier tier, Enums.Type type) {
+    public static String getItemImageFile(int tier, int type) {
         return getItemImageFile(tier, type, 1);
     }
 
-    public static String getItemImageFile(Enums.Tier tier, Enums.Type type, int quantity) {
-        return "item_" + tier.value + "_" + type.value + (quantity > 1 ? "_" + quantity : "");
+    public static String getItemImageFile(int tier, int type, int quantity) {
+        return "item_" + tier + "_" + type + (quantity > 1 ? "_" + quantity : "");
     }
 
     public static ImageView createImageView(Context context, String idName, int width, int height) {

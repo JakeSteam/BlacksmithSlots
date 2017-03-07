@@ -173,8 +173,8 @@ public class Statistic extends SugarRecord {
         return tasks;
     }
 
-    public static String getName(Context context, Enums.Statistic statistic) {
-        return TextHelper.getInstance(context).getText("statistic_" + statistic.value + "_name");
+    public static String getName(Context context, int statistic) {
+        return TextHelper.getInstance(context).getText("statistic_" + statistic + "_name");
     }
 
 }

@@ -9,27 +9,35 @@ public class Enums {
         }
     }
 
-    public enum RequirementType {
-        Resource(1), Event(2);
-        private int value;
-        RequirementType(int value) {
-            this.value = value;
-        }
-    }
-
     public enum Setting {
         Music(1), Sound(2), AttemptLogin(3), AutosaveMinutes(4);
-        private int value;
+        public int value;
         Setting(int value) {
             this.value = value;
+        }
+        public static Setting get(int value) {
+            for (Setting item : Setting.values()) {
+                if (value == item.value) {
+                    return item;
+                }
+            }
+            return null;
         }
     }
 
     public enum SlotType {
         Furnace(1), Weapon(2), Tool(3), Armour(4), Accessory(5), Misc(6);
-        private int value;
+        public int value;
         SlotType(int value) {
             this.value = value;
+        }
+        public static SlotType get(int value) {
+            for (SlotType item : SlotType.values()) {
+                if (value == item.value) {
+                    return item;
+                }
+            }
+            return null;
         }
     }
 
@@ -39,10 +47,10 @@ public class Enums {
         Statistic(int value) {
             this.value = value;
         }
-        public static Statistic get(int code) {
-            for (Statistic statistic : Statistic.values()) {
-                if (code == statistic.value) {
-                    return statistic;
+        public static Statistic get(int value) {
+            for (Statistic item : Statistic.values()) {
+                if (value == item.value) {
+                    return item;
                 }
             }
             return null;
@@ -55,6 +63,14 @@ public class Enums {
         Tier(int value) {
             this.value = value;
         }
+        public static Tier get(int value) {
+            for (Tier item : Tier.values()) {
+                if (value == item.value) {
+                    return item;
+                }
+            }
+            return null;
+        }
     }
 
     public enum Type {
@@ -62,6 +78,14 @@ public class Enums {
         public int value;
         Type(int value) {
             this.value = value;
+        }
+        public static Type get(int value) {
+            for (Type item : Type.values()) {
+                if (value == item.value) {
+                    return item;
+                }
+            }
+            return null;
         }
     }
 }

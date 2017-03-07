@@ -158,13 +158,13 @@ public class MapActivity extends AppCompatActivity implements
 
                     LinearLayout resourceContainer = (LinearLayout)findViewById(R.id.resourceContainer);
                     resourceContainer.removeAllViews();
-                    resourceContainer.addView(DisplayHelper.createImageView(this, DisplayHelper.getItemImageFile(slot.getResourceTier(), slot.getResourceType()), 30, 30));
+                    resourceContainer.addView(DisplayHelper.createImageView(this, DisplayHelper.getItemImageFile(slot.getResourceTier().value, slot.getResourceType().value), 30, 30));
 
                     LinearLayout rewardContainer = (LinearLayout)findViewById(R.id.rewardContainer);
                     rewardContainer.removeAllViews();
                     List<Reward> rewards = slot.getRewards();
                     for (Reward reward : rewards) {
-                        rewardContainer.addView(DisplayHelper.createImageView(this, DisplayHelper.getItemImageFile(reward.getTier(), reward.getType(), reward.getQuantityMultiplier()), 30, 30));
+                        rewardContainer.addView(DisplayHelper.createImageView(this, DisplayHelper.getItemImageFile(reward.getTier().value, reward.getType().value, reward.getQuantityMultiplier()), 30, 30));
                     }
 
                     findViewById(R.id.lockedSlot).setVisibility(View.GONE);

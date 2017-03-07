@@ -13,14 +13,20 @@ import uk.co.jakelee.blacksmithslots.helper.Enums;
 import uk.co.jakelee.blacksmithslots.helper.TextHelper;
 
 public class Inventory extends SugarRecord {
-    private Enums.Tier tier;
-    private Enums.Type type;
+    private int tier;
+    private int type;
     private int quantity;
 
     public Inventory() {
     }
 
     public Inventory(Enums.Tier tier, Enums.Type type, int quantity) {
+        this.tier = tier.value;
+        this.type = type.value;
+        this.quantity = quantity;
+    }
+
+    public Inventory(int tier, int type, int quantity) {
         this.tier = tier;
         this.type = type;
         this.quantity = quantity;
@@ -35,12 +41,12 @@ public class Inventory extends SugarRecord {
     }
 
     public static void addInventory(Enums.Tier tier, Enums.Type type, int quantity) {
-        Inventory inventory = getInventory(tier, type);
+        Inventory inventory = getInventory(tier.value, type.value);
         inventory.setQuantity(inventory.getQuantity() + quantity);
         inventory.save();
     }
 
-    public static Inventory getInventory(Enums.Tier tier, Enums.Type type) {
+    public static Inventory getInventory(int tier, int type) {
         List<Inventory> inventories = Select.from(Inventory.class).where(
                 Condition.prop("type").eq(type),
                 Condition.prop("tier").eq(tier)

@@ -292,7 +292,7 @@ public class SlotHelper {
                 //highlightResults(false);
             }
             stillSpinningSlots = slot.getSlots();
-            Inventory inventory = Inventory.getInventory(slot.getResourceTier(), slot.getResourceType());
+            Inventory inventory = Inventory.getInventory(slot.getResourceTier().value, slot.getResourceType().value);
 
             int spinCost = slot.getCurrentStake() * slot.getCurrentRows() * slot.getResourceQuantity();
             if (inventory.getQuantity() >= spinCost) {
@@ -318,13 +318,13 @@ public class SlotHelper {
 
     public void updateResourceCount() {
         List<Inventory> items = Select.from(Inventory.class).where(
-                Condition.prop("tier").notEq(resourceTier.name())).or(
-                Condition.prop("type").notEq(resourceType.name())
+                Condition.prop("tier").notEq(resourceTier.value)).or(
+                Condition.prop("type").notEq(resourceType.value)
         ).orderBy("quantity DESC").list();
 
-        Inventory inventory = Inventory.getInventory(resourceTier, resourceType);
+        Inventory inventory = Inventory.getInventory(resourceTier.value, resourceType.value);
         picasso.load(inventory.getDrawableId(activity)).into((ImageView)activity.findViewById(R.id.resourceImage));
-        ((TextView)activity.findViewById(R.id.resourceInfo)).setText(inventory.getQuantity() + "x " + Item.getName(activity, resourceTier, resourceType));
+        ((TextView)activity.findViewById(R.id.resourceInfo)).setText(inventory.getQuantity() + "x " + Item.getName(activity, resourceTier.value, resourceType.value));
 
         TableLayout.LayoutParams params = new TableLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
 
