@@ -21,6 +21,9 @@
         <meta-data
             android:name="DOMAIN_PACKAGE_NAME"
             android:value="uk.co.jakelee.blacksmithslots.model" />
+        <meta-data
+            android:name="com.google.android.gms.games.APP_ID"
+            android:value="@string/app_id" />
 
         <activity
             android:name=".main.SlotActivity"

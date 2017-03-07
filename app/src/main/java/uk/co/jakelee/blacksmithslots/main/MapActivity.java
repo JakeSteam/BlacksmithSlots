@@ -81,10 +81,13 @@ public class MapActivity extends AppCompatActivity implements
 
     public void tryGoogleLogin() {
         // If we've got all we need, and we need to sign in, or it is first run.
-        if (GooglePlayHelper.AreGooglePlayServicesInstalled(this) &&
-                !GooglePlayHelper.IsConnected() &&
-                !GooglePlayHelper.mGoogleApiClient.isConnecting() &&
-                (Setting.getBoolean(Enums.Setting.AttemptLogin) || prefs.getInt("databaseVersion", DatabaseHelper.NO_DATABASE) <= DatabaseHelper.NO_DATABASE)) {
+        boolean a = GooglePlayHelper.AreGooglePlayServicesInstalled(this);
+        boolean b = !GooglePlayHelper.IsConnected();
+        boolean c = !GooglePlayHelper.mGoogleApiClient.isConnecting();
+        boolean d = Setting.getBoolean(Enums.Setting.AttemptLogin);
+        boolean e = prefs.getInt("databaseVersion", DatabaseHelper.NO_DATABASE) <= DatabaseHelper.NO_DATABASE;
+
+        if (a && b && c && (d || e)) {
             GooglePlayHelper.mGoogleApiClient.connect();
         }
     }

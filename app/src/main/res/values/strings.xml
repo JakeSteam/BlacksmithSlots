@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">Blacksmith Slots</string>
+    <string name="app_id" translatable="false">1038590321568</string>
 
     <string name="item_1_1">Bronze Ore</string>
     <string name="item_1_2">Bronze Bar</string>

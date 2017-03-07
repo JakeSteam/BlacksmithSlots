@@ -32,7 +32,7 @@ public class Setting extends SugarRecord {
 
     public static Setting get(Enums.Setting settingId) {
         return Select.from(Setting.class).where(
-                Condition.prop("setting_id").eq(settingId)).first();
+                Condition.prop("setting").eq(settingId)).first();
     }
 
     public static int getInt(Enums.Setting settingId) {
