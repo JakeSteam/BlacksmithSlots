@@ -197,15 +197,19 @@ public class SlotHelper {
             }
         }
 
+        int totalResourcesWon = 0;
         StringBuilder winningsText = new StringBuilder().append("Won: ");
         for (Map.Entry<Pair<Enums.Tier, Enums.Type>, Integer> winning : dataStore.entrySet()) {
             Item item = Item.get(winning.getKey().first, winning.getKey().second);
             if (item != null && item.getId() != wildcardId) {
                 int quantity = winning.getValue() * slot.getCurrentStake();
+                totalResourcesWon += quantity;
                 Inventory.addInventory(item.getTier(), item.getType(), quantity);
                 winningsText.append(String.format(Locale.ENGLISH, "%dx %s, ", quantity, item.getName(activity)));
             }
         }
+
+        Statistic.add(Enums.Statistic.ResourcesWon, totalResourcesWon);
         return winningsText.substring(0, winningsText.length() - 2);
     }
 
@@ -297,7 +301,7 @@ public class SlotHelper {
 
                 LevelHelper.addXp(spinCost);
                 Statistic.add(Enums.Statistic.TotalSpins);
-                GooglePlayHelper.addEvent(Enums.Event.Spin);
+                Statistic.add(Enums.Statistic.ResourcesGambled, spinCost);
 
                 for (WheelView wheel : slots) {
                     wheel.scroll(-350 + (int) (Math.random() * 150), 2250);

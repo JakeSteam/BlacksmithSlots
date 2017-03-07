@@ -57,6 +57,7 @@ public class MapActivity extends AppCompatActivity implements
 
         ratingPrompt();
 
+        // Will fail first time because DB doesn't exist!
         populateSlotInfo();
 
         GooglePlayHelper.mGoogleApiClient = new GoogleApiClient.Builder(this)

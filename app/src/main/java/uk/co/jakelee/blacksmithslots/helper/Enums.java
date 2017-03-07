@@ -9,14 +9,6 @@ public class Enums {
         }
     }
 
-    public enum Event {
-        Spin("atext"), QuestCompleted("bbb");
-        public String value;
-        Event(String value) {
-            this.value = value;
-        }
-    }
-
     public enum RequirementType {
         Resource(1), Event(2);
         private int value;
@@ -42,7 +34,7 @@ public class Enums {
     }
 
     public enum Statistic {
-        Xp(1), Level(2), TotalSpins(3), QuestsCompleted(4), LastAutosave(5);
+        Xp(1), Level(2), TotalSpins(3), QuestsCompleted(4), LastAutosave(5), ResourcesGambled(6), ResourcesWon(7), AdvertsWatched(8), PacksPurchased(9), CollectedBonuses(10), VipLevel(11);
         public int value;
         Statistic(int value) {
             this.value = value;

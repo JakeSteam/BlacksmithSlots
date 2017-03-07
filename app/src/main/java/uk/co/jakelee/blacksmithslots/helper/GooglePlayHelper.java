@@ -84,23 +84,18 @@ public class GooglePlayHelper implements com.google.android.gms.common.api.Resul
         int questCoins = getQuestReward(questDifficulty);
 
         Statistic.add(Enums.Statistic.QuestsCompleted);
-        addEvent(Enums.Event.QuestCompleted);
         return "Completed"; /*String.format(Locale.ENGLISH, Text.get("QUEST_COMPLETED_TEXT"),
                 questDifficulty,
                 questName,
                 questCoins);*/
     }
 
-    public static void addEvent(Enums.Event event) {
-        addEvent(event, 1);
-    }
-
-    public static void addEvent(Enums.Event event, int quantity) {
+    public static void addEvent(String eventString, int quantity) {
         if (!IsConnected() || quantity <= 0) {
             return;
         }
 
-        Games.Events.increment(mGoogleApiClient, event.value, quantity);
+        Games.Events.increment(mGoogleApiClient, eventString, quantity);
     }
 
     private static int getQuestReward(String questDifficulty) {
@@ -117,7 +112,7 @@ public class GooglePlayHelper implements com.google.android.gms.common.api.Resul
         return 999;
     }
 
-    public static void UpdateLeaderboards(String leaderboardID, int value) {
+    public static void updateLeaderboards(String leaderboardID, int value) {
         if (!IsConnected()) {
             return;
         }
