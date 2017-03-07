@@ -1,4 +1,6 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
@@ -48,6 +50,14 @@
 
     <style name="FontSize">
         <item name="android:textSize">24sp</item>
+    </style>
+
+    <style name="SlotClickArea">
+        <item name="android:onClick">selectSlot</item>
+        <item name="android:alpha">0.5</item>
+        <item name="android:src">@color/white</item>
+        <item name="layout_heightPercent">12.5%</item>
+        <item name="layout_widthPercent">11.1%</item>
     </style>
 
 </resources>

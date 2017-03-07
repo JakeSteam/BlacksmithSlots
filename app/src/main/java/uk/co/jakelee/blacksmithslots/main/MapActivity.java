@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.percent.PercentRelativeLayout;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -42,6 +43,7 @@ public class MapActivity extends AppCompatActivity implements
         GoogleApiClient.OnConnectionFailedListener,
         QuestUpdateListener {
     public static SharedPreferences prefs;
+    private static int[] townLayouts = {R.layout.custom_town_1, R.layout.custom_town_2, R.layout.custom_town_3};
 
     private int selectedSlot = 1;
     private ViewPager mViewPager;
@@ -211,7 +213,7 @@ public class MapActivity extends AppCompatActivity implements
 
         @Override
         public int getCount() {
-            return 2;
+            return townLayouts.length;
         }
 
         @Override
@@ -221,20 +223,14 @@ public class MapActivity extends AppCompatActivity implements
 
         @Override
         public Object instantiateItem(ViewGroup container, int position) {
-            if (position == 0) {
-                View itemView = mLayoutInflater.inflate(R.layout.custom_town_1, container, false);
-                container.addView(itemView);
-                return itemView;
-            } else {
-                View itemView = mLayoutInflater.inflate(R.layout.custom_town_2, container, false);
-                container.addView(itemView);
-                return itemView;
-            }
+            View itemView = mLayoutInflater.inflate(townLayouts[position], container, false);
+            container.addView(itemView);
+            return itemView;
         }
 
         @Override
         public void destroyItem(ViewGroup container, int position, Object object) {
-            container.removeView((LinearLayout) object);
+            container.removeView((PercentRelativeLayout) object);
         }
     }
 
