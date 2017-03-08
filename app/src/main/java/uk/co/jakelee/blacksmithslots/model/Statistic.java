@@ -121,7 +121,7 @@ public class Statistic extends SugarRecord {
     }
 
     public static void add(Enums.Statistic stat, int amount) {
-        Statistic statistic = Select.from(Statistic.class).where(Condition.prop("statistic").eq(stat.value)).first();
+        Statistic statistic = (Statistic)Select.from(Statistic.class).where(Condition.prop("statistic").eq(stat.value)).first();
 
         if (statistic == null) {
             return;

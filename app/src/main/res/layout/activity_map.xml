@@ -20,18 +20,30 @@
             android:layout_height="wrap_content"
             android:textSize="30sp"
             style="@style/SidebarText"/>
-        <uk.co.jakelee.blacksmithslots.components.FontTextView
-            android:id="@+id/slotDescription"
+        <LinearLayout
+            android:id="@+id/slotInfo"
+            android:layout_below="@id/slotTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/slotTitle"
-            android:maxLines="999"
-            style="@style/SidebarText"/>
+            android:orientation="horizontal">
+            <pl.droidsonroids.gif.GifImageView
+                android:id="@+id/person"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:padding="5dp"
+                android:src="@drawable/person_1"/>
+            <uk.co.jakelee.blacksmithslots.components.FontTextView
+                android:id="@+id/slotDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLines="4"
+                style="@style/SidebarText"/>
+        </LinearLayout>
         <RelativeLayout
             android:id="@+id/lockedSlot"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@id/slotDescription"
+            android:layout_below="@id/slotInfo"
             android:visibility="gone">
             <uk.co.jakelee.blacksmithslots.components.FontTextView
                 android:id="@+id/taskProgress"
@@ -62,7 +74,7 @@
             android:id="@+id/unlockedSlot"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@id/slotDescription">
+            android:layout_below="@id/slotInfo">
             <uk.co.jakelee.blacksmithslots.components.FontTextView
                 android:id="@+id/slotResource"
                 android:layout_width="match_parent"

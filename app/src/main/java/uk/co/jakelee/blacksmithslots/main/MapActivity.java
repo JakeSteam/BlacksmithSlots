@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -129,7 +130,7 @@ public class MapActivity extends AppCompatActivity implements
     }
 
     public void handIn(View v) {
-        Task task = Task.findById(Task.class, (int)(long)v.getTag());
+        Task task = Task.findById(Task.class, (long)v.getTag());
         if (task.getTier() != null && task.itemsCanBeSubmitted()) {
             task.submitItems();
             Toast.makeText(this, "Items submitted!", Toast.LENGTH_SHORT).show();
@@ -148,6 +149,9 @@ public class MapActivity extends AppCompatActivity implements
             Slot slot = Slot.get(selectedSlot);
             if (slot != null) {
                 ((TextView) findViewById(R.id.slotTitle)).setText(slot.getName(this));
+                String id = DisplayHelper.getPersonImageFile(slot.getPerson());
+                int id2 = getResources().getIdentifier(id, "drawable", getPackageName());
+                ((ImageView) findViewById(R.id.person)).setImageResource(id2);
 
                 if (TaskHelper.isSlotLocked(selectedSlot)) {
                     List<Task> tasks = slot.getTasks();

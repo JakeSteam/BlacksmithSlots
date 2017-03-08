@@ -24,6 +24,10 @@ public class DisplayHelper {
         return getItemImageFile(result.getResourceTier().value, result.getResourceType().value, result.getResourceMultiplier());
     }
 
+    public static String getPersonImageFile(int person) {
+        return "person_" + person;
+    }
+
     public static String getItemImageFile(int tier, int type) {
         return getItemImageFile(tier, type, 1);
     }
