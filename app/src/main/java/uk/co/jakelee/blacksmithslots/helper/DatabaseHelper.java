@@ -201,6 +201,9 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
     private void createTasks() {
         int position;
         List<Task> tasks = new ArrayList<>();
+            tasks.add(new Task(Constants.SLOT_BRONZE_WEAPON, 1, Enums.Statistic.TotalSpins, 2));
+            tasks.add(new Task(Constants.SLOT_BRONZE_ARMOUR, 1, Enums.Statistic.TotalSpins, 2));
+
             position = 1;
             tasks.add(new Task(Constants.SLOT_BRONZE_TOOL, position++, Enums.Tier.Bronze, Enums.Type.FullShield, 10));
             tasks.add(new Task(Constants.SLOT_BRONZE_TOOL, position++, Enums.Tier.Bronze, Enums.Type.Dagger, 10));

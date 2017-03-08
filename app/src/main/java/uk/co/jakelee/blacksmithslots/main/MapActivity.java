@@ -1,17 +1,12 @@
 package uk.co.jakelee.blacksmithslots.main;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.percent.PercentRelativeLayout;
-import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -28,6 +23,7 @@ import java.util.List;
 
 import hotchemi.android.rate.AppRate;
 import uk.co.jakelee.blacksmithslots.R;
+import uk.co.jakelee.blacksmithslots.components.CustomPagerAdapter;
 import uk.co.jakelee.blacksmithslots.helper.Constants;
 import uk.co.jakelee.blacksmithslots.helper.DatabaseHelper;
 import uk.co.jakelee.blacksmithslots.helper.DisplayHelper;
@@ -44,7 +40,6 @@ public class MapActivity extends AppCompatActivity implements
         GoogleApiClient.OnConnectionFailedListener,
         QuestUpdateListener {
     public static SharedPreferences prefs;
-    private static int[] townLayouts = {R.layout.custom_town_1, R.layout.custom_town_2, R.layout.custom_town_3};
 
     private int selectedSlot = 1;
     private ViewPager mViewPager;
@@ -149,11 +144,13 @@ public class MapActivity extends AppCompatActivity implements
             Slot slot = Slot.get(selectedSlot);
             if (slot != null) {
                 ((TextView) findViewById(R.id.slotTitle)).setText(slot.getName(this));
-                String id = DisplayHelper.getPersonImageFile(slot.getPerson());
-                int id2 = getResources().getIdentifier(id, "drawable", getPackageName());
-                ((ImageView) findViewById(R.id.person)).setImageResource(id2);
+                ((ImageView) findViewById(R.id.person)).setImageResource(getResources().getIdentifier(DisplayHelper.getPersonImageFile(slot.getPerson()), "drawable", getPackageName()));
 
-                if (TaskHelper.isSlotLocked(selectedSlot)) {
+                if (slot.getRequiredSlot() > 0 && TaskHelper.isSlotLocked(Slot.get(slot.getRequiredSlot()).getSlotId())) {
+                    Toast.makeText(this, "Complete previous slot first!", Toast.LENGTH_SHORT).show();
+                    findViewById(R.id.lockedSlot).setVisibility(View.VISIBLE);
+                    findViewById(R.id.unlockedSlot).setVisibility(View.GONE);
+                } else if (TaskHelper.isSlotLocked(selectedSlot)) {
                     List<Task> tasks = slot.getTasks();
                     Task currentTask = TaskHelper.getCurrentTask(tasks);
                     if (currentTask.getStarted() == 0) {
@@ -203,38 +200,6 @@ public class MapActivity extends AppCompatActivity implements
                             | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
                             | View.SYSTEM_UI_FLAG_FULLSCREEN
                             | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
-        }
-    }
-
-    class CustomPagerAdapter extends PagerAdapter {
-        Context mContext;
-        LayoutInflater mLayoutInflater;
-
-        public CustomPagerAdapter(Context context) {
-            mContext = context;
-            mLayoutInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        }
-
-        @Override
-        public int getCount() {
-            return townLayouts.length;
-        }
-
-        @Override
-        public boolean isViewFromObject(View view, Object object) {
-            return view == object;
-        }
-
-        @Override
-        public Object instantiateItem(ViewGroup container, int position) {
-            View itemView = mLayoutInflater.inflate(townLayouts[position], container, false);
-            container.addView(itemView);
-            return itemView;
-        }
-
-        @Override
-        public void destroyItem(ViewGroup container, int position, Object object) {
-            container.removeView((PercentRelativeLayout) object);
         }
     }
 
