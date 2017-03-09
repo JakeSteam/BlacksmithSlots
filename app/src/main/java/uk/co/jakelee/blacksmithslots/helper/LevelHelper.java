@@ -19,8 +19,8 @@ public class LevelHelper {
     }
 
     public static int getXp() {
-        Statistic xpInfo = (Statistic)Select.from(Statistic.class).where(
-                Condition.prop("statistic").eq(Enums.Statistic.Xp.value)).first();
+        Statistic xpInfo = Select.from(Statistic.class).where(
+                Condition.prop("a").eq(Enums.Statistic.Xp.value)).first();
 
         return xpInfo.getIntValue();
     }

@@ -3,6 +3,8 @@ package uk.co.jakelee.blacksmithslots.model;
 import android.content.Context;
 
 import com.orm.SugarRecord;
+import com.orm.dsl.Column;
+import com.orm.dsl.Table;
 import com.orm.query.Condition;
 import com.orm.query.Select;
 
@@ -11,21 +13,51 @@ import java.util.List;
 import uk.co.jakelee.blacksmithslots.helper.Enums;
 import uk.co.jakelee.blacksmithslots.helper.TextHelper;
 
+@Table(name = "e")
 public class Slot extends SugarRecord {
+    @Column(name = "a")
     private int slotId;
+
+    @Column(name = "b")
     private int minimumLevel;
+
+    @Column(name = "c")
     private int minimumStake;
+
+    @Column(name = "d")
     private int currentStake;
+
+    @Column(name = "e")
     private int maximumStake;
+
+    @Column(name = "f")
     private int minimumRows;
+
+    @Column(name = "g")
     private int currentRows;
+
+    @Column(name = "h")
     private int maximumRows;
+
+    @Column(name = "i")
     private int resourceQuantity;
+
+    @Column(name = "j")
     private int resourceTier;
+
+    @Column(name = "k")
     private int resourceType;
+
+    @Column(name = "l")
     private int slotType;
+
+    @Column(name = "m")
     private int slots;
+
+    @Column(name = "n")
     private int requiredSlot;
+
+    @Column(name = "o")
     private int person;
 
     public Slot() {
@@ -51,7 +83,7 @@ public class Slot extends SugarRecord {
 
     public static Slot get(int slotId) {
         List<Slot> slots = Select.from(Slot.class).where(
-                Condition.prop("slot_id").eq(slotId)).list();
+                Condition.prop("a").eq(slotId)).list();
         return slots.size() > 0 ? slots.get(0) : null;
     }
 
@@ -177,13 +209,13 @@ public class Slot extends SugarRecord {
 
     public List<Reward> getRewards() {
         return Select.from(Reward.class).where(
-                Condition.prop("slot_id").eq(slotId)).list();
+                Condition.prop("a").eq(slotId)).list();
     }
 
     public List<Task> getTasks() {
         return Select.from(Task.class).where(
-                Condition.prop("slot_id").eq(slotId))
-                .orderBy("position ASC")
+                Condition.prop("a").eq(slotId))
+                .orderBy("b ASC")
                 .list();
     }
 

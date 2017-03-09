@@ -3,19 +3,39 @@ package uk.co.jakelee.blacksmithslots.model;
 import android.content.Context;
 
 import com.orm.SugarRecord;
+import com.orm.dsl.Column;
+import com.orm.dsl.Table;
 
 import uk.co.jakelee.blacksmithslots.helper.Enums;
 import uk.co.jakelee.blacksmithslots.helper.TextHelper;
 
+@Table(name = "g")
 public class Task extends SugarRecord {
+    @Column(name = "a")
     private int slotId;
+
+    @Column(name = "b")
     private int position;
+
+    @Column(name = "c")
     private int statistic;
+
+    @Column(name = "d")
     private int tier;
+
+    @Column(name = "e")
     private int type;
+
+    @Column(name = "f")
     private int target;
+
+    @Column(name = "g")
     private int remaining;
+
+    @Column(name = "h")
     private long started;
+
+    @Column(name = "i")
     private long completed;
 
     public Task() {

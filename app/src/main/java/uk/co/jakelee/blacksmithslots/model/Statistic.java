@@ -4,6 +4,8 @@ import android.content.Context;
 import android.util.Log;
 
 import com.orm.SugarRecord;
+import com.orm.dsl.Column;
+import com.orm.dsl.Table;
 import com.orm.query.Condition;
 import com.orm.query.Select;
 
@@ -13,13 +15,27 @@ import uk.co.jakelee.blacksmithslots.helper.Enums;
 import uk.co.jakelee.blacksmithslots.helper.GooglePlayHelper;
 import uk.co.jakelee.blacksmithslots.helper.TextHelper;
 
+@Table(name = "f")
 public class Statistic extends SugarRecord {
+    @Column(name = "a")
     private int statistic;
+
+    @Column(name = "b")
     private String eventId;
+
+    @Column(name = "c")
     private String leaderboardId;
+
+    @Column(name = "d")
     private int intValue;
+
+    @Column(name = "e")
     private long longValue;
+
+    @Column(name = "f")
     private boolean boolValue;
+
+    @Column(name = "g")
     private String stringValue;
 
     public Statistic() {
@@ -55,7 +71,7 @@ public class Statistic extends SugarRecord {
 
     public static Statistic get(Enums.Statistic statistic) {
         List<Statistic> statisticList = Select.from(Statistic.class).where(
-                Condition.prop("statistic").eq(statistic)
+                Condition.prop("a").eq(statistic)
         ).list();
         return statisticList.size() > 0 ? statisticList.get(0) : null;
     }
@@ -121,7 +137,7 @@ public class Statistic extends SugarRecord {
     }
 
     public static void add(Enums.Statistic stat, int amount) {
-        Statistic statistic = (Statistic)Select.from(Statistic.class).where(Condition.prop("statistic").eq(stat.value)).first();
+        Statistic statistic = Select.from(Statistic.class).where(Condition.prop("a").eq(stat.value)).first();
 
         if (statistic == null) {
             return;
@@ -155,17 +171,17 @@ public class Statistic extends SugarRecord {
 
     private static List<Task> getTasksForUpdating(Enums.Statistic stat) {
         List<Task> tasks = Select.from(Task.class).where(
-                Condition.prop("statistic").eq(stat), // Tasks of this stat
-                Condition.prop("statistic").notEq(Enums.Statistic.Level), // Except levels
-                Condition.prop("started").gt(0), // That have been started
-                Condition.prop("completed").eq(0), // And not completed
-                Condition.prop("remaining").gt(0) // And not waiting to be handed in
+                Condition.prop("c").eq(stat), // Tasks of this stat
+                Condition.prop("c").notEq(Enums.Statistic.Level), // Except levels
+                Condition.prop("h").gt(0), // That have been started
+                Condition.prop("i").eq(0), // And not completed
+                Condition.prop("g").gt(0) // And not waiting to be handed in
         ).list();
 
         // Level tasks are updated independently
         if (stat == Enums.Statistic.Level) {
             tasks.addAll(Select.from(Task.class).where(
-                    Condition.prop("statistic").eq(Enums.Statistic.Level),
+                    Condition.prop("c").eq(Enums.Statistic.Level),
                     Condition.prop("completed").eq(0),
                     Condition.prop("remaining").gt(0)).list());
         }

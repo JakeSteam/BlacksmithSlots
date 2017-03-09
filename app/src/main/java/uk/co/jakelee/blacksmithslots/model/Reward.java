@@ -1,14 +1,26 @@
 package uk.co.jakelee.blacksmithslots.model;
 
 import com.orm.SugarRecord;
+import com.orm.dsl.Column;
+import com.orm.dsl.Table;
 
 import uk.co.jakelee.blacksmithslots.helper.Enums;
 
+@Table(name = "c")
 public class Reward extends SugarRecord {
+    @Column(name = "a")
     private int slotId;
+
+    @Column(name = "b")
     private int tier;
+
+    @Column(name = "c")
     private int type;
+
+    @Column(name = "d")
     private int quantityMultiplier;
+
+    @Column(name = "e")
     private int weighting;
 
     public Reward() {

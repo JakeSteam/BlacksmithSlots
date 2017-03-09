@@ -3,6 +3,8 @@ package uk.co.jakelee.blacksmithslots.model;
 import android.content.Context;
 
 import com.orm.SugarRecord;
+import com.orm.dsl.Column;
+import com.orm.dsl.Table;
 import com.orm.query.Condition;
 import com.orm.query.Select;
 
@@ -12,9 +14,15 @@ import uk.co.jakelee.blacksmithslots.helper.DisplayHelper;
 import uk.co.jakelee.blacksmithslots.helper.Enums;
 import uk.co.jakelee.blacksmithslots.helper.TextHelper;
 
+@Table(name = "a")
 public class Inventory extends SugarRecord {
+    @Column(name = "a")
     private int tier;
+
+    @Column(name = "b")
     private int type;
+
+    @Column(name = "c")
     private int quantity;
 
     public Inventory() {
@@ -48,8 +56,8 @@ public class Inventory extends SugarRecord {
 
     public static Inventory getInventory(int tier, int type) {
         List<Inventory> inventories = Select.from(Inventory.class).where(
-                Condition.prop("type").eq(type),
-                Condition.prop("tier").eq(tier)
+                Condition.prop("a").eq(type),
+                Condition.prop("b").eq(tier)
         ).list();
 
         if (inventories.size() > 0) {

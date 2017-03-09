@@ -1,15 +1,25 @@
 package uk.co.jakelee.blacksmithslots.model;
 
 import com.orm.SugarRecord;
+import com.orm.dsl.Column;
+import com.orm.dsl.Table;
 import com.orm.query.Condition;
 import com.orm.query.Select;
 
 import uk.co.jakelee.blacksmithslots.helper.Enums;
 
+@Table(name = "d")
 public class Setting extends SugarRecord {
+    @Column(name = "a")
     private int setting;
+
+    @Column(name = "b")
     private boolean booleanValue;
+
+    @Column(name = "c")
     private int intValue;
+
+    @Column(name = "d")
     private String stringValue;
 
     public Setting() {
@@ -31,13 +41,13 @@ public class Setting extends SugarRecord {
     }
 
     public static Setting get(Enums.Setting settingId) {
-        return (Setting)Select.from(Setting.class).where(
-                Condition.prop("setting").eq(settingId.value)).first();
+        return Select.from(Setting.class).where(
+                Condition.prop("a").eq(settingId.value)).first();
     }
 
     public static int getInt(Enums.Setting settingId) {
-        Setting setting = (Setting)Select.from(Setting.class).where(
-                Condition.prop("setting").eq(settingId.value)).first();
+        Setting setting = Select.from(Setting.class).where(
+                Condition.prop("a").eq(settingId.value)).first();
 
         if (setting != null) {
             return setting.getIntValue();
@@ -46,8 +56,8 @@ public class Setting extends SugarRecord {
     }
 
     public static String getString(Enums.Setting settingId) {
-        Setting setting = (Setting)Select.from(Setting.class).where(
-                Condition.prop("setting").eq(settingId.value)).first();
+        Setting setting = Select.from(Setting.class).where(
+                Condition.prop("a").eq(settingId.value)).first();
 
         if (setting != null) {
             return setting.getStringValue();
