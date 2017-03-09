@@ -18,6 +18,13 @@ public class LevelHelper {
         return (int) Math.pow(level / Constants.LEVEL_MODIFIER, 2);
     }
 
+    public static int getVipLevel() {
+        Statistic vipInfo = Select.from(Statistic.class).where(
+                Condition.prop("a").eq(Enums.Statistic.VipLevel.value)).first();
+
+        return vipInfo.getIntValue();
+    }
+
     public static int getXp() {
         Statistic xpInfo = Select.from(Statistic.class).where(
                 Condition.prop("a").eq(Enums.Statistic.Xp.value)).first();

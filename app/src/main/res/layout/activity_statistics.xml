@@ -23,7 +23,7 @@
         android:background="@color/white">
         <TableLayout
             android:id="@+id/statisticsTable"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="10dp"
             android:stretchColumns="*"
