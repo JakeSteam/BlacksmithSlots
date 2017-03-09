@@ -1,2 +1,1 @@
-include ':app', ':BaseGameUtils', ':SugarCipher'
-include ':wheel'
+include ':app', ':BaseGameUtils', ':wheel'
