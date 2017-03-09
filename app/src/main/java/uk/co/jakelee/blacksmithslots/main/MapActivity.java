@@ -31,6 +31,7 @@ import uk.co.jakelee.blacksmithslots.helper.DisplayHelper;
 import uk.co.jakelee.blacksmithslots.helper.Enums;
 import uk.co.jakelee.blacksmithslots.helper.GooglePlayHelper;
 import uk.co.jakelee.blacksmithslots.helper.TaskHelper;
+import uk.co.jakelee.blacksmithslots.model.Message;
 import uk.co.jakelee.blacksmithslots.model.Reward;
 import uk.co.jakelee.blacksmithslots.model.Setting;
 import uk.co.jakelee.blacksmithslots.model.Slot;
@@ -133,6 +134,7 @@ public class MapActivity extends AppCompatActivity implements
             task.submitItems();
             Toast.makeText(this, "Items submitted!", Toast.LENGTH_SHORT).show();
         } else if (task.isCompleteable()) {
+            Message.logTask(task.toString(this), selectedSlot);
             task.setCompleted(System.currentTimeMillis());
             task.save();
         } else {

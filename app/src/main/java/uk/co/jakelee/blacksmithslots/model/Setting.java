@@ -8,7 +8,7 @@ import com.orm.query.Select;
 
 import uk.co.jakelee.blacksmithslots.helper.Enums;
 
-@Table(name = "d")
+@Table(name = "e")
 public class Setting extends SugarRecord {
     @Column(name = "a")
     private int setting;

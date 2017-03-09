@@ -21,6 +21,9 @@
     <string name="item_1_17">Bronze Fishing Rod</string>
     <string name="item_1_18">Bronze Hammer</string>
 
+    <string name="log_spin">Staked %1$dx %2$s at %3$s, won %4$s.</string>
+    <string name="log_task">Updated %1$s for %2$s.</string>
+
     <string name="slot_1_name">Bronze Furnace</string>
     <string name="slot_2_name">Bronze Weapon</string>
     <string name="slot_3_name">Bronze Armour</string>

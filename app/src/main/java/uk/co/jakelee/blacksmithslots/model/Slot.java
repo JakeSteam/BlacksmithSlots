@@ -13,7 +13,7 @@ import java.util.List;
 import uk.co.jakelee.blacksmithslots.helper.Enums;
 import uk.co.jakelee.blacksmithslots.helper.TextHelper;
 
-@Table(name = "e")
+@Table(name = "f")
 public class Slot extends SugarRecord {
     @Column(name = "a")
     private int slotId;
@@ -220,6 +220,10 @@ public class Slot extends SugarRecord {
     }
 
     public String getName(Context context) {
+        return TextHelper.getInstance(context).getText("slot_" + slotId + "_name");
+    }
+
+    public static String getName(Context context, int slotId) {
         return TextHelper.getInstance(context).getText("slot_" + slotId + "_name");
     }
 

@@ -6,7 +6,7 @@ import com.orm.dsl.Table;
 
 import uk.co.jakelee.blacksmithslots.helper.Enums;
 
-@Table(name = "c")
+@Table(name = "d")
 public class Reward extends SugarRecord {
     @Column(name = "a")
     private int slotId;

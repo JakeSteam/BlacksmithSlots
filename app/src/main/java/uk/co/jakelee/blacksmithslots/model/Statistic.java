@@ -15,7 +15,7 @@ import uk.co.jakelee.blacksmithslots.helper.Enums;
 import uk.co.jakelee.blacksmithslots.helper.GooglePlayHelper;
 import uk.co.jakelee.blacksmithslots.helper.TextHelper;
 
-@Table(name = "f")
+@Table(name = "g")
 public class Statistic extends SugarRecord {
     @Column(name = "a")
     private int statistic;

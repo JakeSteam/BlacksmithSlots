@@ -37,6 +37,7 @@ import uk.co.jakelee.blacksmithslots.constructs.WinRoute;
 import uk.co.jakelee.blacksmithslots.main.SlotActivity;
 import uk.co.jakelee.blacksmithslots.model.Inventory;
 import uk.co.jakelee.blacksmithslots.model.Item;
+import uk.co.jakelee.blacksmithslots.model.Message;
 import uk.co.jakelee.blacksmithslots.model.Reward;
 import uk.co.jakelee.blacksmithslots.model.Slot;
 import uk.co.jakelee.blacksmithslots.model.Statistic;
@@ -177,7 +178,9 @@ public class SlotHelper {
         List<List<SlotResult>> results = getResults();
         List<SlotResult> wonItems = getWinnings(results);
         if (wonItems.size() > 0) {
-            Toast.makeText(activity, applyWinnings(wonItems), Toast.LENGTH_SHORT).show();
+            String winText = applyWinnings(wonItems);
+            Message.logSpin(activity, slot.getSlotId(), resourceType, resourceTier, slot.getResourceQuantity(), winText);
+            Toast.makeText(activity, winText, Toast.LENGTH_SHORT).show();
             updateResourceCount();
         } else {
             Toast.makeText(activity, "No matches!", Toast.LENGTH_SHORT).show();
