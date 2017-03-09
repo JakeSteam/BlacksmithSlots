@@ -14,17 +14,17 @@
         android:clickable="true"
         android:onClick="close"/>
 
-    <RelativeLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="30dp"
         android:clickable="true"
         android:onClick="suppress"
         android:background="@color/white">
-        <uk.co.jakelee.blacksmithslots.components.FontTextView
+        <TableLayout
+            android:id="@+id/statisticsTable"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="Hello again"
-            style="@style/SlotText"/>
-    </RelativeLayout>
+            android:layout_height="wrap_content"
+            android:stretchColumns="*" />
+    </ScrollView>
 </RelativeLayout>
