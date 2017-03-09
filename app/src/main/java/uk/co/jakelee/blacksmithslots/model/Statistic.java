@@ -116,7 +116,7 @@ public class Statistic extends SugarRecord {
         this.longValue = longValue;
     }
 
-    public boolean isBoolValue() {
+    public boolean getBoolValue() {
         return boolValue;
     }
 
@@ -191,6 +191,18 @@ public class Statistic extends SugarRecord {
 
     public static String getName(Context context, int statistic) {
         return TextHelper.getInstance(context).getText("statistic_" + statistic + "_name");
+    }
+
+    public String getValue() {
+        if (getStringValue() != null) {
+            return getStringValue();
+        } else if (getLongValue() > 0) {
+            return Long.toString(getLongValue());
+        } else if (getIntValue() > 0) {
+            return Integer.toString(getIntValue());
+        } else {
+            return getBoolValue() ? "True" : "False";
+        }
     }
 
 }

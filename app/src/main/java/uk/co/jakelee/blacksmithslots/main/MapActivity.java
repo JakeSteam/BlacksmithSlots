@@ -134,7 +134,7 @@ public class MapActivity extends AppCompatActivity implements
             task.submitItems();
             Toast.makeText(this, "Items submitted!", Toast.LENGTH_SHORT).show();
         } else if (task.isCompleteable()) {
-            Message.logTask(task.toString(this), selectedSlot);
+            Message.logTask(this, task, selectedSlot);
             task.setCompleted(System.currentTimeMillis());
             task.save();
         } else {
