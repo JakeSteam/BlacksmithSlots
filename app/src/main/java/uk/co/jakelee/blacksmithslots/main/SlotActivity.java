@@ -3,6 +3,7 @@ package uk.co.jakelee.blacksmithslots.main;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Toast;
 
 import uk.co.jakelee.blacksmithslots.R;
@@ -22,6 +23,7 @@ public class SlotActivity extends AppCompatActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_slot);
 
         Slot slot = Slot.get(getIntent().getIntExtra(Constants.INTENT_SLOT, 0));
@@ -42,30 +44,10 @@ public class SlotActivity extends AppCompatActivity {
         slotHelper.pause();
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        onWindowFocusChanged(true);
-    }
-
     public void spin(View v) {
         slotHelper.spin(true);
     }
 
-    @Override
-    public void onWindowFocusChanged(boolean hasFocus) {
-        super.onWindowFocusChanged(hasFocus);
-
-        if (hasFocus) {
-            findViewById(R.id.parent).setSystemUiVisibility(
-                    View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-                            | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-                            | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-                            | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-                            | View.SYSTEM_UI_FLAG_FULLSCREEN
-                            | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
-        }
-    }
 
     public void increaseStake(View v) {
         slotHelper.increaseStake();

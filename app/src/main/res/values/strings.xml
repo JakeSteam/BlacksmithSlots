@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Blacksmith Slots</string>
+    <string name="app_name" translatable="false">Blacksmith Slots</string>
     <string name="app_id" translatable="false">1038590321568</string>
 
     <string name="item_1_1">Bronze Ore</string>
@@ -42,6 +42,14 @@
     <string name="statistic_1_name">XP</string>
     <string name="statistic_2_name">Level</string>
     <string name="statistic_3_name">Total Spins</string>
+    <string name="statistic_4_name">Quests Completed</string>
+    <string name="statistic_5_name">Last Autosave</string>
+    <string name="statistic_6_name">Resources Gambled</string>
+    <string name="statistic_7_name">Resources Won</string>
+    <string name="statistic_8_name">Adverts Watched</string>
+    <string name="statistic_9_name">Packs Purchased</string>
+    <string name="statistic_10_name">Collected Bonuses</string>
+    <string name="statistic_11_name">VIP Level</string>
 
     <string name="task_5_1_text">I guess XP is always good too.</string>
     <string name="task_5_2_text">Spinning will somehow help.</string>

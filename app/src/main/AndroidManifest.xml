@@ -37,18 +37,13 @@
         </activity>
         <activity
             android:name=".main.SlotActivity"
-            android:screenOrientation="landscape" />
+            android:screenOrientation="landscape"/>
         <activity
             android:name=".main.CreditsActivity"
-            android:screenOrientation="landscape" />
+            android:screenOrientation="landscape"/>
         <activity
             android:name=".main.MapActivity"
             android:screenOrientation="landscape">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".main.SettingsActivity"
             android:screenOrientation="landscape"
