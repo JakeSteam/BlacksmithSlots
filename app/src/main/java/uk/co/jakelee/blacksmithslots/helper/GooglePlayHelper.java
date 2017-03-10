@@ -6,9 +6,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
-import android.util.Log;
 import android.util.Pair;
-import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
@@ -143,7 +141,7 @@ public class GooglePlayHelper implements com.google.android.gms.common.api.Resul
                     callingActivity.runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            Toast.makeText(context, "Save game conflict!", Toast.LENGTH_SHORT).show();
+                            AlertHelper.error(callingActivity, R.string.google_cloud_save_conflict, true);
                         }
                     });
 
@@ -173,7 +171,7 @@ public class GooglePlayHelper implements com.google.android.gms.common.api.Resul
                     callingActivity.runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            Toast.makeText(context, "Unknown cloud error!", Toast.LENGTH_SHORT).show();
+                            AlertHelper.error(callingActivity, R.string.google_cloud_save_error, true);
                         }
                     });
                 }
@@ -193,7 +191,7 @@ public class GooglePlayHelper implements com.google.android.gms.common.api.Resul
             @Override
             public void run() {
                 if (!checkIsImprovement) {
-                    Toast.makeText(callingActivity, "Loading!", Toast.LENGTH_SHORT).show();;
+                    AlertHelper.info(callingActivity, R.string.google_cloud_save_loading, false);
                 }
             }
         });
@@ -223,7 +221,7 @@ public class GooglePlayHelper implements com.google.android.gms.common.api.Resul
         callingActivity.runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                Toast.makeText(callingActivity, "Saving...", Toast.LENGTH_SHORT).show();
+                AlertHelper.info(callingActivity, R.string.google_cloud_save_saving, false);
             }
         });
 
@@ -249,7 +247,7 @@ public class GooglePlayHelper implements com.google.android.gms.common.api.Resul
                 callingActivity.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        Toast.makeText(callingActivity, "Saved", Toast.LENGTH_SHORT).show();
+                        AlertHelper.success(callingActivity, R.string.google_cloud_save_saved, true);
                     }
                 });
             }
@@ -258,7 +256,6 @@ public class GooglePlayHelper implements com.google.android.gms.common.api.Resul
 
     public static void autosave(Context context) {
         if (!IsConnected()) {
-            Log.d("GPH", "Not connected..!");
             return;
         }
 
@@ -381,7 +378,7 @@ public class GooglePlayHelper implements com.google.android.gms.common.api.Resul
             callingActivity.runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
-                    Toast.makeText(callingActivity, "Loaded cloud save!", Toast.LENGTH_SHORT).show();
+                    AlertHelper.success(callingActivity, R.string.google_cloud_save_loaded, true);
                 }
             });
         }

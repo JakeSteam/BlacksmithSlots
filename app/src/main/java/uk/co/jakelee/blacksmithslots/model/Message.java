@@ -24,7 +24,7 @@ public class Message extends SugarRecord {
     public Message() {
     }
 
-    public Message(String message) {
+    private Message(String message) {
         this.message = message;
         this.time = System.currentTimeMillis();
     }
@@ -38,17 +38,11 @@ public class Message extends SugarRecord {
                 slotName,
                 rewardString);
 
-        new Message(logMessage).save();
-        removeOldest();
+        log(logMessage);
     }
 
-    public static void logTask(Context context, Task task, int slot) {
-        String slotName = Slot.getName(context, slot);
-        String logMessage = String.format(Locale.ENGLISH, context.getString(R.string.log_task),
-                task.toString(context),
-                slotName);
-
-        new Message(logMessage).save();
+    public static void log(String string) {
+        new Message(string).save();
         removeOldest();
     }
 

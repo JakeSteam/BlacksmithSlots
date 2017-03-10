@@ -33,4 +33,5 @@ dependencies {
     compile 'com.anjlab.android.iab.v3:library:1.0.31'
     compile 'com.github.hotchemi:android-rate:1.0.1'
     compile 'pl.droidsonroids.gif:android-gif-drawable:1.1.16'
+    compile 'de.keyboardsurfer.android.widget:crouton:1.8.5@aar'
 }

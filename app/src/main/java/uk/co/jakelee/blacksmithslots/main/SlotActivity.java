@@ -4,11 +4,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.Toast;
 
 import uk.co.jakelee.blacksmithslots.MainActivity;
 import uk.co.jakelee.blacksmithslots.R;
 import uk.co.jakelee.blacksmithslots.helper.AlertDialogHelper;
+import uk.co.jakelee.blacksmithslots.helper.AlertHelper;
 import uk.co.jakelee.blacksmithslots.helper.Constants;
 import uk.co.jakelee.blacksmithslots.helper.LevelHelper;
 import uk.co.jakelee.blacksmithslots.helper.SlotHelper;
@@ -80,6 +80,6 @@ public class SlotActivity extends MainActivity {
 
     public void levelInfo(View v) {
         int nextLevelXP = convertLevelToXp(getLevel() + 1);
-        Toast.makeText(this, getXp() + "/" + nextLevelXP + " (" + (LevelHelper.getLevelProgress() / 100d) + "%)", Toast.LENGTH_SHORT).show();
+        AlertHelper.info(this, getXp() + "/" + nextLevelXP + " (" + (LevelHelper.getLevelProgress() / 100d) + "%)", false);
     }
 }

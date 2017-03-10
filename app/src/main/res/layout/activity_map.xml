@@ -141,7 +141,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Inventory"
-                android:onClick="openStatistics"
+                android:onClick="openInventory"
                 android:layout_below="@id/statistics"/>
         </RelativeLayout>
     </RelativeLayout>
@@ -151,4 +151,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_toLeftOf="@id/sidebar"/>
+
+    <LinearLayout
+        android:id="@+id/croutonview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" />
 </android.support.percent.PercentRelativeLayout>

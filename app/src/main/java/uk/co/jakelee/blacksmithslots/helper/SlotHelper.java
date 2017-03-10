@@ -16,7 +16,6 @@ import android.widget.RelativeLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.orm.query.Condition;
 import com.orm.query.Select;
@@ -180,10 +179,10 @@ public class SlotHelper {
         if (wonItems.size() > 0) {
             String winText = applyWinnings(wonItems);
             Message.logSpin(activity, slot.getSlotId(), resourceType, resourceTier, slot.getResourceQuantity(), winText);
-            Toast.makeText(activity, winText, Toast.LENGTH_SHORT).show();
+            AlertHelper.success(activity, winText, false);
             updateResourceCount();
         } else {
-            Toast.makeText(activity, "No matches!", Toast.LENGTH_SHORT).show();
+            AlertHelper.info(activity, R.string.alert_no_matches, false);
         }
     }
 

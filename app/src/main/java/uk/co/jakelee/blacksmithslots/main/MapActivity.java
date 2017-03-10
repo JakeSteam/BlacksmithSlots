@@ -9,7 +9,6 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -19,18 +18,19 @@ import com.google.android.gms.games.quest.Quest;
 import com.google.android.gms.games.quest.QuestUpdateListener;
 
 import java.util.List;
+import java.util.Locale;
 
 import hotchemi.android.rate.AppRate;
 import uk.co.jakelee.blacksmithslots.MainActivity;
 import uk.co.jakelee.blacksmithslots.R;
 import uk.co.jakelee.blacksmithslots.components.CustomPagerAdapter;
+import uk.co.jakelee.blacksmithslots.helper.AlertHelper;
 import uk.co.jakelee.blacksmithslots.helper.Constants;
 import uk.co.jakelee.blacksmithslots.helper.DatabaseHelper;
 import uk.co.jakelee.blacksmithslots.helper.DisplayHelper;
 import uk.co.jakelee.blacksmithslots.helper.Enums;
 import uk.co.jakelee.blacksmithslots.helper.GooglePlayHelper;
 import uk.co.jakelee.blacksmithslots.helper.TaskHelper;
-import uk.co.jakelee.blacksmithslots.model.Message;
 import uk.co.jakelee.blacksmithslots.model.Reward;
 import uk.co.jakelee.blacksmithslots.model.Setting;
 import uk.co.jakelee.blacksmithslots.model.Slot;
@@ -123,6 +123,9 @@ public class MapActivity extends MainActivity implements
                 .addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT));
     }
 
+    public void openInventory(View v) {
+    }
+
     public void loadSidebar(View v) {
         findViewById(R.id.noSlotSelected).setVisibility(View.VISIBLE);
     }
@@ -131,13 +134,15 @@ public class MapActivity extends MainActivity implements
         Task task = Task.findById(Task.class, (long)v.getTag());
         if (task.getTier() != null && task.itemsCanBeSubmitted()) {
             task.submitItems();
-            Toast.makeText(this, "Items submitted!", Toast.LENGTH_SHORT).show();
+            AlertHelper.success(this, R.string.alert_items_submitted, true);
         } else if (task.isCompleteable()) {
-            Message.logTask(this, task, selectedSlot);
+            AlertHelper.success(this, String.format(Locale.ENGLISH, getString(R.string.log_task),
+                    task.toString(this),
+                    Slot.getName(this, selectedSlot)), true);
             task.setCompleted(System.currentTimeMillis());
             task.save();
         } else {
-            Toast.makeText(this, "Can't hand in an unfinished task!", Toast.LENGTH_SHORT).show();
+            AlertHelper.error(this, R.string.alert_unfinished_task, false);
         }
         populateSlotInfo();
     }
@@ -151,7 +156,7 @@ public class MapActivity extends MainActivity implements
                 ((ImageView) findViewById(R.id.person)).setImageResource(getResources().getIdentifier(DisplayHelper.getPersonImageFile(slot.getPerson()), "drawable", getPackageName()));
 
                 if (slot.getRequiredSlot() > 0 && TaskHelper.isSlotLocked(Slot.get(slot.getRequiredSlot()).getSlotId())) {
-                    Toast.makeText(this, "Complete previous slot first!", Toast.LENGTH_SHORT).show();
+                    AlertHelper.error(this, "Previous slot needs completing first...", false);
                     findViewById(R.id.lockedSlot).setVisibility(View.VISIBLE);
                     findViewById(R.id.unlockedSlot).setVisibility(View.GONE);
                 } else if (TaskHelper.isSlotLocked(selectedSlot)) {
@@ -210,7 +215,7 @@ public class MapActivity extends MainActivity implements
     }
 
     public void onQuestCompleted(Quest quest) {
-        Toast.makeText(this, "Quest completed", Toast.LENGTH_SHORT).show();
+        AlertHelper.success(this, R.string.alert_quest_completed, true);
     }
 
     protected void onActivityResult(int requestCode, int resultCode, Intent intent) {

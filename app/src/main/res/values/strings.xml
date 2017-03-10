@@ -2,6 +2,23 @@
     <string name="app_name" translatable="false">Blacksmith Slots</string>
     <string name="app_id" translatable="false">1038590321568</string>
 
+    <string name="alert_items_submitted">Items submitted!</string>
+    <string name="alert_no_matches">No matches!</string>
+    <string name="alert_quest_completed">Quest completed!</string>
+    <string name="alert_unfinished_task">Can\'t hand in an unfinished task!</string>
+
+    <string name="google_cloud_save_loading">Loading...</string>
+    <string name="google_cloud_save_loaded">Loaded cloud save!</string>
+    <string name="google_cloud_save_saving">Saving...</string>
+    <string name="google_cloud_save_saved">Saved cloud save!</string>
+    <string name="google_cloud_save_conflict">Cloud save conflict! Attempting to resolve, this may take a few seconds.</string>
+    <string name="google_cloud_save_error">An error occurred, please contact the dev if this happens repeatedly!</string>
+
+    <string name="log_spin">Staked %1$dx %2$s at %3$s. %4$s.</string>
+    <string name="log_task">Updated %1$s for %2$s.</string>
+    <string name="log_error">Error: %1$s</string>
+
+    <!-- DB Lookups -->
     <string name="item_1_1">Bronze Ore</string>
     <string name="item_1_2">Bronze Bar</string>
     <string name="item_1_3">Bronze Dagger</string>
@@ -20,9 +37,6 @@
     <string name="item_1_16">Bronze Hatchet</string>
     <string name="item_1_17">Bronze Fishing Rod</string>
     <string name="item_1_18">Bronze Hammer</string>
-
-    <string name="log_spin">Staked %1$dx %2$s at %3$s. %4$s.</string>
-    <string name="log_task">Updated %1$s for %2$s.</string>
 
     <string name="slot_1_name">Bronze Furnace</string>
     <string name="slot_2_name">Bronze Weapon</string>

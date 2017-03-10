@@ -4,7 +4,6 @@ import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,6 +12,7 @@ import uk.co.jakelee.blacksmithslots.R;
 import uk.co.jakelee.blacksmithslots.main.SplashScreenActivity;
 import uk.co.jakelee.blacksmithslots.model.Inventory;
 import uk.co.jakelee.blacksmithslots.model.Item;
+import uk.co.jakelee.blacksmithslots.model.Message;
 import uk.co.jakelee.blacksmithslots.model.Reward;
 import uk.co.jakelee.blacksmithslots.model.Setting;
 import uk.co.jakelee.blacksmithslots.model.Slot;
@@ -83,7 +83,8 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
     @Override
     protected void onPostExecute(String result) {
         if (result.length() > 0) {
-            Toast.makeText(callingActivity, result, Toast.LENGTH_SHORT).show();
+            Message.log(result);
+            AlertHelper.success(callingActivity, result, true);
         }
 
         if (callingActivity != null) {
