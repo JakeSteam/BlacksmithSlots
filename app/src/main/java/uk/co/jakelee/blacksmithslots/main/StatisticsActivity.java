@@ -1,6 +1,5 @@
 package uk.co.jakelee.blacksmithslots.main;
 
-import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,10 +11,11 @@ import android.widget.TextView;
 
 import java.util.List;
 
+import uk.co.jakelee.blacksmithslots.MainActivity;
 import uk.co.jakelee.blacksmithslots.R;
 import uk.co.jakelee.blacksmithslots.model.Statistic;
 
-public class StatisticsActivity extends Activity {
+public class StatisticsActivity extends MainActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

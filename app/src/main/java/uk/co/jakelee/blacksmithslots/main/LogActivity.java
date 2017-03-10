@@ -1,6 +1,5 @@
 package uk.co.jakelee.blacksmithslots.main;
 
-import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -17,10 +16,11 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+import uk.co.jakelee.blacksmithslots.MainActivity;
 import uk.co.jakelee.blacksmithslots.R;
 import uk.co.jakelee.blacksmithslots.model.Message;
 
-public class LogActivity extends Activity {
+public class LogActivity extends MainActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

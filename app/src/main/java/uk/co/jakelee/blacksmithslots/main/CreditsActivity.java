@@ -1,12 +1,12 @@
 package uk.co.jakelee.blacksmithslots.main;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.WindowManager;
 
+import uk.co.jakelee.blacksmithslots.MainActivity;
 import uk.co.jakelee.blacksmithslots.R;
 
-public class CreditsActivity extends AppCompatActivity {
+public class CreditsActivity extends MainActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

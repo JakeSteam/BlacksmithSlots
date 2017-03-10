@@ -4,8 +4,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
@@ -23,6 +21,7 @@ import com.google.android.gms.games.quest.QuestUpdateListener;
 import java.util.List;
 
 import hotchemi.android.rate.AppRate;
+import uk.co.jakelee.blacksmithslots.MainActivity;
 import uk.co.jakelee.blacksmithslots.R;
 import uk.co.jakelee.blacksmithslots.components.CustomPagerAdapter;
 import uk.co.jakelee.blacksmithslots.helper.Constants;
@@ -37,7 +36,7 @@ import uk.co.jakelee.blacksmithslots.model.Setting;
 import uk.co.jakelee.blacksmithslots.model.Slot;
 import uk.co.jakelee.blacksmithslots.model.Task;
 
-public class MapActivity extends AppCompatActivity implements
+public class MapActivity extends MainActivity implements
         GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener,
         QuestUpdateListener {

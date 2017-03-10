@@ -2,11 +2,11 @@ package uk.co.jakelee.blacksmithslots.main;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Toast;
 
+import uk.co.jakelee.blacksmithslots.MainActivity;
 import uk.co.jakelee.blacksmithslots.R;
 import uk.co.jakelee.blacksmithslots.helper.AlertDialogHelper;
 import uk.co.jakelee.blacksmithslots.helper.Constants;
@@ -18,7 +18,7 @@ import static uk.co.jakelee.blacksmithslots.helper.LevelHelper.convertLevelToXp;
 import static uk.co.jakelee.blacksmithslots.helper.LevelHelper.getLevel;
 import static uk.co.jakelee.blacksmithslots.helper.LevelHelper.getXp;
 
-public class SlotActivity extends AppCompatActivity {
+public class SlotActivity extends MainActivity {
     private SlotHelper slotHelper;
 
     @Override

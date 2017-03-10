@@ -3,16 +3,16 @@ package uk.co.jakelee.blacksmithslots.main;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.v7.app.AppCompatActivity;
 import android.view.WindowManager;
 import android.widget.ImageView;
 
 import com.squareup.picasso.Picasso;
 
+import uk.co.jakelee.blacksmithslots.MainActivity;
 import uk.co.jakelee.blacksmithslots.R;
 import uk.co.jakelee.blacksmithslots.helper.DatabaseHelper;
 
-public class SplashScreenActivity extends AppCompatActivity {
+public class SplashScreenActivity extends MainActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

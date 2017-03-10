@@ -1,14 +1,13 @@
 package uk.co.jakelee.blacksmithslots.main;
 
-import android.app.Activity;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 
+import uk.co.jakelee.blacksmithslots.MainActivity;
 import uk.co.jakelee.blacksmithslots.R;
 
-public class SettingsActivity extends Activity {
+public class SettingsActivity extends MainActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
