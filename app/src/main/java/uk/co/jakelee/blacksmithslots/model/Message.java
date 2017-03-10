@@ -12,7 +12,6 @@ import java.util.Locale;
 import uk.co.jakelee.blacksmithslots.R;
 import uk.co.jakelee.blacksmithslots.helper.Constants;
 import uk.co.jakelee.blacksmithslots.helper.Enums;
-import uk.co.jakelee.blacksmithslots.helper.TextHelper;
 
 @Table(name="c")
 public class Message extends SugarRecord {
@@ -55,7 +54,7 @@ public class Message extends SugarRecord {
 
     private static void removeOldest() {
         if (Message.count(Message.class) >= Constants.MESSAGE_LOG_LIMIT) {
-            Message oldestMessage = Select.from(Message.class).orderBy("h ASC").first();
+            Message oldestMessage = Select.from(Message.class).orderBy("a ASC").first();
             oldestMessage.delete();
         }
     }

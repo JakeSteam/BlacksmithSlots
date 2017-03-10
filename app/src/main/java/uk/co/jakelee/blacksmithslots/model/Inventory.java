@@ -56,8 +56,8 @@ public class Inventory extends SugarRecord {
 
     public static Inventory getInventory(int tier, int type) {
         List<Inventory> inventories = Select.from(Inventory.class).where(
-                Condition.prop("a").eq(type),
-                Condition.prop("b").eq(tier)
+                Condition.prop("a").eq(tier),
+                Condition.prop("b").eq(type)
         ).list();
 
         if (inventories.size() > 0) {

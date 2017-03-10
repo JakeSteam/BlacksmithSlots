@@ -170,8 +170,9 @@ public class Statistic extends SugarRecord {
     }
 
     private static List<Task> getTasksForUpdating(Enums.Statistic stat) {
+        List<Task> allTasks = Select.from(Task.class).list();
         List<Task> tasks = Select.from(Task.class).where(
-                Condition.prop("c").eq(stat), // Tasks of this stat
+                Condition.prop("c").eq(stat.value), // Tasks of this stat
                 Condition.prop("c").notEq(Enums.Statistic.Level), // Except levels
                 Condition.prop("h").gt(0), // That have been started
                 Condition.prop("i").eq(0), // And not completed
@@ -181,9 +182,9 @@ public class Statistic extends SugarRecord {
         // Level tasks are updated independently
         if (stat == Enums.Statistic.Level) {
             tasks.addAll(Select.from(Task.class).where(
-                    Condition.prop("c").eq(Enums.Statistic.Level),
-                    Condition.prop("completed").eq(0),
-                    Condition.prop("remaining").gt(0)).list());
+                    Condition.prop("c").eq(Enums.Statistic.Level.value),
+                    Condition.prop("i").eq(0),
+                    Condition.prop("g").gt(0)).list());
         }
 
         return tasks;

@@ -10,29 +10,36 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
+import com.orm.query.Select;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import uk.co.jakelee.blacksmithslots.R;
-import uk.co.jakelee.blacksmithslots.model.Statistic;
+import uk.co.jakelee.blacksmithslots.model.Message;
 
-public class StatisticsActivity extends Activity {
+public class LogActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setContentView(R.layout.activity_statistics);
+        setContentView(R.layout.activity_log);
 
         LayoutInflater inflater = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        TableLayout statTable = (TableLayout)findViewById(R.id.statisticsTable);
-        List<Statistic> statistics = Statistic.listAll(Statistic.class);
-        for (Statistic statistic : statistics) {
+        TableLayout statTable = (TableLayout)findViewById(R.id.messagesTable);
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd HH:mm");
+        List<Message> messages = Select.from(Message.class).orderBy("a DESC").list();
+        for (Message message : messages) {
             TableRow tableRow = (TableRow)inflater.inflate(R.layout.custom_data_row, null).findViewById(R.id.dataRow);
-            TextView statName = (TextView)tableRow.findViewById(R.id.dataName);
-            statName.setText(Statistic.getName(this, statistic.getStatistic().value));
+            TextView valueName = (TextView)tableRow.findViewById(R.id.dataName);
+            Date date = new Date(message.getTime());
+            valueName.setText(dateFormat.format(date));
 
-            TextView statValue = (TextView)tableRow.findViewById(R.id.dataValue);
-            statValue.setText(statistic.getValue());
+            TextView valueValue = (TextView)tableRow.findViewById(R.id.dataValue);
+            valueValue.setText(message.getMessage());
             statTable.addView(tableRow);
         }
     }

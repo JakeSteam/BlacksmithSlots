@@ -51,6 +51,10 @@
         <activity android:name=".main.StatisticsActivity"
             android:screenOrientation="landscape"
             android:theme="@style/Theme.Dimmed" />
+        <activity
+            android:name=".main.LogActivity"
+            android:screenOrientation="landscape"
+            android:theme="@style/Theme.Dimmed" />
     </application>
 
 </manifest>

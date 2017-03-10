@@ -1,5 +1,6 @@
 package uk.co.jakelee.blacksmithslots.main;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -48,6 +49,10 @@ public class SlotActivity extends AppCompatActivity {
         slotHelper.spin(true);
     }
 
+    public void openLog(View v) {
+        startActivity(new Intent(this, LogActivity.class)
+                .addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT));
+    }
 
     public void increaseStake(View v) {
         slotHelper.increaseStake();
