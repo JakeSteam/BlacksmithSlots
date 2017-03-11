@@ -9,19 +9,19 @@ import android.graphics.drawable.Drawable;
 import android.util.DisplayMetrics;
 import android.widget.ImageView;
 
-import uk.co.jakelee.blacksmithslots.constructs.SlotResult;
+import uk.co.jakelee.blacksmithslots.constructs.ItemResult;
 
 public class DisplayHelper {
     public static String getItemNameLookupString(int tier, int type) {
         return "item_" + tier + "_" + type;
     }
 
-    public static String getItemImageFile(SlotResult result, boolean useDefault) {
+    public static String getItemImageFile(ItemResult result, boolean useDefault) {
         return getItemImageFile(result.getResourceTier().value, result.getResourceType().value, 1);
     }
 
-    public static String getItemImageFile(SlotResult result) {
-        return getItemImageFile(result.getResourceTier().value, result.getResourceType().value, result.getResourceMultiplier());
+    public static String getItemImageFile(ItemResult result) {
+        return getItemImageFile(result.getResourceTier().value, result.getResourceType().value, result.getResourceQuantity());
     }
 
     public static String getPersonImageFile(int person) {

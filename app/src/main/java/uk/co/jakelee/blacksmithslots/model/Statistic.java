@@ -9,6 +9,8 @@ import com.orm.dsl.Table;
 import com.orm.query.Condition;
 import com.orm.query.Select;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import uk.co.jakelee.blacksmithslots.helper.Enums;
@@ -27,15 +29,18 @@ public class Statistic extends SugarRecord {
     private String leaderboardId;
 
     @Column(name = "d")
-    private int intValue;
+    private int datatype;
 
     @Column(name = "e")
-    private long longValue;
+    private int intValue;
 
     @Column(name = "f")
-    private boolean boolValue;
+    private long longValue;
 
     @Column(name = "g")
+    private boolean boolValue;
+
+    @Column(name = "h")
     private String stringValue;
 
     public Statistic() {
@@ -45,6 +50,7 @@ public class Statistic extends SugarRecord {
         this.statistic = statistic.value;
         this.eventId = eventId;
         this.leaderboardId = leaderboardId;
+        this.datatype = Enums.DataType.Integer.value;
         this.intValue = intValue;
     }
 
@@ -52,6 +58,7 @@ public class Statistic extends SugarRecord {
         this.statistic = statistic.value;
         this.eventId = eventId;
         this.leaderboardId = leaderboardId;
+        this.datatype = Enums.DataType.Long.value;
         this.longValue = longValue;
     }
 
@@ -59,6 +66,7 @@ public class Statistic extends SugarRecord {
         this.statistic = statistic.value;
         this.eventId = eventId;
         this.leaderboardId = leaderboardId;
+        this.datatype = Enums.DataType.Boolean.value;
         this.boolValue = boolValue;
     }
 
@@ -66,12 +74,13 @@ public class Statistic extends SugarRecord {
         this.statistic = statistic.value;
         this.eventId = eventId;
         this.leaderboardId = leaderboardId;
+        this.datatype = Enums.DataType.String.value;
         this.stringValue = stringValue;
     }
 
     public static Statistic get(Enums.Statistic statistic) {
         List<Statistic> statisticList = Select.from(Statistic.class).where(
-                Condition.prop("a").eq(statistic)
+                Condition.prop("a").eq(statistic.value)
         ).list();
         return statisticList.size() > 0 ? statisticList.get(0) : null;
     }
@@ -98,6 +107,14 @@ public class Statistic extends SugarRecord {
 
     public void setLeaderboardId(String leaderboardId) {
         this.leaderboardId = leaderboardId;
+    }
+
+    public int getDatatype() {
+        return datatype;
+    }
+
+    public void setDatatype(int datatype) {
+        this.datatype = datatype;
     }
 
     public int getIntValue() {
@@ -170,7 +187,6 @@ public class Statistic extends SugarRecord {
     }
 
     private static List<Task> getTasksForUpdating(Enums.Statistic stat) {
-        List<Task> allTasks = Select.from(Task.class).list();
         List<Task> tasks = Select.from(Task.class).where(
                 Condition.prop("c").eq(stat.value), // Tasks of this stat
                 Condition.prop("c").notEq(Enums.Statistic.Level), // Except levels
@@ -195,14 +211,20 @@ public class Statistic extends SugarRecord {
     }
 
     public String getValue() {
-        if (getStringValue() != null) {
+        if (getDatatype() == Enums.DataType.String.value) {
             return getStringValue();
-        } else if (getLongValue() > 0) {
-            return Long.toString(getLongValue());
-        } else if (getIntValue() > 0) {
+        } else if (getDatatype() == Enums.DataType.Long.value) {
+            if (getLongValue() > 0) {
+                return new SimpleDateFormat("yyyy-MM-dd HH:mm").format(new Date(getLongValue()));
+            } else {
+                return "Never!";
+            }
+        } else if (getDatatype() == Enums.DataType.Integer.value) {
             return Integer.toString(getIntValue());
-        } else {
+        } else if (getDatatype() == Enums.DataType.Boolean.value) {
             return getBoolValue() ? "True" : "False";
+        } else {
+            return "???";
         }
     }
 

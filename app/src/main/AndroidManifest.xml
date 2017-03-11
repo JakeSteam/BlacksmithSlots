@@ -28,7 +28,7 @@
         <activity
             android:name=".main.SplashScreenActivity"
             android:theme="@style/AppTheme.Splash"
-            android:screenOrientation="landscape">
+            android:screenOrientation="sensorLandscape">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -37,23 +37,23 @@
         </activity>
         <activity
             android:name=".main.SlotActivity"
-            android:screenOrientation="landscape"/>
+            android:screenOrientation="sensorLandscape"/>
         <activity
             android:name=".main.CreditsActivity"
-            android:screenOrientation="landscape"/>
+            android:screenOrientation="sensorLandscape"/>
         <activity
             android:name=".main.MapActivity"
-            android:screenOrientation="landscape">
+            android:screenOrientation="sensorLandscape">
         </activity>
         <activity android:name=".main.SettingsActivity"
-            android:screenOrientation="landscape"
+            android:screenOrientation="sensorLandscape"
             android:theme="@style/Theme.Dimmed" />
         <activity android:name=".main.StatisticsActivity"
-            android:screenOrientation="landscape"
+            android:screenOrientation="sensorLandscape"
             android:theme="@style/Theme.Dimmed" />
         <activity
             android:name=".main.LogActivity"
-            android:screenOrientation="landscape"
+            android:screenOrientation="sensorLandscape"
             android:theme="@style/Theme.Dimmed" />
     </application>
 

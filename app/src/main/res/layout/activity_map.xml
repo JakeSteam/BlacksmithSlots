@@ -138,11 +138,18 @@
                 android:onClick="openStatistics"
                 android:layout_below="@id/settings"/>
             <Button
+                android:id="@+id/inventory"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Inventory"
                 android:onClick="openInventory"
                 android:layout_below="@id/statistics"/>
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Claim Bonus"
+                android:onClick="claimBonus"
+                android:layout_below="@id/inventory"/>
         </RelativeLayout>
     </RelativeLayout>
 

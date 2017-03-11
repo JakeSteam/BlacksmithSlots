@@ -9,6 +9,22 @@ public class Enums {
         }
     }
 
+    public enum DataType {
+        Integer(1), Boolean(2), String(3), Long(4);
+        public int value;
+        DataType(int value) {
+            this.value = value;
+        }
+        public static DataType get(int value) {
+            for (DataType item : DataType.values()) {
+                if (value == item.value) {
+                    return item;
+                }
+            }
+            return null;
+        }
+    }
+
     public enum Setting {
         Music(1), Sound(2), AttemptLogin(3), AutosaveMinutes(4);
         public int value;
@@ -42,7 +58,7 @@ public class Enums {
     }
 
     public enum Statistic {
-        Xp(1), Level(2), TotalSpins(3), QuestsCompleted(4), LastAutosave(5), ResourcesGambled(6), ResourcesWon(7), AdvertsWatched(8), PacksPurchased(9), CollectedBonuses(10), VipLevel(11);
+        Xp(1), Level(2), TotalSpins(3), QuestsCompleted(4), LastAutosave(5), ResourcesGambled(6), ResourcesWon(7), AdvertsWatched(8), PacksPurchased(9), CollectedBonuses(10), VipLevel(11), LastBonusClaimed(12);
         public int value;
         Statistic(int value) {
             this.value = value;

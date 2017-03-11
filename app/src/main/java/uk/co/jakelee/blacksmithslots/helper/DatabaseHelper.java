@@ -186,7 +186,7 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
     private void createStatistics() {
         List<Statistic> statistics = new ArrayList<>();
             statistics.add(new Statistic(Enums.Statistic.Xp, "", "", Constants.STARTING_XP));
-            statistics.add(new Statistic(Enums.Statistic.Level, "CgkIoMe6hp0eEAIQBw", "CgkIoMe6hp0eEAIQEA", 0));
+            statistics.add(new Statistic(Enums.Statistic.Level, "CgkIoMe6hp0eEAIQBw", "CgkIoMe6hp0eEAIQEA", 1));
             statistics.add(new Statistic(Enums.Statistic.TotalSpins, "CgkIoMe6hp0eEAIQCA", "CgkIoMe6hp0eEAIQEQ", 0));
             statistics.add(new Statistic(Enums.Statistic.QuestsCompleted, "CgkIoMe6hp0eEAIQCQ", "CgkIoMe6hp0eEAIQEg", 0));
             statistics.add(new Statistic(Enums.Statistic.LastAutosave, "", "", 0L));
@@ -196,6 +196,7 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
             statistics.add(new Statistic(Enums.Statistic.PacksPurchased, "CgkIoMe6hp0eEAIQDQ", "CgkIoMe6hp0eEAIQFg", 0));
             statistics.add(new Statistic(Enums.Statistic.CollectedBonuses, "CgkIoMe6hp0eEAIQDg", "CgkIoMe6hp0eEAIQFw", 0));
             statistics.add(new Statistic(Enums.Statistic.VipLevel, "CgkIoMe6hp0eEAIQDw", "", 0));
+            statistics.add(new Statistic(Enums.Statistic.LastBonusClaimed, "", "", 0L));
         Statistic.saveInTx(statistics);
     }
 

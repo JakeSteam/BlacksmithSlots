@@ -6,9 +6,19 @@ public class Constants {
     public final static Double LEVEL_MODIFIER = 0.07;
     public final static int STARTING_XP = 205;
     public final static int MESSAGE_LOG_LIMIT = 100;
+    public final static int BONUS_DELAY = 60000;
 
     // Intents
     public final static String INTENT_SLOT = "uk.co.jakelee.blacksmithslots.slot";
+
+    // Used for income calculations
+    public final static int VIP_LEVEL_MODIFIER = 50;
+    public final static int BRONZE_MIN_LEVEL = 1;
+    public final static int BRONZE_MAX_LEVEL = 4;
+    public final static int BRONZE_PER_LEVEL = 50;
+    public final static int IRON_MIN_LEVEL = 5;
+    public final static int IRON_MAX_LEVEL = 9;
+    public final static int IRON_PER_LEVEL = 60;
 
     // Slots
     public final static int SLOT_BRONZE_FURNACE = 1;
@@ -22,6 +32,4 @@ public class Constants {
     public final static int SLOTS_4_MAX_ROUTES = 9;
     public final static int SLOTS_5_MAX_ROUTES = 29;
 
-    // Statistics
-    public final static int STATISTIC_XP = 1;
 }

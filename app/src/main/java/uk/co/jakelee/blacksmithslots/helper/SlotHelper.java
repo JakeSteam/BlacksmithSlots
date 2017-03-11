@@ -31,7 +31,7 @@ import java.util.Map;
 import kankan.wheel.widget.OnWheelScrollListener;
 import kankan.wheel.widget.WheelView;
 import uk.co.jakelee.blacksmithslots.R;
-import uk.co.jakelee.blacksmithslots.constructs.SlotResult;
+import uk.co.jakelee.blacksmithslots.constructs.ItemResult;
 import uk.co.jakelee.blacksmithslots.constructs.WinRoute;
 import uk.co.jakelee.blacksmithslots.main.SlotActivity;
 import uk.co.jakelee.blacksmithslots.model.Inventory;
@@ -49,8 +49,8 @@ public class SlotHelper {
     private Enums.Type resourceType;
     private Slot slot;
     private List<WheelView> slots = new ArrayList<>();
-    private List<SlotResult> baseItems;
-    private List<List<SlotResult>> items = new ArrayList<>();
+    private List<ItemResult> baseItems;
+    private List<List<ItemResult>> items = new ArrayList<>();
     private List<WinRoute> highlightedRoutes;
     private Picasso picasso;
     private LayoutInflater inflater;
@@ -67,11 +67,11 @@ public class SlotHelper {
         this.inflater = LayoutInflater.from(activity);
     }
 
-    private List<SlotResult> convertToSlots(List<Reward> dbRewards) {
-        List<SlotResult> rewards = new ArrayList<>();
+    private List<ItemResult> convertToSlots(List<Reward> dbRewards) {
+        List<ItemResult> rewards = new ArrayList<>();
         for (Reward dbReward : dbRewards) {
             for (int i = 0; i < dbReward.getWeighting(); i++) {
-                rewards.add(new SlotResult(dbReward.getTier(), dbReward.getType(), dbReward.getQuantityMultiplier()));
+                rewards.add(new ItemResult(dbReward.getTier(), dbReward.getType(), dbReward.getQuantityMultiplier()));
             }
         }
         return rewards;
@@ -174,8 +174,8 @@ public class SlotHelper {
     }
 
     private void updateStatus() {
-        List<List<SlotResult>> results = getResults();
-        List<SlotResult> wonItems = getWinnings(results);
+        List<List<ItemResult>> results = getResults();
+        List<ItemResult> wonItems = getWinnings(results);
         if (wonItems.size() > 0) {
             String winText = applyWinnings(wonItems);
             Message.logSpin(activity, slot.getSlotId(), resourceType, resourceTier, slot.getResourceQuantity(), winText);
@@ -186,16 +186,16 @@ public class SlotHelper {
         }
     }
 
-    private String applyWinnings(List<SlotResult> unmergedWinnings) {
+    private String applyWinnings(List<ItemResult> unmergedWinnings) {
         LinkedHashMap<Pair<Enums.Tier, Enums.Type>, Integer> dataStore = new LinkedHashMap<>();
-        for (SlotResult winning : unmergedWinnings) {
+        for (ItemResult winning : unmergedWinnings) {
             Integer temp;
             Pair<Enums.Tier, Enums.Type> pair = new Pair<>(winning.getResourceTier(), winning.getResourceType());
             if (dataStore.containsKey(pair)) {
-                temp = dataStore.get(pair) + winning.getResourceMultiplier();
+                temp = dataStore.get(pair) + winning.getResourceQuantity();
                 dataStore.put(pair, temp);
             } else {
-                dataStore.put(pair, winning.getResourceMultiplier());
+                dataStore.put(pair, winning.getResourceQuantity());
             }
         }
 
@@ -215,14 +215,14 @@ public class SlotHelper {
         return winningsText.substring(0, winningsText.length() - 2);
     }
 
-    private List<SlotResult> getWinnings(List<List<SlotResult>> rows) {
-        List<SlotResult> winningResults = new ArrayList<>();
+    private List<ItemResult> getWinnings(List<List<ItemResult>> rows) {
+        List<ItemResult> winningResults = new ArrayList<>();
         List<WinRoute> winningRoutes = new ArrayList<>();
 
         // Loop through possible win paths
         List<WinRoute> routes = MatchHelper.getRoutes(rows.get(0).size(), slot.getCurrentRows());
         for (int i = 0; i < routes.size(); i++) {
-            List<SlotResult> results = new ArrayList<>();
+            List<ItemResult> results = new ArrayList<>();
 
             WinRoute route = routes.get(i);
             // Loop through positions in win paths
@@ -249,9 +249,9 @@ public class SlotHelper {
         return winningResults;
     }
 
-    private boolean isAMatch(List<SlotResult> routeTiles) {
-        SlotResult checkedResult = new SlotResult();
-        for (SlotResult routeTile : routeTiles) {
+    private boolean isAMatch(List<ItemResult> routeTiles) {
+        ItemResult checkedResult = new ItemResult();
+        for (ItemResult routeTile : routeTiles) {
             // If there's no tile to check, set it to current
             if (checkedResult.getResourceTier() == null && checkedResult.getResourceType() == null
                     && (routeTile.getResourceTier() != Enums.Tier.Internal && routeTile.getResourceType() != Enums.Type.Wildcard)) {
@@ -266,12 +266,12 @@ public class SlotHelper {
         return true;
     }
 
-    private List<List<SlotResult>> getResults() {
+    private List<List<ItemResult>> getResults() {
 
         // Setup data holder
-        List<List<SlotResult>> rows = new ArrayList<>();
+        List<List<ItemResult>> rows = new ArrayList<>();
         for (int i = 0; i < Constants.ROWS; i++) {
-            rows.add(new ArrayList<SlotResult>());
+            rows.add(new ArrayList<ItemResult>());
         }
 
         // Add data

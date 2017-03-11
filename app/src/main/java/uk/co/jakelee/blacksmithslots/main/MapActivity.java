@@ -30,6 +30,7 @@ import uk.co.jakelee.blacksmithslots.helper.DatabaseHelper;
 import uk.co.jakelee.blacksmithslots.helper.DisplayHelper;
 import uk.co.jakelee.blacksmithslots.helper.Enums;
 import uk.co.jakelee.blacksmithslots.helper.GooglePlayHelper;
+import uk.co.jakelee.blacksmithslots.helper.IncomeHelper;
 import uk.co.jakelee.blacksmithslots.helper.TaskHelper;
 import uk.co.jakelee.blacksmithslots.model.Reward;
 import uk.co.jakelee.blacksmithslots.model.Setting;
@@ -124,6 +125,14 @@ public class MapActivity extends MainActivity implements
     }
 
     public void openInventory(View v) {
+    }
+
+    public void claimBonus(View v) {
+        if (IncomeHelper.canClaimBonus()) {
+            AlertHelper.success(this, IncomeHelper.claimPeriodicBonus(this), true);
+        } else {
+            AlertHelper.error(this, "Can't claim bonus!", false);
+        }
     }
 
     public void loadSidebar(View v) {
