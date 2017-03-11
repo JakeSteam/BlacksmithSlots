@@ -17,12 +17,12 @@ public class IncomeHelper {
 
         if (currentLevel >= Constants.BRONZE_MIN_LEVEL) {
             int adjustedLevel = Math.min(currentLevel, Constants.BRONZE_MAX_LEVEL);
-            bonus.add(new ItemResult(Enums.Tier.Bronze, Enums.Type.Bar, (adjustedLevel - Constants.BRONZE_MIN_LEVEL) * Constants.BRONZE_PER_LEVEL));
+            bonus.add(new ItemResult(Enums.Tier.Bronze, Enums.Type.Bar, (adjustedLevel - Constants.BRONZE_MIN_LEVEL + 1) * Constants.BRONZE_PER_LEVEL));
         }
 
         if (currentLevel >= Constants.IRON_MIN_LEVEL) {
             int adjustedLevel = Math.min(currentLevel, Constants.IRON_MAX_LEVEL);
-            bonus.add(new ItemResult(Enums.Tier.Iron, Enums.Type.Bar, (adjustedLevel - Constants.IRON_MIN_LEVEL) * Constants.IRON_PER_LEVEL));
+            bonus.add(new ItemResult(Enums.Tier.Iron, Enums.Type.Bar, (adjustedLevel - Constants.IRON_MIN_LEVEL + 1) * Constants.IRON_PER_LEVEL));
         }
 
         // Apply VIP bonus
@@ -39,7 +39,6 @@ public class IncomeHelper {
     }
 
     public static boolean canClaimBonus() {
-        List<Statistic> statistics = Statistic.listAll(Statistic.class);
         Statistic lastClaimed = Statistic.get(Enums.Statistic.LastBonusClaimed);
         Long nextClaimTime = lastClaimed.getLongValue() + Constants.BONUS_DELAY;
         return nextClaimTime - System.currentTimeMillis() <= 0;
