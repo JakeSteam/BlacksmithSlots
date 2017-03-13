@@ -65,6 +65,6 @@ public class Item extends SugarRecord {
     public static String getName(Context context, int tier, int type) {
         return TextHelper.getInstance(context).getText(DisplayHelper.getItemTierString(tier)) +
                 " " +
-                TextHelper.getInstance(context).getText(DisplayHelper.getItemTypeString(type));;
+                TextHelper.getInstance(context).getText(DisplayHelper.getItemTypeString(type));
     }
 }

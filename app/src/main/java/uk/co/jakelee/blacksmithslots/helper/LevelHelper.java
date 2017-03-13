@@ -58,4 +58,13 @@ public class LevelHelper {
             Log.d("Level", "Levelled up to " + level);
         }
     }
+
+    public static Enums.Tier getCurrentTierByLevel(int level) {
+        if (level <= Constants.BRONZE_MAX_LEVEL) {
+            return Enums.Tier.Bronze;
+        } else if (level <= Constants.IRON_MAX_LEVEL) {
+            return Enums.Tier.Iron;
+        }
+        return Enums.Tier.Bronze;
+    }
 }
