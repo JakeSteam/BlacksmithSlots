@@ -16,9 +16,14 @@ public class IncomeHelper {
     }
 
     public static boolean canClaimPeriodicBonus() {
+        return getNextPeriodicClaimTime() - System.currentTimeMillis() <= 0;
+    }
+
+    public static long getNextPeriodicClaimTime() {
         Statistic lastClaimed = Statistic.get(Enums.Statistic.LastBonusClaimed);
-        Long nextClaimTime = lastClaimed.getLongValue() + Constants.BONUS_DELAY;
-        return nextClaimTime - System.currentTimeMillis() <= 0;
+        double hours = IncomeHelper.getChestCooldownHours(LevelHelper.getVipLevel());
+        long millis = DateHelper.hoursToMillis(hours);
+        return lastClaimed.getLongValue() + millis;
     }
 
     public static String claimBonus(Context context, boolean claimingPeriodicBonus) {
@@ -58,5 +63,13 @@ public class IncomeHelper {
         }
 
         return bonus;
+    }
+
+    public static double getChestCooldownHours(int vipLevel) {
+        return Constants.CHEST_DEFAULT_COOLDOWN_HOURS - (vipLevel * Constants.CHEST_COOLDOWN_VIP_REDUCTION);
+    }
+
+    public static double getAdvertCooldownHours(int vipLevel) {
+        return Constants.ADVERT_DEFAULT_COOLDOWN_HOURS - (vipLevel * Constants.ADVERT_COOLDOWN_VIP_REDUCTION);
     }
 }

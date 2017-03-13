@@ -9,10 +9,9 @@ import com.orm.dsl.Table;
 import com.orm.query.Condition;
 import com.orm.query.Select;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
+import uk.co.jakelee.blacksmithslots.helper.DateHelper;
 import uk.co.jakelee.blacksmithslots.helper.Enums;
 import uk.co.jakelee.blacksmithslots.helper.GooglePlayHelper;
 import uk.co.jakelee.blacksmithslots.helper.TextHelper;
@@ -215,7 +214,7 @@ public class Statistic extends SugarRecord {
             return getStringValue();
         } else if (getDatatype() == Enums.DataType.Long.value) {
             if (getLongValue() > 0) {
-                return new SimpleDateFormat("yyyy-MM-dd HH:mm").format(new Date(getLongValue()));
+                return DateHelper.timestampToString(getLongValue());
             } else {
                 return "Never!";
             }

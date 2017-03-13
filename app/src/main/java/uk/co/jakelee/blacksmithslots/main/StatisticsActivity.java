@@ -13,6 +13,8 @@ import java.util.List;
 
 import uk.co.jakelee.blacksmithslots.MainActivity;
 import uk.co.jakelee.blacksmithslots.R;
+import uk.co.jakelee.blacksmithslots.helper.DateHelper;
+import uk.co.jakelee.blacksmithslots.helper.IncomeHelper;
 import uk.co.jakelee.blacksmithslots.model.Statistic;
 
 public class StatisticsActivity extends MainActivity {
@@ -28,13 +30,15 @@ public class StatisticsActivity extends MainActivity {
         List<Statistic> statistics = Statistic.listAll(Statistic.class);
         for (Statistic statistic : statistics) {
             TableRow tableRow = (TableRow)inflater.inflate(R.layout.custom_data_row, null).findViewById(R.id.dataRow);
-            TextView statName = (TextView)tableRow.findViewById(R.id.dataName);
-            statName.setText(Statistic.getName(this, statistic.getStatistic().value));
-
-            TextView statValue = (TextView)tableRow.findViewById(R.id.dataValue);
-            statValue.setText(statistic.getValue());
+            ((TextView)tableRow.findViewById(R.id.dataName)).setText(Statistic.getName(this, statistic.getStatistic().value));
+            ((TextView)tableRow.findViewById(R.id.dataValue)).setText(statistic.getValue());
             statTable.addView(tableRow);
         }
+
+        TableRow tableRow = (TableRow)inflater.inflate(R.layout.custom_data_row, null).findViewById(R.id.dataRow);
+        ((TextView)tableRow.findViewById(R.id.dataName)).setText("Next Bonus Claim");
+        ((TextView)tableRow.findViewById(R.id.dataValue)).setText(DateHelper.timestampToString(IncomeHelper.getNextPeriodicClaimTime()));
+        statTable.addView(tableRow);
     }
 
     public void close(View v) {

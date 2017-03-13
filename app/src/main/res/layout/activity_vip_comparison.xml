@@ -44,7 +44,7 @@
                     android:maxLines="3"
                     android:layout_gravity="center_vertical"
                     android:layout_margin="3dp"
-                    android:text="Time Between Bonuses"/>
+                    android:text="Chest Bonus"/>
                 <uk.co.jakelee.blacksmithslots.components.FontTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -60,7 +60,7 @@
                     android:maxLines="3"
                     android:layout_gravity="center_vertical"
                     android:layout_margin="3dp"
-                    android:text="Bonus Modifier"/>
+                    android:text="Bonus Amount"/>
                 <uk.co.jakelee.blacksmithslots.components.FontTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -68,7 +68,7 @@
                     android:maxLines="3"
                     android:layout_gravity="center_vertical"
                     android:layout_margin="3dp"
-                    android:text="Test Column"/>
+                    android:text="Daily Bonus"/>
 
             </TableRow>
         </TableLayout>

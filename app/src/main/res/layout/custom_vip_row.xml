@@ -21,7 +21,7 @@
         style="@style/DataText"/>
 
     <uk.co.jakelee.blacksmithslots.components.FontTextView
-        android:id="@+id/test"
+        android:id="@+id/dailyBonus"
         style="@style/DataText"/>
 
 </TableRow>
