@@ -129,7 +129,7 @@ public class MapActivity extends MainActivity implements
 
     public void claimPeriodicBonus(View v) {
         if (IncomeHelper.canClaimPeriodicBonus()) {
-            AlertHelper.success(this, IncomeHelper.claimBonus(this, false), true);
+            AlertHelper.success(this, IncomeHelper.claimBonus(this, true), true);
         } else {
             AlertHelper.error(this, "Can't claim bonus!", false);
         }

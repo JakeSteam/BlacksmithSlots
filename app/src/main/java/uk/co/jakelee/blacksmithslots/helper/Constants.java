@@ -7,6 +7,7 @@ public class Constants {
     public final static int STARTING_XP = 205;
     public final static int MESSAGE_LOG_LIMIT = 100;
     public final static int BONUS_DELAY = 60000;
+    public final static int MAX_VIP_LEVEL = 5;
 
     // Intents
     public final static String INTENT_SLOT = "uk.co.jakelee.blacksmithslots.slot";

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableRow xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/dataRow"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <uk.co.jakelee.blacksmithslots.components.FontTextView
+        android:id="@+id/vipLevel"
+        style="@style/DataText"/>
+
+    <uk.co.jakelee.blacksmithslots.components.FontTextView
+        android:id="@+id/timeBetweenBonuses"
+        style="@style/DataText"/>
+
+    <uk.co.jakelee.blacksmithslots.components.FontTextView
+        android:id="@+id/advertBonus"
+        style="@style/DataText"/>
+
+    <uk.co.jakelee.blacksmithslots.components.FontTextView
+        android:id="@+id/bonusModifier"
+        style="@style/DataText"/>
+
+    <uk.co.jakelee.blacksmithslots.components.FontTextView
+        android:id="@+id/test"
+        style="@style/DataText"/>
+
+</TableRow>

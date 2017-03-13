@@ -54,6 +54,11 @@ public class SlotActivity extends MainActivity {
                 .addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT));
     }
 
+    public void openVip(View v) {
+        startActivity(new Intent(this, VipComparisonActivity.class)
+                .addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT));
+    }
+
     public void increaseStake(View v) {
         slotHelper.increaseStake();
     }

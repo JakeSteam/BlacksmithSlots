@@ -6,19 +6,9 @@
 
     <uk.co.jakelee.blacksmithslots.components.FontTextView
         android:id="@+id/dataName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="@style/FontSize"
-        android:maxLines="3"
-        android:layout_gravity="center_vertical"
-        android:layout_margin="3dp"/>
+        style="@style/DataText"/>
 
     <uk.co.jakelee.blacksmithslots.components.FontTextView
         android:id="@+id/dataValue"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="@style/FontSize"
-        android:maxLines="3"
-        android:layout_gravity="center_vertical"
-        android:layout_margin="3dp"/>
+        style="@style/DataText"/>
 </TableRow>

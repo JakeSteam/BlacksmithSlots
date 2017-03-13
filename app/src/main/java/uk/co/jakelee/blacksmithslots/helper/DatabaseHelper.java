@@ -195,7 +195,7 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
             statistics.add(new Statistic(Enums.Statistic.AdvertsWatched, "CgkIoMe6hp0eEAIQDA", "CgkIoMe6hp0eEAIQFQ", 0));
             statistics.add(new Statistic(Enums.Statistic.PacksPurchased, "CgkIoMe6hp0eEAIQDQ", "CgkIoMe6hp0eEAIQFg", 0));
             statistics.add(new Statistic(Enums.Statistic.CollectedBonuses, "CgkIoMe6hp0eEAIQDg", "CgkIoMe6hp0eEAIQFw", 0));
-            statistics.add(new Statistic(Enums.Statistic.VipLevel, "CgkIoMe6hp0eEAIQDw", "", 0));
+            statistics.add(new Statistic(Enums.Statistic.VipLevel, "CgkIoMe6hp0eEAIQDw", "", 3));
             statistics.add(new Statistic(Enums.Statistic.LastBonusClaimed, "", "", 0L));
         Statistic.saveInTx(statistics);
     }
