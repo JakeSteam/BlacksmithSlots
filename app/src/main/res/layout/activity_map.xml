@@ -148,7 +148,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Claim Bonus"
-                android:onClick="claimBonus"
+                android:onClick="claimPeriodicBonus"
                 android:layout_below="@id/inventory"/>
         </RelativeLayout>
     </RelativeLayout>

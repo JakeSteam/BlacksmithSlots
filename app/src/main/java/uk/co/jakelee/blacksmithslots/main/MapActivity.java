@@ -127,9 +127,9 @@ public class MapActivity extends MainActivity implements
     public void openInventory(View v) {
     }
 
-    public void claimBonus(View v) {
+    public void claimPeriodicBonus(View v) {
         if (IncomeHelper.canClaimPeriodicBonus()) {
-            AlertHelper.success(this, IncomeHelper.claimPeriodicBonus(this), true);
+            AlertHelper.success(this, IncomeHelper.claimBonus(this, false), true);
         } else {
             AlertHelper.error(this, "Can't claim bonus!", false);
         }

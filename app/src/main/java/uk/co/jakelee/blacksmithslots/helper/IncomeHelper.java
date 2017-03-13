@@ -21,41 +21,25 @@ public class IncomeHelper {
         return nextClaimTime - System.currentTimeMillis() <= 0;
     }
 
-    public static String claimAdvertBonus(Context context) {
-        List<ItemResult> bonus = getAdvertBonus();
-        return "";
-    }
-
-    public static String claimLevelUpBonus(Context context, int levelAchieved) {
-        List<ItemResult> bonus = getLevelUpBonus();
-        return "";
-    }
-
-    public static String claimPeriodicBonus(Context context) {
-        List<ItemResult> bonus = getPeriodicBonus();
+    public static String claimBonus(Context context, boolean claimingPeriodicBonus) {
+        List<ItemResult> bonus = getBonus();
         StringBuilder winningsText = new StringBuilder().append("Claimed: ");
         for (ItemResult result : bonus) {
             Inventory.addInventory(result);
             winningsText.append(result.toString(context)).append(", ");
         }
 
-        Statistic.add(Enums.Statistic.CollectedBonuses);
-        Statistic lastClaimed = Statistic.get(Enums.Statistic.LastBonusClaimed);
-        lastClaimed.setLongValue(System.currentTimeMillis());
-        lastClaimed.save();
+        if (claimingPeriodicBonus) {
+            Statistic.add(Enums.Statistic.CollectedBonuses);
+            Statistic lastClaimed = Statistic.get(Enums.Statistic.LastBonusClaimed);
+            lastClaimed.setLongValue(System.currentTimeMillis());
+            lastClaimed.save();
+        }
 
         return winningsText.substring(0, winningsText.length() - 2);
     }
 
-    public static List<ItemResult> getAdvertBonus() {
-        return new ArrayList<>();
-    }
-
-    public static List<ItemResult> getLevelUpBonus() {
-        return new ArrayList<>();
-    }
-
-    private static List<ItemResult> getPeriodicBonus() {
+    private static List<ItemResult> getBonus() {
         ArrayList<ItemResult> bonus = new ArrayList<>();
         int currentLevel = LevelHelper.getLevel();
         int vipLevel = LevelHelper.getVipLevel();
