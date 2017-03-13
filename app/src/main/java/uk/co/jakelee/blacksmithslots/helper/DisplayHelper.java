@@ -16,6 +16,14 @@ public class DisplayHelper {
         return "tier_" + tier;
     }
 
+    public static String getSettingGroupString(int group) {
+        return "settinggroup_" + group;
+    }
+
+    public static String getSettingString(int setting) {
+        return "setting_" + setting;
+    }
+
     public static String getItemTypeString(int type) {
         return "type_" + type;
     }

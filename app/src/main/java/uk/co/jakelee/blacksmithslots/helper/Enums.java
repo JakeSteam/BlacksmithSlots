@@ -41,6 +41,22 @@ public class Enums {
         }
     }
 
+    public enum SettingGroup {
+        Internal(0), Audio(1), Gameplay(2), Notifications(3);
+        public int value;
+        SettingGroup(int value) {
+            this.value = value;
+        }
+        public static SettingGroup get(int value) {
+            for (SettingGroup item : SettingGroup.values()) {
+                if (value == item.value) {
+                    return item;
+                }
+            }
+            return null;
+        }
+    }
+
     public enum SlotType {
         Furnace(1), Weapon(2), Tool(3), Armour(4), Accessory(5), Misc(6);
         public int value;

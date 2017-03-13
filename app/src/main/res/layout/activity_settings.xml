@@ -9,29 +9,32 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@color/black"
-        android:alpha="0.3"
         android:clickable="true"
         android:onClick="close"/>
 
-    <RelativeLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="30dp"
         android:clickable="true"
-        android:onClick="suppress"
-        android:background="@color/white">
-        <uk.co.jakelee.blacksmithslots.components.FontTextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="Hello"
-            style="@style/SlotText"/>
-    </RelativeLayout>
+        android:onClick="suppress">
+        <TableLayout
+            android:id="@+id/settingsTable"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:stretchColumns="*"
+            android:shrinkColumns="*"
+            android:divider="?android:attr/dividerHorizontal"
+            android:showDividers="middle"
+            android:background="@drawable/box_yellow"/>
+    </ScrollView>
 
-    <LinearLayout
-        android:id="@+id/croutonview"
-        android:layout_width="match_parent"
+    <ImageView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:orientation="horizontal" />
+        android:src="@drawable/close"
+        android:layout_alignParentRight="true"
+        android:layout_margin="10dp"
+        android:onClick="close"/>
 </RelativeLayout>

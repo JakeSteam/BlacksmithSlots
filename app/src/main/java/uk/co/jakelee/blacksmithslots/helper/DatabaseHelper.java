@@ -134,10 +134,10 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
 
     private void createSettings() {
         List<Setting> settings = new ArrayList<>();
-            settings.add(new Setting(Enums.Setting.Music, true));
-            settings.add(new Setting(Enums.Setting.Sound, true));
-            settings.add(new Setting(Enums.Setting.AttemptLogin, true));
-            settings.add(new Setting(Enums.Setting.AutosaveMinutes, 10));
+            settings.add(new Setting(Enums.SettingGroup.Audio, Enums.Setting.Music, true));
+            settings.add(new Setting(Enums.SettingGroup.Audio, Enums.Setting.Sound, true));
+            settings.add(new Setting(Enums.SettingGroup.Internal, Enums.Setting.AttemptLogin, true));
+            settings.add(new Setting(Enums.SettingGroup.Gameplay, Enums.Setting.AutosaveMinutes, 10));
         Setting.saveInTx(settings);
     }
 

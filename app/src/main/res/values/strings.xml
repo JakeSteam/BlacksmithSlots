@@ -18,6 +18,15 @@
     <string name="log_task">Updated %1$s for %2$s.</string>
     <string name="log_error">Error: %1$s</string>
 
+    <string name="setting_1">Music</string>
+    <string name="setting_2">Sounds</string>
+    <string name="setting_3">NOTHING</string>
+    <string name="setting_4">Autosave Mins</string>
+
+    <string name="settinggroup_1">Audio</string>
+    <string name="settinggroup_2">Gameplay</string>
+    <string name="settinggroup_3">Notifications</string>
+
     <!-- DB Lookups -->
     <string name="tier_1">Bronze</string>
     <string name="tier_2">Iron</string>
