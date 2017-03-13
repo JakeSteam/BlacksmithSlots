@@ -55,14 +55,16 @@ public class Item extends SugarRecord {
     }
 
     public String getName(Context context) {
-        return TextHelper.getInstance(context).getText(DisplayHelper.getItemNameLookupString(tier, type));
+        return getName(context, tier, type);
     }
 
     public static String getName(Context context, Enums.Tier tier, Enums.Type type) {
-        return TextHelper.getInstance(context).getText(DisplayHelper.getItemNameLookupString(tier.value, type.value));
+        return getName(context, tier.value, type.value);
     }
 
     public static String getName(Context context, int tier, int type) {
-        return TextHelper.getInstance(context).getText(DisplayHelper.getItemNameLookupString(tier, type));
+        return TextHelper.getInstance(context).getText(DisplayHelper.getItemTierString(tier)) +
+                " " +
+                TextHelper.getInstance(context).getText(DisplayHelper.getItemTypeString(type));;
     }
 }

@@ -10,7 +10,7 @@ import uk.co.jakelee.blacksmithslots.model.Inventory;
 import uk.co.jakelee.blacksmithslots.model.Statistic;
 
 public class IncomeHelper {
-    public static List<ItemResult> getPeriodicBonus() {
+    private static List<ItemResult> getPeriodicBonus() {
         ArrayList<ItemResult> bonus = new ArrayList<>();
         int currentLevel = LevelHelper.getLevel();
         int vipLevel = LevelHelper.getVipLevel();

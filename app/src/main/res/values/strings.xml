@@ -19,24 +19,27 @@
     <string name="log_error">Error: %1$s</string>
 
     <!-- DB Lookups -->
-    <string name="item_1_1">Bronze Ore</string>
-    <string name="item_1_2">Bronze Bar</string>
-    <string name="item_1_3">Bronze Dagger</string>
-    <string name="item_1_4">Bronze Sword</string>
-    <string name="item_1_5">Bronze Longsword</string>
-    <string name="item_1_6">Bronze Bow</string>
-    <string name="item_1_7">Bronze Half Shield</string>
-    <string name="item_1_8">Bronze Full Shield</string>
-    <string name="item_1_9">Bronze Chainmail</string>
-    <string name="item_1_10">Bronze Platebody</string>
-    <string name="item_1_11">Bronze Half Helmet</string>
-    <string name="item_1_12">Bronze Full Helmet</string>
-    <string name="item_1_13">Bronze Boots</string>
-    <string name="item_1_14">Bronze Gloves</string>
-    <string name="item_1_15">Bronze Pickaxe</string>
-    <string name="item_1_16">Bronze Hatchet</string>
-    <string name="item_1_17">Bronze Fishing Rod</string>
-    <string name="item_1_18">Bronze Hammer</string>
+    <string name="tier_1">Bronze</string>
+    <string name="tier_2">Iron</string>
+
+    <string name="type_1">Ore</string>
+    <string name="type_2">Bar</string>
+    <string name="type_3">Dagger</string>
+    <string name="type_4">Sword</string>
+    <string name="type_5">Longsword</string>
+    <string name="type_6">Bow</string>
+    <string name="type_7">Half Shield</string>
+    <string name="type_8">Full Shield</string>
+    <string name="type_9">Chainmail</string>
+    <string name="type_10">Platebody</string>
+    <string name="type_11">Half Helmet</string>
+    <string name="type_12">Full Helmet</string>
+    <string name="type_13">Boots</string>
+    <string name="type_14">Gloves</string>
+    <string name="type_15">Pickaxe</string>
+    <string name="type_16">Hatchet</string>
+    <string name="type_17">Fishing Rod</string>
+    <string name="type_18">Hammer</string>
 
     <string name="slot_1_name">Bronze Furnace</string>
     <string name="slot_2_name">Bronze Weapon</string>

@@ -13,7 +13,6 @@ import java.util.List;
 import uk.co.jakelee.blacksmithslots.constructs.ItemResult;
 import uk.co.jakelee.blacksmithslots.helper.DisplayHelper;
 import uk.co.jakelee.blacksmithslots.helper.Enums;
-import uk.co.jakelee.blacksmithslots.helper.TextHelper;
 
 @Table(name = "a")
 public class Inventory extends SugarRecord {
@@ -73,7 +72,7 @@ public class Inventory extends SugarRecord {
     }
 
     public String getName(Context context) {
-        return TextHelper.getInstance(context).getText(DisplayHelper.getItemImageFile(tier, type));
+        return Item.getName(context, tier, type);
     }
 
     public int getDrawableId(Context context) {

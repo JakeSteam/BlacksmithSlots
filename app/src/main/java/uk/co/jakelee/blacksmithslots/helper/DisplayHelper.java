@@ -12,8 +12,12 @@ import android.widget.ImageView;
 import uk.co.jakelee.blacksmithslots.constructs.ItemResult;
 
 public class DisplayHelper {
-    public static String getItemNameLookupString(int tier, int type) {
-        return "item_" + tier + "_" + type;
+    public static String getItemTierString(int tier) {
+        return "tier_" + tier;
+    }
+
+    public static String getItemTypeString(int type) {
+        return "type_" + type;
     }
 
     public static String getItemImageFile(ItemResult result, boolean useDefault) {
