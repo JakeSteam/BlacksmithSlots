@@ -31,6 +31,7 @@ import uk.co.jakelee.blacksmithslots.helper.DisplayHelper;
 import uk.co.jakelee.blacksmithslots.helper.Enums;
 import uk.co.jakelee.blacksmithslots.helper.GooglePlayHelper;
 import uk.co.jakelee.blacksmithslots.helper.IncomeHelper;
+import uk.co.jakelee.blacksmithslots.helper.LanguageHelper;
 import uk.co.jakelee.blacksmithslots.helper.TaskHelper;
 import uk.co.jakelee.blacksmithslots.model.Reward;
 import uk.co.jakelee.blacksmithslots.model.Setting;
@@ -53,6 +54,7 @@ public class MapActivity extends MainActivity implements
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_map);
         prefs = getSharedPreferences("uk.co.jakelee.blacksmithslots", MODE_PRIVATE);
+        LanguageHelper.updateLanguage(getApplicationContext());
 
         ratingPrompt();
 
@@ -75,6 +77,16 @@ public class MapActivity extends MainActivity implements
             }
         });
         mViewPager.setAdapter(mCustomPagerAdapter);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        ((TextView)findViewById(R.id.settings)).setText(R.string.settings_text);
+        ((TextView)findViewById(R.id.statistics)).setText(R.string.statistics_text);
+        ((TextView)findViewById(R.id.inventory)).setText(R.string.inventory_text);
+        ((TextView)findViewById(R.id.claimBonus)).setText(R.string.claim_bonus_text);
     }
 
     public void tryGoogleLogin() {
@@ -125,6 +137,7 @@ public class MapActivity extends MainActivity implements
     }
 
     public void openInventory(View v) {
+        LanguageHelper.changeLanguage(this, Enums.Language.French);
     }
 
     public void claimPeriodicBonus(View v) {

@@ -25,8 +25,24 @@ public class Enums {
         }
     }
 
+    public enum Language {
+        English(1), French(2), Russian(3);
+        public int value;
+        Language(int value) {
+            this.value = value;
+        }
+        public static Language get(int value) {
+            for (Language item : Language.values()) {
+                if (value == item.value) {
+                    return item;
+                }
+            }
+            return null;
+        }
+    }
+
     public enum Setting {
-        Music(1), Sound(2), AttemptLogin(3), AutosaveMinutes(4), OnlyActiveResources(5);
+        Music(1), Sound(2), AttemptLogin(3), AutosaveMinutes(4), OnlyActiveResources(5), Language(6);
         public int value;
         Setting(int value) {
             this.value = value;

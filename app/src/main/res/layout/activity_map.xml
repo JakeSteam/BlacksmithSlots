@@ -128,26 +128,23 @@
                 android:id="@+id/settings"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Settings"
                 android:onClick="openSettings" />
             <Button
                 android:id="@+id/statistics"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Statistics"
                 android:onClick="openStatistics"
                 android:layout_below="@id/settings"/>
             <Button
                 android:id="@+id/inventory"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Inventory"
                 android:onClick="openInventory"
                 android:layout_below="@id/statistics"/>
             <Button
+                android:id="@+id/claimBonus"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Claim Bonus"
                 android:onClick="claimPeriodicBonus"
                 android:layout_below="@id/inventory"/>
         </RelativeLayout>

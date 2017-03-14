@@ -20,13 +20,20 @@
 
     <string name="setting_1">Music</string>
     <string name="setting_2">Sounds</string>
-    <string name="setting_3">NOTHING</string>
+    <string name="setting_3">(Internal) Attempt Login</string>
     <string name="setting_4">Autosave Mins</string>
     <string name="setting_5">Only Show Relevant Resources</string>
+    <string name="setting_6">Language</string>
 
     <string name="settinggroup_1">Audio</string>
     <string name="settinggroup_2">Gameplay</string>
     <string name="settinggroup_3">Notifications</string>
+
+    <!-- UI -->
+    <string name="settings_text">Settings</string>
+    <string name="statistics_text">Statistics</string>
+    <string name="inventory_text">Inventory</string>
+    <string name="claim_bonus_text">Claim Bonus</string>
 
     <!-- DB Lookups -->
     <string name="tier_1">Bronze</string>
