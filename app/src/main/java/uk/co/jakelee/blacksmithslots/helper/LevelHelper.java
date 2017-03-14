@@ -1,10 +1,14 @@
 package uk.co.jakelee.blacksmithslots.helper;
 
+import android.content.Context;
 import android.util.Log;
 
 import com.orm.query.Condition;
 import com.orm.query.Select;
 
+import java.util.Locale;
+
+import uk.co.jakelee.blacksmithslots.R;
 import uk.co.jakelee.blacksmithslots.model.Statistic;
 
 public class LevelHelper {
@@ -47,7 +51,7 @@ public class LevelHelper {
         return 10000 - (int) Math.ceil((earnedXP / neededXP) * 10000);
     }
 
-    public static void addXp(int xp) {
+    public static String addXp(Context context, int xp) {
         Log.d("XP", "Added: " + xp);
         Statistic.add(Enums.Statistic.Xp, xp);
 
@@ -56,7 +60,12 @@ public class LevelHelper {
         if (savedLevel != null && savedLevel.getIntValue() < level) {
             Statistic.add(Enums.Statistic.Level, level - savedLevel.getIntValue());
             Log.d("Level", "Levelled up to " + level);
+            return String.format(Locale.ENGLISH,
+                    context.getString(R.string.alert_levelled_up),
+                    level,
+                    IncomeHelper.claimBonus(context, false));
         }
+        return "";
     }
 
     public static Enums.Tier getCurrentTierByLevel(int level) {

@@ -6,6 +6,7 @@
     <string name="alert_no_matches">No matches!</string>
     <string name="alert_quest_completed">Quest completed!</string>
     <string name="alert_unfinished_task">Can\'t hand in an unfinished task!</string>
+    <string name="alert_levelled_up">Reached level %1$d! %2$s</string>
 
     <string name="google_cloud_save_loading">Loading...</string>
     <string name="google_cloud_save_loaded">Loaded cloud save!</string>
@@ -30,10 +31,15 @@
     <string name="settinggroup_3">Notifications</string>
 
     <!-- UI -->
-    <string name="settings_text">Settings</string>
-    <string name="statistics_text">Statistics</string>
-    <string name="inventory_text">Inventory</string>
-    <string name="claim_bonus_text">Claim Bonus</string>
+    <!-- Map -->
+    <string name="settings">Settings</string>
+    <string name="statistics">Statistics</string>
+    <string name="inventory">Inventory</string>
+    <string name="claim_bonus">Claim Bonus</string>
+    <string name="task_completion">Task %1$d/%2$d</string>
+
+    <!-- Errors -->
+    <string name="error_bonus_not_ready">Can\'t claim bonus!</string>
 
     <!-- DB Lookups -->
     <string name="language_1">English</string>

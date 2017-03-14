@@ -1,7 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="settings_text">Paramètres</string>
-    <string name="statistics_text">Statistiques</string>
-    <string name="inventory_text">Inventaire</string>
-    <string name="claim_bonus_text">Prime</string>
+
 </resources>

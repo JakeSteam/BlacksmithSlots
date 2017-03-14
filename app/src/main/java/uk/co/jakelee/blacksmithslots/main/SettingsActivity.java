@@ -34,11 +34,13 @@ public class SettingsActivity extends MainActivity {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_settings);
+    }
 
-        populateSettings();
-
+    @Override
+    public void onResume() {
+        super.onResume();
         spinnersInitialised = 0;
-        createDropdown(R.id.languagePicker, 3, 1, Enums.Setting.Language);
+        populateSettings();
     }
 
     private void createDropdown(int spinnerId, int max, int min, Enums.Setting settingEnum) {
@@ -69,6 +71,8 @@ public class SettingsActivity extends MainActivity {
                     setting.save();
 
                     LanguageHelper.changeLanguage(activity, position + 1);
+                    AlertHelper.success(activity, "Set language to " + parentView.getSelectedItem().toString(), true);
+                    onResume();
                 }
             }
 
@@ -99,6 +103,8 @@ public class SettingsActivity extends MainActivity {
                 settingTable.addView(tableRow);
             }
         }
+
+        createDropdown(R.id.languagePicker, 3, 1, Enums.Setting.Language);
     }
 
     private TableRow createTableRow(LayoutInflater inflater, Setting setting) {
@@ -130,7 +136,7 @@ public class SettingsActivity extends MainActivity {
         Setting setting = Setting.get((Integer)((TableRow)v.getParent()).getTag());
         setting.setBooleanValue(!setting.getBooleanValue());
         setting.save();
-        populateSettings();
+        onResume();
 
         AlertHelper.success(this, "Turned " + setting.getName(this) + (setting.getBooleanValue() ? " on" : " off") + "!", true);
     }

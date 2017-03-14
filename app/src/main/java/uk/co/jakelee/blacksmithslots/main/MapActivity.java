@@ -83,10 +83,10 @@ public class MapActivity extends MainActivity implements
     public void onResume() {
         super.onResume();
 
-        ((TextView)findViewById(R.id.settings)).setText(R.string.settings_text);
-        ((TextView)findViewById(R.id.statistics)).setText(R.string.statistics_text);
-        ((TextView)findViewById(R.id.inventory)).setText(R.string.inventory_text);
-        ((TextView)findViewById(R.id.claimBonus)).setText(R.string.claim_bonus_text);
+        ((TextView)findViewById(R.id.settings)).setText(R.string.settings);
+        ((TextView)findViewById(R.id.statistics)).setText(R.string.statistics);
+        ((TextView)findViewById(R.id.inventory)).setText(R.string.inventory);
+        ((TextView)findViewById(R.id.claimBonus)).setText(R.string.claim_bonus);
     }
 
     public void tryGoogleLogin() {
@@ -137,14 +137,13 @@ public class MapActivity extends MainActivity implements
     }
 
     public void openInventory(View v) {
-        LanguageHelper.changeLanguage(this, Enums.Language.French.value);
     }
 
     public void claimPeriodicBonus(View v) {
         if (IncomeHelper.canClaimPeriodicBonus()) {
             AlertHelper.success(this, IncomeHelper.claimBonus(this, true), true);
         } else {
-            AlertHelper.error(this, "Can't claim bonus!", false);
+            AlertHelper.error(this, R.string.error_bonus_not_ready, false);
         }
     }
 
@@ -190,7 +189,9 @@ public class MapActivity extends MainActivity implements
                     }
 
                     ((TextView) findViewById(R.id.slotDescription)).setText(slot.getLockedText(this));
-                    ((TextView) findViewById(R.id.taskProgress)).setText("Task " + currentTask.getPosition() + "/" + tasks.size());
+                    ((TextView) findViewById(R.id.taskProgress)).setText(String.format(Locale.ENGLISH, getString(R.string.task_completion),
+                            currentTask.getPosition(),
+                            tasks.size()));
                     ((TextView) findViewById(R.id.taskText)).setText(currentTask.getText(this));
                     ((TextView) findViewById(R.id.taskRequirement)).setText(currentTask.toString(this));
                     findViewById(R.id.handInButton).setTag(currentTask.getId());

@@ -302,7 +302,10 @@ public class SlotHelper {
                 inventory.setQuantity(inventory.getQuantity() - spinCost);
                 inventory.save();
 
-                LevelHelper.addXp(spinCost);
+                String levelUpText = LevelHelper.addXp(activity, spinCost);
+                if (levelUpText.length() > 0) {
+                    AlertHelper.success(activity, levelUpText, true);
+                }
                 Statistic.add(Enums.Statistic.TotalSpins);
                 Statistic.add(Enums.Statistic.ResourcesGambled, spinCost);
 
