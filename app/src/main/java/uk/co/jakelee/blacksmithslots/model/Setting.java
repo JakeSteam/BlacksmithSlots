@@ -58,9 +58,13 @@ public class Setting extends SugarRecord {
         this.stringValue = stringValue;
     }
 
-    public static Setting get(Enums.Setting settingId) {
+    public static Setting get(Enums.Setting setting) {
+        return get(setting.value);
+    }
+
+    public static Setting get(int settingId) {
         return Select.from(Setting.class).where(
-                Condition.prop("a").eq(settingId.value)).first();
+                Condition.prop("a").eq(settingId)).first();
     }
 
     public static int getInt(Enums.Setting settingId) {

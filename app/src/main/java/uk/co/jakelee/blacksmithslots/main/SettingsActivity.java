@@ -28,8 +28,13 @@ public class SettingsActivity extends MainActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_settings);
 
+        populateSettings();
+    }
+
+    private void populateSettings() {
         LayoutInflater inflater = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         TableLayout settingTable = (TableLayout)findViewById(R.id.settingsTable);
+        settingTable.removeAllViews();
         for (Enums.SettingGroup group : Enums.SettingGroup.values()) {
             if (group == Enums.SettingGroup.Internal) {
                 continue;
@@ -72,7 +77,12 @@ public class SettingsActivity extends MainActivity {
     }
 
     public void changeBoolean(View v) {
-        AlertHelper.info(this, "Toggle boolean for " + ((TableRow)v.getParent()).getTag(), true);
+        Setting setting = Setting.get((Integer)((TableRow)v.getParent()).getTag());
+        setting.setBooleanValue(!setting.getBooleanValue());
+        setting.save();
+        populateSettings();
+
+        AlertHelper.success(this, "Turned " + setting.getName(this) + (setting.getBooleanValue() ? " on" : " off") + "!", true);
     }
 
     public void changeString(View v) {

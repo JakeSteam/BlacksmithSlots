@@ -38,6 +38,7 @@ import uk.co.jakelee.blacksmithslots.model.Inventory;
 import uk.co.jakelee.blacksmithslots.model.Item;
 import uk.co.jakelee.blacksmithslots.model.Message;
 import uk.co.jakelee.blacksmithslots.model.Reward;
+import uk.co.jakelee.blacksmithslots.model.Setting;
 import uk.co.jakelee.blacksmithslots.model.Slot;
 import uk.co.jakelee.blacksmithslots.model.Statistic;
 
@@ -319,10 +320,20 @@ public class SlotHelper {
     }
 
     public void updateResourceCount() {
-        List<Inventory> items = Select.from(Inventory.class).where(
-                Condition.prop("a").notEq(resourceTier.value)).or(
-                Condition.prop("b").notEq(resourceType.value)
-        ).orderBy("c DESC").list();
+        List<Inventory> items;
+        if (Setting.getBoolean(Enums.Setting.OnlyActiveResources) && baseItems.size() > 0) {
+            String where = "(a != " + resourceTier.value + " OR b != " + resourceType.value + ") AND ";
+            for (ItemResult item : baseItems) {
+                where += "(a = " + item.getResourceTier().value + " AND b = " + item.getResourceType().value + ") OR ";
+            }
+            items = Select.from(Inventory.class).where(where.substring(0, where.length() - 4)).list();
+        } else {
+            items = Select.from(Inventory.class).where(
+                    Condition.prop("a").notEq(resourceTier.value)).or(
+                    Condition.prop("b").notEq(resourceType.value))
+                    .orderBy("c DESC").list();
+        }
+
 
         Inventory inventory = Inventory.getInventory(resourceTier.value, resourceType.value);
         picasso.load(inventory.getDrawableId(activity)).into((ImageView)activity.findViewById(R.id.resourceImage));

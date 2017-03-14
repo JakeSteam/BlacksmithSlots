@@ -26,7 +26,7 @@ public class Enums {
     }
 
     public enum Setting {
-        Music(1), Sound(2), AttemptLogin(3), AutosaveMinutes(4);
+        Music(1), Sound(2), AttemptLogin(3), AutosaveMinutes(4), OnlyActiveResources(5);
         public int value;
         Setting(int value) {
             this.value = value;

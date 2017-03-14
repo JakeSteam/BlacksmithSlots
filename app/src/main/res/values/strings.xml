@@ -22,6 +22,7 @@
     <string name="setting_2">Sounds</string>
     <string name="setting_3">NOTHING</string>
     <string name="setting_4">Autosave Mins</string>
+    <string name="setting_5">Only Show Relevant Resources</string>
 
     <string name="settinggroup_1">Audio</string>
     <string name="settinggroup_2">Gameplay</string>
