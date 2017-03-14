@@ -8,8 +8,7 @@
         android:id="@+id/settingName"
         style="@style/DataText"/>
 
-    <uk.co.jakelee.blacksmithslots.components.FontTextView
-        android:id="@+id/settingValue"
-        style="@style/DataText"
-        android:onClick="changeInteger"/>
+    <Spinner
+        android:id="@+id/languagePicker"
+        style="@style/DataText"/>
 </TableRow>

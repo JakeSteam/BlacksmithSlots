@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
 
-</LinearLayout>
+<uk.co.jakelee.blacksmithslots.components.FontTextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@android:id/text1"
+    style="?android:attr/spinnerItemStyle"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:ellipsize="marquee"
+    android:gravity="center_horizontal"
+    android:maxLines="1"
+    android:padding="5dp"
+    android:textColor="@color/black"
+    android:textSize="20sp" />

@@ -1,2 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="settings_text">Russ 1</string>
+    <string name="statistics_text">Russ 2</string>
+    <string name="inventory_text">Russ 3</string>
+    <string name="claim_bonus_text">Russ 4</string>
+</resources>

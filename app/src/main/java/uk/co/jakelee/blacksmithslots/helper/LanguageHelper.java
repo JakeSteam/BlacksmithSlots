@@ -14,12 +14,8 @@ public class LanguageHelper {
         updateLanguage(ctx, lang);
     }
 
-    public static void changeLanguage(Context context, Enums.Language language) {
-        if (language == Enums.Language.English) {
-            updateLanguage(context, "en");
-        } else if (language == Enums.Language.French) {
-            updateLanguage(context, "fr");
-        }
+    public static void changeLanguage(Context context, int language) {
+        updateLanguage(context, getLocaleById(language));
     }
 
     private static void updateLanguage(Context ctx, String lang)
@@ -33,5 +29,31 @@ public class LanguageHelper {
         }
 
         ctx.getResources().updateConfiguration(cfg, null);
+    }
+
+    private static String getLocaleById(int id) {
+        switch (id) {
+            case 1: return "en";
+            case 2: return "fr";
+            case 3: return "ru";
+        }
+        return "";
+    }
+
+    public static String getLanguageById(Context context, int id) {
+        return TextHelper.getInstance(context).getText("language_" + id);
+    }
+
+    public static String getFlagById(int id) {
+        switch (id) {
+            case 1:
+                return new String(Character.toChars(0x1F1EC)) + new String(Character.toChars(0x1F1E7));
+            case 2:
+                return new String(Character.toChars(0x1F1EB)) + new String(Character.toChars(0x1F1F7));
+            case 3:
+                return new String(Character.toChars(0x1F1F7)) + new String(Character.toChars(0x1F1FA));
+            default:
+                return "";
+        }
     }
 }

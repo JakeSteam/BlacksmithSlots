@@ -137,7 +137,7 @@ public class MapActivity extends MainActivity implements
     }
 
     public void openInventory(View v) {
-        LanguageHelper.changeLanguage(this, Enums.Language.French);
+        LanguageHelper.changeLanguage(this, Enums.Language.French.value);
     }
 
     public void claimPeriodicBonus(View v) {

@@ -36,6 +36,10 @@
     <string name="claim_bonus_text">Claim Bonus</string>
 
     <!-- DB Lookups -->
+    <string name="language_1">English</string>
+    <string name="language_2">French</string>
+    <string name="language_3">Russian</string>
+
     <string name="tier_1">Bronze</string>
     <string name="tier_2">Iron</string>
 
