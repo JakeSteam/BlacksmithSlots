@@ -55,10 +55,10 @@ public class SlotHelper {
     private List<WinRoute> highlightedRoutes;
     private Picasso picasso;
     private LayoutInflater inflater;
-    private Handler handler = new Handler();
+    private Handler handler;
     private int wildcardId = (int)(long) Item.get(Enums.Tier.Internal, Enums.Type.Wildcard).getId();
 
-    public SlotHelper(SlotActivity activity, Slot slot) {
+    public SlotHelper(SlotActivity activity, Handler handler, Slot slot) {
         this.activity = activity;
         this.slot = slot;
         this.baseItems = convertToSlots(slot.getRewards());
@@ -66,6 +66,7 @@ public class SlotHelper {
         this.resourceType = slot.getResourceType();
         this.picasso = Picasso.with(activity);
         this.inflater = LayoutInflater.from(activity);
+        this.handler = handler;
     }
 
     private List<ItemResult> convertToSlots(List<Reward> dbRewards) {

@@ -1,7 +1,9 @@
 package uk.co.jakelee.blacksmithslots.main;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.view.WindowManager;
 
@@ -27,15 +29,27 @@ public class SlotActivity extends MainActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_slot);
 
-        Slot slot = Slot.get(getIntent().getIntExtra(Constants.INTENT_SLOT, 0));
+        final Slot slot = Slot.get(getIntent().getIntExtra(Constants.INTENT_SLOT, 0));
         if (slot == null) {
             finish();
         } else {
-            slotHelper = new SlotHelper(this, slot);
-            slotHelper.createWheel();
-            slotHelper.createRoutes();
-            slotHelper.updateResourceCount();
-            slotHelper.afterSpinUpdate();
+            final SlotActivity activity = this;
+            final ProgressDialog alert = new ProgressDialog(this);
+            alert.setIndeterminate(true);
+            alert.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+            alert.show();
+            final Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    slotHelper = new SlotHelper(activity, handler, slot);
+                    slotHelper.createWheel();
+                    slotHelper.createRoutes();
+                    slotHelper.updateResourceCount();
+                    slotHelper.afterSpinUpdate();
+                    alert.dismiss();
+                }
+            }, 50);
         }
     }
 

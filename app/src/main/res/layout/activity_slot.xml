@@ -157,13 +157,13 @@
                     android:onClick="increaseRows"/>
                 <uk.co.jakelee.blacksmithslots.components.FontTextView
                     android:id="@+id/spinButton"
-                    android:layout_width="100dp"
+                    android:layout_width="wrap_content"
                     android:background="@drawable/box_filled_green"
                     android:onClick="spin"
                     style="@style/SlotText"/>
                 <uk.co.jakelee.blacksmithslots.components.FontTextView
                     android:id="@+id/autospinButton"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:background="@drawable/box_filled_green"
                     android:text="A"
                     android:onClick="autospin"
