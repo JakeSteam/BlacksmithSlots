@@ -152,6 +152,5 @@ public class SettingsActivity extends MainActivity {
     }
 
     public void suppress(View v) {
-
     }
 }

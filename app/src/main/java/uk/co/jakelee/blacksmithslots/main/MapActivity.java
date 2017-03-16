@@ -92,6 +92,8 @@ public class MapActivity extends MainActivity implements
 
     @Override
     protected void onStop() {
+        super.onStop();
+
         boolean notificationSound = Setting.getBoolean(Enums.Setting.NotificationSounds);
         if (Setting.getBoolean(Enums.Setting.PeriodicBonusNotification)) {
             NotificationHelper.addBonusNotification(this, notificationSound);

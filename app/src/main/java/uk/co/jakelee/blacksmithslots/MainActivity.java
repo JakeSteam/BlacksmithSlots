@@ -2,6 +2,9 @@ package uk.co.jakelee.blacksmithslots;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.view.View;
+
+import de.keyboardsurfer.android.widget.crouton.Crouton;
 
 public class MainActivity extends Activity {
     @Override
@@ -28,5 +31,9 @@ public class MainActivity extends Activity {
      */
     protected void overridePendingTransitionExit() {
         overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right);
+    }
+
+    public void closeAlert(View v) {
+        Crouton.cancelAllCroutons();
     }
 }

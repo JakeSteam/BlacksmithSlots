@@ -182,11 +182,11 @@
         </RelativeLayout>
     </RelativeLayout>
 
-
     <LinearLayout
         android:id="@+id/croutonview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal" />
+        android:orientation="horizontal"
+        android:onClick="closeAlert"/>
 
 </RelativeLayout>
