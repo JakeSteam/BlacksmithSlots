@@ -36,7 +36,8 @@ public class SlotActivity extends MainActivity {
             final SlotActivity activity = this;
             final ProgressDialog alert = new ProgressDialog(this);
             alert.setIndeterminate(true);
-            alert.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+            alert.setTitle("Loading, hang on!");
+            alert.setMessage("Fetching resources from the warehouse...");
             alert.show();
             final Handler handler = new Handler();
             handler.postDelayed(new Runnable() {

@@ -54,8 +54,10 @@
         <activity android:name=".main.VipComparisonActivity"
             android:screenOrientation="sensorLandscape"
             android:theme="@style/Theme.Dimmed" />
-        <activity
-            android:name=".main.LogActivity"
+        <activity android:name=".main.LogActivity"
+            android:screenOrientation="sensorLandscape"
+            android:theme="@style/Theme.Dimmed" />
+        <activity android:name=".main.InventoryActivity"
             android:screenOrientation="sensorLandscape"
             android:theme="@style/Theme.Dimmed" />
     </application>
