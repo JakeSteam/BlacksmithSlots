@@ -7,6 +7,8 @@ public class Constants {
     public final static int STARTING_XP = 205;
     public final static int MESSAGE_LOG_LIMIT = 100;
 
+    public final static int NOTIFICATION_PERIODIC_BONUS = 100;
+
     // VIP Constants
     public final static int MAX_VIP_LEVEL = 5;
     public final static int CHEST_DEFAULT_COOLDOWN_HOURS = 6;

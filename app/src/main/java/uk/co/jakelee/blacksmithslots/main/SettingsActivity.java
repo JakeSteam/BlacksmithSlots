@@ -111,10 +111,8 @@ public class SettingsActivity extends MainActivity {
         TableRow row = (TableRow)inflater.inflate(getRowLayout(setting), null).findViewById(R.id.dataRow);
         if (setting.getDataType() == Enums.DataType.Boolean.value) {
             ((TextView)row.findViewById(R.id.settingValue)).setText(setting.getBooleanValue() ? "On" : "Off");
-        } else if (setting.getDataType() == Enums.DataType.Integer.value) {
-            //((TextView)row.findViewById(R.id.settingValue)).setText(setting.getIntValue() + " mins");
-        } else {
-            ((TextView)row.findViewById(R.id.settingValue)).setText("string");
+        } else if (setting.getDataType() == Enums.DataType.Integer.value && setting.getSetting() != Enums.Setting.Language) {
+            ((TextView)row.findViewById(R.id.settingValue)).setText(setting.getIntValue() + " mins");
         }
         return row;
     }
@@ -146,7 +144,7 @@ public class SettingsActivity extends MainActivity {
     }
 
     public void changeInteger(View v) {
-        AlertHelper.info(this, "Toggle integer for " + ((TableRow)v.getParent()).getTag(), true);
+        AlertHelper.info(this, "This should change the value for setting #" + ((TableRow)v.getParent()).getTag(), true);
     }
 
     public void close(View v) {

@@ -32,6 +32,7 @@ import uk.co.jakelee.blacksmithslots.helper.Enums;
 import uk.co.jakelee.blacksmithslots.helper.GooglePlayHelper;
 import uk.co.jakelee.blacksmithslots.helper.IncomeHelper;
 import uk.co.jakelee.blacksmithslots.helper.LanguageHelper;
+import uk.co.jakelee.blacksmithslots.helper.NotificationHelper;
 import uk.co.jakelee.blacksmithslots.helper.TaskHelper;
 import uk.co.jakelee.blacksmithslots.model.Reward;
 import uk.co.jakelee.blacksmithslots.model.Setting;
@@ -87,6 +88,14 @@ public class MapActivity extends MainActivity implements
         ((TextView)findViewById(R.id.statistics)).setText(R.string.statistics);
         ((TextView)findViewById(R.id.inventory)).setText(R.string.inventory);
         ((TextView)findViewById(R.id.claimBonus)).setText(R.string.claim_bonus);
+    }
+
+    @Override
+    protected void onStop() {
+        boolean notificationSound = Setting.getBoolean(Enums.Setting.NotificationSounds);
+        if (Setting.getBoolean(Enums.Setting.PeriodicBonusNotification)) {
+            NotificationHelper.addBonusNotification(this, notificationSound);
+        }
     }
 
     public void tryGoogleLogin() {

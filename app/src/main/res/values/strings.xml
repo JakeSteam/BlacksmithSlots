@@ -19,12 +19,16 @@
     <string name="log_task">Updated %1$s for %2$s.</string>
     <string name="log_error">Error: %1$s</string>
 
+    <string name="notification_periodic_bonus">Your bonus is ready to claim!</string>
+
     <string name="setting_1">Music</string>
     <string name="setting_2">Sounds</string>
     <string name="setting_3">(Internal) Attempt Login</string>
     <string name="setting_4">Autosave Mins</string>
     <string name="setting_5">Only Show Relevant Resources</string>
     <string name="setting_6">Language</string>
+    <string name="setting_7">Notification Sounds</string>
+    <string name="setting_8">Periodic Bonus Notification</string>
 
     <string name="settinggroup_1">Audio</string>
     <string name="settinggroup_2">Gameplay</string>
