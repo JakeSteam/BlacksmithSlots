@@ -7,7 +7,7 @@ import android.os.Handler;
 import android.view.View;
 import android.view.WindowManager;
 
-import uk.co.jakelee.blacksmithslots.MainActivity;
+import uk.co.jakelee.blacksmithslots.BaseActivity;
 import uk.co.jakelee.blacksmithslots.R;
 import uk.co.jakelee.blacksmithslots.helper.AlertDialogHelper;
 import uk.co.jakelee.blacksmithslots.helper.AlertHelper;
@@ -20,7 +20,7 @@ import static uk.co.jakelee.blacksmithslots.helper.LevelHelper.convertLevelToXp;
 import static uk.co.jakelee.blacksmithslots.helper.LevelHelper.getLevel;
 import static uk.co.jakelee.blacksmithslots.helper.LevelHelper.getXp;
 
-public class SlotActivity extends MainActivity {
+public class SlotActivity extends BaseActivity {
     private SlotHelper slotHelper;
 
     @Override
@@ -88,10 +88,6 @@ public class SlotActivity extends MainActivity {
 
     public void decreaseRows(View v) {
         slotHelper.decreaseRows();
-    }
-
-    public void close(View v) {
-        finish();
     }
 
     public void autospin(View v) {

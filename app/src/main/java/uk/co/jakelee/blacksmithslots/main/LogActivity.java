@@ -3,7 +3,6 @@ package uk.co.jakelee.blacksmithslots.main;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.WindowManager;
 import android.widget.TableLayout;
 import android.widget.TableRow;
@@ -16,11 +15,11 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
-import uk.co.jakelee.blacksmithslots.MainActivity;
+import uk.co.jakelee.blacksmithslots.BaseActivity;
 import uk.co.jakelee.blacksmithslots.R;
 import uk.co.jakelee.blacksmithslots.model.Message;
 
-public class LogActivity extends MainActivity {
+public class LogActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,11 +43,4 @@ public class LogActivity extends MainActivity {
         }
     }
 
-    public void close(View v) {
-        finish();
-    }
-
-    public void suppress(View v) {
-
-    }
 }

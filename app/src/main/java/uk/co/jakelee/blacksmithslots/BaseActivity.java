@@ -6,7 +6,7 @@ import android.view.View;
 
 import de.keyboardsurfer.android.widget.crouton.Crouton;
 
-public class MainActivity extends Activity {
+public class BaseActivity extends Activity {
     @Override
     public void finish() {
         super.finish();
@@ -35,5 +35,13 @@ public class MainActivity extends Activity {
 
     public void closeAlert(View v) {
         Crouton.cancelAllCroutons();
+    }
+
+    public void close(View v) {
+        finish();
+    }
+
+    public void suppress(View v) {
+
     }
 }

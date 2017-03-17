@@ -8,11 +8,11 @@ import android.widget.ImageView;
 
 import com.squareup.picasso.Picasso;
 
-import uk.co.jakelee.blacksmithslots.MainActivity;
+import uk.co.jakelee.blacksmithslots.BaseActivity;
 import uk.co.jakelee.blacksmithslots.R;
 import uk.co.jakelee.blacksmithslots.helper.DatabaseHelper;
 
-public class SplashScreenActivity extends MainActivity {
+public class SplashScreenActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

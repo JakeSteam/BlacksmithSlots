@@ -4,20 +4,19 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
-import uk.co.jakelee.blacksmithslots.MainActivity;
+import uk.co.jakelee.blacksmithslots.BaseActivity;
 import uk.co.jakelee.blacksmithslots.R;
 import uk.co.jakelee.blacksmithslots.helper.Constants;
 import uk.co.jakelee.blacksmithslots.helper.IncomeHelper;
 import uk.co.jakelee.blacksmithslots.helper.LevelHelper;
 
-public class VipComparisonActivity extends MainActivity {
+public class VipComparisonActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,13 +39,5 @@ public class VipComparisonActivity extends MainActivity {
             ((TextView)tableRow.findViewById(R.id.autospins)).setText("" + LevelHelper.getAutospinsByVip(i));
             comparisonTable.addView(tableRow, params);
         }
-    }
-
-    public void close(View v) {
-        finish();
-    }
-
-    public void suppress(View v) {
-
     }
 }

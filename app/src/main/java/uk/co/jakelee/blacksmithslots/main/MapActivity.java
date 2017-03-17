@@ -21,7 +21,7 @@ import java.util.List;
 import java.util.Locale;
 
 import hotchemi.android.rate.AppRate;
-import uk.co.jakelee.blacksmithslots.MainActivity;
+import uk.co.jakelee.blacksmithslots.BaseActivity;
 import uk.co.jakelee.blacksmithslots.R;
 import uk.co.jakelee.blacksmithslots.components.CustomPagerAdapter;
 import uk.co.jakelee.blacksmithslots.helper.AlertHelper;
@@ -39,7 +39,7 @@ import uk.co.jakelee.blacksmithslots.model.Setting;
 import uk.co.jakelee.blacksmithslots.model.Slot;
 import uk.co.jakelee.blacksmithslots.model.Task;
 
-public class MapActivity extends MainActivity implements
+public class MapActivity extends BaseActivity implements
         GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener,
         QuestUpdateListener {

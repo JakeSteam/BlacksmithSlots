@@ -60,6 +60,9 @@
         <activity android:name=".main.InventoryActivity"
             android:screenOrientation="sensorLandscape"
             android:theme="@style/Theme.Dimmed" />
+        <activity android:name=".main.MinigameFlipActivity"
+            android:screenOrientation="sensorLandscape"
+            android:theme="@style/Theme.Dimmed" />
     </application>
 
 </manifest>

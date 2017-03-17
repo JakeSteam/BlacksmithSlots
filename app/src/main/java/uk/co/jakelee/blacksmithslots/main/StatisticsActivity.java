@@ -3,7 +3,6 @@ package uk.co.jakelee.blacksmithslots.main;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.WindowManager;
 import android.widget.TableLayout;
 import android.widget.TableRow;
@@ -11,13 +10,13 @@ import android.widget.TextView;
 
 import java.util.List;
 
-import uk.co.jakelee.blacksmithslots.MainActivity;
+import uk.co.jakelee.blacksmithslots.BaseActivity;
 import uk.co.jakelee.blacksmithslots.R;
 import uk.co.jakelee.blacksmithslots.helper.DateHelper;
 import uk.co.jakelee.blacksmithslots.helper.IncomeHelper;
 import uk.co.jakelee.blacksmithslots.model.Statistic;
 
-public class StatisticsActivity extends MainActivity {
+public class StatisticsActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,13 +38,5 @@ public class StatisticsActivity extends MainActivity {
         ((TextView)tableRow.findViewById(R.id.dataName)).setText("Next Bonus Claim");
         ((TextView)tableRow.findViewById(R.id.dataValue)).setText(DateHelper.timestampToString(IncomeHelper.getNextPeriodicClaimTime()));
         statTable.addView(tableRow);
-    }
-
-    public void close(View v) {
-        finish();
-    }
-
-    public void suppress(View v) {
-
     }
 }

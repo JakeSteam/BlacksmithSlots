@@ -5,9 +5,29 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 
 import uk.co.jakelee.blacksmithslots.R;
+import uk.co.jakelee.blacksmithslots.main.MinigameActivity;
 import uk.co.jakelee.blacksmithslots.main.SlotActivity;
 
 public class AlertDialogHelper {
+    public static void confirmCloseMinigame(final MinigameActivity activity) {
+        final AlertDialog.Builder alertDialog = new AlertDialog.Builder(activity, R.style.Theme_AlertDialog);
+        alertDialog.setMessage("Are you sure you want to leave the minigame with no reward?");
+
+        alertDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                activity.confirmClose();
+            }
+        });
+
+        alertDialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+
+        alertDialog.show();
+    }
+
     public static void autospin(final SlotActivity activity, final SlotHelper slotHelper) {
         final AlertDialog.Builder alertDialog = new AlertDialog.Builder(activity);
         alertDialog.setMessage("How many autospins?");

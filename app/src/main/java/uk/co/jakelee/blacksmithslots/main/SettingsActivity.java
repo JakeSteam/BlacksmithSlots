@@ -15,7 +15,7 @@ import android.widget.TextView;
 
 import java.util.List;
 
-import uk.co.jakelee.blacksmithslots.MainActivity;
+import uk.co.jakelee.blacksmithslots.BaseActivity;
 import uk.co.jakelee.blacksmithslots.R;
 import uk.co.jakelee.blacksmithslots.components.FontTextView;
 import uk.co.jakelee.blacksmithslots.helper.AlertHelper;
@@ -25,7 +25,7 @@ import uk.co.jakelee.blacksmithslots.helper.LanguageHelper;
 import uk.co.jakelee.blacksmithslots.helper.TextHelper;
 import uk.co.jakelee.blacksmithslots.model.Setting;
 
-public class SettingsActivity extends MainActivity {
+public class SettingsActivity extends BaseActivity {
     private int spinnersInitialised = 0;
     private int totalSpinners = 1;
 
@@ -147,10 +147,4 @@ public class SettingsActivity extends MainActivity {
         AlertHelper.info(this, "This should change the value for setting #" + ((TableRow)v.getParent()).getTag(), true);
     }
 
-    public void close(View v) {
-        finish();
-    }
-
-    public void suppress(View v) {
-    }
 }

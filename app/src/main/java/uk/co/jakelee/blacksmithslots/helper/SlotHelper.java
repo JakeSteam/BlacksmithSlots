@@ -1,5 +1,6 @@
 package uk.co.jakelee.blacksmithslots.helper;
 
+import android.content.Intent;
 import android.graphics.PorterDuff;
 import android.os.Handler;
 import android.support.v4.content.ContextCompat;
@@ -33,6 +34,7 @@ import kankan.wheel.widget.WheelView;
 import uk.co.jakelee.blacksmithslots.R;
 import uk.co.jakelee.blacksmithslots.constructs.ItemResult;
 import uk.co.jakelee.blacksmithslots.constructs.WinRoute;
+import uk.co.jakelee.blacksmithslots.main.MinigameFlipActivity;
 import uk.co.jakelee.blacksmithslots.main.SlotActivity;
 import uk.co.jakelee.blacksmithslots.model.Inventory;
 import uk.co.jakelee.blacksmithslots.model.Item;
@@ -135,7 +137,8 @@ public class SlotHelper {
                         updateStatus();
                         afterSpinUpdate();
                         if (minigameToLoad != null) {
-                            AlertHelper.success(activity, "Loading a minigame!", true);
+                            activity.startActivity(new Intent(activity, MinigameFlipActivity.class)
+                                    .addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT));
                             minigameToLoad = null;
                         } else if (autospinsLeft > 0) {
                             handler.postDelayed(new Runnable() {
