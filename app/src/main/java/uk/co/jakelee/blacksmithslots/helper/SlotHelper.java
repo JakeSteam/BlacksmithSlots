@@ -340,7 +340,7 @@ public class SlotHelper {
 
 
         Inventory inventory = Inventory.getInventory(resourceTier.value, resourceType.value);
-        picasso.load(inventory.getDrawableId(activity)).into((ImageView)activity.findViewById(R.id.resourceImage));
+        picasso.load(inventory.getDrawableId(activity, slot.getResourceQuantity())).into((ImageView)activity.findViewById(R.id.resourceImage));
         ((TextView)activity.findViewById(R.id.resourceInfo)).setText(inventory.getQuantity() + "x " + Item.getName(activity, resourceTier.value, resourceType.value));
 
         TableLayout.LayoutParams params = new TableLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);

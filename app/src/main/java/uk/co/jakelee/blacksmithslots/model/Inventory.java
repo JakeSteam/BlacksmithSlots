@@ -76,6 +76,10 @@ public class Inventory extends SugarRecord {
     }
 
     public int getDrawableId(Context context) {
-        return context.getResources().getIdentifier(DisplayHelper.getItemImageFile(tier, type), "drawable", context.getPackageName());
+        return getDrawableId(context, 1);
+    }
+
+    public int getDrawableId(Context context, int quantity) {
+        return context.getResources().getIdentifier(DisplayHelper.getItemImageFile(tier, type, quantity), "drawable", context.getPackageName());
     }
 }
