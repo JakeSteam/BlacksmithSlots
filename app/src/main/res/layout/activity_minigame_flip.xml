@@ -18,17 +18,47 @@
         android:layout_margin="30dp"
         android:clickable="true"
         android:onClick="suppress">
-        <TableLayout
-            android:id="@+id/comparisonTable"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="15dp"
-            android:stretchColumns="*"
-            android:shrinkColumns="*"
-            android:divider="?android:attr/dividerHorizontal"
-            android:showDividers="middle"
-            android:background="@drawable/box_yellow">
-        </TableLayout>
+            android:background="@drawable/box_yellow"
+            android:orientation="vertical">
+            <uk.co.jakelee.blacksmithslots.components.FontTextView
+                android:id="@+id/currentStake"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/FontSize"/>
+            <uk.co.jakelee.blacksmithslots.components.FontTextView
+                android:id="@+id/itemName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/FontSize"/>
+            <LinearLayout
+                android:id="@+id/actionButtons"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="gamble"
+                    android:text="Gamble"/>
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="stick"
+                    android:text="Stick"/>
+            </LinearLayout>
+            <Button
+                android:id="@+id/close"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="forceClose"
+                android:text="All done, close!"
+                android:visibility="gone"
+                />
+        </LinearLayout>
     </ScrollView>
 
     <ImageView

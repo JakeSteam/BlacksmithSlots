@@ -138,7 +138,10 @@ public class SlotHelper {
                         afterSpinUpdate();
                         if (minigameToLoad != null) {
                             activity.startActivity(new Intent(activity, MinigameFlipActivity.class)
-                                    .addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT));
+                                    .addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT)
+                                    .putExtra("tier", resourceTier.value)
+                                    .putExtra("type", resourceType.value)
+                                    .putExtra("quantity", slot.getResourceQuantity()));
                             minigameToLoad = null;
                         } else if (autospinsLeft > 0) {
                             handler.postDelayed(new Runnable() {
