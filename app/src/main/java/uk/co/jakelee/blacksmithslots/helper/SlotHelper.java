@@ -217,6 +217,7 @@ public class SlotHelper {
                 } else {
                     // Wowsa, they got a minigame match!
                     if (item.getType() != Enums.Type.Wildcard) {
+                        autospinsLeft = 0;
                         minigameToLoad = item.getType();
                     }
                 }

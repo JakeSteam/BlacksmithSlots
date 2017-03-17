@@ -12,15 +12,17 @@ public class AlertDialogHelper {
         final AlertDialog.Builder alertDialog = new AlertDialog.Builder(activity);
         alertDialog.setMessage("How many autospins?");
 
-        alertDialog.setPositiveButton("10", new DialogInterface.OnClickListener() {
+        final int maxAutospins = LevelHelper.getAutospinsByVip(LevelHelper.getVipLevel());
+        final int halfAutospins = LevelHelper.getAutospinsByVip(LevelHelper.getVipLevel()) / 2;
+        alertDialog.setPositiveButton(Integer.toString(maxAutospins), new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
-                slotHelper.autospin(10);
+                slotHelper.autospin(maxAutospins);
             }
         });
 
-        alertDialog.setNegativeButton("5", new DialogInterface.OnClickListener() {
+        alertDialog.setNegativeButton(Integer.toString(halfAutospins), new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
-                slotHelper.autospin(5);
+                slotHelper.autospin(halfAutospins);
             }
         });
 

@@ -76,4 +76,8 @@ public class LevelHelper {
         }
         return Enums.Tier.Bronze;
     }
+
+    public static int getAutospinsByVip(int vipLevel) {
+        return (5 + (10 * vipLevel));
+    }
 }

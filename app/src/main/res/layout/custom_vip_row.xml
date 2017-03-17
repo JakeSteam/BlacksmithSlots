@@ -24,4 +24,8 @@
         android:id="@+id/dailyBonus"
         style="@style/DataText"/>
 
+    <uk.co.jakelee.blacksmithslots.components.FontTextView
+        android:id="@+id/autospins"
+        style="@style/DataText"/>
+
 </TableRow>

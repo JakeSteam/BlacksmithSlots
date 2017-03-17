@@ -37,6 +37,7 @@ public class VipComparisonActivity extends MainActivity {
             ((TextView)tableRow.findViewById(R.id.advertBonus)).setText(String.format("%1.2f hours", IncomeHelper.getAdvertCooldownHours(i)));
             ((TextView)tableRow.findViewById(R.id.bonusModifier)).setText("+" + (i * Constants.VIP_LEVEL_MODIFIER) + "%");
             ((TextView)tableRow.findViewById(R.id.dailyBonus)).setText("x" + (i + 1));
+            ((TextView)tableRow.findViewById(R.id.autospins)).setText("" + LevelHelper.getAutospinsByVip(i));
             comparisonTable.addView(tableRow, params);
         }
     }
