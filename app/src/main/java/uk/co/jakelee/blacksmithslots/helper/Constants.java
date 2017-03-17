@@ -9,6 +9,8 @@ public class Constants {
 
     public final static int NOTIFICATION_PERIODIC_BONUS = 100;
 
+    public final static int MINIGAME_FLIP = 123;
+
     // VIP Constants
     public final static int MAX_VIP_LEVEL = 5;
     public final static int CHEST_DEFAULT_COOLDOWN_HOURS = 6;

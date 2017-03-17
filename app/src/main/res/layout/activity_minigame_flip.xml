@@ -13,51 +13,79 @@
         android:onClick="close"/>
 
     <ScrollView
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="30dp"
         android:clickable="true"
-        android:onClick="suppress">
+        android:onClick="suppress"
+        android:layout_centerInParent="true">
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="15dp"
             android:background="@drawable/box_yellow"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:gravity="center_horizontal">
             <uk.co.jakelee.blacksmithslots.components.FontTextView
-                android:id="@+id/currentStake"
+                android:id="@+id/description"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="Gamble your win?"
+                android:maxLines="3"
                 style="@style/FontSize"/>
-            <uk.co.jakelee.blacksmithslots.components.FontTextView
-                android:id="@+id/itemName"
+            <ImageView
+                android:id="@+id/itemImage"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent" />
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="@style/FontSize"/>
+                android:orientation="horizontal">
+                <uk.co.jakelee.blacksmithslots.components.FontTextView
+                    android:id="@+id/currentStake"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/FontSize"/>
+                <uk.co.jakelee.blacksmithslots.components.FontTextView
+                    android:id="@+id/itemName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/FontSize"/>
+            </LinearLayout>
             <LinearLayout
                 android:id="@+id/actionButtons"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
-                <Button
+                <uk.co.jakelee.blacksmithslots.components.FontTextView
+                    android:id="@+id/gambleButton"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:background="@drawable/box_green"
+                    android:text="Gamble"
                     android:onClick="gamble"
-                    android:text="Gamble"/>
-                <Button
+                    android:maxLines="1"
+                    android:layout_margin="5dp"
+                    style="@style/SlotText"/>
+                <uk.co.jakelee.blacksmithslots.components.FontTextView
+                    android:id="@+id/stickButton"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:background="@drawable/box_orange"
+                    android:text="Stick"
                     android:onClick="stick"
-                    android:text="Stick"/>
+                    android:maxLines="1"
+                    android:layout_margin="5dp"
+                    style="@style/SlotText"/>
             </LinearLayout>
-            <Button
+            <uk.co.jakelee.blacksmithslots.components.FontTextView
                 android:id="@+id/close"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:background="@drawable/box_yellow"
+                android:text="Okay :("
                 android:onClick="forceClose"
-                android:text="All done, close!"
-                android:visibility="gone"
-                />
+                android:maxLines="1"
+                android:layout_margin="5dp"
+                style="@style/SlotText"
+                android:visibility="gone"/>
         </LinearLayout>
     </ScrollView>
 

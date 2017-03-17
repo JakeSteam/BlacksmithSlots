@@ -109,6 +109,18 @@ public class SlotHelper {
         }
     }
 
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == Constants.MINIGAME_FLIP) {
+            String name = Item.getName(activity, resourceTier, resourceType);
+            if (resultCode > 0) {
+                AlertHelper.success(activity, "Won " + resultCode + "x " + name + " from flip minigame!", true);
+                Inventory.addInventory(resourceTier, resourceType, resultCode);
+            } else {
+                AlertHelper.info(activity, "Unlucky, won nothing from flip minigame!", false);
+            }
+        }
+    }
+
     public void createWheel() {
         LinearLayout container = (LinearLayout)activity.findViewById(R.id.slotContainer);
         for (int i = 0; i < slot.getSlots(); i++) {
@@ -137,11 +149,12 @@ public class SlotHelper {
                         updateStatus();
                         afterSpinUpdate();
                         if (minigameToLoad != null) {
-                            activity.startActivity(new Intent(activity, MinigameFlipActivity.class)
+                            activity.startActivityForResult(new Intent(activity, MinigameFlipActivity.class)
                                     .addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT)
                                     .putExtra("tier", resourceTier.value)
                                     .putExtra("type", resourceType.value)
-                                    .putExtra("quantity", slot.getResourceQuantity()));
+                                    .putExtra("quantity", slot.getResourceQuantity()),
+                                    Constants.MINIGAME_FLIP);
                             minigameToLoad = null;
                         } else if (autospinsLeft > 0) {
                             handler.postDelayed(new Runnable() {

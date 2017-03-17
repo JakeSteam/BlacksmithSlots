@@ -53,7 +53,11 @@ public class Inventory extends SugarRecord {
     }
 
     public static void addInventory(Enums.Tier tier, Enums.Type type, int quantity) {
-        Inventory inventory = getInventory(tier.value, type.value);
+        addInventory(tier.value, type.value, quantity);
+    }
+
+    public static void addInventory(int tier, int type, int quantity) {
+        Inventory inventory = getInventory(tier, type);
         inventory.setQuantity(inventory.getQuantity() + quantity);
         inventory.save();
     }
