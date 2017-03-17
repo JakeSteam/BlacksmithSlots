@@ -56,7 +56,7 @@ public class SlotHelper {
     private Picasso picasso;
     private LayoutInflater inflater;
     private Handler handler;
-    private int wildcardId = (int)(long) Item.get(Enums.Tier.Internal, Enums.Type.Wildcard).getId();
+    private Enums.Type minigameToLoad = null;
 
     public SlotHelper(SlotActivity activity, Handler handler, Slot slot) {
         this.activity = activity;
@@ -134,7 +134,10 @@ public class SlotHelper {
                     if (stillSpinningSlots <= 0) {
                         updateStatus();
                         afterSpinUpdate();
-                        if (autospinsLeft > 0) {
+                        if (minigameToLoad != null) {
+                            AlertHelper.success(activity, "Loading a minigame!", true);
+                            minigameToLoad = null;
+                        } else if (autospinsLeft > 0) {
                             handler.postDelayed(new Runnable() {
                                 @Override
                                 public void run() {
@@ -176,7 +179,7 @@ public class SlotHelper {
     }
 
     private void updateStatus() {
-        List<List<ItemResult>> results = getResults();
+        List<List<ItemResult>> results = retrieveSpinResult();
         List<ItemResult> wonItems = getWinnings(results);
         if (wonItems.size() > 0) {
             String winText = applyWinnings(wonItems);
@@ -205,16 +208,23 @@ public class SlotHelper {
         StringBuilder winningsText = new StringBuilder().append("Won: ");
         for (Map.Entry<Pair<Enums.Tier, Enums.Type>, Integer> winning : dataStore.entrySet()) {
             Item item = Item.get(winning.getKey().first, winning.getKey().second);
-            if (item != null && item.getId() != wildcardId) {
-                int quantity = winning.getValue() * slot.getCurrentStake();
-                totalResourcesWon += quantity;
-                Inventory.addInventory(item.getTier(), item.getType(), quantity);
-                winningsText.append(String.format(Locale.ENGLISH, "%dx %s, ", quantity, item.getName(activity)));
+            if (item != null) {
+                if (item.getTier() != Enums.Tier.Internal) {
+                    int quantity = winning.getValue() * slot.getCurrentStake();
+                    totalResourcesWon += quantity;
+                    Inventory.addInventory(item.getTier(), item.getType(), quantity);
+                    winningsText.append(String.format(Locale.ENGLISH, "%dx %s, ", quantity, item.getName(activity)));
+                } else {
+                    // Wowsa, they got a minigame match!
+                    if (item.getType() != Enums.Type.Wildcard) {
+                        minigameToLoad = item.getType();
+                    }
+                }
             }
         }
 
         Statistic.add(Enums.Statistic.ResourcesWon, totalResourcesWon);
-        return winningsText.substring(0, winningsText.length() - 2);
+        return winningsText.length() > 0 ? winningsText.substring(0, winningsText.length() - 2) : "";
     }
 
     private List<ItemResult> getWinnings(List<List<ItemResult>> rows) {
@@ -232,7 +242,7 @@ public class SlotHelper {
                 results.add(rows.get(route.get(j)).get(j));
             }
 
-            if (isAMatch(results)) {
+            if (isRouteAWin(results)) {
                 winningRoutes.add(route);
                 winningResults.addAll(results);
 
@@ -251,16 +261,16 @@ public class SlotHelper {
         return winningResults;
     }
 
-    private boolean isAMatch(List<ItemResult> routeTiles) {
+    private boolean isRouteAWin(List<ItemResult> routeTiles) {
         ItemResult checkedResult = new ItemResult();
         for (ItemResult routeTile : routeTiles) {
             // If there's no tile to check, set it to current
             if (checkedResult.getResourceTier() == null && checkedResult.getResourceType() == null
-                    && (routeTile.getResourceTier() != Enums.Tier.Internal && routeTile.getResourceType() != Enums.Type.Wildcard)) {
+                    && (routeTile.getResourceType() != Enums.Type.Wildcard)) {
                 checkedResult = routeTile;
             } else {
                 if ((routeTile.getResourceType() != checkedResult.getResourceType() && routeTile.getResourceType() != checkedResult.getResourceType())
-                        && (routeTile.getResourceTier() != Enums.Tier.Internal && routeTile.getResourceType() != Enums.Type.Wildcard)) {
+                        && (routeTile.getResourceType() != Enums.Type.Wildcard)) {
                     return false;
                 }
             }
@@ -268,7 +278,7 @@ public class SlotHelper {
         return true;
     }
 
-    private List<List<ItemResult>> getResults() {
+    private List<List<ItemResult>> retrieveSpinResult() {
 
         // Setup data holder
         List<List<ItemResult>> rows = new ArrayList<>();

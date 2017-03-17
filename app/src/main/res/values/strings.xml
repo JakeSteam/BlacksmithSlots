@@ -52,6 +52,7 @@
 
     <string name="tier_1">Bronze</string>
     <string name="tier_2">Iron</string>
+    <string name="tier_999">Internal!</string>
 
     <string name="type_1">Ore</string>
     <string name="type_2">Bar</string>
@@ -71,6 +72,9 @@
     <string name="type_16">Hatchet</string>
     <string name="type_17">Fishing Rod</string>
     <string name="type_18">Hammer</string>
+
+    <string name="type_998">Flip Minigame!</string>
+    <string name="type_999">Wildcard!</string>
 
     <string name="slot_1_name">Bronze Furnace</string>
     <string name="slot_2_name">Bronze Weapon</string>
