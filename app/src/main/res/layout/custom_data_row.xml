@@ -6,9 +6,13 @@
 
     <uk.co.jakelee.blacksmithslots.components.FontTextView
         android:id="@+id/dataName"
+        android:layout_width="wrap_content"
+        android:maxLines="5"
         style="@style/DataText"/>
 
     <uk.co.jakelee.blacksmithslots.components.FontTextView
         android:id="@+id/dataValue"
+        android:layout_width="wrap_content"
+        android:maxLines="5"
         style="@style/DataText"/>
 </TableRow>

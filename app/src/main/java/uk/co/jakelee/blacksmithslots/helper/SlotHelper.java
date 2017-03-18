@@ -203,7 +203,7 @@ public class SlotHelper {
         if (wonItems.size() > 0) {
             String winText = applyWinnings(wonItems);
             if (winText.length() > 0) {
-                Message.logSpin(activity, slot.getSlotId(), resourceType, resourceTier, slot.getResourceQuantity(), winText);
+                Message.logSpin(activity, slot.getSlotId(), resourceType, resourceTier, slot.getCurrentStake(), slot.getCurrentRows(), winText);
                 AlertHelper.success(activity, winText, false);
             }
             updateResourceCount();

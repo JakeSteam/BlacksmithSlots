@@ -15,7 +15,7 @@
     <string name="google_cloud_save_conflict">Cloud save conflict! Attempting to resolve, this may take a few seconds.</string>
     <string name="google_cloud_save_error">An error occurred, please contact the dev if this happens repeatedly!</string>
 
-    <string name="log_spin">Staked %1$dx %2$s at %3$s. %4$s.</string>
+    <string name="log_spin">Staked %1$dx %2$s on %3$d lines at %4$s. %5$s.</string>
     <string name="log_task">Updated %1$s for %2$s.</string>
     <string name="log_error">Error: %1$s</string>
 

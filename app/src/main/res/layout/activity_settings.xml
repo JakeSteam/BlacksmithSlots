@@ -12,23 +12,27 @@
         android:clickable="true"
         android:onClick="close"/>
 
-    <ScrollView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="30dp"
-        android:clickable="true"
-        android:onClick="suppress">
-        <TableLayout
-            android:id="@+id/settingsTable"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="15dp"
-            android:stretchColumns="*"
-            android:shrinkColumns="*"
-            android:divider="?android:attr/dividerHorizontal"
-            android:showDividers="middle"
-            android:background="@drawable/box_yellow"/>
-    </ScrollView>
+        android:background="@drawable/box_yellow">
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clickable="true"
+            android:onClick="suppress"
+            android:padding="8dp">
+            <TableLayout
+                android:id="@+id/settingsTable"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:stretchColumns="*"
+                android:shrinkColumns="*"
+                android:divider="?android:attr/dividerHorizontal"
+                android:showDividers="middle"/>
+        </ScrollView>
+    </LinearLayout>
 
     <ImageView
         android:layout_width="wrap_content"

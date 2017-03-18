@@ -29,12 +29,13 @@ public class Message extends SugarRecord {
         this.time = System.currentTimeMillis();
     }
 
-    public static void logSpin(Context context, int slot, Enums.Type resourceType, Enums.Tier resourceTier, int resourceQuantity, String rewardString) {
+    public static void logSpin(Context context, int slot, Enums.Type resourceType, Enums.Tier resourceTier, int resourceQuantity, int linesGambled, String rewardString) {
         String slotName = Slot.getName(context, slot);
         String resourceName = Item.getName(context, resourceTier.value, resourceType.value);
         String logMessage = String.format(Locale.ENGLISH, context.getString(R.string.log_spin),
                 resourceQuantity,
                 resourceName,
+                linesGambled,
                 slotName,
                 rewardString);
 
