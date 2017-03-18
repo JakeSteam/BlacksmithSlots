@@ -57,7 +57,9 @@ public class SlotActivity extends BaseActivity {
     @Override
     protected void onPause() {
         super.onPause();
-        slotHelper.pause();
+        if(slotHelper != null) {
+            slotHelper.pause();
+        }
     }
 
     public void spin(View v) {

@@ -6,7 +6,7 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.1.2'
+        classpath 'com.android.tools.build:gradle:2.3.0'
     }
 }
 
@@ -39,5 +39,6 @@ android {
 
     compileSdkVersion android_compile_version
     buildToolsVersion android_version
+    buildToolsVersion '25.0.0'
 }
 

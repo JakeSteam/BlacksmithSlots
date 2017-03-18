@@ -202,8 +202,10 @@ public class SlotHelper {
         List<ItemResult> wonItems = getWinnings(results);
         if (wonItems.size() > 0) {
             String winText = applyWinnings(wonItems);
-            Message.logSpin(activity, slot.getSlotId(), resourceType, resourceTier, slot.getResourceQuantity(), winText);
-            AlertHelper.success(activity, winText, false);
+            if (winText.length() > 0) {
+                Message.logSpin(activity, slot.getSlotId(), resourceType, resourceTier, slot.getResourceQuantity(), winText);
+                AlertHelper.success(activity, winText, false);
+            }
             updateResourceCount();
         } else {
             AlertHelper.info(activity, R.string.alert_no_matches, false);
@@ -244,7 +246,7 @@ public class SlotHelper {
         }
 
         Statistic.add(Enums.Statistic.ResourcesWon, totalResourcesWon);
-        return winningsText.length() > 0 ? winningsText.substring(0, winningsText.length() - 2) : "";
+        return winningsText.length() > 5 ? winningsText.substring(0, winningsText.length() - 2) : "";
     }
 
     private List<ItemResult> getWinnings(List<List<ItemResult>> rows) {

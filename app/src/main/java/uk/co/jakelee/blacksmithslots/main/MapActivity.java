@@ -188,8 +188,9 @@ public class MapActivity extends BaseActivity implements
                 ((ImageView) findViewById(R.id.person)).setImageResource(getResources().getIdentifier(DisplayHelper.getPersonImageFile(slot.getPerson()), "drawable", getPackageName()));
 
                 if (slot.getRequiredSlot() > 0 && TaskHelper.isSlotLocked(Slot.get(slot.getRequiredSlot()).getSlotId())) {
-                    AlertHelper.error(this, "Previous slot needs completing first...", false);
-                    findViewById(R.id.lockedSlot).setVisibility(View.VISIBLE);
+                    ((TextView) findViewById(R.id.slotDescription)).setText("Slot \"" + Slot.get(slot.getRequiredSlot()).getName(this) + "\" needs unlocking first!");
+                    findViewById(R.id.superlockedSlot).setVisibility(View.VISIBLE);
+                    findViewById(R.id.lockedSlot).setVisibility(View.GONE);
                     findViewById(R.id.unlockedSlot).setVisibility(View.GONE);
                 } else if (TaskHelper.isSlotLocked(selectedSlot)) {
                     List<Task> tasks = slot.getTasks();
@@ -207,6 +208,7 @@ public class MapActivity extends BaseActivity implements
                     ((TextView) findViewById(R.id.taskRequirement)).setText(currentTask.toString(this));
                     findViewById(R.id.handInButton).setTag(currentTask.getId());
 
+                    findViewById(R.id.superlockedSlot).setVisibility(View.GONE);
                     findViewById(R.id.lockedSlot).setVisibility(View.VISIBLE);
                     findViewById(R.id.unlockedSlot).setVisibility(View.GONE);
                 } else {
@@ -223,6 +225,7 @@ public class MapActivity extends BaseActivity implements
                         rewardContainer.addView(DisplayHelper.createImageView(this, DisplayHelper.getItemImageFile(reward.getTier().value, reward.getType().value, reward.getQuantityMultiplier()), 30, 30));
                     }
 
+                    findViewById(R.id.superlockedSlot).setVisibility(View.GONE);
                     findViewById(R.id.lockedSlot).setVisibility(View.GONE);
                     findViewById(R.id.unlockedSlot).setVisibility(View.VISIBLE);
 

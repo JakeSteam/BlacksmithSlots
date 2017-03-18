@@ -31,6 +31,7 @@ public class CustomPagerAdapter extends PagerAdapter {
 
     @Override
     public Object instantiateItem(ViewGroup container, int position) {
+
         View itemView = mLayoutInflater.inflate(townLayouts[position], container, false);
         container.addView(itemView);
         return itemView;
