@@ -93,12 +93,14 @@
                 android:id="@+id/resourceRow"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/slotResource">
+                android:layout_below="@id/slotResource"
+                android:fadeScrollbars="false">
                 <LinearLayout
                     android:id="@+id/resourceContainer"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal" />
+                    android:orientation="horizontal"
+                    android:paddingBottom="10dp"/>
             </HorizontalScrollView>
             <uk.co.jakelee.blacksmithslots.components.FontTextView
                 android:id="@+id/slotReward"
@@ -112,12 +114,14 @@
                 android:id="@+id/rewardRow"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/slotReward">
+                android:layout_below="@id/slotReward"
+                android:fadeScrollbars="false">
                 <LinearLayout
                     android:id="@+id/rewardContainer"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal" />
+                    android:orientation="horizontal"
+                    android:paddingBottom="10dp" />
             </HorizontalScrollView>
             <Button
                 android:layout_width="match_parent"

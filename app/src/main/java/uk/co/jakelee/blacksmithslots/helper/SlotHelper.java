@@ -46,7 +46,7 @@ import uk.co.jakelee.blacksmithslots.model.Statistic;
 
 public class SlotHelper {
     private int stillSpinningSlots = 0;
-    private int autospinsLeft = 0;
+    public int autospinsLeft = 0;
     private SlotActivity activity;
     private Enums.Tier resourceTier;
     private Enums.Type resourceType;
@@ -322,16 +322,17 @@ public class SlotHelper {
 
     public void spin(boolean checkNotAutospinning) {
         if (stillSpinningSlots <= 1 && (!checkNotAutospinning || autospinsLeft <= 0)) {
-            activity.findViewById(R.id.slotContainer).bringToFront();
-            if (highlightedRoutes != null) {
-                resetRouteColours();
-                //highlightResults(false);
-            }
-            stillSpinningSlots = slot.getSlots();
             Inventory inventory = Inventory.getInventory(slot.getResourceTier().value, slot.getResourceType().value);
-
             int spinCost = slot.getCurrentStake() * slot.getCurrentRows() * slot.getResourceQuantity();
             if (inventory.getQuantity() >= spinCost) {
+                activity.findViewById(R.id.slotContainer).bringToFront();
+                if (highlightedRoutes != null) {
+                    resetRouteColours();
+                    //highlightResults(false);
+                }
+
+                stillSpinningSlots = slot.getSlots();
+
                 inventory.setQuantity(inventory.getQuantity() - spinCost);
                 inventory.save();
 
@@ -345,6 +346,8 @@ public class SlotHelper {
                 for (WheelView wheel : slots) {
                     wheel.scroll(-350 + (int) (Math.random() * 150), 2250);
                 }
+            } else {
+                AlertHelper.error(activity, R.string.error_not_enough_resources, false);
             }
             updateResourceCount();
 

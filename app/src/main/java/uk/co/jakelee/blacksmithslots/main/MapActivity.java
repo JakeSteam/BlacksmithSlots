@@ -34,6 +34,7 @@ import uk.co.jakelee.blacksmithslots.helper.IncomeHelper;
 import uk.co.jakelee.blacksmithslots.helper.LanguageHelper;
 import uk.co.jakelee.blacksmithslots.helper.NotificationHelper;
 import uk.co.jakelee.blacksmithslots.helper.TaskHelper;
+import uk.co.jakelee.blacksmithslots.model.Item;
 import uk.co.jakelee.blacksmithslots.model.Reward;
 import uk.co.jakelee.blacksmithslots.model.Setting;
 import uk.co.jakelee.blacksmithslots.model.Slot;
@@ -216,13 +217,21 @@ public class MapActivity extends BaseActivity implements
 
                     LinearLayout resourceContainer = (LinearLayout)findViewById(R.id.resourceContainer);
                     resourceContainer.removeAllViews();
-                    resourceContainer.addView(DisplayHelper.createImageView(this, DisplayHelper.getItemImageFile(slot.getResourceTier().value, slot.getResourceType().value), 30, 30));
+                    resourceContainer.addView(DisplayHelper.createImageView(this,
+                            DisplayHelper.getItemImageFile(slot.getResourceTier().value, slot.getResourceType().value),
+                            30,
+                            30,
+                            slot.getResourceQuantity() + "x " + Item.getName(this, slot.getResourceTier(), slot.getResourceType())));
 
                     LinearLayout rewardContainer = (LinearLayout)findViewById(R.id.rewardContainer);
                     rewardContainer.removeAllViews();
                     List<Reward> rewards = slot.getRewards();
                     for (Reward reward : rewards) {
-                        rewardContainer.addView(DisplayHelper.createImageView(this, DisplayHelper.getItemImageFile(reward.getTier().value, reward.getType().value, reward.getQuantityMultiplier()), 30, 30));
+                        rewardContainer.addView(DisplayHelper.createImageView(this,
+                                DisplayHelper.getItemImageFile(reward.getTier().value, reward.getType().value, reward.getQuantityMultiplier()),
+                                30,
+                                30,
+                                reward.getQuantityMultiplier() + "x " + Item.getName(this, reward.getTier(), reward.getType())));
                     }
 
                     findViewById(R.id.superlockedSlot).setVisibility(View.GONE);

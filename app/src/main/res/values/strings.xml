@@ -7,6 +7,7 @@
     <string name="alert_quest_completed">Quest completed!</string>
     <string name="alert_unfinished_task">Can\'t hand in an unfinished task!</string>
     <string name="alert_levelled_up">Reached level %1$d! %2$s</string>
+    <string name="alert_autospin_cancelled">Autospin turned off!</string>
 
     <string name="google_cloud_save_loading">Loading...</string>
     <string name="google_cloud_save_loaded">Loaded cloud save!</string>
@@ -44,6 +45,7 @@
 
     <!-- Errors -->
     <string name="error_bonus_not_ready">Can\'t claim bonus!</string>
+    <string name="error_not_enough_resources">Not enough resources to spin!</string>
 
     <!-- DB Lookups -->
     <string name="language_1">English</string>
@@ -52,7 +54,7 @@
 
     <string name="tier_1">Bronze</string>
     <string name="tier_2">Iron</string>
-    <string name="tier_999">Internal!</string>
+    <string name="tier_999"></string>
 
     <string name="type_1">Ore</string>
     <string name="type_2">Bar</string>
@@ -73,8 +75,8 @@
     <string name="type_17">Fishing Rod</string>
     <string name="type_18">Hammer</string>
 
-    <string name="type_998">Flip Minigame!</string>
-    <string name="type_999">Wildcard!</string>
+    <string name="type_998">Flip Minigame</string>
+    <string name="type_999">Wildcard</string>
 
     <string name="slot_1_name">Bronze Furnace</string>
     <string name="slot_2_name">Bronze Weapon</string>

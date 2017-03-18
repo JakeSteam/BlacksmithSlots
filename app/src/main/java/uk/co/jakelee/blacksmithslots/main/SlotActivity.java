@@ -93,7 +93,13 @@ public class SlotActivity extends BaseActivity {
     }
 
     public void autospin(View v) {
-        AlertDialogHelper.autospin(this, slotHelper);
+        if (slotHelper.autospinsLeft > 0) {
+            slotHelper.autospinsLeft = 0;
+            slotHelper.afterSpinUpdate();
+            AlertHelper.info(this, R.string.alert_autospin_cancelled, false);
+        } else {
+            AlertDialogHelper.autospin(this, slotHelper);
+        }
     }
 
     public void levelInfo(View v) {

@@ -1,5 +1,6 @@
 package uk.co.jakelee.blacksmithslots.helper;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -7,6 +8,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.util.DisplayMetrics;
+import android.view.View;
 import android.widget.ImageView;
 
 import uk.co.jakelee.blacksmithslots.constructs.ItemResult;
@@ -48,7 +50,11 @@ public class DisplayHelper {
         return "item_" + tier + "_" + type + (quantity > 1 ? "_" + quantity : "");
     }
 
-    public static ImageView createImageView(Context context, String idName, int width, int height) {
+    public static ImageView createImageView(Activity context, String idName, int width, int height) {
+        return createImageView(context, idName, width, height, null);
+    }
+
+    public static ImageView createImageView(final Activity context, String idName, int width, int height, final String textOnClick) {
         ImageView image = new ImageView(context);
         int drawableId = context.getResources().getIdentifier(idName, "drawable", context.getPackageName());
         int adjustedWidth = convertDpToPixel(context, width);
@@ -60,6 +66,14 @@ public class DisplayHelper {
             Drawable imageResource = new BitmapDrawable(context.getResources(), resizedImage);
 
             image.setImageDrawable(imageResource);
+            if (textOnClick != null) {
+                image.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        AlertHelper.info(context, textOnClick, false);
+                    }
+                });
+            }
         } catch (OutOfMemoryError e) {
         }
 
