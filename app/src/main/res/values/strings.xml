@@ -22,15 +22,6 @@
 
     <string name="notification_periodic_bonus">Your bonus is ready to claim!</string>
 
-    <string name="setting_1">Music</string>
-    <string name="setting_2">Sounds</string>
-    <string name="setting_3">(Internal) Attempt Login</string>
-    <string name="setting_4">Autosave Mins</string>
-    <string name="setting_5">Only Show Relevant Resources</string>
-    <string name="setting_6">Language</string>
-    <string name="setting_7">Notification Sounds</string>
-    <string name="setting_8">Periodic Bonus Notification</string>
-
     <string name="settinggroup_1">Audio</string>
     <string name="settinggroup_2">Gameplay</string>
     <string name="settinggroup_3">Notifications</string>
@@ -78,6 +69,16 @@
     <string name="type_998">Flip Minigame</string>
     <string name="type_999">Wildcard</string>
 
+    <string name="setting_1">Music</string>
+    <string name="setting_2">Sounds</string>
+    <string name="setting_3">(Internal) Attempt Login</string>
+    <string name="setting_4">Autosave Mins</string>
+    <string name="setting_5">Only Show Relevant Resources</string>
+    <string name="setting_6">Language</string>
+    <string name="setting_7">Notification Sounds</string>
+    <string name="setting_8">Periodic Bonus Notification</string>
+    <string name="setting_9">Import Pixel Blacksmith Save</string>
+
     <string name="slot_1_name">Bronze Furnace</string>
     <string name="slot_2_name">Bronze Weapon</string>
     <string name="slot_3_name">Bronze Armour</string>
@@ -108,6 +109,7 @@
     <string name="statistic_10_name">Collected Bonuses</string>
     <string name="statistic_11_name">VIP Level</string>
     <string name="statistic_12_name">Last Bonus Claimed</string>
+    <string name="statistic_13_name">Pixel Blacksmith Save Imported</string>
 
     <string name="task_5_1_text">I guess XP is always good too.</string>
     <string name="task_5_2_text">Spinning will somehow help.</string>

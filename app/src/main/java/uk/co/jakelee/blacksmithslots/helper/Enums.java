@@ -42,7 +42,7 @@ public class Enums {
     }
 
     public enum Setting {
-        Music(1), Sound(2), AttemptLogin(3), AutosaveMinutes(4), OnlyActiveResources(5), Language(6), NotificationSounds(7), PeriodicBonusNotification(8);
+        Music(1), Sound(2), AttemptLogin(3), AutosaveMinutes(4), OnlyActiveResources(5), Language(6), NotificationSounds(7), PeriodicBonusNotification(8), SaveImported(9);
         public int value;
         Setting(int value) {
             this.value = value;
@@ -90,7 +90,7 @@ public class Enums {
     }
 
     public enum Statistic {
-        Xp(1), Level(2), TotalSpins(3), QuestsCompleted(4), LastAutosave(5), ResourcesGambled(6), ResourcesWon(7), AdvertsWatched(8), PacksPurchased(9), CollectedBonuses(10), VipLevel(11), LastBonusClaimed(12);
+        Xp(1), Level(2), TotalSpins(3), QuestsCompleted(4), LastAutosave(5), ResourcesGambled(6), ResourcesWon(7), AdvertsWatched(8), PacksPurchased(9), CollectedBonuses(10), VipLevel(11), LastBonusClaimed(12), SaveImported(13);
         public int value;
         Statistic(int value) {
             this.value = value;

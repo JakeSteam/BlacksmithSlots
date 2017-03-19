@@ -36,7 +36,9 @@ public class StatisticsActivity extends BaseActivity {
 
         TableRow tableRow = (TableRow)inflater.inflate(R.layout.custom_data_row, null).findViewById(R.id.dataRow);
         ((TextView)tableRow.findViewById(R.id.dataName)).setText("Next Bonus Claim");
-        ((TextView)tableRow.findViewById(R.id.dataValue)).setText(DateHelper.timestampToString(IncomeHelper.getNextPeriodicClaimTime()));
+
+        long nextClaim = IncomeHelper.getNextPeriodicClaimTime();
+        ((TextView)tableRow.findViewById(R.id.dataValue)).setText(nextClaim > 0 ? DateHelper.timestampToString(nextClaim) : "Never!");
         statTable.addView(tableRow);
     }
 }

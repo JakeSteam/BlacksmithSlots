@@ -143,7 +143,7 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
             settings.add(new Setting(Enums.SettingGroup.Gameplay, Enums.Setting.OnlyActiveResources, true));
             settings.add(new Setting(Enums.SettingGroup.Gameplay, Enums.Setting.Language, Enums.Language.English.value));
             settings.add(new Setting(Enums.SettingGroup.Notifications, Enums.Setting.NotificationSounds, true));
-            settings.add(new Setting(Enums.SettingGroup.Notifications, Enums.Setting.PeriodicBonusNotification, true));
+            settings.add(new Setting(Enums.SettingGroup.Gameplay, Enums.Setting.SaveImported, true));
         Setting.saveInTx(settings);
     }
 
@@ -204,6 +204,7 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
             statistics.add(new Statistic(Enums.Statistic.CollectedBonuses, "CgkIoMe6hp0eEAIQDg", "CgkIoMe6hp0eEAIQFw", 0));
             statistics.add(new Statistic(Enums.Statistic.VipLevel, "CgkIoMe6hp0eEAIQDw", "", 3));
             statistics.add(new Statistic(Enums.Statistic.LastBonusClaimed, "", "", 0L));
+            statistics.add(new Statistic(Enums.Statistic.SaveImported, "", "", false));
         Statistic.saveInTx(statistics);
     }
 

@@ -109,7 +109,7 @@ public class SettingsActivity extends BaseActivity {
 
     private TableRow createTableRow(LayoutInflater inflater, Setting setting) {
         TableRow row = (TableRow)inflater.inflate(getRowLayout(setting), null).findViewById(R.id.dataRow);
-        if (setting.getDataType() == Enums.DataType.Boolean.value) {
+        if (setting.getDataType() == Enums.DataType.Boolean.value && setting.getSetting() != Enums.Setting.SaveImported) {
             ((TextView)row.findViewById(R.id.settingValue)).setText(setting.getBooleanValue() ? "On" : "Off");
         } else if (setting.getDataType() == Enums.DataType.Integer.value && setting.getSetting() != Enums.Setting.Language) {
             ((TextView)row.findViewById(R.id.settingValue)).setText(setting.getIntValue() + " mins");
@@ -119,6 +119,9 @@ public class SettingsActivity extends BaseActivity {
 
     private int getRowLayout(Setting setting) {
         if (setting.getDataType() == Enums.DataType.Boolean.value) {
+            if (setting.getSetting() == Enums.Setting.SaveImported) {
+                return R.layout.custom_setting_boolean_save_import;
+            }
             return R.layout.custom_setting_boolean;
         } else if (setting.getDataType() == Enums.DataType.Integer.value) {
             if (setting.getSetting() == Enums.Setting.Language) {
@@ -145,6 +148,10 @@ public class SettingsActivity extends BaseActivity {
 
     public void changeInteger(View v) {
         AlertHelper.info(this, "This should change the value for setting #" + ((TableRow)v.getParent()).getTag(), true);
+    }
+
+    public void importSave(View v) {
+        AlertHelper.info(this, "Import a save...", false);
     }
 
 }
