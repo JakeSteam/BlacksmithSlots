@@ -36,7 +36,7 @@ public class InventoryActivity extends BaseActivity {
 
         LayoutInflater inflater = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         TableLayout statTable = (TableLayout)findViewById(R.id.inventoryTable);
-        List<Inventory> inventories = Inventory.listAll(Inventory.class, "c");
+        List<Inventory> inventories = Inventory.listAll(Inventory.class, "c DESC");
         for (Inventory inventory : inventories) {
             TableRow tableRow = (TableRow)inflater.inflate(R.layout.custom_inventory_row, null).findViewById(R.id.inventoryRow);
             tableRow.setTag(R.id.item_tier, inventory.getTier());

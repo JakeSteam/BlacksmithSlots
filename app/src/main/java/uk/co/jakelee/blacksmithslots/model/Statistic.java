@@ -213,7 +213,7 @@ public class Statistic extends SugarRecord {
             return getStringValue();
         } else if (getDatatype() == Enums.DataType.Long.value) {
             if (getLongValue() > 0L) {
-                return DateHelper.timestampToString(getLongValue());
+                return DateHelper.timestampToDateTime(getLongValue());
             } else {
                 return "Never!";
             }

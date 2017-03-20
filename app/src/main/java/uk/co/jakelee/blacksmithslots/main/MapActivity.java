@@ -3,6 +3,7 @@ package uk.co.jakelee.blacksmithslots.main;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.view.WindowManager;
@@ -27,12 +28,14 @@ import uk.co.jakelee.blacksmithslots.components.CustomPagerAdapter;
 import uk.co.jakelee.blacksmithslots.helper.AlertHelper;
 import uk.co.jakelee.blacksmithslots.helper.Constants;
 import uk.co.jakelee.blacksmithslots.helper.DatabaseHelper;
+import uk.co.jakelee.blacksmithslots.helper.DateHelper;
 import uk.co.jakelee.blacksmithslots.helper.DisplayHelper;
 import uk.co.jakelee.blacksmithslots.helper.Enums;
 import uk.co.jakelee.blacksmithslots.helper.GooglePlayHelper;
 import uk.co.jakelee.blacksmithslots.helper.IncomeHelper;
 import uk.co.jakelee.blacksmithslots.helper.LanguageHelper;
 import uk.co.jakelee.blacksmithslots.helper.NotificationHelper;
+import uk.co.jakelee.blacksmithslots.helper.Runnables;
 import uk.co.jakelee.blacksmithslots.helper.TaskHelper;
 import uk.co.jakelee.blacksmithslots.model.Item;
 import uk.co.jakelee.blacksmithslots.model.Reward;
@@ -49,6 +52,7 @@ public class MapActivity extends BaseActivity implements
     private int selectedSlot = 1;
     private ViewPager mViewPager;
     private CustomPagerAdapter mCustomPagerAdapter;
+    private Handler handler = new Handler();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,16 +83,15 @@ public class MapActivity extends BaseActivity implements
             }
         });
         mViewPager.setAdapter(mCustomPagerAdapter);
+
+        if (IncomeHelper.getNextPeriodicClaimTime() - System.currentTimeMillis() > 0) {
+            setBonusAsNotClaimed();
+        }
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
-
-        ((TextView)findViewById(R.id.settings)).setText(R.string.settings);
-        ((TextView)findViewById(R.id.statistics)).setText(R.string.statistics);
-        ((TextView)findViewById(R.id.inventory)).setText(R.string.inventory);
-        ((TextView)findViewById(R.id.claimBonus)).setText(R.string.claim_bonus);
+    private void setBonusAsNotClaimed() {
+        findViewById(R.id.claimBonus).setBackgroundResource(R.drawable.box_orange);
+        handler.post(Runnables.getClaimRefresh(handler, (TextView)findViewById(R.id.claimBonus)));
     }
 
     @Override
@@ -99,6 +102,7 @@ public class MapActivity extends BaseActivity implements
         if (Setting.getBoolean(Enums.Setting.PeriodicBonusNotification)) {
             NotificationHelper.addBonusNotification(this, notificationSound);
         }
+        handler.removeCallbacks(null);
     }
 
     public void tryGoogleLogin() {
@@ -156,8 +160,12 @@ public class MapActivity extends BaseActivity implements
     public void claimPeriodicBonus(View v) {
         if (IncomeHelper.canClaimPeriodicBonus()) {
             AlertHelper.success(this, IncomeHelper.claimBonus(this, true), true);
+            setBonusAsNotClaimed();
         } else {
-            AlertHelper.error(this, R.string.error_bonus_not_ready, false);
+            AlertHelper.error(this, String.format(Locale.ENGLISH,
+                    getString(R.string.error_bonus_not_ready),
+                    DateHelper.timestampToDetailedTime(IncomeHelper.getNextPeriodicClaimTime() - System.currentTimeMillis())),
+                    false);
         }
     }
 

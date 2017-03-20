@@ -39,7 +39,7 @@
     <string name="itemUsesButton">Uses</string>
 
     <!-- Errors -->
-    <string name="error_bonus_not_ready">Can\'t claim bonus!</string>
+    <string name="error_bonus_not_ready">Bonus will be ready in %1$s.</string>
     <string name="error_not_enough_resources">Not enough resources to spin!</string>
     <string name="error_failed_pb_import">Failed to find a Pixel Blacksmith save! Make sure you\'ve given permission to access external storage, and try exporting the save again.</string>
 
