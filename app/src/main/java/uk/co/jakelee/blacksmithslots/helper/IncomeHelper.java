@@ -11,8 +11,8 @@ import uk.co.jakelee.blacksmithslots.model.Inventory;
 import uk.co.jakelee.blacksmithslots.model.Statistic;
 
 public class IncomeHelper {
-    public static boolean canClaimAdvertBonus() {
-        return true;
+    public static boolean canWatchAdvert() {
+        return getNextAdvertWatchTime() - System.currentTimeMillis() <= 0;
     }
 
     public static boolean canClaimPeriodicBonus() {
@@ -26,6 +26,13 @@ public class IncomeHelper {
         return lastClaimed.getLongValue() + millis;
     }
 
+    public static long getNextAdvertWatchTime() {
+        Statistic lastWatched = Statistic.get(Enums.Statistic.LastAdvertWatched);
+        double hours = IncomeHelper.getAdvertCooldownHours(LevelHelper.getVipLevel());
+        long millis = DateHelper.hoursToMillis(hours);
+        return lastWatched.getLongValue() + millis;
+    }
+
     public static String claimBonus(Context context, boolean claimingPeriodicBonus) {
         List<ItemResult> bonus = getBonus();
         StringBuilder winningsText = new StringBuilder().append("Claimed: ");
@@ -37,6 +44,24 @@ public class IncomeHelper {
         if (claimingPeriodicBonus) {
             Statistic.add(Enums.Statistic.CollectedBonuses);
             Statistic lastClaimed = Statistic.get(Enums.Statistic.LastBonusClaimed);
+            lastClaimed.setLongValue(System.currentTimeMillis());
+            lastClaimed.save();
+        }
+
+        return winningsText.substring(0, winningsText.length() - 2);
+    }
+
+    public static String watchAdvert(Context context, boolean claimingAdvertBonus) {
+        List<ItemResult> bonus = getBonus();
+        StringBuilder winningsText = new StringBuilder().append("Claimed: ");
+        for (ItemResult result : bonus) {
+            Inventory.addInventory(result);
+            winningsText.append(result.toString(context)).append(", ");
+        }
+
+        if (claimingAdvertBonus) {
+            Statistic.add(Enums.Statistic.CollectedBonuses);
+            Statistic lastClaimed = Statistic.get(Enums.Statistic.LastAdvertWatched);
             lastClaimed.setLongValue(System.currentTimeMillis());
             lastClaimed.save();
         }

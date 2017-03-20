@@ -32,6 +32,7 @@
     <string name="statistics">Statistics</string>
     <string name="inventory">Inventory</string>
     <string name="claim_bonus">Claim Bonus</string>
+    <string name="watch_advert">Watch Advert</string>
     <string name="task_completion">Task %1$d/%2$d</string>
 
     <!-- Inventory -->
@@ -39,6 +40,7 @@
     <string name="itemUsesButton">Uses</string>
 
     <!-- Errors -->
+    <string name="error_advert_not_ready">Advert will be ready in %1$s.</string>
     <string name="error_bonus_not_ready">Bonus will be ready in %1$s.</string>
     <string name="error_not_enough_resources">Not enough resources to spin!</string>
     <string name="error_failed_pb_import">Failed to find a Pixel Blacksmith save! Make sure you\'ve given permission to access external storage, and try exporting the save again.</string>

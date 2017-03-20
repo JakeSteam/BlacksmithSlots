@@ -85,13 +85,21 @@ public class MapActivity extends BaseActivity implements
         mViewPager.setAdapter(mCustomPagerAdapter);
 
         if (IncomeHelper.getNextPeriodicClaimTime() - System.currentTimeMillis() > 0) {
-            setBonusAsNotClaimed();
+            setPeriodicBonusUnclaimable();
+        }
+        if (IncomeHelper.getNextAdvertWatchTime() - System.currentTimeMillis() > 0) {
+            setAdvertUnclaimable();
         }
     }
 
-    private void setBonusAsNotClaimed() {
+    private void setPeriodicBonusUnclaimable() {
         findViewById(R.id.claimBonus).setBackgroundResource(R.drawable.box_orange);
-        handler.post(Runnables.getClaimRefresh(handler, (TextView)findViewById(R.id.claimBonus)));
+        handler.post(Runnables.updateTimeToPeriodicBonusClaim(handler, (TextView)findViewById(R.id.claimBonus)));
+    }
+
+    private void setAdvertUnclaimable() {
+        findViewById(R.id.watchAdvert).setBackgroundResource(R.drawable.box_orange);
+        handler.post(Runnables.updateTimeToWatchAdvert(handler, (TextView)findViewById(R.id.watchAdvert)));
     }
 
     @Override
@@ -160,11 +168,24 @@ public class MapActivity extends BaseActivity implements
     public void claimPeriodicBonus(View v) {
         if (IncomeHelper.canClaimPeriodicBonus()) {
             AlertHelper.success(this, IncomeHelper.claimBonus(this, true), true);
-            setBonusAsNotClaimed();
+            setPeriodicBonusUnclaimable();
         } else {
             AlertHelper.error(this, String.format(Locale.ENGLISH,
                     getString(R.string.error_bonus_not_ready),
                     DateHelper.timestampToDetailedTime(IncomeHelper.getNextPeriodicClaimTime() - System.currentTimeMillis())),
+                    false);
+        }
+    }
+
+    public void watchAdvert(View v) {
+        if (IncomeHelper.canWatchAdvert()) {
+            IncomeHelper.watchAdvert(this, true);
+            AlertHelper.success(this, "Pretend I'm an advert, thanks.", true);
+            setAdvertUnclaimable();
+        } else {
+            AlertHelper.error(this, String.format(Locale.ENGLISH,
+                    getString(R.string.error_advert_not_ready),
+                    DateHelper.timestampToDetailedTime(IncomeHelper.getNextAdvertWatchTime() - System.currentTimeMillis())),
                     false);
         }
     }
