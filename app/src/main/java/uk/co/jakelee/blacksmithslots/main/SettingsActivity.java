@@ -21,9 +21,14 @@ import uk.co.jakelee.blacksmithslots.components.FontTextView;
 import uk.co.jakelee.blacksmithslots.helper.AlertHelper;
 import uk.co.jakelee.blacksmithslots.helper.DisplayHelper;
 import uk.co.jakelee.blacksmithslots.helper.Enums;
+import uk.co.jakelee.blacksmithslots.helper.IncomeHelper;
 import uk.co.jakelee.blacksmithslots.helper.LanguageHelper;
+import uk.co.jakelee.blacksmithslots.helper.StorageHelper;
 import uk.co.jakelee.blacksmithslots.helper.TextHelper;
 import uk.co.jakelee.blacksmithslots.model.Setting;
+import uk.co.jakelee.blacksmithslots.model.Statistic;
+
+import static uk.co.jakelee.blacksmithslots.model.Setting.get;
 
 public class SettingsActivity extends BaseActivity {
     private int spinnersInitialised = 0;
@@ -43,8 +48,8 @@ public class SettingsActivity extends BaseActivity {
         populateSettings();
     }
 
-    private void createDropdown(int spinnerId, int max, int min, Enums.Setting settingEnum) {
-        Setting setting = Setting.get(settingEnum);
+    private void createDropdown(Spinner spinner, int max, int min, Enums.Setting settingEnum) {
+        Setting setting = get(settingEnum);
         ArrayAdapter<String> envAdapter = new ArrayAdapter<>(this, R.layout.custom_spinner_display);
         envAdapter.setDropDownViewResource(R.layout.custom_spinner_item);
 
@@ -53,7 +58,6 @@ public class SettingsActivity extends BaseActivity {
             envAdapter.add(text);
         }
 
-        final Spinner spinner = (Spinner) findViewById(spinnerId);
         spinner.setAdapter(envAdapter);
         spinner.setSelection(setting.getIntValue() - 1);
         spinner.setOnItemSelectedListener(getListener(setting));
@@ -83,6 +87,7 @@ public class SettingsActivity extends BaseActivity {
     }
 
     private void populateSettings() {
+        spinnersInitialised = 0;
         LayoutInflater inflater = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         TableLayout settingTable = (TableLayout)findViewById(R.id.settingsTable);
         settingTable.removeAllViews();
@@ -103,15 +108,19 @@ public class SettingsActivity extends BaseActivity {
                 settingTable.addView(tableRow);
             }
         }
-
-        createDropdown(R.id.languagePicker, 3, 1, Enums.Setting.Language);
     }
 
     private TableRow createTableRow(LayoutInflater inflater, Setting setting) {
         TableRow row = (TableRow)inflater.inflate(getRowLayout(setting), null).findViewById(R.id.dataRow);
-        if (setting.getDataType() == Enums.DataType.Boolean.value && setting.getSetting() != Enums.Setting.SaveImported) {
+        if (setting.getSetting() == Enums.Setting.SaveImported) {
+            row.findViewById(R.id.importButton).setEnabled(!setting.getBooleanValue());
+            row.findViewById(R.id.importButton).setBackgroundResource(setting.getBooleanValue() ? R.drawable.box_orange : R.drawable.box_green);
+            row.findViewById(R.id.importButton).setAlpha(setting.getBooleanValue() ? 0.5f : 1f);
+        } else if (setting.getSetting() == Enums.Setting.Language) {
+            createDropdown((Spinner) row.findViewById(R.id.languagePicker), 3, 1, Enums.Setting.Language);
+        } else if (setting.getDataType() == Enums.DataType.Boolean.value) {
             ((TextView)row.findViewById(R.id.settingValue)).setText(setting.getBooleanValue() ? "On" : "Off");
-        } else if (setting.getDataType() == Enums.DataType.Integer.value && setting.getSetting() != Enums.Setting.Language) {
+        } else if (setting.getDataType() == Enums.DataType.Integer.value) {
             ((TextView)row.findViewById(R.id.settingValue)).setText(setting.getIntValue() + " mins");
         }
         return row;
@@ -134,7 +143,7 @@ public class SettingsActivity extends BaseActivity {
     }
 
     public void changeBoolean(View v) {
-        Setting setting = Setting.get((Integer)((TableRow)v.getParent()).getTag());
+        Setting setting = get((Integer)((TableRow)v.getParent()).getTag());
         setting.setBooleanValue(!setting.getBooleanValue());
         setting.save();
         onResume();
@@ -151,7 +160,23 @@ public class SettingsActivity extends BaseActivity {
     }
 
     public void importSave(View v) {
-        AlertHelper.info(this, "Import a save...", false);
+        StorageHelper.confirmStoragePermissions(this);
+        if (StorageHelper.checkForPBSave()) {
+            AlertHelper.success(this, IncomeHelper.claimBonus(this, false), false);
+
+            // Reward fixed amount for now, ideally dependant on prestige / premium?
+            Setting haveImported = Setting.get(Enums.Setting.SaveImported);
+            haveImported.setBooleanValue(true);
+            haveImported.save();
+
+            Statistic haveImportedStat = Statistic.get(Enums.Statistic.SaveImported);
+            haveImportedStat.setBoolValue(true);
+            haveImportedStat.save();
+
+            populateSettings();
+        } else {
+            AlertHelper.error(this, R.string.error_failed_pb_import, false);
+        }
     }
 
 }

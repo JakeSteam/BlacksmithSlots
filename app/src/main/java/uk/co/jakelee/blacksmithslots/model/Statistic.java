@@ -78,10 +78,9 @@ public class Statistic extends SugarRecord {
     }
 
     public static Statistic get(Enums.Statistic statistic) {
-        List<Statistic> statisticList = Select.from(Statistic.class).where(
+        return Select.from(Statistic.class).where(
                 Condition.prop("a").eq(statistic.value)
-        ).list();
-        return statisticList.size() > 0 ? statisticList.get(0) : null;
+        ).first();
     }
 
     public Enums.Statistic getStatistic() {

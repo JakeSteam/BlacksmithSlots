@@ -7,9 +7,13 @@
     <uk.co.jakelee.blacksmithslots.components.FontTextView
         android:id="@+id/settingName"
         style="@style/DataText"/>
-
-    <Button
+    <uk.co.jakelee.blacksmithslots.components.FontTextView
         android:id="@+id/importButton"
+        android:layout_width="wrap_content"
+        android:background="@drawable/box_green"
+        android:text="Import Save"
         android:onClick="importSave"
-        android:text="Import Save"/>
+        android:maxLines="1"
+        android:layout_margin="5dp"
+        style="@style/SlotText"/>
 </TableRow>
