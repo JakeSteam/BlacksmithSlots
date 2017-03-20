@@ -75,6 +75,22 @@ public class Inventory extends SugarRecord {
         }
     }
 
+    public int getTier() {
+        return tier;
+    }
+
+    public void setTier(int tier) {
+        this.tier = tier;
+    }
+
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
+    }
+
     public String getName(Context context) {
         return Item.getName(context, tier, type);
     }

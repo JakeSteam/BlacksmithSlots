@@ -9,4 +9,7 @@
     <item name="route_7" type="id"/>
     <item name="route_8" type="id"/>
     <item name="route_9" type="id"/>
+
+    <item name="item_tier" type="id"/>
+    <item name="item_type" type="id"/>
 </resources>

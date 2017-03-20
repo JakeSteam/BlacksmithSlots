@@ -12,67 +12,27 @@
         android:clickable="true"
         android:onClick="close"/>
 
-    <ScrollView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="30dp"
-        android:clickable="true"
-        android:onClick="suppress">
-        <TableLayout
-            android:id="@+id/comparisonTable"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="15dp"
-            android:stretchColumns="*"
-            android:shrinkColumns="*"
-            android:divider="?android:attr/dividerHorizontal"
-            android:showDividers="middle"
-            android:background="@drawable/box_yellow">
-            <TableRow>
-                <uk.co.jakelee.blacksmithslots.components.FontTextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="@style/FontSize"
-                    android:maxLines="3"
-                    android:layout_gravity="center_vertical"
-                    android:layout_margin="3dp"
-                    android:text="VIP Level"/>
-                <uk.co.jakelee.blacksmithslots.components.FontTextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="@style/FontSize"
-                    android:maxLines="3"
-                    android:layout_gravity="center_vertical"
-                    android:layout_margin="3dp"
-                    android:text="Chest Bonus"/>
-                <uk.co.jakelee.blacksmithslots.components.FontTextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="@style/FontSize"
-                    android:maxLines="3"
-                    android:layout_gravity="center_vertical"
-                    android:layout_margin="3dp"
-                    android:text="Advert Bonus"/>
-                <uk.co.jakelee.blacksmithslots.components.FontTextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="@style/FontSize"
-                    android:maxLines="3"
-                    android:layout_gravity="center_vertical"
-                    android:layout_margin="3dp"
-                    android:text="Bonus Amount"/>
-                <uk.co.jakelee.blacksmithslots.components.FontTextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="@style/FontSize"
-                    android:maxLines="3"
-                    android:layout_gravity="center_vertical"
-                    android:layout_margin="3dp"
-                    android:text="Daily Bonus"/>
-
-            </TableRow>
-        </TableLayout>
-    </ScrollView>
+        android:background="@drawable/box_yellow">
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clickable="true"
+            android:onClick="suppress"
+            android:padding="8dp">
+            <TableLayout
+                android:id="@+id/inventoryTable"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:stretchColumns="*"
+                android:shrinkColumns="*"
+                android:divider="?android:attr/dividerHorizontal"
+                android:showDividers="middle"/>
+        </ScrollView>
+    </LinearLayout>
 
     <ImageView
         android:layout_width="wrap_content"

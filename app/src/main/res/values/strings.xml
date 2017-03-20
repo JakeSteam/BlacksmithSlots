@@ -34,6 +34,10 @@
     <string name="claim_bonus">Claim Bonus</string>
     <string name="task_completion">Task %1$d/%2$d</string>
 
+    <!-- Inventory -->
+    <string name="itemSourcesButton">Sources</string>
+    <string name="itemUsesButton">Uses</string>
+
     <!-- Errors -->
     <string name="error_bonus_not_ready">Can\'t claim bonus!</string>
     <string name="error_not_enough_resources">Not enough resources to spin!</string>

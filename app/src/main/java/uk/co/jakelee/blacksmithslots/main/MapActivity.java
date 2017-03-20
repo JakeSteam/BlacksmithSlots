@@ -149,6 +149,8 @@ public class MapActivity extends BaseActivity implements
     }
 
     public void openInventory(View v) {
+        startActivity(new Intent(this, InventoryActivity.class)
+            .addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT));
     }
 
     public void claimPeriodicBonus(View v) {
