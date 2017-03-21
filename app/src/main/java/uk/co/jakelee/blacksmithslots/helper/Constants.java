@@ -17,12 +17,13 @@ public class Constants {
     public final static double CHEST_COOLDOWN_VIP_REDUCTION = 0.5;
     public final static int ADVERT_DEFAULT_COOLDOWN_HOURS = 1;
     public final static double ADVERT_COOLDOWN_VIP_REDUCTION = 0.15;
+    public final static int VIP_LEVEL_MODIFIER = 25;
+    public final static int VIP_DAILY_BONUS_MODIFIER = 50;
 
     // Intents
     public final static String INTENT_SLOT = "uk.co.jakelee.blacksmithslots.slot";
 
     // Used for income calculations
-    public final static int VIP_LEVEL_MODIFIER = 50;
     public final static int BRONZE_MIN_LEVEL = 1;
     public final static int BRONZE_MAX_LEVEL = 4;
     public final static int BRONZE_PER_LEVEL = 50;

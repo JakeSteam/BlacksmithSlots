@@ -28,7 +28,7 @@ public class IncomeHelper {
 
     public static long getNextAdvertWatchTime() {
         Statistic lastWatched = Statistic.get(Enums.Statistic.LastAdvertWatched);
-        double hours = IncomeHelper.getAdvertCooldownHours(LevelHelper.getVipLevel());
+        double hours = IncomeHelper.getAdvertCooldownMins(LevelHelper.getVipLevel());
         long millis = DateHelper.hoursToMillis(hours);
         return lastWatched.getLongValue() + millis;
     }
@@ -94,7 +94,7 @@ public class IncomeHelper {
         return Constants.CHEST_DEFAULT_COOLDOWN_HOURS - (vipLevel * Constants.CHEST_COOLDOWN_VIP_REDUCTION);
     }
 
-    public static double getAdvertCooldownHours(int vipLevel) {
-        return Constants.ADVERT_DEFAULT_COOLDOWN_HOURS - (vipLevel * Constants.ADVERT_COOLDOWN_VIP_REDUCTION);
+    public static int getAdvertCooldownMins(int vipLevel) {
+        return (int)Math.ceil((Constants.ADVERT_DEFAULT_COOLDOWN_HOURS - ((vipLevel * Constants.ADVERT_COOLDOWN_VIP_REDUCTION))) * 60);
     }
 }

@@ -13,12 +13,13 @@
         style="@style/DataText"/>
 
     <uk.co.jakelee.blacksmithslots.components.FontTextView
-        android:id="@+id/advertBonus"
+        android:id="@+id/bonusModifier"
         style="@style/DataText"/>
 
     <uk.co.jakelee.blacksmithslots.components.FontTextView
-        android:id="@+id/bonusModifier"
+        android:id="@+id/advertBonus"
         style="@style/DataText"/>
+
 
     <uk.co.jakelee.blacksmithslots.components.FontTextView
         android:id="@+id/dailyBonus"

@@ -45,7 +45,6 @@
                 android:id="@+id/currentLevel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Lev 0"
                 style="@style/SlotText"
                 android:onClick="levelInfo"
                 android:layout_margin="3dp"/>

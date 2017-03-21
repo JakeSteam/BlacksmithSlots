@@ -10,6 +10,8 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
+import java.util.Locale;
+
 import uk.co.jakelee.blacksmithslots.BaseActivity;
 import uk.co.jakelee.blacksmithslots.R;
 import uk.co.jakelee.blacksmithslots.helper.Constants;
@@ -32,10 +34,10 @@ public class VipComparisonActivity extends BaseActivity {
             TableRow tableRow = (TableRow)inflater.inflate(R.layout.custom_vip_row, null).findViewById(R.id.dataRow);
             tableRow.setBackgroundColor(ContextCompat.getColor(this, vipLevel == i ? R.color.green : R.color.white));
             ((TextView)tableRow.findViewById(R.id.vipLevel)).setText(Integer.toString(i));
-            ((TextView)tableRow.findViewById(R.id.timeBetweenBonuses)).setText(String.format("%1.1f hours", IncomeHelper.getChestCooldownHours(i)));
-            ((TextView)tableRow.findViewById(R.id.advertBonus)).setText(String.format("%1.2f hours", IncomeHelper.getAdvertCooldownHours(i)));
+            ((TextView)tableRow.findViewById(R.id.timeBetweenBonuses)).setText(String.format(Locale.ENGLISH, getString(R.string.time_hours), IncomeHelper.getChestCooldownHours(i)));
             ((TextView)tableRow.findViewById(R.id.bonusModifier)).setText("+" + (i * Constants.VIP_LEVEL_MODIFIER) + "%");
-            ((TextView)tableRow.findViewById(R.id.dailyBonus)).setText("x" + (i + 1));
+            ((TextView)tableRow.findViewById(R.id.advertBonus)).setText(String.format(Locale.ENGLISH, getString(R.string.time_mins), IncomeHelper.getAdvertCooldownMins(i)));
+            ((TextView)tableRow.findViewById(R.id.dailyBonus)).setText("+" + (i * Constants.VIP_DAILY_BONUS_MODIFIER) + "%");
             ((TextView)tableRow.findViewById(R.id.autospins)).setText("" + LevelHelper.getAutospinsByVip(i));
             comparisonTable.addView(tableRow, params);
         }

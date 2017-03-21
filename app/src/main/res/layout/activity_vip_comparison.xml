@@ -36,7 +36,7 @@
                     android:maxLines="3"
                     android:layout_gravity="center_vertical"
                     android:layout_margin="3dp"
-                    android:text="VIP Level"/>
+                    android:text="@string/vip_level"/>
                 <uk.co.jakelee.blacksmithslots.components.FontTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -44,7 +44,7 @@
                     android:maxLines="3"
                     android:layout_gravity="center_vertical"
                     android:layout_margin="3dp"
-                    android:text="Chest Bonus"/>
+                    android:text="@string/chest_cooldown"/>
                 <uk.co.jakelee.blacksmithslots.components.FontTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -52,7 +52,7 @@
                     android:maxLines="3"
                     android:layout_gravity="center_vertical"
                     android:layout_margin="3dp"
-                    android:text="Advert Bonus"/>
+                    android:text="@string/reward_boost"/>
                 <uk.co.jakelee.blacksmithslots.components.FontTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -60,7 +60,7 @@
                     android:maxLines="3"
                     android:layout_gravity="center_vertical"
                     android:layout_margin="3dp"
-                    android:text="Bonus Amount"/>
+                    android:text="@string/advert_cooldown"/>
                 <uk.co.jakelee.blacksmithslots.components.FontTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -68,7 +68,7 @@
                     android:maxLines="3"
                     android:layout_gravity="center_vertical"
                     android:layout_margin="3dp"
-                    android:text="Daily Bonus"/>
+                    android:text="@string/daily_bonus"/>
                 <uk.co.jakelee.blacksmithslots.components.FontTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -76,8 +76,7 @@
                     android:maxLines="3"
                     android:layout_gravity="center_vertical"
                     android:layout_margin="3dp"
-                    android:text="Auto spins"/>
-
+                    android:text="@string/autospins"/>
             </TableRow>
         </TableLayout>
     </ScrollView>

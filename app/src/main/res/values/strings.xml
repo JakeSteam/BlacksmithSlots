@@ -20,6 +20,9 @@
     <string name="log_task">Updated %1$s for %2$s.</string>
     <string name="log_error">Error: %1$s</string>
 
+    <string name="time_hours">%1.1f hrs</string>
+    <string name="time_mins">%1d mins</string>
+
     <string name="notification_periodic_bonus">Your bonus is ready to claim!</string>
 
     <string name="settinggroup_1">Audio</string>
@@ -27,6 +30,9 @@
     <string name="settinggroup_3">Notifications</string>
 
     <!-- UI -->
+    <!-- Slot -->
+    <string name="vip_level_display">VIP %1$d</string>
+
     <!-- Map -->
     <string name="settings">Settings</string>
     <string name="statistics">Statistics</string>
@@ -34,6 +40,15 @@
     <string name="claim_bonus">Claim Bonus</string>
     <string name="watch_advert">Watch Advert</string>
     <string name="task_completion">Task %1$d/%2$d</string>
+    <string name="open_slot">Play!</string>
+
+    <!-- VIP -->
+    <string name="vip_level">VIP Level</string>
+    <string name="chest_cooldown">Chest Restock</string>
+    <string name="reward_boost">Chest Boost</string>
+    <string name="advert_cooldown">Advert Restock</string>
+    <string name="daily_bonus">Daily Bonus</string>
+    <string name="autospins">Max Auto Spins</string>
 
     <!-- Inventory -->
     <string name="itemSourcesButton">Sources</string>

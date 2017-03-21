@@ -123,12 +123,13 @@
                     android:orientation="horizontal"
                     android:paddingBottom="10dp" />
             </HorizontalScrollView>
-            <Button
+            <uk.co.jakelee.blacksmithslots.components.FontTextView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Go!"
+                android:background="@drawable/box_green"
                 android:layout_alignParentBottom="true"
-                android:onClick="openSlot"/>
+                android:text="@string/open_slot"
+                android:onClick="openSlot"
+                style="@style/SlotText"/>
         </RelativeLayout>
         <RelativeLayout
             android:id="@+id/noSlotSelected"
