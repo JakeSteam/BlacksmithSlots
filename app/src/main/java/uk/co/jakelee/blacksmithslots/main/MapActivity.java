@@ -25,6 +25,7 @@ import hotchemi.android.rate.AppRate;
 import uk.co.jakelee.blacksmithslots.BaseActivity;
 import uk.co.jakelee.blacksmithslots.R;
 import uk.co.jakelee.blacksmithslots.components.CustomPagerAdapter;
+import uk.co.jakelee.blacksmithslots.helper.AdvertHelper;
 import uk.co.jakelee.blacksmithslots.helper.AlertHelper;
 import uk.co.jakelee.blacksmithslots.helper.Constants;
 import uk.co.jakelee.blacksmithslots.helper.DatabaseHelper;
@@ -90,6 +91,8 @@ public class MapActivity extends BaseActivity implements
         if (IncomeHelper.getNextAdvertWatchTime() - System.currentTimeMillis() > 0) {
             setAdvertUnclaimable();
         }
+
+        AdvertHelper.getInstance(this);
     }
 
     private void setPeriodicBonusUnclaimable() {
@@ -97,7 +100,7 @@ public class MapActivity extends BaseActivity implements
         handler.post(Runnables.updateTimeToPeriodicBonusClaim(handler, (TextView)findViewById(R.id.claimBonus)));
     }
 
-    private void setAdvertUnclaimable() {
+    public void setAdvertUnclaimable() {
         findViewById(R.id.watchAdvert).setBackgroundResource(R.drawable.box_orange);
         handler.post(Runnables.updateTimeToWatchAdvert(handler, (TextView)findViewById(R.id.watchAdvert)));
     }
@@ -179,9 +182,7 @@ public class MapActivity extends BaseActivity implements
 
     public void watchAdvert(View v) {
         if (IncomeHelper.canWatchAdvert()) {
-            IncomeHelper.watchAdvert(this, true);
-            AlertHelper.success(this, "Pretend I'm an advert, thanks.", true);
-            setAdvertUnclaimable();
+            AdvertHelper.getInstance(this).showAdvert(this);
         } else {
             AlertHelper.error(this, String.format(Locale.ENGLISH,
                     getString(R.string.error_advert_not_ready),

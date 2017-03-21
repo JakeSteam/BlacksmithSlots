@@ -1,13 +1,8 @@
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 7
-    buildToolsVersion '25.0.1'
-
-    defaultConfig {
-        minSdkVersion 5
-        targetSdkVersion 7
-    }
+    compileSdkVersion apiVersion
+    buildToolsVersion compilerVersion
 
     buildTypes {
         release {

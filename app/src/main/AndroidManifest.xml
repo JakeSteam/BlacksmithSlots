@@ -2,7 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="uk.co.jakelee.blacksmithslots">
 
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" android:maxSdkVersion="18" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:name=".MainApplication"
@@ -26,6 +28,8 @@
         <meta-data
             android:name="com.google.android.gms.games.APP_ID"
             android:value="@string/app_id" />
+        <meta-data android:name="applovin.sdk.key"
+            android:value="d8B0h7p58eRdbK8r8r6cntx7TDbAl2WMBiNtqAyypOaPikFsTLSKCNSgb3rL5MiG347uE4r2SPSA7h0g1S_ErR"  />
 
         <activity
             android:name=".main.SplashScreenActivity"
@@ -65,6 +69,8 @@
         <activity android:name=".main.MinigameFlipActivity"
             android:screenOrientation="sensorLandscape"
             android:theme="@style/Theme.Dimmed" />
+        <activity android:name="com.applovin.adview.AppLovinInterstitialActivity" />
+        <activity android:name="com.applovin.adview.AppLovinConfirmationActivity" />
     </application>
 
 </manifest>
