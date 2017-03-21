@@ -44,6 +44,8 @@ import uk.co.jakelee.blacksmithslots.model.Setting;
 import uk.co.jakelee.blacksmithslots.model.Slot;
 import uk.co.jakelee.blacksmithslots.model.Task;
 
+import static uk.co.jakelee.blacksmithslots.R.id.watchAdvert;
+
 public class MapActivity extends BaseActivity implements
         GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener,
@@ -73,7 +75,6 @@ public class MapActivity extends BaseActivity implements
                 .build();
         tryGoogleLogin();
 
-
         mCustomPagerAdapter = new CustomPagerAdapter(this);
 
         mViewPager = (ViewPager) findViewById(R.id.townScroller);
@@ -101,8 +102,8 @@ public class MapActivity extends BaseActivity implements
     }
 
     public void setAdvertUnclaimable() {
-        findViewById(R.id.watchAdvert).setBackgroundResource(R.drawable.box_orange);
-        handler.post(Runnables.updateTimeToWatchAdvert(handler, (TextView)findViewById(R.id.watchAdvert)));
+        findViewById(watchAdvert).setBackgroundResource(R.drawable.box_orange);
+        handler.post(Runnables.updateTimeToWatchAdvert(handler, (TextView)findViewById(watchAdvert)));
     }
 
     @Override

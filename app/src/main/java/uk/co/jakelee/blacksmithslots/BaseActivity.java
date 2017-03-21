@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.content.Intent;
 import android.view.View;
 
+import com.tapjoy.Tapjoy;
+
 import de.keyboardsurfer.android.widget.crouton.Crouton;
 
 public class BaseActivity extends Activity {
@@ -17,6 +19,19 @@ public class BaseActivity extends Activity {
     public void startActivity(Intent intent) {
         super.startActivity(intent);
         overridePendingTransitionEnter();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Tapjoy.onActivityStart(this);
+    }
+
+    //session end
+    @Override
+    protected void onStop() {
+        Tapjoy.onActivityStop(this);
+        super.onStop();
     }
 
     /**
