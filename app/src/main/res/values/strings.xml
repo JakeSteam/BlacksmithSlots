@@ -85,6 +85,7 @@
     <string name="setting_7">Notification Sounds</string>
     <string name="setting_8">Periodic Bonus Notification</string>
     <string name="setting_9">Import Pixel Blacksmith Save</string>
+    <string name="setting_10">Only Show Owned Items</string>
 
     <string name="slot_1_name">Bronze Furnace</string>
     <string name="slot_2_name">Bronze Weapon</string>

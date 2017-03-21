@@ -54,8 +54,8 @@ public class AdvertHelper implements AppLovinAdRewardListener, AppLovinAdDisplay
 
         if (advert.isAdReadyToDisplay()) {
             advert.show(activity, this, this, this);
-        //if (AppLovinInterstitialAd.isAdReadyToDisplay(activity)) {
-        //    AppLovinInterstitialAd.show(activity);
+        } else if (AppLovinInterstitialAd.isAdReadyToDisplay(activity)) {
+            AppLovinInterstitialAd.show(activity);
         } else {
             openInterstitial();
         }

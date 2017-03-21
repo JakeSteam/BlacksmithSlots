@@ -380,9 +380,14 @@ public class SlotHelper {
 
         TableLayout.LayoutParams params = new TableLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
 
+        boolean onlyShowStockedItems = Setting.getBoolean(Enums.Setting.OnlyShowStocked);
         TableLayout layout = (TableLayout)activity.findViewById(R.id.inventoryDisplay);
         layout.removeAllViews();
         for (Inventory item : items) {
+            if (onlyShowStockedItems && inventory.getQuantity() <= 0) {
+                continue;
+            }
+
             View inflatedView = inflater.inflate(R.layout.custom_resource_info, null);
             TableRow itemRow = (TableRow) inflatedView.findViewById(R.id.itemRow);
 

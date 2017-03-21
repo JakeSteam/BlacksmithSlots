@@ -21,9 +21,11 @@ import uk.co.jakelee.blacksmithslots.BaseActivity;
 import uk.co.jakelee.blacksmithslots.R;
 import uk.co.jakelee.blacksmithslots.helper.AlertHelper;
 import uk.co.jakelee.blacksmithslots.helper.DisplayHelper;
+import uk.co.jakelee.blacksmithslots.helper.Enums;
 import uk.co.jakelee.blacksmithslots.model.Inventory;
 import uk.co.jakelee.blacksmithslots.model.Item;
 import uk.co.jakelee.blacksmithslots.model.Reward;
+import uk.co.jakelee.blacksmithslots.model.Setting;
 import uk.co.jakelee.blacksmithslots.model.Slot;
 
 public class InventoryActivity extends BaseActivity {
@@ -36,8 +38,12 @@ public class InventoryActivity extends BaseActivity {
 
         LayoutInflater inflater = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         TableLayout statTable = (TableLayout)findViewById(R.id.inventoryTable);
+        boolean onlyShowStockedItems = Setting.getBoolean(Enums.Setting.OnlyShowStocked);
         List<Inventory> inventories = Inventory.listAll(Inventory.class, "c DESC");
         for (Inventory inventory : inventories) {
+            if (onlyShowStockedItems && inventory.getQuantity() <= 0) {
+                continue;
+            }
             TableRow tableRow = (TableRow)inflater.inflate(R.layout.custom_inventory_row, null).findViewById(R.id.inventoryRow);
             tableRow.setTag(R.id.item_tier, inventory.getTier());
             tableRow.setTag(R.id.item_type, inventory.getType());
