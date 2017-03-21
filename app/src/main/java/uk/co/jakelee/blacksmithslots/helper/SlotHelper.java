@@ -360,17 +360,21 @@ public class SlotHelper {
 
     public void updateResourceCount() {
         List<Inventory> items;
+        boolean orderByTier = Setting.getBoolean(Enums.Setting.OrderByTier);
+        boolean reverseOrder = Setting.getBoolean(Enums.Setting.OrderReversed);
+        String orderBy = (orderByTier ? "a " : "c ") + (reverseOrder ? "ASC" : "DESC");
+
         if (Setting.getBoolean(Enums.Setting.OnlyActiveResources) && baseItems.size() > 0) {
             String where = "(a != " + resourceTier.value + " OR b != " + resourceType.value + ") AND ";
             for (ItemResult item : baseItems) {
                 where += "(a = " + item.getResourceTier().value + " AND b = " + item.getResourceType().value + ") OR ";
             }
-            items = Select.from(Inventory.class).where(where.substring(0, where.length() - 4)).list();
+            items = Select.from(Inventory.class).where(where.substring(0, where.length() - 4)).orderBy(orderBy).list();
         } else {
             items = Select.from(Inventory.class).where(
                     Condition.prop("a").notEq(resourceTier.value)).or(
                     Condition.prop("b").notEq(resourceType.value))
-                    .orderBy("c DESC").list();
+                    .orderBy(orderBy).list();
         }
 
 

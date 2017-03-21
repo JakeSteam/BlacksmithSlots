@@ -145,6 +145,8 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
             settings.add(new Setting(Enums.SettingGroup.Gameplay, Enums.Setting.SaveImported, false));
             settings.add(new Setting(Enums.SettingGroup.Gameplay, Enums.Setting.OnlyShowStocked, false));
             settings.add(new Setting(Enums.SettingGroup.Notifications, Enums.Setting.NotificationSounds, true));
+            settings.add(new Setting(Enums.SettingGroup.Notifications, Enums.Setting.OrderByTier, false));
+            settings.add(new Setting(Enums.SettingGroup.Notifications, Enums.Setting.OrderReversed, false));
         Setting.saveInTx(settings);
     }
 

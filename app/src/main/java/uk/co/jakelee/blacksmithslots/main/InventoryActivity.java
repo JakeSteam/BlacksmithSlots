@@ -39,7 +39,9 @@ public class InventoryActivity extends BaseActivity {
         LayoutInflater inflater = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         TableLayout statTable = (TableLayout)findViewById(R.id.inventoryTable);
         boolean onlyShowStockedItems = Setting.getBoolean(Enums.Setting.OnlyShowStocked);
-        List<Inventory> inventories = Inventory.listAll(Inventory.class, "c DESC");
+        boolean orderByTier = Setting.getBoolean(Enums.Setting.OrderByTier);
+        boolean reverseOrder = Setting.getBoolean(Enums.Setting.OrderReversed);
+        List<Inventory> inventories = Inventory.listAll(Inventory.class, (orderByTier ? "a " : "c ") + (reverseOrder ? "ASC" : "DESC"));
         for (Inventory inventory : inventories) {
             if (onlyShowStockedItems && inventory.getQuantity() <= 0) {
                 continue;

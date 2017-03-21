@@ -86,6 +86,8 @@
     <string name="setting_8">Periodic Bonus Notification</string>
     <string name="setting_9">Import Pixel Blacksmith Save</string>
     <string name="setting_10">Only Show Owned Items</string>
+    <string name="setting_11">Order Items By Tier</string>
+    <string name="setting_12">Reverse Ordering</string>
 
     <string name="slot_1_name">Bronze Furnace</string>
     <string name="slot_2_name">Bronze Weapon</string>
@@ -118,6 +120,7 @@
     <string name="statistic_11_name">VIP Level</string>
     <string name="statistic_12_name">Last Bonus Claimed</string>
     <string name="statistic_13_name">Pixel Blacksmith Save Imported</string>
+    <string name="statistic_14_name">Last Advert Watched</string>
 
     <string name="task_5_1_text">I guess XP is always good too.</string>
     <string name="task_5_2_text">Spinning will somehow help.</string>
