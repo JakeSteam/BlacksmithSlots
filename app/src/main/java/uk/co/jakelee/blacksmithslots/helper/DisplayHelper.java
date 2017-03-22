@@ -11,7 +11,7 @@ import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.ImageView;
 
-import uk.co.jakelee.blacksmithslots.constructs.ItemResult;
+import uk.co.jakelee.blacksmithslots.model.ItemBundle;
 
 public class DisplayHelper {
     public static String getItemTierString(int tier) {
@@ -30,12 +30,12 @@ public class DisplayHelper {
         return "type_" + type;
     }
 
-    public static String getItemImageFile(ItemResult result, boolean useDefault) {
-        return getItemImageFile(result.getResourceTier().value, result.getResourceType().value, 1);
+    public static String getItemImageFile(ItemBundle result, boolean useDefault) {
+        return getItemImageFile(result.getTier().value, result.getType().value, 1);
     }
 
-    public static String getItemImageFile(ItemResult result) {
-        return getItemImageFile(result.getResourceTier().value, result.getResourceType().value, result.getResourceQuantity());
+    public static String getItemImageFile(ItemBundle result) {
+        return getItemImageFile(result.getTier().value, result.getType().value, result.getQuantity());
     }
 
     public static String getPersonImageFile(int person) {

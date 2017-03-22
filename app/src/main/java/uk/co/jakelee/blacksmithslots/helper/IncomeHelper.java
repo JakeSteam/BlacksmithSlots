@@ -5,9 +5,9 @@ import android.content.Context;
 import java.util.ArrayList;
 import java.util.List;
 
-import uk.co.jakelee.blacksmithslots.constructs.ItemResult;
 import uk.co.jakelee.blacksmithslots.constructs.TierRange;
 import uk.co.jakelee.blacksmithslots.model.Inventory;
+import uk.co.jakelee.blacksmithslots.model.ItemBundle;
 import uk.co.jakelee.blacksmithslots.model.Statistic;
 
 public class IncomeHelper {
@@ -34,9 +34,9 @@ public class IncomeHelper {
     }
 
     public static String claimBonus(Context context, boolean claimingPeriodicBonus) {
-        List<ItemResult> bonus = getBonus();
+        List<ItemBundle> bonus = getBonus();
         StringBuilder winningsText = new StringBuilder().append("Claimed: ");
-        for (ItemResult result : bonus) {
+        for (ItemBundle result : bonus) {
             Inventory.addInventory(result);
             winningsText.append(result.toString(context)).append(", ");
         }
@@ -52,9 +52,9 @@ public class IncomeHelper {
     }
 
     public static String watchAdvert(Context context, boolean claimingAdvertBonus) {
-        List<ItemResult> bonus = getBonus();
+        List<ItemBundle> bonus = getBonus();
         StringBuilder winningsText = new StringBuilder().append("Claimed: ");
-        for (ItemResult result : bonus) {
+        for (ItemBundle result : bonus) {
             Inventory.addInventory(result);
             winningsText.append(result.toString(context)).append(", ");
         }
@@ -69,8 +69,8 @@ public class IncomeHelper {
         return winningsText.substring(0, winningsText.length() - 2);
     }
 
-    private static List<ItemResult> getBonus() {
-        ArrayList<ItemResult> bonus = new ArrayList<>();
+    private static List<ItemBundle> getBonus() {
+        ArrayList<ItemBundle> bonus = new ArrayList<>();
         int currentLevel = LevelHelper.getLevel();
         int vipLevel = LevelHelper.getVipLevel();
 
@@ -78,13 +78,13 @@ public class IncomeHelper {
         for (TierRange tierRange : tierRanges) {
             if (currentLevel >= tierRange.getMin()) {
                 int adjustedLevel = Math.min(currentLevel, tierRange.getMax() + 1);
-                bonus.add(new ItemResult(tierRange.getTier(), Enums.Type.Bar, (adjustedLevel - tierRange.getMin() + 1) * tierRange.getItemPerLevel()));
+                bonus.add(new ItemBundle(tierRange.getTier(), Enums.Type.Bar, (adjustedLevel - tierRange.getMin() + 1) * tierRange.getItemPerLevel()));
             }
         }
 
         // Apply VIP bonus
-        for (ItemResult result : bonus) {
-            result.setResourceQuantity(CalculationHelper.increaseByPercentage(result.getResourceQuantity(), vipLevel * Constants.VIP_LEVEL_MODIFIER));
+        for (ItemBundle result : bonus) {
+            result.setQuantity(CalculationHelper.increaseByPercentage(result.getQuantity(), vipLevel * Constants.VIP_LEVEL_MODIFIER));
         }
 
         return bonus;

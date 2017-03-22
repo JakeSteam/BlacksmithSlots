@@ -1,8 +1,12 @@
 package uk.co.jakelee.blacksmithslots.model;
 
+import android.content.Context;
+
 import com.orm.SugarRecord;
 import com.orm.dsl.Column;
 import com.orm.dsl.Table;
+
+import java.util.Locale;
 
 import uk.co.jakelee.blacksmithslots.helper.Enums;
 
@@ -27,6 +31,12 @@ public class ItemBundle extends SugarRecord {
     private boolean isReward;
 
     public ItemBundle() {
+    }
+
+    public ItemBundle (Enums.Tier tier, Enums.Type type, int quantity) {
+        this.tier = tier.value;
+        this.type = type.value;
+        this.quantity = quantity;
     }
 
     public ItemBundle(int slotId, Enums.Tier tier, Enums.Type type, int quantity, int weighting) {
@@ -92,5 +102,9 @@ public class ItemBundle extends SugarRecord {
 
     public void setReward(boolean reward) {
         isReward = reward;
+    }
+
+    public String toString(Context context) {
+        return String.format(Locale.ENGLISH, "%dx %s", quantity, Item.getName(context, tier, type));
     }
 }

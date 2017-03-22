@@ -10,7 +10,6 @@ import com.orm.query.Select;
 
 import java.util.List;
 
-import uk.co.jakelee.blacksmithslots.constructs.ItemResult;
 import uk.co.jakelee.blacksmithslots.helper.DisplayHelper;
 import uk.co.jakelee.blacksmithslots.helper.Enums;
 
@@ -48,8 +47,8 @@ public class Inventory extends SugarRecord {
         this.quantity = quantity;
     }
 
-    public static void addInventory(ItemResult result) {
-        addInventory(result.getResourceTier(), result.getResourceType(), result.getResourceQuantity());
+    public static void addInventory(ItemBundle result) {
+        addInventory(result.getTier(), result.getType(), result.getQuantity());
     }
 
     public static void addInventory(Enums.Tier tier, Enums.Type type, int quantity) {
