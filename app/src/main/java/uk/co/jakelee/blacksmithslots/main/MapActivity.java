@@ -263,31 +263,24 @@ public class MapActivity extends BaseActivity implements
     private void populateSlotInfoUnlocked(Slot slot) {
         ((TextView) findViewById(R.id.slotDescription)).setText(slot.getUnlockedText(this));
 
-        LinearLayout resourceContainer = (LinearLayout)findViewById(R.id.resourceContainer);
-        resourceContainer.removeAllViews();
-        List<ItemBundle> itemBundles = slot.getRewards();
-        for (ItemBundle itemBundle : itemBundles) {
-            resourceContainer.addView(DisplayHelper.createImageView(this,
-                    DisplayHelper.getItemImageFile(itemBundle.getTier().value, itemBundle.getType().value),
-                    30,
-                    30,
-                    itemBundle.getQuantity() + "x " + Item.getName(this, itemBundle.getTier(), itemBundle.getType())));
-        }
+        populateItemContainer(R.id.resourceContainer, slot.getResources());
+        populateItemContainer(R.id.rewardContainer, slot.getRewards());
 
-        LinearLayout rewardContainer = (LinearLayout)findViewById(R.id.rewardContainer);
+        findViewById(R.id.superlockedSlot).setVisibility(View.GONE);
+        findViewById(R.id.lockedSlot).setVisibility(View.GONE);
+        findViewById(R.id.unlockedSlot).setVisibility(View.VISIBLE);
+    }
+
+    private void populateItemContainer(int id, List<ItemBundle> items) {
+        LinearLayout rewardContainer = (LinearLayout)findViewById(id);
         rewardContainer.removeAllViews();
-        List<ItemBundle> itemBundles2 = slot.getRewards();
-        for (ItemBundle itemBundle : itemBundles2) {
+        for (ItemBundle itemBundle : items) {
             rewardContainer.addView(DisplayHelper.createImageView(this,
                     DisplayHelper.getItemImageFile(itemBundle.getTier().value, itemBundle.getType().value, itemBundle.getQuantity()),
                     30,
                     30,
                     itemBundle.getQuantity() + "x " + Item.getName(this, itemBundle.getTier(), itemBundle.getType())));
         }
-
-        findViewById(R.id.superlockedSlot).setVisibility(View.GONE);
-        findViewById(R.id.lockedSlot).setVisibility(View.GONE);
-        findViewById(R.id.unlockedSlot).setVisibility(View.VISIBLE);
     }
 
     @Override

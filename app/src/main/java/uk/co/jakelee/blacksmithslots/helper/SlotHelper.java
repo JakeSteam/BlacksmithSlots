@@ -44,6 +44,8 @@ import uk.co.jakelee.blacksmithslots.model.Setting;
 import uk.co.jakelee.blacksmithslots.model.Slot;
 import uk.co.jakelee.blacksmithslots.model.Statistic;
 
+import static android.R.attr.name;
+
 public class SlotHelper {
     private int stillSpinningSlots = 0;
     public int autospinsLeft = 0;
@@ -107,10 +109,22 @@ public class SlotHelper {
 
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == Constants.MINIGAME_FLIP) {
-            String name = Item.getName(activity, resourceTier, resourceType);
             if (resultCode > 0) {
-                AlertHelper.success(activity, "Won " + resultCode + "x " + name + " from flip minigame!", true);
-                Inventory.addInventory(resourceTier, resourceType, resultCode);
+                StringBuilder itemText = new StringBuilder();
+                for (ItemBundle itemBundle : slot.getResources()) {
+                    if (itemBundle.getTier() != Enums.Tier.Internal) {
+                        itemText.append(itemBundle.getQuantity() * resultCode);
+                        itemText.append("x ");
+                        itemText.append(Item.getName(activity, itemBundle.getTier(), itemBundle.getType()));
+                        itemText.append(", ");
+                        Inventory.addInventory(itemBundle.getTier(), itemBundle.getType(), itemBundle.getQuantity() * resultCode);
+                    }
+                }
+
+                String resourceString = itemText.toString();
+                resourceString = resourceString.length() > 0 ? resourceString.substring(0, resourceString.length() - 2) : "";
+
+                AlertHelper.success(activity, "Won " + resourceString + " from flip minigame!", true);
             } else {
                 AlertHelper.info(activity, "Unlucky, won nothing from flip minigame!", false);
             }
@@ -178,7 +192,7 @@ public class SlotHelper {
     }
 
     private void afterStakeChangeUpdate() {
-        ((TextView)activity.findViewById(R.id.spinButton)).setText("Spin (" + (slot.getCurrentRows() * slot.getCurrentStake() * slot.getResourceQuantity()) + ")");
+        ((TextView)activity.findViewById(R.id.spinButton)).setText("Spin (" + (slot.getCurrentRows() * slot.getCurrentStake()) + "x)");
         ((TextView)activity.findViewById(R.id.rowsActive)).setText(Integer.toString(slot.getCurrentRows()));
         ((TextView)activity.findViewById(R.id.amountGambled)).setText(Integer.toString(slot.getCurrentStake()));
     }
@@ -197,7 +211,7 @@ public class SlotHelper {
         if (wonItems.size() > 0) {
             String winText = applyWinnings(wonItems);
             if (winText.length() > 0) {
-                Message.logSpin(activity, slot.getSlotId(), resourceType, resourceTier, slot.getCurrentStake(), slot.getCurrentRows(), winText);
+                Message.logSpin(activity, slot.getSlotId(), winText);
                 AlertHelper.success(activity, winText, false);
             }
             updateResourceCount();
@@ -316,9 +330,19 @@ public class SlotHelper {
 
     public void spin(boolean checkNotAutospinning) {
         if (stillSpinningSlots <= 1 && (!checkNotAutospinning || autospinsLeft <= 0)) {
-            Inventory inventory = Inventory.getInventory(slot.getResourceTier().value, slot.getResourceType().value);
-            int spinCost = slot.getCurrentStake() * slot.getCurrentRows() * slot.getResourceQuantity();
-            if (inventory.getQuantity() >= spinCost) {
+            boolean canAfford = true;
+            for (ItemBundle item : slot.getResources()) {
+                Inventory inventory = Inventory.getInventory(item.getTier().value, item.getType().value);
+                int spinCost = slot.getCurrentStake() * slot.getCurrentRows() * item.getQuantity();
+                if (inventory.getQuantity() >= spinCost) {
+                    canAfford = false;
+                    break;
+                }
+            }
+
+            if (!canAfford) {
+                AlertHelper.error(activity, R.string.error_not_enough_resources, false);
+            } else {
                 activity.findViewById(R.id.slotContainer).bringToFront();
                 if (highlightedRoutes != null) {
                     resetRouteColours();
@@ -327,21 +351,26 @@ public class SlotHelper {
 
                 stillSpinningSlots = slot.getSlots();
 
-                inventory.setQuantity(inventory.getQuantity() - spinCost);
-                inventory.save();
+                int totalSpinCost = 0;
+                for (ItemBundle item : slot.getResources()) {
+                    Inventory inventory = Inventory.getInventory(item.getTier().value, item.getType().value);
+                    int spinCost = slot.getCurrentStake() * slot.getCurrentRows() * item.getQuantity();
+                    totalSpinCost += spinCost;
+                    inventory.setQuantity(inventory.getQuantity() - spinCost);
+                    inventory.save();
+                }
 
-                String levelUpText = LevelHelper.addXp(activity, spinCost);
+
+                String levelUpText = LevelHelper.addXp(activity, totalSpinCost);
                 if (levelUpText.length() > 0) {
                     AlertHelper.success(activity, levelUpText, true);
                 }
                 Statistic.add(Enums.Statistic.TotalSpins);
-                Statistic.add(Enums.Statistic.ResourcesGambled, spinCost);
+                Statistic.add(Enums.Statistic.ResourcesGambled, totalSpinCost);
 
                 for (WheelView wheel : slots) {
                     wheel.scroll(-350 + (int) (Math.random() * 150), 2250);
                 }
-            } else {
-                AlertHelper.error(activity, R.string.error_not_enough_resources, false);
             }
             updateResourceCount();
 
