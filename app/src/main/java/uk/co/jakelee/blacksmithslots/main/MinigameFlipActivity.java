@@ -7,16 +7,20 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.List;
+
 import uk.co.jakelee.blacksmithslots.R;
 import uk.co.jakelee.blacksmithslots.helper.AlertHelper;
 import uk.co.jakelee.blacksmithslots.helper.CalculationHelper;
 import uk.co.jakelee.blacksmithslots.helper.DisplayHelper;
 import uk.co.jakelee.blacksmithslots.model.Item;
+import uk.co.jakelee.blacksmithslots.model.ItemBundle;
+import uk.co.jakelee.blacksmithslots.model.Slot;
 
 public class MinigameFlipActivity extends MinigameActivity {
-    private int stakeTier;
-    private int stakeType;
-    private int stakeQuantity;
+    private int slotId;
+    private List<ItemBundle> resources;
+    private int multiplier = 5;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,33 +29,34 @@ public class MinigameFlipActivity extends MinigameActivity {
         setContentView(R.layout.activity_minigame_flip);
 
         Intent intent = getIntent();
-        stakeTier = intent.getIntExtra("tier", 0);
-        stakeType = intent.getIntExtra("type", 0);
-        stakeQuantity = intent.getIntExtra("quantity", 0) * 5;
-
-        if (stakeTier == 0 || stakeType == 0 || stakeQuantity == 0) {
+        slotId = intent.getIntExtra("slot", 0);
+        if (slotId == 0) {
             confirmClose();
         }
 
+        resources = Slot.get(slotId).getResources();
+
         updateDisplay();
-        ((TextView)findViewById(R.id.itemName)).setText(Item.getName(this, stakeTier, stakeType));
-        ((ImageView)findViewById(R.id.itemImage)).setImageResource(getResources().getIdentifier(DisplayHelper.getItemImageFile(stakeTier, stakeType), "drawable", getPackageName()));
+        for (ItemBundle resource : resources) {
+            ((TextView) findViewById(R.id.itemName)).setText(Item.getName(this, resource.getTier(), resource.getType()));
+            ((ImageView) findViewById(R.id.itemImage)).setImageResource(getResources().getIdentifier(DisplayHelper.getItemImageFile(resource.getTier().value, resource.getType().value), "drawable", getPackageName()));
+        }
     }
 
     public void gamble(View v) {
         if (CalculationHelper.randomBoolean()) {
-            stakeQuantity = stakeQuantity * 2;
-            AlertHelper.success(this, "Success! Doubled to " + stakeQuantity + "!", false);
+            multiplier = multiplier * 2;
+            AlertHelper.success(this, "Success! Doubled to " + multiplier + "!", false);
             updateDisplay();
         } else {
-            stakeQuantity = 0;
+            multiplier = 0;
             AlertHelper.info(this, "Unlucky, lost it all!", false);
             stick(null);
         }
     }
 
     private void updateDisplay() {
-        ((TextView)findViewById(R.id.currentStake)).setText(stakeQuantity + "x ");
+        ((TextView)findViewById(R.id.currentStake)).setText(multiplier + "x ");
     }
 
     public void stick(View v) {
@@ -70,7 +75,7 @@ public class MinigameFlipActivity extends MinigameActivity {
 
     @Override
     public void confirmClose() {
-        setResult(stakeQuantity, new Intent());
+        setResult(multiplier, new Intent());
         finish();
     }
 }

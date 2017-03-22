@@ -48,8 +48,6 @@ public class SlotHelper {
     private int stillSpinningSlots = 0;
     public int autospinsLeft = 0;
     private SlotActivity activity;
-    private Enums.Tier resourceTier;
-    private Enums.Type resourceType;
     private Slot slot;
     private List<WheelView> slots = new ArrayList<>();
     private List<ItemResult> baseItems;
@@ -64,8 +62,6 @@ public class SlotHelper {
         this.activity = activity;
         this.slot = slot;
         this.baseItems = convertToSlots(slot.getRewards());
-        this.resourceTier = slot.getResourceTier();
-        this.resourceType = slot.getResourceType();
         this.picasso = Picasso.with(activity);
         this.inflater = LayoutInflater.from(activity);
         this.handler = handler;
@@ -151,9 +147,7 @@ public class SlotHelper {
                         if (minigameToLoad != null) {
                             activity.startActivityForResult(new Intent(activity, MinigameFlipActivity.class)
                                     .addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT)
-                                    .putExtra("tier", resourceTier.value)
-                                    .putExtra("type", resourceType.value)
-                                    .putExtra("quantity", slot.getResourceQuantity()),
+                                    .putExtra("slot", slot.getSlotId()),
                                     Constants.MINIGAME_FLIP);
                             minigameToLoad = null;
                         } else if (autospinsLeft > 0) {
