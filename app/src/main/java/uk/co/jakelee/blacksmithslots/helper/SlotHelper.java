@@ -75,7 +75,7 @@ public class SlotHelper {
         List<ItemResult> rewards = new ArrayList<>();
         for (ItemBundle dbItemBundle : dbItemBundles) {
             for (int i = 0; i < dbItemBundle.getWeighting(); i++) {
-                rewards.add(new ItemResult(dbItemBundle.getTier(), dbItemBundle.getType(), dbItemBundle.getQuantityMultiplier()));
+                rewards.add(new ItemResult(dbItemBundle.getTier(), dbItemBundle.getType(), dbItemBundle.getQuantity()));
             }
         }
         return rewards;

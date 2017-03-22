@@ -18,7 +18,7 @@ public class ItemBundle extends SugarRecord {
     private int type;
 
     @Column(name = "d")
-    private int quantityMultiplier;
+    private int quantity;
 
     @Column(name = "e")
     private int weighting;
@@ -29,20 +29,20 @@ public class ItemBundle extends SugarRecord {
     public ItemBundle() {
     }
 
-    public ItemBundle(int slotId, Enums.Tier tier, Enums.Type type, int quantityMultiplier, int weighting) {
+    public ItemBundle(int slotId, Enums.Tier tier, Enums.Type type, int quantity, int weighting) {
         this.slotId = slotId;
         this.tier = tier.value;
         this.type = type.value;
-        this.quantityMultiplier = quantityMultiplier;
+        this.quantity = quantity;
         this.weighting = weighting;
         this.isReward = true;
     }
 
-    public ItemBundle(int slotId, Enums.Tier tier, Enums.Type type, int quantityMultiplier) {
+    public ItemBundle(int slotId, Enums.Tier tier, Enums.Type type, int quantity) {
         this.slotId = slotId;
         this.tier = tier.value;
         this.type = type.value;
-        this.quantityMultiplier = quantityMultiplier;
+        this.quantity = quantity;
         this.isReward = false;
     }
 
@@ -70,12 +70,12 @@ public class ItemBundle extends SugarRecord {
         this.type = type.value;
     }
 
-    public int getQuantityMultiplier() {
-        return quantityMultiplier;
+    public int getQuantity() {
+        return quantity;
     }
 
-    public void setQuantityMultiplier(int quantityMultiplier) {
-        this.quantityMultiplier = quantityMultiplier;
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 
     public int getWeighting() {

@@ -222,58 +222,72 @@ public class MapActivity extends BaseActivity implements
                 ((ImageView) findViewById(R.id.person)).setImageResource(getResources().getIdentifier(DisplayHelper.getPersonImageFile(slot.getPerson()), "drawable", getPackageName()));
 
                 if (slot.getRequiredSlot() > 0 && TaskHelper.isSlotLocked(Slot.get(slot.getRequiredSlot()).getSlotId())) {
-                    ((TextView) findViewById(R.id.slotDescription)).setText("Slot \"" + Slot.get(slot.getRequiredSlot()).getName(this) + "\" needs unlocking first!");
-                    findViewById(R.id.superlockedSlot).setVisibility(View.VISIBLE);
-                    findViewById(R.id.lockedSlot).setVisibility(View.GONE);
-                    findViewById(R.id.unlockedSlot).setVisibility(View.GONE);
+                    populateSlotInfoSuperlocked(slot);
                 } else if (TaskHelper.isSlotLocked(selectedSlot)) {
-                    List<Task> tasks = slot.getTasks();
-                    Task currentTask = TaskHelper.getCurrentTask(tasks);
-                    if (currentTask.getStarted() == 0) {
-                        currentTask.setStarted(System.currentTimeMillis());
-                        currentTask.save();
-                    }
-
-                    ((TextView) findViewById(R.id.slotDescription)).setText(slot.getLockedText(this));
-                    ((TextView) findViewById(R.id.taskProgress)).setText(String.format(Locale.ENGLISH, getString(R.string.task_completion),
-                            currentTask.getPosition(),
-                            tasks.size()));
-                    ((TextView) findViewById(R.id.taskText)).setText(currentTask.getText(this));
-                    ((TextView) findViewById(R.id.taskRequirement)).setText(currentTask.toString(this));
-                    findViewById(R.id.handInButton).setTag(currentTask.getId());
-
-                    findViewById(R.id.superlockedSlot).setVisibility(View.GONE);
-                    findViewById(R.id.lockedSlot).setVisibility(View.VISIBLE);
-                    findViewById(R.id.unlockedSlot).setVisibility(View.GONE);
+                    populateSlotInfoLocked(slot);
                 } else {
-                    ((TextView) findViewById(R.id.slotDescription)).setText(slot.getUnlockedText(this));
-
-                    LinearLayout resourceContainer = (LinearLayout)findViewById(R.id.resourceContainer);
-                    resourceContainer.removeAllViews();
-                    resourceContainer.addView(DisplayHelper.createImageView(this,
-                            DisplayHelper.getItemImageFile(slot.getResourceTier().value, slot.getResourceType().value),
-                            30,
-                            30,
-                            slot.getResourceQuantity() + "x " + Item.getName(this, slot.getResourceTier(), slot.getResourceType())));
-
-                    LinearLayout rewardContainer = (LinearLayout)findViewById(R.id.rewardContainer);
-                    rewardContainer.removeAllViews();
-                    List<ItemBundle> itemBundles = slot.getRewards();
-                    for (ItemBundle itemBundle : itemBundles) {
-                        rewardContainer.addView(DisplayHelper.createImageView(this,
-                                DisplayHelper.getItemImageFile(itemBundle.getTier().value, itemBundle.getType().value, itemBundle.getQuantityMultiplier()),
-                                30,
-                                30,
-                                itemBundle.getQuantityMultiplier() + "x " + Item.getName(this, itemBundle.getTier(), itemBundle.getType())));
-                    }
-
-                    findViewById(R.id.superlockedSlot).setVisibility(View.GONE);
-                    findViewById(R.id.lockedSlot).setVisibility(View.GONE);
-                    findViewById(R.id.unlockedSlot).setVisibility(View.VISIBLE);
-
+                    populateSlotInfoUnlocked(slot);
                 }
             }
         }
+    }
+
+    private void populateSlotInfoSuperlocked(Slot slot) {
+        ((TextView) findViewById(R.id.slotDescription)).setText("Slot \"" + Slot.get(slot.getRequiredSlot()).getName(this) + "\" needs unlocking first!");
+        findViewById(R.id.superlockedSlot).setVisibility(View.VISIBLE);
+        findViewById(R.id.lockedSlot).setVisibility(View.GONE);
+        findViewById(R.id.unlockedSlot).setVisibility(View.GONE);
+    }
+
+    private void populateSlotInfoLocked(Slot slot) {
+        List<Task> tasks = slot.getTasks();
+        Task currentTask = TaskHelper.getCurrentTask(tasks);
+        if (currentTask.getStarted() == 0) {
+            currentTask.setStarted(System.currentTimeMillis());
+            currentTask.save();
+        }
+
+        ((TextView) findViewById(R.id.slotDescription)).setText(slot.getLockedText(this));
+        ((TextView) findViewById(R.id.taskProgress)).setText(String.format(Locale.ENGLISH, getString(R.string.task_completion),
+                currentTask.getPosition(),
+                tasks.size()));
+        ((TextView) findViewById(R.id.taskText)).setText(currentTask.getText(this));
+        ((TextView) findViewById(R.id.taskRequirement)).setText(currentTask.toString(this));
+        findViewById(R.id.handInButton).setTag(currentTask.getId());
+
+        findViewById(R.id.superlockedSlot).setVisibility(View.GONE);
+        findViewById(R.id.lockedSlot).setVisibility(View.VISIBLE);
+        findViewById(R.id.unlockedSlot).setVisibility(View.GONE);
+    }
+
+    private void populateSlotInfoUnlocked(Slot slot) {
+        ((TextView) findViewById(R.id.slotDescription)).setText(slot.getUnlockedText(this));
+
+        LinearLayout resourceContainer = (LinearLayout)findViewById(R.id.resourceContainer);
+        resourceContainer.removeAllViews();
+        List<ItemBundle> itemBundles = slot.getRewards();
+        for (ItemBundle itemBundle : itemBundles) {
+            resourceContainer.addView(DisplayHelper.createImageView(this,
+                    DisplayHelper.getItemImageFile(itemBundle.getTier().value, itemBundle.getType().value),
+                    30,
+                    30,
+                    itemBundle.getQuantity() + "x " + Item.getName(this, itemBundle.getTier(), itemBundle.getType())));
+        }
+
+        LinearLayout rewardContainer = (LinearLayout)findViewById(R.id.rewardContainer);
+        rewardContainer.removeAllViews();
+        List<ItemBundle> itemBundles2 = slot.getRewards();
+        for (ItemBundle itemBundle : itemBundles2) {
+            rewardContainer.addView(DisplayHelper.createImageView(this,
+                    DisplayHelper.getItemImageFile(itemBundle.getTier().value, itemBundle.getType().value, itemBundle.getQuantity()),
+                    30,
+                    30,
+                    itemBundle.getQuantity() + "x " + Item.getName(this, itemBundle.getTier(), itemBundle.getType())));
+        }
+
+        findViewById(R.id.superlockedSlot).setVisibility(View.GONE);
+        findViewById(R.id.lockedSlot).setVisibility(View.GONE);
+        findViewById(R.id.unlockedSlot).setVisibility(View.VISIBLE);
     }
 
     @Override
