@@ -12,7 +12,7 @@ public class Constants {
     public final static int MINIGAME_FLIP = 123;
 
     // VIP Constants
-    public final static int MAX_VIP_LEVEL = 5;
+    public final static int MAX_VIP_LEVEL = 6;
     public final static int CHEST_DEFAULT_COOLDOWN_HOURS = 6;
     public final static double CHEST_COOLDOWN_VIP_REDUCTION = 0.5;
     public final static int ADVERT_DEFAULT_COOLDOWN_HOURS = 1;
