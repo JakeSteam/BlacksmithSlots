@@ -38,8 +38,8 @@ import uk.co.jakelee.blacksmithslots.main.MinigameFlipActivity;
 import uk.co.jakelee.blacksmithslots.main.SlotActivity;
 import uk.co.jakelee.blacksmithslots.model.Inventory;
 import uk.co.jakelee.blacksmithslots.model.Item;
+import uk.co.jakelee.blacksmithslots.model.ItemBundle;
 import uk.co.jakelee.blacksmithslots.model.Message;
-import uk.co.jakelee.blacksmithslots.model.Reward;
 import uk.co.jakelee.blacksmithslots.model.Setting;
 import uk.co.jakelee.blacksmithslots.model.Slot;
 import uk.co.jakelee.blacksmithslots.model.Statistic;
@@ -71,11 +71,11 @@ public class SlotHelper {
         this.handler = handler;
     }
 
-    private List<ItemResult> convertToSlots(List<Reward> dbRewards) {
+    private List<ItemResult> convertToSlots(List<ItemBundle> dbItemBundles) {
         List<ItemResult> rewards = new ArrayList<>();
-        for (Reward dbReward : dbRewards) {
-            for (int i = 0; i < dbReward.getWeighting(); i++) {
-                rewards.add(new ItemResult(dbReward.getTier(), dbReward.getType(), dbReward.getQuantityMultiplier()));
+        for (ItemBundle dbItemBundle : dbItemBundles) {
+            for (int i = 0; i < dbItemBundle.getWeighting(); i++) {
+                rewards.add(new ItemResult(dbItemBundle.getTier(), dbItemBundle.getType(), dbItemBundle.getQuantityMultiplier()));
             }
         }
         return rewards;

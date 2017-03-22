@@ -12,8 +12,8 @@ import uk.co.jakelee.blacksmithslots.R;
 import uk.co.jakelee.blacksmithslots.main.SplashScreenActivity;
 import uk.co.jakelee.blacksmithslots.model.Inventory;
 import uk.co.jakelee.blacksmithslots.model.Item;
+import uk.co.jakelee.blacksmithslots.model.ItemBundle;
 import uk.co.jakelee.blacksmithslots.model.Message;
-import uk.co.jakelee.blacksmithslots.model.Reward;
 import uk.co.jakelee.blacksmithslots.model.Setting;
 import uk.co.jakelee.blacksmithslots.model.Slot;
 import uk.co.jakelee.blacksmithslots.model.Statistic;
@@ -152,45 +152,45 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
 
     private void createSlots() {
         List<Slot> slots = new ArrayList<>();
-        List<Reward> rewards = new ArrayList<>();
+        List<ItemBundle> itemBundles = new ArrayList<>();
             slots.add(new Slot(Constants.SLOT_BRONZE_FURNACE, 1, 1, 2, 5, 1, 5, Constants.SLOTS_4_MAX_ROUTES, 2, Enums.Tier.Bronze, Enums.Type.Ore, Enums.SlotType.Furnace, 4, 0, 1));
-            rewards.add(new Reward(Constants.SLOT_BRONZE_FURNACE, Enums.Tier.Bronze, Enums.Type.Ore, 1, 1));
-            rewards.add(new Reward(Constants.SLOT_BRONZE_FURNACE, Enums.Tier.Internal, Enums.Type.MinigameFlip, 1, 1));
-            rewards.add(new Reward(Constants.SLOT_BRONZE_FURNACE, Enums.Tier.Bronze, Enums.Type.Bar, 1, 8));
-            rewards.add(new Reward(Constants.SLOT_BRONZE_FURNACE, Enums.Tier.Bronze, Enums.Type.Bar, 10, 1));
-            rewards.add(new Reward(Constants.SLOT_BRONZE_FURNACE, Enums.Tier.Bronze, Enums.Type.Dagger, 1, 1));
-            rewards.add(new Reward(Constants.SLOT_BRONZE_FURNACE, Enums.Tier.Bronze, Enums.Type.Sword, 1, 1));
-            rewards.add(new Reward(Constants.SLOT_BRONZE_FURNACE, Enums.Tier.Internal, Enums.Type.Wildcard, 1, 1));
+            itemBundles.add(new ItemBundle(Constants.SLOT_BRONZE_FURNACE, Enums.Tier.Bronze, Enums.Type.Ore, 1, 1));
+            itemBundles.add(new ItemBundle(Constants.SLOT_BRONZE_FURNACE, Enums.Tier.Internal, Enums.Type.MinigameFlip, 1, 1));
+            itemBundles.add(new ItemBundle(Constants.SLOT_BRONZE_FURNACE, Enums.Tier.Bronze, Enums.Type.Bar, 1, 8));
+            itemBundles.add(new ItemBundle(Constants.SLOT_BRONZE_FURNACE, Enums.Tier.Bronze, Enums.Type.Bar, 10, 1));
+            itemBundles.add(new ItemBundle(Constants.SLOT_BRONZE_FURNACE, Enums.Tier.Bronze, Enums.Type.Dagger, 1, 1));
+            itemBundles.add(new ItemBundle(Constants.SLOT_BRONZE_FURNACE, Enums.Tier.Bronze, Enums.Type.Sword, 1, 1));
+            itemBundles.add(new ItemBundle(Constants.SLOT_BRONZE_FURNACE, Enums.Tier.Internal, Enums.Type.Wildcard, 1, 1));
 
             slots.add(new Slot(Constants.SLOT_BRONZE_WEAPON, 1, 1, 2, 5, 1, 5, Constants.SLOTS_3_MAX_ROUTES, 1, Enums.Tier.Bronze, Enums.Type.Bar, Enums.SlotType.Weapon, 3, Constants.SLOT_BRONZE_FURNACE, 2));
-            rewards.add(new Reward(Constants.SLOT_BRONZE_WEAPON, Enums.Tier.Bronze, Enums.Type.Dagger, 1, 1));
-            rewards.add(new Reward(Constants.SLOT_BRONZE_WEAPON, Enums.Tier.Bronze, Enums.Type.Sword, 1, 1));
-            rewards.add(new Reward(Constants.SLOT_BRONZE_WEAPON, Enums.Tier.Bronze, Enums.Type.Longsword, 1, 1));
-            rewards.add(new Reward(Constants.SLOT_BRONZE_WEAPON, Enums.Tier.Bronze, Enums.Type.Bow, 1, 1));
-            rewards.add(new Reward(Constants.SLOT_BRONZE_WEAPON, Enums.Tier.Internal, Enums.Type.Wildcard, 1, 1));
+            itemBundles.add(new ItemBundle(Constants.SLOT_BRONZE_WEAPON, Enums.Tier.Bronze, Enums.Type.Dagger, 1, 1));
+            itemBundles.add(new ItemBundle(Constants.SLOT_BRONZE_WEAPON, Enums.Tier.Bronze, Enums.Type.Sword, 1, 1));
+            itemBundles.add(new ItemBundle(Constants.SLOT_BRONZE_WEAPON, Enums.Tier.Bronze, Enums.Type.Longsword, 1, 1));
+            itemBundles.add(new ItemBundle(Constants.SLOT_BRONZE_WEAPON, Enums.Tier.Bronze, Enums.Type.Bow, 1, 1));
+            itemBundles.add(new ItemBundle(Constants.SLOT_BRONZE_WEAPON, Enums.Tier.Internal, Enums.Type.Wildcard, 1, 1));
 
             slots.add(new Slot(Constants.SLOT_BRONZE_ARMOUR, 1, 1, 2, 5, 1, 5, Constants.SLOTS_3_MAX_ROUTES, 1, Enums.Tier.Bronze, Enums.Type.Bar, Enums.SlotType.Armour, 3, Constants.SLOT_BRONZE_WEAPON, 3));
-            rewards.add(new Reward(Constants.SLOT_BRONZE_ARMOUR, Enums.Tier.Bronze, Enums.Type.Chainmail, 1, 1));
-            rewards.add(new Reward(Constants.SLOT_BRONZE_ARMOUR, Enums.Tier.Bronze, Enums.Type.Platebody, 1, 1));
-            rewards.add(new Reward(Constants.SLOT_BRONZE_ARMOUR, Enums.Tier.Bronze, Enums.Type.Halfshield, 1, 1));
-            rewards.add(new Reward(Constants.SLOT_BRONZE_ARMOUR, Enums.Tier.Bronze, Enums.Type.FullShield, 1, 1));
-            rewards.add(new Reward(Constants.SLOT_BRONZE_ARMOUR, Enums.Tier.Internal, Enums.Type.Wildcard, 1, 2));
+            itemBundles.add(new ItemBundle(Constants.SLOT_BRONZE_ARMOUR, Enums.Tier.Bronze, Enums.Type.Chainmail, 1, 1));
+            itemBundles.add(new ItemBundle(Constants.SLOT_BRONZE_ARMOUR, Enums.Tier.Bronze, Enums.Type.Platebody, 1, 1));
+            itemBundles.add(new ItemBundle(Constants.SLOT_BRONZE_ARMOUR, Enums.Tier.Bronze, Enums.Type.Halfshield, 1, 1));
+            itemBundles.add(new ItemBundle(Constants.SLOT_BRONZE_ARMOUR, Enums.Tier.Bronze, Enums.Type.FullShield, 1, 1));
+            itemBundles.add(new ItemBundle(Constants.SLOT_BRONZE_ARMOUR, Enums.Tier.Internal, Enums.Type.Wildcard, 1, 2));
 
             slots.add(new Slot(Constants.SLOT_BRONZE_TOOL, 1, 1, 2, 5, 1, 5, Constants.SLOTS_3_MAX_ROUTES, 1, Enums.Tier.Bronze, Enums.Type.Bar, Enums.SlotType.Tool, 3, Constants.SLOT_BRONZE_ARMOUR, 4));
-            rewards.add(new Reward(Constants.SLOT_BRONZE_TOOL, Enums.Tier.Bronze, Enums.Type.Pickaxe, 1, 1));
-            rewards.add(new Reward(Constants.SLOT_BRONZE_TOOL, Enums.Tier.Bronze, Enums.Type.Hatchet, 1, 1));
-            rewards.add(new Reward(Constants.SLOT_BRONZE_TOOL, Enums.Tier.Bronze, Enums.Type.FishingRod, 1, 1));
-            rewards.add(new Reward(Constants.SLOT_BRONZE_TOOL, Enums.Tier.Bronze, Enums.Type.Hammer, 1, 1));
-            rewards.add(new Reward(Constants.SLOT_BRONZE_TOOL, Enums.Tier.Internal, Enums.Type.Wildcard, 1, 1));
+            itemBundles.add(new ItemBundle(Constants.SLOT_BRONZE_TOOL, Enums.Tier.Bronze, Enums.Type.Pickaxe, 1, 1));
+            itemBundles.add(new ItemBundle(Constants.SLOT_BRONZE_TOOL, Enums.Tier.Bronze, Enums.Type.Hatchet, 1, 1));
+            itemBundles.add(new ItemBundle(Constants.SLOT_BRONZE_TOOL, Enums.Tier.Bronze, Enums.Type.FishingRod, 1, 1));
+            itemBundles.add(new ItemBundle(Constants.SLOT_BRONZE_TOOL, Enums.Tier.Bronze, Enums.Type.Hammer, 1, 1));
+            itemBundles.add(new ItemBundle(Constants.SLOT_BRONZE_TOOL, Enums.Tier.Internal, Enums.Type.Wildcard, 1, 1));
 
             slots.add(new Slot(Constants.SLOT_BRONZE_ACCESSORY, 1, 1, 2, 5, 1, 5, Constants.SLOTS_3_MAX_ROUTES, 1, Enums.Tier.Bronze, Enums.Type.Bar, Enums.SlotType.Accessory, 3, Constants.SLOT_BRONZE_TOOL, 5));
-            rewards.add(new Reward(Constants.SLOT_BRONZE_ACCESSORY, Enums.Tier.Bronze, Enums.Type.Boots, 1, 1));
-            rewards.add(new Reward(Constants.SLOT_BRONZE_ACCESSORY, Enums.Tier.Bronze, Enums.Type.Gloves, 1, 1));
-            rewards.add(new Reward(Constants.SLOT_BRONZE_ACCESSORY, Enums.Tier.Bronze, Enums.Type.HalfHelmet, 1, 1));
-            rewards.add(new Reward(Constants.SLOT_BRONZE_ACCESSORY, Enums.Tier.Bronze, Enums.Type.FullHelmet, 1, 1));
-            rewards.add(new Reward(Constants.SLOT_BRONZE_ACCESSORY, Enums.Tier.Internal, Enums.Type.Wildcard, 1, 1));
+            itemBundles.add(new ItemBundle(Constants.SLOT_BRONZE_ACCESSORY, Enums.Tier.Bronze, Enums.Type.Boots, 1, 1));
+            itemBundles.add(new ItemBundle(Constants.SLOT_BRONZE_ACCESSORY, Enums.Tier.Bronze, Enums.Type.Gloves, 1, 1));
+            itemBundles.add(new ItemBundle(Constants.SLOT_BRONZE_ACCESSORY, Enums.Tier.Bronze, Enums.Type.HalfHelmet, 1, 1));
+            itemBundles.add(new ItemBundle(Constants.SLOT_BRONZE_ACCESSORY, Enums.Tier.Bronze, Enums.Type.FullHelmet, 1, 1));
+            itemBundles.add(new ItemBundle(Constants.SLOT_BRONZE_ACCESSORY, Enums.Tier.Internal, Enums.Type.Wildcard, 1, 1));
         Slot.saveInTx(slots);
-        Reward.saveInTx(rewards);
+        ItemBundle.saveInTx(itemBundles);
     }
 
     private void createStatistics() {

@@ -24,7 +24,7 @@ import uk.co.jakelee.blacksmithslots.helper.DisplayHelper;
 import uk.co.jakelee.blacksmithslots.helper.Enums;
 import uk.co.jakelee.blacksmithslots.model.Inventory;
 import uk.co.jakelee.blacksmithslots.model.Item;
-import uk.co.jakelee.blacksmithslots.model.Reward;
+import uk.co.jakelee.blacksmithslots.model.ItemBundle;
 import uk.co.jakelee.blacksmithslots.model.Setting;
 import uk.co.jakelee.blacksmithslots.model.Slot;
 
@@ -65,14 +65,14 @@ public class InventoryActivity extends BaseActivity {
         int tier = (int)parent.getTag(R.id.item_tier);
         int type = (int)parent.getTag(R.id.item_type);
 
-        List<Reward> rewards = Select.from(Reward.class).where(
+        List<ItemBundle> itemBundles = Select.from(ItemBundle.class).where(
                 Condition.prop("b").eq(tier),
                 Condition.prop("c").eq(type)
         ).list();
 
         Set<String> slotNames = new HashSet<>();
-        for (Reward reward : rewards) {
-            slotNames.add(Slot.get(reward.getSlotId()).getName(this));
+        for (ItemBundle itemBundle : itemBundles) {
+            slotNames.add(Slot.get(itemBundle.getSlotId()).getName(this));
         }
 
         StringBuilder itemUseText = new StringBuilder();

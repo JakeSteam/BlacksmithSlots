@@ -7,7 +7,7 @@ import com.orm.dsl.Table;
 import uk.co.jakelee.blacksmithslots.helper.Enums;
 
 @Table(name = "d")
-public class Reward extends SugarRecord {
+public class ItemBundle extends SugarRecord {
     @Column(name = "a")
     private int slotId;
 
@@ -23,15 +23,27 @@ public class Reward extends SugarRecord {
     @Column(name = "e")
     private int weighting;
 
-    public Reward() {
+    @Column(name = "f")
+    private boolean isReward;
+
+    public ItemBundle() {
     }
 
-    public Reward(int slotId, Enums.Tier tier, Enums.Type type, int quantityMultiplier, int weighting) {
+    public ItemBundle(int slotId, Enums.Tier tier, Enums.Type type, int quantityMultiplier, int weighting) {
         this.slotId = slotId;
         this.tier = tier.value;
         this.type = type.value;
         this.quantityMultiplier = quantityMultiplier;
         this.weighting = weighting;
+        this.isReward = true;
+    }
+
+    public ItemBundle(int slotId, Enums.Tier tier, Enums.Type type, int quantityMultiplier) {
+        this.slotId = slotId;
+        this.tier = tier.value;
+        this.type = type.value;
+        this.quantityMultiplier = quantityMultiplier;
+        this.isReward = false;
     }
 
     public int getSlotId() {
@@ -72,5 +84,13 @@ public class Reward extends SugarRecord {
 
     public void setWeighting(int weighting) {
         this.weighting = weighting;
+    }
+
+    public boolean isReward() {
+        return isReward;
+    }
+
+    public void setReward(boolean reward) {
+        isReward = reward;
     }
 }

@@ -39,7 +39,7 @@ import uk.co.jakelee.blacksmithslots.helper.NotificationHelper;
 import uk.co.jakelee.blacksmithslots.helper.Runnables;
 import uk.co.jakelee.blacksmithslots.helper.TaskHelper;
 import uk.co.jakelee.blacksmithslots.model.Item;
-import uk.co.jakelee.blacksmithslots.model.Reward;
+import uk.co.jakelee.blacksmithslots.model.ItemBundle;
 import uk.co.jakelee.blacksmithslots.model.Setting;
 import uk.co.jakelee.blacksmithslots.model.Slot;
 import uk.co.jakelee.blacksmithslots.model.Task;
@@ -258,13 +258,13 @@ public class MapActivity extends BaseActivity implements
 
                     LinearLayout rewardContainer = (LinearLayout)findViewById(R.id.rewardContainer);
                     rewardContainer.removeAllViews();
-                    List<Reward> rewards = slot.getRewards();
-                    for (Reward reward : rewards) {
+                    List<ItemBundle> itemBundles = slot.getRewards();
+                    for (ItemBundle itemBundle : itemBundles) {
                         rewardContainer.addView(DisplayHelper.createImageView(this,
-                                DisplayHelper.getItemImageFile(reward.getTier().value, reward.getType().value, reward.getQuantityMultiplier()),
+                                DisplayHelper.getItemImageFile(itemBundle.getTier().value, itemBundle.getType().value, itemBundle.getQuantityMultiplier()),
                                 30,
                                 30,
-                                reward.getQuantityMultiplier() + "x " + Item.getName(this, reward.getTier(), reward.getType())));
+                                itemBundle.getQuantityMultiplier() + "x " + Item.getName(this, itemBundle.getTier(), itemBundle.getType())));
                     }
 
                     findViewById(R.id.superlockedSlot).setVisibility(View.GONE);

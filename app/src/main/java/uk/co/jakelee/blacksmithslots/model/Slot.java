@@ -40,30 +40,21 @@ public class Slot extends SugarRecord {
     private int maximumRows;
 
     @Column(name = "i")
-    private int resourceQuantity;
-
-    @Column(name = "j")
-    private int resourceTier;
-
-    @Column(name = "k")
-    private int resourceType;
-
-    @Column(name = "l")
     private int slotType;
 
-    @Column(name = "m")
+    @Column(name = "j")
     private int slots;
 
-    @Column(name = "n")
+    @Column(name = "k")
     private int requiredSlot;
 
-    @Column(name = "o")
+    @Column(name = "l")
     private int person;
 
     public Slot() {
     }
 
-    public Slot(int slotId, int minimumLevel, int minimumStake, int currentStake, int maximumStake, int minimumRows, int currentRows, int maximumRows, int resourceQuantity, Enums.Tier resourceTier, Enums.Type resourceType, Enums.SlotType slotType, int slots, int requiredSlot, int person) {
+    public Slot(int slotId, int minimumLevel, int minimumStake, int currentStake, int maximumStake, int minimumRows, int currentRows, int maximumRows, Enums.SlotType slotType, int slots, int requiredSlot, int person) {
         this.slotId = slotId;
         this.minimumLevel = minimumLevel;
         this.minimumStake = minimumStake;
@@ -72,9 +63,6 @@ public class Slot extends SugarRecord {
         this.minimumRows = minimumRows;
         this.currentRows = currentRows;
         this.maximumRows = maximumRows;
-        this.resourceQuantity = resourceQuantity;
-        this.resourceTier = resourceTier.value;
-        this.resourceType = resourceType.value;
         this.slotType = slotType.value;
         this.slots = slots;
         this.requiredSlot = requiredSlot;
@@ -151,30 +139,6 @@ public class Slot extends SugarRecord {
         this.maximumRows = maximumRows;
     }
 
-    public int getResourceQuantity() {
-        return resourceQuantity;
-    }
-
-    public void setResourceQuantity(int resourceQuantity) {
-        this.resourceQuantity = resourceQuantity;
-    }
-
-    public Enums.Tier getResourceTier() {
-        return Enums.Tier.get(resourceTier);
-    }
-
-    public void setResourceTier(Enums.Tier resourceTier) {
-        this.resourceTier = resourceTier.value;
-    }
-
-    public Enums.Type getResourceType() {
-        return Enums.Type.get(resourceType);
-    }
-
-    public void setResourceType(Enums.Type resourceType) {
-        this.resourceType = resourceType.value;
-    }
-
     public Enums.SlotType getSlotType() {
         return Enums.SlotType.get(slotType);
     }
@@ -207,9 +171,16 @@ public class Slot extends SugarRecord {
         this.person = person;
     }
 
-    public List<Reward> getRewards() {
-        return Select.from(Reward.class).where(
-                Condition.prop("a").eq(slotId)).list();
+    public List<ItemBundle> getRewards() {
+        return Select.from(ItemBundle.class).where(
+                Condition.prop("a").eq(slotId),
+                Condition.prop("f").eq(1)).list();
+    }
+
+    public List<ItemBundle> getResources() {
+        return Select.from(ItemBundle.class).where(
+                Condition.prop("a").eq(slotId),
+                Condition.prop("f").eq(0)).list();
     }
 
     public List<Task> getTasks() {
@@ -236,19 +207,25 @@ public class Slot extends SugarRecord {
     }
 
     public String getResourceText(Context context) {
-        Item resourceItem = Item.get(getResourceTier(), getResourceType());
-        if (resourceItem != null) {
-            return resourceItem.getName(context);
-        } else {
-            return "";
+        StringBuilder resourceText = new StringBuilder();
+        List<ItemBundle> itemBundles = getResources();
+        for (ItemBundle itemBundle : itemBundles) {
+            Item item = Item.get(itemBundle.getTier(), itemBundle.getType());
+            if (item != null && item.getTier() != Enums.Tier.Internal) {
+                resourceText.append(item.getName(context));
+                resourceText.append(", ");
+            }
         }
+
+        String resourceString = resourceText.toString();
+        return resourceString.length() > 0 ? resourceString.substring(0, resourceString.length() - 2) : "";
     }
 
     public String getRewardText(Context context) {
         StringBuilder rewardText = new StringBuilder();
-        List<Reward> rewards = getRewards();
-        for (Reward reward : rewards) {
-            Item item = Item.get(reward.getTier(), reward.getType());
+        List<ItemBundle> itemBundles = getRewards();
+        for (ItemBundle itemBundle : itemBundles) {
+            Item item = Item.get(itemBundle.getTier(), itemBundle.getType());
             if (item != null && item.getTier() != Enums.Tier.Internal) {
                 rewardText.append(item.getName(context));
                 rewardText.append(", ");
