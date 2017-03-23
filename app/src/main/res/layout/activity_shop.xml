@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/parent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="uk.co.jakelee.blacksmithslots.main.ShopActivity">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="true"
+        android:onClick="close"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/close"
+        android:layout_alignParentRight="true"
+        android:layout_margin="10dp"
+        android:onClick="close"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="30dp"
+        android:clickable="true"
+        android:padding="7dp"
+        android:onClick="suppress"
+        android:background="@drawable/background_main">
+        <LinearLayout
+            android:id="@+id/tabBar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+            <uk.co.jakelee.blacksmithslots.components.FontTextView
+                android:id="@+id/tab_pass"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="changeTab"
+                android:text="@string/tab_pass"
+                style="@style/DataText" />
+            <uk.co.jakelee.blacksmithslots.components.FontTextView
+                android:id="@+id/tab_vip"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="changeTab"
+                android:text="@string/tab_vip"
+                style="@style/DataText" />
+            <uk.co.jakelee.blacksmithslots.components.FontTextView
+                android:id="@+id/tab_bundle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="changeTab"
+                android:text="@string/tab_bundle"
+                style="@style/DataText" />
+        </LinearLayout>
+        <RelativeLayout
+            android:id="@+id/passTab"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/tabBar"
+            android:onClick="suppress">
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/vipTab"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/tabBar"
+            android:onClick="suppress"
+            android:visibility="gone">
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/bundleTab"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/tabBar"
+            android:onClick="suppress"
+            android:visibility="gone">
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/croutonview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:onClick="closeAlert"/>
+</RelativeLayout>

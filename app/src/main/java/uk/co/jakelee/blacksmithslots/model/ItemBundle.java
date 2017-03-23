@@ -13,7 +13,7 @@ import uk.co.jakelee.blacksmithslots.helper.Enums;
 @Table(name = "d")
 public class ItemBundle extends SugarRecord {
     @Column(name = "a")
-    private int slotId;
+    private int identifier;
 
     @Column(name = "b")
     private int tier;
@@ -28,7 +28,7 @@ public class ItemBundle extends SugarRecord {
     private int weighting;
 
     @Column(name = "f")
-    private boolean isReward;
+    private int bundleType;
 
     public ItemBundle() {
     }
@@ -39,29 +39,29 @@ public class ItemBundle extends SugarRecord {
         this.quantity = quantity;
     }
 
-    public ItemBundle(int slotId, Enums.Tier tier, Enums.Type type, int quantity, int weighting) {
-        this.slotId = slotId;
+    public ItemBundle(int identifier, Enums.Tier tier, Enums.Type type, int quantity, int weighting) {
         this.tier = tier.value;
         this.type = type.value;
         this.quantity = quantity;
+        this.identifier = identifier;
         this.weighting = weighting;
-        this.isReward = true;
+        this.bundleType = Enums.ItemBundleType.SlotReward.value;
     }
 
-    public ItemBundle(int slotId, Enums.Tier tier, Enums.Type type, int quantity) {
-        this.slotId = slotId;
+    public ItemBundle(int identifier, Enums.Tier tier, Enums.Type type, int quantity, boolean isIap) {
         this.tier = tier.value;
         this.type = type.value;
         this.quantity = quantity;
-        this.isReward = false;
+        this.identifier = identifier;
+        this.bundleType = (isIap ? Enums.ItemBundleType.IapReward.value : Enums.ItemBundleType.SlotResource.value);
     }
 
-    public int getSlotId() {
-        return slotId;
+    public int getIdentifier() {
+        return identifier;
     }
 
-    public void setSlotId(int slotId) {
-        this.slotId = slotId;
+    public void setIdentifier(int identifier) {
+        this.identifier = identifier;
     }
 
     public Enums.Tier getTier() {
@@ -96,12 +96,12 @@ public class ItemBundle extends SugarRecord {
         this.weighting = weighting;
     }
 
-    public boolean isReward() {
-        return isReward;
+    public int getBundleType() {
+        return bundleType;
     }
 
-    public void setReward(boolean reward) {
-        isReward = reward;
+    public void setBundleType(int bundleType) {
+        this.bundleType = bundleType;
     }
 
     public String toString(Context context) {

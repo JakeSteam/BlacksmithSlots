@@ -41,6 +41,38 @@ public class Enums {
         }
     }
 
+    public enum Iap {
+        VipLevel1(1), VipLevel2(2), VipLevel3(3);
+        public int value;
+        Iap(int value) {
+            this.value = value;
+        }
+        public static Iap get(int value) {
+            for (Iap item : Iap.values()) {
+                if (value == item.value) {
+                    return item;
+                }
+            }
+            return null;
+        }
+    }
+
+    public enum ItemBundleType {
+        SlotResource(1), SlotReward(2), IapReward(3);
+        public int value;
+        ItemBundleType(int value) {
+            this.value = value;
+        }
+        public static ItemBundleType get(int value) {
+            for (ItemBundleType item : ItemBundleType.values()) {
+                if (value == item.value) {
+                    return item;
+                }
+            }
+            return null;
+        }
+    }
+
     public enum Setting {
         Music(1), Sound(2), AttemptLogin(3), AutosaveMinutes(4), OnlyActiveResources(5), Language(6), NotificationSounds(7), PeriodicBonusNotification(8), SaveImported(9),
         OnlyShowStocked(10), OrderByTier(11), OrderReversed(12);

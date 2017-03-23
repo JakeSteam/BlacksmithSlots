@@ -13,7 +13,7 @@ import java.util.List;
 import uk.co.jakelee.blacksmithslots.helper.DisplayHelper;
 import uk.co.jakelee.blacksmithslots.helper.Enums;
 
-@Table(name = "a")
+@Table(name = "b")
 public class Inventory extends SugarRecord {
     @Column(name = "a")
     private int tier;

@@ -50,6 +50,12 @@
     <string name="daily_bonus">Daily Bonus</string>
     <string name="autospins">Max Auto Spins</string>
 
+    <!-- IAP -->
+    <string name="shop">Shop</string>
+    <string name="tab_pass">BS Pass</string>
+    <string name="tab_vip">VIP</string>
+    <string name="tab_bundle">Bundles</string>
+
     <!-- Inventory -->
     <string name="itemSourcesButton">Sources</string>
     <string name="itemUsesButton">Uses</string>

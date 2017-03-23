@@ -12,7 +12,7 @@ import java.util.Locale;
 import uk.co.jakelee.blacksmithslots.R;
 import uk.co.jakelee.blacksmithslots.helper.Constants;
 
-@Table(name="c")
+@Table(name="e")
 public class Message extends SugarRecord {
     @Column(name = "a")
     private long time;

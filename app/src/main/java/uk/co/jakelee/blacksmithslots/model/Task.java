@@ -9,7 +9,7 @@ import com.orm.dsl.Table;
 import uk.co.jakelee.blacksmithslots.helper.Enums;
 import uk.co.jakelee.blacksmithslots.helper.TextHelper;
 
-@Table(name = "h")
+@Table(name = "i")
 public class Task extends SugarRecord {
     @Column(name = "a")
     private int slotId;

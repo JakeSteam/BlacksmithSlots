@@ -72,7 +72,7 @@ public class InventoryActivity extends BaseActivity {
 
         Set<String> slotNames = new HashSet<>();
         for (ItemBundle itemBundle : itemBundles) {
-            slotNames.add(Slot.get(itemBundle.getSlotId()).getName(this));
+            slotNames.add(Slot.get(itemBundle.getIdentifier()).getName(this));
         }
 
         StringBuilder itemUseText = new StringBuilder();

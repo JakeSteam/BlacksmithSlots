@@ -70,6 +70,9 @@
         <activity android:name=".main.MinigameFlipActivity"
             android:screenOrientation="sensorLandscape"
             android:theme="@style/Theme.Dimmed" />
+        <activity android:name=".main.ShopActivity"
+            android:screenOrientation="sensorLandscape"
+            android:theme="@style/Theme.Dimmed" />
 
         <activity
             android:name="com.tapjoy.TJAdUnitActivity"

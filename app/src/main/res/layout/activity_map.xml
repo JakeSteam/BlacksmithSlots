@@ -190,6 +190,17 @@
                 android:layout_marginBottom="3dp"
                 android:layout_below="@id/claimBonus"
                 style="@style/SlotText"/>
+            <uk.co.jakelee.blacksmithslots.components.FontTextView
+                android:id="@+id/openShop"
+                android:layout_width="match_parent"
+                android:background="@drawable/box_green"
+                android:text="@string/shop"
+                android:onClick="openShop"
+                android:maxLines="2"
+                android:layout_marginTop="3dp"
+                android:layout_marginBottom="3dp"
+                android:layout_below="@id/watchAdvert"
+                style="@style/SlotText"/>
         </RelativeLayout>
     </RelativeLayout>
 

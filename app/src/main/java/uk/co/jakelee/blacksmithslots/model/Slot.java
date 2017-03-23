@@ -13,7 +13,7 @@ import java.util.List;
 import uk.co.jakelee.blacksmithslots.helper.Enums;
 import uk.co.jakelee.blacksmithslots.helper.TextHelper;
 
-@Table(name = "f")
+@Table(name = "g")
 public class Slot extends SugarRecord {
     @Column(name = "a")
     private int slotId;
@@ -174,13 +174,13 @@ public class Slot extends SugarRecord {
     public List<ItemBundle> getRewards() {
         return Select.from(ItemBundle.class).where(
                 Condition.prop("a").eq(slotId),
-                Condition.prop("f").eq(1)).list();
+                Condition.prop("f").eq(Enums.ItemBundleType.SlotReward.value)).list();
     }
 
     public List<ItemBundle> getResources() {
         return Select.from(ItemBundle.class).where(
                 Condition.prop("a").eq(slotId),
-                Condition.prop("f").eq(0)).list();
+                Condition.prop("f").eq(Enums.ItemBundleType.SlotResource.value)).list();
     }
 
     public List<Task> getTasks() {

@@ -169,6 +169,11 @@ public class MapActivity extends BaseActivity implements
             .addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT));
     }
 
+    public void openShop(View v) {
+        startActivity(new Intent(this, ShopActivity.class)
+                .addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT));
+    }
+
     public void claimPeriodicBonus(View v) {
         if (IncomeHelper.canClaimPeriodicBonus()) {
             AlertHelper.success(this, IncomeHelper.claimBonus(this, true), true);

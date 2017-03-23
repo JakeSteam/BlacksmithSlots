@@ -14,7 +14,7 @@ import uk.co.jakelee.blacksmithslots.helper.DisplayHelper;
 import uk.co.jakelee.blacksmithslots.helper.Enums;
 import uk.co.jakelee.blacksmithslots.helper.TextHelper;
 
-@Table(name = "e")
+@Table(name = "f")
 public class Setting extends SugarRecord {
     @Column(name = "a")
     private int setting;
