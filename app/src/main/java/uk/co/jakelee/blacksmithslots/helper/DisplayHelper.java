@@ -8,11 +8,19 @@ import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.util.DisplayMetrics;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TableLayout;
+import android.widget.TableRow;
+import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
+import uk.co.jakelee.blacksmithslots.R;
 import uk.co.jakelee.blacksmithslots.model.Inventory;
 import uk.co.jakelee.blacksmithslots.model.Item;
 import uk.co.jakelee.blacksmithslots.model.ItemBundle;
@@ -112,5 +120,23 @@ public class DisplayHelper {
 
         String itemString = itemText.toString();
         return itemString.length() > 0 ? itemString.substring(0, itemString.length() - 2) : "";
+    }
+
+    public static void populateItemRows(Activity activity, int id, LayoutInflater inflater, Picasso picasso, ViewGroup.LayoutParams params, List<Inventory> items, boolean showOutOfStock) {
+        TableLayout layout = (TableLayout)activity.findViewById(id);
+        layout.removeAllViews();
+        for (Inventory item : items) {
+            if (!showOutOfStock && item.getQuantity() <= 0) {
+                continue;
+            }
+
+            View inflatedView = inflater.inflate(R.layout.custom_resource_info, null);
+            TableRow itemRow = (TableRow) inflatedView.findViewById(R.id.itemRow);
+
+            picasso.load(item.getDrawableId(activity)).into((ImageView)itemRow.findViewById(R.id.itemImage));
+            ((TextView)itemRow.findViewById(R.id.itemInfo)).setText(item.getQuantity() + "x " + item.getName(activity));
+
+            layout.addView(itemRow, params);
+        }
     }
 }

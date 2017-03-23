@@ -70,7 +70,8 @@
             android:layout_height="match_parent"
             android:layout_below="@id/topBar"
             android:orientation="vertical">
-            <LinearLayout
+            <TableLayout
+                android:id="@+id/resourceDisplay"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
@@ -79,18 +80,7 @@
                 android:paddingTop="7dp"
                 android:paddingLeft="2dp"
                 android:paddingRight="7dp"
-                android:paddingBottom="10dp">
-                <ImageView
-                    android:id="@+id/resourceImage"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_margin="2dp"/>
-                <uk.co.jakelee.blacksmithslots.components.FontTextView
-                    android:id="@+id/resourceInfo"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    style="@style/SlotText"/>
-            </LinearLayout>
+                android:paddingBottom="10dp" />
             <ScrollView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"

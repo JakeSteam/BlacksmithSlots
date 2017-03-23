@@ -370,46 +370,33 @@ public class SlotHelper {
     }
 
     public void updateResourceCount() {
-        List<Inventory> items;
+        TableLayout.LayoutParams params = new TableLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         boolean orderByTier = Setting.getBoolean(Enums.Setting.OrderByTier);
         boolean reverseOrder = Setting.getBoolean(Enums.Setting.OrderReversed);
 
+        // Resources
+        List<Inventory> resourceInventories = new ArrayList<>();
+        for (ItemBundle item : slotResources) {
+            resourceInventories.add(Inventory.get(item));
+        }
+        DisplayHelper.populateItemRows(activity, R.id.resourceDisplay, inflater, picasso, params, resourceInventories, true);
+
+        // Inventory
         String where = "";
-        for (ItemBundle item : slot.getResources()) {
+        for (ItemBundle item : slotResources) {
             where += "(a != " + item.getTier().value + " OR b != " + item.getType().value + ") AND ";
         }
         if (Setting.getBoolean(Enums.Setting.OnlyActiveResources)) {
-            for (ItemBundle item : slot.getRewards()) {
+            for (ItemBundle item : slotRewards) {
                 where += "(a = " + item.getTier().value + " AND b = " + item.getType().value + ") OR ";
             }
         }
 
         String orderBy = (orderByTier ? "a " : "c ") + (reverseOrder ? "ASC" : "DESC");
-        items = Select.from(Inventory.class).where(where.substring(0, where.length() - 4)).orderBy(orderBy).list();
-
-        ItemBundle temporaryFirstItem = slotResources.get(0);
-        Inventory inventory = Inventory.getInventory(temporaryFirstItem.getTier().value, temporaryFirstItem.getType().value);
-        picasso.load(inventory.getDrawableId(activity, temporaryFirstItem.getQuantity())).into((ImageView)activity.findViewById(R.id.resourceImage));
-        ((TextView)activity.findViewById(R.id.resourceInfo)).setText(inventory.getQuantity() + "x " + Item.getName(activity, temporaryFirstItem.getTier().value, temporaryFirstItem.getType().value));
-
-        TableLayout.LayoutParams params = new TableLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-
+        List<Inventory> inventoryItems = Select.from(Inventory.class).where(where.substring(0, where.length() - 4)).orderBy(orderBy).list();
         boolean onlyShowStockedItems = Setting.getBoolean(Enums.Setting.OnlyShowStocked);
-        TableLayout layout = (TableLayout)activity.findViewById(R.id.inventoryDisplay);
-        layout.removeAllViews();
-        for (Inventory item : items) {
-            if (onlyShowStockedItems && inventory.getQuantity() <= 0) {
-                continue;
-            }
 
-            View inflatedView = inflater.inflate(R.layout.custom_resource_info, null);
-            TableRow itemRow = (TableRow) inflatedView.findViewById(R.id.itemRow);
-
-            picasso.load(item.getDrawableId(activity)).into((ImageView)itemRow.findViewById(R.id.itemImage));
-            ((TextView)itemRow.findViewById(R.id.itemInfo)).setText(item.getQuantity() + "x " + item.getName(activity));
-
-            layout.addView(itemRow, params);
-        }
+        DisplayHelper.populateItemRows(activity, R.id.inventoryDisplay, inflater, picasso, params, inventoryItems, onlyShowStockedItems);
     }
 
     private void resetRouteColours() {

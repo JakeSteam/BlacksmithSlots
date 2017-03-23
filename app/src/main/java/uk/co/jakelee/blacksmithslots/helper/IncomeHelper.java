@@ -79,6 +79,7 @@ public class IncomeHelper {
             if (currentLevel >= tierRange.getMin()) {
                 int adjustedLevel = Math.min(currentLevel, tierRange.getMax() + 1);
                 bonus.add(new ItemBundle(tierRange.getTier(), Enums.Type.Bar, (adjustedLevel - tierRange.getMin() + 1) * tierRange.getItemPerLevel()));
+                bonus.add(new ItemBundle(tierRange.getTier(), Enums.Type.Secondary, (adjustedLevel - tierRange.getMin() + 1) * tierRange.getItemPerLevel()));
             }
         }
 
