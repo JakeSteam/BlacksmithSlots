@@ -49,7 +49,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:background="@drawable/box_yellow"
-                android:padding="10dp"
+                android:padding="7dp"
                 android:layout_margin="7dp">
                 <LinearLayout
                     android:id="@+id/buttonPanel"
@@ -67,7 +67,7 @@
                         android:paddingLeft="10dp"
                         android:paddingRight="10dp"
                         android:paddingBottom="11dp"
-                        android:textSize="35sp"
+                        android:textSize="25sp"
                         style="@style/SlotText"/>
                     <uk.co.jakelee.blacksmithslots.components.FontTextView
                         android:id="@+id/passClaim"
@@ -78,7 +78,8 @@
                         android:paddingLeft="10dp"
                         android:paddingRight="10dp"
                         android:paddingBottom="11dp"
-                        android:textSize="35sp"
+                        android:layout_marginBottom="15dp"
+                        android:textSize="25sp"
                         style="@style/SlotText"/>
                 </LinearLayout>
                 <uk.co.jakelee.blacksmithslots.components.FontTextView
@@ -103,7 +104,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_toRightOf="@id/passLeftColumn"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:paddingTop="7dp"
+                android:paddingRight="7dp"
+                android:paddingBottom="7dp">
                 <uk.co.jakelee.blacksmithslots.components.FontTextView
                     android:id="@+id/passDescription"
                     android:layout_width="match_parent"
@@ -123,22 +127,22 @@
                         <uk.co.jakelee.blacksmithslots.components.FontTextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Day 1: Not much"
+                            android:text="Day 1: 100 Bronze Bars, 150 Iron Swords"
                             style="@style/PassTabText"/>
                         <uk.co.jakelee.blacksmithslots.components.FontTextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Day 2: Less"
+                            android:text="Day 2: 120 Bronze Bars, 160 Iron Swords"
                             style="@style/PassTabText"/>
                         <uk.co.jakelee.blacksmithslots.components.FontTextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Day 3: More"
+                            android:text="Day 3: 400 Bronze Ore, 100 Bronze Bars"
                             style="@style/PassTabText"/>
                         <uk.co.jakelee.blacksmithslots.components.FontTextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Day 4: More"
+                            android:text="Day 4: 20 Red Gems, 15 Blue Gems, 10 Yellow Gems, 10 Green Gems"
                             style="@style/PassTabText"/>
                         <uk.co.jakelee.blacksmithslots.components.FontTextView
                             android:layout_width="match_parent"
