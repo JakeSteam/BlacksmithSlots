@@ -56,6 +56,14 @@ public class ItemBundle extends SugarRecord {
         this.bundleType = (isIap ? Enums.ItemBundleType.IapReward.value : Enums.ItemBundleType.SlotResource.value);
     }
 
+    public ItemBundle(Enums.Iap iap, Enums.Tier tier, Enums.Type type, int quantity, boolean isIap) {
+        this.tier = tier.value;
+        this.type = type.value;
+        this.quantity = quantity;
+        this.identifier = iap.value;
+        this.bundleType = (isIap ? Enums.ItemBundleType.IapReward.value : Enums.ItemBundleType.SlotResource.value);
+    }
+
     public int getIdentifier() {
         return identifier;
     }

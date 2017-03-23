@@ -42,7 +42,10 @@ public class Enums {
     }
 
     public enum Iap {
-        VipLevel1(1), VipLevel2(2), VipLevel3(3);
+        BlacksmithPass(1),
+        VipLevel1(2), VipLevel2(3), VipLevel3(4),
+        BronzeBar1000(10), BronzeBar5000(11),BronzeBar10000(12),
+        BronzeSecondary1000(13), BronzeSecondary5000(14),BronzeSecondary10000(15);
         public int value;
         Iap(int value) {
             this.value = value;

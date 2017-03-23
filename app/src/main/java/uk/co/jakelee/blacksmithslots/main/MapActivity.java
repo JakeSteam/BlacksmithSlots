@@ -92,8 +92,6 @@ public class MapActivity extends BaseActivity implements
         if (IncomeHelper.getNextAdvertWatchTime() - System.currentTimeMillis() > 0) {
             setAdvertUnclaimable();
         }
-
-        AdvertHelper ah = AdvertHelper.getInstance(this);
     }
 
     private void setPeriodicBonusUnclaimable() {

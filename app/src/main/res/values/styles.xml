@@ -52,7 +52,22 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:maxLines">2</item>
         <item name="android:layout_margin">3dp</item>
+    </style>
 
+    <style name="ShopTabs" parent="FontSize">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:padding">5dp</item>
+        <item name="android:maxLines">2</item>
+        <item name="android:onClick">changeTab</item>
+        <item name="android:background">@color/white</item>
+    </style>
+
+    <style name="PassTabText">
+        <item name="android:textSize">24sp</item>
+        <item name="android:layout_margin">7dp</item>
     </style>
 
     <style name="FontSize">

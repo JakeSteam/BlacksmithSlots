@@ -52,9 +52,11 @@
 
     <!-- IAP -->
     <string name="shop">Shop</string>
-    <string name="tab_pass">BS Pass</string>
-    <string name="tab_vip">VIP</string>
-    <string name="tab_bundle">Bundles</string>
+    <string name="tab_pass">Blacksmith Pass</string>
+    <string name="tab_vip">VIP Levels</string>
+    <string name="tab_bundle">Item Bundles</string>
+    <string name="pass_purchase">Buy Pass</string>
+    <string name="pass_claim">Claim</string>
 
     <!-- Inventory -->
     <string name="itemSourcesButton">Sources</string>

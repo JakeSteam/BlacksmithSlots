@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/parent"
     android:layout_width="match_parent"
@@ -10,14 +11,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:clickable="true"
-        android:onClick="close"/>
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/close"
-        android:layout_alignParentRight="true"
-        android:layout_margin="10dp"
         android:onClick="close"/>
 
     <RelativeLayout
@@ -31,39 +24,155 @@
         <LinearLayout
             android:id="@+id/tabBar"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="horizontal">
             <uk.co.jakelee.blacksmithslots.components.FontTextView
                 android:id="@+id/tab_pass"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:onClick="changeTab"
                 android:text="@string/tab_pass"
-                style="@style/DataText" />
+                style="@style/ShopTabs" />
             <uk.co.jakelee.blacksmithslots.components.FontTextView
                 android:id="@+id/tab_vip"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:onClick="changeTab"
                 android:text="@string/tab_vip"
-                style="@style/DataText" />
+                style="@style/ShopTabs" />
             <uk.co.jakelee.blacksmithslots.components.FontTextView
                 android:id="@+id/tab_bundle"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:onClick="changeTab"
                 android:text="@string/tab_bundle"
-                style="@style/DataText" />
+                style="@style/ShopTabs" />
         </LinearLayout>
         <RelativeLayout
             android:id="@+id/passTab"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@id/tabBar"
-            android:onClick="suppress">
+            android:layout_below="@id/tabBar">
+            <RelativeLayout
+                android:id="@+id/passLeftColumn"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="@drawable/box_yellow"
+                android:padding="10dp"
+                android:layout_margin="7dp">
+                <LinearLayout
+                    android:id="@+id/buttonPanel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_centerHorizontal="true"
+                    android:layout_alignParentBottom="true">
+                    <uk.co.jakelee.blacksmithslots.components.FontTextView
+                        android:id="@+id/passPurchase"
+                        android:layout_width="wrap_content"
+                        android:background="@drawable/box_green"
+                        android:text="@string/pass_purchase"
+                        android:paddingTop="7dp"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:paddingBottom="11dp"
+                        android:textSize="35sp"
+                        style="@style/SlotText"/>
+                    <uk.co.jakelee.blacksmithslots.components.FontTextView
+                        android:id="@+id/passClaim"
+                        android:layout_width="wrap_content"
+                        android:background="@drawable/box_orange"
+                        android:text="@string/pass_claim"
+                        android:paddingTop="7dp"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:paddingBottom="11dp"
+                        android:textSize="35sp"
+                        style="@style/SlotText"/>
+                </LinearLayout>
+                <uk.co.jakelee.blacksmithslots.components.FontTextView
+                    android:id="@+id/passDaysLeft"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@id/buttonPanel"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="0dp"
+                    style="@style/PassTabText"
+                    android:text="27 days left"/>
+                <ImageView
+                    android:id="@+id/passImage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_above="@id/passDaysLeft"
+                    android:layout_margin="10dp"
+                    android:src="@drawable/iap_pass"/>
+            </RelativeLayout>
+            <LinearLayout
+                android:id="@+id/passRightColumn"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_toRightOf="@id/passLeftColumn"
+                android:orientation="vertical">
+                <uk.co.jakelee.blacksmithslots.components.FontTextView
+                    android:id="@+id/passDescription"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Whilst your Blacksmith Pass is valid, you will receive free items every day!\n\nCheck back daily to claim!"
+                    style="@style/PassTabText"/>
+                <ScrollView
+                    android:id="@+id/passRewardsContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fadeScrollbars="false"
+                    android:background="@drawable/box_yellow">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <uk.co.jakelee.blacksmithslots.components.FontTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Day 1: Not much"
+                            style="@style/PassTabText"/>
+                        <uk.co.jakelee.blacksmithslots.components.FontTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Day 2: Less"
+                            style="@style/PassTabText"/>
+                        <uk.co.jakelee.blacksmithslots.components.FontTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Day 3: More"
+                            style="@style/PassTabText"/>
+                        <uk.co.jakelee.blacksmithslots.components.FontTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Day 4: More"
+                            style="@style/PassTabText"/>
+                        <uk.co.jakelee.blacksmithslots.components.FontTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Day 5: More"
+                            style="@style/PassTabText"/>
+                        <uk.co.jakelee.blacksmithslots.components.FontTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Day 6: More"
+                            style="@style/PassTabText"/>
+                        <uk.co.jakelee.blacksmithslots.components.FontTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Day 7: More"
+                            style="@style/PassTabText"/>
+                        <uk.co.jakelee.blacksmithslots.components.FontTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Day 8: More"
+                            style="@style/PassTabText"/>
+                        <uk.co.jakelee.blacksmithslots.components.FontTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Day 9: More"
+                            style="@style/PassTabText"/>
+                        <uk.co.jakelee.blacksmithslots.components.FontTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Day 10: More"
+                            style="@style/PassTabText"/>
+                    </LinearLayout>
+                </ScrollView>
+            </LinearLayout>
         </RelativeLayout>
         <RelativeLayout
             android:id="@+id/vipTab"
@@ -83,6 +192,14 @@
         </RelativeLayout>
 
     </RelativeLayout>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/close"
+        android:layout_alignParentRight="true"
+        android:layout_margin="10dp"
+        android:onClick="close"/>
 
     <LinearLayout
         android:id="@+id/croutonview"
