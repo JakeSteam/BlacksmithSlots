@@ -185,6 +185,62 @@
             android:layout_below="@id/tabBar"
             android:onClick="suppress"
             android:visibility="gone">
+            <LinearLayout
+                android:id="@+id/vipButtons"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_alignParentBottom="true">
+                <uk.co.jakelee.blacksmithslots.components.FontTextView
+                    android:id="@+id/vipCompare"
+                    android:layout_width="wrap_content"
+                    android:background="@drawable/box_yellow"
+                    android:text="@string/vip_compare"
+                    android:paddingTop="7dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:paddingBottom="11dp"
+                    android:textSize="25sp"
+                    android:layout_margin="7dp"
+                    style="@style/SlotText"/>
+                <uk.co.jakelee.blacksmithslots.components.FontTextView
+                    android:id="@+id/vipUpgrade"
+                    android:layout_width="match_parent"
+                    android:background="@drawable/box_green"
+                    android:text="@string/vip_upgrade"
+                    android:paddingTop="7dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:paddingBottom="11dp"
+                    android:textSize="25sp"
+                    android:layout_margin="7dp"
+                    style="@style/SlotText"/>
+            </LinearLayout>
+            <uk.co.jakelee.blacksmithslots.components.FontTextView
+                android:id="@+id/vipIntro"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Upgrade to VIP 4 and receive:"
+                android:textSize="30sp"
+                android:padding="10dp"
+                style="@style/PassTabText" />
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_above="@id/vipButtons"
+                android:layout_below="@id/vipIntro">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <uk.co.jakelee.blacksmithslots.components.FontTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="- 3000x Resource A\n\n- 2000x Resource B\n\n- 1000x Resource C\n\n- Plus, +15% Statistic A and -50% Statistic B!"
+                        android:padding="10dp"
+                        style="@style/PassTabText"/>
+                </LinearLayout>
+            </ScrollView>
         </RelativeLayout>
         <RelativeLayout
             android:id="@+id/bundleTab"
