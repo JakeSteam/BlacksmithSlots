@@ -283,7 +283,7 @@ public class SlotHelper {
         ItemBundle checkedResult = new ItemBundle();
         for (ItemBundle routeTile : routeTiles) {
             // If there's no tile to check, set it to current
-            if (checkedResult.getTier() == null && checkedResult.getType() == null
+            if (checkedResult.getTier().value == 0 && checkedResult.getType().value == 0
                     && (routeTile.getType() != Enums.Type.Wildcard)) {
                 checkedResult = routeTile;
             } else {
