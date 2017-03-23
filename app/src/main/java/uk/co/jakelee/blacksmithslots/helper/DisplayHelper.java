@@ -11,6 +11,10 @@ import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.ImageView;
 
+import java.util.List;
+
+import uk.co.jakelee.blacksmithslots.model.Inventory;
+import uk.co.jakelee.blacksmithslots.model.Item;
 import uk.co.jakelee.blacksmithslots.model.ItemBundle;
 
 public class DisplayHelper {
@@ -85,5 +89,28 @@ public class DisplayHelper {
         DisplayMetrics metrics = resources.getDisplayMetrics();
         float px = dp * (metrics.densityDpi / 160f);
         return (int) px;
+    }
+
+    public static String bundlesToString(Context context, List<ItemBundle> bundles) {
+        return bundlesToString(context, bundles, 1, true);
+    }
+
+    public static String bundlesToString(Context context, List<ItemBundle> bundles, int multiplier) {
+        return bundlesToString(context, bundles, multiplier, true);
+    }
+
+    public static String bundlesToString(Context context, List<ItemBundle> bundles, int multiplier, boolean includeQuantity) {
+        StringBuilder itemText = new StringBuilder();
+        for (ItemBundle itemBundle : bundles) {
+            if (includeQuantity) {
+                itemText.append(itemBundle.getQuantity() * multiplier);
+                itemText.append("x ");
+            }
+            itemText.append(Item.getName(context, itemBundle.getTier(), itemBundle.getType()));
+            itemText.append(", ");
+        }
+
+        String itemString = itemText.toString();
+        return itemString.length() > 0 ? itemString.substring(0, itemString.length() - 2) : "";
     }
 }

@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.List;
@@ -34,19 +35,22 @@ public class MinigameFlipActivity extends MinigameActivity {
             confirmClose();
         }
 
-        resources = Slot.get(slotId).getResources();
+        Slot slot = Slot.get(slotId);
+        if (slot != null) {
+            resources = slot.getResources();
 
-        updateDisplay();
-        for (ItemBundle resource : resources) {
-            ((TextView) findViewById(R.id.itemName)).setText(Item.getName(this, resource.getTier(), resource.getType()));
-            ((ImageView) findViewById(R.id.itemImage)).setImageResource(getResources().getIdentifier(DisplayHelper.getItemImageFile(resource.getTier().value, resource.getType().value), "drawable", getPackageName()));
+            updateDisplay();
+            LinearLayout itemImages = (LinearLayout) findViewById(R.id.itemImageContainer);
+            for (ItemBundle resource : resources) {
+                itemImages.addView(DisplayHelper.createImageView(this, DisplayHelper.getItemImageFile(resource.getTier().value, resource.getType().value), 60, 60));
+            }
         }
     }
 
     public void gamble(View v) {
         if (CalculationHelper.randomBoolean()) {
             multiplier = multiplier * 2;
-            AlertHelper.success(this, "Success! Doubled to " + multiplier + "!", false);
+            AlertHelper.success(this, "Success! Doubled multiplier to " + multiplier + "x!", false);
             updateDisplay();
         } else {
             multiplier = 0;
@@ -56,7 +60,7 @@ public class MinigameFlipActivity extends MinigameActivity {
     }
 
     private void updateDisplay() {
-        ((TextView)findViewById(R.id.currentStake)).setText(multiplier + "x ");
+        ((TextView)findViewById(R.id.currentStake)).setText(DisplayHelper.bundlesToString(this, resources, multiplier));
     }
 
     public void stick(View v) {

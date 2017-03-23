@@ -33,25 +33,16 @@
                 android:text="Gamble your win?"
                 android:maxLines="3"
                 style="@style/FontSize"/>
-            <ImageView
-                android:id="@+id/itemImage"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent" />
             <LinearLayout
+                android:id="@+id/itemImageContainer"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"/>
+            <uk.co.jakelee.blacksmithslots.components.FontTextView
+                android:id="@+id/currentStake"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <uk.co.jakelee.blacksmithslots.components.FontTextView
-                    android:id="@+id/currentStake"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    style="@style/FontSize"/>
-                <uk.co.jakelee.blacksmithslots.components.FontTextView
-                    android:id="@+id/itemName"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    style="@style/FontSize"/>
-            </LinearLayout>
+                style="@style/FontSize"/>
             <LinearLayout
                 android:id="@+id/actionButtons"
                 android:layout_width="wrap_content"
