@@ -69,6 +69,9 @@ public class DisplayHelper {
     public static ImageView createImageView(final Activity context, String idName, int width, int height, final String textOnClick) {
         ImageView image = new ImageView(context);
         int drawableId = context.getResources().getIdentifier(idName, "drawable", context.getPackageName());
+        if (drawableId == 0) {
+            drawableId = context.getResources().getIdentifier(idName.substring(0, idName.lastIndexOf("_")), "drawable", context.getPackageName());
+        }
         int adjustedWidth = convertDpToPixel(context, width);
         int adjustedHeight = convertDpToPixel(context, height);
 

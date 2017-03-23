@@ -128,6 +128,7 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
             items.add(new Item(Enums.Tier.Bronze, Enums.Type.Hatchet));
             items.add(new Item(Enums.Tier.Bronze, Enums.Type.FishingRod));
             items.add(new Item(Enums.Tier.Bronze, Enums.Type.Hammer));
+            items.add(new Item(Enums.Tier.Bronze, Enums.Type.Secondary));
 
             items.add(new Item(Enums.Tier.Internal, Enums.Type.MinigameFlip));
             items.add(new Item(Enums.Tier.Internal, Enums.Type.Wildcard));
@@ -153,7 +154,7 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
     private void createSlots() {
         List<Slot> slots = new ArrayList<>();
         List<ItemBundle> itemBundles = new ArrayList<>();
-            slots.add(new Slot(Constants.SLOT_BRONZE_FURNACE, 1, 1, 2, 5, 1, 5, Constants.SLOTS_4_MAX_ROUTES, Enums.SlotType.Furnace, 4, 0, 1));
+            slots.add(new Slot(Constants.SLOT_BRONZE_FURNACE, 1, 1, 2, 5, 1, 5, Constants.SLOTS_3_MAX_ROUTES, Enums.SlotType.Furnace, 3, 0, 1));
             itemBundles.add(new ItemBundle(Constants.SLOT_BRONZE_FURNACE, Enums.Tier.Bronze, Enums.Type.Ore, 2));
 
             itemBundles.add(new ItemBundle(Constants.SLOT_BRONZE_FURNACE, Enums.Tier.Bronze, Enums.Type.Ore, 1, 1));
