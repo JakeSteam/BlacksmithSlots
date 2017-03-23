@@ -28,8 +28,8 @@ public class IncomeHelper {
 
     public static long getNextAdvertWatchTime() {
         Statistic lastWatched = Statistic.get(Enums.Statistic.LastAdvertWatched);
-        double hours = IncomeHelper.getAdvertCooldownMins(LevelHelper.getVipLevel());
-        long millis = DateHelper.hoursToMillis(hours);
+        double mins = IncomeHelper.getAdvertCooldownMins(LevelHelper.getVipLevel());
+        long millis = DateHelper.minsToMillis((long)mins);
         return lastWatched.getLongValue() + millis;
     }
 

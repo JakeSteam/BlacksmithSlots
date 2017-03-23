@@ -9,6 +9,10 @@ public class DateHelper {
         return TimeUnit.MINUTES.toMillis((long)Math.ceil(hours * 60d));
     }
 
+    public static long minsToMillis(long mins) {
+        return TimeUnit.MINUTES.toMillis(mins);
+    }
+
     public static String timestampToDateTime(long timestamp) {
         return new SimpleDateFormat("yyyy-MM-dd HH:mm").format(new Date(timestamp));
     }

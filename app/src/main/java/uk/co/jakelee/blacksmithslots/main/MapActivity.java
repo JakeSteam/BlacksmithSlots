@@ -93,7 +93,7 @@ public class MapActivity extends BaseActivity implements
             setAdvertUnclaimable();
         }
 
-        AdvertHelper.getInstance(this);
+        AdvertHelper ah = AdvertHelper.getInstance(this);
     }
 
     private void setPeriodicBonusUnclaimable() {
