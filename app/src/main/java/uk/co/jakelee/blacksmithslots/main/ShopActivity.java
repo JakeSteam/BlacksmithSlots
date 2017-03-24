@@ -15,6 +15,7 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
+import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
 
@@ -79,7 +80,7 @@ public class ShopActivity extends BaseActivity {
 
     private void createPassTab() {
         int daysLeft = IapHelper.getPassDaysLeft();
-        int dayOfPass = daysLeft > 0 ? Constants.PASS_DAYS - daysLeft : daysLeft;
+        int dayOfPass = daysLeft > 0 ? (Constants.PASS_DAYS - daysLeft) : daysLeft;
         boolean canClaimPass = Statistic.get(Enums.Statistic.CurrentPassClaimedDay).getIntValue() < dayOfPass;
         int daysClaimed = Statistic.get(Enums.Statistic.CurrentPassClaimedDay).getIntValue();
         int highestDaysClaimed = Statistic.get(Enums.Statistic.HighestPassClaimedDay).getIntValue();
@@ -159,27 +160,25 @@ public class ShopActivity extends BaseActivity {
     }
 
     @OnClick(R.id.passPurchase)
-    public void buyIap(View v) {
-        if (v.getTag() != null) {
-            Enums.Iap iapEnum = (Enums.Iap)v.getTag();
-            // Fire purchase popup
-            // purchase(iapEnum.name());
-
-            Iap iap = Iap.get(iapEnum);
+    public void buyPass(View v) {
+        Enums.Iap iapEnum = (Enums.Iap)v.getTag();
+        Iap iap = Iap.get(iapEnum);
+        int daysLeft = IapHelper.getPassDaysLeft();
+        if (daysLeft > 0) {
+            // If there are days remaining, offset them
+            Calendar calendar = Calendar.getInstance();
+            calendar.add(Calendar.DAY_OF_YEAR, 0 - daysLeft);
+            iap.setLastPurchased(calendar.getTimeInMillis());
+            iap.setTimesPurchased(iap.getTimesPurchased() + 1);
+        } else {
             iap.setLastPurchased(System.currentTimeMillis());
             iap.setTimesPurchased(iap.getTimesPurchased() + 1);
-            iap.save();
 
-            if (iapEnum == Enums.Iap.BlacksmithPass) {
-                if (IapHelper.getPassDaysLeft() > 0) {
-                    // Some kind of special handling?
-                } else {
-                    Statistic.set(Enums.Statistic.LastBonusClaimed, 0);
-                }
-            }
-
-            createPassTab();
+            Statistic.set(Enums.Statistic.CurrentPassClaimedDay, 0);
         }
+        iap.save();
+
+        createPassTab();
     }
 
     @OnClick({ R.id.passTabTab, R.id.vipTabTab, R.id.bundleTabTab })
