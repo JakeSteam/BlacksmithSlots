@@ -55,6 +55,9 @@
     <string name="tab_pass">Blacksmith Pass</string>
     <string name="pass_purchase">Buy Pass</string>
     <string name="pass_claim">Claim</string>
+    <string name="pass_days_left">%1$d days left</string>
+    <string name="pass_desc_owned">Whilst your Blacksmith Pass is valid, you will receive free items every day!\n\nCheck back daily to claim!</string>
+    <string name="pass_desc_unowned">Purchasing a Blacksmith Pass entitles you to %1$d days of free daily goodies!</string>
 
     <string name="tab_vip">VIP Levels</string>
     <string name="vip_compare">Compare</string>

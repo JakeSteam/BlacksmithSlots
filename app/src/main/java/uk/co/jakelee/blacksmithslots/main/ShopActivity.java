@@ -1,12 +1,22 @@
 package uk.co.jakelee.blacksmithslots.main;
 
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import java.util.Locale;
 
 import uk.co.jakelee.blacksmithslots.BaseActivity;
 import uk.co.jakelee.blacksmithslots.R;
+import uk.co.jakelee.blacksmithslots.helper.Enums;
+import uk.co.jakelee.blacksmithslots.helper.IapHelper;
+import uk.co.jakelee.blacksmithslots.model.Iap;
 
 public class ShopActivity extends BaseActivity {
     private boolean haveSetupTabs = false;
@@ -41,7 +51,16 @@ public class ShopActivity extends BaseActivity {
     }
 
     private void createPassTab() {
+        int daysLeft = IapHelper.getPassDaysLeft();
 
+        ((ImageView)findViewById(R.id.passImage)).getDrawable().setColorFilter(daysLeft > 0 ? Color.TRANSPARENT : Color.BLACK, PorterDuff.Mode.MULTIPLY);
+        ((TextView)findViewById(R.id.passDaysLeft)).setText(String.format(Locale.ENGLISH, getString(R.string.pass_days_left), daysLeft));
+        ((TextView)findViewById(R.id.passDaysLeft)).setTextColor(daysLeft > 0 ? Color.GREEN : Color.RED);
+        findViewById(R.id.passPurchase).setTag(Enums.Iap.BlacksmithPass);
+        findViewById(R.id.passClaim).setVisibility(daysLeft > 0 ? View.VISIBLE : View.GONE);
+        ((TextView)findViewById(R.id.passDescription)).setText(daysLeft > 0 ? R.string.pass_desc_owned : R.string.pass_desc_unowned);
+
+        // Display daily bonuses
     }
 
     private void createVipTab() {
@@ -50,6 +69,20 @@ public class ShopActivity extends BaseActivity {
 
     private void createBundleTab() {
 
+    }
+
+    public void buyIap(View v) {
+        if (v.getTag() != null) {
+            Enums.Iap iapEnum = (Enums.Iap)v.getTag();
+            // Fire purchase popup
+            // purchase(iapEnum.name());
+
+            // Temporary for testing
+            Iap iap = Iap.get(iapEnum);
+            iap.setLastPurchased(System.currentTimeMillis());
+            iap.setTimesPurchased(iap.getTimesPurchased() + 1);
+            createPassTab();
+        }
     }
 
     public void changeTab(View v) {

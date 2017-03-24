@@ -3,6 +3,8 @@ package uk.co.jakelee.blacksmithslots.model;
 import com.orm.SugarRecord;
 import com.orm.dsl.Column;
 import com.orm.dsl.Table;
+import com.orm.query.Condition;
+import com.orm.query.Select;
 
 import uk.co.jakelee.blacksmithslots.helper.Enums;
 
@@ -35,6 +37,12 @@ public class Iap extends SugarRecord {
         this.lastPurchased = 0;
         this.timesPurchased = 0;
         this.isVipPurchase = isVipPurchase;
+    }
+
+    public static Iap get(Enums.Iap iap) {
+        return Select.from(Iap.class).where(
+                Condition.prop("a").eq(iap.value)
+        ).first();
     }
 
     public String getName() {

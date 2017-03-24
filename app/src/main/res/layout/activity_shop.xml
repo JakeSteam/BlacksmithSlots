@@ -68,6 +68,7 @@
                         android:paddingRight="10dp"
                         android:paddingBottom="11dp"
                         android:textSize="25sp"
+                        android:onClick="buyIap"
                         style="@style/SlotText"/>
                     <uk.co.jakelee.blacksmithslots.components.FontTextView
                         android:id="@+id/passClaim"
@@ -89,8 +90,7 @@
                     android:layout_above="@id/buttonPanel"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="0dp"
-                    style="@style/PassTabText"
-                    android:text="27 days left"/>
+                    style="@style/PassTabText"/>
                 <ImageView
                     android:id="@+id/passImage"
                     android:layout_width="wrap_content"
@@ -112,7 +112,6 @@
                     android:id="@+id/passDescription"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Whilst your Blacksmith Pass is valid, you will receive free items every day!\n\nCheck back daily to claim!"
                     style="@style/PassTabText"/>
                 <ScrollView
                     android:id="@+id/passRewardsContainer"
