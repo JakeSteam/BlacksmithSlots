@@ -8,6 +8,7 @@
     <string name="alert_unfinished_task">Can\'t hand in an unfinished task!</string>
     <string name="alert_levelled_up">Reached level %1$d! %2$s</string>
     <string name="alert_autospin_cancelled">Autospin turned off!</string>
+    <string name="alert_claimed_pass_day">Claimed day %1$d bonus of %2$s!</string>
 
     <string name="google_cloud_save_loading">Loading...</string>
     <string name="google_cloud_save_loaded">Loaded cloud save!</string>
@@ -78,6 +79,7 @@
     <string name="error_bonus_not_ready">Bonus will be ready in %1$s.</string>
     <string name="error_not_enough_resources">Not enough resources to spin!</string>
     <string name="error_failed_pb_import">Failed to find a Pixel Blacksmith save! Make sure you\'ve given permission to access external storage, and try exporting the save again.</string>
+    <string name="error_claimed_without_pass">Can\'t claim Blacksmith Pass rewards without having a Blacksmith Pass!</string>
 
     <!-- DB Lookups -->
     <string name="language_1">English</string>
@@ -158,6 +160,7 @@
     <string name="statistic_14_name">Last Advert Watched</string>
     <string name="statistic_15_name">Current BS Pass Day</string>
     <string name="statistic_16_name">Highest BS Pass Day</string>
+    <string name="statistic_17_name">BS Pass Days Claimed</string>
 
     <string name="task_5_1_text">I guess XP is always good too.</string>
     <string name="task_5_2_text">Spinning will somehow help.</string>

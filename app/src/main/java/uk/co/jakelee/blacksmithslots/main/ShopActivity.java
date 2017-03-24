@@ -23,6 +23,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import uk.co.jakelee.blacksmithslots.BaseActivity;
 import uk.co.jakelee.blacksmithslots.R;
+import uk.co.jakelee.blacksmithslots.helper.AlertHelper;
 import uk.co.jakelee.blacksmithslots.helper.Constants;
 import uk.co.jakelee.blacksmithslots.helper.DisplayHelper;
 import uk.co.jakelee.blacksmithslots.helper.Enums;
@@ -124,6 +125,28 @@ public class ShopActivity extends BaseActivity {
 
     }
 
+    @OnClick(R.id.passClaim)
+    public void claimPassReward() {
+        int daysLeft = IapHelper.getPassDaysLeft() % Constants.PASS_DAYS; // Always be a m
+        int dayOfPass = Constants.PASS_DAYS - daysLeft;
+
+        if (daysLeft > 0) {
+            Statistic.add(Enums.Statistic.TotalPassDaysClaimed);
+            Statistic.set(Enums.Statistic.CurrentPassClaimedDay, dayOfPass);
+
+            Statistic highestDaysClaimed = Statistic.get(Enums.Statistic.HighestPassClaimedDay);
+            highestDaysClaimed.setIntValue(dayOfPass > highestDaysClaimed.getIntValue() ? Constants.PASS_DAYS : dayOfPass);
+            highestDaysClaimed.save();
+
+            AlertHelper.success(this, String.format(Locale.ENGLISH, getString(R.string.alert_claimed_pass_day),
+                    dayOfPass,
+                    DisplayHelper.bundlesToString(this, IapHelper.getPassRewardsForDay(dayOfPass))
+                    ), true);
+        } else {
+            AlertHelper.error(this, R.string.error_claimed_without_pass, false);
+        }
+    }
+
     @OnClick(R.id.passPurchase)
     public void buyIap(View v) {
         if (v.getTag() != null) {
@@ -131,14 +154,17 @@ public class ShopActivity extends BaseActivity {
             // Fire purchase popup
             // purchase(iapEnum.name());
 
-            // Temporary for testing
             Iap iap = Iap.get(iapEnum);
             iap.setLastPurchased(System.currentTimeMillis());
             iap.setTimesPurchased(iap.getTimesPurchased() + 1);
 
-            Statistic statistic = Statistic.get(Enums.Statistic.HighestPassClaimedDay);
-            statistic.setIntValue(0);
-            statistic.save();
+            if (iapEnum == Enums.Iap.BlacksmithPass) {
+                if (IapHelper.getPassDaysLeft() > 0) {
+
+                } else {
+                    Statistic.set(Enums.Statistic.LastBonusClaimed, 0);
+                }
+            }
 
             createPassTab();
         }

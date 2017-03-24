@@ -35,7 +35,7 @@ public class IapHelper {
         return rewards;
     }
 
-    private static List<ItemBundle> getPassRewardsForDay(int day) {
+    public static List<ItemBundle> getPassRewardsForDay(int day) {
         return Select.from(ItemBundle.class).where(
                 Condition.prop("f").eq(Enums.ItemBundleType.PassReward.value),
                 Condition.prop("a").eq(day)).list();

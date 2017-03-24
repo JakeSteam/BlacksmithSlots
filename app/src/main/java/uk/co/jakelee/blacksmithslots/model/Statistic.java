@@ -151,6 +151,12 @@ public class Statistic extends SugarRecord {
         add(stat, 1);
     }
 
+    public static void set(Enums.Statistic stat, int value) {
+        Statistic statistic = Statistic.get(stat);
+        statistic.setIntValue(value);
+        statistic.save();
+    }
+
     public static void add(Enums.Statistic stat, int amount) {
         Statistic statistic = Select.from(Statistic.class).where(Condition.prop("a").eq(stat.value)).first();
 

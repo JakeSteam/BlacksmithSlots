@@ -276,6 +276,7 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
             statistics.add(new Statistic(Enums.Statistic.LastAdvertWatched, "", "", 0L));
             statistics.add(new Statistic(Enums.Statistic.CurrentPassClaimedDay, "", "", 0));
             statistics.add(new Statistic(Enums.Statistic.HighestPassClaimedDay, "", "", 0));
+            statistics.add(new Statistic(Enums.Statistic.TotalPassDaysClaimed, "", "", 0));
         Statistic.saveInTx(statistics);
     }
 
