@@ -15,7 +15,6 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
-import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
 
@@ -26,6 +25,7 @@ import uk.co.jakelee.blacksmithslots.BaseActivity;
 import uk.co.jakelee.blacksmithslots.R;
 import uk.co.jakelee.blacksmithslots.helper.AlertHelper;
 import uk.co.jakelee.blacksmithslots.helper.Constants;
+import uk.co.jakelee.blacksmithslots.helper.DateHelper;
 import uk.co.jakelee.blacksmithslots.helper.DisplayHelper;
 import uk.co.jakelee.blacksmithslots.helper.Enums;
 import uk.co.jakelee.blacksmithslots.helper.IapHelper;
@@ -84,13 +84,14 @@ public class ShopActivity extends BaseActivity {
         boolean canClaimPass = Statistic.get(Enums.Statistic.CurrentPassClaimedDay).getIntValue() < dayOfPass;
         int daysClaimed = Statistic.get(Enums.Statistic.CurrentPassClaimedDay).getIntValue();
         int highestDaysClaimed = Statistic.get(Enums.Statistic.HighestPassClaimedDay).getIntValue();
+        int monthsLeft = Statistic.get(Enums.Statistic.ExtraPassMonths).getIntValue();
 
         if (daysLeft <= 0) {
             passImage.getDrawable().setColorFilter(Color.BLACK, PorterDuff.Mode.MULTIPLY);
         } else {
             passImage.getDrawable().clearColorFilter();
         }
-        passDaysLeft.setText(String.format(Locale.ENGLISH, getString(R.string.pass_days_left), daysLeft));
+        passDaysLeft.setText(String.format(Locale.ENGLISH, getString(R.string.pass_days_left), daysLeft + (Constants.PASS_DAYS * monthsLeft)));
         passDaysLeft.setTextColor(ContextCompat.getColor(this, daysLeft > 0 ? R.color.greenText : R.color.redText));
         passPurchase.setTag(Enums.Iap.BlacksmithPass);
         passClaim.setVisibility(canClaimPass ? View.VISIBLE : View.GONE);
@@ -158,6 +159,19 @@ public class ShopActivity extends BaseActivity {
                     DisplayHelper.bundlesToString(this, IapHelper.getPassRewardsForDay(dayOfPass))
                     ), true);
 
+            // If it's the last day and there's months left, use them up
+            if (daysLeft == 1) {
+                Statistic monthsLeft = Statistic.get(Enums.Statistic.ExtraPassMonths);
+                if (monthsLeft.getIntValue() > 0) {
+                    monthsLeft.setIntValue(monthsLeft.getIntValue() - 1);
+                    monthsLeft.save();
+
+                    Iap iap = Iap.get(Enums.Iap.BlacksmithPass);
+                    iap.setLastPurchased(DateHelper.getYesterdayMidnight().getTimeInMillis());
+                    iap.save();
+                }
+            }
+
             createPassTab();
         }
     }
@@ -168,18 +182,17 @@ public class ShopActivity extends BaseActivity {
         Iap iap = Iap.get(iapEnum);
         int daysLeft = IapHelper.getPassDaysLeft();
 
-        Calendar calendar = Calendar.getInstance();
-        calendar.add(Calendar.DAY_OF_YEAR, -1);
-        calendar.set(Calendar.HOUR_OF_DAY, 0);
-        calendar.set(Calendar.MINUTE, 0);
-        calendar.set(Calendar.SECOND, 0);
-        //calendar.add(Calendar.DAY_OF_YEAR, 0 - daysLeft);
-        iap.setLastPurchased(calendar.getTimeInMillis());
         iap.setTimesPurchased(iap.getTimesPurchased() + 1);
 
-        Statistic.set(Enums.Statistic.CurrentPassClaimedDay, 0);
+        if (daysLeft == 0) {
+            iap.setLastPurchased(DateHelper.getYesterdayMidnight().getTimeInMillis());
+            Statistic.set(Enums.Statistic.CurrentPassClaimedDay, 0);
+        } else {
+            Statistic.add(Enums.Statistic.ExtraPassMonths);
+        }
         iap.save();
 
+        AlertHelper.success(this, R.string.alert_pass_purchased, true);
         createPassTab();
     }
 

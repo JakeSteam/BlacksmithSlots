@@ -1,6 +1,7 @@
 package uk.co.jakelee.blacksmithslots.helper;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
@@ -23,5 +24,14 @@ public class DateHelper {
 
     public static String timestampToDetailedTime(long timestamp) {
         return new SimpleDateFormat("h'hr' mm'min' ss'sec'").format(new Date(timestamp));
+    }
+
+    public static Calendar getYesterdayMidnight() {
+        Calendar calendar = Calendar.getInstance();
+        calendar.add(Calendar.DAY_OF_YEAR, -1);
+        calendar.set(Calendar.HOUR_OF_DAY, 0);
+        calendar.set(Calendar.MINUTE, 0);
+        calendar.set(Calendar.SECOND, 0);
+        return calendar;
     }
 }

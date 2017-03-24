@@ -9,6 +9,7 @@
     <string name="alert_levelled_up">Reached level %1$d! %2$s</string>
     <string name="alert_autospin_cancelled">Autospin turned off!</string>
     <string name="alert_claimed_pass_day">Claimed day %1$d bonus of %2$s!</string>
+    <string name="alert_pass_purchased">Purchased a Blacksmith Pass!</string>
 
     <string name="google_cloud_save_loading">Loading...</string>
     <string name="google_cloud_save_loaded">Loaded cloud save!</string>
@@ -160,9 +161,10 @@
     <string name="statistic_12_name">Last Bonus Claimed</string>
     <string name="statistic_13_name">Pixel Blacksmith Save Imported</string>
     <string name="statistic_14_name">Last Advert Watched</string>
-    <string name="statistic_15_name">Current BS Pass Day</string>
-    <string name="statistic_16_name">Highest BS Pass Day</string>
+    <string name="statistic_15_name">BS Pass Current Day</string>
+    <string name="statistic_16_name">BS Pass Highest Day</string>
     <string name="statistic_17_name">BS Pass Days Claimed</string>
+    <string name="statistic_18_name">BS Pass Extra Months</string>
 
     <string name="task_5_1_text">I guess XP is always good too.</string>
     <string name="task_5_2_text">Spinning will somehow help.</string>
