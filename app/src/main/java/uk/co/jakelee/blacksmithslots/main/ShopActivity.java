@@ -87,6 +87,8 @@ public class ShopActivity extends BaseActivity {
 
         if (daysLeft <= 0) {
             passImage.getDrawable().setColorFilter(Color.BLACK, PorterDuff.Mode.MULTIPLY);
+        } else {
+            passImage.getDrawable().clearColorFilter();
         }
         passDaysLeft.setText(String.format(Locale.ENGLISH, getString(R.string.pass_days_left), daysLeft));
         passDaysLeft.setTextColor(ContextCompat.getColor(this, daysLeft > 0 ? R.color.greenText : R.color.redText));
@@ -121,6 +123,7 @@ public class ShopActivity extends BaseActivity {
             ((TextView)tableRow.findViewById(R.id.dataValue)).setTextColor(ContextCompat.getColor(this, colour));
             passRewardsContainer.addView(tableRow);
         }
+        passRewardsContainer.scrollTo(0,0);
     }
 
     private void createVipTab() {
@@ -164,18 +167,17 @@ public class ShopActivity extends BaseActivity {
         Enums.Iap iapEnum = (Enums.Iap)v.getTag();
         Iap iap = Iap.get(iapEnum);
         int daysLeft = IapHelper.getPassDaysLeft();
-        if (daysLeft > 0) {
-            // If there are days remaining, offset them
-            Calendar calendar = Calendar.getInstance();
-            calendar.add(Calendar.DAY_OF_YEAR, 0 - daysLeft);
-            iap.setLastPurchased(calendar.getTimeInMillis());
-            iap.setTimesPurchased(iap.getTimesPurchased() + 1);
-        } else {
-            iap.setLastPurchased(System.currentTimeMillis());
-            iap.setTimesPurchased(iap.getTimesPurchased() + 1);
 
-            Statistic.set(Enums.Statistic.CurrentPassClaimedDay, 0);
-        }
+        Calendar calendar = Calendar.getInstance();
+        calendar.add(Calendar.DAY_OF_YEAR, -1);
+        calendar.set(Calendar.HOUR_OF_DAY, 0);
+        calendar.set(Calendar.MINUTE, 0);
+        calendar.set(Calendar.SECOND, 0);
+        //calendar.add(Calendar.DAY_OF_YEAR, 0 - daysLeft);
+        iap.setLastPurchased(calendar.getTimeInMillis());
+        iap.setTimesPurchased(iap.getTimesPurchased() + 1);
+
+        Statistic.set(Enums.Statistic.CurrentPassClaimedDay, 0);
         iap.save();
 
         createPassTab();
