@@ -193,11 +193,13 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
             settings.add(new Setting(Enums.SettingGroup.Gameplay, Enums.Setting.AutosaveMinutes, 10));
             settings.add(new Setting(Enums.SettingGroup.Gameplay, Enums.Setting.OnlyActiveResources, true));
             settings.add(new Setting(Enums.SettingGroup.Gameplay, Enums.Setting.Language, Enums.Language.English.value));
+            settings.add(new Setting(Enums.SettingGroup.Notifications, Enums.Setting.NotificationSounds, true));
+            settings.add(new Setting(Enums.SettingGroup.Notifications, Enums.Setting.PeriodicBonusNotification, true));
             settings.add(new Setting(Enums.SettingGroup.Gameplay, Enums.Setting.SaveImported, false));
             settings.add(new Setting(Enums.SettingGroup.Gameplay, Enums.Setting.OnlyShowStocked, false));
-            settings.add(new Setting(Enums.SettingGroup.Notifications, Enums.Setting.NotificationSounds, true));
-            settings.add(new Setting(Enums.SettingGroup.Notifications, Enums.Setting.OrderByTier, false));
-            settings.add(new Setting(Enums.SettingGroup.Notifications, Enums.Setting.OrderReversed, false));
+            settings.add(new Setting(Enums.SettingGroup.Gameplay, Enums.Setting.OrderByTier, false));
+            settings.add(new Setting(Enums.SettingGroup.Gameplay, Enums.Setting.OrderReversed, false));
+            settings.add(new Setting(Enums.SettingGroup.Notifications, Enums.Setting.BlacksmithPassNotification, true));
         Setting.saveInTx(settings);
     }
 

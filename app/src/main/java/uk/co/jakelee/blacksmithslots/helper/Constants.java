@@ -8,6 +8,7 @@ public class Constants {
     public final static int MESSAGE_LOG_LIMIT = 100;
 
     public final static int NOTIFICATION_PERIODIC_BONUS = 100;
+    public final static int NOTIFICATION_PASS_BONUS = 101;
 
     public final static int MINIGAME_FLIP = 123;
 

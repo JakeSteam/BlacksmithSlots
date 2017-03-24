@@ -11,8 +11,11 @@ import android.media.RingtoneManager;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.TaskStackBuilder;
 
+import java.util.Calendar;
+
 import uk.co.jakelee.blacksmithslots.BaseActivity;
 import uk.co.jakelee.blacksmithslots.R;
+import uk.co.jakelee.blacksmithslots.model.Statistic;
 
 public class NotificationHelper extends BroadcastReceiver {
     private static final String NOTIFICATION_TYPE = "uk.co.jakelee.notification_type";
@@ -24,6 +27,27 @@ public class NotificationHelper extends BroadcastReceiver {
         long nextClaimTime = IncomeHelper.getNextPeriodicClaimTime();
         if (System.currentTimeMillis() < nextClaimTime) {
             NotificationHelper.addNotification(context, nextClaimTime, Constants.NOTIFICATION_PERIODIC_BONUS);
+        }
+    }
+
+    public static void addBlacksmithPassNotification(Context context, boolean useSoundsSetting) {
+        useSounds = useSoundsSetting;
+
+        int daysLeft = IapHelper.getPassDaysLeft();
+        int dayOfPass = Constants.PASS_DAYS - daysLeft;
+        int lastClaimedDay = Statistic.get(Enums.Statistic.CurrentPassClaimedDay).getIntValue();
+        int hourOfDay = Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(Calendar.HOUR_OF_DAY, 14);
+        calendar.set(Calendar.MINUTE, 0);
+        calendar.set(Calendar.SECOND, 0);
+
+        if (hourOfDay > 13 && daysLeft > 1) {
+            calendar.add(Calendar.DATE, 1);
+            NotificationHelper.addNotification(context, calendar.getTimeInMillis(), Constants.NOTIFICATION_PASS_BONUS);
+        } else if (hourOfDay <= 13 && daysLeft > 0 && lastClaimedDay < dayOfPass) {
+            NotificationHelper.addNotification(context, calendar.getTimeInMillis(), Constants.NOTIFICATION_PASS_BONUS);
         }
     }
 

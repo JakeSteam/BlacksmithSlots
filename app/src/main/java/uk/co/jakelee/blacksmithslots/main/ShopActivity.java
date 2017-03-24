@@ -160,7 +160,7 @@ public class ShopActivity extends BaseActivity {
 
             if (iapEnum == Enums.Iap.BlacksmithPass) {
                 if (IapHelper.getPassDaysLeft() > 0) {
-
+                    // Some kind of special handling?
                 } else {
                     Statistic.set(Enums.Statistic.LastBonusClaimed, 0);
                 }

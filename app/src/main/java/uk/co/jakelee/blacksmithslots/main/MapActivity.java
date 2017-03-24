@@ -120,6 +120,9 @@ public class MapActivity extends BaseActivity implements
         if (Setting.getBoolean(Enums.Setting.PeriodicBonusNotification)) {
             NotificationHelper.addBonusNotification(this, notificationSound);
         }
+        if (Setting.getBoolean(Enums.Setting.BlacksmithPassNotification)) {
+            NotificationHelper.addBlacksmithPassNotification(this, notificationSound);
+        }
         handler.removeCallbacks(null);
     }
 
