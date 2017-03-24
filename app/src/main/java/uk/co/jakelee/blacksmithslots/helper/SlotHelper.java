@@ -267,7 +267,7 @@ public class SlotHelper {
                 // Bring winning route to front. +1 due to bottom bar
                 ImageView routeImage = (ImageView)activity.findViewById(activity.getResources().getIdentifier("route_" + (i + 1), "id", activity.getPackageName()));
                 if (routeImage != null) {
-                    routeImage.setColorFilter(ContextCompat.getColor(activity, R.color.green), PorterDuff.Mode.MULTIPLY);
+                    routeImage.setColorFilter(ContextCompat.getColor(activity, R.color.greenText), PorterDuff.Mode.MULTIPLY);
                     routeImage.bringToFront();
                 }
             }

@@ -60,7 +60,7 @@
     <string name="pass_purchase">Buy Pass</string>
     <string name="pass_claim">Claim</string>
     <string name="pass_days_left">%1$d days left</string>
-    <string name="pass_desc_owned">Whilst your Blacksmith Pass is valid, you will receive free items every day!\n\nCheck back daily to claim!</string>
+    <string name="pass_desc_owned">Whilst your Blacksmith Pass is valid, you will receive free items every day!\n\nCheck back anytime between 00:00 and 23:59 to claim!</string>
     <string name="pass_desc_unowned">Purchasing a Blacksmith Pass entitles you to %1$d days of free daily goodies!</string>
     <string name="pass_days">Day %1$d:</string>
 
@@ -80,6 +80,7 @@
     <string name="error_not_enough_resources">Not enough resources to spin!</string>
     <string name="error_failed_pb_import">Failed to find a Pixel Blacksmith save! Make sure you\'ve given permission to access external storage, and try exporting the save again.</string>
     <string name="error_claimed_without_pass">Can\'t claim Blacksmith Pass rewards without having a Blacksmith Pass!</string>
+    <string name="error_claimed_pass_already">Already claimed this day\'s reward!</string>
 
     <!-- DB Lookups -->
     <string name="language_1">English</string>

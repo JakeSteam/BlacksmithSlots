@@ -19,7 +19,7 @@ public class IapHelper {
 
         long difference = System.currentTimeMillis() - pass.getLastPurchased();
         long differenceInDays = TimeUnit.MILLISECONDS.toDays(difference);
-        return differenceInDays > Constants.PASS_DAYS ? Constants.PASS_DAYS : (int)differenceInDays;
+        return Constants.PASS_DAYS - (differenceInDays > Constants.PASS_DAYS ? Constants.PASS_DAYS : (int)differenceInDays);
     }
 
     public static List<List<ItemBundle>> getPassRewards() {
