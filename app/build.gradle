@@ -21,6 +21,7 @@ android {
 dependencies {
     compile project(':wheel')
     compile project(':BaseGameUtils')
+    compile files('libs/applovin-sdk-6.4.2.jar')
     compile "com.android.support:appcompat-v7:$supportLibraryVersion"
     compile "com.android.support:percent:$supportLibraryVersion"
     compile "com.google.android.gms:play-services-games:$playLibraryVersion"
@@ -33,5 +34,6 @@ dependencies {
     compile 'pl.droidsonroids.gif:android-gif-drawable:1.1.16'
     compile 'de.keyboardsurfer.android.widget:crouton:1.8.5@aar'
     compile 'com.anjlab.android.iab.v3:library:1.0.38'
-    compile files('libs/applovin-sdk-6.4.2.jar')
+    compile 'com.jakewharton:butterknife:8.5.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
 }

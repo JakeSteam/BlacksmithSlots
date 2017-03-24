@@ -17,6 +17,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import uk.co.jakelee.blacksmithslots.BaseActivity;
 import uk.co.jakelee.blacksmithslots.R;
 import uk.co.jakelee.blacksmithslots.helper.AlertHelper;
@@ -29,15 +31,16 @@ import uk.co.jakelee.blacksmithslots.model.Setting;
 import uk.co.jakelee.blacksmithslots.model.Slot;
 
 public class InventoryActivity extends BaseActivity {
+    @BindView(R.id.inventoryTable) TableLayout inventoryTable;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_inventory);
+        ButterKnife.bind(this);
 
         LayoutInflater inflater = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        TableLayout statTable = (TableLayout)findViewById(R.id.inventoryTable);
         boolean onlyShowStockedItems = Setting.getBoolean(Enums.Setting.OnlyShowStocked);
         boolean orderByTier = Setting.getBoolean(Enums.Setting.OrderByTier);
         boolean reverseOrder = Setting.getBoolean(Enums.Setting.OrderReversed);
@@ -55,7 +58,7 @@ public class InventoryActivity extends BaseActivity {
                             inventory.getTier(),
                             inventory.getType()), "drawable", getPackageName()));
             ((TextView)tableRow.findViewById(R.id.itemInfo)).setText(inventory.getQuantity() + "x " + inventory.getName(this));
-            statTable.addView(tableRow);
+            inventoryTable.addView(tableRow);
         }
     }
 

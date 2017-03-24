@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.google.android.gms.common.ConnectionResult;
@@ -21,6 +22,8 @@ import com.google.android.gms.games.quest.QuestUpdateListener;
 import java.util.List;
 import java.util.Locale;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import hotchemi.android.rate.AppRate;
 import uk.co.jakelee.blacksmithslots.BaseActivity;
 import uk.co.jakelee.blacksmithslots.R;
@@ -44,18 +47,22 @@ import uk.co.jakelee.blacksmithslots.model.Setting;
 import uk.co.jakelee.blacksmithslots.model.Slot;
 import uk.co.jakelee.blacksmithslots.model.Task;
 
-import static uk.co.jakelee.blacksmithslots.R.id.watchAdvert;
-
 public class MapActivity extends BaseActivity implements
         GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener,
         QuestUpdateListener {
     public static SharedPreferences prefs;
-
     private int selectedSlot = 1;
     private ViewPager mViewPager;
     private CustomPagerAdapter mCustomPagerAdapter;
     private Handler handler = new Handler();
+
+    @BindView(R.id.noSlotSelected) RelativeLayout noSlotSidebar;
+    @BindView(R.id.superlockedSlot) RelativeLayout superLockedSlot;
+    @BindView(R.id.lockedSlot) RelativeLayout lockedSlot;
+    @BindView(R.id.unlockedSlot) RelativeLayout unlockedSlot;
+    @BindView(R.id.watchAdvert) TextView watchAdvert;
+    @BindView(R.id.claimBonus) TextView claimBonus;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +71,7 @@ public class MapActivity extends BaseActivity implements
         setContentView(R.layout.activity_map);
         prefs = getSharedPreferences("uk.co.jakelee.blacksmithslots", MODE_PRIVATE);
         LanguageHelper.updateLanguage(getApplicationContext());
+        ButterKnife.bind(this);
 
         ratingPrompt();
 
@@ -95,13 +103,13 @@ public class MapActivity extends BaseActivity implements
     }
 
     private void setPeriodicBonusUnclaimable() {
-        findViewById(R.id.claimBonus).setBackgroundResource(R.drawable.box_orange);
-        handler.post(Runnables.updateTimeToPeriodicBonusClaim(handler, (TextView)findViewById(R.id.claimBonus)));
+        claimBonus.setBackgroundResource(R.drawable.box_orange);
+        handler.post(Runnables.updateTimeToPeriodicBonusClaim(handler, claimBonus));
     }
 
     public void setAdvertUnclaimable() {
-        findViewById(watchAdvert).setBackgroundResource(R.drawable.box_orange);
-        handler.post(Runnables.updateTimeToWatchAdvert(handler, (TextView)findViewById(watchAdvert)));
+        watchAdvert.setBackgroundResource(R.drawable.box_orange);
+        handler.post(Runnables.updateTimeToWatchAdvert(handler, watchAdvert));
     }
 
     @Override
@@ -196,7 +204,7 @@ public class MapActivity extends BaseActivity implements
     }
 
     public void loadSidebar(View v) {
-        findViewById(R.id.noSlotSelected).setVisibility(View.VISIBLE);
+        noSlotSidebar.setVisibility(View.VISIBLE);
     }
 
     public void handIn(View v) {
@@ -237,9 +245,9 @@ public class MapActivity extends BaseActivity implements
 
     private void populateSlotInfoSuperlocked(Slot slot) {
         ((TextView) findViewById(R.id.slotDescription)).setText("Slot \"" + Slot.get(slot.getRequiredSlot()).getName(this) + "\" needs unlocking first!");
-        findViewById(R.id.superlockedSlot).setVisibility(View.VISIBLE);
-        findViewById(R.id.lockedSlot).setVisibility(View.GONE);
-        findViewById(R.id.unlockedSlot).setVisibility(View.GONE);
+        superLockedSlot.setVisibility(View.VISIBLE);
+        lockedSlot.setVisibility(View.GONE);
+        unlockedSlot.setVisibility(View.GONE);
     }
 
     private void populateSlotInfoLocked(Slot slot) {
@@ -258,9 +266,9 @@ public class MapActivity extends BaseActivity implements
         ((TextView) findViewById(R.id.taskRequirement)).setText(currentTask.toString(this));
         findViewById(R.id.handInButton).setTag(currentTask.getId());
 
-        findViewById(R.id.superlockedSlot).setVisibility(View.GONE);
-        findViewById(R.id.lockedSlot).setVisibility(View.VISIBLE);
-        findViewById(R.id.unlockedSlot).setVisibility(View.GONE);
+        superLockedSlot.setVisibility(View.GONE);
+        lockedSlot.setVisibility(View.VISIBLE);
+        unlockedSlot.setVisibility(View.GONE);
     }
 
     private void populateSlotInfoUnlocked(Slot slot) {
@@ -269,9 +277,9 @@ public class MapActivity extends BaseActivity implements
         populateItemContainer(R.id.resourceContainer, slot.getResources());
         populateItemContainer(R.id.rewardContainer, slot.getRewards());
 
-        findViewById(R.id.superlockedSlot).setVisibility(View.GONE);
-        findViewById(R.id.lockedSlot).setVisibility(View.GONE);
-        findViewById(R.id.unlockedSlot).setVisibility(View.VISIBLE);
+        superLockedSlot.setVisibility(View.GONE);
+        lockedSlot.setVisibility(View.GONE);
+        unlockedSlot.setVisibility(View.VISIBLE);
     }
 
     private void populateItemContainer(int id, List<ItemBundle> items) {
