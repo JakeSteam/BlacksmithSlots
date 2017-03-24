@@ -27,15 +27,15 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
             <uk.co.jakelee.blacksmithslots.components.FontTextView
-                android:id="@+id/tab_pass"
+                android:id="@+id/passTabTab"
                 android:text="@string/tab_pass"
                 style="@style/ShopTabs" />
             <uk.co.jakelee.blacksmithslots.components.FontTextView
-                android:id="@+id/tab_vip"
+                android:id="@+id/vipTabTab"
                 android:text="@string/tab_vip"
                 style="@style/ShopTabs" />
             <uk.co.jakelee.blacksmithslots.components.FontTextView
-                android:id="@+id/tab_bundle"
+                android:id="@+id/bundleTabTab"
                 android:text="@string/tab_bundle"
                 style="@style/ShopTabs" />
         </LinearLayout>
@@ -68,7 +68,6 @@
                         android:paddingRight="10dp"
                         android:paddingBottom="11dp"
                         android:textSize="25sp"
-                        android:onClick="buyIap"
                         style="@style/SlotText"/>
                     <uk.co.jakelee.blacksmithslots.components.FontTextView
                         android:id="@+id/passClaim"
@@ -114,66 +113,18 @@
                     android:layout_height="wrap_content"
                     style="@style/PassTabText"/>
                 <ScrollView
-                    android:id="@+id/passRewardsContainer"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:fadeScrollbars="false"
                     android:background="@drawable/box_yellow">
-                    <LinearLayout
+                    <TableLayout
+                        android:id="@+id/passRewardsContainer"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical">
-                        <uk.co.jakelee.blacksmithslots.components.FontTextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Day 1: 100 Bronze Bars, 150 Iron Swords"
-                            style="@style/PassTabText"/>
-                        <uk.co.jakelee.blacksmithslots.components.FontTextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Day 2: 120 Bronze Bars, 160 Iron Swords"
-                            style="@style/PassTabText"/>
-                        <uk.co.jakelee.blacksmithslots.components.FontTextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Day 3: 400 Bronze Ore, 100 Bronze Bars"
-                            style="@style/PassTabText"/>
-                        <uk.co.jakelee.blacksmithslots.components.FontTextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Day 4: 20 Red Gems, 15 Blue Gems, 10 Yellow Gems, 10 Green Gems"
-                            style="@style/PassTabText"/>
-                        <uk.co.jakelee.blacksmithslots.components.FontTextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Day 5: More"
-                            style="@style/PassTabText"/>
-                        <uk.co.jakelee.blacksmithslots.components.FontTextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Day 6: More"
-                            style="@style/PassTabText"/>
-                        <uk.co.jakelee.blacksmithslots.components.FontTextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Day 7: More"
-                            style="@style/PassTabText"/>
-                        <uk.co.jakelee.blacksmithslots.components.FontTextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Day 8: More"
-                            style="@style/PassTabText"/>
-                        <uk.co.jakelee.blacksmithslots.components.FontTextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Day 9: More"
-                            style="@style/PassTabText"/>
-                        <uk.co.jakelee.blacksmithslots.components.FontTextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Day 10: More"
-                            style="@style/PassTabText"/>
-                    </LinearLayout>
+                        android:stretchColumns="*"
+                        android:shrinkColumns="*"
+                        android:divider="?android:attr/dividerHorizontal"
+                        android:showDividers="middle" />
                 </ScrollView>
             </LinearLayout>
         </RelativeLayout>

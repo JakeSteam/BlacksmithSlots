@@ -156,6 +156,16 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
 
             // Blacksmith's Pass
             iaps.add(new Iap(Enums.Iap.BlacksmithPass, false));
+            iapBundles.add(new ItemBundle(1, Enums.Tier.Bronze, Enums.Type.Ore, 100));
+            iapBundles.add(new ItemBundle(2, Enums.Tier.Bronze, Enums.Type.Ore, 120));
+            iapBundles.add(new ItemBundle(3, Enums.Tier.Bronze, Enums.Type.Ore, 130));
+            iapBundles.add(new ItemBundle(4, Enums.Tier.Bronze, Enums.Type.Ore, 140));
+            iapBundles.add(new ItemBundle(5, Enums.Tier.Bronze, Enums.Type.Ore, 150));
+            iapBundles.add(new ItemBundle(6, Enums.Tier.Bronze, Enums.Type.Ore, 160));
+            iapBundles.add(new ItemBundle(7, Enums.Tier.Bronze, Enums.Type.Ore, 170));
+            iapBundles.add(new ItemBundle(8, Enums.Tier.Bronze, Enums.Type.Ore, 180));
+            iapBundles.add(new ItemBundle(9, Enums.Tier.Bronze, Enums.Type.Ore, 190));
+            iapBundles.add(new ItemBundle(10, Enums.Tier.Bronze, Enums.Type.Ore, 250));
 
             // Bundles
             iaps.add(new Iap(Enums.Iap.BronzeBar1000, false));
@@ -264,7 +274,8 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
             statistics.add(new Statistic(Enums.Statistic.LastBonusClaimed, "", "", 0L));
             statistics.add(new Statistic(Enums.Statistic.LastAutosave, "", "", 0L));
             statistics.add(new Statistic(Enums.Statistic.LastAdvertWatched, "", "", 0L));
-            statistics.add(new Statistic(Enums.Statistic.LastAdvertWatched, "", "", 0L));
+            statistics.add(new Statistic(Enums.Statistic.CurrentPassClaimedDay, "", "", 0));
+            statistics.add(new Statistic(Enums.Statistic.HighestPassClaimedDay, "", "", 0));
         Statistic.saveInTx(statistics);
     }
 

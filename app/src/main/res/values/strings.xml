@@ -30,6 +30,9 @@
     <string name="settinggroup_3">Notifications</string>
 
     <!-- UI -->
+    <!-- Misc -->
+    <string name="unknown">\???</string>
+
     <!-- Slot -->
     <string name="vip_level_display">VIP %1$d</string>
 
@@ -58,6 +61,7 @@
     <string name="pass_days_left">%1$d days left</string>
     <string name="pass_desc_owned">Whilst your Blacksmith Pass is valid, you will receive free items every day!\n\nCheck back daily to claim!</string>
     <string name="pass_desc_unowned">Purchasing a Blacksmith Pass entitles you to %1$d days of free daily goodies!</string>
+    <string name="pass_days">Day %1$d:</string>
 
     <string name="tab_vip">VIP Levels</string>
     <string name="vip_compare">Compare</string>
@@ -152,6 +156,8 @@
     <string name="statistic_12_name">Last Bonus Claimed</string>
     <string name="statistic_13_name">Pixel Blacksmith Save Imported</string>
     <string name="statistic_14_name">Last Advert Watched</string>
+    <string name="statistic_15_name">Current BS Pass Day</string>
+    <string name="statistic_16_name">Highest BS Pass Day</string>
 
     <string name="task_5_1_text">I guess XP is always good too.</string>
     <string name="task_5_2_text">Spinning will somehow help.</string>
