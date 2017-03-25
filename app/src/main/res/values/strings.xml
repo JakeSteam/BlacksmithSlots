@@ -55,7 +55,7 @@
     <string name="daily_bonus">Daily Bonus</string>
     <string name="autospins">Max Auto Spins</string>
 
-    <!-- IAP -->
+    <!-- Shop -->
     <string name="shop">Shop</string>
     <string name="tab_pass">Blacksmith Pass</string>
     <string name="pass_purchase">Buy Pass</string>
@@ -68,6 +68,8 @@
     <string name="tab_vip">VIP Levels</string>
     <string name="vip_compare">Compare</string>
     <string name="vip_upgrade">Upgrade</string>
+    <string name="vip_intro">Upgrade to VIP %1$d and receive:</string>
+    <string name="vip_intro_max">You\'ve made it to the maximum VIP level!\n\nThere\'s no more VIP levels, but there\'s always item bundles and the Blacksmith Pass if you just can\'t get enough!</string>
 
     <string name="tab_bundle">Item Bundles</string>
 

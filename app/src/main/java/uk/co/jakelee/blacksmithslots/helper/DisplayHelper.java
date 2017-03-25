@@ -103,26 +103,31 @@ public class DisplayHelper {
     }
 
     public static String bundlesToString(Context context, List<ItemBundle> bundles) {
-        return bundlesToString(context, bundles, 1, true);
+        return bundlesToString(context, bundles, 1, true, "", ", ");
     }
 
     public static String bundlesToString(Context context, List<ItemBundle> bundles, int multiplier) {
-        return bundlesToString(context, bundles, multiplier, true);
+        return bundlesToString(context, bundles, multiplier, true, "", ", ");
     }
 
     public static String bundlesToString(Context context, List<ItemBundle> bundles, int multiplier, boolean includeQuantity) {
+        return bundlesToString(context, bundles, multiplier, includeQuantity, "", ", ");
+    }
+
+    public static String bundlesToString(Context context, List<ItemBundle> bundles, int multiplier, boolean includeQuantity, String itemPrefix, String itemDivider) {
         StringBuilder itemText = new StringBuilder();
         for (ItemBundle itemBundle : bundles) {
             if (includeQuantity) {
+                itemText.append(itemPrefix);
                 itemText.append(itemBundle.getQuantity() * multiplier);
                 itemText.append("x ");
             }
             itemText.append(Item.getName(context, itemBundle.getTier(), itemBundle.getType()));
-            itemText.append(", ");
+            itemText.append(itemDivider);
         }
 
         String itemString = itemText.toString();
-        return itemString.length() > 0 ? itemString.substring(0, itemString.length() - 2) : "";
+        return itemString.length() > 0 ? itemDivider.equals(", ") ? itemString.substring(0, itemString.length() - 2) : itemString : "";
     }
 
     public static void populateItemRows(Activity activity, int id, LayoutInflater inflater, Picasso picasso, ViewGroup.LayoutParams params, List<Inventory> items, boolean showOutOfStock) {

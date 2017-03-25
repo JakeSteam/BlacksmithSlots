@@ -21,6 +21,7 @@ public class Constants {
     public final static int VIP_LEVEL_MODIFIER = 25;
     public final static int VIP_DAILY_BONUS_MODIFIER = 50;
     public final static int PASS_DAYS = 30;
+    public final static int AUTOSPIN_INCREASE = 10;
 
     // Intents
     public final static String INTENT_SLOT = "uk.co.jakelee.blacksmithslots.slot";

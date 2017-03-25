@@ -35,6 +35,12 @@ public class IapHelper {
         return rewards;
     }
 
+    public static List<ItemBundle> getVipRewardsForLevel(int level) {
+        return Select.from(ItemBundle.class).where(
+                Condition.prop("f").eq(Enums.ItemBundleType.IapReward.value),
+                Condition.prop("a").eq(level + 1)).list();
+    }
+
     public static List<ItemBundle> getPassRewardsForDay(int day) {
         return Select.from(ItemBundle.class).where(
                 Condition.prop("f").eq(Enums.ItemBundleType.PassReward.value),

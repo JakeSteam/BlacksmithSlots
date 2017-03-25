@@ -1,6 +1,7 @@
 package uk.co.jakelee.blacksmithslots.main;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
@@ -29,6 +30,7 @@ import uk.co.jakelee.blacksmithslots.helper.DateHelper;
 import uk.co.jakelee.blacksmithslots.helper.DisplayHelper;
 import uk.co.jakelee.blacksmithslots.helper.Enums;
 import uk.co.jakelee.blacksmithslots.helper.IapHelper;
+import uk.co.jakelee.blacksmithslots.helper.LevelHelper;
 import uk.co.jakelee.blacksmithslots.model.Iap;
 import uk.co.jakelee.blacksmithslots.model.ItemBundle;
 import uk.co.jakelee.blacksmithslots.model.Statistic;
@@ -50,6 +52,10 @@ public class ShopActivity extends BaseActivity {
     @BindView(R.id.vipTabTab) TextView vipTabTab;
     @BindView(R.id.bundleTabTab) TextView bundleTabTab;
     @BindView(R.id.passRewardsContainer) TableLayout passRewardsContainer;
+
+    @BindView(R.id.vipIntro) TextView vipIntro;
+    @BindView(R.id.vipBonuses) TextView vipBonuses;
+    @BindView(R.id.vipUpgrade) TextView vipUpgrade;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -128,11 +134,38 @@ public class ShopActivity extends BaseActivity {
     }
 
     private void createVipTab() {
+        int vipLevel = LevelHelper.getVipLevel();
+        if (vipLevel >= Constants.MAX_VIP_LEVEL) {
+            vipIntro.setText(R.string.vip_intro_max);
+            vipBonuses.setText("");
+            vipUpgrade.setVisibility(View.GONE);
+        } else {
+            vipIntro.setText(String.format(Locale.ENGLISH, getString(R.string.vip_intro), vipLevel + 1));
 
+            String vipBonusesText = DisplayHelper.bundlesToString(this, IapHelper.getVipRewardsForLevel(vipLevel + 1), 1, true, "- ", "\n");
+            vipBonusesText += "-" + getString(R.string.chest_cooldown) + " -" + String.format(Locale.ENGLISH, getString(R.string.time_hours), Constants.CHEST_COOLDOWN_VIP_REDUCTION);
+            vipBonusesText += "\n-" + getString(R.string.reward_boost) + " +" + Constants.VIP_LEVEL_MODIFIER + "%";
+            vipBonusesText += "\n-" + getString(R.string.advert_cooldown) + " -" + String.format(Locale.ENGLISH, getString(R.string.time_mins), (int)(60 * Constants.ADVERT_COOLDOWN_VIP_REDUCTION));
+            vipBonusesText += "\n-" + getString(R.string.daily_bonus) + " +" + Constants.VIP_DAILY_BONUS_MODIFIER + "%";
+            vipBonusesText += "\n-" + getString(R.string.autospins) + " +" + Constants.AUTOSPIN_INCREASE;
+
+
+            vipBonuses.setText(vipBonusesText);
+        }
     }
 
     private void createBundleTab() {
 
+    }
+
+    @OnClick(R.id.vipUpgrade)
+    public void upgradeVip() {
+        Statistic vipLevel = Statistic.get(Enums.Statistic.VipLevel);
+        if (vipLevel.getIntValue() < Constants.MAX_VIP_LEVEL) {
+            vipLevel.setIntValue(vipLevel.getIntValue() + 1);
+            vipLevel.save();
+            createVipTab();
+        }
     }
 
     @OnClick(R.id.passClaim)
@@ -194,6 +227,12 @@ public class ShopActivity extends BaseActivity {
 
         AlertHelper.success(this, R.string.alert_pass_purchased, true);
         createPassTab();
+    }
+
+    @OnClick(R.id.vipCompare)
+    public void compareVip() {
+        startActivity(new Intent(this, VipComparisonActivity.class)
+                .addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT));
     }
 
     @OnClick({ R.id.passTabTab, R.id.vipTabTab, R.id.bundleTabTab })

@@ -147,12 +147,12 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
             iapBundles.add(new ItemBundle(Enums.Iap.VipLevel1, Enums.Tier.Bronze, Enums.Type.Secondary, 1000, true));
 
             iaps.add(new Iap(Enums.Iap.VipLevel2, true));
-            iapBundles.add(new ItemBundle(Enums.Iap.VipLevel2, Enums.Tier.Bronze, Enums.Type.Bar, 1000, true));
-            iapBundles.add(new ItemBundle(Enums.Iap.VipLevel2, Enums.Tier.Bronze, Enums.Type.Secondary, 1000, true));
+            iapBundles.add(new ItemBundle(Enums.Iap.VipLevel2, Enums.Tier.Bronze, Enums.Type.Bar, 2000, true));
+            iapBundles.add(new ItemBundle(Enums.Iap.VipLevel2, Enums.Tier.Bronze, Enums.Type.Secondary, 2000, true));
 
             iaps.add(new Iap(Enums.Iap.VipLevel3, true));
-            iapBundles.add(new ItemBundle(Enums.Iap.VipLevel3, Enums.Tier.Bronze, Enums.Type.Bar, 1000, true));
-            iapBundles.add(new ItemBundle(Enums.Iap.VipLevel3, Enums.Tier.Bronze, Enums.Type.Secondary, 1000, true));
+            iapBundles.add(new ItemBundle(Enums.Iap.VipLevel3, Enums.Tier.Bronze, Enums.Type.Bar, 2000, true));
+            iapBundles.add(new ItemBundle(Enums.Iap.VipLevel3, Enums.Tier.Bronze, Enums.Type.Secondary, 2000, true));
 
             // Blacksmith's Pass
             iaps.add(new Iap(Enums.Iap.BlacksmithPass, 0, 0, false));
@@ -264,7 +264,7 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
         List<Statistic> statistics = new ArrayList<>();
             statistics.add(new Statistic(Enums.Statistic.Xp, "", "", Constants.STARTING_XP));
             statistics.add(new Statistic(Enums.Statistic.Level, "CgkIoMe6hp0eEAIQBw", "CgkIoMe6hp0eEAIQEA", 1));
-            statistics.add(new Statistic(Enums.Statistic.VipLevel, "CgkIoMe6hp0eEAIQDw", "", 3));
+            statistics.add(new Statistic(Enums.Statistic.VipLevel, "CgkIoMe6hp0eEAIQDw", "", 0));
             statistics.add(new Statistic(Enums.Statistic.TotalSpins, "CgkIoMe6hp0eEAIQCA", "CgkIoMe6hp0eEAIQEQ", 0));
             statistics.add(new Statistic(Enums.Statistic.QuestsCompleted, "CgkIoMe6hp0eEAIQCQ", "CgkIoMe6hp0eEAIQEg", 0));
             statistics.add(new Statistic(Enums.Statistic.ResourcesGambled, "CgkIoMe6hp0eEAIQCg", "CgkIoMe6hp0eEAIQEw", 0));
