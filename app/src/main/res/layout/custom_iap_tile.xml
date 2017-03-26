@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/iapTile"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/box_yellow"
+    android:orientation="vertical">
+
+    <uk.co.jakelee.blacksmithslots.components.FontTextView
+        android:id="@+id/itemPrice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="3dp"
+        android:textAppearance="@style/FontSize"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:text="£1.99"/>
+
+    <LinearLayout
+        android:id="@+id/itemTextContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_centerHorizontal="true"
+        android:padding="3dp">
+        <uk.co.jakelee.blacksmithslots.components.FontTextView
+            android:id="@+id/itemName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="2dp"
+            android:gravity="center_horizontal"
+            android:textAppearance="@style/FontSize" />
+        <uk.co.jakelee.blacksmithslots.components.FontTextView
+            android:id="@+id/itemQuantity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="2dp"
+            android:gravity="center_horizontal"
+            android:textAppearance="@style/FontSize"/>
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/itemImage"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_margin="5dp"
+        android:layout_below="@id/itemTextContainer"
+        android:layout_above="@id/itemPrice"/>
+
+
+</RelativeLayout>

@@ -9,12 +9,12 @@ import android.view.ViewGroup;
 
 import uk.co.jakelee.blacksmithslots.R;
 
-public class CustomPagerAdapter extends PagerAdapter {
+public class MapPagerAdapter extends PagerAdapter {
     Context mContext;
     LayoutInflater mLayoutInflater;
     private int[] townLayouts = {R.layout.custom_town_1, R.layout.custom_town_2, R.layout.custom_town_3};
 
-    public CustomPagerAdapter(Context context) {
+    public MapPagerAdapter(Context context) {
         mContext = context;
         mLayoutInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }

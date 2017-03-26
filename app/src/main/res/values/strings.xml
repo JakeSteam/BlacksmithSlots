@@ -72,6 +72,7 @@
     <string name="vip_intro_max">You\'ve made it to the maximum VIP level!\n\nThere\'s no more VIP levels, but there\'s always item bundles and the Blacksmith Pass if you just can\'t get enough!</string>
 
     <string name="tab_bundle">Item Bundles</string>
+    <string name="bundle_item_select">Item:</string>
 
     <!-- Inventory -->
     <string name="itemSourcesButton">Sources</string>

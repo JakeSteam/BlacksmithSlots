@@ -7,15 +7,21 @@ import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
+import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.Spinner;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
@@ -32,6 +38,7 @@ import uk.co.jakelee.blacksmithslots.helper.Enums;
 import uk.co.jakelee.blacksmithslots.helper.IapHelper;
 import uk.co.jakelee.blacksmithslots.helper.LevelHelper;
 import uk.co.jakelee.blacksmithslots.model.Iap;
+import uk.co.jakelee.blacksmithslots.model.Item;
 import uk.co.jakelee.blacksmithslots.model.ItemBundle;
 import uk.co.jakelee.blacksmithslots.model.Statistic;
 
@@ -39,6 +46,9 @@ public class ShopActivity extends BaseActivity {
     private boolean haveSetupTabs = false;
     private int selectedTabId = R.id.vipTabTab;
     SharedPreferences prefs;
+    private int spinnersInitialised = 0;
+    private int totalSpinners = 1;
+    private List<Pair<Integer, Integer>> dropdownItems = new ArrayList<>();
 
     @BindView(R.id.passImage) ImageView passImage;
     @BindView(R.id.passDaysLeft) TextView passDaysLeft;
@@ -56,6 +66,9 @@ public class ShopActivity extends BaseActivity {
     @BindView(R.id.vipIntro) TextView vipIntro;
     @BindView(R.id.vipBonuses) TextView vipBonuses;
     @BindView(R.id.vipUpgrade) TextView vipUpgrade;
+
+    @BindView(R.id.bundleItemDropdown) Spinner bundleItemDropdown;
+    @BindView(R.id.bundleItemContainer) LinearLayout bundleItemContainer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -149,13 +162,47 @@ public class ShopActivity extends BaseActivity {
             vipBonusesText += "\n-" + getString(R.string.daily_bonus) + " +" + Constants.VIP_DAILY_BONUS_MODIFIER + "%";
             vipBonusesText += "\n-" + getString(R.string.autospins) + " +" + Constants.AUTOSPIN_INCREASE;
 
-
             vipBonuses.setText(vipBonusesText);
         }
     }
 
     private void createBundleTab() {
+        ArrayAdapter<String> envAdapter = new ArrayAdapter<>(this, R.layout.custom_spinner_display);
+        envAdapter.setDropDownViewResource(R.layout.custom_spinner_item);
 
+        dropdownItems.clear();
+        List<ItemBundle> items = IapHelper.getUniqueBundleItems();
+        for (ItemBundle item : items) {
+            envAdapter.add(Item.getName(this, item.getTier(), item.getType()));
+            dropdownItems.add(new Pair<>(item.getTier().value, item.getType().value));
+        }
+
+        bundleItemDropdown.setAdapter(envAdapter);
+        bundleItemDropdown.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                    populateItems(dropdownItems.get(position));
+            }
+            @Override public void onNothingSelected(AdapterView<?> parentView) {}
+        });
+    }
+
+    private void populateItems(Pair<Integer, Integer> item) {
+        bundleItemContainer.removeAllViews();
+
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        params.setMargins(10, 10, 10, 10);
+        LayoutInflater inflater = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        List<ItemBundle> iaps = IapHelper.getBundlesForItem(item.first, item.second);
+        int imageResource = getResources().getIdentifier(DisplayHelper.getItemImageFile(item.first, item.second), "drawable", getPackageName());
+        String itemName = Item.getName(this, item.first, item.second);
+        for (ItemBundle iap : iaps) {
+            RelativeLayout itemTile = (RelativeLayout) inflater.inflate(R.layout.custom_iap_tile, null).findViewById(R.id.iapTile);
+            ((ImageView)itemTile.findViewById(R.id.itemImage)).setImageResource(imageResource);
+            ((TextView)itemTile.findViewById(R.id.itemName)).setText(itemName);
+            ((TextView)itemTile.findViewById(R.id.itemQuantity)).setText(iap.getQuantity() + "x");
+            bundleItemContainer.addView(itemTile, params);
+        }
     }
 
     @OnClick(R.id.vipUpgrade)

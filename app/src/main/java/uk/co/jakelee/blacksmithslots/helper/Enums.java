@@ -43,8 +43,8 @@ public class Enums {
 
     public enum Iap {
         BlacksmithPass(1),
-        VipLevel1(2), VipLevel2(3), VipLevel3(4),
-        BronzeBar1000(10), BronzeBar5000(11),BronzeBar10000(12),
+        VipLevel1(2), VipLevel2(3), VipLevel3(4), VipLevel4(5), VipLevel5(6), VipLevel6(7),
+        BronzeOre1000(10), BronzeOre5000(11),BronzeOre10000(12),
         BronzeSecondary1000(13), BronzeSecondary5000(14),BronzeSecondary10000(15);
         public int value;
         Iap(int value) {

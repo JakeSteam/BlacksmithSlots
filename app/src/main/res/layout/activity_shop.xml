@@ -194,6 +194,36 @@
             android:layout_below="@id/tabBar"
             android:onClick="suppress"
             android:visibility="gone">
+            <LinearLayout
+                android:id="@+id/bundleItemDropdownContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="7dp">
+                <uk.co.jakelee.blacksmithslots.components.FontTextView
+                    android:id="@+id/bundleItemDropdownText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/bundle_item_select"
+                    style="@style/FontSize"
+                    android:layout_margin="3dp"/>
+                <Spinner
+                    android:id="@+id/bundleItemDropdown"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/DataText"
+                    android:layout_margin="3dp"/>
+            </LinearLayout>
+            <HorizontalScrollView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_below="@id/bundleItemDropdownContainer" >
+                <LinearLayout
+                    android:id="@+id/bundleItemContainer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"/>
+            </HorizontalScrollView>
         </RelativeLayout>
 
     </RelativeLayout>

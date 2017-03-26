@@ -168,12 +168,12 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
             iapBundles.add(new ItemBundle(10, Enums.Tier.Bronze, Enums.Type.Ore, 250));
 
             // Bundles
-            iaps.add(new Iap(Enums.Iap.BronzeBar1000, false));
-            iapBundles.add(new ItemBundle(Enums.Iap.BronzeBar1000, Enums.Tier.Bronze, Enums.Type.Bar, 1000, true));
-            iaps.add(new Iap(Enums.Iap.BronzeBar5000, false));
-            iapBundles.add(new ItemBundle(Enums.Iap.BronzeBar5000, Enums.Tier.Bronze, Enums.Type.Bar, 5000, true));
-            iaps.add(new Iap(Enums.Iap.BronzeBar10000, false));
-            iapBundles.add(new ItemBundle(Enums.Iap.BronzeBar10000, Enums.Tier.Bronze, Enums.Type.Bar, 10000, true));
+            iaps.add(new Iap(Enums.Iap.BronzeOre1000, false));
+            iapBundles.add(new ItemBundle(Enums.Iap.BronzeOre1000, Enums.Tier.Bronze, Enums.Type.Ore, 1000, true));
+            iaps.add(new Iap(Enums.Iap.BronzeOre5000, false));
+            iapBundles.add(new ItemBundle(Enums.Iap.BronzeOre5000, Enums.Tier.Bronze, Enums.Type.Ore, 5000, true));
+            iaps.add(new Iap(Enums.Iap.BronzeOre10000, false));
+            iapBundles.add(new ItemBundle(Enums.Iap.BronzeOre10000, Enums.Tier.Bronze, Enums.Type.Ore, 10000, true));
 
             iaps.add(new Iap(Enums.Iap.BronzeSecondary1000, false));
             iapBundles.add(new ItemBundle(Enums.Iap.BronzeSecondary1000, Enums.Tier.Bronze, Enums.Type.Secondary, 1000, true));
