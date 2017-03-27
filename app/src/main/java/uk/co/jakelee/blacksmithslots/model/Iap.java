@@ -78,10 +78,6 @@ public class Iap extends SugarRecord {
         this.iapName = iapName;
     }
 
-    public String getName() {
-        return "This should be from strings";
-    }
-
     public long getLastPurchased() {
         return lastPurchased;
     }

@@ -22,6 +22,7 @@ import android.widget.TableRow;
 import android.widget.TextView;
 
 import com.anjlab.android.iab.v3.BillingProcessor;
+import com.anjlab.android.iab.v3.SkuDetails;
 import com.anjlab.android.iab.v3.TransactionDetails;
 
 import java.util.ArrayList;
@@ -235,15 +236,19 @@ public class ShopActivity extends BaseActivity implements BillingProcessor.IBill
         List<ItemBundle> iaps = IapHelper.getBundlesForItem(item.first, item.second);
         int imageResource = getResources().getIdentifier(DisplayHelper.getItemImageFile(item.first, item.second), "drawable", getPackageName());
         String itemName = Item.getName(this, item.first, item.second);
-        for (final ItemBundle iap : iaps) {
+        for (ItemBundle iap : iaps) {
             RelativeLayout itemTile = (RelativeLayout) inflater.inflate(R.layout.custom_iap_tile, null).findViewById(R.id.iapTile);
             ((ImageView)itemTile.findViewById(R.id.itemImage)).setImageResource(imageResource);
             ((TextView)itemTile.findViewById(R.id.itemName)).setText(itemName);
             ((TextView)itemTile.findViewById(R.id.itemQuantity)).setText(iap.getQuantity() + "x");
+            final Iap iapItem = Iap.get(iap.getIdentifier());
+            SkuDetails iapInfo = bp.getPurchaseListingDetails(iapItem.getIapName());
+            if (iapInfo != null) {
+                ((TextView)itemTile.findViewById(R.id.itemPrice)).setText(iapInfo.toString());
+            }
             itemTile.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Iap iapItem = Iap.get(iap.getIdentifier());
                     onProductPurchased(iapItem.getIapName(), null);
                 }
             });
@@ -379,7 +384,7 @@ public class ShopActivity extends BaseActivity implements BillingProcessor.IBill
     public void buyIAP(int iapId) {
         Iap iap = Iap.get(iapId);
         if (canBuyIAPs && iap != null) {
-            bp.purchase(this, iap.getName());
+            bp.purchase(this, iap.getIapName());
         } else {
             AlertHelper.error(this, "IAB Failed, maybe internet?", false);
         }

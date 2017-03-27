@@ -14,7 +14,7 @@
         android:textAppearance="@style/FontSize"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:text="£1.99"/>
+        android:text=""/>
 
     <LinearLayout
         android:id="@+id/itemTextContainer"
