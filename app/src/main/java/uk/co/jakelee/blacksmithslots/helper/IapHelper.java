@@ -47,6 +47,12 @@ public class IapHelper {
                 Condition.prop("a").eq(day)).list();
     }
 
+    public static List<ItemBundle> getBundleRewards(int bundleId) {
+        return Select.from(ItemBundle.class).where(
+                Condition.prop("f").eq(Enums.ItemBundleType.IapReward.value),
+                Condition.prop("a").eq(bundleId)).list();
+    }
+
     public static List<ItemBundle> getUniqueBundleItems() {
         return Select.from(ItemBundle.class).where("a > " + Enums.Iap.VipLevel6.value + " AND f = " + Enums.ItemBundleType.IapReward.value + " GROUP BY b, c ORDER BY b, c").list();
     }

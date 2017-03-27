@@ -14,12 +14,15 @@ public class Iap extends SugarRecord {
     private int iapId;
 
     @Column(name = "b")
-    private long lastPurchased;
+    private String iapName;
 
     @Column(name = "c")
-    private int timesPurchased;
+    private long lastPurchased;
 
     @Column(name = "d")
+    private int timesPurchased;
+
+    @Column(name = "e")
     private boolean isVipPurchase;
 
     public Iap() {
@@ -27,6 +30,7 @@ public class Iap extends SugarRecord {
 
     public Iap(Enums.Iap iap, long lastPurchased, int timesPurchased, boolean isVipPurchase) {
         this.iapId = iap.value;
+        this.iapName = iap.name();
         this.lastPurchased = lastPurchased;
         this.timesPurchased = timesPurchased;
         this.isVipPurchase = isVipPurchase;
@@ -34,6 +38,7 @@ public class Iap extends SugarRecord {
 
     public Iap(Enums.Iap iap, boolean isVipPurchase) {
         this.iapId = iap.value;
+        this.iapName = iap.name();
         this.lastPurchased = 0;
         this.timesPurchased = 0;
         this.isVipPurchase = isVipPurchase;
@@ -43,6 +48,34 @@ public class Iap extends SugarRecord {
         return Select.from(Iap.class).where(
                 Condition.prop("a").eq(iap.value)
         ).first();
+    }
+
+    public static Iap get(int iap) {
+        return Select.from(Iap.class).where(
+                Condition.prop("a").eq(iap)
+        ).first();
+    }
+
+    public static Iap get(String iap) {
+        return Select.from(Iap.class).where(
+                Condition.prop("b").eq(iap)
+        ).first();
+    }
+
+    public int getIapId() {
+        return iapId;
+    }
+
+    public void setIapId(int iapId) {
+        this.iapId = iapId;
+    }
+
+    public String getIapName() {
+        return iapName;
+    }
+
+    public void setIapName(String iapName) {
+        this.iapName = iapName;
     }
 
     public String getName() {

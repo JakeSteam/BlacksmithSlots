@@ -21,6 +21,9 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
+import com.anjlab.android.iab.v3.BillingProcessor;
+import com.anjlab.android.iab.v3.TransactionDetails;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -38,17 +41,21 @@ import uk.co.jakelee.blacksmithslots.helper.Enums;
 import uk.co.jakelee.blacksmithslots.helper.IapHelper;
 import uk.co.jakelee.blacksmithslots.helper.LevelHelper;
 import uk.co.jakelee.blacksmithslots.model.Iap;
+import uk.co.jakelee.blacksmithslots.model.Inventory;
 import uk.co.jakelee.blacksmithslots.model.Item;
 import uk.co.jakelee.blacksmithslots.model.ItemBundle;
 import uk.co.jakelee.blacksmithslots.model.Statistic;
 
-public class ShopActivity extends BaseActivity {
+public class ShopActivity extends BaseActivity implements BillingProcessor.IBillingHandler {
     private boolean haveSetupTabs = false;
     private int selectedTabId = R.id.vipTabTab;
     SharedPreferences prefs;
     private List<Pair<Integer, Integer>> dropdownItems = new ArrayList<>();
     int preloadingTier = 0;
     int preloadingType = 0;
+
+    boolean canBuyIAPs = false;
+    private BillingProcessor bp;
 
     @BindView(R.id.passImage) ImageView passImage;
     @BindView(R.id.passDaysLeft) TextView passDaysLeft;
@@ -84,6 +91,24 @@ public class ShopActivity extends BaseActivity {
         if (preloadingTier > 0 && preloadingType > 0) {
             prefs.edit().putInt("selectedShopTabId", R.id.bundleTabTab).apply();
         }
+
+        canBuyIAPs = BillingProcessor.isIabServiceAvailable(this);
+        if (canBuyIAPs) {
+            bp = new BillingProcessor(this, getPublicKey(), this);
+        }
+    }
+
+    private String getPublicKey() {
+        String[] keyArray = new String[]{
+                "MIIBIjANBgkqhk", "iG9w0BAQEFAAOC", "AQ8AMIIBCgKCAQ", "EAhz8/eEVdISSu", "M2ChjVVNIpn7Hz", "5SlaR72FHoP7Mv", "W4KjnQNQbA6VrN", "vn84HTQQ2l4izu", "rWU6+7g82ZQh3E", "jEBwfOdJdFdydN", "ZdX/YSnprmRsnT", "ucFiU6jCWj5yZ9", "AQnLj71woL1cVH", "D8Ht5XUuYk7YRo", "CacxFHYMlxUfS3", "0r7tvztYHZFIGq", "pJjIkfXoxlVoUg", "SJ+WFTchpBGtT9", "daQmheU7ZxkwbB", "yNoFGQKJoMAdDj", "H6mXBUwMrXzfmq", "jXRjMCR+Rdz0zS", "ORoj+Ps4ZSTr3v", "NhEjoH4ElOlOoO", "MTHyNjiTlY2IIC", "XCuU1xHgfJ0hrd", "t6BW3qlMamsxkZ", "WTLSlTfwIDAQAB"
+        };
+
+        StringBuilder builder = new StringBuilder();
+        for (String keyPart : keyArray) {
+            builder.append(keyPart);
+        }
+
+        return builder.toString();
     }
 
     @Override
@@ -210,22 +235,19 @@ public class ShopActivity extends BaseActivity {
         List<ItemBundle> iaps = IapHelper.getBundlesForItem(item.first, item.second);
         int imageResource = getResources().getIdentifier(DisplayHelper.getItemImageFile(item.first, item.second), "drawable", getPackageName());
         String itemName = Item.getName(this, item.first, item.second);
-        for (ItemBundle iap : iaps) {
+        for (final ItemBundle iap : iaps) {
             RelativeLayout itemTile = (RelativeLayout) inflater.inflate(R.layout.custom_iap_tile, null).findViewById(R.id.iapTile);
             ((ImageView)itemTile.findViewById(R.id.itemImage)).setImageResource(imageResource);
             ((TextView)itemTile.findViewById(R.id.itemName)).setText(itemName);
             ((TextView)itemTile.findViewById(R.id.itemQuantity)).setText(iap.getQuantity() + "x");
+            itemTile.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Iap iapItem = Iap.get(iap.getIdentifier());
+                    onProductPurchased(iapItem.getIapName(), null);
+                }
+            });
             bundleItemContainer.addView(itemTile, params);
-        }
-    }
-
-    @OnClick(R.id.vipUpgrade)
-    public void upgradeVip() {
-        Statistic vipLevel = Statistic.get(Enums.Statistic.VipLevel);
-        if (vipLevel.getIntValue() < Constants.MAX_VIP_LEVEL) {
-            vipLevel.setIntValue(vipLevel.getIntValue() + 1);
-            vipLevel.save();
-            createVipTab();
         }
     }
 
@@ -270,26 +292,6 @@ public class ShopActivity extends BaseActivity {
         }
     }
 
-    @OnClick(R.id.passPurchase)
-    public void buyPass(View v) {
-        Enums.Iap iapEnum = (Enums.Iap)v.getTag();
-        Iap iap = Iap.get(iapEnum);
-        int daysLeft = IapHelper.getPassDaysLeft();
-
-        iap.setTimesPurchased(iap.getTimesPurchased() + 1);
-
-        if (daysLeft == 0) {
-            iap.setLastPurchased(DateHelper.getYesterdayMidnight().getTimeInMillis());
-            Statistic.set(Enums.Statistic.CurrentPassClaimedDay, 0);
-        } else {
-            Statistic.add(Enums.Statistic.ExtraPassMonths);
-        }
-        iap.save();
-
-        AlertHelper.success(this, R.string.alert_pass_purchased, true);
-        createPassTab();
-    }
-
     @OnClick(R.id.vipCompare)
     public void compareVip() {
         startActivity(new Intent(this, VipComparisonActivity.class)
@@ -310,5 +312,95 @@ public class ShopActivity extends BaseActivity {
         passTabTab.setAlpha(id == R.id.passTabTab ? 1f : 0.5f);
         vipTabTab.setAlpha(id == R.id.vipTabTab ? 1f : 0.5f);
         bundleTabTab.setAlpha(id == R.id.bundleTabTab ? 1f : 0.5f);
+    }
+
+    @Override
+    public void onBillingInitialized() {
+    }
+
+    @Override
+    public void onProductPurchased(String productId, TransactionDetails details) {
+        Iap iap = Iap.get(productId);
+        iap.setTimesPurchased(iap.getTimesPurchased() + 1);
+        iap.save();
+
+        List<ItemBundle> items = new ArrayList<>();
+        if (iap.isVipPurchase()) {
+            Statistic vipLevel = Statistic.get(Enums.Statistic.VipLevel);
+            if (vipLevel.getIntValue() < Constants.MAX_VIP_LEVEL) {
+                vipLevel.setIntValue(vipLevel.getIntValue() + 1);
+                vipLevel.save();
+                createVipTab();
+            }
+
+            items = IapHelper.getVipRewardsForLevel(vipLevel.getIntValue());
+            AlertHelper.success(this, "Gone up to VIP level " + vipLevel.getIntValue() + " and gained " + DisplayHelper.bundlesToString(this, items)+ "!", true);
+        } else if (iap.getIapId() == Enums.Iap.BlacksmithPass.value) {
+            int daysLeft = IapHelper.getPassDaysLeft();
+
+            if (daysLeft == 0) {
+                iap.setLastPurchased(DateHelper.getYesterdayMidnight().getTimeInMillis());
+                Statistic.set(Enums.Statistic.CurrentPassClaimedDay, 0);
+            } else {
+                Statistic.add(Enums.Statistic.ExtraPassMonths);
+            }
+            iap.save();
+
+            AlertHelper.success(this, R.string.alert_pass_purchased, true);
+            createPassTab();
+        } else {
+            items = IapHelper.getBundleRewards(iap.getIapId());
+            AlertHelper.success(this, "Received a bundle containing " + DisplayHelper.bundlesToString(this, items)+ "!", true);
+        }
+
+        for (ItemBundle item : items) {
+            Inventory.addInventory(item);
+        }
+    }
+
+    @Override
+    public void onBillingError(int errorCode, Throwable error) {
+        if (errorCode != com.anjlab.android.iab.v3.Constants.BILLING_RESPONSE_RESULT_USER_CANCELED) {
+            AlertHelper.error(this, "Error with IAB", false);
+        }
+    }
+
+    @Override
+    public void onPurchaseHistoryRestored() {
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (!bp.handleActivityResult(requestCode, resultCode, data)) {
+            super.onActivityResult(requestCode, resultCode, data);
+        }
+    }
+
+    public void buyIAP(int iapId) {
+        Iap iap = Iap.get(iapId);
+        if (canBuyIAPs && iap != null) {
+            bp.purchase(this, iap.getName());
+        } else {
+            AlertHelper.error(this, "IAB Failed, maybe internet?", false);
+        }
+    }
+
+    @Override
+    public void onDestroy() {
+        if (bp != null) { bp.release(); }
+        super.onDestroy();
+    }
+
+    @OnClick(R.id.vipUpgrade)
+    public void upgradeVip() {
+        int vipLevel = LevelHelper.getVipLevel();
+        if (vipLevel < Constants.MAX_VIP_LEVEL) {
+            onProductPurchased("VipLevel" + (vipLevel + 1), null);
+        }
+    }
+
+    @OnClick(R.id.passPurchase)
+    public void buyPass() {
+        onProductPurchased("BlacksmithPass", null);
     }
 }

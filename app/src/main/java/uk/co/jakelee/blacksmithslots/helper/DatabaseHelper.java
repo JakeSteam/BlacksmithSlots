@@ -154,6 +154,10 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
             iapBundles.add(new ItemBundle(Enums.Iap.VipLevel3, Enums.Tier.Bronze, Enums.Type.Bar, 2000, true));
             iapBundles.add(new ItemBundle(Enums.Iap.VipLevel3, Enums.Tier.Bronze, Enums.Type.Secondary, 2000, true));
 
+            iaps.add(new Iap(Enums.Iap.VipLevel4, true));
+            iaps.add(new Iap(Enums.Iap.VipLevel5, true));
+            iaps.add(new Iap(Enums.Iap.VipLevel6, true));
+
             // Blacksmith's Pass
             iaps.add(new Iap(Enums.Iap.BlacksmithPass, 0, 0, false));
             iapBundles.add(new ItemBundle(1, Enums.Tier.Bronze, Enums.Type.Ore, 100));
