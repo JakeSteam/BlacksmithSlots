@@ -97,7 +97,9 @@ public class SettingsActivity extends BaseActivity {
             }
 
             FontTextView textView = new FontTextView(this);
+            textView.setPadding(5, 20, 0, 0);
             textView.setText(TextHelper.getInstance(this).getText(DisplayHelper.getSettingGroupString(group.value)));
+            textView.setTextSize(30);
             settingTable.addView(textView);
 
             List<Setting> settings = Setting.getByGroup(group);

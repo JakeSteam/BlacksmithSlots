@@ -8,14 +8,12 @@ import android.util.DisplayMetrics;
 import android.util.Log;
 import android.util.Pair;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TableLayout;
-import android.widget.TableRow;
 import android.widget.TextView;
 
 import com.orm.query.Select;
@@ -33,6 +31,7 @@ import kankan.wheel.widget.WheelView;
 import uk.co.jakelee.blacksmithslots.R;
 import uk.co.jakelee.blacksmithslots.constructs.WinRoute;
 import uk.co.jakelee.blacksmithslots.main.MinigameFlipActivity;
+import uk.co.jakelee.blacksmithslots.main.ShopActivity;
 import uk.co.jakelee.blacksmithslots.main.SlotActivity;
 import uk.co.jakelee.blacksmithslots.model.Inventory;
 import uk.co.jakelee.blacksmithslots.model.Item;
@@ -318,18 +317,22 @@ public class SlotHelper {
 
     public void spin(boolean checkNotAutospinning) {
         if (stillSpinningSlots <= 1 && (!checkNotAutospinning || autospinsLeft <= 0)) {
-            boolean canAfford = true;
+            Inventory failedItem = null;
             for (ItemBundle item : slot.getResources()) {
                 Inventory inventory = Inventory.getInventory(item.getTier().value, item.getType().value);
                 int spinCost = slot.getCurrentStake() * slot.getCurrentRows() * item.getQuantity();
                 if (inventory.getQuantity() < spinCost) {
-                    canAfford = false;
+                    failedItem = inventory;
                     break;
                 }
             }
 
-            if (!canAfford) {
-                AlertHelper.error(activity, R.string.error_not_enough_resources, false);
+            if (failedItem != null) {
+                activity.startActivity(new Intent(activity, ShopActivity.class)
+                        .putExtra("tier", failedItem.getTier())
+                        .putExtra("type", failedItem.getType())
+                        .addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT));
+                AlertHelper.error(activity, "Tier: " + failedItem.getTier() + " Type: " + failedItem.getType(), false);
             } else {
                 activity.findViewById(R.id.slotContainer).bringToFront();
                 if (highlightedRoutes != null) {

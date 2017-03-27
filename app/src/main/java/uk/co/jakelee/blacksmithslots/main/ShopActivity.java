@@ -46,9 +46,9 @@ public class ShopActivity extends BaseActivity {
     private boolean haveSetupTabs = false;
     private int selectedTabId = R.id.vipTabTab;
     SharedPreferences prefs;
-    private int spinnersInitialised = 0;
-    private int totalSpinners = 1;
     private List<Pair<Integer, Integer>> dropdownItems = new ArrayList<>();
+    int preloadingTier = 0;
+    int preloadingType = 0;
 
     @BindView(R.id.passImage) ImageView passImage;
     @BindView(R.id.passDaysLeft) TextView passDaysLeft;
@@ -77,6 +77,13 @@ public class ShopActivity extends BaseActivity {
         setContentView(R.layout.activity_shop);
         prefs = getSharedPreferences("uk.co.jakelee.blacksmithslots", MODE_PRIVATE);
         ButterKnife.bind(this);
+
+        Intent intent = getIntent();
+        preloadingTier = intent.getIntExtra("tier", 0);
+        preloadingType = intent.getIntExtra("type", 0);
+        if (preloadingTier > 0 && preloadingType > 0) {
+            prefs.edit().putInt("selectedShopTabId", R.id.bundleTabTab).apply();
+        }
     }
 
     @Override
@@ -172,7 +179,12 @@ public class ShopActivity extends BaseActivity {
 
         dropdownItems.clear();
         List<ItemBundle> items = IapHelper.getUniqueBundleItems();
-        for (ItemBundle item : items) {
+        int preloadedItemPosition = 0;
+        for (int i = 0; i < items.size(); i++) {
+            ItemBundle item = items.get(i);
+            if (preloadingTier > 0 && preloadingType > 0 && item.getTier().value == preloadingTier && item.getType().value == preloadingType) {
+                preloadedItemPosition = i;
+            }
             envAdapter.add(Item.getName(this, item.getTier(), item.getType()));
             dropdownItems.add(new Pair<>(item.getTier().value, item.getType().value));
         }
@@ -185,6 +197,8 @@ public class ShopActivity extends BaseActivity {
             }
             @Override public void onNothingSelected(AdapterView<?> parentView) {}
         });
+
+        bundleItemDropdown.setSelection(preloadedItemPosition);
     }
 
     private void populateItems(Pair<Integer, Integer> item) {

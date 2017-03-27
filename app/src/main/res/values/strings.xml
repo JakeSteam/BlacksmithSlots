@@ -129,7 +129,7 @@
     <string name="setting_9">Import Pixel Blacksmith Save</string>
     <string name="setting_10">Only Show Owned Items</string>
     <string name="setting_11">Order Items By Tier</string>
-    <string name="setting_12">Reverse Ordering</string>
+    <string name="setting_12">Reverse Item Ordering</string>
     <string name="setting_13">Blacksmith Pass Notification</string>
 
     <string name="slot_1_name">Bronze Furnace</string>

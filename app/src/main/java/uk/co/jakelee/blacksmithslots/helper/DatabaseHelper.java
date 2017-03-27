@@ -107,7 +107,7 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
 
     private void createInventories() {
         List<Inventory> inventories = new ArrayList<>();
-            inventories.add(new Inventory(Enums.Tier.Bronze, Enums.Type.Ore, 9999));
+            inventories.add(new Inventory(Enums.Tier.Bronze, Enums.Type.Ore, 5));
         Inventory.saveInTx(inventories);
     }
 
