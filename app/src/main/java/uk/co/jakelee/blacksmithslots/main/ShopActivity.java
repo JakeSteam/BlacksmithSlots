@@ -249,7 +249,7 @@ public class ShopActivity extends BaseActivity implements BillingProcessor.IBill
             itemTile.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    onProductPurchased(iapItem.getIapName(), null);
+                    buyIAP(iapItem.getIapName());
                 }
             });
             bundleItemContainer.addView(itemTile, params);
@@ -381,10 +381,9 @@ public class ShopActivity extends BaseActivity implements BillingProcessor.IBill
         }
     }
 
-    public void buyIAP(int iapId) {
-        Iap iap = Iap.get(iapId);
-        if (canBuyIAPs && iap != null) {
-            bp.purchase(this, iap.getIapName());
+    public void buyIAP(String iapId) {
+        if (canBuyIAPs) {
+            bp.purchase(this, iapId);
         } else {
             AlertHelper.error(this, "IAB Failed, maybe internet?", false);
         }
@@ -400,12 +399,12 @@ public class ShopActivity extends BaseActivity implements BillingProcessor.IBill
     public void upgradeVip() {
         int vipLevel = LevelHelper.getVipLevel();
         if (vipLevel < Constants.MAX_VIP_LEVEL) {
-            onProductPurchased("VipLevel" + (vipLevel + 1), null);
+            buyIAP(("VipLevel" + (vipLevel + 1)));
         }
     }
 
     @OnClick(R.id.passPurchase)
     public void buyPass() {
-        onProductPurchased("BlacksmithPass", null);
+        buyIAP("BlacksmithPass");
     }
 }
