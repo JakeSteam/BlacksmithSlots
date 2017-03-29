@@ -140,9 +140,15 @@
 
     <string name="map_2">The Neighbourhood</string>
     <string name="slot_2_name">Local Furnace</string>
-    <string name="slot_2_locked">The furnace is currently closed.</string>
+    <string name="slot_2_locked">Until I get some ore to work with, my shop is going to stay closed.</string>
     <string name="slot_2_unlocked">If you\'ve got the ore, I\'ve got the fire!</string>
     <string name="task_2_1_text">My ore has all disappeared, do you have some spare to help me get started?</string>
+
+    <string name="slot_3_name">Accessible Accessories</string>
+    <string name="slot_3_locked">My little store is staying shut for now, sorry!</string>
+    <string name="slot_3_unlocked">Don\'t apologise, accessorize!</string>
+    <string name="task_3_1_text">First, I\'ll need some bars to mould into shapes.</string>
+    <string name="task_3_2_text">All I need now is some bronze secondary to finish the items up, and the store can open back up.</string>
 
     <string name="map_3">The Forest</string>
 

@@ -332,7 +332,6 @@ public class SlotHelper {
                         .putExtra("tier", failedItem.getTier())
                         .putExtra("type", failedItem.getType())
                         .addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT));
-                AlertHelper.error(activity, "Tier: " + failedItem.getTier() + " Type: " + failedItem.getType(), false);
             } else {
                 activity.findViewById(R.id.slotContainer).bringToFront();
                 if (highlightedRoutes != null) {
@@ -385,18 +384,23 @@ public class SlotHelper {
         DisplayHelper.populateItemRows(activity, R.id.resourceDisplay, inflater, picasso, params, resourceInventories, true);
 
         // Inventory
-        String where = "";
+        String resourceString = "";
         for (ItemBundle item : slotResources) {
-            where += "(a != " + item.getTier().value + " OR b != " + item.getType().value + ") AND ";
+            resourceString += "(a != " + item.getTier().value + " OR b != " + item.getType().value + ") AND";
         }
+
+        String rewardString = "";
         if (Setting.getBoolean(Enums.Setting.OnlyActiveResources)) {
             for (ItemBundle item : slotRewards) {
-                where += "(a = " + item.getTier().value + " AND b = " + item.getType().value + ") OR ";
+                rewardString += "(a = " + item.getTier().value + " AND b = " + item.getType().value + ") OR ";
             }
+            rewardString = "(" + rewardString.substring(0, rewardString.length() - 3) + ")";
+        } else {
+            resourceString = resourceString.substring(0, resourceString.length() - 4);
         }
 
         String orderBy = (orderByTier ? "a " : "c ") + (reverseOrder ? "ASC" : "DESC");
-        List<Inventory> inventoryItems = Select.from(Inventory.class).where(where.substring(0, where.length() - 4)).orderBy(orderBy).list();
+        List<Inventory> inventoryItems = Select.from(Inventory.class).where(resourceString + rewardString).orderBy(orderBy).list();
         boolean onlyShowStockedItems = Setting.getBoolean(Enums.Setting.OnlyShowStocked);
 
         DisplayHelper.populateItemRows(activity, R.id.inventoryDisplay, inflater, picasso, params, inventoryItems, onlyShowStockedItems);

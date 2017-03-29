@@ -242,16 +242,18 @@ public class ShopActivity extends BaseActivity implements BillingProcessor.IBill
             ((TextView)itemTile.findViewById(R.id.itemName)).setText(itemName);
             ((TextView)itemTile.findViewById(R.id.itemQuantity)).setText(iap.getQuantity() + "x");
             final Iap iapItem = Iap.get(iap.getIdentifier());
-            SkuDetails iapInfo = bp.getPurchaseListingDetails(iapItem.getIapName());
-            if (iapInfo != null) {
-                ((TextView)itemTile.findViewById(R.id.itemPrice)).setText(iapInfo.toString());
-            }
-            itemTile.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    buyIAP(iapItem.getIapName());
+            if (bp != null) {
+                SkuDetails iapInfo = bp.getPurchaseListingDetails(iapItem.getIapName());
+                if (iapInfo != null) {
+                    ((TextView) itemTile.findViewById(R.id.itemPrice)).setText(iapInfo.toString());
                 }
-            });
+                itemTile.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        buyIAP(iapItem.getIapName());
+                    }
+                });
+            }
             bundleItemContainer.addView(itemTile, params);
         }
     }
