@@ -86,10 +86,14 @@
     <string name="error_claimed_without_pass">Can\'t claim Blacksmith Pass rewards without having a Blacksmith Pass!</string>
     <string name="error_claimed_pass_already">Already claimed this day\'s reward!</string>
 
-    <!-- DB Lookups -->
+    <!-- Lookups -->
     <string name="language_1">English</string>
     <string name="language_2">French</string>
     <string name="language_3">Russian</string>
+
+    <string name="map_1">Home</string>
+    <string name="map_2">The Neighbourhood</string>
+    <string name="map_3">The Forest</string>
 
     <string name="tier_1">Bronze</string>
     <string name="tier_2">Iron</string>

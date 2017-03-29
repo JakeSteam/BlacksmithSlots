@@ -4,6 +4,10 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <uk.co.jakelee.blacksmithslots.components.FontTextView
+        style="@style/SidebarText"
+        android:text="@string/map_1"/>
+
     <ImageView
         android:id="@+id/wallpaper_id"
         android:layout_width="match_parent"

@@ -12,7 +12,7 @@ import uk.co.jakelee.blacksmithslots.R;
 public class MapPagerAdapter extends PagerAdapter {
     Context mContext;
     LayoutInflater mLayoutInflater;
-    private int[] townLayouts = {R.layout.custom_town_1, R.layout.custom_town_2, R.layout.custom_town_3};
+    private int[] townLayouts = {R.layout.custom_map_1, R.layout.custom_map_2, R.layout.custom_map_3};
 
     public MapPagerAdapter(Context context) {
         mContext = context;

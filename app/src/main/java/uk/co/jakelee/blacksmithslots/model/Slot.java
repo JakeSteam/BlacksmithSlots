@@ -51,10 +51,13 @@ public class Slot extends SugarRecord {
     @Column(name = "l")
     private int person;
 
+    @Column(name = "m")
+    private int mapId;
+
     public Slot() {
     }
 
-    public Slot(int slotId, int minimumLevel, int minimumStake, int currentStake, int maximumStake, int minimumRows, int currentRows, int maximumRows, Enums.SlotType slotType, int slots, int requiredSlot, int person) {
+    public Slot(int slotId, int minimumLevel, int minimumStake, int currentStake, int maximumStake, int minimumRows, int currentRows, int maximumRows, Enums.SlotType slotType, int slots, int requiredSlot, int person, int mapId) {
         this.slotId = slotId;
         this.minimumLevel = minimumLevel;
         this.minimumStake = minimumStake;
@@ -67,6 +70,7 @@ public class Slot extends SugarRecord {
         this.slots = slots;
         this.requiredSlot = requiredSlot;
         this.person = person;
+        this.mapId = mapId;
     }
 
     public static Slot get(int slotId) {
@@ -171,6 +175,14 @@ public class Slot extends SugarRecord {
         this.person = person;
     }
 
+    public int getMapId() {
+        return mapId;
+    }
+
+    public void setMapId(int mapId) {
+        this.mapId = mapId;
+    }
+
     public List<ItemBundle> getRewards() {
         return Select.from(ItemBundle.class).where(
                 Condition.prop("a").eq(slotId),
@@ -188,6 +200,10 @@ public class Slot extends SugarRecord {
                 Condition.prop("a").eq(slotId))
                 .orderBy("b ASC")
                 .list();
+    }
+
+    public String getMapName(Context context) {
+        return TextHelper.getInstance(context).getText("map_" + mapId);
     }
 
     public String getName(Context context) {
