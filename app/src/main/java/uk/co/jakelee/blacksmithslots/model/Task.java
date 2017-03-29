@@ -41,8 +41,8 @@ public class Task extends SugarRecord {
     public Task() {
     }
 
-    public Task(int slotId, int position, Enums.Statistic statistic, int target) {
-        this.slotId = slotId;
+    public Task(Enums.Slot slot, int position, Enums.Statistic statistic, int target) {
+        this.slotId = slot.value;
         this.position = position;
         this.statistic = statistic.value;
         this.target = target;
@@ -51,8 +51,8 @@ public class Task extends SugarRecord {
         this.completed = 0;
     }
 
-    public Task(int slotId, int position, Enums.Tier tier, Enums.Type type, int target) {
-        this.slotId = slotId;
+    public Task(Enums.Slot slot, int position, Enums.Tier tier, Enums.Type type, int target) {
+        this.slotId = slot.value;
         this.position = position;
         this.tier = tier.value;
         this.type = type.value;

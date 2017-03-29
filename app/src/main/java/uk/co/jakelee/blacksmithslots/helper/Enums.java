@@ -78,6 +78,39 @@ public class Enums {
         }
     }
 
+    public enum Map {
+        Home(1), Neighbourhood(2);
+        public int value;
+        Map(int value) {
+            this.value = value;
+        }
+        public static Map get(int value) {
+            for (Map item : Map.values()) {
+                if (value == item.value) {
+                    return item;
+                }
+            }
+            return null;
+        }
+    }
+
+    public enum Person {
+        Map1Mum(1), Map2Blacksmith(2);
+        public int value;
+        Person(int value) {
+            this.value = value;
+        }
+        public static Person get(int value) {
+            for (Person item : Person.values()) {
+                if (value == item.value) {
+                    return item;
+                }
+            }
+            return null;
+        }
+    }
+
+
     public enum Setting {
         Music(1), Sound(2), AttemptLogin(3), AutosaveMinutes(4), OnlyActiveResources(5), Language(6), NotificationSounds(7), PeriodicBonusNotification(8), SaveImported(9),
         OnlyShowStocked(10), OrderByTier(11), OrderReversed(12), BlacksmithPassNotification(13);
@@ -103,6 +136,23 @@ public class Enums {
         }
         public static SettingGroup get(int value) {
             for (SettingGroup item : SettingGroup.values()) {
+                if (value == item.value) {
+                    return item;
+                }
+            }
+            return null;
+        }
+    }
+
+    public enum Slot {
+        Map1LuckyCoin(1),
+        Map2Furnace(2);
+        public int value;
+        Slot(int value) {
+            this.value = value;
+        }
+        public static Slot get(int value) {
+            for (Slot item : Slot.values()) {
                 if (value == item.value) {
                     return item;
                 }

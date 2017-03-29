@@ -143,16 +143,16 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
         List<ItemBundle> iapBundles = new ArrayList<>();
             // VIP Levels
             iaps.add(new Iap(Enums.Iap.VipLevel1, true));
-            iapBundles.add(new ItemBundle(Enums.Iap.VipLevel1, Enums.Tier.Bronze, Enums.Type.Bar, 1000, true));
-            iapBundles.add(new ItemBundle(Enums.Iap.VipLevel1, Enums.Tier.Bronze, Enums.Type.Secondary, 1000, true));
+            iapBundles.add(new ItemBundle(Enums.Iap.VipLevel1, Enums.Tier.Bronze, Enums.Type.Bar, 1000));
+            iapBundles.add(new ItemBundle(Enums.Iap.VipLevel1, Enums.Tier.Bronze, Enums.Type.Secondary, 1000));
 
             iaps.add(new Iap(Enums.Iap.VipLevel2, true));
-            iapBundles.add(new ItemBundle(Enums.Iap.VipLevel2, Enums.Tier.Bronze, Enums.Type.Bar, 2000, true));
-            iapBundles.add(new ItemBundle(Enums.Iap.VipLevel2, Enums.Tier.Bronze, Enums.Type.Secondary, 2000, true));
+            iapBundles.add(new ItemBundle(Enums.Iap.VipLevel2, Enums.Tier.Bronze, Enums.Type.Bar, 2000));
+            iapBundles.add(new ItemBundle(Enums.Iap.VipLevel2, Enums.Tier.Bronze, Enums.Type.Secondary, 2000));
 
             iaps.add(new Iap(Enums.Iap.VipLevel3, true));
-            iapBundles.add(new ItemBundle(Enums.Iap.VipLevel3, Enums.Tier.Bronze, Enums.Type.Bar, 2000, true));
-            iapBundles.add(new ItemBundle(Enums.Iap.VipLevel3, Enums.Tier.Bronze, Enums.Type.Secondary, 2000, true));
+            iapBundles.add(new ItemBundle(Enums.Iap.VipLevel3, Enums.Tier.Bronze, Enums.Type.Bar, 2000));
+            iapBundles.add(new ItemBundle(Enums.Iap.VipLevel3, Enums.Tier.Bronze, Enums.Type.Secondary, 2000));
 
             iaps.add(new Iap(Enums.Iap.VipLevel4, true));
             iaps.add(new Iap(Enums.Iap.VipLevel5, true));
@@ -173,32 +173,32 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
 
             // Bundles
             iaps.add(new Iap(Enums.Iap.BronzeOre1000, false));
-            iapBundles.add(new ItemBundle(Enums.Iap.BronzeOre1000, Enums.Tier.Bronze, Enums.Type.Ore, 1000, true));
+            iapBundles.add(new ItemBundle(Enums.Iap.BronzeOre1000, Enums.Tier.Bronze, Enums.Type.Ore, 1000));
             iaps.add(new Iap(Enums.Iap.BronzeOre5000, false));
-            iapBundles.add(new ItemBundle(Enums.Iap.BronzeOre5000, Enums.Tier.Bronze, Enums.Type.Ore, 5000, true));
+            iapBundles.add(new ItemBundle(Enums.Iap.BronzeOre5000, Enums.Tier.Bronze, Enums.Type.Ore, 5000));
             iaps.add(new Iap(Enums.Iap.BronzeOre10000, false));
-            iapBundles.add(new ItemBundle(Enums.Iap.BronzeOre10000, Enums.Tier.Bronze, Enums.Type.Ore, 10000, true));
+            iapBundles.add(new ItemBundle(Enums.Iap.BronzeOre10000, Enums.Tier.Bronze, Enums.Type.Ore, 10000));
 
             iaps.add(new Iap(Enums.Iap.BronzeSecondary1000, false));
-            iapBundles.add(new ItemBundle(Enums.Iap.BronzeSecondary1000, Enums.Tier.Bronze, Enums.Type.Secondary, 1000, true));
+            iapBundles.add(new ItemBundle(Enums.Iap.BronzeSecondary1000, Enums.Tier.Bronze, Enums.Type.Secondary, 1000));
             iaps.add(new Iap(Enums.Iap.BronzeSecondary5000, false));
-            iapBundles.add(new ItemBundle(Enums.Iap.BronzeSecondary5000, Enums.Tier.Bronze, Enums.Type.Secondary, 5000, true));
+            iapBundles.add(new ItemBundle(Enums.Iap.BronzeSecondary5000, Enums.Tier.Bronze, Enums.Type.Secondary, 5000));
             iaps.add(new Iap(Enums.Iap.BronzeSecondary10000, false));
-            iapBundles.add(new ItemBundle(Enums.Iap.BronzeSecondary10000, Enums.Tier.Bronze, Enums.Type.Secondary, 10000, true));
+            iapBundles.add(new ItemBundle(Enums.Iap.BronzeSecondary10000, Enums.Tier.Bronze, Enums.Type.Secondary, 10000));
 
             iaps.add(new Iap(Enums.Iap.IronOre1000, false));
-            iapBundles.add(new ItemBundle(Enums.Iap.IronOre1000, Enums.Tier.Iron, Enums.Type.Ore, 1000, true));
+            iapBundles.add(new ItemBundle(Enums.Iap.IronOre1000, Enums.Tier.Iron, Enums.Type.Ore, 1000));
             iaps.add(new Iap(Enums.Iap.IronOre5000, false));
-            iapBundles.add(new ItemBundle(Enums.Iap.IronOre5000, Enums.Tier.Iron, Enums.Type.Ore, 5000, true));
+            iapBundles.add(new ItemBundle(Enums.Iap.IronOre5000, Enums.Tier.Iron, Enums.Type.Ore, 5000));
             iaps.add(new Iap(Enums.Iap.IronOre10000, false));
-            iapBundles.add(new ItemBundle(Enums.Iap.IronOre10000, Enums.Tier.Iron, Enums.Type.Ore, 10000, true));
+            iapBundles.add(new ItemBundle(Enums.Iap.IronOre10000, Enums.Tier.Iron, Enums.Type.Ore, 10000));
     
             iaps.add(new Iap(Enums.Iap.IronSecondary1000, false));
-            iapBundles.add(new ItemBundle(Enums.Iap.IronSecondary1000, Enums.Tier.Iron, Enums.Type.Secondary, 1000, true));
+            iapBundles.add(new ItemBundle(Enums.Iap.IronSecondary1000, Enums.Tier.Iron, Enums.Type.Secondary, 1000));
             iaps.add(new Iap(Enums.Iap.IronSecondary5000, false));
-            iapBundles.add(new ItemBundle(Enums.Iap.IronSecondary5000, Enums.Tier.Iron, Enums.Type.Secondary, 5000, true));
+            iapBundles.add(new ItemBundle(Enums.Iap.IronSecondary5000, Enums.Tier.Iron, Enums.Type.Secondary, 5000));
             iaps.add(new Iap(Enums.Iap.IronSecondary10000, false));
-            iapBundles.add(new ItemBundle(Enums.Iap.IronSecondary10000, Enums.Tier.Iron, Enums.Type.Secondary, 10000, true));
+            iapBundles.add(new ItemBundle(Enums.Iap.IronSecondary10000, Enums.Tier.Iron, Enums.Type.Secondary, 10000));
         Iap.saveInTx(iaps);
         ItemBundle.saveInTx(iapBundles);
     }
@@ -226,20 +226,20 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
         List<ItemBundle> itemBundles = new ArrayList<>();
         List<Task> tasks = new ArrayList<>();
             // Map 1: Home
-            slots.add(new Slot(Constants.MAP_1_LUCKY_COIN, 1, 1, 1, 3, 0, 1, 1));
-            itemBundles.add(new ItemBundle(Constants.MAP_1_LUCKY_COIN, Enums.Tier.None, Enums.Type.LuckyCoin, 1, false));
+            slots.add(new Slot(Enums.Slot.Map1LuckyCoin, 1, 1, 1, 3, Enums.Slot.Map1LuckyCoin, Enums.Person.Map1Mum, Enums.Map.Home));
+            itemBundles.add(new ItemBundle(Enums.Slot.Map1LuckyCoin, Enums.Tier.None, Enums.Type.LuckyCoin, 1));
 
-            itemBundles.add(new ItemBundle(Constants.MAP_1_LUCKY_COIN, Enums.Tier.Bronze, Enums.Type.Ore, 10, 1));
-            itemBundles.add(new ItemBundle(Constants.MAP_1_LUCKY_COIN, Enums.Tier.Bronze, Enums.Type.Secondary, 10, 1));
-            itemBundles.add(new ItemBundle(Constants.MAP_1_LUCKY_COIN, Enums.Tier.Internal, Enums.Type.Wildcard, 1, 1));
+            itemBundles.add(new ItemBundle(Enums.Slot.Map1LuckyCoin, Enums.Tier.Bronze, Enums.Type.Ore, 10, 1));
+            itemBundles.add(new ItemBundle(Enums.Slot.Map1LuckyCoin, Enums.Tier.Bronze, Enums.Type.Secondary, 10, 1));
+            itemBundles.add(new ItemBundle(Enums.Slot.Map1LuckyCoin, Enums.Tier.Internal, Enums.Type.Wildcard, 1, 1));
 
             // Map 2: Furnace
-            slots.add(new Slot(Constants.MAP_2_FURNACE, 1, 1, 5, 3, Constants.MAP_1_LUCKY_COIN, 2, 2));
-            itemBundles.add(new ItemBundle(Constants.MAP_2_FURNACE, Enums.Tier.Bronze, Enums.Type.Ore, 1, false));
-            tasks.add(new Task(Constants.MAP_2_FURNACE, 1, Enums.Tier.Bronze, Enums.Type.Ore, 15));
-            itemBundles.add(new ItemBundle(Constants.MAP_2_FURNACE, Enums.Tier.Bronze, Enums.Type.Bar, 1, 8));
-            itemBundles.add(new ItemBundle(Constants.MAP_2_FURNACE, Enums.Tier.Bronze, Enums.Type.Ore, 1, 2));
-            itemBundles.add(new ItemBundle(Constants.MAP_2_FURNACE, Enums.Tier.Bronze, Enums.Type.Wildcard, 1, 1));
+            slots.add(new Slot(Enums.Slot.Map2Furnace, 1, 1, 5, 3, Enums.Slot.Map1LuckyCoin, Enums.Person.Map2Blacksmith, Enums.Map.Neighbourhood));
+            itemBundles.add(new ItemBundle(Enums.Slot.Map2Furnace, Enums.Tier.Bronze, Enums.Type.Ore, 1));
+            tasks.add(new Task(Enums.Slot.Map2Furnace, 1, Enums.Tier.Bronze, Enums.Type.Ore, 15));
+            itemBundles.add(new ItemBundle(Enums.Slot.Map2Furnace, Enums.Tier.Bronze, Enums.Type.Bar, 1, 8));
+            itemBundles.add(new ItemBundle(Enums.Slot.Map2Furnace, Enums.Tier.Bronze, Enums.Type.Ore, 1, 2));
+            itemBundles.add(new ItemBundle(Enums.Slot.Map2Furnace, Enums.Tier.Bronze, Enums.Type.Wildcard, 1, 1));
 
             /*slots.add(new Slot(Constants.SLOT_BRONZE_WEAPON, 1, 1, 2, 5, 1, 5, Constants.SLOTS_3_MAX_ROUTES, Enums.SlotType.Weapon, 3, Constants.SLOT_BRONZE_FURNACE, 2));
             itemBundles.add(new ItemBundle(Constants.SLOT_BRONZE_WEAPON, Enums.Tier.Bronze, Enums.Type.Bar, 1, false));

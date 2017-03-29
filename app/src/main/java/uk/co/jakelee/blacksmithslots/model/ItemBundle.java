@@ -42,30 +42,30 @@ public class ItemBundle extends SugarRecord {
     }
 
     // Used for slot rewards
-    public ItemBundle(int identifier, Enums.Tier tier, Enums.Type type, int quantity, int weighting) {
+    public ItemBundle(Enums.Slot slot, Enums.Tier tier, Enums.Type type, int quantity, int weighting) {
         this.tier = tier.value;
         this.type = type.value;
         this.quantity = quantity;
-        this.identifier = identifier; // slot ID
+        this.identifier = slot.value;
         this.weighting = weighting;
         this.bundleType = Enums.ItemBundleType.SlotReward.value;
     }
 
-    // Used by slot resources && VIP IAPs
-    public ItemBundle(int identifier, Enums.Tier tier, Enums.Type type, int quantity, boolean isIap) {
+    // Used by slot resources
+    public ItemBundle(Enums.Slot slot, Enums.Tier tier, Enums.Type type, int quantity) {
         this.tier = tier.value;
         this.type = type.value;
         this.quantity = quantity;
-        this.identifier = identifier; // slot ID OR VIP IAPs
-        this.bundleType = (isIap ? Enums.ItemBundleType.IapReward.value : Enums.ItemBundleType.SlotResource.value);
+        this.identifier = slot.value;
+        this.bundleType = Enums.ItemBundleType.SlotResource.value;
     }
 
     // Used by bundle IAPs
-    public ItemBundle(Enums.Iap iap, Enums.Tier tier, Enums.Type type, int quantity, boolean isIap) {
+    public ItemBundle(Enums.Iap iap, Enums.Tier tier, Enums.Type type, int quantity) {
         this.tier = tier.value;
         this.type = type.value;
         this.quantity = quantity;
-        this.identifier = iap.value; // Bundle IAPs
+        this.identifier = iap.value;
         this.bundleType = Enums.ItemBundleType.IapReward.value;
     }
 
