@@ -10,6 +10,10 @@
     <string name="alert_autospin_cancelled">Autospin turned off!</string>
     <string name="alert_claimed_pass_day">Claimed day %1$d bonus of %2$s!</string>
     <string name="alert_pass_purchased">Purchased a Blacksmith Pass!</string>
+    <string name="alert_level_progress">%1$.2f%% of the way to level %2$d (%3$d / %4$d xp)!</string>
+    <string name="alert_item_source">%1$s is obtained from %2$s.</string>
+    <string name="alert_item_use">%1$s is used in %2$s.</string>
+    <string name="alert_item_unknown">Nowhere!?</string>
 
     <string name="google_cloud_save_loading">Loading...</string>
     <string name="google_cloud_save_loaded">Loaded cloud save!</string>
@@ -149,6 +153,38 @@
     <string name="slot_3_unlocked">Don\'t apologise, accessorize!</string>
     <string name="task_3_1_text">First, I\'ll need some bars to mould into shapes.</string>
     <string name="task_3_2_text">All I need now is some bronze secondary to finish the items up, and the store can open back up.</string>
+
+    <string name="slot_4_name">The Toolshed</string>
+    <string name="slot_4_locked">Only a tool would open without any equipment!</string>
+    <string name="slot_4_unlocked">Tool up!</string>
+    <string name="task_4_1_text">My feet are really cold. No, really. Got some shoes?</string>
+    <string name="task_4_2_text">Okay, now my hands are freezing. My fingers are basically falling off!</string>
+    <string name="task_4_3_text">This is all very important. I now have a cold.. uh.. head?</string>
+    <string name="task_4_4_text">Fine, I\'ll open up. Just convince me a tiny bit more.</string>
+
+    <string name="slot_5_name">Weaponisation</string>
+    <string name="slot_5_locked">Not just anyone can get access to weapons!</string>
+    <string name="slot_5_unlocked">Come on in, get your weapons!</string>
+    <string name="task_5_1_text">Hey, I\'m going fishing this weekend with some friends, help me out?</string>
+    <string name="task_5_2_text">You\'ve played before, right? I don\'t recognize you...</string>
+    <string name="task_5_3_text">Alright, give me a minute to get the shop ready. Come back later.</string>
+
+    <string name="slot_6_name">The Armoury</string>
+    <string name="slot_6_locked">I\'m a collector, are you?</string>
+    <string name="slot_6_unlocked">Protect yourself!</string>
+    <string name="task_6_1_text">You know how to collect bonuses, don\'t you?</string>
+    <string name="task_6_2_text">What about boots?</string>
+    <string name="task_6_3_text">Okay... gloves?</string>
+    <string name="task_6_4_text">Half helmet?</string>
+    <string name="task_6_5_text">Alright, that was easy. Full helmet?</string>
+    <string name="task_6_6_text">Okay you have armour, fine. What about a pickaxe?</string>
+    <string name="task_6_7_text">Or a hatchet?</string>
+    <string name="task_6_8_text">Erm... fishing rod?</string>
+    <string name="task_6_9_text">Hammer!?</string>
+    <string name="task_6_10_text">How do you have so much? Dagger!</string>
+    <string name="task_6_11_text">Sword!</string>
+    <string name="task_6_12_text">LONG sword!</string>
+    <string name="task_6_13_text">Okay, fine, I give up. Any chance you don\'t have bows?</string>
 
     <string name="map_3">The Forest</string>
 

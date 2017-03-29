@@ -15,6 +15,7 @@ import com.orm.query.Select;
 
 import java.util.HashSet;
 import java.util.List;
+import java.util.Locale;
 import java.util.Set;
 
 import butterknife.BindView;
@@ -64,13 +65,19 @@ public class InventoryActivity extends BaseActivity {
 
     public void itemSources(View v) {
         TableRow parent = (TableRow)v.getParent();
+        getItemInfo((int)parent.getTag(R.id.item_tier), (int)parent.getTag(R.id.item_type), true);
+    }
 
-        int tier = (int)parent.getTag(R.id.item_tier);
-        int type = (int)parent.getTag(R.id.item_type);
+    public void itemUses(View v) {
+        TableRow parent = (TableRow)v.getParent();
+        getItemInfo((int)parent.getTag(R.id.item_tier), (int)parent.getTag(R.id.item_type), false);
+    }
 
+    private void getItemInfo(int tier, int type, boolean gettingSources) {
         List<ItemBundle> itemBundles = Select.from(ItemBundle.class).where(
                 Condition.prop("b").eq(tier),
-                Condition.prop("c").eq(type)
+                Condition.prop("c").eq(type),
+                Condition.prop("f").eq(gettingSources ? Enums.ItemBundleType.SlotReward : Enums.ItemBundleType.SlotResource.value)
         ).list();
 
         Set<String> slotNames = new HashSet<>();
@@ -84,28 +91,13 @@ public class InventoryActivity extends BaseActivity {
             itemUseText.append(", ");
         }
 
-        String itemUseString = itemUseText.toString();
-        AlertHelper.info(this, Item.getName(this, tier, type) + " is obtained from: " + (itemUseString.length() > 0 ? itemUseString.substring(0, itemUseString.length() - 2) : "Nowhere!?"), false);
-    }
+        String itemString = itemUseText.toString();
+        String itemFinalString = (itemString.length() > 0 ? itemString.substring(0, itemString.length() - 2) : getString(R.string.alert_item_unknown));
 
-    public void itemUses(View v) {
-        TableRow parent = (TableRow)v.getParent();
-
-        int tier = (int)parent.getTag(R.id.item_tier);
-        int type = (int)parent.getTag(R.id.item_type);
-
-        List<Slot> slots = Select.from(Slot.class).where(
-                Condition.prop("j").eq(tier),
-                Condition.prop("k").eq(type)
-        ).list();
-
-        StringBuilder itemUseText = new StringBuilder();
-        for (Slot slot : slots) {
-            itemUseText.append(slot.getName(this));
-            itemUseText.append(", ");
-        }
-
-        String itemUseString = itemUseText.toString();
-        AlertHelper.info(this, Item.getName(this, tier, type) + " is used in: " + (itemUseString.length() > 0 ? itemUseString.substring(0, itemUseString.length() - 2) : "Nowhere!?"), false);
+        AlertHelper.info(this, String.format(Locale.ENGLISH,
+                getString(gettingSources ? R.string.alert_item_source : R.string.alert_item_use),
+                Item.getName(this, tier, type),
+                itemFinalString),
+            false);
     }
 }

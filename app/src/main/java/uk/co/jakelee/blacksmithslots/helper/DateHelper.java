@@ -15,7 +15,7 @@ public class DateHelper {
     }
 
     public static String timestampToDateTime(long timestamp) {
-        return new SimpleDateFormat("yyyy-MM-dd HH:mm").format(new Date(timestamp));
+        return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date(timestamp));
     }
 
     public static String timestampToTime(long timestamp) {

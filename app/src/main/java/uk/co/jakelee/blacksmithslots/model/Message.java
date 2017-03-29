@@ -31,9 +31,8 @@ public class Message extends SugarRecord {
     public static void logSpin(Context context, int slot, String rewardString) {
         String slotName = Slot.getName(context, slot);
         String logMessage = String.format(Locale.ENGLISH, context.getString(R.string.log_spin),
-                slotName,
-                rewardString);
-
+                rewardString,
+                slotName);
         log(logMessage);
     }
 

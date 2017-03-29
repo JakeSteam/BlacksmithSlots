@@ -107,8 +107,13 @@ public class SlotActivity extends BaseActivity {
     }
 
     public void levelInfo(View v) {
-        int nextLevelXP = convertLevelToXp(getLevel() + 1);
-        AlertHelper.info(this, getXp() + "/" + nextLevelXP + " (" + (LevelHelper.getLevelProgress() / 100d) + "%)", false);
+        int currentLevel = getLevel();
+        int nextLevelXP = convertLevelToXp(currentLevel + 1);
+        AlertHelper.info(this, String.format(Locale.ENGLISH, getString(R.string.alert_level_progress),
+                (LevelHelper.getLevelProgress() / 100d),
+                currentLevel + 1,
+                getXp(),
+                nextLevelXP), false);
     }
 
     @Override

@@ -29,7 +29,7 @@ public class LogActivity extends BaseActivity {
 
         LayoutInflater inflater = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         TableLayout statTable = (TableLayout)findViewById(R.id.messagesTable);
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         List<Message> messages = Select.from(Message.class).orderBy("a DESC").list();
         for (Message message : messages) {
             TableRow tableRow = (TableRow)inflater.inflate(R.layout.custom_data_row, null).findViewById(R.id.dataRow);
