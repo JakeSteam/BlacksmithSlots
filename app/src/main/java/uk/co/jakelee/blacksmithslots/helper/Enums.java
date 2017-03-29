@@ -45,7 +45,9 @@ public class Enums {
         BlacksmithPass(1),
         VipLevel1(2), VipLevel2(3), VipLevel3(4), VipLevel4(5), VipLevel5(6), VipLevel6(7),
         BronzeOre1000(10), BronzeOre5000(11),BronzeOre10000(12),
-        BronzeSecondary1000(13), BronzeSecondary5000(14),BronzeSecondary10000(15);
+        BronzeSecondary1000(13), BronzeSecondary5000(14),BronzeSecondary10000(15),
+        IronOre1000(16), IronOre5000(17),IronOre10000(18),
+        IronSecondary1000(19), IronSecondary5000(20),IronSecondary10000(21);
         public int value;
         Iap(int value) {
             this.value = value;
@@ -109,22 +111,6 @@ public class Enums {
         }
     }
 
-    public enum SlotType {
-        Furnace(1), Weapon(2), Tool(3), Armour(4), Accessory(5), Misc(6);
-        public int value;
-        SlotType(int value) {
-            this.value = value;
-        }
-        public static SlotType get(int value) {
-            for (SlotType item : SlotType.values()) {
-                if (value == item.value) {
-                    return item;
-                }
-            }
-            return null;
-        }
-    }
-
     public enum Statistic {
         Xp(1), Level(2), TotalSpins(3), QuestsCompleted(4), LastAutosave(5), ResourcesGambled(6), ResourcesWon(7), AdvertsWatched(8), PacksPurchased(9),
         CollectedBonuses(10), VipLevel(11), LastBonusClaimed(12), SaveImported(13), LastAdvertWatched(14), CurrentPassClaimedDay(15), HighestPassClaimedDay(16), ExtraPassMonths(17),
@@ -161,6 +147,7 @@ public class Enums {
 
     public enum Type {
         None(0), Ore(1), Bar(2), Dagger(3), Sword(4), Longsword(5), Bow(6), Halfshield(7), FullShield(8), Chainmail(9), Platebody(10), HalfHelmet(11), FullHelmet(12), Boots(13), Gloves(14), Pickaxe(15), Hatchet(16), FishingRod(17), Hammer(18), Secondary(19),
+        LuckyCoin(20),
         Wildcard (999), MinigameFlip(998);
         public int value;
         Type(int value) {

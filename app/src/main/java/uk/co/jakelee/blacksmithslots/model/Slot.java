@@ -10,6 +10,7 @@ import com.orm.query.Select;
 
 import java.util.List;
 
+import uk.co.jakelee.blacksmithslots.helper.Constants;
 import uk.co.jakelee.blacksmithslots.helper.Enums;
 import uk.co.jakelee.blacksmithslots.helper.TextHelper;
 
@@ -39,9 +40,6 @@ public class Slot extends SugarRecord {
     @Column(name = "h")
     private int maximumRows;
 
-    @Column(name = "i")
-    private int slotType;
-
     @Column(name = "j")
     private int slots;
 
@@ -57,20 +55,28 @@ public class Slot extends SugarRecord {
     public Slot() {
     }
 
-    public Slot(int slotId, int minimumLevel, int minimumStake, int currentStake, int maximumStake, int minimumRows, int currentRows, int maximumRows, Enums.SlotType slotType, int slots, int requiredSlot, int person, int mapId) {
+    public Slot(int slotId, int minimumLevel, int minimumStake, int maximumStake, int slots, int requiredSlot, int person, int mapId) {
         this.slotId = slotId;
         this.minimumLevel = minimumLevel;
         this.minimumStake = minimumStake;
-        this.currentStake = currentStake;
+        this.currentStake = minimumStake;
         this.maximumStake = maximumStake;
-        this.minimumRows = minimumRows;
-        this.currentRows = currentRows;
-        this.maximumRows = maximumRows;
-        this.slotType = slotType.value;
+        this.minimumRows = 1;
+        this.currentRows = minimumRows;
+        this.maximumRows = getMaxRowsBySlots(slots);
         this.slots = slots;
         this.requiredSlot = requiredSlot;
         this.person = person;
         this.mapId = mapId;
+    }
+
+    private static int getMaxRowsBySlots(int slot) {
+        switch (slot) {
+            case 3: return Constants.SLOTS_3_MAX_ROUTES;
+            case 4: return Constants.SLOTS_4_MAX_ROUTES;
+            case 5: return Constants.SLOTS_5_MAX_ROUTES;
+            default: return Constants.SLOTS_3_MAX_ROUTES;
+        }
     }
 
     public static Slot get(int slotId) {
@@ -141,14 +147,6 @@ public class Slot extends SugarRecord {
 
     public void setMaximumRows(int maximumRows) {
         this.maximumRows = maximumRows;
-    }
-
-    public Enums.SlotType getSlotType() {
-        return Enums.SlotType.get(slotType);
-    }
-
-    public void setSlotType(Enums.SlotType slotType) {
-        this.slotType = slotType.value;
     }
 
     public int getSlots() {

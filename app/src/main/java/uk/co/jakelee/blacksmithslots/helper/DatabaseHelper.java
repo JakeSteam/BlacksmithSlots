@@ -55,8 +55,6 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
         createSlots();
         setProgress("Statistics", 0);
         createStatistics();
-        setProgress("Tasks", 0);
-        createTasks();
     }
 
     private void setProgress(String currentTask, int percentage) {
@@ -107,12 +105,14 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
 
     private void createInventories() {
         List<Inventory> inventories = new ArrayList<>();
-            inventories.add(new Inventory(Enums.Tier.Bronze, Enums.Type.Ore, 5));
+            inventories.add(new Inventory(Enums.Tier.None, Enums.Type.LuckyCoin, 100));
         Inventory.saveInTx(inventories);
     }
 
     private void createItems() {
         List<Item> items = new ArrayList<>();
+            items.add(new Item(Enums.Tier.None, Enums.Type.LuckyCoin));
+
             items.add(new Item(Enums.Tier.Bronze, Enums.Type.Ore));
             items.add(new Item(Enums.Tier.Bronze, Enums.Type.Bar));
             items.add(new Item(Enums.Tier.Bronze, Enums.Type.Dagger));
@@ -185,6 +185,20 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
             iapBundles.add(new ItemBundle(Enums.Iap.BronzeSecondary5000, Enums.Tier.Bronze, Enums.Type.Secondary, 5000, true));
             iaps.add(new Iap(Enums.Iap.BronzeSecondary10000, false));
             iapBundles.add(new ItemBundle(Enums.Iap.BronzeSecondary10000, Enums.Tier.Bronze, Enums.Type.Secondary, 10000, true));
+
+            iaps.add(new Iap(Enums.Iap.IronOre1000, false));
+            iapBundles.add(new ItemBundle(Enums.Iap.IronOre1000, Enums.Tier.Iron, Enums.Type.Ore, 1000, true));
+            iaps.add(new Iap(Enums.Iap.IronOre5000, false));
+            iapBundles.add(new ItemBundle(Enums.Iap.IronOre5000, Enums.Tier.Iron, Enums.Type.Ore, 5000, true));
+            iaps.add(new Iap(Enums.Iap.IronOre10000, false));
+            iapBundles.add(new ItemBundle(Enums.Iap.IronOre10000, Enums.Tier.Iron, Enums.Type.Ore, 10000, true));
+    
+            iaps.add(new Iap(Enums.Iap.IronSecondary1000, false));
+            iapBundles.add(new ItemBundle(Enums.Iap.IronSecondary1000, Enums.Tier.Iron, Enums.Type.Secondary, 1000, true));
+            iaps.add(new Iap(Enums.Iap.IronSecondary5000, false));
+            iapBundles.add(new ItemBundle(Enums.Iap.IronSecondary5000, Enums.Tier.Iron, Enums.Type.Secondary, 5000, true));
+            iaps.add(new Iap(Enums.Iap.IronSecondary10000, false));
+            iapBundles.add(new ItemBundle(Enums.Iap.IronSecondary10000, Enums.Tier.Iron, Enums.Type.Secondary, 10000, true));
         Iap.saveInTx(iaps);
         ItemBundle.saveInTx(iapBundles);
     }
@@ -210,18 +224,24 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
     private void createSlots() {
         List<Slot> slots = new ArrayList<>();
         List<ItemBundle> itemBundles = new ArrayList<>();
-            slots.add(new Slot(Constants.SLOT_BRONZE_FURNACE, 1, 1, 2, 5, 1, 5, Constants.SLOTS_3_MAX_ROUTES, Enums.SlotType.Furnace, 3, 0, 1));
-            itemBundles.add(new ItemBundle(Constants.SLOT_BRONZE_FURNACE, Enums.Tier.Bronze, Enums.Type.Ore, 2, false));
+        List<Task> tasks = new ArrayList<>();
+            // Map 1: Home
+            slots.add(new Slot(Constants.MAP_1_LUCKY_COIN, 1, 1, 1, 3, 0, 1, 1));
+            itemBundles.add(new ItemBundle(Constants.MAP_1_LUCKY_COIN, Enums.Tier.None, Enums.Type.LuckyCoin, 1, false));
 
-            itemBundles.add(new ItemBundle(Constants.SLOT_BRONZE_FURNACE, Enums.Tier.Bronze, Enums.Type.Ore, 1, 1));
-            itemBundles.add(new ItemBundle(Constants.SLOT_BRONZE_FURNACE, Enums.Tier.Internal, Enums.Type.MinigameFlip, 1, 1));
-            itemBundles.add(new ItemBundle(Constants.SLOT_BRONZE_FURNACE, Enums.Tier.Bronze, Enums.Type.Bar, 1, 8));
-            itemBundles.add(new ItemBundle(Constants.SLOT_BRONZE_FURNACE, Enums.Tier.Bronze, Enums.Type.Bar, 10, 1));
-            itemBundles.add(new ItemBundle(Constants.SLOT_BRONZE_FURNACE, Enums.Tier.Bronze, Enums.Type.Secondary, 1, 8));
-            itemBundles.add(new ItemBundle(Constants.SLOT_BRONZE_FURNACE, Enums.Tier.Bronze, Enums.Type.Secondary, 10, 1));
-            itemBundles.add(new ItemBundle(Constants.SLOT_BRONZE_FURNACE, Enums.Tier.Internal, Enums.Type.Wildcard, 1, 1));
+            itemBundles.add(new ItemBundle(Constants.MAP_1_LUCKY_COIN, Enums.Tier.Bronze, Enums.Type.Ore, 10, 1));
+            itemBundles.add(new ItemBundle(Constants.MAP_1_LUCKY_COIN, Enums.Tier.Bronze, Enums.Type.Secondary, 10, 1));
+            itemBundles.add(new ItemBundle(Constants.MAP_1_LUCKY_COIN, Enums.Tier.Internal, Enums.Type.Wildcard, 1, 1));
 
-            slots.add(new Slot(Constants.SLOT_BRONZE_WEAPON, 1, 1, 2, 5, 1, 5, Constants.SLOTS_3_MAX_ROUTES, Enums.SlotType.Weapon, 3, Constants.SLOT_BRONZE_FURNACE, 2));
+            // Map 2: Furnace
+            slots.add(new Slot(Constants.MAP_2_FURNACE, 1, 1, 5, 3, Constants.MAP_1_LUCKY_COIN, 2, 2));
+            itemBundles.add(new ItemBundle(Constants.MAP_2_FURNACE, Enums.Tier.Bronze, Enums.Type.Ore, 1, false));
+            tasks.add(new Task(Constants.MAP_2_FURNACE, 1, Enums.Tier.Bronze, Enums.Type.Ore, 15));
+            itemBundles.add(new ItemBundle(Constants.MAP_2_FURNACE, Enums.Tier.Bronze, Enums.Type.Bar, 1, 8));
+            itemBundles.add(new ItemBundle(Constants.MAP_2_FURNACE, Enums.Tier.Bronze, Enums.Type.Ore, 1, 2));
+            itemBundles.add(new ItemBundle(Constants.MAP_2_FURNACE, Enums.Tier.Bronze, Enums.Type.Wildcard, 1, 1));
+
+            /*slots.add(new Slot(Constants.SLOT_BRONZE_WEAPON, 1, 1, 2, 5, 1, 5, Constants.SLOTS_3_MAX_ROUTES, Enums.SlotType.Weapon, 3, Constants.SLOT_BRONZE_FURNACE, 2));
             itemBundles.add(new ItemBundle(Constants.SLOT_BRONZE_WEAPON, Enums.Tier.Bronze, Enums.Type.Bar, 1, false));
             itemBundles.add(new ItemBundle(Constants.SLOT_BRONZE_WEAPON, Enums.Tier.Bronze, Enums.Type.Secondary, 1, false));
 
@@ -259,7 +279,8 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
             itemBundles.add(new ItemBundle(Constants.SLOT_BRONZE_ACCESSORY, Enums.Tier.Bronze, Enums.Type.Gloves, 1, 1));
             itemBundles.add(new ItemBundle(Constants.SLOT_BRONZE_ACCESSORY, Enums.Tier.Bronze, Enums.Type.HalfHelmet, 1, 1));
             itemBundles.add(new ItemBundle(Constants.SLOT_BRONZE_ACCESSORY, Enums.Tier.Bronze, Enums.Type.FullHelmet, 1, 1));
-            itemBundles.add(new ItemBundle(Constants.SLOT_BRONZE_ACCESSORY, Enums.Tier.Internal, Enums.Type.Wildcard, 1, 1));
+            itemBundles.add(new ItemBundle(Constants.SLOT_BRONZE_ACCESSORY, Enums.Tier.Internal, Enums.Type.Wildcard, 1, 1));*/
+        Task.saveInTx(tasks);
         Slot.saveInTx(slots);
         ItemBundle.saveInTx(itemBundles);
     }
@@ -285,24 +306,5 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
             statistics.add(new Statistic(Enums.Statistic.TotalPassDaysClaimed, "", "", 0));
             statistics.add(new Statistic(Enums.Statistic.ExtraPassMonths, "", "", 0));
         Statistic.saveInTx(statistics);
-    }
-
-    private void createTasks() {
-        int position;
-        List<Task> tasks = new ArrayList<>();
-            tasks.add(new Task(Constants.SLOT_BRONZE_WEAPON, 1, Enums.Statistic.TotalSpins, 2));
-            tasks.add(new Task(Constants.SLOT_BRONZE_ARMOUR, 1, Enums.Statistic.TotalSpins, 2));
-
-            position = 1;
-            tasks.add(new Task(Constants.SLOT_BRONZE_TOOL, position++, Enums.Tier.Bronze, Enums.Type.FullShield, 10));
-            tasks.add(new Task(Constants.SLOT_BRONZE_TOOL, position++, Enums.Tier.Bronze, Enums.Type.Dagger, 10));
-            tasks.add(new Task(Constants.SLOT_BRONZE_TOOL, position++, Enums.Statistic.TotalSpins, 5));
-            tasks.add(new Task(Constants.SLOT_BRONZE_TOOL, position++, Enums.Statistic.Level, 100));
-            tasks.add(new Task(Constants.SLOT_BRONZE_TOOL, position++, Enums.Tier.Bronze, Enums.Type.Ore, 100));
-
-            position = 1;
-            tasks.add(new Task(Constants.SLOT_BRONZE_ACCESSORY, position++, Enums.Tier.Bronze, Enums.Type.Bar, 100));
-            tasks.add(new Task(Constants.SLOT_BRONZE_ACCESSORY, position++, Enums.Tier.Bronze, Enums.Type.Dagger, 1000));
-        Task.saveInTx(tasks);
     }
 }

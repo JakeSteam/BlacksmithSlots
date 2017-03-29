@@ -35,11 +35,8 @@ public class Constants {
     public final static int IRON_PER_LEVEL = 60;
 
     // Slots
-    public final static int SLOT_BRONZE_FURNACE = 1;
-    public final static int SLOT_BRONZE_WEAPON = 2;
-    public final static int SLOT_BRONZE_ARMOUR = 3;
-    public final static int SLOT_BRONZE_TOOL = 4;
-    public final static int SLOT_BRONZE_ACCESSORY = 5;
+    public final static int MAP_1_LUCKY_COIN = 1;
+    public final static int MAP_2_FURNACE = 2;
 
     // Slots routes
     public final static int SLOTS_3_MAX_ROUTES = 9;
