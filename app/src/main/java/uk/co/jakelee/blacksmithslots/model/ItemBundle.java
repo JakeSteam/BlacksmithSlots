@@ -69,7 +69,7 @@ public class ItemBundle extends SugarRecord {
         this.bundleType = Enums.ItemBundleType.IapReward.value;
     }
 
-    // Used by pass IAP
+    // Used by pass IAPs
     public ItemBundle(int day, Enums.Tier tier, Enums.Type type, int quantity) {
         this.tier = tier.value;
         this.type = type.value;

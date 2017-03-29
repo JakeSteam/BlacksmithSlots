@@ -146,7 +146,7 @@ public class Enums {
 
     public enum Slot {
         Map1LuckyCoin(1),
-        Map2Furnace(2);
+        Map2Furnace(2), Map2Accessories(3);
         public int value;
         Slot(int value) {
             this.value = value;
