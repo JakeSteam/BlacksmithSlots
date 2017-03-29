@@ -25,6 +25,8 @@ import uk.co.jakelee.blacksmithslots.model.Inventory;
 import uk.co.jakelee.blacksmithslots.model.Item;
 import uk.co.jakelee.blacksmithslots.model.ItemBundle;
 
+import static android.R.attr.type;
+
 public class DisplayHelper {
     public static String getItemTierString(int tier) {
         return "tier_" + tier;
@@ -40,6 +42,10 @@ public class DisplayHelper {
 
     public static String getItemTypeString(int type) {
         return "type_" + type;
+    }
+
+    public static String getMapString(int map) {
+        return "map_" + map;
     }
 
     public static String getItemImageFile(ItemBundle result, boolean useDefault) {

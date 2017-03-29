@@ -14,6 +14,7 @@
     <string name="alert_item_source">%1$s is obtained from %2$s.</string>
     <string name="alert_item_use">%1$s is used in %2$s.</string>
     <string name="alert_item_unknown">Nowhere!?</string>
+    <string name="alert_map_locked">To unlock map \"%1$s\" slot \"%2$s\" must be completed!</string>
 
     <string name="google_cloud_save_loading">Loading...</string>
     <string name="google_cloud_save_loaded">Loaded cloud save!</string>
@@ -187,6 +188,7 @@
     <string name="task_6_13_text">Okay, fine, I give up. Any chance you don\'t have bows?</string>
 
     <string name="map_3">The Forest</string>
+    <string name="slot_7_name">Forest Slot 1</string>
 
     <string name="statistic_1_name">XP</string>
     <string name="statistic_2_name">Level</string>

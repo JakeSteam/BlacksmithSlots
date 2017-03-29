@@ -52,4 +52,22 @@
         app:layout_marginTopPercent="12.5%"
         app:layout_marginLeftPercent="77.7%" />
 
+    <RelativeLayout
+        android:id="@+id/lockedMapBlocker"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:onClick="suppress">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@color/black"/>
+        <uk.co.jakelee.blacksmithslots.components.FontTextView
+            android:id="@+id/lockedMapText"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textColor="@color/redText"
+            android:textSize="30sp"
+            android:gravity="center" />
+    </RelativeLayout>
+
 </android.support.percent.PercentRelativeLayout>

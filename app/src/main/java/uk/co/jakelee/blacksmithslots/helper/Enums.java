@@ -79,7 +79,7 @@ public class Enums {
     }
 
     public enum Map {
-        Home(1), Neighbourhood(2);
+        Home(1), Neighbourhood(2), Forest(3);
         public int value;
         Map(int value) {
             this.value = value;
@@ -146,7 +146,8 @@ public class Enums {
 
     public enum Slot {
         Map1LuckyCoin(1),
-        Map2Furnace(2), Map2Accessories(3), Map2Tools(4), Map2Weapons(5), Map2Armour(6);
+        Map2Furnace(2), Map2Accessories(3), Map2Tools(4), Map2Weapons(5), Map2Armour(6),
+        Map3Secondary(7);
         public int value;
         Slot(int value) {
             this.value = value;

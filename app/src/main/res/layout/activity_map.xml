@@ -69,13 +69,17 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/taskText"
                 style="@style/SidebarText"/>
-            <Button
+            <uk.co.jakelee.blacksmithslots.components.FontTextView
                 android:id="@+id/handInButton"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:background="@drawable/box_yellow"
                 android:text="Hand in?"
                 android:onClick="handIn"
-                android:layout_alignParentBottom="true"/>
+                android:maxLines="2"
+                android:layout_marginTop="3dp"
+                android:layout_marginBottom="3dp"
+                android:layout_alignParentBottom="true"
+                style="@style/SlotText"/>
         </RelativeLayout>
         <RelativeLayout
             android:id="@+id/unlockedSlot"

@@ -278,7 +278,7 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
             slots.add(new Slot(Enums.Slot.Map2Armour, 1, 1, 5, 3, Enums.Slot.Map2Furnace, Enums.Person.Map2Blacksmith, Enums.Map.Neighbourhood));
             itemBundles.add(new ItemBundle(Enums.Slot.Map2Armour, Enums.Tier.Bronze, Enums.Type.Bar, 1));
             itemBundles.add(new ItemBundle(Enums.Slot.Map2Armour, Enums.Tier.Bronze, Enums.Type.Secondary, 1));
-            tasks.add(new Task(Enums.Slot.Map2Armour, 1, Enums.Statistic.CollectedBonuses, 2));
+            tasks.add(new Task(Enums.Slot.Map2Armour, 1, Enums.Statistic.CollectedBonuses, 1));
             tasks.add(new Task(Enums.Slot.Map2Armour, 2, Enums.Tier.Bronze, Enums.Type.Boots, 5));
             tasks.add(new Task(Enums.Slot.Map2Armour, 3, Enums.Tier.Bronze, Enums.Type.Gloves, 5));
             tasks.add(new Task(Enums.Slot.Map2Armour, 4, Enums.Tier.Bronze, Enums.Type.HalfHelmet, 5));
@@ -299,35 +299,11 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
             itemBundles.add(new ItemBundle(Enums.Slot.Map2Armour, Enums.Tier.Internal, Enums.Type.MinigameFlip, 1, 1));
             itemBundles.add(new ItemBundle(Enums.Slot.Map2Armour, Enums.Tier.Internal, Enums.Type.Wildcard, 1, 3));
 
-            /*slots.add(new Slot(Constants.SLOT_BRONZE_WEAPON, 1, 1, 2, 5, 1, 5, Constants.SLOTS_3_MAX_ROUTES, Enums.SlotType.Weapon, 3, Constants.SLOT_BRONZE_FURNACE, 2));
-            itemBundles.add(new ItemBundle(Constants.SLOT_BRONZE_WEAPON, Enums.Tier.Bronze, Enums.Type.Bar, 1, false));
-            itemBundles.add(new ItemBundle(Constants.SLOT_BRONZE_WEAPON, Enums.Tier.Bronze, Enums.Type.Secondary, 1, false));
-
-            itemBundles.add(new ItemBundle(Constants.SLOT_BRONZE_WEAPON, Enums.Tier.Bronze, Enums.Type.Dagger, 1, 1));
-            itemBundles.add(new ItemBundle(Constants.SLOT_BRONZE_WEAPON, Enums.Tier.Bronze, Enums.Type.Sword, 1, 1));
-            itemBundles.add(new ItemBundle(Constants.SLOT_BRONZE_WEAPON, Enums.Tier.Bronze, Enums.Type.Longsword, 1, 1));
-            itemBundles.add(new ItemBundle(Constants.SLOT_BRONZE_WEAPON, Enums.Tier.Bronze, Enums.Type.Bow, 1, 1));
-            itemBundles.add(new ItemBundle(Constants.SLOT_BRONZE_WEAPON, Enums.Tier.Internal, Enums.Type.Wildcard, 1, 1));
-
-            slots.add(new Slot(Constants.SLOT_BRONZE_ARMOUR, 1, 1, 2, 5, 1, 5, Constants.SLOTS_3_MAX_ROUTES, Enums.SlotType.Armour, 3, Constants.SLOT_BRONZE_WEAPON, 3));
-            itemBundles.add(new ItemBundle(Constants.SLOT_BRONZE_ARMOUR, Enums.Tier.Bronze, Enums.Type.Bar, 1, false));
-            itemBundles.add(new ItemBundle(Constants.SLOT_BRONZE_ARMOUR, Enums.Tier.Bronze, Enums.Type.Secondary, 1, false));
-
-            itemBundles.add(new ItemBundle(Constants.SLOT_BRONZE_ARMOUR, Enums.Tier.Bronze, Enums.Type.Chainmail, 1, 1));
-            itemBundles.add(new ItemBundle(Constants.SLOT_BRONZE_ARMOUR, Enums.Tier.Bronze, Enums.Type.Platebody, 1, 1));
-            itemBundles.add(new ItemBundle(Constants.SLOT_BRONZE_ARMOUR, Enums.Tier.Bronze, Enums.Type.HalfShield, 1, 1));
-            itemBundles.add(new ItemBundle(Constants.SLOT_BRONZE_ARMOUR, Enums.Tier.Bronze, Enums.Type.FullShield, 1, 1));
-            itemBundles.add(new ItemBundle(Constants.SLOT_BRONZE_ARMOUR, Enums.Tier.Internal, Enums.Type.Wildcard, 1, 2));
-
-            slots.add(new Slot(Constants.SLOT_BRONZE_TOOL, 1, 1, 2, 5, 1, 5, Constants.SLOTS_3_MAX_ROUTES, Enums.SlotType.Tool, 3, Constants.SLOT_BRONZE_ARMOUR, 4));
-            itemBundles.add(new ItemBundle(Constants.SLOT_BRONZE_TOOL, Enums.Tier.Bronze, Enums.Type.Bar, 1, false));
-            itemBundles.add(new ItemBundle(Constants.SLOT_BRONZE_TOOL, Enums.Tier.Bronze, Enums.Type.Secondary, 1, false));
-
-            itemBundles.add(new ItemBundle(Constants.SLOT_BRONZE_TOOL, Enums.Tier.Bronze, Enums.Type.Pickaxe, 1, 1));
-            itemBundles.add(new ItemBundle(Constants.SLOT_BRONZE_TOOL, Enums.Tier.Bronze, Enums.Type.Hatchet, 1, 1));
-            itemBundles.add(new ItemBundle(Constants.SLOT_BRONZE_TOOL, Enums.Tier.Bronze, Enums.Type.FishingRod, 1, 1));
-            itemBundles.add(new ItemBundle(Constants.SLOT_BRONZE_TOOL, Enums.Tier.Bronze, Enums.Type.Hammer, 1, 1));
-            itemBundles.add(new ItemBundle(Constants.SLOT_BRONZE_TOOL, Enums.Tier.Internal, Enums.Type.Wildcard, 1, 1));*/
+            slots.add(new Slot(Enums.Slot.Map3Secondary, 1, 1, 5, 3, Enums.Slot.Map2Armour, Enums.Person.Map2Blacksmith, Enums.Map.Forest));
+            itemBundles.add(new ItemBundle(Enums.Slot.Map3Secondary, Enums.Tier.Bronze, Enums.Type.Bar, 3));
+            tasks.add(new Task(Enums.Slot.Map3Secondary, 1, Enums.Statistic.Level, 3));
+            itemBundles.add(new ItemBundle(Enums.Slot.Map3Secondary, Enums.Tier.Bronze, Enums.Type.Secondary, 1, 1));
+            itemBundles.add(new ItemBundle(Enums.Slot.Map3Secondary, Enums.Tier.Internal, Enums.Type.Wildcard, 1, 1));
         Task.saveInTx(tasks);
         Slot.saveInTx(slots);
         ItemBundle.saveInTx(itemBundles);
