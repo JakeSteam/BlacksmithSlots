@@ -13,8 +13,15 @@
         android:src="@drawable/map2"/>
 
     <uk.co.jakelee.blacksmithslots.components.FontTextView
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
         style="@style/SidebarText"
-        android:text="@string/map_2"/>
+        android:text="@string/map_2"
+        android:background="@color/white"
+        android:alpha="0.6"
+        android:textSize="30sp"
+        android:padding="5dp"
+        android:layout_centerHorizontal="true"/>
 
     <ImageView
         android:tag="2"
