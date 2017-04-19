@@ -1,6 +1,7 @@
 package uk.co.jakelee.blacksmithslots.helper;
 
 import android.content.Context;
+import android.content.Intent;
 
 import com.applovin.adview.AppLovinIncentivizedInterstitial;
 import com.applovin.adview.AppLovinInterstitialAd;
@@ -12,6 +13,7 @@ import com.applovin.sdk.AppLovinSdk;
 
 import java.util.Map;
 
+import uk.co.jakelee.blacksmithslots.main.InterstitialActivity;
 import uk.co.jakelee.blacksmithslots.main.MapActivity;
 
 public class AdvertHelper implements AppLovinAdRewardListener, AppLovinAdDisplayListener, AppLovinAdVideoPlaybackListener {
@@ -36,14 +38,6 @@ public class AdvertHelper implements AppLovinAdRewardListener, AppLovinAdDisplay
         return dhInstance;
     }
 
-    public void openInterstitial() {
-        /*Intent intent = new Intent(context, InterstitialActivity.class);
-        intent.putExtra(AdvertHelper.INTENT_ID, purpose.toString());
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        context.startActivity(intent);*/
-        AlertHelper.error(activity, "Advert failed to load...", false);
-    }
-
     public void showAdvert(MapActivity activity) {
         this.activity = activity;
         verified = false;
@@ -53,15 +47,16 @@ public class AdvertHelper implements AppLovinAdRewardListener, AppLovinAdDisplay
         } else if (AppLovinInterstitialAd.isAdReadyToDisplay(activity)) {
             AppLovinInterstitialAd.show(activity);
         } else {
-            openInterstitial();
+            activity.startActivityForResult(new Intent(activity, InterstitialActivity.class)
+                    .addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT),
+                    Constants.ADVERT_WATCH);
         }
     }
 
     @Override
     public void adHidden(AppLovinAd appLovinAd) {
         if (verified) {
-            AlertHelper.success(activity, "Advert watch verified! " + IncomeHelper.watchAdvert(context, true), false);
-            activity.setAdvertUnclaimable();
+            activity.rewardAdvertItems();
         } else {
             AlertHelper.error(activity, "Something went wrong, and the ad view couldn't be verified. Sorry!", false);
         }

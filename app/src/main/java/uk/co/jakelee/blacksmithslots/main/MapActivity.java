@@ -191,7 +191,7 @@ public class MapActivity extends BaseActivity implements
         }
     }
 
-    public void watchAdvert(View v) {
+    public void rewardAdvertItems(View v) {
         if (IncomeHelper.canWatchAdvert()) {
             AdvertHelper.getInstance(this).showAdvert(this);
         } else {
@@ -200,6 +200,11 @@ public class MapActivity extends BaseActivity implements
                     DateHelper.timestampToDetailedTime(IncomeHelper.getNextAdvertWatchTime() - System.currentTimeMillis())),
                     false);
         }
+    }
+
+    public void rewardAdvertItems() {
+        AlertHelper.success(this, "Advert watch verified! " + IncomeHelper.claimAdvertReward(this, true), false);
+        setAdvertUnclaimable();
     }
 
     public void loadSidebar(View v) {
@@ -315,6 +320,12 @@ public class MapActivity extends BaseActivity implements
     }
 
     protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
-        GooglePlayHelper.ActivityResult(this, requestCode, resultCode);
+        if (requestCode == Constants.ADVERT_WATCH) {
+            if (resultCode > 0) {
+                rewardAdvertItems();
+            }
+        } else {
+            GooglePlayHelper.ActivityResult(this, requestCode, resultCode);
+        }
     }
 }

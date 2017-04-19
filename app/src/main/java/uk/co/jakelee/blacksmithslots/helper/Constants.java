@@ -11,6 +11,7 @@ public class Constants {
     public final static int NOTIFICATION_PASS_BONUS = 101;
 
     public final static int MINIGAME_FLIP = 123;
+    public final static int ADVERT_WATCH = 12223;
 
     // IAP Constants
     public final static int MAX_VIP_LEVEL = 6;
@@ -22,6 +23,7 @@ public class Constants {
     public final static int VIP_DAILY_BONUS_MODIFIER = 50;
     public final static int PASS_DAYS = 30;
     public final static int AUTOSPIN_INCREASE = 10;
+    public static final int ADVERT_TIMEOUT = 30000;
 
     // Intents
     public final static String INTENT_SLOT = "uk.co.jakelee.blacksmithslots.slot";

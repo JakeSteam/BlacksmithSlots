@@ -328,6 +328,9 @@ public class SlotHelper {
             }
 
             if (failedItem != null) {
+                if (failedItem.getType() == Enums.Type.Bar.value) {
+                    failedItem.setType(Enums.Type.Ore.value);
+                }
                 activity.startActivity(new Intent(activity, ShopActivity.class)
                         .putExtra("tier", failedItem.getTier())
                         .putExtra("type", failedItem.getType())

@@ -46,6 +46,14 @@
     <!-- Misc -->
     <string name="unknown">\???</string>
 
+    <!-- Advert -->
+    <string name="interstitialTimeLeft">Remaining: %1$ds</string>
+    <string name="interstitialLongText">No advert could be loaded!
+\n\nThis can be caused by poor internet, recently enabling adverts, or no advertisers currently advertising in your area.
+\n\nIf you wait until the countdown at the top reaches 0 and turns green, closing this window will provide the advert reward.
+\n\nWhilst you\'re waiting, you could <a href="https://play.google.com/store/apps/details?id=uk.co.jakelee.blacksmithslots">leave the game a rating</a>. It\'s the best way to help the game grow!
+\n\nOr even check out the original game, <a href="https://play.google.com/store/apps/details?id=uk.co.jakelee.blacksmith">Pixel Blacksmith</a>. I think it\'s rather fun!</string>
+
     <!-- Slot -->
     <string name="vip_level_display">VIP %1$d</string>
 

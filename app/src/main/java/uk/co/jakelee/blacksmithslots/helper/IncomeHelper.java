@@ -51,7 +51,7 @@ public class IncomeHelper {
         return winningsText.substring(0, winningsText.length() - 2);
     }
 
-    public static String watchAdvert(Context context, boolean claimingAdvertBonus) {
+    public static String claimAdvertReward(Context context, boolean claimingAdvertBonus) {
         List<ItemBundle> bonus = getBonus();
         StringBuilder winningsText = new StringBuilder().append("Claimed: ");
         for (ItemBundle result : bonus) {

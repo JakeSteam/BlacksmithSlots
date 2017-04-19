@@ -188,7 +188,7 @@
                 android:layout_width="match_parent"
                 android:background="@drawable/box_green"
                 android:text="@string/watch_advert"
-                android:onClick="watchAdvert"
+                android:onClick="rewardAdvertItems"
                 android:maxLines="2"
                 android:layout_marginTop="3dp"
                 android:layout_marginBottom="3dp"
