@@ -2,6 +2,12 @@
     <string name="app_name" translatable="false">Blacksmith Slots</string>
     <string name="app_id" translatable="false">1038590321568</string>
 
+    <string name="rate_dialog_title">Rate Blacksmith Slots</string>
+    <string name="rate_dialog_message">If you\'re enjoying Blacksmith Slots, would you mind leaving a rating? It helps more people discover the game, and encourages future development!\n\nThanks &lt;3</string>
+    <string name="rate_dialog_ok">Okay!</string>
+    <string name="rate_dialog_cancel">Later</string>
+    <string name="rate_dialog_no">No >:(</string>
+
     <string name="alert_items_submitted">Items submitted!</string>
     <string name="alert_no_matches">No matches!</string>
     <string name="alert_quest_completed">Quest completed!</string>
@@ -208,4 +214,11 @@
     <string name="statistic_16_name">BS Pass Highest Day</string>
     <string name="statistic_17_name">BS Pass Days Claimed</string>
     <string name="statistic_18_name">BS Pass Extra Months</string>
+    <string name="statistic_next_claim_name">Next Bonus Claim</string>
+
+    <string name="statistictype_1_name">Progress</string>
+    <string name="statistictype_2_name">Events</string>
+    <string name="statistictype_3_name">Bonuses</string>
+    <string name="statistictype_4_name">Blacksmith Pass</string>
+    <string name="statistictype_5_name">Misc</string>
 </resources>

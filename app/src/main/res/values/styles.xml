@@ -79,10 +79,10 @@
 
     <style name="SlotClickArea">
         <item name="android:onClick">selectSlot</item>
-        <item name="android:alpha">0.5</item>
-        <item name="android:src">@color/white</item>
         <item name="layout_heightPercent">12.5%</item>
         <item name="layout_widthPercent">11.1%</item>
+        <item name="android:background">@color/white</item>
+        <item name="android:alpha">0.6</item>
     </style>
 
 </resources>

@@ -42,10 +42,14 @@ public class Statistic extends SugarRecord {
     @Column(name = "h")
     private String stringValue;
 
+    @Column(name = "i")
+    private int statisticType;
+
     public Statistic() {
     }
 
-    public Statistic(Enums.Statistic statistic, String eventId, String leaderboardId, int intValue) {
+    public Statistic(Enums.StatisticType statisticType, Enums.Statistic statistic, String eventId, String leaderboardId, int intValue) {
+        this.statisticType = statisticType.value;
         this.statistic = statistic.value;
         this.eventId = eventId;
         this.leaderboardId = leaderboardId;
@@ -53,7 +57,8 @@ public class Statistic extends SugarRecord {
         this.intValue = intValue;
     }
 
-    public Statistic(Enums.Statistic statistic, String eventId, String leaderboardId, long longValue) {
+    public Statistic(Enums.StatisticType statisticType, Enums.Statistic statistic, String eventId, String leaderboardId, long longValue) {
+        this.statisticType = statisticType.value;
         this.statistic = statistic.value;
         this.eventId = eventId;
         this.leaderboardId = leaderboardId;
@@ -61,7 +66,8 @@ public class Statistic extends SugarRecord {
         this.longValue = longValue;
     }
 
-    public Statistic(Enums.Statistic statistic, String eventId, String leaderboardId, boolean boolValue) {
+    public Statistic(Enums.StatisticType statisticType, Enums.Statistic statistic, String eventId, String leaderboardId, boolean boolValue) {
+        this.statisticType = statisticType.value;
         this.statistic = statistic.value;
         this.eventId = eventId;
         this.leaderboardId = leaderboardId;
@@ -69,7 +75,8 @@ public class Statistic extends SugarRecord {
         this.boolValue = boolValue;
     }
 
-    public Statistic(Enums.Statistic statistic, String eventId, String leaderboardId, String stringValue) {
+    public Statistic(Enums.StatisticType statisticType, Enums.Statistic statistic, String eventId, String leaderboardId, String stringValue) {
+        this.statisticType = statisticType.value;
         this.statistic = statistic.value;
         this.eventId = eventId;
         this.leaderboardId = leaderboardId;
@@ -147,6 +154,14 @@ public class Statistic extends SugarRecord {
         this.stringValue = stringValue;
     }
 
+    public Enums.StatisticType getStatisticType() {
+        return Enums.StatisticType.get(statisticType);
+    }
+
+    public void setStatisticType(Enums.StatisticType statisticType) {
+        this.statisticType = statisticType.value;
+    }
+
     public static void add(Enums.Statistic stat) {
         add(stat, 1);
     }
@@ -212,6 +227,10 @@ public class Statistic extends SugarRecord {
 
     public static String getName(Context context, int statistic) {
         return TextHelper.getInstance(context).getText("statistic_" + statistic + "_name");
+    }
+
+    public static String getTypeName(Context context, int statisticType) {
+        return TextHelper.getInstance(context).getText("statistictype_" + statisticType + "_name");
     }
 
     public String getValue() {

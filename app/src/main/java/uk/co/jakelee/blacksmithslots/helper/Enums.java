@@ -180,6 +180,22 @@ public class Enums {
         }
     }
 
+    public enum StatisticType {
+        Progress(1), Events(2), Bonuses(3), BlacksmithPass(4), Misc(5);
+        public int value;
+        StatisticType(int value) {
+            this.value = value;
+        }
+        public static StatisticType get(int value) {
+            for (StatisticType item : StatisticType.values()) {
+                if (value == item.value) {
+                    return item;
+                }
+            }
+            return null;
+        }
+    }
+
     public enum Tier {
         Internal(999), None(0), Bronze(1), Iron(2), Steel(3), Mithril(4);
         public int value;
