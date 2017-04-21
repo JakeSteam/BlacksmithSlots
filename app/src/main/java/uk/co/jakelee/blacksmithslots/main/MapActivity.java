@@ -181,7 +181,7 @@ public class MapActivity extends BaseActivity implements
 
     public void claimPeriodicBonus(View v) {
         if (IncomeHelper.canClaimPeriodicBonus()) {
-            AlertHelper.success(this, IncomeHelper.claimBonus(this, true), true);
+            AlertHelper.success(this, IncomeHelper.claimPeriodicBonus(this), true);
             setPeriodicBonusUnclaimable();
         } else {
             AlertHelper.error(this, String.format(Locale.ENGLISH,
@@ -203,7 +203,7 @@ public class MapActivity extends BaseActivity implements
     }
 
     public void rewardAdvertItems() {
-        AlertHelper.success(this, "Advert watch verified! " + IncomeHelper.claimAdvertReward(this, true), false);
+        AlertHelper.success(this, "Advert watch verified! " + IncomeHelper.claimAdvertBonus(this), false);
         setAdvertUnclaimable();
     }
 

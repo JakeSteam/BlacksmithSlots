@@ -33,25 +33,19 @@ public class IncomeHelper {
         return lastWatched.getLongValue() + millis;
     }
 
-    public static String claimBonus(Context context, boolean claimingPeriodicBonus) {
-        List<ItemBundle> bonus = getBonus();
-        StringBuilder winningsText = new StringBuilder().append("Claimed: ");
-        for (ItemBundle result : bonus) {
-            Inventory.addInventory(result);
-            winningsText.append(result.toString(context)).append(", ");
-        }
-
-        if (claimingPeriodicBonus) {
-            Statistic.add(Enums.Statistic.CollectedBonuses);
-            Statistic lastClaimed = Statistic.get(Enums.Statistic.LastBonusClaimed);
-            lastClaimed.setLongValue(System.currentTimeMillis());
-            lastClaimed.save();
-        }
-
-        return winningsText.substring(0, winningsText.length() - 2);
+    public static String claimMiscBonus(Context context) {
+        return claimBonus(context, false, false);
     }
 
-    public static String claimAdvertReward(Context context, boolean claimingAdvertBonus) {
+    public static String claimPeriodicBonus(Context context) {
+        return claimBonus(context, true, false);
+    }
+
+    public static String claimAdvertBonus(Context context) {
+        return claimBonus(context, false, true);
+    }
+
+    private static String claimBonus(Context context, boolean claimingPeriodicBonus, boolean claimingAdvertBonus) {
         List<ItemBundle> bonus = getBonus();
         StringBuilder winningsText = new StringBuilder().append("Claimed: ");
         for (ItemBundle result : bonus) {
@@ -59,9 +53,9 @@ public class IncomeHelper {
             winningsText.append(result.toString(context)).append(", ");
         }
 
-        if (claimingAdvertBonus) {
+        if (claimingPeriodicBonus || claimingAdvertBonus) {
             Statistic.add(Enums.Statistic.CollectedBonuses);
-            Statistic lastClaimed = Statistic.get(Enums.Statistic.LastAdvertWatched);
+            Statistic lastClaimed = Statistic.get(claimingAdvertBonus ? Enums.Statistic.LastAdvertWatched : Enums.Statistic.LastBonusClaimed);
             lastClaimed.setLongValue(System.currentTimeMillis());
             lastClaimed.save();
         }

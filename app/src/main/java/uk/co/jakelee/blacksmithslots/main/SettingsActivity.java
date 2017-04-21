@@ -164,7 +164,7 @@ public class SettingsActivity extends BaseActivity {
     public void importSave(View v) {
         StorageHelper.confirmStoragePermissions(this);
         if (StorageHelper.checkForPBSave()) {
-            AlertHelper.success(this, IncomeHelper.claimBonus(this, false), false);
+            AlertHelper.success(this, IncomeHelper.claimMiscBonus(this), false);
 
             // Reward fixed amount for now, ideally dependant on prestige / premium?
             Setting haveImported = Setting.get(Enums.Setting.SaveImported);

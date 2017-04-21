@@ -13,6 +13,14 @@
         android:onClick="loadSidebar"
         android:src="@drawable/map1"/>
 
+    <ImageView
+        android:tag="1"
+        style="@style/SlotClickArea"
+        app:layout_marginTopPercent="10%"
+        app:layout_marginLeftPercent="10%"
+        app:layout_heightPercent="20%"
+        app:layout_widthPercent="20%"/>
+
     <uk.co.jakelee.blacksmithslots.components.FontTextView
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
@@ -23,14 +31,6 @@
         android:textSize="30sp"
         android:padding="5dp"
         android:layout_centerHorizontal="true"/>
-
-    <ImageView
-        android:tag="1"
-        style="@style/SlotClickArea"
-        app:layout_marginTopPercent="10%"
-        app:layout_marginLeftPercent="10%"
-        app:layout_heightPercent="20%"
-        app:layout_widthPercent="20%"/>
 
     <RelativeLayout
         android:id="@+id/lockedMapBlocker"

@@ -63,7 +63,7 @@ public class LevelHelper {
             return String.format(Locale.ENGLISH,
                     context.getString(R.string.alert_levelled_up),
                     level,
-                    IncomeHelper.claimBonus(context, false));
+                    IncomeHelper.claimMiscBonus(context));
         }
         return "";
     }
