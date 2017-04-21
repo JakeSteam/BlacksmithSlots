@@ -34,19 +34,18 @@ public class IncomeHelper {
     }
 
     public static String claimMiscBonus(Context context) {
-        return claimBonus(context, false, false);
+        return claimBonus(context, getRegularBonus(), false, false);
     }
 
     public static String claimPeriodicBonus(Context context) {
-        return claimBonus(context, true, false);
+        return claimBonus(context, getPeriodicBonus(), true, false);
     }
 
     public static String claimAdvertBonus(Context context) {
-        return claimBonus(context, false, true);
+        return claimBonus(context, getAdvertBonus(), false, true);
     }
 
-    private static String claimBonus(Context context, boolean claimingPeriodicBonus, boolean claimingAdvertBonus) {
-        List<ItemBundle> bonus = getBonus();
+    private static String claimBonus(Context context, List<ItemBundle> bonus, boolean claimingPeriodicBonus, boolean claimingAdvertBonus) {
         StringBuilder winningsText = new StringBuilder().append("Claimed: ");
         for (ItemBundle result : bonus) {
             Inventory.addInventory(result);
@@ -63,7 +62,19 @@ public class IncomeHelper {
         return winningsText.substring(0, winningsText.length() - 2);
     }
 
-    private static List<ItemBundle> getBonus() {
+    private static List<ItemBundle> getPeriodicBonus() {
+        return getBonus(Constants.PERIODIC_REWARD_MODIFIER);
+    }
+
+    private static List<ItemBundle> getAdvertBonus() {
+        return getBonus(Constants.ADVERT_REWARD_MODIFIER);
+    }
+
+    private static List<ItemBundle> getRegularBonus() {
+        return getBonus(1.0);
+    }
+
+    private static List<ItemBundle> getBonus(double modifier) {
         ArrayList<ItemBundle> bonus = new ArrayList<>();
         int currentLevel = LevelHelper.getLevel();
         int vipLevel = LevelHelper.getVipLevel();
@@ -72,8 +83,10 @@ public class IncomeHelper {
         for (TierRange tierRange : tierRanges) {
             if (currentLevel >= tierRange.getMin()) {
                 int adjustedLevel = Math.min(currentLevel, tierRange.getMax() + 1);
-                bonus.add(new ItemBundle(tierRange.getTier(), Enums.Type.Bar, (adjustedLevel - tierRange.getMin() + 1) * tierRange.getItemPerLevel()));
-                bonus.add(new ItemBundle(tierRange.getTier(), Enums.Type.Secondary, (adjustedLevel - tierRange.getMin() + 1) * tierRange.getItemPerLevel()));
+                int levelMultiplier = adjustedLevel - tierRange.getMin() + 1;
+                int adjustedAmount = (int)Math.ceil(tierRange.getItemPerLevel() * modifier);
+                bonus.add(new ItemBundle(tierRange.getTier(), Enums.Type.Bar, levelMultiplier * adjustedAmount));
+                bonus.add(new ItemBundle(tierRange.getTier(), Enums.Type.Secondary, levelMultiplier * adjustedAmount));
             }
         }
 

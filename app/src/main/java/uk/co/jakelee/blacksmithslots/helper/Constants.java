@@ -24,6 +24,8 @@ public class Constants {
     public final static int PASS_DAYS = 30;
     public final static int AUTOSPIN_INCREASE = 10;
     public static final int ADVERT_TIMEOUT = 30000;
+    public static final double ADVERT_REWARD_MODIFIER = 0.33;
+    public static final double PERIODIC_REWARD_MODIFIER = 1.0;
 
     // Intents
     public final static String INTENT_SLOT = "uk.co.jakelee.blacksmithslots.slot";

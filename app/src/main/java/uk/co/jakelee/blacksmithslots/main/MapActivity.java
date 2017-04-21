@@ -203,7 +203,7 @@ public class MapActivity extends BaseActivity implements
     }
 
     public void rewardAdvertItems() {
-        AlertHelper.success(this, "Advert watch verified! " + IncomeHelper.claimAdvertBonus(this), false);
+        AlertHelper.success(this, "Advert watch verified! " + IncomeHelper.claimAdvertBonus(this), true);
         setAdvertUnclaimable();
     }
 
