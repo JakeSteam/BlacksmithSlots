@@ -6,9 +6,9 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import uk.co.jakelee.blacksmithslots.R;
 import uk.co.jakelee.blacksmithslots.constructs.DialogAction;
@@ -16,24 +16,10 @@ import uk.co.jakelee.blacksmithslots.main.MinigameActivity;
 import uk.co.jakelee.blacksmithslots.main.SlotActivity;
 
 public class AlertDialogHelper {
-    public static void exampleDialog(final Context context) {
-        displayAlertDialog(context, "Title", "Body",
-                new DialogAction("One", new Runnable() {
-                    @Override
-                    public void run() {
-                        Toast.makeText(context, "I guess I should be run on press?", Toast.LENGTH_SHORT).show();
-                    }
-                }),
-                new DialogAction("Two", new Runnable() {
-                    @Override
-                    public void run() {
-                        Toast.makeText(context, "The other button", Toast.LENGTH_SHORT).show();
-                    }
-                }));
-    }
 
     private static void displayAlertDialog(Context context, String title, String body, DialogAction... actions) {
         LayoutInflater inflater = LayoutInflater.from(context);
+        final LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT, 1);
         final View inflatedLayout = inflater.inflate(R.layout.custom_alert_dialog, null);
         final AlertDialog dialog = new AlertDialog.Builder(context).create();
         dialog.setView(inflatedLayout);
@@ -52,7 +38,7 @@ public class AlertDialogHelper {
                     dialog.dismiss();
                 }
             });
-            buttonContainer.addView(button);
+            buttonContainer.addView(button, params);
         }
 
         dialog.show();

@@ -29,7 +29,6 @@ import uk.co.jakelee.blacksmithslots.BaseActivity;
 import uk.co.jakelee.blacksmithslots.R;
 import uk.co.jakelee.blacksmithslots.components.MapPagerAdapter;
 import uk.co.jakelee.blacksmithslots.helper.AdvertHelper;
-import uk.co.jakelee.blacksmithslots.helper.AlertDialogHelper;
 import uk.co.jakelee.blacksmithslots.helper.AlertHelper;
 import uk.co.jakelee.blacksmithslots.helper.Constants;
 import uk.co.jakelee.blacksmithslots.helper.DatabaseHelper;
@@ -176,9 +175,8 @@ public class MapActivity extends BaseActivity implements
     }
 
     public void openShop(View v) {
-        /*startActivity(new Intent(this, ShopActivity.class)
-                .addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT));*/
-        AlertDialogHelper.exampleDialog(this);
+        startActivity(new Intent(this, ShopActivity.class)
+                .addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT));
     }
 
     public void claimPeriodicBonus(View v) {

@@ -1,23 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/background_tan"
+    style="@style/Theme.Dimmed">
 
     <uk.co.jakelee.blacksmithslots.components.FontTextView
         android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="@style/FontSize"/>
+        android:layout_margin="1dp"
+        android:paddingLeft="3dp"
+        style="@style/LargeFontSize"/>
 
     <uk.co.jakelee.blacksmithslots.components.FontTextView
         android:id="@+id/body"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_margin="1dp"
+        android:paddingLeft="3dp"
         style="@style/FontSize"/>
 
     <LinearLayout
         android:id="@+id/buttonContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="5dp"
         android:orientation="horizontal" />
 </LinearLayout>

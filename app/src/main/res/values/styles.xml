@@ -59,9 +59,16 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_weight">1</item>
         <item name="android:gravity">center</item>
-        <item name="android:paddingBottom">6dp</item>
         <item name="android:maxLines">2</item>
         <item name="android:onClick">changeTab</item>
+        <item name="android:background">@drawable/background_brown</item>
+    </style>
+
+    <style name="DialogButton" parent="LargeFontSize">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:gravity">center</item>
         <item name="android:background">@drawable/background_brown</item>
     </style>
 
@@ -75,6 +82,10 @@
 
     <style name="FontSize">
         <item name="android:textSize">24sp</item>
+    </style>
+
+    <style name="LargeFontSize">
+        <item name="android:textSize">30sp</item>
     </style>
 
     <style name="SlotClickArea">
