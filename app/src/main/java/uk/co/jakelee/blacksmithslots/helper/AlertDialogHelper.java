@@ -16,7 +16,6 @@ import uk.co.jakelee.blacksmithslots.main.MinigameActivity;
 import uk.co.jakelee.blacksmithslots.main.SlotActivity;
 
 public class AlertDialogHelper {
-
     private static void displayAlertDialog(Context context, String title, String body, DialogAction... actions) {
         LayoutInflater inflater = LayoutInflater.from(context);
         final LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT, 1);
@@ -45,29 +44,25 @@ public class AlertDialogHelper {
     }
 
     public static void confirmCloseMinigame(final MinigameActivity activity) {
-        final AlertDialog.Builder alertDialog = new AlertDialog.Builder(activity, R.style.Theme_AlertDialog);
-        alertDialog.setMessage("Are you sure you want to leave the minigame with no reward?");
-
-        alertDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int which) {
-                activity.confirmClose();
-            }
-        });
-
-        alertDialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.cancel();
-            }
-        });
-
-        alertDialog.show();
+        displayAlertDialog(activity, activity.getString(R.string.alert_minigame), activity.getString(R.string.alert_minigame_body),
+                new DialogAction(activity.getString(R.string.yes), new Runnable() {
+                    @Override
+                    public void run() {
+                        activity.confirmClose();
+                    }
+                }),
+                new DialogAction(activity.getString(R.string.no), new Runnable() {
+                    @Override
+                    public void run() {
+                    }
+                }));
     }
 
     public static void autospin(final SlotActivity activity, final SlotHelper slotHelper) {
         final int maxAutospins = LevelHelper.getAutospinsByVip(LevelHelper.getVipLevel());
         final int halfAutospins = LevelHelper.getAutospinsByVip(LevelHelper.getVipLevel()) / 2;
 
-        displayAlertDialog(activity, "Autospin", "How many autospins?",
+        displayAlertDialog(activity, activity.getString(R.string.alert_autospin), activity.getString(R.string.alert_autospin_body),
                 new DialogAction(Integer.toString(maxAutospins), new Runnable() {
                     @Override
                     public void run() {
@@ -80,7 +75,7 @@ public class AlertDialogHelper {
                         slotHelper.autospin(halfAutospins);
                     }
                 }),
-                new DialogAction("Cancel", new Runnable() {
+                new DialogAction(activity.getString(R.string.cancel), new Runnable() {
                     @Override
                     public void run() {
                     }

@@ -26,7 +26,7 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/info"
+                android:src="@drawable/log"
                 android:onClick="openLog"/>
             <uk.co.jakelee.blacksmithslots.components.FontTextView
                 android:id="@+id/vipLevel"

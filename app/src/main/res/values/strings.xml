@@ -229,4 +229,11 @@
     <string name="statistictype_3_name">Bonuses</string>
     <string name="statistictype_4_name">Blacksmith Pass</string>
     <string name="statistictype_5_name">Misc</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="alert_autospin">Autospin</string>
+    <string name="alert_autospin_body">How many autospins?</string>
+    <string name="cancel">Cancel</string>
+    <string name="alert_minigame">Minigame</string>
+    <string name="alert_minigame_body">Are you sure you want to leave the minigame with no reward?</string>
 </resources>
