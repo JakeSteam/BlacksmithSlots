@@ -6,8 +6,7 @@
     android:id="@+id/parent"
     android:layout_height="match_parent"
     android:layout_width="match_parent"
-    tools:context="uk.co.jakelee.blacksmithslots.main.SlotActivity"
-    android:background="@drawable/background_tan">
+    tools:context="uk.co.jakelee.blacksmithslots.main.SlotActivity">
 
     <android.support.percent.PercentRelativeLayout
         android:layout_width="match_parent"
@@ -78,14 +77,16 @@
                 android:layout_margin="3dp"
                 android:paddingLeft="3dp"
                 android:paddingRight="3dp"
-                android:paddingBottom="12dp" />
+                android:paddingBottom="15dp" />
             <ScrollView
                 android:id="@+id/inventory"
                 android:layout_below="@id/resourceDisplay"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@drawable/background_brown"
-                android:layout_margin="3dp"
+                android:layout_marginLeft="3dp"
+                android:layout_marginRight="3dp"
+                android:layout_marginBottom="3dp"
                 android:paddingLeft="3dp"
                 android:paddingRight="8dp"
                 android:paddingBottom="8dp"
@@ -106,16 +107,18 @@
             android:layout_toRightOf="@id/inventoryContainer"
             android:layout_marginTop="3dp"
             android:layout_marginBottom="3dp"
-            android:layout_below="@id/topBar">
+            android:layout_below="@id/topBar"
+            android:background="@drawable/background_brown">
             <LinearLayout
                 android:id="@+id/bottomBar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
+                android:layout_marginTop="3dp"
+                android:layout_marginBottom="3dp"
                 android:layout_centerHorizontal="true"
                 android:layout_alignParentBottom="true"
-                android:gravity="center_vertical"
-                android:background="@drawable/background_brown">
+                android:gravity="center_vertical">
                 <ImageView
                     android:layout_width="30dp"
                     android:layout_height="30dp"

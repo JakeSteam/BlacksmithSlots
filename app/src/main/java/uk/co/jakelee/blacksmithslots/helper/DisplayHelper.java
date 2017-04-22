@@ -25,8 +25,6 @@ import uk.co.jakelee.blacksmithslots.model.Inventory;
 import uk.co.jakelee.blacksmithslots.model.Item;
 import uk.co.jakelee.blacksmithslots.model.ItemBundle;
 
-import static android.R.attr.type;
-
 public class DisplayHelper {
     public static String getItemTierString(int tier) {
         return "tier_" + tier;
@@ -66,6 +64,10 @@ public class DisplayHelper {
 
     public static String getItemImageFile(int tier, int type, int quantity) {
         return "item_" + tier + "_" + type + (quantity > 1 ? "_" + quantity : "");
+    }
+
+    public static String getMapBackgroundImageFile(int map) {
+        return "background_map_" + map;
     }
 
     public static ImageView createImageView(Activity context, String idName, int width, int height) {

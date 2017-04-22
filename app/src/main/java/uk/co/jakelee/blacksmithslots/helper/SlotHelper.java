@@ -118,6 +118,10 @@ public class SlotHelper {
         }
     }
 
+    public void setBackground() {
+        activity.findViewById(R.id.parent).setBackgroundResource(activity.getResources().getIdentifier(DisplayHelper.getMapBackgroundImageFile(slot.getMapId()), "drawable", activity.getPackageName()));
+    }
+
     public void createWheel() {
         LinearLayout container = (LinearLayout)activity.findViewById(R.id.slotContainer);
         for (int i = 0; i < slot.getSlots(); i++) {

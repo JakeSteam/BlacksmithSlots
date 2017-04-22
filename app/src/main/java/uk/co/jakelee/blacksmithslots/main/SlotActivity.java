@@ -47,6 +47,7 @@ public class SlotActivity extends BaseActivity {
                 @Override
                 public void run() {
                     slotHelper = new SlotHelper(activity, handler, slot);
+                    slotHelper.setBackground();
                     slotHelper.createWheel();
                     slotHelper.createRoutes();
                     slotHelper.updateResourceCount();
