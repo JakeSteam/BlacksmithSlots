@@ -46,20 +46,20 @@ public class AlertDialogHelper {
     }
 
     public static void outOfItems(final Activity activity, final int itemTier, final int itemType) {
-        displayAlertDialog(activity, "Out of items!", "Oh no, you're out of items! Would you like to lower your bet, go to another slot, or buy more from the shop?",
-                new DialogAction("Lower Bet", new Runnable() {
+        displayAlertDialog(activity, activity.getString(R.string.outOfItems), activity.getString(R.string.outOfItemsLong),
+                new DialogAction(activity.getString(R.string.lowerBet), new Runnable() {
                     @Override
                     public void run() {
 
                     }
                 }),
-                new DialogAction("Exit", new Runnable() {
+                new DialogAction(activity.getString(R.string.exit), new Runnable() {
                     @Override
                     public void run() {
                         activity.finish();
                     }
                 }),
-                new DialogAction("Shop", new Runnable() {
+                new DialogAction(activity.getString(R.string.shop), new Runnable() {
                     @Override
                     public void run() {
                         activity.startActivity(new Intent(activity, ShopActivity.class)

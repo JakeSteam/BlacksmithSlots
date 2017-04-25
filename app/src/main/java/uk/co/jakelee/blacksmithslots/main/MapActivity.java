@@ -28,6 +28,7 @@ import hotchemi.android.rate.AppRate;
 import uk.co.jakelee.blacksmithslots.BaseActivity;
 import uk.co.jakelee.blacksmithslots.R;
 import uk.co.jakelee.blacksmithslots.components.MapPagerAdapter;
+import uk.co.jakelee.blacksmithslots.components.ViewPagerIndicator;
 import uk.co.jakelee.blacksmithslots.helper.AdvertHelper;
 import uk.co.jakelee.blacksmithslots.helper.AlertHelper;
 import uk.co.jakelee.blacksmithslots.helper.Constants;
@@ -53,8 +54,6 @@ public class MapActivity extends BaseActivity implements
         QuestUpdateListener {
     public static SharedPreferences prefs;
     private int selectedSlot = 1;
-    private ViewPager mapPager;
-    private MapPagerAdapter mapPagerAdapter;
     private Handler handler = new Handler();
 
     @BindView(R.id.noSlotSelected) RelativeLayout noSlotSidebar;
@@ -83,15 +82,19 @@ public class MapActivity extends BaseActivity implements
                 .build();
         tryGoogleLogin();
 
-        mapPagerAdapter = new MapPagerAdapter(this);
-        mapPager = (ViewPager) findViewById(R.id.townScroller);
-        mapPager.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
+        ViewPager.OnPageChangeListener pageChangeListener = new ViewPager.SimpleOnPageChangeListener() {
             public void onPageSelected(int position) {
                 selectedSlot = 0;
                 loadSidebar(null);
             }
-        });
-        mapPager.setAdapter(mapPagerAdapter);
+        };
+
+        ViewPager mapPager = (ViewPager) findViewById(R.id.townScroller);
+        mapPager.setAdapter(new MapPagerAdapter(this));
+
+        ViewPagerIndicator indicator = (ViewPagerIndicator)findViewById(R.id.view_pager_indicator);
+        indicator.setupWithViewPager(mapPager);
+        indicator.addOnPageChangeListener(pageChangeListener);
 
         if (IncomeHelper.getNextPeriodicClaimTime() - System.currentTimeMillis() > 0) {
             setPeriodicBonusUnclaimable();

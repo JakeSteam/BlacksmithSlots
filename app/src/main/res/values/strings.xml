@@ -236,4 +236,8 @@
     <string name="cancel">Cancel</string>
     <string name="alert_minigame">Minigame</string>
     <string name="alert_minigame_body">Are you sure you want to leave the minigame with no reward?</string>
+    <string name="outOfItems">Out of items!</string>
+    <string name="outOfItemsLong">Oh no, you\'re out of items! Would you like to lower your bet, go to another slot, or buy more from the shop?</string>
+    <string name="lowerBet">Lower Bet</string>
+    <string name="exit">Exit</string>
 </resources>
