@@ -125,10 +125,18 @@
                     android:src="@drawable/arrow_yellow"
                     android:onClick="decreaseStake"
                     android:rotation="180"/>
-                <uk.co.jakelee.blacksmithslots.components.FontTextView
-                    android:id="@+id/amountGambled"
+                <LinearLayout
+                    android:orientation="horizontal"
                     android:background="@drawable/box_yellow"
-                    style="@style/SlotText"/>
+                    style="@style/SlotText">
+                    <uk.co.jakelee.blacksmithslots.components.FontTextView
+                        android:id="@+id/amountGambled"
+                        style="@style/SlotSubText"/>
+                    <uk.co.jakelee.blacksmithslots.components.FontTextView
+                        style="@style/SlotSubText"
+                        android:layout_marginLeft="2dp"
+                        android:text="×"/>
+                </LinearLayout>
                 <ImageView
                     android:layout_width="30dp"
                     android:layout_height="30dp"
@@ -140,10 +148,19 @@
                     android:src="@drawable/arrow_orange"
                     android:onClick="decreaseRows"
                     android:rotation="180"/>
-                <uk.co.jakelee.blacksmithslots.components.FontTextView
-                    android:id="@+id/rowsActive"
+                <LinearLayout
+                    android:orientation="horizontal"
                     android:background="@drawable/box_orange"
-                    style="@style/SlotText"/>
+                    style="@style/SlotText">
+                    <uk.co.jakelee.blacksmithslots.components.FontTextView
+                        android:id="@+id/rowsActive"
+                        style="@style/SlotSubText"/>
+                    <uk.co.jakelee.blacksmithslots.components.FontTextView
+                        style="@style/SlotSubText"
+                        android:layout_marginBottom="-3dp"
+                        android:layout_marginLeft="2dp"
+                        android:text="≡"/>
+                </LinearLayout>
                 <ImageView
                     android:layout_width="30dp"
                     android:layout_height="30dp"
@@ -151,7 +168,7 @@
                     android:onClick="increaseRows"/>
                 <uk.co.jakelee.blacksmithslots.components.FontTextView
                     android:id="@+id/spinButton"
-                    android:layout_width="wrap_content"
+                    android:layout_width="80dp"
                     android:background="@drawable/box_filled_green"
                     android:onClick="spin"
                     style="@style/SlotText"/>

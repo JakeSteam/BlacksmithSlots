@@ -30,7 +30,14 @@
         <item name="android:textColorPrimary">@color/black</item> <!-- Main text -->
         <item name="android:windowFullscreen">true</item>
     </style>
-    
+
+    <style name="SlotSubText" parent="FontSize">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
     <style name="SlotText" parent="FontSize">
         <item name="android:layout_width">60dp</item>
         <item name="android:layout_height">wrap_content</item>
