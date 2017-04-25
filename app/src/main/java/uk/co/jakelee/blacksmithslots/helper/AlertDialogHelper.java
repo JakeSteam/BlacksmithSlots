@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,7 @@ import android.widget.TextView;
 import uk.co.jakelee.blacksmithslots.R;
 import uk.co.jakelee.blacksmithslots.constructs.DialogAction;
 import uk.co.jakelee.blacksmithslots.main.MinigameActivity;
+import uk.co.jakelee.blacksmithslots.main.ShopActivity;
 import uk.co.jakelee.blacksmithslots.main.SlotActivity;
 
 public class AlertDialogHelper {
@@ -41,6 +43,31 @@ public class AlertDialogHelper {
         }
 
         dialog.show();
+    }
+
+    public static void outOfItems(final Activity activity, final int itemTier, final int itemType) {
+        displayAlertDialog(activity, "Out of items!", "Oh no, you're out of items! Would you like to lower your bet, go to another slot, or buy more from the shop?",
+                new DialogAction("Lower Bet", new Runnable() {
+                    @Override
+                    public void run() {
+
+                    }
+                }),
+                new DialogAction("Exit", new Runnable() {
+                    @Override
+                    public void run() {
+                        activity.finish();
+                    }
+                }),
+                new DialogAction("Shop", new Runnable() {
+                    @Override
+                    public void run() {
+                        activity.startActivity(new Intent(activity, ShopActivity.class)
+                                .putExtra("tier", itemTier)
+                                .putExtra("type", itemType)
+                                .addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT));
+                    }
+                }));
     }
 
     public static void confirmCloseMinigame(final MinigameActivity activity) {

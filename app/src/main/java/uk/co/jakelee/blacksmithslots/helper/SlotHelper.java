@@ -31,7 +31,6 @@ import kankan.wheel.widget.WheelView;
 import uk.co.jakelee.blacksmithslots.R;
 import uk.co.jakelee.blacksmithslots.constructs.WinRoute;
 import uk.co.jakelee.blacksmithslots.main.MinigameFlipActivity;
-import uk.co.jakelee.blacksmithslots.main.ShopActivity;
 import uk.co.jakelee.blacksmithslots.main.SlotActivity;
 import uk.co.jakelee.blacksmithslots.model.Inventory;
 import uk.co.jakelee.blacksmithslots.model.Item;
@@ -335,10 +334,7 @@ public class SlotHelper {
                 if (failedItem.getType() == Enums.Type.Bar.value) {
                     failedItem.setType(Enums.Type.Ore.value);
                 }
-                activity.startActivity(new Intent(activity, ShopActivity.class)
-                        .putExtra("tier", failedItem.getTier())
-                        .putExtra("type", failedItem.getType())
-                        .addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT));
+                AlertDialogHelper.outOfItems(activity, failedItem.getTier(), failedItem.getType());
             } else {
                 activity.findViewById(R.id.slotContainer).bringToFront();
                 if (highlightedRoutes != null) {
