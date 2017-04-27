@@ -42,11 +42,14 @@ import uk.co.jakelee.blacksmithslots.helper.LanguageHelper;
 import uk.co.jakelee.blacksmithslots.helper.NotificationHelper;
 import uk.co.jakelee.blacksmithslots.helper.Runnables;
 import uk.co.jakelee.blacksmithslots.helper.TaskHelper;
+import uk.co.jakelee.blacksmithslots.helper.TextHelper;
 import uk.co.jakelee.blacksmithslots.model.Item;
 import uk.co.jakelee.blacksmithslots.model.ItemBundle;
 import uk.co.jakelee.blacksmithslots.model.Setting;
 import uk.co.jakelee.blacksmithslots.model.Slot;
 import uk.co.jakelee.blacksmithslots.model.Task;
+
+import static uk.co.jakelee.blacksmithslots.R.id.mapName;
 
 public class MapActivity extends BaseActivity implements
         GoogleApiClient.ConnectionCallbacks,
@@ -56,6 +59,7 @@ public class MapActivity extends BaseActivity implements
     private int selectedSlot = 1;
     private Handler handler = new Handler();
 
+    @BindView(mapName) TextView mapTextView;
     @BindView(R.id.noSlotSelected) RelativeLayout noSlotSidebar;
     @BindView(R.id.superlockedSlot) RelativeLayout superLockedSlot;
     @BindView(R.id.lockedSlot) RelativeLayout lockedSlot;
@@ -84,6 +88,8 @@ public class MapActivity extends BaseActivity implements
 
         ViewPager.OnPageChangeListener pageChangeListener = new ViewPager.SimpleOnPageChangeListener() {
             public void onPageSelected(int position) {
+                String mapName = TextHelper.getInstance(getApplicationContext()).getText(DisplayHelper.getMapString(position + 1));
+                mapTextView.setText(mapName);
                 selectedSlot = 0;
                 loadSidebar(null);
             }
@@ -102,6 +108,8 @@ public class MapActivity extends BaseActivity implements
         if (IncomeHelper.getNextAdvertWatchTime() - System.currentTimeMillis() > 0) {
             setAdvertUnclaimable();
         }
+
+        mapTextView.setText(R.string.map_1);
     }
 
     private void setPeriodicBonusUnclaimable() {

@@ -5,23 +5,24 @@ import android.graphics.Typeface;
 import android.support.v7.widget.AppCompatTextView;
 import android.util.AttributeSet;
 
-public class FontTextView extends AppCompatTextView {
+public class AwesomeTextView extends AppCompatTextView {
     private static Typeface mTypeface;
 
-    public FontTextView(final Context context) {
+    public AwesomeTextView(final Context context) {
         this(context, null);
     }
 
-    public FontTextView(final Context context, final AttributeSet attrs) {
+    public AwesomeTextView(final Context context, final AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public FontTextView(final Context context, final AttributeSet attrs, final int defStyle) {
+    public AwesomeTextView(final Context context, final AttributeSet attrs, final int defStyle) {
         super(context, attrs, defStyle);
 
         if (mTypeface == null) {
-            mTypeface = Typeface.createFromAsset(context.getAssets(), "fonts/Kenney Pixel.ttf");
+            mTypeface = Typeface.createFromAsset(context.getAssets(), "fonts/fontello.ttf");
         }
         setTypeface(mTypeface);
     }
+
 }

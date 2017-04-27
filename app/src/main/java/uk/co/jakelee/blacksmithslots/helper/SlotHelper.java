@@ -182,13 +182,13 @@ public class SlotHelper {
     }
 
     private void afterStakeChangeUpdate() {
-        ((TextView)activity.findViewById(R.id.spinButton)).setText("Spin");
+        ((TextView)activity.findViewById(R.id.spinButton)).setText(R.string.spin);
         ((TextView)activity.findViewById(R.id.rowsActive)).setText(Integer.toString(slot.getCurrentRows()));
         ((TextView)activity.findViewById(R.id.amountGambled)).setText(Integer.toString(slot.getCurrentStake()));
     }
 
     public void afterSpinUpdate() {
-        ((TextView)activity.findViewById(R.id.autospinButton)).setText(autospinsLeft > 0 ? "" + autospinsLeft : "A");
+        ((TextView)activity.findViewById(R.id.autospinButton)).setText(autospinsLeft > 0 ? "" + autospinsLeft : activity.getString(R.string.icon_autospin));
         ((TextView)activity.findViewById(R.id.currentLevel)).setText("Lev " + LevelHelper.getLevel());
         int levelProgress = LevelHelper.getLevelProgress();
         Log.d("Progress", "" + levelProgress);

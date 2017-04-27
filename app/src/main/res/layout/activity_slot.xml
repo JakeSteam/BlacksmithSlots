@@ -132,10 +132,11 @@
                     <uk.co.jakelee.blacksmithslots.components.FontTextView
                         android:id="@+id/amountGambled"
                         style="@style/SlotSubText"/>
-                    <uk.co.jakelee.blacksmithslots.components.FontTextView
+                    <uk.co.jakelee.blacksmithslots.components.AwesomeTextView
                         style="@style/SlotSubText"
+                        android:textSize="14sp"
                         android:layout_marginLeft="2dp"
-                        android:text="×"/>
+                        android:text="@string/icon_quantity"/>
                 </LinearLayout>
                 <ImageView
                     android:layout_width="30dp"
@@ -155,11 +156,11 @@
                     <uk.co.jakelee.blacksmithslots.components.FontTextView
                         android:id="@+id/rowsActive"
                         style="@style/SlotSubText"/>
-                    <uk.co.jakelee.blacksmithslots.components.FontTextView
+                    <uk.co.jakelee.blacksmithslots.components.AwesomeTextView
                         style="@style/SlotSubText"
-                        android:layout_marginBottom="-3dp"
+                        android:textSize="14sp"
                         android:layout_marginLeft="2dp"
-                        android:text="≡"/>
+                        android:text="@string/icon_rows"/>
                 </LinearLayout>
                 <ImageView
                     android:layout_width="30dp"
@@ -172,11 +173,14 @@
                     android:background="@drawable/box_filled_green"
                     android:onClick="spin"
                     style="@style/SlotText"/>
-                <uk.co.jakelee.blacksmithslots.components.FontTextView
+                <uk.co.jakelee.blacksmithslots.components.AwesomeTextView
                     android:id="@+id/autospinButton"
                     android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:background="@drawable/box_filled_green"
-                    android:text="A"
+                    android:text="@string/icon_autospin"
+                    android:textSize="15sp"
+                    android:padding="2dp"
                     android:onClick="autospin"
                     style="@style/SlotText"/>
             </LinearLayout>

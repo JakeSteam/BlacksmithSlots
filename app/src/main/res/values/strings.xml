@@ -2,6 +2,10 @@
     <string name="app_name" translatable="false">Blacksmith Slots</string>
     <string name="app_id" translatable="false">1038590321568</string>
 
+    <string name="icon_autospin" translatable = "false">&#xe800;</string>
+    <string name="icon_rows" translatable = "false">&#xe801;</string>
+    <string name="icon_quantity" translatable = "false">&#xe802;</string>
+
     <string name="rate_dialog_title">Rate Blacksmith Slots</string>
     <string name="rate_dialog_message">If you\'re enjoying Blacksmith Slots, would you mind leaving a rating? It helps more people discover the game, and encourages future development!\n\nThanks &lt;3</string>
     <string name="rate_dialog_ok">Okay!</string>
@@ -240,4 +244,5 @@
     <string name="outOfItemsLong">Oh no, you\'re out of items! Would you like to lower your bet, go to another slot, or buy more from the shop?</string>
     <string name="lowerBet">Lower Bet</string>
     <string name="exit">Exit</string>
+    <string name="spin">Spin</string>
 </resources>
