@@ -22,7 +22,7 @@ import uk.co.jakelee.blacksmithslots.model.Slot;
 public class MapPagerAdapter extends PagerAdapter {
     Context mContext;
     LayoutInflater mLayoutInflater;
-    private int[] townLayouts = {R.layout.custom_map_1, R.layout.custom_map_2, R.layout.custom_map_3};
+    public final static int[] townLayouts = {R.layout.custom_map_1, R.layout.custom_map_2, R.layout.custom_map_3};
 
     public MapPagerAdapter(Context context) {
         mContext = context;

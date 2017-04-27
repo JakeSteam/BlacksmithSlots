@@ -24,6 +24,7 @@ import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import hotchemi.android.rate.AppRate;
 import uk.co.jakelee.blacksmithslots.BaseActivity;
 import uk.co.jakelee.blacksmithslots.R;
@@ -49,7 +50,7 @@ import uk.co.jakelee.blacksmithslots.model.Setting;
 import uk.co.jakelee.blacksmithslots.model.Slot;
 import uk.co.jakelee.blacksmithslots.model.Task;
 
-import static uk.co.jakelee.blacksmithslots.R.id.mapName;
+import static android.view.View.GONE;
 
 public class MapActivity extends BaseActivity implements
         GoogleApiClient.ConnectionCallbacks,
@@ -59,7 +60,8 @@ public class MapActivity extends BaseActivity implements
     private int selectedSlot = 1;
     private Handler handler = new Handler();
 
-    @BindView(mapName) TextView mapTextView;
+    @BindView(R.id.townScroller) ViewPager mapPager;
+    @BindView(R.id.mapName) TextView mapTextView;
     @BindView(R.id.noSlotSelected) RelativeLayout noSlotSidebar;
     @BindView(R.id.superlockedSlot) RelativeLayout superLockedSlot;
     @BindView(R.id.lockedSlot) RelativeLayout lockedSlot;
@@ -86,17 +88,19 @@ public class MapActivity extends BaseActivity implements
                 .build();
         tryGoogleLogin();
 
+        mapPager.setAdapter(new MapPagerAdapter(this));
+
         ViewPager.OnPageChangeListener pageChangeListener = new ViewPager.SimpleOnPageChangeListener() {
             public void onPageSelected(int position) {
+                findViewById(R.id.leftArrow).setVisibility(position == 0 ? GONE : View.VISIBLE);
+                findViewById(R.id.rightArrow).setVisibility(position == (MapPagerAdapter.townLayouts.length - 1) ? GONE : View.VISIBLE);
+
                 String mapName = TextHelper.getInstance(getApplicationContext()).getText(DisplayHelper.getMapString(position + 1));
                 mapTextView.setText(mapName);
                 selectedSlot = 0;
                 loadSidebar(null);
             }
         };
-
-        ViewPager mapPager = (ViewPager) findViewById(R.id.townScroller);
-        mapPager.setAdapter(new MapPagerAdapter(this));
 
         ViewPagerIndicator indicator = (ViewPagerIndicator)findViewById(R.id.view_pager_indicator);
         indicator.setupWithViewPager(mapPager);
@@ -190,6 +194,16 @@ public class MapActivity extends BaseActivity implements
                 .addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT));
     }
 
+    @OnClick(R.id.leftArrow)
+    public void moveLeft() {
+        mapPager.setCurrentItem(mapPager.getCurrentItem() - 1, true);
+    }
+
+    @OnClick(R.id.rightArrow)
+    public void moveRight() {
+        mapPager.setCurrentItem(mapPager.getCurrentItem() + 1, true);
+    }
+
     public void claimPeriodicBonus(View v) {
         if (IncomeHelper.canClaimPeriodicBonus()) {
             AlertHelper.success(this, IncomeHelper.claimPeriodicBonus(this), true);
@@ -241,7 +255,7 @@ public class MapActivity extends BaseActivity implements
 
     private void populateSlotInfo() {
         if (selectedSlot > 0) {
-            findViewById(R.id.noSlotSelected).setVisibility(View.GONE);
+            findViewById(R.id.noSlotSelected).setVisibility(GONE);
             Slot slot = Slot.get(selectedSlot);
             if (slot != null) {
                 ((TextView) findViewById(R.id.slotTitle)).setText(slot.getName(this));
@@ -261,8 +275,8 @@ public class MapActivity extends BaseActivity implements
     private void populateSlotInfoSuperlocked(Slot slot) {
         ((TextView) findViewById(R.id.slotDescription)).setText("Slot \"" + Slot.get(slot.getRequiredSlot()).getName(this) + "\" needs unlocking first!");
         superLockedSlot.setVisibility(View.VISIBLE);
-        lockedSlot.setVisibility(View.GONE);
-        unlockedSlot.setVisibility(View.GONE);
+        lockedSlot.setVisibility(GONE);
+        unlockedSlot.setVisibility(GONE);
     }
 
     private void populateSlotInfoLocked(Slot slot) {
@@ -281,9 +295,9 @@ public class MapActivity extends BaseActivity implements
         ((TextView) findViewById(R.id.taskRequirement)).setText(currentTask.toString(this));
         findViewById(R.id.handInButton).setTag(currentTask.getId());
 
-        superLockedSlot.setVisibility(View.GONE);
+        superLockedSlot.setVisibility(GONE);
         lockedSlot.setVisibility(View.VISIBLE);
-        unlockedSlot.setVisibility(View.GONE);
+        unlockedSlot.setVisibility(GONE);
     }
 
     private void populateSlotInfoUnlocked(Slot slot) {
@@ -292,8 +306,8 @@ public class MapActivity extends BaseActivity implements
         populateItemContainer(R.id.resourceContainer, slot.getResources());
         populateItemContainer(R.id.rewardContainer, slot.getRewards());
 
-        superLockedSlot.setVisibility(View.GONE);
-        lockedSlot.setVisibility(View.GONE);
+        superLockedSlot.setVisibility(GONE);
+        lockedSlot.setVisibility(GONE);
         unlockedSlot.setVisibility(View.VISIBLE);
     }
 

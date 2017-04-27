@@ -240,6 +240,7 @@
             android:id="@+id/leftArrow"
             android:text="@string/icon_left"
             android:layout_alignParentLeft="true"
+            android:visibility="gone"
             style="@style/Arrows"/>
 
         <uk.co.jakelee.blacksmithslots.components.ViewPagerIndicator
