@@ -214,18 +214,6 @@
         android:layout_height="wrap_content"
         android:layout_toLeftOf="@id/sidebar"/>
 
-    <uk.co.jakelee.blacksmithslots.components.ViewPagerIndicator
-        android:id = "@+id/view_pager_indicator"
-        android:layout_width = "match_parent"
-        android:layout_height = "wrap_content"
-        android:layout_alignLeft="@id/townScroller"
-        android:layout_alignRight="@id/townScroller"
-        android:layout_alignParentBottom="true"
-        android:gravity="center_horizontal"
-        android:padding="10dp"
-        app:delimiterSize = "8dp"
-        app:itemSize = "8dp"/>
-
     <uk.co.jakelee.blacksmithslots.components.FontTextView
         android:id="@+id/mapName"
         android:layout_height="wrap_content"
@@ -239,6 +227,36 @@
         android:textSize="30sp"
         android:padding="5dp"
         android:layout_centerHorizontal="true"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/townScroller"
+        android:layout_alignRight="@id/townScroller"
+        android:layout_alignParentBottom="true"
+        android:padding="10dp"
+        android:gravity="center_vertical">
+        <uk.co.jakelee.blacksmithslots.components.AwesomeTextView
+            android:id="@+id/leftArrow"
+            android:text="@string/icon_left"
+            android:layout_alignParentLeft="true"
+            style="@style/Arrows"/>
+
+        <uk.co.jakelee.blacksmithslots.components.ViewPagerIndicator
+            android:id = "@+id/view_pager_indicator"
+            android:layout_width = "wrap_content"
+            android:layout_height = "wrap_content"
+            android:layout_centerInParent="true"
+            android:padding="10dp"
+            app:delimiterSize = "8dp"
+            app:itemSize = "8dp"/>
+
+        <uk.co.jakelee.blacksmithslots.components.AwesomeTextView
+            android:id="@+id/rightArrow"
+            android:text="@string/icon_right"
+            android:layout_alignParentRight="true"
+            style="@style/Arrows"/>
+    </RelativeLayout>
 
     <LinearLayout
         android:id="@+id/croutonview"

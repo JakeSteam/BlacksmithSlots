@@ -5,6 +5,8 @@
     <string name="icon_autospin" translatable = "false">&#xe800;</string>
     <string name="icon_rows" translatable = "false">&#xe801;</string>
     <string name="icon_quantity" translatable = "false">&#xe802;</string>
+    <string name="icon_left" translatable = "false">&#xe803;</string>
+    <string name="icon_right" translatable = "false">&#xe804;</string>
 
     <string name="rate_dialog_title">Rate Blacksmith Slots</string>
     <string name="rate_dialog_message">If you\'re enjoying Blacksmith Slots, would you mind leaving a rating? It helps more people discover the game, and encourages future development!\n\nThanks &lt;3</string>
