@@ -74,7 +74,6 @@
                 android:layout_width="match_parent"
                 android:background="@drawable/box_yellow"
                 android:text="Hand in?"
-                android:onClick="handIn"
                 android:maxLines="2"
                 android:layout_marginTop="3dp"
                 android:layout_marginBottom="3dp"
@@ -128,11 +127,11 @@
                     android:paddingBottom="10dp" />
             </HorizontalScrollView>
             <uk.co.jakelee.blacksmithslots.components.FontTextView
+                android:id="@+id/openSlot"
                 android:layout_width="match_parent"
                 android:background="@drawable/box_green"
                 android:layout_alignParentBottom="true"
                 android:text="@string/open_slot"
-                android:onClick="openSlot"
                 style="@style/SlotText"/>
         </RelativeLayout>
         <RelativeLayout
@@ -145,7 +144,6 @@
                 android:layout_width="match_parent"
                 android:background="@drawable/box_yellow"
                 android:text="@string/settings"
-                android:onClick="openSettings"
                 android:maxLines="2"
                 android:layout_marginTop="3dp"
                 android:layout_marginBottom="3dp"
@@ -155,7 +153,6 @@
                 android:layout_width="match_parent"
                 android:background="@drawable/box_yellow"
                 android:text="@string/statistics"
-                android:onClick="openStatistics"
                 android:maxLines="2"
                 android:layout_marginTop="3dp"
                 android:layout_marginBottom="3dp"
@@ -166,7 +163,6 @@
                 android:layout_width="match_parent"
                 android:background="@drawable/box_yellow"
                 android:text="@string/inventory"
-                android:onClick="openInventory"
                 android:maxLines="2"
                 android:layout_marginTop="3dp"
                 android:layout_marginBottom="3dp"
@@ -177,7 +173,6 @@
                 android:layout_width="match_parent"
                 android:background="@drawable/box_green"
                 android:text="@string/claim_bonus"
-                android:onClick="claimPeriodicBonus"
                 android:maxLines="2"
                 android:layout_marginTop="3dp"
                 android:layout_marginBottom="3dp"
@@ -188,7 +183,6 @@
                 android:layout_width="match_parent"
                 android:background="@drawable/box_green"
                 android:text="@string/watch_advert"
-                android:onClick="rewardAdvertItems"
                 android:maxLines="2"
                 android:layout_marginTop="3dp"
                 android:layout_marginBottom="3dp"
@@ -199,7 +193,6 @@
                 android:layout_width="match_parent"
                 android:background="@drawable/box_green"
                 android:text="@string/shop"
-                android:onClick="openShop"
                 android:maxLines="2"
                 android:layout_marginTop="3dp"
                 android:layout_marginBottom="3dp"

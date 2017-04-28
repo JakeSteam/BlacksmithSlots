@@ -161,7 +161,8 @@ public class MapActivity extends BaseActivity implements
         AppRate.showRateDialogIfMeetsConditions(this);
     }
 
-    public void openSlot(View v) {
+    @OnClick(R.id.openSlot)
+    public void openSlot() {
         if (selectedSlot > 0 && !TaskHelper.isSlotLocked(selectedSlot)) {
             startActivity(new Intent(this, SlotActivity.class)
                     .putExtra(Constants.INTENT_SLOT, selectedSlot)
@@ -174,22 +175,26 @@ public class MapActivity extends BaseActivity implements
         populateSlotInfo();
     }
 
-    public void openSettings(View v) {
+    @OnClick(R.id.settings)
+    public void openSettings() {
         startActivity(new Intent(this, SettingsActivity.class)
                 .addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT));
     }
 
-    public void openStatistics(View v) {
+    @OnClick(R.id.statistics)
+    public void openStatistics() {
         startActivity(new Intent(this, StatisticsActivity.class)
                 .addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT));
     }
 
-    public void openInventory(View v) {
+    @OnClick(R.id.inventory)
+    public void openInventory() {
         startActivity(new Intent(this, InventoryActivity.class)
             .addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT));
     }
 
-    public void openShop(View v) {
+    @OnClick(R.id.openShop)
+    public void openShop() {
         startActivity(new Intent(this, ShopActivity.class)
                 .addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT));
     }
@@ -204,6 +209,7 @@ public class MapActivity extends BaseActivity implements
         mapPager.setCurrentItem(mapPager.getCurrentItem() + 1, true);
     }
 
+    @OnClick(R.id.claimBonus)
     public void claimPeriodicBonus(View v) {
         if (IncomeHelper.canClaimPeriodicBonus()) {
             AlertHelper.success(this, IncomeHelper.claimPeriodicBonus(this), true);
@@ -216,6 +222,7 @@ public class MapActivity extends BaseActivity implements
         }
     }
 
+    @OnClick(R.id.watchAdvert)
     public void rewardAdvertItems(View v) {
         if (IncomeHelper.canWatchAdvert()) {
             AdvertHelper.getInstance(this).showAdvert(this);
@@ -236,6 +243,7 @@ public class MapActivity extends BaseActivity implements
         noSlotSidebar.setVisibility(View.VISIBLE);
     }
 
+    @OnClick(R.id.handInButton)
     public void handIn(View v) {
         Task task = Task.findById(Task.class, (long)v.getTag());
         if (task.getTier() != null && task.itemsCanBeSubmitted()) {

@@ -12,6 +12,7 @@ public class MatchHelper {
             case 5: routes.addAll(get5ColumnRoutes());
             case 4: routes.addAll(get4ColumnRoutes());
             case 3: routes.addAll(get3ColumnRoutes());
+            case 2: routes.addAll(get2ColumnRoutes());
             default:
                 break;
         }
@@ -73,6 +74,18 @@ public class MatchHelper {
         // Middle dipping down
         for (int i = 0; i < Constants.ROWS - 1; i++) {
             allRoutes.add(new WinRoute(i, i + 1, i));
+        }
+
+        return allRoutes;
+    }
+
+    private static List<WinRoute> get2ColumnRoutes() {
+        // Total routes: 5
+        List<WinRoute> allRoutes = new ArrayList<>();
+
+        // Straight rows
+        for (int i = 0; i < Constants.ROWS; i++) {
+            allRoutes.add(new WinRoute(i, i));
         }
 
         return allRoutes;
