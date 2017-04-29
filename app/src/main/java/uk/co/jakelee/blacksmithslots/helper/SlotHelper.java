@@ -8,6 +8,7 @@ import android.util.DisplayMetrics;
 import android.util.Log;
 import android.util.Pair;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -276,7 +277,7 @@ public class SlotHelper {
         }
 
         this.highlightedRoutes = winningRoutes;
-        //highlightResults(true);
+        highlightResults(true);
 
         return winningResults;
     }
@@ -425,9 +426,34 @@ public class SlotHelper {
     private void highlightResults(boolean applyEffect) {
         StringBuilder winningRoutes = new StringBuilder();
         LinearLayout slotContainer = (LinearLayout)activity.findViewById(R.id.slotContainer);
+        Log.d("Highlight",";");
         for (WinRoute route : highlightedRoutes) {
             for (int i = 0; i < route.size(); i++) {
-                highlightTile(slotContainer, i, route.get(i), applyEffect);
+                int offset = route.get(i);
+                int numItems = items.get(i).size();
+                int currItem = slots.get(i).getCurrentItem();
+                int finalValue = offset + numItems - currItem;
+                Log.d("Highlight", "i " + i + " Offset " + offset + " numItems " + numItems + " currItem " + currItem + " finalValue " + finalValue);
+                View imageViewSelected = slots.get(i).itemsLayout.getChildAt(finalValue);
+                imageViewSelected.setAlpha(0.5f);
+
+                /*View imageViewZero = slots.get(i).itemsLayout.getChildAt(0);
+                imageViewZero.setBackgroundResource(R.color.blue);
+
+                View imageView1 = slots.get(i).itemsLayout.getChildAt(1);
+                imageView1.setBackgroundResource(R.color.black);
+
+                View imageView2 = slots.get(i).itemsLayout.getChildAt(2);
+                imageView2.setBackgroundResource(R.color.green);
+
+                View imageView3 = slots.get(i).itemsLayout.getChildAt(3);
+                imageView3.setBackgroundResource(R.color.redText);
+
+                View imageView4 = slots.get(i).itemsLayout.getChildAt(4);
+                imageView4.setBackgroundResource(R.color.orangeText);*/
+                //View imageView = slots.get(i).getViewAdapter().getItem(slots.get(i).getCurrentItem(), null, null);
+                //View imageView = slots.get(i).getViewAdapter().getItemsCount()
+                //highlightTile(slotContainer, i, position, applyEffect);
             }
             winningRoutes.append(route.toString());
             winningRoutes.append("\n");
@@ -435,8 +461,10 @@ public class SlotHelper {
         Log.d("Routes", winningRoutes.toString());
     }
 
-    private void highlightTile(LinearLayout slotContainer, int row, int column, boolean applyEffect) {
-        ((WheelView)slotContainer.getChildAt(row)).itemsLayout.getChildAt(column).setAlpha(applyEffect ? 0.5f : 1.0f);
+    private void highlightTile(LinearLayout slotContainer, int column, int position, boolean applyEffect) {
+        WheelView wheelView = (WheelView)slotContainer.getChildAt(column);
+        ImageView imageView = (ImageView)wheelView.itemsLayout.getChildAt(position);
+        imageView.setAlpha(applyEffect ? 0.5f : 1.0f);
     }
 
     public void increaseStake() {
