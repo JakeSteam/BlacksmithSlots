@@ -79,7 +79,7 @@ public class SlotHelper {
         params.addRule(RelativeLayout.ALIGN_RIGHT, slotContainerId);
         params.addRule(RelativeLayout.ALIGN_BOTTOM, slotContainerId);
 
-        List<WinRoute> allRoutes = MatchHelper.getRoutes(slot.getSlots(), 0);
+        List<WinRoute> allRoutes = RouteHelper.getRoutes(slot.getSlots(), 0);
         for (int i = 1; i <= allRoutes.size(); i++) {
             int routeResource = activity.getResources().getIdentifier("route_" + slot.getSlots() + "_" + i, "drawable", activity.getPackageName());
 
@@ -252,7 +252,7 @@ public class SlotHelper {
         List<WinRoute> winningRoutes = new ArrayList<>();
 
         // Loop through possible win paths
-        List<WinRoute> routes = MatchHelper.getRoutes(rows.get(0).size(), slot.getCurrentRows());
+        List<WinRoute> routes = RouteHelper.getRoutes(rows.get(0).size(), slot.getCurrentRows());
         for (int i = 0; i < routes.size(); i++) {
             List<ItemBundle> results = new ArrayList<>();
 

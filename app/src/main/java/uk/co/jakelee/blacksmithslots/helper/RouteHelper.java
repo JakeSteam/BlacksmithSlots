@@ -5,7 +5,7 @@ import java.util.List;
 
 import uk.co.jakelee.blacksmithslots.constructs.WinRoute;
 
-public class MatchHelper {
+public class RouteHelper {
     public static List<WinRoute> getRoutes(int numColumns, int maxRoutes) {
         List<WinRoute> routes = new ArrayList<>();
         switch (numColumns) {

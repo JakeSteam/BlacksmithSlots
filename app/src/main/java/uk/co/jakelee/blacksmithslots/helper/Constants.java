@@ -43,8 +43,9 @@ public class Constants {
     public final static int MAP_2_FURNACE = 2;
 
     // Slots routes
+    public final static int SLOTS_2_MAX_ROUTES = 5;
     public final static int SLOTS_3_MAX_ROUTES = 9;
     public final static int SLOTS_4_MAX_ROUTES = 9;
-    public final static int SLOTS_5_MAX_ROUTES = 29;
+    public final static int SLOTS_5_MAX_ROUTES = 11;
 
 }
