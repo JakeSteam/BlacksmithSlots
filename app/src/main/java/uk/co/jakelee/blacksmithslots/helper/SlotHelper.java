@@ -432,7 +432,7 @@ public class SlotHelper {
                 int offset = route.get(i);
                 int numItems = items.get(i).size();
                 int currItem = slots.get(i).getCurrentItem();
-                int finalValue = offset + numItems - currItem;
+                int finalValue = numItems - currItem - offset;
                 Log.d("Highlight", "i " + i + " Offset " + offset + " numItems " + numItems + " currItem " + currItem + " finalValue " + finalValue);
                 View imageViewSelected = slots.get(i).itemsLayout.getChildAt(finalValue);
                 imageViewSelected.setAlpha(0.5f);
