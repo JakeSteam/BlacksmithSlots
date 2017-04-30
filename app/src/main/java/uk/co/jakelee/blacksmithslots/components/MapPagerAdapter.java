@@ -15,14 +15,13 @@ import java.util.Locale;
 
 import uk.co.jakelee.blacksmithslots.R;
 import uk.co.jakelee.blacksmithslots.helper.DisplayHelper;
-import uk.co.jakelee.blacksmithslots.helper.TaskHelper;
 import uk.co.jakelee.blacksmithslots.helper.TextHelper;
 import uk.co.jakelee.blacksmithslots.model.Slot;
 
 public class MapPagerAdapter extends PagerAdapter {
     Context mContext;
     LayoutInflater mLayoutInflater;
-    public final static int[] townLayouts = {R.layout.custom_map_1, R.layout.custom_map_2, R.layout.custom_map_3};
+    public final static int[] townLayouts = {R.layout.custom_map_1, R.layout.custom_map_2, R.layout.custom_map_3, R.layout.custom_map_4};
 
     public MapPagerAdapter(Context context) {
         mContext = context;
