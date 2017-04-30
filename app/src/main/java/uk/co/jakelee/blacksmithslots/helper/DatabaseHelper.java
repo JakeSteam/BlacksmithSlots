@@ -225,11 +225,15 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
         List<Slot> slots = new ArrayList<>();
         List<ItemBundle> itemBundles = new ArrayList<>();
         List<Task> tasks = new ArrayList<>();
-            slots.add(new Slot(Enums.Slot.Map1LuckyCoin, 1, 1, 1, 3, Enums.Slot.Map1LuckyCoin, Enums.Person.Map1Mum, Enums.Map.Home));
+            slots.add(new Slot(Enums.Slot.Map1LuckyCoin, 1, 1, 1, 2, Enums.Slot.Map1LuckyCoin, Enums.Person.Map1Mum, Enums.Map.Home));
             itemBundles.add(new ItemBundle(Enums.Slot.Map1LuckyCoin, Enums.Tier.None, Enums.Type.LuckyCoin, 1));
 
-            itemBundles.add(new ItemBundle(Enums.Slot.Map1LuckyCoin, Enums.Tier.Bronze, Enums.Type.Ore, 10, 1));
-            itemBundles.add(new ItemBundle(Enums.Slot.Map1LuckyCoin, Enums.Tier.Bronze, Enums.Type.Secondary, 10, 1));
+            itemBundles.add(new ItemBundle(Enums.Slot.Map1LuckyCoin, Enums.Tier.Bronze, Enums.Type.Ore, 1, 1));
+            itemBundles.add(new ItemBundle(Enums.Slot.Map1LuckyCoin, Enums.Tier.Bronze, Enums.Type.Secondary, 1, 1));
+            itemBundles.add(new ItemBundle(Enums.Slot.Map1LuckyCoin, Enums.Tier.Bronze, Enums.Type.Pickaxe, 1, 1));
+            itemBundles.add(new ItemBundle(Enums.Slot.Map1LuckyCoin, Enums.Tier.Bronze, Enums.Type.Sword, 1, 1));
+            itemBundles.add(new ItemBundle(Enums.Slot.Map1LuckyCoin, Enums.Tier.Bronze, Enums.Type.Longsword, 1, 1));
+            //itemBundles.add(new ItemBundle(Enums.Slot.Map1LuckyCoin, Enums.Tier.Bronze, Enums.Type.Dagger, 1, 1));
             itemBundles.add(new ItemBundle(Enums.Slot.Map1LuckyCoin, Enums.Tier.Internal, Enums.Type.Wildcard, 1, 1));
 
             slots.add(new Slot(Enums.Slot.Map2Furnace, 1, 1, 5, 4, Enums.Slot.Map1LuckyCoin, Enums.Person.Map2Blacksmith, Enums.Map.Neighbourhood));

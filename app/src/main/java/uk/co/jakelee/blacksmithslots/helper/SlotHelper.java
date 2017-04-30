@@ -51,6 +51,7 @@ public class SlotHelper {
     private List<ItemBundle> slotRewards;
     private List<List<ItemBundle>> items = new ArrayList<>();
     private List<WinRoute> highlightedRoutes;
+    private List<View> highlightedItems = new ArrayList<>();
     private Picasso picasso;
     private LayoutInflater inflater;
     private Handler handler;
@@ -277,7 +278,7 @@ public class SlotHelper {
         }
 
         this.highlightedRoutes = winningRoutes;
-        highlightResults(true);
+        highlightResults();
 
         return winningResults;
     }
@@ -340,7 +341,7 @@ public class SlotHelper {
                 activity.findViewById(R.id.slotContainer).bringToFront();
                 if (highlightedRoutes != null) {
                     resetRouteColours();
-                    //highlightResults(false);
+                    highlight(false);
                 }
 
                 stillSpinningSlots = slot.getSlots();
@@ -423,9 +424,8 @@ public class SlotHelper {
         }
     }
 
-    private void highlightResults(boolean applyEffect) {
+    private void highlightResults() {
         StringBuilder winningRoutes = new StringBuilder();
-        LinearLayout slotContainer = (LinearLayout)activity.findViewById(R.id.slotContainer);
         Log.d("Highlight",";");
         for (WinRoute route : highlightedRoutes) {
             for (int i = 0; i < route.size(); i++) {
@@ -433,38 +433,53 @@ public class SlotHelper {
                 int numItems = items.get(i).size();
                 int currItem = slots.get(i).getCurrentItem();
                 int finalValue = numItems - currItem - offset;
-                Log.d("Highlight", "i " + i + " Offset " + offset + " numItems " + numItems + " currItem " + currItem + " finalValue " + finalValue);
+                String fixed = "";
+
+                /*if (finalValue == -1) {
+                    //finalValue = (numItems - finalValue) % numItems;
+                } else if (finalValue == -2) {
+                    finalValue = 3; // Correct!
+                }
+
+                if (finalValue == 5) {
+                    finalValue = 0;
+                } else if (finalValue == 6) {
+                    finalValue = 4;
+                }*/
+
+                if (finalValue < 0) {
+                    finalValue += 4;
+                    fixed += "ADDED";
+                } else if (finalValue > 4) {
+                    finalValue -= 5;
+                    fixed += "REMOVED";
+                    if (finalValue == 1) {
+                        finalValue = 0;
+                        fixed += "2";
+                    }
+                }
+
+                Log.d("Highlight", "Size " + slots.get(i).itemsLayout.getChildCount() + " (" + numItems +" - " + currItem + " - " + offset + ") = " + finalValue + fixed);
                 View imageViewSelected = slots.get(i).itemsLayout.getChildAt(finalValue);
-                imageViewSelected.setAlpha(0.5f);
 
-                /*View imageViewZero = slots.get(i).itemsLayout.getChildAt(0);
-                imageViewZero.setBackgroundResource(R.color.blue);
-
-                View imageView1 = slots.get(i).itemsLayout.getChildAt(1);
-                imageView1.setBackgroundResource(R.color.black);
-
-                View imageView2 = slots.get(i).itemsLayout.getChildAt(2);
-                imageView2.setBackgroundResource(R.color.green);
-
-                View imageView3 = slots.get(i).itemsLayout.getChildAt(3);
-                imageView3.setBackgroundResource(R.color.redText);
-
-                View imageView4 = slots.get(i).itemsLayout.getChildAt(4);
-                imageView4.setBackgroundResource(R.color.orangeText);*/
-                //View imageView = slots.get(i).getViewAdapter().getItem(slots.get(i).getCurrentItem(), null, null);
-                //View imageView = slots.get(i).getViewAdapter().getItemsCount()
-                //highlightTile(slotContainer, i, position, applyEffect);
+                if (imageViewSelected != null) {
+                    highlightedItems.add(imageViewSelected);
+                }
             }
             winningRoutes.append(route.toString());
             winningRoutes.append("\n");
         }
+        highlight(true);
         Log.d("Routes", winningRoutes.toString());
     }
 
-    private void highlightTile(LinearLayout slotContainer, int column, int position, boolean applyEffect) {
-        WheelView wheelView = (WheelView)slotContainer.getChildAt(column);
-        ImageView imageView = (ImageView)wheelView.itemsLayout.getChildAt(position);
-        imageView.setAlpha(applyEffect ? 0.5f : 1.0f);
+    private void highlight(boolean applying) {
+        for (View highlightedItem : highlightedItems) {
+            highlightedItem.setBackgroundColor(ContextCompat.getColor(activity, applying ? R.color.blue : R.color.transparent));
+        }
+        if (!applying) {
+            highlightedItems = new ArrayList<>();
+        }
     }
 
     public void increaseStake() {
