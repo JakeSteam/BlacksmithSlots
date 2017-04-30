@@ -17,6 +17,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="30dp"
         android:clickable="true"
+        style="@style/VerticalScrollbar"
         android:onClick="suppress">
         <TableLayout
             android:id="@+id/comparisonTable"

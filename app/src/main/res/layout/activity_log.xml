@@ -22,6 +22,7 @@
             android:layout_height="match_parent"
             android:clickable="true"
             android:onClick="suppress"
+            style="@style/VerticalScrollbar"
             android:padding="8dp">
             <TableLayout
                 android:id="@+id/messagesTable"

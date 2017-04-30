@@ -110,4 +110,14 @@
         <item name="android:alpha">0.6</item>
     </style>
 
+    <style name="VerticalScrollbar">
+        <item name="android:scrollbarStyle">insideInset</item>
+        <item name="android:fadeScrollbars">false</item>
+        <item name="android:scrollbarThumbVertical">@drawable/custom_scroll_vertical_thumb</item>
+        <item name="android:scrollbarTrackVertical">@drawable/custom_scroll_vertical</item>
+        <item name="android:scrollbarThumbHorizontal">@drawable/custom_scroll_vertical_thumb</item>
+        <item name="android:scrollbarTrackHorizontal">@drawable/custom_scroll_vertical</item>
+        <item name="android:scrollbarSize">12dp</item>
+    </style>
+
 </resources>

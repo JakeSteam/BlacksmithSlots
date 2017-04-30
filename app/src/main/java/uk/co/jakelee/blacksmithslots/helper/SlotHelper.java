@@ -474,9 +474,12 @@ public class SlotHelper {
     }
 
     private void highlight(boolean applying) {
+
+
         for (View highlightedItem : highlightedItems) {
-            highlightedItem.setBackgroundColor(ContextCompat.getColor(activity, applying ? R.color.blue : R.color.transparent));
+            highlightedItem.setAlpha(applying ? 0.5f : 1.0f);
         }
+
         if (!applying) {
             highlightedItems = new ArrayList<>();
         }

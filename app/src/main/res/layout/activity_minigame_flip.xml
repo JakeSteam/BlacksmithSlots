@@ -18,6 +18,7 @@
         android:layout_margin="30dp"
         android:clickable="true"
         android:onClick="suppress"
+        style="@style/VerticalScrollbar"
         android:layout_centerInParent="true">
         <LinearLayout
             android:layout_width="wrap_content"

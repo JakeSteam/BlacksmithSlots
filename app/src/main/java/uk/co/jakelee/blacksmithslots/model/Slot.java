@@ -72,6 +72,7 @@ public class Slot extends SugarRecord {
 
     private static int getMaxRowsBySlots(int slot) {
         switch (slot) {
+            case 2: return Constants.SLOTS_2_MAX_ROUTES;
             case 3: return Constants.SLOTS_3_MAX_ROUTES;
             case 4: return Constants.SLOTS_4_MAX_ROUTES;
             case 5: return Constants.SLOTS_5_MAX_ROUTES;

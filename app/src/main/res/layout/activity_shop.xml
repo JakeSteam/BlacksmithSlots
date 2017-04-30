@@ -116,6 +116,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:fadeScrollbars="false"
+                    style="@style/VerticalScrollbar"
                     android:background="@drawable/box_yellow">
                     <TableLayout
                         android:id="@+id/passRewardsContainer"
@@ -177,7 +178,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_above="@id/vipButtons"
-                android:layout_below="@id/vipIntro">
+                android:layout_below="@id/vipIntro"
+                style="@style/VerticalScrollbar">
                 <uk.co.jakelee.blacksmithslots.components.FontTextView
                     android:id="@+id/vipBonuses"
                     android:layout_width="match_parent"
@@ -215,15 +217,16 @@
                     android:layout_margin="3dp"/>
             </LinearLayout>
             <HorizontalScrollView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_below="@id/bundleItemDropdownContainer" >
+                style="@style/VerticalScrollbar"
+                android:layout_below="@id/bundleItemDropdownContainer"
+                android:layout_marginBottom="5dp">
                 <LinearLayout
                     android:id="@+id/bundleItemContainer"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:orientation="horizontal"
-                    android:layout_margin="10dp"/>
+                    android:orientation="horizontal"/>
             </HorizontalScrollView>
         </RelativeLayout>
 
