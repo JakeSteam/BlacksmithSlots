@@ -215,6 +215,8 @@
     <string name="map_6">The Mines</string>
     <string name="map_7">The Deep Mines</string>
     <string name="map_8">Ruined Village</string>
+    <string name="map_9">Haunted Port</string>
+    <string name="map_10">The Expanse</string>
 
     <string name="statistic_1_name">XP</string>
     <string name="statistic_2_name">Level</string>

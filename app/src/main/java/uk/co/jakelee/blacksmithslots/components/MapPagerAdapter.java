@@ -19,13 +19,14 @@ import uk.co.jakelee.blacksmithslots.helper.TextHelper;
 import uk.co.jakelee.blacksmithslots.model.Slot;
 
 public class MapPagerAdapter extends PagerAdapter {
-    Context mContext;
-    LayoutInflater mLayoutInflater;
-    public final static int[] townLayouts = {R.layout.custom_map_1, R.layout.custom_map_2, R.layout.custom_map_3, R.layout.custom_map_4, R.layout.custom_map_5, R.layout.custom_map_6};
+    private LayoutInflater mLayoutInflater;
+    public final static int[] townLayouts = {R.layout.custom_map_1, R.layout.custom_map_2, R.layout.custom_map_3,
+            R.layout.custom_map_4, R.layout.custom_map_5, R.layout.custom_map_6,
+            R.layout.custom_map_7, R.layout.custom_map_8, R.layout.custom_map_9,
+            R.layout.custom_map_10};
 
     public MapPagerAdapter(Context context) {
-        mContext = context;
-        mLayoutInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        mLayoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
     @Override
