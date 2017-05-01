@@ -210,6 +210,12 @@
     <string name="map_3">The Forest</string>
     <string name="slot_7_name">Forest Slot 1</string>
 
+    <string name="map_4">Marketplace</string>
+    <string name="map_5">The Castle</string>
+    <string name="map_6">The Mines</string>
+    <string name="map_7">The Deep Mines</string>
+    <string name="map_8">Ruined Village</string>
+
     <string name="statistic_1_name">XP</string>
     <string name="statistic_2_name">Level</string>
     <string name="statistic_3_name">Total Spins</string>

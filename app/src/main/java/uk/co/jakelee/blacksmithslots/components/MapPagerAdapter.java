@@ -21,7 +21,7 @@ import uk.co.jakelee.blacksmithslots.model.Slot;
 public class MapPagerAdapter extends PagerAdapter {
     Context mContext;
     LayoutInflater mLayoutInflater;
-    public final static int[] townLayouts = {R.layout.custom_map_1, R.layout.custom_map_2, R.layout.custom_map_3, R.layout.custom_map_4};
+    public final static int[] townLayouts = {R.layout.custom_map_1, R.layout.custom_map_2, R.layout.custom_map_3, R.layout.custom_map_4, R.layout.custom_map_5, R.layout.custom_map_6};
 
     public MapPagerAdapter(Context context) {
         mContext = context;
@@ -45,7 +45,7 @@ public class MapPagerAdapter extends PagerAdapter {
 
         // The lowest required slot for this map
         Slot firstSlotUnlocked = Select.from(Slot.class).where(Condition.prop("m").eq(position + 1)).orderBy("k ASC").first();
-        boolean isUnlocked = firstSlotUnlocked == null || firstSlotUnlocked.getRequiredSlot() == 1 || !TaskHelper.isSlotLocked(firstSlotUnlocked.getSlotId());
+        boolean isUnlocked = true; //firstSlotUnlocked == null || firstSlotUnlocked.getRequiredSlot() == 1 || !TaskHelper.isSlotLocked(firstSlotUnlocked.getSlotId());
         itemView.findViewById(R.id.lockedMapBlocker).setVisibility(isUnlocked ? View.GONE : View.VISIBLE);
         if (!isUnlocked) {
             Slot requiredSlot = Slot.get(firstSlotUnlocked.getRequiredSlot());

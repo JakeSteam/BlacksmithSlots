@@ -10,46 +10,14 @@
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
         android:onClick="loadSidebar"
-        android:src="@drawable/map4"/>
+        android:src="@drawable/map6"/>
 
     <ImageView
         android:tag="1"
         style="@style/SlotClickArea"
-        app:layout_widthPercent="13.32%"
-        app:layout_heightPercent="15%"
-        app:layout_marginTopPercent="5%"
-        app:layout_marginLeftPercent="33.33%" />
-
-    <ImageView
-        android:tag="1"
-        style="@style/SlotClickArea"
-        app:layout_widthPercent="13.32%"
-        app:layout_heightPercent="15%"
-        app:layout_marginTopPercent="5%"
-        app:layout_marginLeftPercent="53.28%" />
-
-    <ImageView
-        android:tag="1"
-        style="@style/SlotClickArea"
-        app:layout_widthPercent="13.32%"
-        app:layout_heightPercent="15%"
-        app:layout_marginTopPercent="53.28%"
-        app:layout_marginLeftPercent="39.99%" />
-
-    <ImageView
-        android:tag="1"
-        style="@style/SlotClickArea"
-        app:layout_widthPercent="13.32%"
-        app:layout_heightPercent="19%"
-        app:layout_marginTopPercent="76%"
-        app:layout_marginLeftPercent="39.99%" />
-
-    <ImageView
-        android:tag="1"
-        style="@style/SlotClickArea"
-        app:layout_heightPercent="7%"
-        app:layout_marginTopPercent="81%"
-        app:layout_marginLeftPercent="66.66%" />
+        app:layout_heightPercent="16%"
+        app:layout_marginTopPercent="45%"
+        app:layout_marginLeftPercent="19.98%" />
 
     <RelativeLayout
         android:id="@+id/lockedMapBlocker"
