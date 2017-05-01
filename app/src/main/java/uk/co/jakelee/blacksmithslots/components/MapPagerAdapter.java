@@ -46,7 +46,7 @@ public class MapPagerAdapter extends PagerAdapter {
 
         // The lowest required slot for this map
         Slot firstSlotUnlocked = Select.from(Slot.class).where(Condition.prop("m").eq(position + 1)).orderBy("k ASC").first();
-        boolean isUnlocked = true; //firstSlotUnlocked == null || firstSlotUnlocked.getRequiredSlot() == 1 || !TaskHelper.isSlotLocked(firstSlotUnlocked.getSlotId());
+        boolean isUnlocked = firstSlotUnlocked == null || firstSlotUnlocked.getRequiredSlot() == 1 || !TaskHelper.isSlotLocked(firstSlotUnlocked.getSlotId());
         itemView.findViewById(R.id.lockedMapBlocker).setVisibility(isUnlocked ? View.GONE : View.VISIBLE);
         if (!isUnlocked) {
             Slot requiredSlot = Slot.get(firstSlotUnlocked.getRequiredSlot());
