@@ -256,4 +256,10 @@
     <string name="lowerBet">Lower Bet</string>
     <string name="exit">Exit</string>
     <string name="spin">Spin</string>
+    <string name="minigame_flip_gamble">Take another gamble?</string>
+    <string name="gamble">Gamble</string>
+    <string name="stick">Stick</string>
+    <string name="close">Close</string>
+    <string name="minigame_flip_success">Success! Doubled multiplier to %1$dx!</string>
+    <string name="minigame_flip_failure">Unlucky, lost it all!</string>
 </resources>

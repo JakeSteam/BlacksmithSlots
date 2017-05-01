@@ -4,22 +4,20 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.List;
+import java.util.Locale;
 
 import uk.co.jakelee.blacksmithslots.R;
 import uk.co.jakelee.blacksmithslots.helper.AlertHelper;
 import uk.co.jakelee.blacksmithslots.helper.CalculationHelper;
 import uk.co.jakelee.blacksmithslots.helper.DisplayHelper;
-import uk.co.jakelee.blacksmithslots.model.Item;
 import uk.co.jakelee.blacksmithslots.model.ItemBundle;
 import uk.co.jakelee.blacksmithslots.model.Slot;
 
 public class MinigameFlipActivity extends MinigameActivity {
-    private int slotId;
     private List<ItemBundle> resources;
     private int multiplier = 5;
 
@@ -30,7 +28,7 @@ public class MinigameFlipActivity extends MinigameActivity {
         setContentView(R.layout.activity_minigame_flip);
 
         Intent intent = getIntent();
-        slotId = intent.getIntExtra("slot", 0);
+        int slotId = intent.getIntExtra("slot", 0);
         if (slotId == 0) {
             confirmClose();
         }
@@ -50,11 +48,11 @@ public class MinigameFlipActivity extends MinigameActivity {
     public void gamble(View v) {
         if (CalculationHelper.randomBoolean()) {
             multiplier = multiplier * 2;
-            AlertHelper.success(this, "Success! Doubled multiplier to " + multiplier + "x!", false);
+            AlertHelper.success(this, String.format(Locale.ENGLISH, getString(R.string.minigame_flip_success), multiplier), false);
             updateDisplay();
         } else {
             multiplier = 0;
-            AlertHelper.info(this, "Unlucky, lost it all!", false);
+            AlertHelper.info(this, getString(R.string.minigame_flip_failure), false);
             stick(null);
         }
     }
