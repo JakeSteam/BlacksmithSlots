@@ -23,7 +23,7 @@ public class MapPagerAdapter extends PagerAdapter {
     public final static int[] townLayouts = {R.layout.custom_map_1, R.layout.custom_map_2, R.layout.custom_map_3,
             R.layout.custom_map_4, R.layout.custom_map_5, R.layout.custom_map_6,
             R.layout.custom_map_7, R.layout.custom_map_8, R.layout.custom_map_9,
-            R.layout.custom_map_10};
+            R.layout.custom_map_10, R.layout.custom_map_11};
 
     public MapPagerAdapter(Context context) {
         mLayoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -46,7 +46,7 @@ public class MapPagerAdapter extends PagerAdapter {
 
         // The lowest required slot for this map
         Slot firstSlotUnlocked = Select.from(Slot.class).where(Condition.prop("m").eq(position + 1)).orderBy("k ASC").first();
-        boolean isUnlocked = firstSlotUnlocked == null || firstSlotUnlocked.getRequiredSlot() == 1 || !TaskHelper.isSlotLocked(firstSlotUnlocked.getSlotId());
+        boolean isUnlocked = true; //firstSlotUnlocked == null || firstSlotUnlocked.getRequiredSlot() == 1 || !TaskHelper.isSlotLocked(firstSlotUnlocked.getSlotId());
         itemView.findViewById(R.id.lockedMapBlocker).setVisibility(isUnlocked ? View.GONE : View.VISIBLE);
         if (!isUnlocked) {
             Slot requiredSlot = Slot.get(firstSlotUnlocked.getRequiredSlot());
