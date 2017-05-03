@@ -242,7 +242,7 @@
             android:layout_height = "wrap_content"
             android:layout_centerInParent="true"
             android:padding="10dp"
-            app:delimiterSize = "8dp"
+            app:delimiterSize = "3dp"
             app:itemSize = "8dp"/>
 
         <uk.co.jakelee.blacksmithslots.components.AwesomeTextView

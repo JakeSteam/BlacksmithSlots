@@ -10,7 +10,7 @@
         android:layout_height="match_parent"
         android:scaleType="fitXY"
         android:onClick="loadSidebar"
-        android:src="@drawable/map13"/>
+        android:src="@drawable/map16"/>
 
     <ImageView
         android:tag="1"
