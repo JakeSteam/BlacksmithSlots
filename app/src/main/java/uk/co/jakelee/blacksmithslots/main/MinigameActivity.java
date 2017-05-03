@@ -6,6 +6,7 @@ import uk.co.jakelee.blacksmithslots.BaseActivity;
 import uk.co.jakelee.blacksmithslots.helper.AlertDialogHelper;
 
 public class MinigameActivity extends BaseActivity {
+
     @Override
     public void close(View v) {
         AlertDialogHelper.confirmCloseMinigame(this);
