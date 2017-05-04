@@ -22,7 +22,7 @@
     <ImageView
         android:tag="1"
         style="@style/SlotClickArea"
-        app:layout_marginTopPercent="19.00%"
+        app:layout_marginTopPercent="20.5%"
         app:layout_marginLeftPercent="39.96%" />
 
     <ImageView
@@ -42,7 +42,7 @@
     <ImageView
         android:tag="1"
         style="@style/SlotClickArea"
-        app:layout_marginTopPercent="19.00%"
+        app:layout_marginTopPercent="20.5%"
         app:layout_marginLeftPercent="86.58%" />
 
     <RelativeLayout

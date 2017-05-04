@@ -32,7 +32,7 @@
         android:tag="4"
         style="@style/SlotClickArea"
         app:layout_marginTopPercent="39%"
-        app:layout_marginLeftPercent="32%"
+        app:layout_marginLeftPercent="33%"
         app:layout_heightPercent="35%"
         app:layout_widthPercent="20%"/>
 
@@ -40,9 +40,9 @@
         android:tag="5"
         style="@style/SlotClickArea"
         app:layout_marginTopPercent="50%"
-        app:layout_marginLeftPercent="60%"
-        app:layout_heightPercent="29%"
-        app:layout_widthPercent="15%"/>
+        app:layout_marginLeftPercent="59.5%"
+        app:layout_heightPercent="30%"
+        app:layout_widthPercent="14%"/>
 
     <ImageView
         android:tag="6"
@@ -50,7 +50,7 @@
         app:layout_marginTopPercent="67%"
         app:layout_marginLeftPercent="80%"
         app:layout_heightPercent="20%"
-        app:layout_widthPercent="14%"/>
+        app:layout_widthPercent="13.5%"/>
 
     <RelativeLayout
         android:id="@+id/lockedMapBlocker"

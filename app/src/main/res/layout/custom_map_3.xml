@@ -27,7 +27,7 @@
     <ImageView
         android:tag="1"
         style="@style/SlotClickArea"
-        app:layout_heightPercent="19.16%"
+        app:layout_heightPercent="16.5%"
         app:layout_widthPercent="13.32%"
         app:layout_marginTopPercent="49.95%"
         app:layout_marginLeftPercent="33.33%" />
