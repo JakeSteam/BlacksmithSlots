@@ -15,9 +15,39 @@
     <ImageView
         android:tag="1"
         style="@style/SlotClickArea"
-        app:layout_heightPercent="15%"
+        app:layout_widthPercent="19.98%"
+        app:layout_marginTopPercent="39.96%"
+        app:layout_marginLeftPercent="19.98%" />
+
+    <ImageView
+        android:tag="1"
+        style="@style/SlotClickArea"
+        app:layout_heightPercent="19.98%"
+        app:layout_widthPercent="13.32%"
         app:layout_marginTopPercent="73.26%"
-        app:layout_marginLeftPercent="13.32%" />
+        app:layout_marginLeftPercent="0%" />
+
+    <ImageView
+        android:tag="1"
+        style="@style/SlotClickArea"
+        app:layout_heightPercent="19.98%"
+        app:layout_widthPercent="13.32%"
+        app:layout_marginTopPercent="73.26%"
+        app:layout_marginLeftPercent="19.98%" />
+
+    <ImageView
+        android:tag="1"
+        style="@style/SlotClickArea"
+        app:layout_heightPercent="19.98%"
+        app:layout_widthPercent="13.32%"
+        app:layout_marginTopPercent="73.26%"
+        app:layout_marginLeftPercent="39.96%" />
+
+    <ImageView
+        android:tag="1"
+        style="@style/SlotClickArea"
+        app:layout_marginTopPercent="39.96%"
+        app:layout_marginLeftPercent="79.92%" />
 
     <RelativeLayout
         android:id="@+id/lockedMapBlocker"
