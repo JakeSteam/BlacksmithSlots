@@ -92,8 +92,8 @@ public class MapActivity extends BaseActivity implements
 
         ViewPager.OnPageChangeListener pageChangeListener = new ViewPager.SimpleOnPageChangeListener() {
             public void onPageSelected(int position) {
-                findViewById(R.id.leftArrow).setVisibility(position == 0 ? GONE : View.VISIBLE);
-                findViewById(R.id.rightArrow).setVisibility(position == (MapPagerAdapter.townLayouts.length - 1) ? GONE : View.VISIBLE);
+                findViewById(R.id.leftArrow).setVisibility(position == 0 ? View.INVISIBLE : View.VISIBLE);
+                findViewById(R.id.rightArrow).setVisibility(position == (MapPagerAdapter.townLayouts.length - 1) ? View.INVISIBLE : View.VISIBLE);
 
                 String mapName = TextHelper.getInstance(getApplicationContext()).getText(DisplayHelper.getMapString(position + 1));
                 mapTextView.setText(mapName);
@@ -201,12 +201,16 @@ public class MapActivity extends BaseActivity implements
 
     @OnClick(R.id.leftArrow)
     public void moveLeft() {
-        mapPager.setCurrentItem(mapPager.getCurrentItem() - 1, true);
+        if (mapPager.getCurrentItem() > 0) {
+            mapPager.setCurrentItem(mapPager.getCurrentItem() - 1, true);
+        }
     }
 
     @OnClick(R.id.rightArrow)
     public void moveRight() {
-        mapPager.setCurrentItem(mapPager.getCurrentItem() + 1, true);
+        if (mapPager.getCurrentItem() < mapPager.getAdapter().getCount()) {
+            mapPager.setCurrentItem(mapPager.getCurrentItem() + 1, true);
+        }
     }
 
     @OnClick(R.id.claimBonus)

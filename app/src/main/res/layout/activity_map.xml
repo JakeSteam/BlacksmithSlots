@@ -227,14 +227,15 @@
         android:layout_alignLeft="@id/townScroller"
         android:layout_alignRight="@id/townScroller"
         android:layout_alignParentBottom="true"
-        android:padding="10dp"
+        android:padding="8dp"
         android:gravity="center_vertical">
-        <uk.co.jakelee.blacksmithslots.components.AwesomeTextView
+        <ImageView
             android:id="@+id/leftArrow"
-            android:text="@string/icon_left"
+            android:layout_width="24dp"
+            android:layout_height="36dp"
             android:layout_alignParentLeft="true"
-            android:visibility="gone"
-            style="@style/Arrows"/>
+            android:src="@drawable/left"
+            android:visibility="invisible"/>
 
         <uk.co.jakelee.blacksmithslots.components.ViewPagerIndicator
             android:id = "@+id/view_pager_indicator"
@@ -245,11 +246,13 @@
             app:delimiterSize = "3dp"
             app:itemSize = "8dp"/>
 
-        <uk.co.jakelee.blacksmithslots.components.AwesomeTextView
+        <ImageView
             android:id="@+id/rightArrow"
-            android:text="@string/icon_right"
+            android:layout_width="24dp"
+            android:layout_height="36dp"
             android:layout_alignParentRight="true"
-            style="@style/Arrows"/>
+            android:src="@drawable/left"
+            android:rotation="180"/>
     </RelativeLayout>
 
     <LinearLayout

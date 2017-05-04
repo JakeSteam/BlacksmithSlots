@@ -26,7 +26,8 @@ public class MapPagerAdapter extends PagerAdapter {
             R.layout.custom_map_7, R.layout.custom_map_8, R.layout.custom_map_9,
             R.layout.custom_map_10, R.layout.custom_map_11, R.layout.custom_map_12,
             R.layout.custom_map_13, R.layout.custom_map_14, R.layout.custom_map_15,
-            R.layout.custom_map_16, R.layout.custom_map_17};
+            R.layout.custom_map_16, R.layout.custom_map_17, R.layout.custom_map_18,
+            R.layout.custom_map_19};
 
     public MapPagerAdapter(Context context) {
         mLayoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);

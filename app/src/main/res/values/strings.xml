@@ -224,6 +224,8 @@
     <string name="map_15">The Library</string>
     <string name="map_16">Haunted Corridors</string>
     <string name="map_17">Undead Jewellers</string>
+    <string name="map_18">No Turning Back</string>
+    <string name="map_19">The Battle</string>
 
     <string name="statistic_1_name">XP</string>
     <string name="statistic_2_name">Level</string>
