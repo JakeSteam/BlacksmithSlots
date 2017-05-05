@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -65,8 +66,13 @@ public class MapActivity extends BaseActivity implements
     @BindView(R.id.noSlotSelected) RelativeLayout noSlotSidebar;
     @BindView(R.id.superlockedSlot) RelativeLayout superLockedSlot;
     @BindView(R.id.slotSuperlockedDescription) TextView superLockedDescription;
+
     @BindView(R.id.lockedSlot) RelativeLayout lockedSlot;
     @BindView(R.id.slotLockedDescription) TextView lockedDescription;
+    @BindView(R.id.taskRequirement) TextView lockedTaskRequirement;
+    @BindView(R.id.taskProgressBar) ProgressBar lockedTaskProgressBar;
+    @BindView(R.id.taskProgressText) TextView lockedTaskProgressText;
+
     @BindView(R.id.unlockedSlot) RelativeLayout unlockedSlot;
     @BindView(R.id.slotUnlockedDescription) TextView unlockedDescription;
     @BindView(R.id.watchAdvert) TextView watchAdvert;
@@ -255,13 +261,17 @@ public class MapActivity extends BaseActivity implements
         Task task = Task.findById(Task.class, (long)v.getTag());
         if (task.getTier() != null && task.itemsCanBeSubmitted()) {
             task.submitItems();
-            AlertHelper.success(this, R.string.alert_items_submitted, true);
-        } else if (task.isCompleteable()) {
-            AlertHelper.success(this, String.format(Locale.ENGLISH, getString(R.string.log_task),
+            if (task.getRemaining() == 0) {
+                AlertHelper.success(this, String.format(Locale.ENGLISH, getString(R.string.alert_items_submitted),
+                        task.toString(this),
+                        Slot.getName(this, selectedSlot)), true);
+                task.setCompleted(System.currentTimeMillis());
+            }
+            task.save();
+        } else if (task.statisticIsAchieved()) {
+            AlertHelper.success(this, String.format(Locale.ENGLISH, getString(R.string.alert_statistic_achieved),
                     task.toString(this),
                     Slot.getName(this, selectedSlot)), true);
-            task.setCompleted(System.currentTimeMillis());
-            task.save();
         } else {
             AlertHelper.error(this, R.string.alert_unfinished_task, false);
         }
@@ -306,11 +316,13 @@ public class MapActivity extends BaseActivity implements
         }
 
         lockedDescription.setText(slot.getLockedText(this));
-        ((TextView) findViewById(R.id.taskProgress)).setText(String.format(Locale.ENGLISH, getString(R.string.task_completion),
+        lockedTaskRequirement.setText(String.format(Locale.ENGLISH, getString(R.string.task_completion),
                 currentTask.getPosition(),
-                tasks.size()));
-        ((TextView) findViewById(R.id.taskText)).setText(currentTask.getText(this));
-        ((TextView) findViewById(R.id.taskRequirement)).setText(currentTask.toString(this));
+                tasks.size(),
+                currentTask.getText(this)));
+        lockedTaskProgressText.setText(currentTask.toString(this));
+        lockedTaskProgressBar.setMax(currentTask.getTarget());
+        lockedTaskProgressBar.setProgress(currentTask.getTarget() - currentTask.getRemaining());
         findViewById(R.id.handInButton).setTag(currentTask.getId());
 
         superLockedSlot.setVisibility(GONE);

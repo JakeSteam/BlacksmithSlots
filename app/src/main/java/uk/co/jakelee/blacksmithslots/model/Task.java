@@ -146,8 +146,10 @@ public class Task extends SugarRecord {
         }
     }
 
-    public boolean isCompleteable() {
-        return remaining == 0 && completed == 0;
+    public boolean statisticIsAchieved() {
+        return statistic > 0
+            && remaining == 0
+            && completed == 0;
     }
 
     public boolean itemsCanBeSubmitted() {
