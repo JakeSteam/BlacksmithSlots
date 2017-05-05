@@ -270,4 +270,10 @@
     <string name="close">Close</string>
     <string name="minigame_flip_success">Success! Doubled multiplier to %1$dx!</string>
     <string name="minigame_flip_failure">Unlucky, lost it all!</string>
+    <string name="hand_in">Hand in</string>
+    <string name="resources">Resources</string>
+    <string name="rewards">Rewards</string>
+    <string name="locked">Locked</string>
+    <string name="slot_superlocked">Slot \"%1$s\" needs unlocking first!</string>
+    <string name="advert_watch_verified">Advert watch verified!</string>
 </resources>

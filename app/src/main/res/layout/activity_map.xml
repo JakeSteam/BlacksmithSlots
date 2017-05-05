@@ -14,15 +14,8 @@
         app:layout_widthPercent="33%"
         android:padding="10dp"
         android:layout_alignParentRight="true">
-        <uk.co.jakelee.blacksmithslots.components.FontTextView
-            android:id="@+id/slotTitle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="30sp"
-            style="@style/SidebarText"/>
         <LinearLayout
             android:id="@+id/slotInfo"
-            android:layout_below="@id/slotTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
@@ -33,19 +26,48 @@
                 android:padding="5dp"
                 android:src="@drawable/person_1"/>
             <uk.co.jakelee.blacksmithslots.components.FontTextView
-                android:id="@+id/slotDescription"
+                android:id="@+id/slotTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:maxLines="8"
+                android:textSize="30sp"
                 style="@style/SidebarText"/>
         </LinearLayout>
+
+        <!-- Locked slot due to previous slot -->
         <RelativeLayout
             android:id="@+id/superlockedSlot"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@id/slotInfo"
             android:visibility="gone">
+            <uk.co.jakelee.blacksmithslots.components.FontTextView
+                android:id="@+id/lockedButton"
+                android:layout_width="match_parent"
+                android:background="@drawable/box_orange"
+                android:text="@string/locked"
+                android:alpha="0.5"
+                android:layout_alignParentBottom="true"
+                style="@style/SlotText"/>
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_above="@id/lockedButton"
+                style="@style/VerticalScrollbar">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <uk.co.jakelee.blacksmithslots.components.FontTextView
+                        android:id="@+id/slotSuperlockedDescription"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:maxLines="8"
+                        style="@style/SidebarText"/>
+                </LinearLayout>
+            </ScrollView>
         </RelativeLayout>
+
+        <!-- Locked slot due to tasks -->
         <RelativeLayout
             android:id="@+id/lockedSlot"
             android:layout_width="match_parent"
@@ -53,79 +75,52 @@
             android:layout_below="@id/slotInfo"
             android:visibility="gone">
             <uk.co.jakelee.blacksmithslots.components.FontTextView
-                android:id="@+id/taskProgress"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                style="@style/SidebarText"/>
-            <uk.co.jakelee.blacksmithslots.components.FontTextView
-                android:id="@+id/taskText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/taskProgress"
-                style="@style/SidebarText"/>
-            <uk.co.jakelee.blacksmithslots.components.FontTextView
-                android:id="@+id/taskRequirement"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/taskText"
-                style="@style/SidebarText"/>
-            <uk.co.jakelee.blacksmithslots.components.FontTextView
                 android:id="@+id/handInButton"
                 android:layout_width="match_parent"
                 android:background="@drawable/box_yellow"
-                android:text="Hand in?"
-                android:maxLines="2"
-                android:layout_marginTop="3dp"
-                android:layout_marginBottom="3dp"
+                android:text="@string/hand_in"
                 android:layout_alignParentBottom="true"
                 style="@style/SlotText"/>
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_above="@id/handInButton"
+                style="@style/VerticalScrollbar">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <uk.co.jakelee.blacksmithslots.components.FontTextView
+                        android:id="@+id/slotLockedDescription"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:maxLines="8"
+                        style="@style/SidebarText"/>
+                    <uk.co.jakelee.blacksmithslots.components.FontTextView
+                        android:id="@+id/taskProgress"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        style="@style/SidebarText"/>
+                    <uk.co.jakelee.blacksmithslots.components.FontTextView
+                        android:id="@+id/taskText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        style="@style/SidebarText"/>
+                    <uk.co.jakelee.blacksmithslots.components.FontTextView
+                        android:id="@+id/taskRequirement"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        style="@style/SidebarText"/>
+                </LinearLayout>
+            </ScrollView>
         </RelativeLayout>
+
+        <!-- Unlocked slot -->
         <RelativeLayout
             android:id="@+id/unlockedSlot"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@id/slotInfo">
-            <uk.co.jakelee.blacksmithslots.components.FontTextView
-                android:id="@+id/slotResource"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="0dp"
-                android:text="Resource:"
-                style="@style/SidebarText"/>
-            <HorizontalScrollView
-                android:id="@+id/resourceRow"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/slotResource"
-                android:fadeScrollbars="false">
-                <LinearLayout
-                    android:id="@+id/resourceContainer"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:paddingBottom="10dp"/>
-            </HorizontalScrollView>
-            <uk.co.jakelee.blacksmithslots.components.FontTextView
-                android:id="@+id/slotReward"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="0dp"
-                android:layout_below="@id/resourceRow"
-                android:text="Rewards:"
-                style="@style/SidebarText"/>
-            <HorizontalScrollView
-                android:id="@+id/rewardRow"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/slotReward"
-                android:fadeScrollbars="false">
-                <LinearLayout
-                    android:id="@+id/rewardContainer"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:paddingBottom="10dp" />
-            </HorizontalScrollView>
             <uk.co.jakelee.blacksmithslots.components.FontTextView
                 android:id="@+id/openSlot"
                 android:layout_width="match_parent"
@@ -133,7 +128,64 @@
                 android:layout_alignParentBottom="true"
                 android:text="@string/open_slot"
                 style="@style/SlotText"/>
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_above="@id/openSlot"
+                style="@style/VerticalScrollbar">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <uk.co.jakelee.blacksmithslots.components.FontTextView
+                        android:id="@+id/slotUnlockedDescription"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:maxLines="8"
+                        style="@style/SidebarText"/>
+                    <uk.co.jakelee.blacksmithslots.components.FontTextView
+                        android:id="@+id/slotResource"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="0dp"
+                        android:text="@string/resources"
+                        style="@style/SidebarText"/>
+                    <HorizontalScrollView
+                        android:id="@+id/resourceRow"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fadeScrollbars="false">
+                        <LinearLayout
+                            android:id="@+id/resourceContainer"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:paddingBottom="10dp"/>
+                    </HorizontalScrollView>
+                    <uk.co.jakelee.blacksmithslots.components.FontTextView
+                        android:id="@+id/slotReward"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="0dp"
+                        android:text="@string/rewards"
+                        style="@style/SidebarText"/>
+                    <HorizontalScrollView
+                        android:id="@+id/rewardRow"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fadeScrollbars="false">
+                        <LinearLayout
+                            android:id="@+id/rewardContainer"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:paddingBottom="10dp" />
+                    </HorizontalScrollView>
+                </LinearLayout>
+            </ScrollView>
         </RelativeLayout>
+
+        <!-- No slot selected -->
         <RelativeLayout
             android:id="@+id/noSlotSelected"
             android:layout_width="match_parent"

@@ -64,8 +64,11 @@ public class MapActivity extends BaseActivity implements
     @BindView(R.id.mapName) TextView mapTextView;
     @BindView(R.id.noSlotSelected) RelativeLayout noSlotSidebar;
     @BindView(R.id.superlockedSlot) RelativeLayout superLockedSlot;
+    @BindView(R.id.slotSuperlockedDescription) TextView superLockedDescription;
     @BindView(R.id.lockedSlot) RelativeLayout lockedSlot;
+    @BindView(R.id.slotLockedDescription) TextView lockedDescription;
     @BindView(R.id.unlockedSlot) RelativeLayout unlockedSlot;
+    @BindView(R.id.slotUnlockedDescription) TextView unlockedDescription;
     @BindView(R.id.watchAdvert) TextView watchAdvert;
     @BindView(R.id.claimBonus) TextView claimBonus;
 
@@ -239,7 +242,7 @@ public class MapActivity extends BaseActivity implements
     }
 
     public void rewardAdvertItems() {
-        AlertHelper.success(this, "Advert watch verified! " + IncomeHelper.claimAdvertBonus(this), true);
+        AlertHelper.success(this, getString(R.string.advert_watch_verified) + IncomeHelper.claimAdvertBonus(this), true);
         setAdvertUnclaimable();
     }
 
@@ -285,7 +288,10 @@ public class MapActivity extends BaseActivity implements
     }
 
     private void populateSlotInfoSuperlocked(Slot slot) {
-        ((TextView) findViewById(R.id.slotDescription)).setText("Slot \"" + Slot.get(slot.getRequiredSlot()).getName(this) + "\" needs unlocking first!");
+        Slot requiredSlot = Slot.get(slot.getRequiredSlot());
+        if (requiredSlot != null) {
+            superLockedDescription.setText(String.format(Locale.ENGLISH, getString(R.string.slot_superlocked), requiredSlot.getName(this)));
+        }
         superLockedSlot.setVisibility(View.VISIBLE);
         lockedSlot.setVisibility(GONE);
         unlockedSlot.setVisibility(GONE);
@@ -299,7 +305,7 @@ public class MapActivity extends BaseActivity implements
             currentTask.save();
         }
 
-        ((TextView) findViewById(R.id.slotDescription)).setText(slot.getLockedText(this));
+        lockedDescription.setText(slot.getLockedText(this));
         ((TextView) findViewById(R.id.taskProgress)).setText(String.format(Locale.ENGLISH, getString(R.string.task_completion),
                 currentTask.getPosition(),
                 tasks.size()));
@@ -313,7 +319,7 @@ public class MapActivity extends BaseActivity implements
     }
 
     private void populateSlotInfoUnlocked(Slot slot) {
-        ((TextView) findViewById(R.id.slotDescription)).setText(slot.getUnlockedText(this));
+        unlockedDescription.setText(slot.getUnlockedText(this));
 
         populateItemContainer(R.id.resourceContainer, slot.getResources());
         populateItemContainer(R.id.rewardContainer, slot.getRewards());
