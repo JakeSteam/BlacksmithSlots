@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_widthPercent="33%"
-        android:padding="10dp"
+        android:background="@drawable/box_metal"
         android:layout_alignParentRight="true">
         <LinearLayout
             android:id="@+id/slotInfo"
@@ -87,7 +87,7 @@
                 android:layout_height="match_parent"
                 android:layout_above="@id/handInButton"
                 style="@style/VerticalScrollbar">
-                <RelativeLayout
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
@@ -96,32 +96,41 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         style="@style/SidebarText"/>
-                    <uk.co.jakelee.blacksmithslots.components.FontTextView
-                        android:id="@+id/taskRequirement"
+                    <RelativeLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/slotLockedDescription"
-                        style="@style/SidebarText"/>
-                    <ProgressBar
-                        android:id="@+id/taskProgressBar"
-                        style="?android:attr/progressBarStyleHorizontal"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:indeterminate="false"
-                        android:minHeight="50dp"
-                        android:minWidth="100dp"
-                        android:progress="60"
-                        android:max="100"
-                        android:progressDrawable="@drawable/custom_progress_bar"
-                        android:layout_below="@id/taskRequirement"/>
-                    <uk.co.jakelee.blacksmithslots.components.FontTextView
-                        android:id="@+id/taskProgressText"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/taskRequirement"
-                        android:padding="10dp"
-                        style="@style/SidebarText"/>
-                </RelativeLayout>
+                        android:layout_height="wrap_content">
+                        <uk.co.jakelee.blacksmithslots.components.FontTextView
+                            android:id="@+id/taskRequirement"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            style="@style/SidebarText"/>
+                        <ProgressBar
+                            android:id="@+id/taskProgressBar"
+                            style="?android:attr/progressBarStyleHorizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:indeterminate="false"
+                            android:minHeight="50dp"
+                            android:minWidth="100dp"
+                            android:progress="60"
+                            android:max="100"
+                            android:progressDrawable="@drawable/custom_progress_bar_items"
+                            android:layout_below="@id/taskRequirement"/>
+                        <uk.co.jakelee.blacksmithslots.components.FontTextView
+                            android:id="@+id/taskProgressText"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_below="@id/taskRequirement"
+                            android:layout_alignTop="@id/taskProgressBar"
+                            android:layout_alignLeft="@id/taskProgressBar"
+                            android:layout_alignRight="@id/taskProgressBar"
+                            android:layout_alignBottom="@id/taskProgressBar"
+                            android:gravity="center"
+                            android:padding="10dp"
+                            android:textSize="18sp"
+                            style="@style/SidebarText"/>
+                    </RelativeLayout>
+                </LinearLayout>
             </ScrollView>
         </RelativeLayout>
 
@@ -200,7 +209,7 @@
             android:id="@+id/noSlotSelected"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/white">
+            android:background="@drawable/background_tan">
             <uk.co.jakelee.blacksmithslots.components.FontTextView
                 android:id="@+id/settings"
                 android:layout_width="match_parent"

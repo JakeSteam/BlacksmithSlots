@@ -116,6 +116,7 @@
     <string name="language_2">French</string>
     <string name="language_3">Russian</string>
 
+    <string name="tier_0"></string>
     <string name="tier_1">Bronze</string>
     <string name="tier_2">Iron</string>
     <string name="tier_999"></string>

@@ -272,6 +272,8 @@ public class MapActivity extends BaseActivity implements
             AlertHelper.success(this, String.format(Locale.ENGLISH, getString(R.string.alert_statistic_achieved),
                     task.toString(this),
                     Slot.getName(this, selectedSlot)), true);
+            task.setCompleted(System.currentTimeMillis());
+            task.save();
         } else {
             AlertHelper.error(this, R.string.alert_unfinished_task, false);
         }

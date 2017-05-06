@@ -54,7 +54,7 @@ public class SlotActivity extends BaseActivity {
                     slotHelper.afterSpinUpdate();
                     alert.dismiss();
                 }
-            }, 500);
+            }, 50);
         }
         ((TextView)findViewById(R.id.vipLevel)).setText(String.format(Locale.ENGLISH, getString(R.string.vip_level_display), LevelHelper.getVipLevel()));
     }

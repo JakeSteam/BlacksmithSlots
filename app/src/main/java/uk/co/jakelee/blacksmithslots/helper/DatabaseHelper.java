@@ -229,8 +229,8 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
             itemBundles.add(new ItemBundle(Enums.Slot.Map1LuckyCoin, Enums.Tier.None, Enums.Type.LuckyCoin, 1));
 
             itemBundles.add(new ItemBundle(Enums.Slot.Map1LuckyCoin, Enums.Tier.Bronze, Enums.Type.Ore, 1, 1));
-            //itemBundles.add(new ItemBundle(Enums.Slot.Map1LuckyCoin, Enums.Tier.Bronze, Enums.Type.Secondary, 1, 1));
-            itemBundles.add(new ItemBundle(Enums.Slot.Map1LuckyCoin, Enums.Tier.Internal, Enums.Type.MinigameFlip, 1, 1));
+            itemBundles.add(new ItemBundle(Enums.Slot.Map1LuckyCoin, Enums.Tier.Bronze, Enums.Type.Secondary, 1, 1));
+            //itemBundles.add(new ItemBundle(Enums.Slot.Map1LuckyCoin, Enums.Tier.Internal, Enums.Type.MinigameFlip, 1, 1));
             itemBundles.add(new ItemBundle(Enums.Slot.Map1LuckyCoin, Enums.Tier.Internal, Enums.Type.Wildcard, 1, 1));
 
             slots.add(new Slot(Enums.Slot.Map2Furnace, 1, 1, 5, 4, Enums.Slot.Map1LuckyCoin, Enums.Person.Map2Blacksmith, Enums.Map.Neighbourhood));
