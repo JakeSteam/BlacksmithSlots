@@ -79,7 +79,10 @@ public class Enums {
     }
 
     public enum Map {
-        Home(1), Neighbourhood(2), Forest(3);
+        Home(1), Neighbourhood(2), Forest(3), Marketplace(4), Castle(5),
+        Mines(6), DeepMines(7), RuinedVillage(8), HauntedPort(9), Expanse(10),
+        Isolates(11), Camp(12), UselessRiches(13), Mercenaria(14), Library(15),
+        HauntedCorridors(16), UndeadJewellers(17), NoTurningBack(18), Battle(19);
         public int value;
         Map(int value) {
             this.value = value;
@@ -95,7 +98,7 @@ public class Enums {
     }
 
     public enum Person {
-        Map1Mum(1), Map2Blacksmith(2);
+        Mom(1), AmateurBlacksmith(2), Woman(3), Man(4), Mouse(5), Snail(6), Frog(7), Caveman(8), Mouse2(9);
         public int value;
         Person(int value) {
             this.value = value;
@@ -145,9 +148,9 @@ public class Enums {
     }
 
     public enum Slot {
-        Map1LuckyCoin(1),
+        Map1Mom(1),
         Map2Furnace(2), Map2Accessories(3), Map2Tools(4), Map2Weapons(5), Map2Armour(6),
-        Map3Secondary(7);
+        Map3Mouse(7), Map3Snail(8), Map3Human(9), Map3Frog(10), Map3Mouse2(11);
         public int value;
         Slot(int value) {
             this.value = value;
@@ -197,7 +200,9 @@ public class Enums {
     }
 
     public enum Tier {
-        Internal(999), None(0), Bronze(1), Iron(2), Steel(3), Mithril(4);
+        Internal(999), None(0),
+        Bronze(1), Iron(2), Steel(3), Mithril(4),
+        PartialFood(10);
         public int value;
         Tier(int value) {
             this.value = value;
@@ -213,8 +218,9 @@ public class Enums {
     }
 
     public enum Type {
-        None(0), Ore(1), Bar(2), Dagger(3), Sword(4), Longsword(5), Bow(6), HalfShield(7), FullShield(8), Chainmail(9), Platebody(10), HalfHelmet(11), FullHelmet(12), Boots(13), Gloves(14), Pickaxe(15), Hatchet(16), FishingRod(17), Hammer(18), Secondary(19),
-        LuckyCoin(20),
+        None(0), Ore(1), Bar(2), Secondary(19), LuckyCoin(20),
+        Dagger(3), Sword(4), Longsword(5), Bow(6), HalfShield(7), FullShield(8), Chainmail(9), Platebody(10), HalfHelmet(11), FullHelmet(12), Boots(13), Gloves(14), Pickaxe(15), Hatchet(16), FishingRod(17), Hammer(18),
+        Apple(21), Lime(22), Orange(23), Peach(24), Pineapple(25), Banana(26), Cherry(27), Watermelon(28), Grapes(29), Steak(30), Potato(31), Egg(32),
         Wildcard (999), MinigameFlip(998);
         public int value;
         Type(int value) {

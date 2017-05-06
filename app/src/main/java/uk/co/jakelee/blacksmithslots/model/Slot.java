@@ -19,9 +19,6 @@ public class Slot extends SugarRecord {
     @Column(name = "a")
     private int slotId;
 
-    @Column(name = "b")
-    private int minimumLevel;
-
     @Column(name = "c")
     private int minimumStake;
 
@@ -55,9 +52,8 @@ public class Slot extends SugarRecord {
     public Slot() {
     }
 
-    public Slot(Enums.Slot slot, int minimumLevel, int minimumStake, int maximumStake, int slots, Enums.Slot requiredSlot, Enums.Person person, Enums.Map map) {
+    public Slot(Enums.Slot slot, int minimumStake, int maximumStake, int slots, Enums.Slot requiredSlot, Enums.Person person, Enums.Map map) {
         this.slotId = slot.value;
-        this.minimumLevel = minimumLevel;
         this.minimumStake = minimumStake;
         this.currentStake = minimumStake;
         this.maximumStake = maximumStake;
@@ -92,14 +88,6 @@ public class Slot extends SugarRecord {
 
     public void setSlotId(int slotId) {
         this.slotId = slotId;
-    }
-
-    public int getMinimumLevel() {
-        return minimumLevel;
-    }
-
-    public void setMinimumLevel(int minimumLevel) {
-        this.minimumLevel = minimumLevel;
     }
 
     public int getMinimumStake() {
