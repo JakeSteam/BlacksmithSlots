@@ -67,7 +67,7 @@ public class DisplayHelper {
     }
 
     public static String getMapBackgroundImageFile(int map) {
-        return "background_map_" + map;
+        return "background_" + map;
     }
 
     public static ImageView createImageView(Activity context, String idName, int width, int height) {

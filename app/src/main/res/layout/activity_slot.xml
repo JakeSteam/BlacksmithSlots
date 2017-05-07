@@ -34,8 +34,8 @@
                 android:layout_height="wrap_content"
                 style="@style/SlotText"
                 android:background="@drawable/box_metal"
-                android:paddingTop="5dp"
-                android:paddingBottom="5dp"
+                android:paddingTop="0dp"
+                android:paddingBottom="0dp"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
                 android:onClick="openVip"/>
@@ -44,6 +44,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 style="@style/SlotText"
+                android:background="@drawable/box_metal"
+                android:paddingTop="0dp"
+                android:paddingBottom="0dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
                 android:onClick="levelInfo"
                 android:layout_margin="3dp"/>
             <ProgressBar
