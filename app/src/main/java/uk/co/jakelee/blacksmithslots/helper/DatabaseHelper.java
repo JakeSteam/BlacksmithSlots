@@ -106,6 +106,7 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
     private void createInventories() {
         List<Inventory> inventories = new ArrayList<>();
             inventories.add(new Inventory(Enums.Tier.None, Enums.Type.LuckyCoin, 100));
+            inventories.add(new Inventory(Enums.Tier.Bronze, Enums.Type.Hatchet, 1));
         Inventory.saveInTx(inventories);
     }
 
@@ -132,6 +133,19 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
             items.add(new Item(Enums.Tier.Bronze, Enums.Type.FishingRod));
             items.add(new Item(Enums.Tier.Bronze, Enums.Type.Hammer));
             items.add(new Item(Enums.Tier.Bronze, Enums.Type.Secondary));
+
+            items.add(new Item(Enums.Tier.PartialFood, Enums.Type.Apple));
+            items.add(new Item(Enums.Tier.PartialFood, Enums.Type.Lime));
+            items.add(new Item(Enums.Tier.PartialFood, Enums.Type.Orange));
+            items.add(new Item(Enums.Tier.PartialFood, Enums.Type.Peach));
+            items.add(new Item(Enums.Tier.PartialFood, Enums.Type.Pineapple));
+            items.add(new Item(Enums.Tier.PartialFood, Enums.Type.Banana));
+            items.add(new Item(Enums.Tier.PartialFood, Enums.Type.Cherry));
+            items.add(new Item(Enums.Tier.PartialFood, Enums.Type.Watermelon));
+            items.add(new Item(Enums.Tier.PartialFood, Enums.Type.Grapes));
+            items.add(new Item(Enums.Tier.PartialFood, Enums.Type.Steak));
+            items.add(new Item(Enums.Tier.PartialFood, Enums.Type.Potato));
+            items.add(new Item(Enums.Tier.PartialFood, Enums.Type.Egg));
 
             items.add(new Item(Enums.Tier.Internal, Enums.Type.MinigameFlip));
             items.add(new Item(Enums.Tier.Internal, Enums.Type.Wildcard));
@@ -226,9 +240,9 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
         List<ItemBundle> itemBundles = new ArrayList<>();
         List<Task> tasks = new ArrayList<>();
             // Map 1
-            slots.add(new Slot(Enums.Slot.Map1Mom, 1, 1, 2, Enums.Slot.Map1Mom, Enums.Person.Mom, Enums.Map.Home));
+            slots.add(new Slot(Enums.Slot.Map1Mom, 1, 1, 2, null, Enums.Person.Mom, Enums.Map.Home));
             itemBundles.add(new ItemBundle(Enums.Slot.Map1Mom, Enums.Tier.None, Enums.Type.LuckyCoin, 1));
-            tasks.add(new Task(Enums.Slot.Map1Mom, 1, Enums.Tier.Bronze, Enums.Type.Pickaxe, 1));
+            tasks.add(new Task(Enums.Slot.Map1Mom, 1, Enums.Tier.Bronze, Enums.Type.Hatchet, 1));
             itemBundles.add(new ItemBundle(Enums.Slot.Map1Mom, Enums.Tier.Bronze, Enums.Type.Ore, 5, 10));
             itemBundles.add(new ItemBundle(Enums.Slot.Map1Mom, Enums.Tier.Bronze, Enums.Type.Secondary, 5, 10));
             itemBundles.add(new ItemBundle(Enums.Slot.Map1Mom, Enums.Tier.Internal, Enums.Type.Wildcard, 1, 1));

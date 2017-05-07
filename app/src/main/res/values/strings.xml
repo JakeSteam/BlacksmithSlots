@@ -119,6 +119,7 @@
     <string name="tier_0"></string>
     <string name="tier_1">Bronze</string>
     <string name="tier_2">Iron</string>
+    <string name="tier_10">Partial</string>
     <string name="tier_999"></string>
 
     <string name="type_1">Ore</string>
@@ -141,6 +142,18 @@
     <string name="type_18">Hammer</string>
     <string name="type_19">Secondary</string>
     <string name="type_20">Lucky Coin</string>
+    <string name="type_21">Apple</string>
+    <string name="type_22">Lime</string>
+    <string name="type_23">Orange</string>
+    <string name="type_24">Peach</string>
+    <string name="type_25">Pineapple</string>
+    <string name="type_26">Banana</string>
+    <string name="type_27">Cherry</string>
+    <string name="type_28">Watermelon</string>
+    <string name="type_29">Grapes</string>
+    <string name="type_30">Steak</string>
+    <string name="type_31">Potato</string>
+    <string name="type_32">Egg</string>
 
     <string name="type_998">Flip Minigame</string>
     <string name="type_999">Wildcard</string>
@@ -160,24 +173,25 @@
     <string name="setting_13">Blacksmith Pass Notification</string>
 
     <string name="map_1">Home Sweet Home</string>
-    <string name="slot_1_name">The Savings</string>
-    <string name="slot_1_locked">N/A</string>
-    <string name="slot_1_unlocked">Convert your savings into resources to get started on adventures here!</string>
+    <string name="slot_1_name">Mom</string>
+    <string name="slot_1_locked">I\'ve been trapped by the disaster, please help me out!</string>
+    <string name="slot_1_unlocked">Phew, thank you for rescuing me. Once you\'ve exchanged your lucky coins for some resources, go to the nearby village and find out what caused that!</string>
+    <string name="task_1_1_text">Please pass me the hatchet so I can get out!</string>
 
     <string name="map_2">The Neighbourhood</string>
-    <string name="slot_2_name">Local Furnace</string>
-    <string name="slot_2_locked">Until I get some ore to work with, my shop is going to stay closed.</string>
+    <string name="slot_2_name">The Fiery Furnace</string>
+    <string name="slot_2_locked">I\'m currently closed, my ore has disappeared!</string>
     <string name="slot_2_unlocked">If you\'ve got the ore, I\'ve got the fire!</string>
-    <string name="task_2_1_text">My ore has all disappeared, do you have some spare to help me get started?</string>
+    <string name="task_2_1_text">Do you have some bronze ore to help me get started? I\'ll let you use my furnace in return.</string>
 
     <string name="slot_3_name">Accessible Accessories</string>
-    <string name="slot_3_locked">My little store is staying shut for now, sorry!</string>
+    <string name="slot_3_locked">My little store is staying shut for now, the Purple is out there!</string>
     <string name="slot_3_unlocked">Don\'t apologise, accessorize!</string>
     <string name="task_3_1_text">First, I\'ll need some bars to mould into shapes.</string>
     <string name="task_3_2_text">All I need now is some bronze secondary to finish the items up, and the store can open back up.</string>
 
     <string name="slot_4_name">The Toolshed</string>
-    <string name="slot_4_locked">Only a tool would open without any equipment!</string>
+    <string name="slot_4_locked">That Purple has ruined my day, I\'m not opening.</string>
     <string name="slot_4_unlocked">Tool up!</string>
     <string name="task_4_1_text">My feet are really cold. No, really. Got some shoes?</string>
     <string name="task_4_2_text">Okay, now my hands are freezing. My fingers are basically falling off!</string>
@@ -187,29 +201,57 @@
     <string name="slot_5_name">Weaponisation</string>
     <string name="slot_5_locked">Not just anyone can get access to weapons!</string>
     <string name="slot_5_unlocked">Come on in, get your weapons!</string>
-    <string name="task_5_1_text">Hey, I\'m going fishing this weekend with some friends, help me out?</string>
-    <string name="task_5_2_text">You\'ve played before, right? I don\'t recognize you...</string>
+    <string name="task_5_1_text">I\'m going fishing this weekend with some friends, can you help me out?</string>
+    <string name="task_5_2_text">You\'ve played before, right? I don\'t recognize you, can you prove you know what you doing?</string>
     <string name="task_5_3_text">Alright, give me a minute to get the shop ready. Come back later.</string>
 
     <string name="slot_6_name">The Armoury</string>
-    <string name="slot_6_locked">I\'m a collector, are you?</string>
+    <string name="slot_6_locked">I love collecting items, gotta get them all!</string>
     <string name="slot_6_unlocked">Protect yourself!</string>
-    <string name="task_6_1_text">You know how to collect bonuses, don\'t you?</string>
+    <string name="task_6_1_text">You know how to collect bonuses too, don\'t you?</string>
     <string name="task_6_2_text">What about boots?</string>
     <string name="task_6_3_text">Okay... gloves?</string>
-    <string name="task_6_4_text">Half helmet?</string>
-    <string name="task_6_5_text">Alright, that was easy. Full helmet?</string>
-    <string name="task_6_6_text">Okay you have armour, fine. What about a pickaxe?</string>
-    <string name="task_6_7_text">Or a hatchet?</string>
-    <string name="task_6_8_text">Erm... fishing rod?</string>
-    <string name="task_6_9_text">Hammer!?</string>
-    <string name="task_6_10_text">How do you have so much? Dagger!</string>
-    <string name="task_6_11_text">Sword!</string>
-    <string name="task_6_12_text">LONG sword!</string>
+    <string name="task_6_4_text">Half helmets?</string>
+    <string name="task_6_5_text">Alright, that was easy. Full helmets?</string>
+    <string name="task_6_6_text">Okay you have accessories, fine. What about pickaxes?</string>
+    <string name="task_6_7_text">Or hatchets?</string>
+    <string name="task_6_8_text">Erm... fishing rods?</string>
+    <string name="task_6_9_text">Hammers!?</string>
+    <string name="task_6_10_text">How do you have so many items? Daggers!</string>
+    <string name="task_6_11_text">Swords!</string>
+    <string name="task_6_12_text">LONG swords!</string>
     <string name="task_6_13_text">Okay, fine, I give up. Any chance you don\'t have bows?</string>
 
     <string name="map_3">The Forest</string>
-    <string name="slot_7_name">Forest Slot 1</string>
+    <string name="slot_7_name">Mouse House</string>
+    <string name="slot_7_locked">Squeak squeak >:(</string>
+    <string name="slot_7_unlocked">Squeeeeak! :D</string>
+    <string name="task_7_1_text">SQUEAK!</string>
+
+    <string name="slot_8_name">Snail Shell</string>
+    <string name="slot_8_locked">The Purple made all my food disappear!</string>
+    <string name="slot_8_unlocked">That darn Purple cracked my shell! Help me rebuild it and you can have some fruit.</string>
+    <string name="task_8_1_text">I\'m feeling weak, got something green and round?</string>
+    <string name="task_8_2_text">Yum! What about something even greener?</string>
+    <string name="task_8_3_text">Too green! Counteract it with something orange please!</string>
+
+    <string name="slot_9_name">Human Who Man</string>
+    <string name="slot_9_locked">Oog. Hmph.</string>
+    <string name="slot_9_unlocked">Oog! Oog oog.</string>
+    <string name="task_9_1_text">Oog! Free stuff! Oooog!</string>
+    <string name="task_9_2_text">Ooog! Hungry!</string>
+
+    <string name="slot_10_name">Ribbit</string>
+    <string name="slot_10_locked">I\'m a trader, this darn Purple stole most of my stock.</string>
+    <string name="slot_10_unlocked">You gotta risk it to win it!</string>
+    <string name="task_10_1_text">Okay, first of all I need some apples to get started.</string>
+    <string name="task_10_2_text">Next, I need some tasty peaches.</string>
+    <string name="task_10_3_text">Finally, steak. Hey, I need dinner too...</string>
+
+    <string name="slot_11_name">Squeak Peak</string>
+    <string name="slot_11_locked">Squeak.</string>
+    <string name="slot_11_unlocked">Squeak squeak...</string>
+    <string name="task_11_1_text">Squeak... squeak?</string>
 
     <string name="map_4">Marketplace</string>
     <string name="map_5">The Castle</string>

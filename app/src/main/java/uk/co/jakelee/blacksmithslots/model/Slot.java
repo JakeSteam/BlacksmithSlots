@@ -61,7 +61,7 @@ public class Slot extends SugarRecord {
         this.currentRows = minimumRows;
         this.maximumRows = getMaxRowsBySlots(slots);
         this.slots = slots;
-        this.requiredSlot = requiredSlot.value;
+        this.requiredSlot = requiredSlot == null ? 0 : requiredSlot.value;
         this.person = person.value;
         this.mapId = map.value;
     }

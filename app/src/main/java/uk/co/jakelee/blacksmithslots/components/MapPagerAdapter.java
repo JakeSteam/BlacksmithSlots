@@ -50,14 +50,16 @@ public class MapPagerAdapter extends PagerAdapter {
 
         // The lowest required slot for this map
         Slot firstSlotUnlocked = Select.from(Slot.class).where(Condition.prop("m").eq(position + 1)).orderBy("k ASC").first();
-        boolean isUnlocked = firstSlotUnlocked == null || firstSlotUnlocked.getRequiredSlot() == 1 || !TaskHelper.isSlotLocked(firstSlotUnlocked.getSlotId());
+        boolean isUnlocked = position == 0 || firstSlotUnlocked == null || !TaskHelper.isSlotLocked(firstSlotUnlocked.getRequiredSlot());
         itemView.findViewById(R.id.lockedMapBlocker).setVisibility(isUnlocked ? View.GONE : View.VISIBLE);
         if (!isUnlocked) {
             Slot requiredSlot = Slot.get(firstSlotUnlocked.getRequiredSlot());
-            ((TextView)itemView.findViewById(R.id.lockedMapText)).setText(String.format(Locale.ENGLISH,
-                    itemView.getContext().getString(R.string.alert_map_locked),
-                    TextHelper.getInstance(container.getContext()).getText(DisplayHelper.getMapString(position + 1)),
-                    requiredSlot.getName(container.getContext())));
+            if (requiredSlot != null) {
+                ((TextView) itemView.findViewById(R.id.lockedMapText)).setText(String.format(Locale.ENGLISH,
+                        itemView.getContext().getString(R.string.alert_map_locked),
+                        TextHelper.getInstance(container.getContext()).getText(DisplayHelper.getMapString(position + 1)),
+                        requiredSlot.getName(container.getContext())));
+            }
         }
 
         container.addView(itemView);
