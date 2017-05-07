@@ -60,6 +60,7 @@ public class MapActivity extends BaseActivity implements
     public static SharedPreferences prefs;
     private int selectedSlot = 1;
     private Handler handler = new Handler();
+    private MapPagerAdapter mapPagerAdapter;
 
     @BindView(R.id.townScroller) ViewPager mapPager;
     @BindView(R.id.mapName) TextView mapTextView;
@@ -97,7 +98,8 @@ public class MapActivity extends BaseActivity implements
                 .build();
         tryGoogleLogin();
 
-        mapPager.setAdapter(new MapPagerAdapter(this));
+        mapPagerAdapter = new MapPagerAdapter(this);
+        mapPager.setAdapter(mapPagerAdapter);
 
         ViewPager.OnPageChangeListener pageChangeListener = new ViewPager.SimpleOnPageChangeListener() {
             public void onPageSelected(int position) {
@@ -268,12 +270,14 @@ public class MapActivity extends BaseActivity implements
                 task.setCompleted(System.currentTimeMillis());
             }
             task.save();
+            mapPagerAdapter.notifyDataSetChanged();
         } else if (task.statisticIsAchieved()) {
             AlertHelper.success(this, String.format(Locale.ENGLISH, getString(R.string.alert_statistic_achieved),
                     task.toString(this),
                     Slot.getName(this, selectedSlot)), true);
             task.setCompleted(System.currentTimeMillis());
             task.save();
+            mapPagerAdapter.notifyDataSetChanged();
         } else {
             AlertHelper.error(this, R.string.alert_unfinished_task, false);
         }

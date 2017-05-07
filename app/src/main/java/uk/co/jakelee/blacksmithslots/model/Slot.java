@@ -220,34 +220,4 @@ public class Slot extends SugarRecord {
     public String getUnlockedText(Context context) {
         return TextHelper.getInstance(context).getText("slot_" + slotId + "_unlocked");
     }
-
-    public String getResourceText(Context context) {
-        StringBuilder resourceText = new StringBuilder();
-        List<ItemBundle> itemBundles = getResources();
-        for (ItemBundle itemBundle : itemBundles) {
-            Item item = Item.get(itemBundle.getTier(), itemBundle.getType());
-            if (item != null && item.getTier() != Enums.Tier.Internal) {
-                resourceText.append(item.getName(context));
-                resourceText.append(", ");
-            }
-        }
-
-        String resourceString = resourceText.toString();
-        return resourceString.length() > 0 ? resourceString.substring(0, resourceString.length() - 2) : "";
-    }
-
-    public String getRewardText(Context context) {
-        StringBuilder rewardText = new StringBuilder();
-        List<ItemBundle> itemBundles = getRewards(false);
-        for (ItemBundle itemBundle : itemBundles) {
-            Item item = Item.get(itemBundle.getTier(), itemBundle.getType());
-            if (item != null && item.getTier() != Enums.Tier.Internal) {
-                rewardText.append(item.getName(context));
-                rewardText.append(", ");
-            }
-        }
-
-        String rewardString = rewardText.toString();
-        return rewardString.length() > 0 ? rewardString.substring(0, rewardString.length() - 2) : "";
-    }
 }
