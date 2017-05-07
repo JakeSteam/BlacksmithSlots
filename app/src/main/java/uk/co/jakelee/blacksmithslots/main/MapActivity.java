@@ -61,6 +61,7 @@ public class MapActivity extends BaseActivity implements
     private int selectedSlot = 1;
     private Handler handler = new Handler();
     private MapPagerAdapter mapPagerAdapter;
+    private AdvertHelper advertHelper;
 
     @BindView(R.id.townScroller) ViewPager mapPager;
     @BindView(R.id.mapName) TextView mapTextView;
@@ -123,6 +124,8 @@ public class MapActivity extends BaseActivity implements
         if (IncomeHelper.getNextAdvertWatchTime() - System.currentTimeMillis() > 0) {
             setAdvertUnclaimable();
         }
+
+        advertHelper = AdvertHelper.getInstance(this);
 
         mapTextView.setText(R.string.map_1);
     }

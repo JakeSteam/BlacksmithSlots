@@ -23,6 +23,7 @@
     <string name="alert_autospin_cancelled">Autospin turned off!</string>
     <string name="alert_claimed_pass_day">Claimed day %1$d bonus of %2$s!</string>
     <string name="alert_pass_purchased">Purchased a Blacksmith Pass!</string>
+    <string name="alert_pass_purchased_bonus_vip">Purchased a Blacksmith Pass, and received a free upgrade to VIP level 1!</string>
     <string name="alert_level_progress">%1$.2f%% of the way to level %2$d (%3$d / %4$d xp)!</string>
     <string name="alert_item_source">%1$s is obtained from %2$s.</string>
     <string name="alert_item_use">%1$s is used in %2$s.</string>
@@ -68,7 +69,7 @@
     <string name="statistics">Statistics</string>
     <string name="inventory">Inventory</string>
     <string name="claim_bonus">Claim Bonus</string>
-    <string name="watch_advert">Watch Advert</string>
+    <string name="watch_advert">Free Stuff! (vid)</string>
     <string name="task_completion">Task %1$d/%2$d: %3$s</string>
     <string name="open_slot">Play!</string>
 
@@ -87,7 +88,7 @@
     <string name="pass_claim">Claim</string>
     <string name="pass_days_left">%1$d days left</string>
     <string name="pass_desc_owned">Whilst your Blacksmith Pass is valid, you will receive free items every day!\n\nCheck back anytime between 00:00 and 23:59 to claim!</string>
-    <string name="pass_desc_unowned">Purchasing a Blacksmith Pass entitles you to %1$d days of free daily goodies!</string>
+    <string name="pass_desc_unowned">Purchasing a Blacksmith Pass entitles you to %1$d days of free daily goodies!\n\nYour first purchase will also upgrade you to VIP 1!</string>
     <string name="pass_days">Day %1$d:</string>
 
     <string name="tab_vip">VIP Levels</string>

@@ -353,7 +353,15 @@ public class ShopActivity extends BaseActivity implements BillingProcessor.IBill
             }
             iap.save();
 
-            AlertHelper.success(this, R.string.alert_pass_purchased, true);
+            Statistic vipLevel = Statistic.get(Enums.Statistic.VipLevel);
+            if (vipLevel.getIntValue() == 0) {
+                vipLevel.setIntValue(1);
+                vipLevel.save();
+                AlertHelper.success(this, R.string.alert_pass_purchased_bonus_vip, true);
+            } else {
+                AlertHelper.success(this, R.string.alert_pass_purchased, true);
+            }
+
             createPassTab();
         } else {
             items = IapHelper.getBundleRewards(iap.getIapId());
