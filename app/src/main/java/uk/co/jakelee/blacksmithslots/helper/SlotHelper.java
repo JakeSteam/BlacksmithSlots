@@ -61,7 +61,7 @@ public class SlotHelper {
         this.activity = activity;
         this.slot = slot;
         this.slotResources = slot.getResources();
-        this.slotRewards = slot.getRewards();
+        this.slotRewards = slot.getRewards(true);
         this.picasso = Picasso.with(activity);
         this.inflater = LayoutInflater.from(activity);
         this.handler = handler;

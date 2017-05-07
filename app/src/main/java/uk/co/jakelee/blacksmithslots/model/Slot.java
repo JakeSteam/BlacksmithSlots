@@ -8,6 +8,7 @@ import com.orm.dsl.Table;
 import com.orm.query.Condition;
 import com.orm.query.Select;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import uk.co.jakelee.blacksmithslots.helper.Constants;
@@ -170,10 +171,21 @@ public class Slot extends SugarRecord {
         this.mapId = mapId;
     }
 
-    public List<ItemBundle> getRewards() {
-        return Select.from(ItemBundle.class).where(
+    public List<ItemBundle> getRewards(boolean applyWeights) {
+        List<ItemBundle> weightedItemBundles = new ArrayList<>();
+        List<ItemBundle> rawItemBundles = Select.from(ItemBundle.class).where(
                 Condition.prop("a").eq(slotId),
                 Condition.prop("f").eq(Enums.ItemBundleType.SlotReward.value)).list();
+        if (!applyWeights) {
+            return rawItemBundles;
+        }
+
+        for (ItemBundle bundle : rawItemBundles) {
+            for (int i = 0; i < bundle.getWeighting(); i++) {
+                weightedItemBundles.add(bundle);
+            }
+        }
+        return weightedItemBundles;
     }
 
     public List<ItemBundle> getResources() {
@@ -226,7 +238,7 @@ public class Slot extends SugarRecord {
 
     public String getRewardText(Context context) {
         StringBuilder rewardText = new StringBuilder();
-        List<ItemBundle> itemBundles = getRewards();
+        List<ItemBundle> itemBundles = getRewards(false);
         for (ItemBundle itemBundle : itemBundles) {
             Item item = Item.get(itemBundle.getTier(), itemBundle.getType());
             if (item != null && item.getTier() != Enums.Tier.Internal) {

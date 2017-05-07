@@ -336,7 +336,7 @@ public class MapActivity extends BaseActivity implements
         unlockedDescription.setText(slot.getUnlockedText(this));
 
         populateItemContainer(R.id.resourceContainer, slot.getResources());
-        populateItemContainer(R.id.rewardContainer, slot.getRewards());
+        populateItemContainer(R.id.rewardContainer, slot.getRewards(false));
 
         superLockedSlot.setVisibility(GONE);
         lockedSlot.setVisibility(GONE);
