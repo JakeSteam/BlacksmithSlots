@@ -320,4 +320,8 @@
     <string name="locked">Locked</string>
     <string name="slot_superlocked">Slot \"%1$s\" needs unlocking first!</string>
     <string name="advert_watch_verified">Advert watch verified!</string>
+    <string name="vip_level_increased">Gone up to VIP level %1$d and gained %2$s!</string>
+    <string name="iap_bundle_purchased">Received a bundle containing %s!</string>
+    <string name="error_iap_failed">IAP failed, this can be caused by poor internet or third party software interfering with the process.</string>
+    <string name="error_advert_unverified">Something went wrong, and the ad view couldn\'t be verified. Sorry!</string>
 </resources>

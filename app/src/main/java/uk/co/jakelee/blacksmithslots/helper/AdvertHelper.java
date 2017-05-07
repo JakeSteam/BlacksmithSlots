@@ -13,6 +13,7 @@ import com.applovin.sdk.AppLovinSdk;
 
 import java.util.Map;
 
+import uk.co.jakelee.blacksmithslots.R;
 import uk.co.jakelee.blacksmithslots.main.InterstitialActivity;
 import uk.co.jakelee.blacksmithslots.main.MapActivity;
 
@@ -58,7 +59,7 @@ public class AdvertHelper implements AppLovinAdRewardListener, AppLovinAdDisplay
         if (verified) {
             activity.rewardAdvertItems();
         } else {
-            AlertHelper.error(activity, "Something went wrong, and the ad view couldn't be verified. Sorry!", false);
+            AlertHelper.error(activity, activity.getString(R.string.error_advert_unverified), false);
         }
 
         advert.preload(null);

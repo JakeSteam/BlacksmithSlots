@@ -243,7 +243,7 @@ public class MapActivity extends BaseActivity implements
     @OnClick(R.id.watchAdvert)
     public void rewardAdvertItems(View v) {
         if (IncomeHelper.canWatchAdvert()) {
-            AdvertHelper.getInstance(this).showAdvert(this);
+            advertHelper.showAdvert(this);
         } else {
             AlertHelper.error(this, String.format(Locale.ENGLISH,
                     getString(R.string.error_advert_not_ready),

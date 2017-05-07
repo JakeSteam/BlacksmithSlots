@@ -341,7 +341,9 @@ public class ShopActivity extends BaseActivity implements BillingProcessor.IBill
             }
 
             items = IapHelper.getVipRewardsForLevel(vipLevel.getIntValue());
-            AlertHelper.success(this, "Gone up to VIP level " + vipLevel.getIntValue() + " and gained " + DisplayHelper.bundlesToString(this, items)+ "!", true);
+            AlertHelper.success(this, String.format(Locale.ENGLISH, getString(R.string.vip_level_increased),
+                    vipLevel.getIntValue(), DisplayHelper.
+                            bundlesToString(this, items)), true);
         } else if (iap.getIapId() == Enums.Iap.BlacksmithPass.value) {
             int daysLeft = IapHelper.getPassDaysLeft();
 
@@ -365,7 +367,7 @@ public class ShopActivity extends BaseActivity implements BillingProcessor.IBill
             createPassTab();
         } else {
             items = IapHelper.getBundleRewards(iap.getIapId());
-            AlertHelper.success(this, "Received a bundle containing " + DisplayHelper.bundlesToString(this, items)+ "!", true);
+            AlertHelper.success(this, String.format(Locale.ENGLISH, getString(R.string.iap_bundle_purchased), DisplayHelper.bundlesToString(this, items)), true);
         }
 
         for (ItemBundle item : items) {
@@ -376,7 +378,7 @@ public class ShopActivity extends BaseActivity implements BillingProcessor.IBill
     @Override
     public void onBillingError(int errorCode, Throwable error) {
         if (errorCode != com.anjlab.android.iab.v3.Constants.BILLING_RESPONSE_RESULT_USER_CANCELED) {
-            AlertHelper.error(this, "Error with IAB", false);
+            AlertHelper.error(this, getString(R.string.error_iap_failed), false);
         }
     }
 
@@ -395,7 +397,7 @@ public class ShopActivity extends BaseActivity implements BillingProcessor.IBill
         if (canBuyIAPs) {
             bp.purchase(this, iapId);
         } else {
-            AlertHelper.error(this, "IAB Failed, maybe internet?", false);
+            AlertHelper.error(this, getString(R.string.error_iap_failed), false);
         }
     }
 
