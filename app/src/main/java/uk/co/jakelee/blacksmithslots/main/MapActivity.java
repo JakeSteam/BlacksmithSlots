@@ -240,6 +240,15 @@ public class MapActivity extends BaseActivity implements
         }
     }
 
+    @OnClick(R.id.openSlotDialog)
+    public void openSlotDialog() {
+        if (selectedSlot > 0 && !TaskHelper.isSlotLocked(selectedSlot)) {
+            startActivity(new Intent(this, SlotDialogActivity.class)
+                    .putExtra(Constants.INTENT_SLOT, selectedSlot)
+                    .addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT));
+        }
+    }
+
     @OnClick(R.id.watchAdvert)
     public void rewardAdvertItems(View v) {
         if (IncomeHelper.canWatchAdvert()) {

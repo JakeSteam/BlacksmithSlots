@@ -78,6 +78,9 @@
         <activity android:name=".main.InterstitialActivity"
             android:screenOrientation="sensorLandscape"
             android:theme="@style/Theme.Dimmed" />
+        <activity android:name=".main.SlotDialogActivity"
+            android:screenOrientation="sensorLandscape"
+            android:theme="@style/Theme.Dimmed" />
     </application>
 
 </manifest>

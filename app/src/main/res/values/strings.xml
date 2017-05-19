@@ -270,6 +270,7 @@
     <string name="map_17">Undead Jewellers</string>
     <string name="map_18">No Turning Back</string>
     <string name="map_19">The Battle</string>
+    <string name="map_20">The End</string>
 
     <string name="statistic_1_name">XP</string>
     <string name="statistic_2_name">Level</string>
@@ -324,4 +325,7 @@
     <string name="iap_bundle_purchased">Received a bundle containing %s!</string>
     <string name="error_iap_failed">IAP failed, this can be caused by poor internet or third party software interfering with the process.</string>
     <string name="error_advert_unverified">Something went wrong, and the ad view couldn\'t be verified. Sorry!</string>
+    <string name="message_log">Message Log</string>
+    <string name="task_description">Task %1$d (%2$s)</string>
+    <string name="unlocked">Unlocked</string>
 </resources>
