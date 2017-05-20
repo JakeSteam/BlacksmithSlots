@@ -53,6 +53,20 @@ public class Slot extends SugarRecord {
     public Slot() {
     }
 
+    public Slot(Enums.Slot slot, int minimumStake, int maximumStake, int slots, Enums.Person person, Enums.Map map) {
+        this.slotId = slot.value;
+        this.minimumStake = minimumStake;
+        this.currentStake = minimumStake;
+        this.maximumStake = maximumStake;
+        this.minimumRows = 1;
+        this.currentRows = minimumRows;
+        this.maximumRows = getMaxRowsBySlots(slots);
+        this.slots = slots;
+        this.requiredSlot = slot.value - 1;
+        this.person = person.value;
+        this.mapId = map.value;
+    }
+
     public Slot(Enums.Slot slot, int minimumStake, int maximumStake, int slots, Enums.Slot requiredSlot, Enums.Person person, Enums.Map map) {
         this.slotId = slot.value;
         this.minimumStake = minimumStake;
@@ -62,7 +76,7 @@ public class Slot extends SugarRecord {
         this.currentRows = minimumRows;
         this.maximumRows = getMaxRowsBySlots(slots);
         this.slots = slots;
-        this.requiredSlot = requiredSlot == null ? 0 : requiredSlot.value;
+        this.requiredSlot = requiredSlot == null ? slot.value - 1 : requiredSlot.value;
         this.person = person.value;
         this.mapId = map.value;
     }
