@@ -248,7 +248,7 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
             itemBundles.add(new ItemBundle(Enums.Slot.Map1Mom, Enums.Tier.Internal, Enums.Type.Wildcard, 1, 1));
 
             // Map 2
-            slots.add(new Slot(Enums.Slot.Map2Furnace, 1, 5, 4, Enums.Slot.Map1Mom, Enums.Person.AmateurBlacksmith, Enums.Map.Neighbourhood));
+            slots.add(new Slot(Enums.Slot.Map2Furnace, 1, 5, 4, Enums.Slot.Map1Mom, Enums.Person.LowLevelBlacksmith, Enums.Map.Neighbourhood));
             itemBundles.add(new ItemBundle(Enums.Slot.Map2Furnace, Enums.Tier.Bronze, Enums.Type.Ore, 1));
             tasks.add(new Task(Enums.Slot.Map2Furnace, 1, Enums.Tier.Bronze, Enums.Type.Ore, 15));
             itemBundles.add(new ItemBundle(Enums.Slot.Map2Furnace, Enums.Tier.Bronze, Enums.Type.Bar, 1, 20));
@@ -280,7 +280,7 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
             itemBundles.add(new ItemBundle(Enums.Slot.Map2Tools, Enums.Tier.Bronze, Enums.Type.Hammer, 1, 5));
             itemBundles.add(new ItemBundle(Enums.Slot.Map2Tools, Enums.Tier.Internal, Enums.Type.Wildcard, 1, 1));
 
-            slots.add(new Slot(Enums.Slot.Map2Weapons, 1, 4, 3, Enums.Slot.Map2Furnace, Enums.Person.AmateurBlacksmith, Enums.Map.Neighbourhood));
+            slots.add(new Slot(Enums.Slot.Map2Weapons, 1, 4, 3, Enums.Slot.Map2Furnace, Enums.Person.LowLevelBlacksmith, Enums.Map.Neighbourhood));
             itemBundles.add(new ItemBundle(Enums.Slot.Map2Weapons, Enums.Tier.Bronze, Enums.Type.Bar, 2));
             itemBundles.add(new ItemBundle(Enums.Slot.Map2Weapons, Enums.Tier.Bronze, Enums.Type.Secondary, 2));
             tasks.add(new Task(Enums.Slot.Map2Weapons, 1, Enums.Tier.Bronze, Enums.Type.FishingRod, 7));
@@ -292,7 +292,7 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
             itemBundles.add(new ItemBundle(Enums.Slot.Map2Weapons, Enums.Tier.Bronze, Enums.Type.Bow, 2, 5));
             itemBundles.add(new ItemBundle(Enums.Slot.Map2Weapons, Enums.Tier.Internal, Enums.Type.Wildcard, 1, 1));
 
-            slots.add(new Slot(Enums.Slot.Map2Armour, 1, 5, 3, Enums.Slot.Map2Furnace, Enums.Person.AmateurBlacksmith, Enums.Map.Neighbourhood));
+            slots.add(new Slot(Enums.Slot.Map2Armour, 1, 5, 3, Enums.Slot.Map2Furnace, Enums.Person.LowLevelBlacksmith, Enums.Map.Neighbourhood));
             itemBundles.add(new ItemBundle(Enums.Slot.Map2Armour, Enums.Tier.Bronze, Enums.Type.Bar, 1));
             itemBundles.add(new ItemBundle(Enums.Slot.Map2Armour, Enums.Tier.Bronze, Enums.Type.Secondary, 1));
             tasks.add(new Task(Enums.Slot.Map2Armour, 1, Enums.Statistic.CollectedBonuses, 1));
