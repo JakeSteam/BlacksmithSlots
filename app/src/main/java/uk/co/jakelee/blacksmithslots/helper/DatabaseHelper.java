@@ -1388,7 +1388,7 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
             itemBundles.add(new ItemBundle(Enums.Slot.Map20TradesEntrance, Enums.Tier.None, Enums.Type.GemPurple, 1));
             tasks.add(new Task(Enums.Slot.Map20TradesEntrance, 1, Enums.Statistic.SaveImported, 1));
             itemBundles.add(new ItemBundle(Enums.Slot.Map20TradesEntrance, Enums.Tier.Adamant, Enums.Type.Ore, 100, 10));
-            itemBundles.add(new ItemBundle(Enums.Slot.Map20TradesEntrance, Enums.Tier.Adamant, Enums.Type.Secondary, 100, 7));
+            itemBundles.add(new ItemBundle(Enums.Slot.Map20TradesEntrance, Enums.Tier.Adamant, Enums.Type.Bar, 100, 7));
             itemBundles.add(new ItemBundle(Enums.Slot.Map20TradesEntrance, Enums.Tier.None, Enums.Type.GemRed, 100, 5));
             itemBundles.add(new ItemBundle(Enums.Slot.Map20TradesEntrance, Enums.Tier.Internal, Enums.Type.Wildcard, 1, 6));
         

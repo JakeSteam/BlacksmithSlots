@@ -120,6 +120,11 @@
     <string name="tier_0"></string>
     <string name="tier_1">Bronze</string>
     <string name="tier_2">Iron</string>
+    <string name="tier_3">Steel</string>
+    <string name="tier_4">Mithril</string>
+    <string name="tier_5">Adamant</string>
+    <string name="tier_6">Silver</string>
+    <string name="tier_7">Gold</string>
     <string name="tier_10">Partial</string>
     <string name="tier_999"></string>
 
@@ -155,6 +160,27 @@
     <string name="type_30">Steak</string>
     <string name="type_31">Potato</string>
     <string name="type_32">Egg</string>
+    <string name="type_33">Fish</string>
+    <string name="type_34">Forbidden Food</string>
+    <string name="type_35">Yellow Gem</string>
+    <string name="type_36">Orange Gem</string>
+    <string name="type_37">Green Gem</string>
+    <string name="type_38">Blue Gem</string>
+    <string name="type_39">Red Gem</string>
+    <string name="type_40">Purple Gem</string>
+    <string name="type_41">Red Sand</string>
+    <string name="type_42">Blue Sand</string>
+    <string name="type_43">Yellow Gem</string>
+    <string name="type_44">Green Gem</string>
+    <string name="type_45">Red Book</string>
+    <string name="type_46">Yellow Book</string>
+    <string name="type_47">Green Book</string>
+    <string name="type_48">Blue Book</string>
+    <string name="type_49">Pink Book</string>
+    <string name="type_50">Brown Book</string>
+    <string name="type_51">Black Book</string>
+    <string name="type_52">Grey Book</string>
+    <string name="type_53">Collection</string>
 
     <string name="type_998">Flip Minigame</string>
     <string name="type_999">Wildcard</string>
