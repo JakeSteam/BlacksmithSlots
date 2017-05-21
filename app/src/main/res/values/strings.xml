@@ -278,7 +278,7 @@
     <string name="slot_16_name">Castle Guard</string>
     <string name="slot_16_locked">You can\'t come in here! With the Purple loose, it\'s too dangerous. Although it is lunchtime...</string>
     <string name="slot_16_unlocked">Quick, before my lunch break ends!</string>
-    <string name="task_16_1_text">First, I need some meat. I\'ll cook it myself, don't worry.</string>
+    <string name="task_16_1_text">First, I need some meat. I\'ll cook it myself, don\'t worry.</string>
     <string name="task_16_2_text">I need some potatoes with it too, apple of the earth don\'tcha know.</string>
     <string name="task_16_3_text">There\'s a tiny bit of room in my tummy left... got some eggs?</string>
 
@@ -342,7 +342,7 @@
 
     <string name="slot_27_name">The Gateman</string>
     <string name="slot_27_locked">It\'s dangerous down in the mines!</string>
-    <string name="slot_27_unlocked">Well, okay, you can come through, but don\'t you dare distract anyone in there, they're busy!</string>
+    <string name="slot_27_unlocked">Well, okay, you can come through, but don\'t you dare distract anyone in there, they\'re busy!</string>
     <string name="task_27_1_text">Those weak of heart won\'t stand a chance against the Purple.</string>
     <string name="task_27_2_text">The mines are far too weak to support new people... can you help strengthen it?</string>
     <string name="task_27_3_text">This is a bit embarrassing, but some of the miners are getting scurvy... can you give them some fruit?</string>
@@ -404,7 +404,7 @@
     <string name="slot_32_locked">I\'ve got plenty of bronze, but everyone here just seems obsessed with iron.</string>
     <string name="slot_32_unlocked">Would you like some of my bronze?</string>
     <string name="task_32_1_text">Bronze armour is just great. A majestic brown, such a lovely colour.</string>
-    <string name="task_32_2_text">Bronze hatchets too! It\'s what I used to cut down wood for my fire. It\'s not the fastest, but it's the most satisfying.</string>
+    <string name="task_32_2_text">Bronze hatchets too! It\'s what I used to cut down wood for my fire. It\'s not the fastest, but it\'s the most satisfying.</string>
     <string name="task_32_3_text">Speaking of fire, you know what I like to wear when my fingers are cold?</string>
 
     <string name="slot_33_name">Exotic Miner</string>
@@ -516,7 +516,7 @@
     <string name="slot_52_name">Rupert</string>
     <string name="slot_52_locked">Before the Purple, I stole from others. Now, I work with them.</string>
     <string name="slot_52_unlocked">I have nothing now... With some bronze, I could rebuild.</string>
-    <string name="task_52_1_text">Whilst morality is it\'s own reward, an additional one wouldn't hurt...</string>
+    <string name="task_52_1_text">Whilst morality is it\'s own reward, an additional one wouldn\'t hurt...</string>
 
     <string name="slot_53_name">Ellen</string>
     <string name="slot_53_locked">Before the Purple, I sold fish. I still have my rod, but... that\'s about it. Not even a house!</string>
@@ -573,7 +573,7 @@
     <string name="slot_63_name">Frankie \'Two Spins\'</string>
     <string name="slot_63_locked">You can\'t come past.</string>
     <string name="slot_63_unlocked">Well, don\'t tell anyone I went easy on you.</string>
-    <string name="task_63_1_text">Wanna know why they call me Two Spins? I\t's because I love to spin.</string>
+    <string name="task_63_1_text">Wanna know why they call me Two Spins? It\'s because I love to spin.</string>
 
     <string name="slot_64_name">Bobbie \'Wildcard\'</string>
     <string name="slot_64_locked">Oi! This is my chest.</string>
@@ -707,7 +707,7 @@
     <string name="task_83_1_text">Nobody has red sand, so you can\'t get by!</string>
     <string name="task_83_2_text">Okay, nobody has blue!</string>
     <string name="task_83_3_text">Or yellow!</string>
-    <string name="task_83_4_text">Fine, green! We\'re the only people with some, it's from far away!</string>
+    <string name="task_83_4_text">Fine, green! We\'re the only people with some, it\'s from far away!</string>
 
     <string name="slot_84_name">Golden Adventurer</string>
     <string name="slot_84_locked">I used to be an adventurer like you.</string>

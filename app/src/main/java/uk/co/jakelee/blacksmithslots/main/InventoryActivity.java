@@ -76,7 +76,7 @@ public class InventoryActivity extends BaseActivity {
         List<ItemBundle> itemBundles = Select.from(ItemBundle.class).where(
                 Condition.prop("b").eq(tier),
                 Condition.prop("c").eq(type),
-                Condition.prop("f").eq(gettingSources ? Enums.ItemBundleType.SlotReward : Enums.ItemBundleType.SlotResource.value)
+                Condition.prop("f").eq(gettingSources ? Enums.ItemBundleType.SlotReward.value : Enums.ItemBundleType.SlotResource.value)
         ).list();
 
         Set<String> slotNames = new HashSet<>();

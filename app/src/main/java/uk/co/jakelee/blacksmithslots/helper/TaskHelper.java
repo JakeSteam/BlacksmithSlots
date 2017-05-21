@@ -9,9 +9,6 @@ import uk.co.jakelee.blacksmithslots.model.Task;
 
 public class TaskHelper {
     public static boolean isSlotLocked(int slot) {
-        if (slot == 1) {
-            return false;
-        }
         List<Task> tasks = Select.from(Task.class).where(
                 Condition.prop("i").eq(0),
                 Condition.prop("a").eq(slot)).list();

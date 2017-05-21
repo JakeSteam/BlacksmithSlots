@@ -458,16 +458,16 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
             itemBundles.add(new ItemBundle(Enums.Slot.Map6Exit, Enums.Tier.Internal, Enums.Type.Wildcard, 1, 6));
 
             slots.add(new Slot(Enums.Slot.Map6Gems, 1, 5, 3, Enums.Person.MineWorker, Enums.Map.Mines));
-            itemBundles.add(new ItemBundle(Enums.Slot.Map6Elitist, Enums.Tier.Iron, Enums.Type.Ore, 3));
-            itemBundles.add(new ItemBundle(Enums.Slot.Map6Elitist, Enums.Tier.Iron, Enums.Type.Secondary, 3));
-            tasks.add(new Task(Enums.Slot.Map6Elitist, 1, Enums.Tier.Iron, Enums.Type.Ore, 300));
-            itemBundles.add(new ItemBundle(Enums.Slot.Map6Elitist, Enums.Tier.Iron, Enums.Type.Ore, 1, 10));
-            itemBundles.add(new ItemBundle(Enums.Slot.Map6Elitist, Enums.Tier.Iron, Enums.Type.Ore, 10, 1));
-            itemBundles.add(new ItemBundle(Enums.Slot.Map6Elitist, Enums.Tier.Iron, Enums.Type.Secondary, 1, 10));
-            itemBundles.add(new ItemBundle(Enums.Slot.Map6Elitist, Enums.Tier.Iron, Enums.Type.Secondary, 10, 1));
-            itemBundles.add(new ItemBundle(Enums.Slot.Map6Elitist, Enums.Tier.None, Enums.Type.GemOrange, 1, 15));
-            itemBundles.add(new ItemBundle(Enums.Slot.Map6Elitist, Enums.Tier.None, Enums.Type.GemGreen, 1, 7));
-            itemBundles.add(new ItemBundle(Enums.Slot.Map6Elitist, Enums.Tier.Internal, Enums.Type.Wildcard, 1, 4));
+            itemBundles.add(new ItemBundle(Enums.Slot.Map6Gems, Enums.Tier.Iron, Enums.Type.Ore, 3));
+            itemBundles.add(new ItemBundle(Enums.Slot.Map6Gems, Enums.Tier.Iron, Enums.Type.Secondary, 3));
+            tasks.add(new Task(Enums.Slot.Map6Gems, 1, Enums.Tier.Iron, Enums.Type.Ore, 300));
+            itemBundles.add(new ItemBundle(Enums.Slot.Map6Gems, Enums.Tier.Iron, Enums.Type.Ore, 1, 10));
+            itemBundles.add(new ItemBundle(Enums.Slot.Map6Gems, Enums.Tier.Iron, Enums.Type.Ore, 10, 1));
+            itemBundles.add(new ItemBundle(Enums.Slot.Map6Gems, Enums.Tier.Iron, Enums.Type.Secondary, 1, 10));
+            itemBundles.add(new ItemBundle(Enums.Slot.Map6Gems, Enums.Tier.Iron, Enums.Type.Secondary, 10, 1));
+            itemBundles.add(new ItemBundle(Enums.Slot.Map6Gems, Enums.Tier.None, Enums.Type.GemOrange, 1, 15));
+            itemBundles.add(new ItemBundle(Enums.Slot.Map6Gems, Enums.Tier.None, Enums.Type.GemGreen, 1, 7));
+            itemBundles.add(new ItemBundle(Enums.Slot.Map6Gems, Enums.Tier.Internal, Enums.Type.Wildcard, 1, 4));
 
             slots.add(new Slot(Enums.Slot.Map6Elitist, 1, 5, 3, Enums.Person.MineWorker, Enums.Map.Mines));
             itemBundles.add(new ItemBundle(Enums.Slot.Map6Elitist, Enums.Tier.Bronze, Enums.Type.Ore, 10));
@@ -977,20 +977,20 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
             itemBundles.add(new ItemBundle(Enums.Slot.Map15Blue, Enums.Tier.Mithril, Enums.Type.Secondary, 1, 5));
             itemBundles.add(new ItemBundle(Enums.Slot.Map15Blue, Enums.Tier.Internal, Enums.Type.Wildcard, 1, 4));
     
-            slots.add(new Slot(Enums.Slot.Map15Blue, 1, 5, 3, Enums.Person.BlueBook, Enums.Map.Library));
-            itemBundles.add(new ItemBundle(Enums.Slot.Map15Blue, Enums.Tier.None, Enums.Type.BookRed, 1));
-            itemBundles.add(new ItemBundle(Enums.Slot.Map15Blue, Enums.Tier.None, Enums.Type.BookBlack, 1));
-            itemBundles.add(new ItemBundle(Enums.Slot.Map15Blue, Enums.Tier.None, Enums.Type.BookYellow, 1));
-            itemBundles.add(new ItemBundle(Enums.Slot.Map15Blue, Enums.Tier.None, Enums.Type.BookGrey, 1));
-            itemBundles.add(new ItemBundle(Enums.Slot.Map15Blue, Enums.Tier.None, Enums.Type.BookBlue, 1));
-            itemBundles.add(new ItemBundle(Enums.Slot.Map15Blue, Enums.Tier.None, Enums.Type.BookPink, 1));
-            tasks.add(new Task(Enums.Slot.Map15Blue, 1, Enums.Tier.None, Enums.Type.BookRed, 66));
-            tasks.add(new Task(Enums.Slot.Map15Blue, 2, Enums.Tier.None, Enums.Type.BookBlack, 66));
-            tasks.add(new Task(Enums.Slot.Map15Blue, 3, Enums.Tier.None, Enums.Type.BookYellow, 66));
-            tasks.add(new Task(Enums.Slot.Map15Blue, 4, Enums.Tier.None, Enums.Type.BookGrey, 66));
-            tasks.add(new Task(Enums.Slot.Map15Blue, 5, Enums.Tier.None, Enums.Type.BookBlue, 66));
-            tasks.add(new Task(Enums.Slot.Map15Blue, 6, Enums.Tier.None, Enums.Type.BookPink, 66));
-            itemBundles.add(new ItemBundle(Enums.Slot.Map15Blue, Enums.Tier.None, Enums.Type.BookCollection, 1, 10));
+            slots.add(new Slot(Enums.Slot.Map15Robot, 1, 5, 3, Enums.Person.BlueBook, Enums.Map.Library));
+            itemBundles.add(new ItemBundle(Enums.Slot.Map15Robot, Enums.Tier.None, Enums.Type.BookRed, 1));
+            itemBundles.add(new ItemBundle(Enums.Slot.Map15Robot, Enums.Tier.None, Enums.Type.BookBlack, 1));
+            itemBundles.add(new ItemBundle(Enums.Slot.Map15Robot, Enums.Tier.None, Enums.Type.BookYellow, 1));
+            itemBundles.add(new ItemBundle(Enums.Slot.Map15Robot, Enums.Tier.None, Enums.Type.BookGrey, 1));
+            itemBundles.add(new ItemBundle(Enums.Slot.Map15Robot, Enums.Tier.None, Enums.Type.BookBlue, 1));
+            itemBundles.add(new ItemBundle(Enums.Slot.Map15Robot, Enums.Tier.None, Enums.Type.BookPink, 1));
+            tasks.add(new Task(Enums.Slot.Map15Robot, 1, Enums.Tier.None, Enums.Type.BookRed, 66));
+            tasks.add(new Task(Enums.Slot.Map15Robot, 2, Enums.Tier.None, Enums.Type.BookBlack, 66));
+            tasks.add(new Task(Enums.Slot.Map15Robot, 3, Enums.Tier.None, Enums.Type.BookYellow, 66));
+            tasks.add(new Task(Enums.Slot.Map15Robot, 4, Enums.Tier.None, Enums.Type.BookGrey, 66));
+            tasks.add(new Task(Enums.Slot.Map15Robot, 5, Enums.Tier.None, Enums.Type.BookBlue, 66));
+            tasks.add(new Task(Enums.Slot.Map15Robot, 6, Enums.Tier.None, Enums.Type.BookPink, 66));
+            itemBundles.add(new ItemBundle(Enums.Slot.Map15Robot, Enums.Tier.None, Enums.Type.BookCollection, 1, 10));
         
             // Map 16
             slots.add(new Slot(Enums.Slot.Map16Furnace, 1, 5, 3, Enums.Person.HighLevelBlacksmith, Enums.Map.HauntedCorridors));
@@ -1352,23 +1352,23 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
             itemBundles.add(new ItemBundle(Enums.Slot.Map19Power, Enums.Tier.Gold, Enums.Type.GemRed, 1, 2));
             itemBundles.add(new ItemBundle(Enums.Slot.Map19Power, Enums.Tier.Internal, Enums.Type.Wildcard, 1, 5));
 
-            slots.add(new Slot(Enums.Slot.Map19Power, 1, 5, 3, Enums.Slot.Map18Purple, Enums.Person.Boss, Enums.Map.Battle));
-            itemBundles.add(new ItemBundle(Enums.Slot.Map19Power, Enums.Tier.Bronze, Enums.Type.Ore, 1));
-            tasks.add(new Task(Enums.Slot.Map19Power, 1, Enums.Tier.Adamant, Enums.Type.Gloves, 1));
-            tasks.add(new Task(Enums.Slot.Map19Power, 2, Enums.Tier.Adamant, Enums.Type.Boots, 1));
-            tasks.add(new Task(Enums.Slot.Map19Power, 3, Enums.Tier.None, Enums.Type.ForbiddenFood, 1));
-            tasks.add(new Task(Enums.Slot.Map19Power, 4, Enums.Tier.Adamant, Enums.Type.FullShield, 1));
-            tasks.add(new Task(Enums.Slot.Map19Power, 5, Enums.Tier.Adamant, Enums.Type.Longsword, 1));
-            tasks.add(new Task(Enums.Slot.Map19Power, 6, Enums.Tier.Adamant, Enums.Type.Bow, 1));
-            tasks.add(new Task(Enums.Slot.Map19Power, 7, Enums.Tier.Adamant, Enums.Type.Platebody, 1));
-            tasks.add(new Task(Enums.Slot.Map19Power, 8, Enums.Tier.Gold, Enums.Type.GemPurple, 1));
-            itemBundles.add(new ItemBundle(Enums.Slot.Map19Power, Enums.Tier.None, Enums.Type.LuckyCoin, 1, 1));
-            itemBundles.add(new ItemBundle(Enums.Slot.Map19Power, Enums.Tier.None, Enums.Type.GemOrange, 100, 1));
-            itemBundles.add(new ItemBundle(Enums.Slot.Map19Power, Enums.Tier.None, Enums.Type.GemYellow, 100, 1));
-            itemBundles.add(new ItemBundle(Enums.Slot.Map19Power, Enums.Tier.None, Enums.Type.GemGreen, 100, 1));
-            itemBundles.add(new ItemBundle(Enums.Slot.Map19Power, Enums.Tier.None, Enums.Type.GemBlue, 100, 1));
-            itemBundles.add(new ItemBundle(Enums.Slot.Map19Power, Enums.Tier.None, Enums.Type.GemRed, 100, 1));
-            itemBundles.add(new ItemBundle(Enums.Slot.Map19Power, Enums.Tier.Internal, Enums.Type.Wildcard, 1, 6));
+            slots.add(new Slot(Enums.Slot.Map19Boss, 1, 5, 3, Enums.Slot.Map18Purple, Enums.Person.Boss, Enums.Map.Battle));
+            itemBundles.add(new ItemBundle(Enums.Slot.Map19Boss, Enums.Tier.Bronze, Enums.Type.Ore, 1));
+            tasks.add(new Task(Enums.Slot.Map19Boss, 1, Enums.Tier.Adamant, Enums.Type.Gloves, 1));
+            tasks.add(new Task(Enums.Slot.Map19Boss, 2, Enums.Tier.Adamant, Enums.Type.Boots, 1));
+            tasks.add(new Task(Enums.Slot.Map19Boss, 3, Enums.Tier.None, Enums.Type.ForbiddenFood, 1));
+            tasks.add(new Task(Enums.Slot.Map19Boss, 4, Enums.Tier.Adamant, Enums.Type.FullShield, 1));
+            tasks.add(new Task(Enums.Slot.Map19Boss, 5, Enums.Tier.Adamant, Enums.Type.Longsword, 1));
+            tasks.add(new Task(Enums.Slot.Map19Boss, 6, Enums.Tier.Adamant, Enums.Type.Bow, 1));
+            tasks.add(new Task(Enums.Slot.Map19Boss, 7, Enums.Tier.Adamant, Enums.Type.Platebody, 1));
+            tasks.add(new Task(Enums.Slot.Map19Boss, 8, Enums.Tier.Gold, Enums.Type.GemPurple, 1));
+            itemBundles.add(new ItemBundle(Enums.Slot.Map19Boss, Enums.Tier.None, Enums.Type.LuckyCoin, 1, 1));
+            itemBundles.add(new ItemBundle(Enums.Slot.Map19Boss, Enums.Tier.None, Enums.Type.GemOrange, 100, 1));
+            itemBundles.add(new ItemBundle(Enums.Slot.Map19Boss, Enums.Tier.None, Enums.Type.GemYellow, 100, 1));
+            itemBundles.add(new ItemBundle(Enums.Slot.Map19Boss, Enums.Tier.None, Enums.Type.GemGreen, 100, 1));
+            itemBundles.add(new ItemBundle(Enums.Slot.Map19Boss, Enums.Tier.None, Enums.Type.GemBlue, 100, 1));
+            itemBundles.add(new ItemBundle(Enums.Slot.Map19Boss, Enums.Tier.None, Enums.Type.GemRed, 100, 1));
+            itemBundles.add(new ItemBundle(Enums.Slot.Map19Boss, Enums.Tier.Internal, Enums.Type.Wildcard, 1, 6));
 
             // Map 20
             slots.add(new Slot(Enums.Slot.Map20PixelBlacksmith, 1, 5, 3, Enums.Person.PixelBlacksmith, Enums.Map.TheEnd));
