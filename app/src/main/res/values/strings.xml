@@ -173,13 +173,11 @@
     <string name="setting_12">Reverse Item Ordering</string>
     <string name="setting_13">Blacksmith Pass Notification</string>
 
-    <string name="map_1">Home Sweet Home</string>
     <string name="slot_1_name">Mom</string>
     <string name="slot_1_locked">I\'ve been trapped by the disaster, please help me out!</string>
     <string name="slot_1_unlocked">Phew, thank you for rescuing me. Once you\'ve exchanged your lucky coins for some resources, go to the nearby village and find out what caused that!</string>
     <string name="task_1_1_text">Please pass me the hatchet so I can get out!</string>
 
-    <string name="map_2">The Neighbourhood</string>
     <string name="slot_2_name">The Fiery Furnace</string>
     <string name="slot_2_locked">I\'m currently closed, my ore has disappeared!</string>
     <string name="slot_2_unlocked">If you\'ve got the ore, I\'ve got the fire!</string>
@@ -223,7 +221,6 @@
     <string name="task_6_12_text">LONG swords!</string>
     <string name="task_6_13_text">Okay, fine, I give up. Any chance you don\'t have bows?</string>
 
-    <string name="map_3">The Forest</string>
     <string name="slot_7_name">Mouse House</string>
     <string name="slot_7_locked">Squeak squeak >:(</string>
     <string name="slot_7_unlocked">Squeeeeak! :D</string>
@@ -254,6 +251,670 @@
     <string name="slot_11_unlocked">Squeak squeak...</string>
     <string name="task_11_1_text">Squeak... squeak?</string>
 
+    <string name="slot_12_name">Fruit A\'plenty</string>
+    <string name="slot_12_locked">I only deal with locals.</string>
+    <string name="slot_12_unlocked">Hello, me old chum!</string>
+    <string name="task_12_1_text">Well, unless you\'ve got a little bribe for me?</string>
+    <string name="task_12_2_text">Only experienced traders are welcome here!</string>
+
+    <string name="slot_13_name">Fruitsy</string>
+    <string name="slot_13_locked">See the purple area South? Don\'t touch it!!</string>
+    <string name="slot_13_unlocked">Remember to stay away from the purple!</string>
+    <string name="task_13_1_text">The Purple definitely stole my apples. Definitely mine. Definitely stolen.</string>
+    <string name="task_13_2_text">And limes. All of them. Crazy, right?</string>
+    <string name="task_13_3_text">Orange too. The Purple hates other colours... promise!</string>
+
+    <string name="slot_14_name">Infected Fruits</string>
+    <string name="slot_14_locked">Ignore the Purple, just ignore the Purple.</string>
+    <string name="slot_14_unlocked">Well, okay, good luck near the Purple! I\'ll look away!</string>
+    <string name="task_14_1_text">If you want to get thise close to pure Purple, you\'re gonna need to be tough!</string>
+
+    <string name="slot_15_name">The Purple</string>
+    <string name="slot_15_locked">...</string>
+    <string name="slot_15_unlocked">..!</string>
+    <string name="task_15_1_text">Go...</string>
+    <string name="task_15_2_text">Away...</string>
+
+    <string name="slot_16_name">Castle Guard</string>
+    <string name="slot_16_locked">You can\'t come in here! With the Purple loose, it\'s too dangerous. Although it is lunchtime...</string>
+    <string name="slot_16_unlocked">Quick, before my lunch break ends!</string>
+    <string name="task_16_1_text">First, I need some meat. I\'ll cook it myself, don't worry.</string>
+    <string name="task_16_2_text">I need some potatoes with it too, apple of the earth don\'tcha know.</string>
+    <string name="task_16_3_text">There\'s a tiny bit of room in my tummy left... got some eggs?</string>
+
+    <string name="slot_17_name">The Gateman</string>
+    <string name="slot_17_locked">This entrance is much more scenic, it\'s still closed though. Sorry.</string>
+    <string name="slot_17_unlocked">I have a secret. I adore fruit, and inherited a large amount of iron. Reckon we can work something out?</string>
+
+    <string name="slot_18_name">Vault Guard</string>
+    <string name="slot_18_locked">We\'re running pretty low on equipment since the Purple came.</string>
+    <string name="slot_18_unlocked">Please don\'t tell anyone I\'ve let you into the vault, this is meant to be locked up...</string>
+    <string name="task_18_1_text">First, get us some weapons to use.</string>
+    <string name="task_18_2_text">Next, some armour to defend us.</string>
+    <string name="task_18_3_text">Oh, our faces will be exposed though! Can you help with that?</string>
+
+    <string name="slot_19_name">Book Worm</string>
+    <string name="slot_19_locked">I know you, adventurer. Death and destruction are all you deal in.</string>
+    <string name="slot_19_unlocked">You can give me clothes if you want, but don\'t expect anything back...</string>
+    <string name="task_19_1_text">I am still a worm though, you know.</string>
+
+    <string name="slot_20_name">Study Group</string>
+    <string name="slot_20_locked">Go away, we\'re busy.</string>
+    <string name="slot_20_unlocked">You should try and find the Library in the castle, over to the East, across the sea.</string>
+    <string name="task_20_1_text">Trees are great and all, but they\'re much better once they\'re chopped down into books!</string>
+    <string name="task_20_2_text">Knowledge is power, too. Are you powerful?</string>
+
+    <string name="slot_21_name">Exit Guard</string>
+    <string name="slot_21_locked">How\'d you get in? I don\'t suppose you\'re part of the Purple..?</string>
+    <string name="slot_21_unlocked">The Purple came from across the sea to the East.</string>
+    <string name="task_21_1_text">You know what you\'re doing, right?</string>
+
+    <string name="slot_22_name">Lucky Gems</string>
+    <string name="slot_22_locked">I\'m a professional. Are you?</string>
+    <string name="slot_22_unlocked">There\'s a few gems I\'ve found whilst mining, are you interested?</string>
+    <string name="task_22_1_text">You know how to mine, right?</string>
+
+    <string name="slot_23_name">The Elitist</string>
+    <string name="slot_23_locked">Let me get rid of those low quality ores for you, and turn them into something better!</string>
+    <string name="slot_23_unlocked">Let\'s just not discuss how much profit I\'m making from the ore exchanges...</string>
+    <string name="task_23_1_text">You can help me mine first, right?</string>
+    <string name="task_23_2_text">Oh, and I might need to go fishing later...</string>
+    <string name="task_23_3_text">There\'s probably underground trees, the Purple has confused everything.</string>
+
+    <string name="slot_24_name">Armoury Stocker</string>
+    <string name="slot_24_locked">If you\'ve got a lot of bronze items, we can probably come to a deal.</string>
+    <string name="slot_24_unlocked">The armoury needs your bronze items, we\'ve got an iron excess in return!</string>
+    <string name="task_24_1_text">First, we\'re running low on hammers to rebuild some parts of the castle.</string>
+    <string name="task_24_2_text">Next, we need some swords to defend ourselves</string>
+    <string name="task_24_3_text">Those swords aren\'t exactly high quality... do you have gloves to protect our hands?</string>
+    <string name="task_24_4_text">Close up fighting is also a bit risky.. can we shoot from afar?</string>
+
+    <string name="slot_25_name">Iron Smeltery</string>
+    <string name="slot_25_locked">The walls of my smeltery got blown off by the Purple! </string>
+    <string name="slot_25_unlocked">Get your iron bars here!</string>
+    <string name="task_25_1_text">Do you have some iron ore to help me get started? I\'ll let you use my furnace in return.</string>
+
+    <string name="slot_26_name">The Nook</string>
+    <string name="slot_26_locked">We felt the Purple effects even here, I heard it came over the water.</string>
+    <string name="slot_26_unlocked">Come one, come all, use my anvil!</string>
+    <string name="task_26_1_text">I\'ll need some bars first, since they all got swept away.</string>
+    <string name="task_26_2_text">Finally I\'ll need some iron secondary, and then you\'re welcome to use my anvil.</string>
+
+    <string name="slot_27_name">The Gateman</string>
+    <string name="slot_27_locked">It\'s dangerous down in the mines!</string>
+    <string name="slot_27_unlocked">Well, okay, you can come through, but don\'t you dare distract anyone in there, they're busy!</string>
+    <string name="task_27_1_text">Those weak of heart won\'t stand a chance against the Purple.</string>
+    <string name="task_27_2_text">The mines are far too weak to support new people... can you help strengthen it?</string>
+    <string name="task_27_3_text">This is a bit embarrassing, but some of the miners are getting scurvy... can you give them some fruit?</string>
+
+    <string name="slot_28_name">Weapon Stash</string>
+    <string name="slot_28_locked">Psst! Don\'t tell anyone, but there\'s weapons behind these pillars!</string>
+    <string name="slot_28_unlocked">Okay, you can buy some off me.</string>
+    <string name="task_28_1_text">I\'m not sure if I can trust you... you\'ve traded before, right?</string>
+    <string name="task_28_2_text">Hmm, okay. Have you figured out how to get free things?</string>
+
+    <string name="slot_29_name">The Interchange</string>
+    <string name="slot_29_locked">You can\'t come past. You just can\'t.</string>
+    <string name="slot_29_unlocked">I\'m taking no responsibility for this.</string>
+    <string name="task_29_1_text">No entry.</string>
+    <string name="task_29_2_text">Why are you here, I\'m not going to let you in.</string>
+    <string name="task_29_3_text">Go. Away.</string>
+    <string name="task_29_4_text">Nobody can get past here, especially not you!</string>
+    <string name="task_29_5_text">Past here is a ruined village.</string>
+    <string name="task_29_6_text">Those in the ruined village are weak, the Purple hit them hard.</string>
+    <string name="task_29_7_text">Beyond that... even more Purple damage.</string>
+    <string name="task_29_8_text">I hope one day we can rebuild, but we\'ve lost so, so much...</string>
+    <string name="task_29_9_text">I\'ve lived in the area my whole life, and the Purple has changed us.</string>
+    <string name="task_29_10_text">Those that were lost immediately were the lucky ones.</string>
+    <string name="task_29_11_text">The damage that\'s been done... I don\'t know if it can be restored.</string>
+    <string name="task_29_12_text">We just weren\'t ready. </string>
+    <string name="task_29_13_text">The Purple seeps in everywhere now.</string>
+    <string name="task_29_14_text">I\'m sure you\'ve seen it, lurking in corners.</string>
+    <string name="task_29_15_text">Whatever you do, don\'t touch it. It.. does things. It changes people.</string>
+    <string name="task_29_16_text">When the Purple landed, I was out transporting mined ore.</string>
+    <string name="task_29_17_text">I didn\'t even see it coming.</string>
+    <string name="task_29_18_text">When I woke up, I... saw things.</string>
+    <string name="task_29_19_text">The earth all around was scorched, as if something massive had been there.</string>
+    <string name="task_29_20_text">I saw... people around me. But they weren\'t people anymore.</string>
+    <string name="task_29_21_text">The Purple broke something in their minds.</string>
+    <string name="task_29_22_text">But, anyway, enough about that. What\'s done is done.</string>
+    <string name="task_29_23_text">How can I help you on your journey...</string>
+    <string name="task_29_24_text">Animals are okay. Some can talk, but you\'ll get used to that before long.</string>
+    <string name="task_29_25_text">You\'ll find most people are willing to help you around here.</string>
+    <string name="task_29_26_text">Some people might try to get a few things from you first, admittedly...</string>
+    <string name="task_29_27_text">No, I\'m not one of them! I\'m trying to tell you about the world!</string>
+    <string name="task_29_28_text">Anyway, you need to find the Purple source.</string>
+    <string name="task_29_29_text">You need to finish it.</string>
+    <string name="task_29_30_text">Once it\'s gone, I think some things will be fixed.</string>
+    <string name="task_29_31_text">Not everything, too much has happened, but... lots.</string>
+    <string name="task_29_32_text">Good luck, friendo!</string>
+
+    <string name="slot_30_name">The Exit</string>
+    <string name="slot_30_locked">Welcome to our village! It\'s a little damaged due to the Purple...</string>
+    <string name="slot_30_unlocked">Well, go on through, good luck to you!</string>
+    <string name="task_30_1_text">Look, I don\'t know where you came from, but we can\'t have just anyone roaming around.</string>
+    <string name="task_30_2_text">Fine, you can go through, but you could at least help us repair?</string>
+
+    <string name="slot_31_name">The Resident</string>
+    <string name="slot_31_locked">This used to be a thriving area, but most people left when the Purple came through.</string>
+    <string name="slot_31_unlocked">You\'re welcome to trade with me for what little I have left...</string>
+    <string name="task_31_1_text">You\'re trustworthy, right?</string>
+
+    <string name="slot_32_name">Bronzed</string>
+    <string name="slot_32_locked">I\'ve got plenty of bronze, but everyone here just seems obsessed with iron.</string>
+    <string name="slot_32_unlocked">Would you like some of my bronze?</string>
+    <string name="task_32_1_text">Bronze armour is just great. A majestic brown, such a lovely colour.</string>
+    <string name="task_32_2_text">Bronze hatchets too! It\'s what I used to cut down wood for my fire. It\'s not the fastest, but it's the most satisfying.</string>
+    <string name="task_32_3_text">Speaking of fire, you know what I like to wear when my fingers are cold?</string>
+
+    <string name="slot_33_name">Exotic Miner</string>
+    <string name="slot_33_locked">I was born here, you know.</string>
+    <string name="slot_33_unlocked">Okay, I don\'t really have anything to trade... Sorry, I just wanted to chat.</string>
+    <string name="task_33_1_text">I remember fighting as a boy, iron swords were popular back then.</string>
+    <string name="task_33_2_text">Oh, and iron shields too! Nothing like the sound of iron on iron.</string>
+    <string name="task_33_3_text">Do you know what it\'s like to be around for a long time? You look quite young to me.</string>
+
+    <string name="slot_34_name">Lifer</string>
+    <string name="slot_34_locked">I was born here, you know.</string>
+    <string name="slot_34_unlocked">Okay, I don\'t really have anything to trade... Sorry, I just wanted to chat.</string>
+    <string name="task_34_1_text">I remember fighting as a boy, iron swords were popular back then.</string>
+    <string name="task_34_2_text">Oh, and iron shields too! Nothing like the sound of iron on iron.</string>
+    <string name="task_34_3_text">Do you know what it\'s like to be around for a long time? You look quite young to me.</string>
+
+    <string name="slot_35_name">Store Room</string>
+    <string name="slot_35_locked">Closed for trading, sorry!</string>
+    <string name="slot_35_unlocked">True, I buy most of my stock off the local traders, but it\'s still good quality!</string>
+    <string name="task_35_1_text">We need some bows to prepare for the upcoming battle.</string>
+
+    <string name="slot_36_name">Mr Left</string>
+    <string name="slot_36_locked">Aye-up! We love steel round here!</string>
+    <string name="slot_36_unlocked">Share my steel!</string>
+    <string name="task_36_1_text">Yep, steel! Greases the palms, so to speak!</string>
+
+    <string name="slot_37_name">Mr Right</string>
+    <string name="slot_37_locked">Impressive steel collection you\'ve got, want to improve it?</string>
+    <string name="slot_37_unlocked">Once you\'ve visited Mr Left, come use my anvil!</string>
+    <string name="task_37_1_text">We can\'t have amateur blacksmiths here you understand.</string>
+    <string name="task_37_2_text">Only those that have proven they can handle steel can use the anvil.</string>
+
+    <string name="slot_38_name">Fishboy</string>
+    <string name="slot_38_locked">I am so, so sick of fish.</string>
+    <string name="slot_38_unlocked">Please, give me something other than fish to eat!</string>
+    <string name="task_38_1_text">Is that.. is that cooked meat?</string>
+
+    <string name="slot_39_name">Tooled Up</string>
+    <string name="slot_39_locked">Need tools? I got them!</string>
+    <string name="slot_39_unlocked">The Purple has kind of won the battle here... but we\'re all okay for now!</string>
+    <string name="task_39_1_text">You know how to make bronze, don\'t you?</string>
+    <string name="task_39_2_text">And iron, presumably? You came from the west, that\'s all they seem to have over there.</string>
+
+    <string name="slot_40_name">The Captain</string>
+    <string name="slot_40_locked">It may not be much, but I\'m the captain of this fine vessel!</string>
+    <string name="slot_40_unlocked">The captain is well armed!</string>
+    <string name="task_40_1_text">I am a little bit hungry though... nothing too much though!</string>
+    <string name="task_40_2_text">Got anything a bit darker?</string>
+    <string name="task_40_3_text">Maybe something a bit easier to eat whilst I walk around this lovely ship?</string>
+
+    <string name="slot_41_name">Amour</string>
+    <string name="slot_41_locked">Typo? No, my name is Amour. Want to have breakfast?</string>
+    <string name="slot_41_unlocked">J\'adore ce jeu!</string>
+    <string name="task_41_1_text">The Purple came from across the great sea to the east.</string>
+    <string name="task_41_2_text">I don\'t know what\'s over there, but I have full confidence that you can handle it!</string>
+
+    <string name="slot_42_name">Charon</string>
+    <string name="slot_42_locked">I\'m a boatman, I hear you wish to cross the great sea?</string>
+    <string name="slot_42_unlocked">I can help you, for a price.</string>
+    <string name="task_42_1_text">The journey is not for the faint of heart. Can you handle it?</string>
+
+    <string name="slot_43_name">Stocked Up</string>
+    <string name="slot_43_locked">You cannot come in, the Purple has many forms, you could be one of them.</string>
+    <string name="slot_43_unlocked">Okay, I believe you\'re not part of the Purple.</string>
+    <string name="task_43_1_text">You need to be able to defend yourself against the Purple!</string>
+
+    <string name="slot_44_name">Pale Narrow</string>
+    <string name="slot_44_locked">I sure do love gems.</string>
+    <string name="slot_44_unlocked">Go gems to trade?</string>
+    <string name="task_44_1_text">Got any yellow ones?</string>
+
+    <string name="slot_45_name">Old Fashioned</string>
+    <string name="slot_45_locked">Meh, you can keep your fancy iron and steel, bronze has always been enough for me. </string>
+    <string name="slot_45_unlocked">Go gems to trade?</string>
+    <string name="task_45_1_text">The ore is the best bit, such a lovely colour!</string>
+    <string name="task_45_2_text">Mind you, the secondary is pretty good too... I can\'t decide which I like more!</string>
+
+    <string name="slot_46_name">Endless Hunger</string>
+    <string name="slot_46_locked">Since the Purple came through, I haven\'t left my house... I can\'t even fit out the door now.</string>
+    <string name="slot_46_unlocked">Thank you for the food, I\'m not too greedy to share!</string>
+    <string name="task_46_1_text">Potatoes are so starchy, but so good!</string>
+
+    <string name="slot_47_name">The Contact</string>
+    <string name="slot_47_locked">I\'m afraid we don\'t take kindly to visitors.</string>
+    <string name="slot_47_unlocked">Want to trade with the isolates? You\'ll need sand!</string>
+    <string name="task_47_1_text">Those other traders might not deal with your currency... I can get you some of their currency if you like?</string>
+    <string name="task_47_2_text">They can be a bit intimidating... are you ready for them?</string>
+
+    <string name="slot_48_name">Red Trader</string>
+    <string name="slot_48_locked">Can you guess my favourite colour?</string>
+    <string name="slot_48_unlocked">Okay, yep, you got it. Red!</string>
+    <string name="task_48_1_text">I simply despise things that aren\'t my favourite colour!</string>
+
+    <string name="slot_49_name">Blue Trader</string>
+    <string name="slot_49_locked">Can you guess my favourite colour?</string>
+    <string name="slot_49_unlocked">Okay, yep, you got it. Blue!</string>
+    <string name="task_49_1_text">I simply despise things that aren\'t my favourite colour!</string>
+
+    <string name="slot_50_name">Yellow Trader</string>
+    <string name="slot_50_locked">Can you guess my favourite colour?</string>
+    <string name="slot_50_unlocked">Okay, yep, you got it. Yellow!</string>
+    <string name="task_50_1_text">I simply despise things that aren\'t my favourite colour!</string>
+
+    <string name="slot_51_name">Green Trader</string>
+    <string name="slot_51_locked">Can you guess my favourite colour?</string>
+    <string name="slot_51_unlocked">Okay, yep, you got it. Green!</string>
+    <string name="task_51_1_text">I simply despise things that aren\'t my favourite colour!</string>
+
+    <string name="slot_52_name">Rupert</string>
+    <string name="slot_52_locked">Before the Purple, I stole from others. Now, I work with them.</string>
+    <string name="slot_52_unlocked">I have nothing now... With some bronze, I could rebuild.</string>
+    <string name="task_52_1_text">Whilst morality is it\'s own reward, an additional one wouldn't hurt...</string>
+
+    <string name="slot_53_name">Ellen</string>
+    <string name="slot_53_locked">Before the Purple, I sold fish. I still have my rod, but... that\'s about it. Not even a house!</string>
+    <string name="slot_53_unlocked">Eventually I\'ll have a new house, eventually.</string>
+    <string name="task_53_1_text">Teach a woman to fish, and you feed her for a day. Give a woman a steel fishing rod, and she\'ll eat tons!</string>
+
+    <string name="slot_54_name">Daniel</string>
+    <string name="slot_54_locked">Before the Purple, I was a guard. I protected the castle, but now... the Purple has it.</string>
+    <string name="slot_54_unlocked">I guess I can still protect the castle, and try and help against the Purple.</string>
+    <string name="task_54_1_text">I\'m not defined by my clothes, but I\'ll feel a lot safer in stronger armour!</string>
+
+    <string name="slot_55_name">Pete</string>
+    <string name="slot_55_locked">Before the Purple, I mined ore for others. Now, I can\'t safely get across to the Mines!</string>
+    <string name="slot_55_unlocked">Eventually the boats will be running again, and I can mine.</string>
+    <string name="task_55_1_text">If I could pick a pick I\'d pick a steel pick. </string>
+
+    <string name="slot_56_name">Lucy</string>
+    <string name="slot_56_locked">Before the Purple, I was a bodyguard. I protected important businessmen, but now.. nobody wants to hurt each other.</string>
+    <string name="slot_56_unlocked">Well, I can still protect the others here.</string>
+    <string name="task_56_1_text">Well, when we\'ve all rebuilt enough to start throwing rocks around, these helmets would help!</string>
+
+    <string name="slot_57_name">The Chef</string>
+    <string name="slot_57_locked">If you\'re a local, we\'re sharing food!</string>
+    <string name="slot_57_unlocked">Come one, come all, eat!</string>
+    <string name="task_57_1_text">Well, you have to give food before you can get it.</string>
+
+    <string name="slot_58_name">Deranged Guard</string>
+    <string name="slot_58_locked">SO MUCH SILVER! AHahHAHAHA!</string>
+    <string name="slot_58_unlocked">ALL MINE.</string>
+    <string name="task_58_1_text">Attack all! Everyone! Gotta get rich!</string>
+    <string name="task_58_2_text">Gotta defend! Gotta gotta defend defend!!!</string>
+
+    <string name="slot_59_name">Gold Miner</string>
+    <string name="slot_59_locked">There\'s... gold...</string>
+    <string name="slot_59_unlocked">Gold is here...</string>
+    <string name="task_59_1_text">My feet hurt from my journey... it never ends...</string>
+    <string name="task_59_2_text">I\'ve seen things whilst transporting... things you wouldn\'t believe...</string>
+
+    <string name="slot_60_name">Distorted Man</string>
+    <string name="slot_60_locked">My chest! All mine!</string>
+    <string name="slot_60_unlocked">Who needs food? I have silver!</string>
+    <string name="task_60_1_text">You have... more silver?</string>
+
+    <string name="slot_61_name">Lost Sailor</string>
+    <string name="slot_61_locked">I left the port, I couldn\'t resist the call of the gold!</string>
+    <string name="slot_61_unlocked">Will you.. help me get more gold?</string>
+    <string name="task_61_1_text">Ignore the overflow, I can fit more gold in!</string>
+
+    <string name="slot_62_name">Kitchen Of Greed</string>
+    <string name="slot_62_locked">Food? Who needs food? I\'m rich!</string>
+    <string name="slot_62_unlocked">I can share my food... in exchange for MORE wealth.</string>
+    <string name="task_62_1_text">It\'s hot in here, can you handle the heat?</string>
+
+    <string name="slot_63_name">Frankie \'Two Spins\'</string>
+    <string name="slot_63_locked">You can\'t come past.</string>
+    <string name="slot_63_unlocked">Well, don\'t tell anyone I went easy on you.</string>
+    <string name="task_63_1_text">Wanna know why they call me Two Spins? I\t's because I love to spin.</string>
+
+    <string name="slot_64_name">Bobbie \'Wildcard\'</string>
+    <string name="slot_64_locked">Oi! This is my chest.</string>
+    <string name="slot_64_unlocked">I guess you can look inside though.</string>
+    <string name="task_64_1_text">It\'s a decorative chest, admittedly...</string>
+
+    <string name="slot_65_name">Danny \'Doubles\'</string>
+    <string name="slot_65_locked">Welcome to my booth!</string>
+    <string name="slot_65_unlocked">Whaddya want?</string>
+    <string name="task_65_1_text">It\'s all mine! I don\'t have much, but it\'s miiiine!</string>
+
+    <string name="slot_66_name">Jimmy \'Autospin\'</string>
+    <string name="slot_66_locked">Hey! Only the boss can come through here.</string>
+    <string name="slot_66_unlocked">Oh you need to talk to him? Okay.</string>
+    <string name="task_66_1_text">I don\'t like being this close to the library, I can\'t wait until we leave here.</string>
+
+    <string name="slot_67_name">Big Tony</string>
+    <string name="slot_67_locked">Hey kid, you can\'t come through.</string>
+    <string name="slot_67_unlocked">Whatever, I warned you.</string>
+    <string name="task_67_1_text">The library has.. weird things in. Don\'t go through there.</string>
+    <string name="task_67_2_text">Really... don\'t! Some of my guys have gone through there and not come back.</string>
+
+    <string name="slot_68_name">Fiery Foreword</string>
+    <string name="slot_68_locked">The books of Strength and War are not given to just anyone!</string>
+    <string name="slot_68_unlocked">Well, you\'re welcome to them. I hope they don\'t corrupt you, as they have others.</string>
+    <string name="task_68_1_text">Give me some gems.</string>
+    <string name="task_68_2_text">I\'m hungry.</string>
+
+    <string name="slot_69_name">Satisfied Sleeve</string>
+    <string name="slot_69_locked">The books of Agility and Life are not given to just anyone!</string>
+    <string name="slot_69_unlocked">Alright, now we can both have the books! Awesome!</string>
+    <string name="task_69_1_text">Hello friend! Do you have some yellow gems around?</string>
+    <string name="task_69_2_text">Gosh, I just love a nice healthy banana or 50!</string>
+
+    <string name="slot_70_name">Alive Appendix</string>
+    <string name="slot_70_locked">The books of Nature and Earth are not given to just anyone!</string>
+    <string name="slot_70_unlocked">Enjoy the books! Appreciate the world around you.</string>
+    <string name="task_70_1_text">To receive from the world, first you must give to it! Got green gems?</string>
+    <string name="task_70_2_text">Mmmm, I love limes. Nature\'s bitter little gift.</string>
+
+    <string name="slot_71_name">Peaceful Preface</string>
+    <string name="slot_71_locked">The books of Water and Peace are not given to just anyone!</string>
+    <string name="slot_71_unlocked">The books are all yours! Share them with others, spread the joy!</string>
+    <string name="task_71_1_text">Wouldn\'t you like to swim with the fishes? Not like.. that, as in looking at gems!</string>
+    <string name="task_71_2_text">Grapes are just the best. So sweet, so tasty.</string>
+
+    <string name="slot_72_name">Collectroid</string>
+    <string name="slot_72_locked">There is a kingdom, near here! I wish to be the ruler of it!</string>
+    <string name="slot_72_unlocked">Oh thank you so much! I\'m sure you can be a jester or something in my kingdom.</string>
+    <string name="task_72_1_text">First, give me strength.</string>
+    <string name="task_72_2_text">Next, give me the ability to wage war.</string>
+    <string name="task_72_3_text">Now, I want the agility to move freely.</string>
+    <string name="task_72_4_text">Next, I need the ability to make life.</string>
+    <string name="task_72_5_text">Next, control over water, and liquids in general.</string>
+    <string name="task_72_6_text">Finally, peace. To rule with a peaceful hand.</string>
+
+    <string name="slot_73_name">Me Ol\' Furnace</string>
+    <string name="slot_73_locked">Nah mate, closed.</string>
+    <string name="slot_73_unlocked">Go on then, just this once.</string>
+    <string name="task_73_1_text">You do have some ore, right mate?</string>
+
+    <string name="slot_74_name">Adoring Accessories</string>
+    <string name="slot_74_locked">I wish I could wear human clothes!</string>
+    <string name="slot_74_unlocked">Maybe you can wear them instead...</string>
+    <string name="task_74_1_text">I could make the bars into lovely armour!</string>
+    <string name="task_74_2_text">And then I could finish it, and wear it with pride!</string>
+
+    <string name="slot_75_name">Tools</string>
+    <string name="slot_75_locked">My extremities are coldities!</string>
+    <string name="slot_75_unlocked">Less coldities, thanks!</string>
+    <string name="task_75_1_text">First, my feet need covering up.</string>
+    <string name="task_75_2_text">Then, my hands... well, finger bones need covering up.</string>
+    <string name="task_75_3_text">And my hea-.. skull?</string>
+    <string name="task_75_4_text">I want better than that!</string>
+
+    <string name="slot_76_name">Wobbling Weapons</string>
+    <string name="slot_76_locked">These weapons are dangerous! Sure you can handle it?</string>
+    <string name="slot_76_unlocked">Look, just because they\'re made by a ghost doesn\'t make them any less deadly!</string>
+    <string name="task_76_1_text">I\'m sure if I could find a pond, and hold the fishing rod, I could do something with the fish.</string>
+    <string name="task_76_2_text">Only the experienced can handle weapons y\'know!</string>
+    <string name="task_76_3_text">I mean, really experienced!</string>
+
+    <string name="slot_77_name">Skeletal Armour</string>
+    <string name="slot_77_locked">I want it all!</string>
+    <string name="slot_77_unlocked">I have it all! For now.</string>
+    <string name="task_77_1_text">Bonuses are just the best, aren\'t they?</string>
+    <string name="task_77_2_text">Well, boots are lovely too.</string>
+    <string name="task_77_3_text">And gloves.</string>
+    <string name="task_77_4_text">Okay, fine, and helmets.</string>
+    <string name="task_77_5_text">Of all kinds.</string>
+    <string name="task_77_6_text">I guess you might have to mine occasionally too.</string>
+    <string name="task_77_7_text">And cut down trees.</string>
+    <string name="task_77_8_text">And catch fishies.</string>
+    <string name="task_77_9_text">I\'m not sure what you\'d use a hammer for really. Making more armour?</string>
+    <string name="task_77_10_text">Let\'s not discuss what daggers are for...</string>
+    <string name="task_77_11_text">Or swords.</string>
+    <string name="task_77_12_text">Or LONGswords!</string>
+    <string name="task_77_13_text">A bow is for shooting targets. JUST targets!</string>
+
+    <string name="slot_78_name">Blue</string>
+    <string name="slot_78_locked">I like it here among the zombies. They\'re not so bad once you get used to the groaning.</string>
+    <string name="slot_78_unlocked">The zombies are really quite friendly.</string>
+    <string name="task_78_1_text">Before I can begin making rings, I need some gold bars!</string>
+
+    <string name="slot_79_name">Yellow</string>
+    <string name="slot_79_locked">Luckily, yellow gems can\'t hurt us, they\'re just pretty.</string>
+    <string name="slot_79_unlocked">I\'m not sure you can see the gem very well in a golden ring...</string>
+    <string name="task_79_1_text">Can\'t make rings without gold!</string>
+
+    <string name="slot_80_name">Orange</string>
+    <string name="slot_80_locked">Silly Yellow, he doesn\'t understand that you need contrast to make a good ring!</string>
+    <string name="slot_80_unlocked">Yellow is good at his craft though, I\'ll give him that.</string>
+    <string name="task_80_1_text">Gotta have bars to make rings!</string>
+
+    <string name="slot_81_name">Green</string>
+    <string name="slot_81_locked">The green gems are so pretty!</string>
+    <string name="slot_81_unlocked">The green matches the gold so perfectly.</string>
+    <string name="task_81_1_text">Pretty gold for the pretty yellow!</string>
+
+    <string name="slot_82_name">Red</string>
+    <string name="slot_82_locked">The best jewellery has red in it! The colour of love!</string>
+    <string name="slot_82_unlocked">Come make the best jewellery!</string>
+    <string name="task_82_1_text">You\'ve visited my yellow crafting friend, haven\'t you?</string>
+    <string name="task_82_2_text">And his friend, Orange?</string>
+    <string name="task_82_3_text">What about Red?</string>
+    <string name="task_82_4_text">Okay, but what about the.. eccentric Blue?</string>
+
+    <string name="slot_83_name">The Watchers</string>
+    <string name="slot_83_locked">Nobody can do it, just turn back!</string>
+    <string name="slot_83_unlocked">Not even you can do it!</string>
+    <string name="task_83_1_text">Nobody has red sand, so you can\'t get by!</string>
+    <string name="task_83_2_text">Okay, nobody has blue!</string>
+    <string name="task_83_3_text">Or yellow!</string>
+    <string name="task_83_4_text">Fine, green! We\'re the only people with some, it's from far away!</string>
+
+    <string name="slot_84_name">Golden Adventurer</string>
+    <string name="slot_84_locked">I used to be an adventurer like you.</string>
+    <string name="slot_84_unlocked">I still am an adventurer, I just used to be too.</string>
+    <string name="task_84_1_text">The Purple is past here.</string>
+    <string name="task_84_2_text">Many have tried to get past, but most can\'t even get through all the doors.</string>
+    <string name="task_84_3_text">I hope one day someone will come by who can do more than just feed the Purple.</string>
+    <string name="task_84_4_text">My hope is fading though. Time is short, we can do better than Purple.</string>
+    <string name="task_84_5_text">Any chance you can defeat it?</string>
+
+    <string name="slot_85_name">Bronze Adventurer</string>
+    <string name="slot_85_locked">I want to help defeat the Purple.</string>
+    <string name="slot_85_unlocked">Thanks for helping me ready up!</string>
+    <string name="task_85_1_text">I grew up North of here.</string>
+    <string name="task_85_2_text">I did alright at school, didn\'t have many friends though.</string>
+    <string name="task_85_3_text">Eventually I finished school, and my father wanted me to go into carpentry with him.</string>
+    <string name="task_85_4_text">I did for a while, until I met a girl.</string>
+    <string name="task_85_5_text">She was.. beautiful. Out of this world. Absolutely perfect.</string>
+    <string name="task_85_6_text">One night, we ran away together, over near the frozen lands.</string>
+    <string name="task_85_7_text">It was.. cold, unsurprisingly. We built an igloo.</string>
+    <string name="task_85_8_text">We lived out there a few weeks, fishing together.</string>
+    <string name="task_85_9_text">Most of the wildlife was scared of us, so it wasn\'t too dangerous.</string>
+    <string name="task_85_10_text">One day, we saw smoke on the horizon.</string>
+    <string name="task_85_11_text">The next, we saw a small camp of bandits nearby. </string>
+    <string name="task_85_12_text">We hid, hoping they\'d pass us by unhindered.</string>
+    <string name="task_85_13_text">They didn\'t. She died, I came home.</string>
+    <string name="task_85_14_text">I.. got in touch with myself. I enjoyed the woodwork.</string>
+    <string name="task_85_15_text">My father supported me throughout, and I wouldn\'t be here today without him.</string>
+    <string name="task_85_16_text">When the Purple hit, it corrupted most of his wood, and his forest withered.</string>
+    <string name="task_85_17_text">We struggled by for a bit, but we soon realised the Purple was getting worse, not better.</string>
+    <string name="task_85_18_text">The final straw was when more bandits came, and stole what we had left to use for weapons. </string>
+    <string name="task_85_19_text">After that, I decided to come do my best to fight. I haven\'t been able to get any closer yet.</string>
+
+    <string name="slot_86_name">Iron Adventurer</string>
+    <string name="slot_86_locked">Glory is not all it\'s cracked up to me.</string>
+    <string name="slot_86_unlocked">Humanity is far better.</string>
+    <string name="task_86_1_text">I used to be in the city guard.</string>
+    <string name="task_86_2_text">When bandits came, we\'d make sure they didn\'t take anything, or get inside.</string>
+    <string name="task_86_3_text">It was hard work, but good work.</string>
+    <string name="task_86_4_text">The morality of life and death.. slips away when you see the hordes that descend upon us.</string>
+    <string name="task_86_5_text">I worked my way up, and became a captain.</string>
+    <string name="task_86_6_text">This meant less time on the front, more time planning defences.</string>
+    <string name="task_86_7_text">I preferred it, honestly. I\'m no coward, but what man wouldn\'t want to stay alive a day longer?</string>
+    <string name="task_86_8_text">As guards joined and left, I found it hard to care for them as much.</string>
+    <string name="task_86_9_text">Day in, day out, I\'d see new injuries, new losses.</string>
+    <string name="task_86_10_text">Eventually, they became numbers to me. Figures on my chart.</string>
+    <string name="task_86_11_text">One day, I snapped out of it, and realised what I was becoming.</string>
+    <string name="task_86_12_text">I was no better than the Purple. Seeing people as one mass, not as individuals.</string>
+    <string name="task_86_13_text">Everyone is unique, that\'s why we\'re so strong as a species.</string>
+    <string name="task_86_14_text">The Purple doesn\'t understand that, so can\'t even truly defeat us.</string>
+    <string name="task_86_15_text">Even if it spread over the world, there would be pockets of resistance, forever.</string>
+    <string name="task_86_16_text">I don\'t want to wait until then though.</string>
+    <string name="task_86_17_text">I want to take the fight to it, before it has a chance to get a foothold.</string>
+    <string name="task_86_18_text">It\'s done too much damage to my countrymen already, and I haven\'t forgotten my training.</string>
+    <string name="task_86_19_text">Are you with me?</string>
+
+    <string name="slot_87_name">Steel Adventurer</string>
+    <string name="slot_87_locked">I CRUSH PURPLE.</string>
+    <string name="slot_87_unlocked">ALL THE PURPLE.</string>
+    <string name="task_87_1_text">I CRUSH ALL.</string>
+    <string name="task_87_2_text">I CRUSH MOTHER.</string>
+    <string name="task_87_3_text">I CRUSH FATHER.</string>
+    <string name="task_87_4_text">I CRUSH BROTHER.</string>
+    <string name="task_87_5_text">I CRUSH SISTER.</string>
+    <string name="task_87_6_text">I CRUSH TEACHER.</string>
+    <string name="task_87_7_text">I CRUSH PET.</string>
+    <string name="task_87_8_text">I CRUSH GUARD.</string>
+    <string name="task_87_9_text">I CRUSH JUDGE.</string>
+    <string name="task_87_10_text">I CRUSH PRISON GUARD.</string>
+    <string name="task_87_11_text">I CRUSH SOLDIER</string>
+    <string name="task_87_12_text">I CRUSH CAPTAIN</string>
+    <string name="task_87_13_text">GENERAL CRUSH ME.</string>
+    <string name="task_87_14_text">GENERAL\'S DOG CRUSH ME.</string>
+    <string name="task_87_15_text">I CRUSH GRAPES.</string>
+    <string name="task_87_16_text">I CRUSH WINE.</string>
+    <string name="task_87_17_text">I CRUSH VEGETABLES.</string>
+    <string name="task_87_18_text">I CRUSH FRUIT.</string>
+    <string name="task_87_19_text">I CRUSH PURPLE.</string>
+
+    <string name="slot_88_name">Mithril Adventurer</string>
+    <string name="slot_88_locked">I\'m blue!</string>
+    <string name="slot_88_unlocked">Really blue!</string>
+    <string name="task_88_1_text">You know what else is blue? The cloudless sky!</string>
+    <string name="task_88_2_text">Blueberries are pretty blue.</string>
+    <string name="task_88_3_text">Robin eggs too!</string>
+    <string name="task_88_4_text">I guess Earth itself is blue too, overall.</string>
+    <string name="task_88_5_text">Speaking of planets, Neptune is too.</string>
+    <string name="task_88_6_text">Oh, and Uranus.</string>
+    <string name="task_88_7_text">Suits can be blue.</string>
+    <string name="task_88_8_text">Pyjamas can be blue too.</string>
+    <string name="task_88_9_text">Oh, sapphires! The bluest gem.</string>
+    <string name="task_88_10_text">And jeans.. whatever they are.</string>
+    <string name="task_88_11_text">Bluebirds? Yep, they\'re blue.</string>
+    <string name="task_88_12_text">If you look in a mirror? There\'s a chance your eyes will be blue.</string>
+    <string name="task_88_13_text">And I guess technically your hair, but.. unlikely.</string>
+    <string name="task_88_14_text">Peacock feathers are blue, and rather striking.</string>
+    <string name="task_88_15_text">The ocean is too, although I may have already mentioned that with Earth.</string>
+    <string name="task_88_16_text">Erm, blue paint? Blue chalk?</string>
+    <string name="task_88_17_text">Lapis lazuli is blue, and can even be different lightnesses of blue.</string>
+    <string name="task_88_18_text">Kingfishers have a lovely blue back too.</string>
+    <string name="task_88_19_text">... anyway, my point is, I know how blue works, and how much better than Purple it is!</string>
+
+    <string name="slot_89_name">The Purple</string>
+    <string name="slot_89_locked">Do you know what you\'re in for?</string>
+    <string name="slot_89_unlocked">Fare thee well.</string>
+    <string name="task_89_1_text">I don\'t recommend pushing on.. There\'s no more to it.</string>
+    <string name="task_89_2_text">What\'s the point? The Purple will spread regardless, you\'re wasting your life.</string>
+    <string name="task_89_3_text">Just stop trying to stand in the way.</string>
+    <string name="task_89_4_text">Give. In.</string>
+
+    <string name="slot_90_name">Pillar of Touch</string>
+    <string name="slot_90_locked">I am the first guardian. I control the sensation of touch.</string>
+    <string name="slot_90_unlocked">Retrieve the adamant gloves, it is your destiny.</string>
+    <string name="task_90_1_text">First, we reach out without feeling, without seeing.</string>
+    <string name="task_90_2_text">Then, we begin to understand the world around us using our hands.</string>
+    <string name="task_90_3_text">Eventually, we learn to use our hands to control the world around us.</string>
+    <string name="task_90_4_text">Ultimately, our hands become the greatest record of our lives.</string>
+
+    <string name="slot_91_name">Pillar of Travel</string>
+    <string name="slot_91_locked">I am the second guardian. I control the travel from one location to another.</string>
+    <string name="slot_91_unlocked">Retrieve the adamant boots, it is your destiny.</string>
+    <string name="task_91_1_text">When we are born, we cannot walk, and rely entirely on others.</string>
+    <string name="task_91_2_text">Eventually, we can move by ourselves, much to the delight of those around us.</string>
+    <string name="task_91_3_text">Then we learn that we can use our feet to get what we want.</string>
+    <string name="task_91_4_text">Ultimately, we crush others with our feet, bringing the whole race down.</string>
+
+    <string name="slot_92_name">Pillar of Hunger</string>
+    <string name="slot_92_locked">I am the third guardian. I control the flow of food in the body.</string>
+    <string name="slot_92_unlocked">Retrieve the forbidden food, it is your destiny.</string>
+    <string name="task_92_1_text">When born, we rely on others to feed us, and make sure we get enough nutrients.</string>
+    <string name="task_92_2_text">As we age, we fend for ourselves, with varying degrees of success.</string>
+    <string name="task_92_3_text">The constant choice between a moment on the lips or a lifetime on the hips engulfs our lives.</string>
+    <string name="task_92_4_text">Until one day, we no longer have a choice. We must eat what we are fed, for we have no strength less.</string>
+
+    <string name="slot_93_name">Pillar of Defence</string>
+    <string name="slot_93_locked">I am the fourth guardian. I control defence against enemies.</string>
+    <string name="slot_93_unlocked">Retrieve the adamant shield, it is your destiny.</string>
+    <string name="task_93_1_text">Newborn, we are defenceless. We rely on family for protection.</string>
+    <string name="task_93_2_text">Eventually we lose this barrier, and must defend ourselves.</string>
+    <string name="task_93_3_text">Many fail. Many fall apart, and fall by the wayside. A few survive.</string>
+    <string name="task_93_4_text">Those that can defend against the world will achieve great things, for they cannot be intimidated.</string>
+
+    <string name="slot_94_name">Pillar of Melee</string>
+    <string name="slot_94_locked">I am the fifth guardian. I control being close to others, and dealing damage.</string>
+    <string name="slot_94_unlocked">Retrieve the adamant sword, it is your destiny.</string>
+    <string name="task_94_1_text">When young, all are welcome to come close. All are trusted, all are welcome.</string>
+    <string name="task_94_2_text">A few abuse this trust, and before long the defences come up. Few are allowed through.</string>
+    <string name="task_94_3_text">These few go deeper than the many ever could, burrowing deep into our hearts and consciousness.</string>
+    <string name="task_94_4_text">Until one day, they go. They tear apart. Strike first, before the damage can be dealt.</string>
+
+    <string name="slot_95_name">Pillar of Archery</string>
+    <string name="slot_95_locked">I am the sixth guardian. I control dealing damage from afar.</string>
+    <string name="slot_95_unlocked">Retrieve the adamant bow, it is your destiny.</string>
+    <string name="task_95_1_text">When young, we only know what is immediately around us. We concern ourselves with nothing else.</string>
+    <string name="task_95_2_text">Eventually we discover the world exists outside our own door, that great evil and great good exists in all worlds.</string>
+    <string name="task_95_3_text">Helping and supporting those that will never be met is hard, but if there is an afterlife, this is redemption.</string>
+    <string name="task_95_4_text">The real question is, will they return the favour when you need it?</string>
+
+    <string name="slot_96_name">Pillar of Protection</string>
+    <string name="slot_96_locked">I am the seventh guardian. I control protection against any incoming assaults.</string>
+    <string name="slot_96_unlocked">Retrieve the adamant armour, it is your destiny.</string>
+    <string name="task_96_1_text">We must let others in. They must become trusted.</string>
+    <string name="task_96_2_text">They may watch us whilst we sleep, rely upon us for anything and everything, and all will be returned.</string>
+    <string name="task_96_3_text">No matter how it feels, never forget that it can end in a moment. You may not see it coming at all.</string>
+    <string name="task_96_4_text">But it is better to have loved and lost than to have never loved.</string>
+
+    <string name="slot_97_name">Pillar of Power</string>
+    <string name="slot_97_locked">I am the eighth and final guardian. I control all, never forget the power contained within rings.</string>
+    <string name="slot_97_unlocked">Retrieve the almighty ring, it is your destiny.</string>
+    <string name="task_97_1_text">At first, we have no control. Not over our bowels, not over our voice, nothing.</string>
+    <string name="task_97_2_text">As we age, control is gained piece by piece. Urges are repressed, desires are squashed, interests are ignored.</string>
+    <string name="task_97_3_text">Is this okay? Should we be fighting ourselves, and our base instinct? </string>
+    <string name="task_97_4_text">Well, what happens when we lose? What happens when we give in to our monkey brain? </string>
+
+    <string name="slot_98_name">Final Boss!</string>
+    <string name="slot_98_locked">I am the Purple, and the Purple is I.</string>
+    <string name="slot_98_unlocked">Material possessions are nothing, you may have whatever you want.</string>
+    <string name="task_98_1_text">You cannot truly live without others touching your life. No matter your trade, cooperation is required.</string>
+    <string name="task_98_2_text">Wherever you travel, there will be those that help you, and those that wish to hurt you. Differentiating is the greatest challenge, and even seasoned veterans fail.</string>
+    <string name="task_98_3_text">The key to achieving is never ending effort. Striving for what you want and need, never settling for second best, and never resting.</string>
+    <string name="task_98_4_text">But is success enough? What is glory, with nobody to share it with? Someone must be trusted, even at the risk of heartbreak and torture.</string>
+    <string name="task_98_5_text">I came here because of what I saw. I saw betrayal, hurt, and suffering. What race wants to exist where unhappiness is expected, and usual?</string>
+    <string name="task_98_6_text">Apparently you do. As I watched from my cave, the world did not descend into war and famine as expected, instead you banded together. You helped each other, and united against my forces.</string>
+    <string name="task_98_7_text">Your defences were too great. I could not defeat them, as much as I wanted to. Your final blow down in this dirty cave were inevitable, I could not stop them. You win. It is over.</string>
+    <string name="task_98_8_text">But ask yourself, was I wrong? What I did brought you together, it made those that survived stronger. Do I not deserve to share in this glory too, for it is as much mine as yours? </string>
+
+    <string name="slot_99_name">Pixel Blacksmith</string>
+    <string name="slot_99_locked">Oh hello, what\'s up?</string>
+    <string name="slot_99_unlocked">Sorry for all the trouble!</string>
+    <string name="task_99_1_text">That purple stuff? Yeah, I noticed that.</string>
+    <string name="task_99_2_text">I was trying to make a new enchant, having a bit of trouble getting it working.</string>
+    <string name="task_99_3_text">Monsters? Aliens? Demons? That doesn\'t sound right...</string>
+    <string name="task_99_4_text">Mind you, I have seen some pretty weird customers recently. Talking animals etc.</string>
+    <string name="task_99_5_text">Hey, are you interested in buying some items? What\'re you after?</string>
+    <string name="task_99_6_text">No? Oh, alright then... </string>
+
+    <string name="slot_100_name">Trades Entrance</string>
+    <string name="slot_100_locked">Hello! You have been inside my shop, right?</string>
+    <string name="slot_100_unlocked">Oh, you have! Come on in!</string>
+    <string name="task_100_1_text">Have you been before?</string>
+
+
+
+
+    <string name="map_1">Home Sweet Home</string>
+    <string name="map_2">The Neighbourhood</string>
+    <string name="map_3">The Forest</string>
     <string name="map_4">Marketplace</string>
     <string name="map_5">The Castle</string>
     <string name="map_6">The Mines</string>
