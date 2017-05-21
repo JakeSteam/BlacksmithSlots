@@ -106,7 +106,8 @@ public class Enums {
         YellowNinja(22), GreenNinja(23), Chef(24), Mercenary(25), Jeweller(26),
         RedBook(27), YellowBook(28), GreenBook(29), BlueBook(30), Robot(31),
         Skeleton(32), Skeleton2(33), Ghost(34), Ghost2(35), HighLevelBlacksmith(26),
-        BronzeAdventurer(27), IronAdventurer(28), SteelAdventurer(29), MithrilAdventurer(30);
+        BronzeAdventurer(27), IronAdventurer(28), SteelAdventurer(29), MithrilAdventurer(30),
+        Boss(31), PixelBlacksmith(32);
         public int value;
         Person(int value) {
             this.value = value;
@@ -168,7 +169,7 @@ public class Enums {
         Map10Stocked(43), Map10Pale(44), Map10Old(45), Map10Endless(46),
         Map11Contact(47), Map11Red(48), Map11Blue(49), Map11Yellow(50), Map11Green(51),
         Map12Rupert(52), Map12Ellen(53), Map12Daniel(54), Map12Pete(55), Map12Lucy(56), Map12Chef(57),
-        Map13Deranged(58), Map13Miner(59), Map13Distorted(60), Map13Sailot(61), Map13Kitchen(62),
+        Map13Deranged(58), Map13Miner(59), Map13Distorted(60), Map13Sailor(61), Map13Kitchen(62),
         Map14Frankie(63), Map14Bobbie(64), Map14Danny(65), Map14Jimmy(66), Map14BigTony(67),
         Map15Red(68), Map15Yellow(69), Map15Green(70), Map15Blue(71), Map15Robot(72),
         Map16Furnace(73), Map16Accessories(74), Map16Tools(75), Map16Weapons(75), Map16Armour(77),
