@@ -26,7 +26,6 @@ import uk.co.jakelee.blacksmithslots.helper.AlertHelper;
 import uk.co.jakelee.blacksmithslots.helper.DisplayHelper;
 import uk.co.jakelee.blacksmithslots.helper.Enums;
 import uk.co.jakelee.blacksmithslots.model.Inventory;
-import uk.co.jakelee.blacksmithslots.model.Item;
 import uk.co.jakelee.blacksmithslots.model.ItemBundle;
 import uk.co.jakelee.blacksmithslots.model.Setting;
 import uk.co.jakelee.blacksmithslots.model.Slot;
@@ -96,7 +95,7 @@ public class InventoryActivity extends BaseActivity {
 
         AlertHelper.info(this, String.format(Locale.ENGLISH,
                 getString(gettingSources ? R.string.alert_item_source : R.string.alert_item_use),
-                Item.getName(this, tier, type),
+                Inventory.getName(this, tier, type),
                 itemFinalString),
             false);
     }

@@ -12,7 +12,6 @@ import uk.co.jakelee.blacksmithslots.R;
 import uk.co.jakelee.blacksmithslots.main.SplashScreenActivity;
 import uk.co.jakelee.blacksmithslots.model.Iap;
 import uk.co.jakelee.blacksmithslots.model.Inventory;
-import uk.co.jakelee.blacksmithslots.model.Item;
 import uk.co.jakelee.blacksmithslots.model.ItemBundle;
 import uk.co.jakelee.blacksmithslots.model.Message;
 import uk.co.jakelee.blacksmithslots.model.Setting;
@@ -45,8 +44,6 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
     private void createDatabase() {
         setProgress("Inventory", 0);
         createInventories();
-        setProgress("Items", 0);
-        createItems();
         setProgress("Shop", 0);
         createShop();
         setProgress("Settings", 0);
@@ -108,131 +105,6 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
             inventories.add(new Inventory(Enums.Tier.None, Enums.Type.LuckyCoin, 100));
             inventories.add(new Inventory(Enums.Tier.Bronze, Enums.Type.Hatchet, 1));
         Inventory.saveInTx(inventories);
-    }
-
-    private void createItems() {
-        List<Item> items = new ArrayList<>();
-            items.add(new Item(Enums.Tier.None, Enums.Type.LuckyCoin));
-
-            items.add(new Item(Enums.Tier.Bronze, Enums.Type.Ore));
-            items.add(new Item(Enums.Tier.Bronze, Enums.Type.Bar));
-            items.add(new Item(Enums.Tier.Bronze, Enums.Type.Dagger));
-            items.add(new Item(Enums.Tier.Bronze, Enums.Type.Sword));
-            items.add(new Item(Enums.Tier.Bronze, Enums.Type.Longsword));
-            items.add(new Item(Enums.Tier.Bronze, Enums.Type.Bow));
-            items.add(new Item(Enums.Tier.Bronze, Enums.Type.HalfShield));
-            items.add(new Item(Enums.Tier.Bronze, Enums.Type.FullShield));
-            items.add(new Item(Enums.Tier.Bronze, Enums.Type.Chainmail));
-            items.add(new Item(Enums.Tier.Bronze, Enums.Type.Platebody));
-            items.add(new Item(Enums.Tier.Bronze, Enums.Type.HalfHelmet));
-            items.add(new Item(Enums.Tier.Bronze, Enums.Type.FullHelmet));
-            items.add(new Item(Enums.Tier.Bronze, Enums.Type.Boots));
-            items.add(new Item(Enums.Tier.Bronze, Enums.Type.Gloves));
-            items.add(new Item(Enums.Tier.Bronze, Enums.Type.Pickaxe));
-            items.add(new Item(Enums.Tier.Bronze, Enums.Type.Hatchet));
-            items.add(new Item(Enums.Tier.Bronze, Enums.Type.FishingRod));
-            items.add(new Item(Enums.Tier.Bronze, Enums.Type.Hammer));
-            items.add(new Item(Enums.Tier.Bronze, Enums.Type.Secondary));
-
-        items.add(new Item(Enums.Tier.Iron, Enums.Type.Ore));
-        items.add(new Item(Enums.Tier.Iron, Enums.Type.Bar));
-        items.add(new Item(Enums.Tier.Iron, Enums.Type.Dagger));
-        items.add(new Item(Enums.Tier.Iron, Enums.Type.Sword));
-        items.add(new Item(Enums.Tier.Iron, Enums.Type.Longsword));
-        items.add(new Item(Enums.Tier.Iron, Enums.Type.Bow));
-        items.add(new Item(Enums.Tier.Iron, Enums.Type.HalfShield));
-        items.add(new Item(Enums.Tier.Iron, Enums.Type.FullShield));
-        items.add(new Item(Enums.Tier.Iron, Enums.Type.Chainmail));
-        items.add(new Item(Enums.Tier.Iron, Enums.Type.Platebody));
-        items.add(new Item(Enums.Tier.Iron, Enums.Type.HalfHelmet));
-        items.add(new Item(Enums.Tier.Iron, Enums.Type.FullHelmet));
-        items.add(new Item(Enums.Tier.Iron, Enums.Type.Boots));
-        items.add(new Item(Enums.Tier.Iron, Enums.Type.Gloves));
-        items.add(new Item(Enums.Tier.Iron, Enums.Type.Pickaxe));
-        items.add(new Item(Enums.Tier.Iron, Enums.Type.Hatchet));
-        items.add(new Item(Enums.Tier.Iron, Enums.Type.FishingRod));
-        items.add(new Item(Enums.Tier.Iron, Enums.Type.Hammer));
-        items.add(new Item(Enums.Tier.Iron, Enums.Type.Secondary));
-
-        items.add(new Item(Enums.Tier.Steel, Enums.Type.Ore));
-        items.add(new Item(Enums.Tier.Steel, Enums.Type.Bar));
-        items.add(new Item(Enums.Tier.Steel, Enums.Type.Dagger));
-        items.add(new Item(Enums.Tier.Steel, Enums.Type.Sword));
-        items.add(new Item(Enums.Tier.Steel, Enums.Type.Longsword));
-        items.add(new Item(Enums.Tier.Steel, Enums.Type.Bow));
-        items.add(new Item(Enums.Tier.Steel, Enums.Type.HalfShield));
-        items.add(new Item(Enums.Tier.Steel, Enums.Type.FullShield));
-        items.add(new Item(Enums.Tier.Steel, Enums.Type.Chainmail));
-        items.add(new Item(Enums.Tier.Steel, Enums.Type.Platebody));
-        items.add(new Item(Enums.Tier.Steel, Enums.Type.HalfHelmet));
-        items.add(new Item(Enums.Tier.Steel, Enums.Type.FullHelmet));
-        items.add(new Item(Enums.Tier.Steel, Enums.Type.Boots));
-        items.add(new Item(Enums.Tier.Steel, Enums.Type.Gloves));
-        items.add(new Item(Enums.Tier.Steel, Enums.Type.Pickaxe));
-        items.add(new Item(Enums.Tier.Steel, Enums.Type.Hatchet));
-        items.add(new Item(Enums.Tier.Steel, Enums.Type.FishingRod));
-        items.add(new Item(Enums.Tier.Steel, Enums.Type.Hammer));
-        items.add(new Item(Enums.Tier.Steel, Enums.Type.Secondary));
-
-        items.add(new Item(Enums.Tier.Mithril, Enums.Type.Ore));
-        items.add(new Item(Enums.Tier.Mithril, Enums.Type.Bar));
-        items.add(new Item(Enums.Tier.Mithril, Enums.Type.Dagger));
-        items.add(new Item(Enums.Tier.Mithril, Enums.Type.Sword));
-        items.add(new Item(Enums.Tier.Mithril, Enums.Type.Longsword));
-        items.add(new Item(Enums.Tier.Mithril, Enums.Type.Bow));
-        items.add(new Item(Enums.Tier.Mithril, Enums.Type.HalfShield));
-        items.add(new Item(Enums.Tier.Mithril, Enums.Type.FullShield));
-        items.add(new Item(Enums.Tier.Mithril, Enums.Type.Chainmail));
-        items.add(new Item(Enums.Tier.Mithril, Enums.Type.Platebody));
-        items.add(new Item(Enums.Tier.Mithril, Enums.Type.HalfHelmet));
-        items.add(new Item(Enums.Tier.Mithril, Enums.Type.FullHelmet));
-        items.add(new Item(Enums.Tier.Mithril, Enums.Type.Boots));
-        items.add(new Item(Enums.Tier.Mithril, Enums.Type.Gloves));
-        items.add(new Item(Enums.Tier.Mithril, Enums.Type.Pickaxe));
-        items.add(new Item(Enums.Tier.Mithril, Enums.Type.Hatchet));
-        items.add(new Item(Enums.Tier.Mithril, Enums.Type.FishingRod));
-        items.add(new Item(Enums.Tier.Mithril, Enums.Type.Hammer));
-        items.add(new Item(Enums.Tier.Mithril, Enums.Type.Secondary));
-
-        items.add(new Item(Enums.Tier.Adamant, Enums.Type.Ore));
-        items.add(new Item(Enums.Tier.Adamant, Enums.Type.Bar));
-        items.add(new Item(Enums.Tier.Adamant, Enums.Type.Longsword));
-        items.add(new Item(Enums.Tier.Adamant, Enums.Type.Bow));
-        items.add(new Item(Enums.Tier.Adamant, Enums.Type.FullShield));
-        items.add(new Item(Enums.Tier.Adamant, Enums.Type.Platebody));
-        items.add(new Item(Enums.Tier.Adamant, Enums.Type.Boots));
-        items.add(new Item(Enums.Tier.Adamant, Enums.Type.Gloves));
-        items.add(new Item(Enums.Tier.Adamant, Enums.Type.Secondary));
-
-            items.add(new Item(Enums.Tier.PartialFood, Enums.Type.Apple));
-            items.add(new Item(Enums.Tier.PartialFood, Enums.Type.Lime));
-            items.add(new Item(Enums.Tier.PartialFood, Enums.Type.Orange));
-            items.add(new Item(Enums.Tier.PartialFood, Enums.Type.Peach));
-            items.add(new Item(Enums.Tier.PartialFood, Enums.Type.Pineapple));
-            items.add(new Item(Enums.Tier.PartialFood, Enums.Type.Banana));
-            items.add(new Item(Enums.Tier.PartialFood, Enums.Type.Cherry));
-            items.add(new Item(Enums.Tier.PartialFood, Enums.Type.Watermelon));
-            items.add(new Item(Enums.Tier.PartialFood, Enums.Type.Grapes));
-            items.add(new Item(Enums.Tier.PartialFood, Enums.Type.Steak));
-            items.add(new Item(Enums.Tier.PartialFood, Enums.Type.Potato));
-            items.add(new Item(Enums.Tier.PartialFood, Enums.Type.Egg));
-
-        items.add(new Item(Enums.Tier.None, Enums.Type.Apple));
-        items.add(new Item(Enums.Tier.None, Enums.Type.Lime));
-        items.add(new Item(Enums.Tier.None, Enums.Type.Orange));
-        items.add(new Item(Enums.Tier.None, Enums.Type.Peach));
-        items.add(new Item(Enums.Tier.None, Enums.Type.Pineapple));
-        items.add(new Item(Enums.Tier.None, Enums.Type.Banana));
-        items.add(new Item(Enums.Tier.None, Enums.Type.Cherry));
-        items.add(new Item(Enums.Tier.None, Enums.Type.Watermelon));
-        items.add(new Item(Enums.Tier.None, Enums.Type.Grapes));
-        items.add(new Item(Enums.Tier.None, Enums.Type.Steak));
-        items.add(new Item(Enums.Tier.None, Enums.Type.Potato));
-        items.add(new Item(Enums.Tier.None, Enums.Type.Egg));
-
-            items.add(new Item(Enums.Tier.Internal, Enums.Type.MinigameFlip));
-            items.add(new Item(Enums.Tier.Internal, Enums.Type.Wildcard));
-        Item.saveInTx(items);
     }
 
     private void createShop() {

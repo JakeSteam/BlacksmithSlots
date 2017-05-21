@@ -34,7 +34,6 @@ import uk.co.jakelee.blacksmithslots.constructs.WinRoute;
 import uk.co.jakelee.blacksmithslots.main.MinigameFlipActivity;
 import uk.co.jakelee.blacksmithslots.main.SlotActivity;
 import uk.co.jakelee.blacksmithslots.model.Inventory;
-import uk.co.jakelee.blacksmithslots.model.Item;
 import uk.co.jakelee.blacksmithslots.model.ItemBundle;
 import uk.co.jakelee.blacksmithslots.model.Message;
 import uk.co.jakelee.blacksmithslots.model.Setting;
@@ -103,7 +102,7 @@ public class SlotHelper {
                     if (itemBundle.getTier() != Enums.Tier.Internal) {
                         itemText.append(itemBundle.getQuantity() * resultCode);
                         itemText.append("x ");
-                        itemText.append(Item.getName(activity, itemBundle.getTier(), itemBundle.getType()));
+                        itemText.append(Inventory.getName(activity, itemBundle.getTier(), itemBundle.getType()));
                         itemText.append(", ");
                         Inventory.addInventory(itemBundle.getTier(), itemBundle.getType(), itemBundle.getQuantity() * resultCode);
                     }
@@ -228,19 +227,18 @@ public class SlotHelper {
         int totalResourcesWon = 0;
         StringBuilder winningsText = new StringBuilder().append("Won: ");
         for (Map.Entry<Pair<Enums.Tier, Enums.Type>, Integer> winning : dataStore.entrySet()) {
-            Item item = Item.get(winning.getKey().first, winning.getKey().second);
-            if (item != null) {
-                if (item.getTier() != Enums.Tier.Internal) {
-                    int quantity = winning.getValue() * slot.getCurrentStake();
-                    totalResourcesWon += quantity;
-                    Inventory.addInventory(item.getTier(), item.getType(), quantity);
-                    winningsText.append(String.format(Locale.ENGLISH, "%dx %s, ", quantity, item.getName(activity)));
-                } else {
-                    // Wowsa, they got a minigame match!
-                    if (item.getType() != Enums.Type.Wildcard) {
-                        autospinsLeft = 0;
-                        minigameToLoad = item.getType();
-                    }
+            Enums.Tier tier = winning.getKey().first;
+            Enums.Type type = winning.getKey().second;
+            if (tier != Enums.Tier.Internal) {
+                int quantity = winning.getValue() * slot.getCurrentStake();
+                totalResourcesWon += quantity;
+                Inventory.addInventory(tier, type, quantity);
+                winningsText.append(String.format(Locale.ENGLISH, "%dx %s, ", quantity, Inventory.getName(activity, tier, type)));
+            } else {
+                // Wowsa, they got a minigame match!
+                if (type != Enums.Type.Wildcard) {
+                    autospinsLeft = 0;
+                    minigameToLoad = type;
                 }
             }
         }

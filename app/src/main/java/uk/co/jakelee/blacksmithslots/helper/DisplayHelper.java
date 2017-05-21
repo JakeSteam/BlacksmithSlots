@@ -22,7 +22,6 @@ import java.util.List;
 
 import uk.co.jakelee.blacksmithslots.R;
 import uk.co.jakelee.blacksmithslots.model.Inventory;
-import uk.co.jakelee.blacksmithslots.model.Item;
 import uk.co.jakelee.blacksmithslots.model.ItemBundle;
 
 public class DisplayHelper {
@@ -130,7 +129,7 @@ public class DisplayHelper {
                 itemText.append(itemBundle.getQuantity() * multiplier);
                 itemText.append("x ");
             }
-            itemText.append(Item.getName(context, itemBundle.getTier(), itemBundle.getType()));
+            itemText.append(Inventory.getName(context, itemBundle.getTier(), itemBundle.getType()));
             itemText.append(itemDivider);
         }
 

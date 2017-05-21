@@ -127,6 +127,6 @@ public class ItemBundle extends SugarRecord {
     }
 
     public String toString(Context context) {
-        return String.format(Locale.ENGLISH, "%dx %s", quantity, Item.getName(context, tier, type));
+        return String.format(Locale.ENGLISH, "%dx %s", quantity, Inventory.getName(context, tier, type));
     }
 }

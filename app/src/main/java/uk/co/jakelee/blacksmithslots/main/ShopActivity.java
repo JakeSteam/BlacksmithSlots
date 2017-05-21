@@ -43,7 +43,6 @@ import uk.co.jakelee.blacksmithslots.helper.IapHelper;
 import uk.co.jakelee.blacksmithslots.helper.LevelHelper;
 import uk.co.jakelee.blacksmithslots.model.Iap;
 import uk.co.jakelee.blacksmithslots.model.Inventory;
-import uk.co.jakelee.blacksmithslots.model.Item;
 import uk.co.jakelee.blacksmithslots.model.ItemBundle;
 import uk.co.jakelee.blacksmithslots.model.Statistic;
 
@@ -211,7 +210,7 @@ public class ShopActivity extends BaseActivity implements BillingProcessor.IBill
             if (preloadingTier > 0 && preloadingType > 0 && item.getTier().value == preloadingTier && item.getType().value == preloadingType) {
                 preloadedItemPosition = i;
             }
-            envAdapter.add(Item.getName(this, item.getTier(), item.getType()));
+            envAdapter.add(Inventory.getName(this, item.getTier(), item.getType()));
             dropdownItems.add(new Pair<>(item.getTier().value, item.getType().value));
         }
 
@@ -235,7 +234,7 @@ public class ShopActivity extends BaseActivity implements BillingProcessor.IBill
         LayoutInflater inflater = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         List<ItemBundle> iaps = IapHelper.getBundlesForItem(item.first, item.second);
         int imageResource = getResources().getIdentifier(DisplayHelper.getItemImageFile(item.first, item.second), "drawable", getPackageName());
-        String itemName = Item.getName(this, item.first, item.second);
+        String itemName = Inventory.getName(this, item.first, item.second);
         for (ItemBundle iap : iaps) {
             RelativeLayout itemTile = (RelativeLayout) inflater.inflate(R.layout.custom_iap_tile, null).findViewById(R.id.iapTile);
             ((ImageView)itemTile.findViewById(R.id.itemImage)).setImageResource(imageResource);

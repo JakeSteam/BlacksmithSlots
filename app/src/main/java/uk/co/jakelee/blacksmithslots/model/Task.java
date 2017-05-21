@@ -142,7 +142,7 @@ public class Task extends SugarRecord {
         if (statistic > 0) {
             return Statistic.getName(context, statistic) + ": " + (target-remaining) + "/" + target;
         } else {
-            return Item.getName(context, tier, type) + ": " + (target-remaining) + "/" + target;
+            return Inventory.getName(context, tier, type) + ": " + (target-remaining) + "/" + target;
         }
     }
 

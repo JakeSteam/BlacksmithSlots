@@ -45,7 +45,7 @@ import uk.co.jakelee.blacksmithslots.helper.NotificationHelper;
 import uk.co.jakelee.blacksmithslots.helper.Runnables;
 import uk.co.jakelee.blacksmithslots.helper.TaskHelper;
 import uk.co.jakelee.blacksmithslots.helper.TextHelper;
-import uk.co.jakelee.blacksmithslots.model.Item;
+import uk.co.jakelee.blacksmithslots.model.Inventory;
 import uk.co.jakelee.blacksmithslots.model.ItemBundle;
 import uk.co.jakelee.blacksmithslots.model.Setting;
 import uk.co.jakelee.blacksmithslots.model.Slot;
@@ -367,7 +367,7 @@ public class MapActivity extends BaseActivity implements
                     DisplayHelper.getItemImageFile(itemBundle.getTier().value, itemBundle.getType().value, itemBundle.getQuantity()),
                     30,
                     30,
-                    itemBundle.getQuantity() + "x " + Item.getName(this, itemBundle.getTier(), itemBundle.getType())));
+                    itemBundle.getQuantity() + "x " + Inventory.getName(this, itemBundle.getTier(), itemBundle.getType())));
         }
     }
 

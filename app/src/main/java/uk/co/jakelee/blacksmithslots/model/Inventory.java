@@ -12,6 +12,7 @@ import java.util.List;
 
 import uk.co.jakelee.blacksmithslots.helper.DisplayHelper;
 import uk.co.jakelee.blacksmithslots.helper.Enums;
+import uk.co.jakelee.blacksmithslots.helper.TextHelper;
 
 @Table(name = "b")
 public class Inventory extends SugarRecord {
@@ -94,15 +95,25 @@ public class Inventory extends SugarRecord {
         this.type = type;
     }
 
-    public String getName(Context context) {
-        return Item.getName(context, tier, type);
-    }
-
     public int getDrawableId(Context context) {
         return getDrawableId(context, 1);
     }
 
     public int getDrawableId(Context context, int quantity) {
         return context.getResources().getIdentifier(DisplayHelper.getItemImageFile(tier, type, quantity), "drawable", context.getPackageName());
+    }
+
+    public String getName(Context context) {
+        return getName(context, tier, type);
+    }
+
+    public static String getName(Context context, Enums.Tier tier, Enums.Type type) {
+        return getName(context, tier.value, type.value);
+    }
+
+    public static String getName(Context context, int tier, int type) {
+        return TextHelper.getInstance(context).getText(DisplayHelper.getItemTierString(tier)) +
+                " " +
+                TextHelper.getInstance(context).getText(DisplayHelper.getItemTypeString(type));
     }
 }
