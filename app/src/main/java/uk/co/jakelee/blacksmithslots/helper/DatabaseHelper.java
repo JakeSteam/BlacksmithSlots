@@ -480,7 +480,7 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
             itemBundles.add(new ItemBundle(Enums.Slot.Map6Elitist, Enums.Tier.Steel, Enums.Type.Ore, 4, 10));
             itemBundles.add(new ItemBundle(Enums.Slot.Map6Elitist, Enums.Tier.Mithril, Enums.Type.Ore, 4, 7));
             itemBundles.add(new ItemBundle(Enums.Slot.Map6Elitist, Enums.Tier.Adamant, Enums.Type.Ore, 4, 3));
-            itemBundles.add(new ItemBundle(Enums.Slot.Map6Elitist, Enums.Tier.Internal, Enums.Type.Wildcard, 4, 7));
+            itemBundles.add(new ItemBundle(Enums.Slot.Map6Elitist, Enums.Tier.Internal, Enums.Type.Wildcard, 1, 7));
 
             slots.add(new Slot(Enums.Slot.Map6Armoury, 1, 5, 3, Enums.Person.MineWorker, Enums.Map.Mines));
             itemBundles.add(new ItemBundle(Enums.Slot.Map6Armoury, Enums.Tier.Bronze, Enums.Type.Chainmail, 1));
