@@ -13,20 +13,20 @@
         android:src="@drawable/map14"/>
 
     <ImageView
-        android:tag="1"
+        android:tag="63"
         style="@style/SlotClickArea"
         app:layout_marginTopPercent="19.98%"
         app:layout_marginLeftPercent="13.32%" />
 
     <ImageView
-        android:tag="1"
+        android:tag="64"
         style="@style/SlotClickArea"
         app:layout_widthPercent="13.32%"
         app:layout_marginTopPercent="19.98%"
         app:layout_marginLeftPercent="46.62%" />
 
     <ImageView
-        android:tag="1"
+        android:tag="65"
         style="@style/SlotClickArea"
         app:layout_widthPercent="13.32%"
         app:layout_heightPercent="13.32%"
@@ -34,13 +34,13 @@
         app:layout_marginLeftPercent="39.96%" />
 
     <ImageView
-        android:tag="1"
+        android:tag="66"
         style="@style/SlotClickArea"
         app:layout_marginTopPercent="33.33%"
         app:layout_marginLeftPercent="86.58%" />
 
     <ImageView
-        android:tag="1"
+        android:tag="67"
         style="@style/SlotClickArea"
         app:layout_marginTopPercent="59.94%"
         app:layout_marginLeftPercent="86.58%" />

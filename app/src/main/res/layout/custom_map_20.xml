@@ -13,13 +13,13 @@
         android:src="@drawable/map20"/>
 
     <ImageView
-        android:tag="1"
+        android:tag="99"
         style="@style/SlotClickArea"
         app:layout_marginTopPercent="59.94%"
         app:layout_marginLeftPercent="79.92%" />
 
     <ImageView
-        android:tag="1"
+        android:tag="100"
         style="@style/SlotClickArea"
         app:layout_marginTopPercent="66.66%"
         app:layout_marginLeftPercent="33.33%" />

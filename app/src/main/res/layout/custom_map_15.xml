@@ -13,35 +13,35 @@
         android:src="@drawable/map15"/>
 
     <ImageView
-        android:tag="1"
+        android:tag="68"
         style="@style/SlotClickArea"
         app:layout_marginTopPercent="19.98%"
         app:layout_marginLeftPercent="86.58%" />
 
     <ImageView
-        android:tag="1"
-        style="@style/SlotClickArea"
-        app:layout_widthPercent="26.64%"
-        app:layout_marginTopPercent="53.28%"
-        app:layout_marginLeftPercent="19.98%" />
-
-    <ImageView
-        android:tag="1"
-        style="@style/SlotClickArea"
-        app:layout_marginTopPercent="53.28%"
-        app:layout_marginLeftPercent="53.28%" />
-
-    <ImageView
-        android:tag="1"
+        android:tag="69"
         style="@style/SlotClickArea"
         app:layout_marginTopPercent="26.64%"
         app:layout_marginLeftPercent="19.98%" />
 
     <ImageView
-        android:tag="1"
+        android:tag="70"
+        style="@style/SlotClickArea"
+        app:layout_marginTopPercent="53.28%"
+        app:layout_marginLeftPercent="53.28%" />
+
+    <ImageView
+        android:tag="71"
         style="@style/SlotClickArea"
         app:layout_marginTopPercent="73.26%"
         app:layout_marginLeftPercent="53.28%" />
+
+    <ImageView
+        android:tag="72"
+        style="@style/SlotClickArea"
+        app:layout_widthPercent="26.64%"
+        app:layout_marginTopPercent="53.28%"
+        app:layout_marginLeftPercent="19.98%" />
 
     <RelativeLayout
         android:id="@+id/lockedMapBlocker"

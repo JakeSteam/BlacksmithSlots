@@ -103,6 +103,11 @@
         <item name="android:alpha">0.6</item>
     </style>
 
+    <style name="SlotPerson">
+        <item name="layout_heightPercent">6.66%</item>
+        <item name="layout_widthPercent">6.66%</item>
+    </style>
+
     <style name="VerticalScrollbar">
         <item name="android:scrollbarStyle">insideInset</item>
         <item name="android:fadeScrollbars">false</item>

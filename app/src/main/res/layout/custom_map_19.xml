@@ -13,7 +13,7 @@
         android:src="@drawable/map19"/>
 
     <ImageView
-        android:tag="1"
+        android:tag="90"
         style="@style/SlotClickArea"
         app:layout_heightPercent="13.32%"
         app:layout_widthPercent="13.32%"
@@ -21,7 +21,7 @@
         app:layout_marginLeftPercent="0%" />
 
     <ImageView
-        android:tag="1"
+        android:tag="91"
         style="@style/SlotClickArea"
         app:layout_heightPercent="13.32%"
         app:layout_widthPercent="13.32%"
@@ -29,7 +29,7 @@
         app:layout_marginLeftPercent="39.96%" />
 
     <ImageView
-        android:tag="1"
+        android:tag="92"
         style="@style/SlotClickArea"
         app:layout_heightPercent="13.32%"
         app:layout_widthPercent="13.32%"
@@ -37,15 +37,7 @@
         app:layout_marginLeftPercent="79.92%" />
 
     <ImageView
-        android:tag="1"
-        style="@style/SlotClickArea"
-        app:layout_heightPercent="19.98%"
-        app:layout_widthPercent="13.32%"
-        app:layout_marginTopPercent="33.33%"
-        app:layout_marginLeftPercent="0%" />
-
-    <ImageView
-        android:tag="1"
+        android:tag="93"
         style="@style/SlotClickArea"
         app:layout_heightPercent="19.98%"
         app:layout_widthPercent="13.32%"
@@ -53,15 +45,15 @@
         app:layout_marginLeftPercent="79.92%" />
 
     <ImageView
-        android:tag="1"
+        android:tag="94"
         style="@style/SlotClickArea"
         app:layout_heightPercent="19.98%"
         app:layout_widthPercent="13.32%"
         app:layout_marginTopPercent="73.26%"
-        app:layout_marginLeftPercent="0%" />
+        app:layout_marginLeftPercent="79.92%" />
 
     <ImageView
-        android:tag="1"
+        android:tag="95"
         style="@style/SlotClickArea"
         app:layout_heightPercent="19.98%"
         app:layout_widthPercent="13.32%"
@@ -69,12 +61,28 @@
         app:layout_marginLeftPercent="39.96%" />
 
     <ImageView
-        android:tag="1"
+        android:tag="96"
         style="@style/SlotClickArea"
         app:layout_heightPercent="19.98%"
         app:layout_widthPercent="13.32%"
         app:layout_marginTopPercent="73.26%"
-        app:layout_marginLeftPercent="79.92%" />
+        app:layout_marginLeftPercent="0%" />
+
+    <ImageView
+        android:tag="97"
+        style="@style/SlotClickArea"
+        app:layout_heightPercent="19.98%"
+        app:layout_widthPercent="13.32%"
+        app:layout_marginTopPercent="33.33%"
+        app:layout_marginLeftPercent="0%" />
+
+    <ImageView
+        android:tag="98"
+        style="@style/SlotClickArea"
+        app:layout_heightPercent="19.98%"
+        app:layout_widthPercent="13.32%"
+        app:layout_marginTopPercent="33.33%"
+        app:layout_marginLeftPercent="39.96%" />
 
     <RelativeLayout
         android:id="@+id/lockedMapBlocker"
