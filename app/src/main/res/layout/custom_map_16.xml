@@ -17,18 +17,33 @@
         style="@style/SlotClickArea"
         app:layout_marginTopPercent="53.28%"
         app:layout_marginLeftPercent="53.28%" />
+    <pl.droidsonroids.gif.GifImageView
+        android:src="@drawable/person_26"
+        app:layout_marginTopPercent="53.28%"
+        app:layout_marginLeftPercent="53.28%"
+        style="@style/SlotPerson"/>
 
     <ImageView
         android:tag="74"
         style="@style/SlotClickArea"
         app:layout_marginTopPercent="53.28%"
         app:layout_marginLeftPercent="13.32%" />
+    <pl.droidsonroids.gif.GifImageView
+        android:src="@drawable/person_34"
+        app:layout_marginTopPercent="53.28%"
+        app:layout_marginLeftPercent="13.32%"
+        style="@style/SlotPerson"/>
 
     <ImageView
         android:tag="75"
         style="@style/SlotClickArea"
         app:layout_marginTopPercent="13.32%"
         app:layout_marginLeftPercent="13.32%" />
+    <pl.droidsonroids.gif.GifImageView
+        android:src="@drawable/person_35"
+        app:layout_marginTopPercent="13.32%"
+        app:layout_marginLeftPercent="13.32%"
+        style="@style/SlotPerson"/>
 
     <ImageView
         android:tag="76"
@@ -37,6 +52,11 @@
         app:layout_heightPercent="13.32%"
         app:layout_marginTopPercent="13.32%"
         app:layout_marginLeftPercent="46.62%" />
+    <pl.droidsonroids.gif.GifImageView
+        android:src="@drawable/person_35"
+        app:layout_marginTopPercent="13.32%"
+        app:layout_marginLeftPercent="13.32%"
+        style="@style/SlotPerson"/>
 
     <ImageView
         android:tag="77"
@@ -45,6 +65,11 @@
         app:layout_heightPercent="13.32%"
         app:layout_marginTopPercent="66.66%"
         app:layout_marginLeftPercent="66.66%" />
+    <pl.droidsonroids.gif.GifImageView
+        android:src="@drawable/person_33"
+        app:layout_marginTopPercent="73.26%"
+        app:layout_marginLeftPercent="66.66%"
+        style="@style/SlotPerson"/>
 
     <RelativeLayout
         android:id="@+id/lockedMapBlocker"

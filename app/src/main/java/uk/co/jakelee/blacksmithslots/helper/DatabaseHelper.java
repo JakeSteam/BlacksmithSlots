@@ -977,7 +977,7 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
             itemBundles.add(new ItemBundle(Enums.Slot.Map15Blue, Enums.Tier.Mithril, Enums.Type.Secondary, 1, 5));
             itemBundles.add(new ItemBundle(Enums.Slot.Map15Blue, Enums.Tier.Internal, Enums.Type.Wildcard, 1, 4));
     
-            slots.add(new Slot(Enums.Slot.Map15Robot, 1, 5, 3, Enums.Person.BlueBook, Enums.Map.Library));
+            slots.add(new Slot(Enums.Slot.Map15Robot, 1, 5, 3, Enums.Person.Robot, Enums.Map.Library));
             itemBundles.add(new ItemBundle(Enums.Slot.Map15Robot, Enums.Tier.None, Enums.Type.BookRed, 1));
             itemBundles.add(new ItemBundle(Enums.Slot.Map15Robot, Enums.Tier.None, Enums.Type.BookBlack, 1));
             itemBundles.add(new ItemBundle(Enums.Slot.Map15Robot, Enums.Tier.None, Enums.Type.BookYellow, 1));
@@ -1069,15 +1069,6 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
             itemBundles.add(new ItemBundle(Enums.Slot.Map17Blue, Enums.Tier.Gold, Enums.Type.Bar, 1, 3));
             itemBundles.add(new ItemBundle(Enums.Slot.Map17Blue, Enums.Tier.None, Enums.Type.GemBlue, 1, 2));
             itemBundles.add(new ItemBundle(Enums.Slot.Map17Blue, Enums.Tier.Internal, Enums.Type.Wildcard, 1, 2));
-
-            slots.add(new Slot(Enums.Slot.Map17Yellow, 1, 5, 3, Enums.Slot.Map16Armour, Enums.Person.Jeweller, Enums.Map.UndeadJewellers));
-            itemBundles.add(new ItemBundle(Enums.Slot.Map17Yellow, Enums.Tier.Gold, Enums.Type.Bar, 1));
-            itemBundles.add(new ItemBundle(Enums.Slot.Map17Yellow, Enums.Tier.None, Enums.Type.GemYellow, 1));
-            tasks.add(new Task(Enums.Slot.Map17Yellow, 1, Enums.Tier.Gold, Enums.Type.Bar, 100));
-            itemBundles.add(new ItemBundle(Enums.Slot.Map17Yellow, Enums.Tier.Gold, Enums.Type.GemYellow, 1, 3));
-            itemBundles.add(new ItemBundle(Enums.Slot.Map17Yellow, Enums.Tier.Gold, Enums.Type.Bar, 1, 3));
-            itemBundles.add(new ItemBundle(Enums.Slot.Map17Yellow, Enums.Tier.None, Enums.Type.GemYellow, 1, 2));
-            itemBundles.add(new ItemBundle(Enums.Slot.Map17Yellow, Enums.Tier.Internal, Enums.Type.Wildcard, 1, 2));
 
             slots.add(new Slot(Enums.Slot.Map17Yellow, 1, 5, 3, Enums.Slot.Map16Armour, Enums.Person.Jeweller, Enums.Map.UndeadJewellers));
             itemBundles.add(new ItemBundle(Enums.Slot.Map17Yellow, Enums.Tier.Gold, Enums.Type.Bar, 1));

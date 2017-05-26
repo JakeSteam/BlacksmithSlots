@@ -18,6 +18,11 @@
         app:layout_widthPercent="19.98%"
         app:layout_marginTopPercent="39.96%"
         app:layout_marginLeftPercent="19.98%" />
+    <pl.droidsonroids.gif.GifImageView
+        android:src="@drawable/person_26"
+        app:layout_marginTopPercent="39.96%"
+        app:layout_marginLeftPercent="26.64%"
+        style="@style/SlotPerson"/>
 
     <ImageView
         android:tag="79"
@@ -26,6 +31,11 @@
         app:layout_widthPercent="13.32%"
         app:layout_marginTopPercent="73.26%"
         app:layout_marginLeftPercent="0%" />
+    <pl.droidsonroids.gif.GifImageView
+        android:src="@drawable/person_26"
+        app:layout_marginTopPercent="79.92%"
+        app:layout_marginLeftPercent="0%"
+        style="@style/SlotPerson"/>
 
     <ImageView
         android:tag="80"
@@ -34,6 +44,12 @@
         app:layout_widthPercent="13.32%"
         app:layout_marginTopPercent="73.26%"
         app:layout_marginLeftPercent="19.98%" />
+    <pl.droidsonroids.gif.GifImageView
+        android:src="@drawable/person_26"
+        app:layout_marginTopPercent="79.92%"
+        app:layout_marginLeftPercent="19.98%"
+        style="@style/SlotPerson"/>
+
 
     <ImageView
         android:tag="81"
@@ -42,12 +58,23 @@
         app:layout_widthPercent="13.32%"
         app:layout_marginTopPercent="73.26%"
         app:layout_marginLeftPercent="39.96%" />
+    <pl.droidsonroids.gif.GifImageView
+        android:src="@drawable/person_26"
+        app:layout_marginTopPercent="79.92%"
+        app:layout_marginLeftPercent="39.96%"
+        style="@style/SlotPerson"/>
 
     <ImageView
         android:tag="82"
         style="@style/SlotClickArea"
-        app:layout_marginTopPercent="39.96%"
+        app:layout_heightPercent="13.38%"
+        app:layout_marginTopPercent="33.33%"
         app:layout_marginLeftPercent="79.92%" />
+    <pl.droidsonroids.gif.GifImageView
+        android:src="@drawable/person_26"
+        app:layout_marginTopPercent="33.33%"
+        app:layout_marginLeftPercent="79.92%"
+        style="@style/SlotPerson"/>
 
     <RelativeLayout
         android:id="@+id/lockedMapBlocker"

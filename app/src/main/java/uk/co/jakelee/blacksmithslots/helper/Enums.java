@@ -172,9 +172,9 @@ public class Enums {
         Map13Deranged(58), Map13Miner(59), Map13Distorted(60), Map13Sailor(61), Map13Kitchen(62),
         Map14Frankie(63), Map14Bobbie(64), Map14Danny(65), Map14Jimmy(66), Map14BigTony(67),
         Map15Red(68), Map15Yellow(69), Map15Green(70), Map15Blue(71), Map15Robot(72),
-        Map16Furnace(73), Map16Accessories(74), Map16Tools(75), Map16Weapons(75), Map16Armour(77),
+        Map16Furnace(73), Map16Accessories(74), Map16Tools(75), Map16Weapons(76), Map16Armour(77),
         Map17Blue(78), Map17Yellow(79), Map17Orange(80), Map17Green(81), Map17Red(82),
-        Map18Watchers(83), Map18Guard(84), Map18Bronze(85), Map18Iron(86), Map18Steel(86), Map18Mithril(88), Map18Purple(89),
+        Map18Watchers(83), Map18Guard(84), Map18Bronze(85), Map18Iron(86), Map18Steel(87), Map18Mithril(88), Map18Purple(89),
         Map19Touch(90), Map19Travel(91), Map19Hunger(92), Map19Defence(93), Map19Melee(94), Map19Archery(95), Map19Protection(96), Map19Power(97), Map19Boss(98),
         Map20PixelBlacksmith(99), Map20TradesEntrance(100);
 
