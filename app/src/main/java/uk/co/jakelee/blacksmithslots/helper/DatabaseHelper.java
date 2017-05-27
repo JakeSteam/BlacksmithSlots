@@ -200,7 +200,7 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
             tasks.add(new Task(Enums.Slot.Map1Mom, 1, Enums.Tier.Bronze, Enums.Type.Hatchet, 1));
             itemBundles.add(new ItemBundle(Enums.Slot.Map1Mom, Enums.Tier.Bronze, Enums.Type.Ore, 5, 10));
             itemBundles.add(new ItemBundle(Enums.Slot.Map1Mom, Enums.Tier.Bronze, Enums.Type.Secondary, 5, 10));
-            itemBundles.add(new ItemBundle(Enums.Slot.Map1Mom, Enums.Tier.Internal, Enums.Type.Wildcard, 1, 1));
+            itemBundles.add(new ItemBundle(Enums.Slot.Map1Mom, Enums.Tier.Internal, Enums.Type.Wildcard, 3, 1));
 
             // Map 2
             slots.add(new Slot(Enums.Slot.Map2Furnace, 1, 5, 4, Enums.Person.LowLevelBlacksmith, Enums.Map.Neighbourhood));

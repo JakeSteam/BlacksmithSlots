@@ -14,7 +14,7 @@
     <string name="rate_dialog_cancel">Later</string>
     <string name="rate_dialog_no">No >:(</string>
 
-    <string name="alert_items_submitted">Handed in %1$s to complete task at %2$s!</string>
+    <string name="alert_items_submitted">Handed in %1$s to complete task at \"%2$s\"!</string>
     <string name="alert_statistic_achieved">Achieved %1$s and completed task at %2$s!</string>
     <string name="alert_no_matches">No matches!</string>
     <string name="alert_quest_completed">Quest completed!</string>

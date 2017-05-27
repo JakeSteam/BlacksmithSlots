@@ -233,26 +233,26 @@ public class ShopActivity extends BaseActivity implements BillingProcessor.IBill
         params.setMargins(10, 10, 10, 10);
         LayoutInflater inflater = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         List<ItemBundle> iaps = IapHelper.getBundlesForItem(item.first, item.second);
-        int imageResource = getResources().getIdentifier(DisplayHelper.getItemImageFile(item.first, item.second), "drawable", getPackageName());
-        String itemName = Inventory.getName(this, item.first, item.second);
+
         for (ItemBundle iap : iaps) {
-            RelativeLayout itemTile = (RelativeLayout) inflater.inflate(R.layout.custom_iap_tile, null).findViewById(R.id.iapTile);
+            LinearLayout itemTile = (LinearLayout) inflater.inflate(R.layout.custom_iap_tile, null).findViewById(R.id.iapTile);
+            int imageResource = getResources().getIdentifier(DisplayHelper.getItemImageFile(item.first, item.second, iap.getQuantity()), "drawable", getPackageName());
+
             ((ImageView)itemTile.findViewById(R.id.itemImage)).setImageResource(imageResource);
-            ((TextView)itemTile.findViewById(R.id.itemName)).setText(itemName);
-            ((TextView)itemTile.findViewById(R.id.itemQuantity)).setText(iap.getQuantity() + "x");
+            ((TextView)itemTile.findViewById(R.id.itemPrice)).setText("$1.99");
             final Iap iapItem = Iap.get(iap.getIdentifier());
             if (bp != null) {
                 SkuDetails iapInfo = bp.getPurchaseListingDetails(iapItem.getIapName());
                 if (iapInfo != null) {
                     ((TextView) itemTile.findViewById(R.id.itemPrice)).setText(iapInfo.toString());
                 }
-                itemTile.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        buyIAP(iapItem.getIapName());
-                    }
-                });
             }
+            itemTile.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    buyIAP(iapItem.getIapName());
+                }
+            });
             bundleItemContainer.addView(itemTile, params);
         }
     }

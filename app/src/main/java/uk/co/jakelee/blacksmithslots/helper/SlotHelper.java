@@ -186,6 +186,11 @@ public class SlotHelper {
         ((TextView)activity.findViewById(R.id.spinButton)).setText(R.string.spin);
         ((TextView)activity.findViewById(R.id.rowsActive)).setText(Integer.toString(slot.getCurrentRows()));
         ((TextView)activity.findViewById(R.id.amountGambled)).setText(Integer.toString(slot.getCurrentStake()));
+
+        activity.findViewById(R.id.increaseRows).setAlpha(slot.getCurrentRows() == slot.getMaximumRows() ? 0.25f : 1);
+        activity.findViewById(R.id.decreaseRows).setAlpha(slot.getCurrentRows() == slot.getMinimumRows() ? 0.25f : 1);
+        activity.findViewById(R.id.increaseStake).setAlpha(slot.getCurrentStake() == slot.getMaximumStake() ? 0.25f : 1);
+        activity.findViewById(R.id.decreaseStake).setAlpha(slot.getCurrentStake() == slot.getMinimumStake() ? 0.25f : 1);
     }
 
     public void afterSpinUpdate() {
