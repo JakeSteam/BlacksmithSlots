@@ -8,6 +8,7 @@ import com.orm.dsl.Table;
 
 import java.util.Locale;
 
+import uk.co.jakelee.blacksmithslots.helper.DisplayHelper;
 import uk.co.jakelee.blacksmithslots.helper.Enums;
 
 @Table(name = "d")
@@ -60,22 +61,34 @@ public class ItemBundle extends SugarRecord {
         this.bundleType = Enums.ItemBundleType.SlotResource.value;
     }
 
-    // Used by bundle IAPs
-    public ItemBundle(Enums.Iap iap, Enums.Tier tier, Enums.Type type, int quantity) {
-        this.tier = tier.value;
-        this.type = type.value;
-        this.quantity = quantity;
-        this.identifier = iap.value;
-        this.bundleType = Enums.ItemBundleType.IapReward.value;
-    }
 
-    // Used by pass IAPs
+    // Used by pass reward resources
     public ItemBundle(int day, Enums.Tier tier, Enums.Type type, int quantity) {
         this.tier = tier.value;
         this.type = type.value;
         this.quantity = quantity;
         this.identifier = day;
         this.bundleType = Enums.ItemBundleType.PassReward.value;
+    }
+
+    // Used by VIP / BS pass IAPs
+    public ItemBundle(Enums.Iap iap, Enums.Tier tier, Enums.Type type, int quantity) {
+        this.tier = tier.value;
+        this.type = type.value;
+        this.quantity = quantity;
+        this.identifier = iap.value;
+        this.weighting = 0;
+        this.bundleType = Enums.ItemBundleType.IapReward.value;
+    }
+
+    // Used by bundle IAPs
+    public ItemBundle(Enums.Iap iap, Enums.Tier tier, Enums.Type type, int quantity, int price) {
+        this.tier = tier.value;
+        this.type = type.value;
+        this.quantity = quantity;
+        this.identifier = iap.value;
+        this.weighting = price;
+        this.bundleType = Enums.ItemBundleType.IapReward.value;
     }
 
     public int getIdentifier() {
@@ -112,6 +125,10 @@ public class ItemBundle extends SugarRecord {
 
     public int getWeighting() {
         return weighting;
+    }
+
+    public String getPrice() {
+        return DisplayHelper.centsToDollars(getWeighting());
     }
 
     public void setWeighting(int weighting) {

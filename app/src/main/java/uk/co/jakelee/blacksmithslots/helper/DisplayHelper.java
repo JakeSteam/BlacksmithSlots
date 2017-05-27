@@ -154,4 +154,8 @@ public class DisplayHelper {
             layout.addView(itemRow, params);
         }
     }
+
+    public static String centsToDollars(int cents) {
+        return "$" + (cents / 100d);
+    }
 }

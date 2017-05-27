@@ -186,6 +186,7 @@ public class ShopActivity extends BaseActivity implements BillingProcessor.IBill
             vipUpgrade.setVisibility(View.GONE);
         } else {
             vipIntro.setText(String.format(Locale.ENGLISH, getString(R.string.vip_intro), vipLevel + 1));
+            vipUpgrade.setText(String.format(Locale.ENGLISH, getString(R.string.vip_upgrade_price), DisplayHelper.centsToDollars(IapHelper.getVipPrice(vipLevel + 1))));
 
             String vipBonusesText = DisplayHelper.bundlesToString(this, IapHelper.getVipRewardsForLevel(vipLevel + 1), 1, true, "- ", "\n");
             vipBonusesText += "-" + getString(R.string.chest_cooldown) + " -" + String.format(Locale.ENGLISH, getString(R.string.time_hours), Constants.CHEST_COOLDOWN_VIP_REDUCTION);
@@ -239,7 +240,7 @@ public class ShopActivity extends BaseActivity implements BillingProcessor.IBill
             int imageResource = getResources().getIdentifier(DisplayHelper.getItemImageFile(item.first, item.second, iap.getQuantity()), "drawable", getPackageName());
 
             ((ImageView)itemTile.findViewById(R.id.itemImage)).setImageResource(imageResource);
-            ((TextView)itemTile.findViewById(R.id.itemPrice)).setText("$1.99");
+            ((TextView)itemTile.findViewById(R.id.itemPrice)).setText(iap.getPrice());
             final Iap iapItem = Iap.get(iap.getIdentifier());
             if (bp != null) {
                 SkuDetails iapInfo = bp.getPurchaseListingDetails(iapItem.getIapName());

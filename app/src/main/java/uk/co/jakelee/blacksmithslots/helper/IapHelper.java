@@ -60,4 +60,16 @@ public class IapHelper {
     public static List<ItemBundle> getBundlesForItem(int tier, int type) {
         return Select.from(ItemBundle.class).where("a > " + Enums.Iap.VipLevel6.value + " AND f = " + Enums.ItemBundleType.IapReward.value + " AND b = " + tier + " AND c = " + type).list();
     }
+
+    public static int getVipPrice(int level) {
+        switch (level) {
+            case 1: return 249;
+            case 2: return 399;
+            case 3: return 499;
+            case 4: return 749;
+            case 5: return 1099;
+            case 6: return 1599;
+        }
+        return 0;
+    }
 }
