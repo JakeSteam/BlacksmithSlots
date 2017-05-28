@@ -19,7 +19,7 @@
         app:layout_marginTopPercent="39.96%"
         app:layout_marginLeftPercent="19.98%" />
     <pl.droidsonroids.gif.GifImageView
-        android:src="@drawable/person_26"
+        android:src="@drawable/person_46"
         app:layout_marginTopPercent="39.96%"
         app:layout_marginLeftPercent="26.64%"
         style="@style/SlotPerson"/>
@@ -45,7 +45,7 @@
         app:layout_marginTopPercent="73.26%"
         app:layout_marginLeftPercent="19.98%" />
     <pl.droidsonroids.gif.GifImageView
-        android:src="@drawable/person_26"
+        android:src="@drawable/person_44"
         app:layout_marginTopPercent="79.92%"
         app:layout_marginLeftPercent="19.98%"
         style="@style/SlotPerson"/>
@@ -59,7 +59,7 @@
         app:layout_marginTopPercent="73.26%"
         app:layout_marginLeftPercent="39.96%" />
     <pl.droidsonroids.gif.GifImageView
-        android:src="@drawable/person_26"
+        android:src="@drawable/person_45"
         app:layout_marginTopPercent="79.92%"
         app:layout_marginLeftPercent="39.96%"
         style="@style/SlotPerson"/>
@@ -71,7 +71,7 @@
         app:layout_marginTopPercent="33.33%"
         app:layout_marginLeftPercent="79.92%" />
     <pl.droidsonroids.gif.GifImageView
-        android:src="@drawable/person_26"
+        android:src="@drawable/person_43"
         app:layout_marginTopPercent="33.33%"
         app:layout_marginLeftPercent="79.92%"
         style="@style/SlotPerson"/>

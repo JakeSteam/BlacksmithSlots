@@ -107,7 +107,7 @@ public class Enums {
         RedBook(27), YellowBook(28), GreenBook(29), BlueBook(30), Robot(31),
         Skeleton(32), Skeleton2(33), Ghost(34), Ghost2(35), HighLevelBlacksmith(36),
         BronzeAdventurer(37), IronAdventurer(38), SteelAdventurer(39), MithrilAdventurer(40),
-        Boss(41), PixelBlacksmith(42);
+        Boss(41), PixelBlacksmith(42), JewellerRed(43), JewellerOrange(44), JewellerGreen(45), JewellerBlue(46);
         public int value;
         Person(int value) {
             this.value = value;

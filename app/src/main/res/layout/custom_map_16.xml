@@ -18,7 +18,7 @@
         app:layout_marginTopPercent="53.28%"
         app:layout_marginLeftPercent="53.28%" />
     <pl.droidsonroids.gif.GifImageView
-        android:src="@drawable/person_26"
+        android:src="@drawable/person_36"
         app:layout_marginTopPercent="53.28%"
         app:layout_marginLeftPercent="53.28%"
         style="@style/SlotPerson"/>
@@ -53,9 +53,9 @@
         app:layout_marginTopPercent="13.32%"
         app:layout_marginLeftPercent="46.62%" />
     <pl.droidsonroids.gif.GifImageView
-        android:src="@drawable/person_35"
-        app:layout_marginTopPercent="13.32%"
-        app:layout_marginLeftPercent="13.32%"
+        android:src="@drawable/person_32"
+        app:layout_marginTopPercent="16.32%"
+        app:layout_marginLeftPercent="49.62%"
         style="@style/SlotPerson"/>
 
     <ImageView
