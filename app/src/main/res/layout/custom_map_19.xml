@@ -120,15 +120,15 @@
         android:tag="98"
         style="@style/SlotClickArea"
         app:layout_heightPercent="19.98%"
-        app:layout_widthPercent="13.32%"
+        app:layout_widthPercent="19.98%"
         app:layout_marginTopPercent="33.33%"
         app:layout_marginLeftPercent="39.96%" />
     <pl.droidsonroids.gif.GifImageView
         android:src="@drawable/person_41"
         app:layout_heightPercent="13.32%"
         app:layout_widthPercent="13.32%"
-        app:layout_marginTopPercent="33.33%"
-        app:layout_marginLeftPercent="39.96%"
+        app:layout_marginTopPercent="36.33%"
+        app:layout_marginLeftPercent="43%"
         style="@style/SlotPerson"/>
 
     <RelativeLayout

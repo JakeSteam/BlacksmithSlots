@@ -500,12 +500,12 @@
 
     <string name="slot_44_name">Pale Narrow</string>
     <string name="slot_44_locked">I sure do love gems.</string>
-    <string name="slot_44_unlocked">Go gems to trade?</string>
+    <string name="slot_44_unlocked">Got gems to trade?</string>
     <string name="task_44_1_text">Got any yellow ones?</string>
 
     <string name="slot_45_name">Old Fashioned</string>
     <string name="slot_45_locked">Meh, you can keep your fancy iron and steel, bronze has always been enough for me. </string>
-    <string name="slot_45_unlocked">Go gems to trade?</string>
+    <string name="slot_45_unlocked">The classics are the best!</string>
     <string name="task_45_1_text">The ore is the best bit, such a lovely colour!</string>
     <string name="task_45_2_text">Mind you, the secondary is pretty good too... I can\'t decide which I like more!</string>
 
