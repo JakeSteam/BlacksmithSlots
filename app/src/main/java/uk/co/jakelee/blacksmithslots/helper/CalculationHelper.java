@@ -11,4 +11,9 @@ public class CalculationHelper {
     public static boolean randomBoolean() {
         return new Random().nextInt(2) == 1;
     }
+
+    public static int randomNumber(int minimum, int maximum) {
+        Random random = new Random();
+        return random.nextInt((maximum - minimum) + 1) + minimum;
+    }
 }

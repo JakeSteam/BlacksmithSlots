@@ -160,4 +160,34 @@ public class DisplayHelper {
     public static String centsToDollars(int cents) {
         return "$" + (cents / 100d);
     }
+
+    public static int getMinTypeForTier(int tier) {
+        switch (tier) {
+            case 0: return 20;
+            case 1: return 1;
+            case 2: return 1;
+            case 3: return 1;
+            case 4: return 1;
+            case 5: return 1;
+            case 6: return 35;
+            case 7: return 35;
+            case 10: return 21;
+        }
+        return 1;
+    }
+
+    public static int getMaxTypeForTier(int tier) {
+        switch (tier) {
+            case 0: return 53;
+            case 1: return 19;
+            case 2: return 19;
+            case 3: return 19;
+            case 4: return 19;
+            case 5: return 2;
+            case 6: return 39;
+            case 7: return 40;
+            case 10: return 33;
+        }
+        return 1;
+    }
 }
