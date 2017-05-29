@@ -31,6 +31,7 @@ import kankan.wheel.widget.OnWheelScrollListener;
 import kankan.wheel.widget.WheelView;
 import uk.co.jakelee.blacksmithslots.R;
 import uk.co.jakelee.blacksmithslots.constructs.WinRoute;
+import uk.co.jakelee.blacksmithslots.main.MinigameChestActivity;
 import uk.co.jakelee.blacksmithslots.main.MinigameFlipActivity;
 import uk.co.jakelee.blacksmithslots.main.SlotActivity;
 import uk.co.jakelee.blacksmithslots.model.Inventory;
@@ -115,6 +116,17 @@ public class SlotHelper {
             } else {
                 AlertHelper.info(activity, "Unlucky, won nothing from flip minigame!", false);
             }
+        } else if (requestCode == Constants.MINIGAME_CHEST) {
+            if (data.getIntExtra("quantity", 0) > 0) {
+                ItemBundle winnings = new ItemBundle(
+                        data.getIntExtra("tier", 0),
+                        data.getIntExtra("type", 0),
+                        data.getIntExtra("quantity", 0)
+                );
+                AlertHelper.success(activity, "Won " + winnings.toString(activity) + " from flip minigame!", true);
+            } else {
+                AlertHelper.info(activity, "Unlucky, won nothing from chest minigame!", false);
+            }
         }
     }
 
@@ -150,10 +162,12 @@ public class SlotHelper {
                         updateStatus();
                         afterSpinUpdate();
                         if (minigameToLoad != null) {
-                            activity.startActivityForResult(new Intent(activity, MinigameFlipActivity.class)
+                            Class classToLoad = minigameToLoad == Enums.Type.MinigameFlip ? MinigameFlipActivity.class : MinigameChestActivity.class;
+                            int requestCode = minigameToLoad == Enums.Type.MinigameFlip ? Constants.MINIGAME_FLIP : Constants.MINIGAME_CHEST;
+                            activity.startActivityForResult(new Intent(activity, classToLoad)
                                     .addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT)
                                     .putExtra("slot", slot.getSlotId()),
-                                    Constants.MINIGAME_FLIP);
+                                    requestCode);
                             minigameToLoad = null;
                         } else if (autospinsLeft > 0) {
                             handler.postDelayed(new Runnable() {

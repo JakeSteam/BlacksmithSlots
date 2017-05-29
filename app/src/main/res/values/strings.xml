@@ -998,6 +998,7 @@
     <string name="exit">Exit</string>
     <string name="spin">Spin</string>
     <string name="minigame_flip_gamble">Take another gamble?</string>
+    <string name="minigame_chest_info">Pick a chest, you only get one chance!</string>
     <string name="gamble">Gamble</string>
     <string name="stick">Stick</string>
     <string name="close">Close</string>

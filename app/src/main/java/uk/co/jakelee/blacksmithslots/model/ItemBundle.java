@@ -36,6 +36,11 @@ public class ItemBundle extends SugarRecord {
     }
 
     // Used to move data around
+    public ItemBundle (int tier, int type, int quantity) {
+        this.tier = tier;
+        this.type = type;
+        this.quantity = quantity;
+    }
     public ItemBundle (Enums.Tier tier, Enums.Type type, int quantity) {
         this.tier = tier.value;
         this.type = type.value;
