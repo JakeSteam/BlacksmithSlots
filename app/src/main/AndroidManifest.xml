@@ -75,6 +75,9 @@
         <activity android:name=".main.MinigameChestActivity"
             android:screenOrientation="sensorLandscape"
             android:theme="@style/Theme.Dimmed" />
+        <activity android:name=".main.MinigameDiceActivity"
+            android:screenOrientation="sensorLandscape"
+            android:theme="@style/Theme.Dimmed" />
         <activity android:name=".main.ShopActivity"
             android:screenOrientation="sensorLandscape"
             android:theme="@style/Theme.Dimmed" />

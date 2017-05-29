@@ -31,8 +31,7 @@ import kankan.wheel.widget.OnWheelScrollListener;
 import kankan.wheel.widget.WheelView;
 import uk.co.jakelee.blacksmithslots.R;
 import uk.co.jakelee.blacksmithslots.constructs.WinRoute;
-import uk.co.jakelee.blacksmithslots.main.MinigameChestActivity;
-import uk.co.jakelee.blacksmithslots.main.MinigameFlipActivity;
+import uk.co.jakelee.blacksmithslots.main.MinigameActivity;
 import uk.co.jakelee.blacksmithslots.main.SlotActivity;
 import uk.co.jakelee.blacksmithslots.model.Inventory;
 import uk.co.jakelee.blacksmithslots.model.ItemBundle;
@@ -96,7 +95,7 @@ public class SlotHelper {
     }
 
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == Constants.MINIGAME_FLIP) {
+        if (requestCode == Constants.MINIGAME_FLIP || requestCode == Constants.MINIGAME_DICE) {
             if (resultCode > 0) {
                 StringBuilder itemText = new StringBuilder();
                 for (ItemBundle itemBundle : slotResources) {
@@ -112,9 +111,9 @@ public class SlotHelper {
                 String resourceString = itemText.toString();
                 resourceString = resourceString.length() > 0 ? resourceString.substring(0, resourceString.length() - 2) : "";
 
-                AlertHelper.success(activity, "Won " + resourceString + " from flip minigame!", true);
+                AlertHelper.success(activity, "Won " + resourceString + " from minigame!", true);
             } else {
-                AlertHelper.info(activity, "Unlucky, won nothing from flip minigame!", false);
+                AlertHelper.info(activity, "Unlucky, won nothing from minigame!", false);
             }
         } else if (requestCode == Constants.MINIGAME_CHEST) {
             if (data.getIntExtra("quantity", 0) > 0) {
@@ -162,12 +161,14 @@ public class SlotHelper {
                         updateStatus();
                         afterSpinUpdate();
                         if (minigameToLoad != null) {
-                            Class classToLoad = minigameToLoad == Enums.Type.MinigameFlip ? MinigameFlipActivity.class : MinigameChestActivity.class;
-                            int requestCode = minigameToLoad == Enums.Type.MinigameFlip ? Constants.MINIGAME_FLIP : Constants.MINIGAME_CHEST;
-                            activity.startActivityForResult(new Intent(activity, classToLoad)
-                                    .addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT)
-                                    .putExtra("slot", slot.getSlotId()),
-                                    requestCode);
+                            Class classToLoad = MinigameActivity.getClassToLoad(minigameToLoad);
+                            int requestCode = MinigameActivity.getRequestCode(minigameToLoad);
+                            if (classToLoad != null && requestCode > 0) {
+                                activity.startActivityForResult(new Intent(activity, classToLoad)
+                                                .addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT)
+                                                .putExtra("slot", slot.getSlotId()),
+                                        requestCode);
+                            }
                             minigameToLoad = null;
                         } else if (autospinsLeft > 0) {
                             handler.postDelayed(new Runnable() {

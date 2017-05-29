@@ -71,7 +71,7 @@
         <item name="android:background">@drawable/background_brown</item>
     </style>
 
-    <style name="ChestMinigame">
+    <style name="MinigameIcon">
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">50dp</item>
         <item name="android:layout_weight">1</item>

@@ -12,6 +12,7 @@ public class Constants {
 
     public final static int MINIGAME_FLIP = 123;
     public final static int MINIGAME_CHEST = 1723;
+    public final static int MINIGAME_DICE = 1923;
     public final static int ADVERT_WATCH = 12223;
 
     // IAP Constants

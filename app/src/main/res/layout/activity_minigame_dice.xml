@@ -4,7 +4,7 @@
     android:id="@+id/parent"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="uk.co.jakelee.blacksmithslots.main.MinigameChestActivity">
+    tools:context="uk.co.jakelee.blacksmithslots.main.MinigameDiceActivity">
 
     <ImageView
         android:layout_width="match_parent"
@@ -21,7 +21,6 @@
         style="@style/VerticalScrollbar"
         android:layout_centerInParent="true">
         <LinearLayout
-            android:id="@+id/chestContainer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="15dp"
@@ -29,26 +28,28 @@
             android:orientation="vertical"
             android:gravity="center_horizontal">
             <LinearLayout
+                android:id="@+id/diceContainer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
-                <ImageView style="@style/MinigameIcon"/>
-                <ImageView style="@style/MinigameIcon"/>
-                <ImageView style="@style/MinigameIcon"/>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-                <ImageView style="@style/MinigameIcon"/>
-                <ImageView style="@style/MinigameIcon"/>
-                <ImageView style="@style/MinigameIcon"/>
+                <ImageView style="@style/MinigameIcon" android:src="@drawable/dice_1"/>
+                <ImageView style="@style/MinigameIcon" android:src="@drawable/dice_2"/>
+                <ImageView style="@style/MinigameIcon" android:src="@drawable/dice_3"/>
             </LinearLayout>
             <uk.co.jakelee.blacksmithslots.components.FontTextView
                 android:id="@+id/description"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/minigame_chest_info"
+                android:text="@string/minigame_dice_info"
                 android:maxLines="3"
                 style="@style/FontSize"/>
+            <uk.co.jakelee.blacksmithslots.components.FontTextView
+                android:id="@+id/roll"
+                android:layout_width="wrap_content"
+                android:background="@drawable/box_green"
+                android:text="Roll"
+                android:maxLines="1"
+                android:layout_margin="5dp"
+                style="@style/SlotText"/>
             <uk.co.jakelee.blacksmithslots.components.FontTextView
                 android:id="@+id/close"
                 android:layout_width="wrap_content"
@@ -58,7 +59,7 @@
                 android:maxLines="1"
                 android:layout_margin="5dp"
                 style="@style/SlotText"
-                android:visibility="invisible"/>
+                android:visibility="gone"/>
         </LinearLayout>
     </ScrollView>
 
