@@ -47,7 +47,12 @@ public class Enums {
         BronzeOre1000(10), BronzeOre5000(11),BronzeOre10000(12),
         BronzeSecondary1000(13), BronzeSecondary5000(14),BronzeSecondary10000(15),
         IronOre1000(16), IronOre5000(17),IronOre10000(18),
-        IronSecondary1000(19), IronSecondary5000(20),IronSecondary10000(21);
+        IronSecondary1000(19), IronSecondary5000(20),IronSecondary10000(21),
+        SteelOre1000(22), SteelOre5000(23),SteelOre10000(24),
+        SteelSecondary1000(25), SteelSecondary5000(26),SteelSecondary10000(27),
+        MithrilOre1000(28), MithrilOre5000(29),MithrilOre10000(30),
+        MithrilSecondary1000(31), MithrilSecondary5000(32),MithrilSecondary10000(33),
+        GemRed(34), GemBlue(35), GemGreen(36), GremOrange(37), GemYellow(38);
         public int value;
         Iap(int value) {
             this.value = value;

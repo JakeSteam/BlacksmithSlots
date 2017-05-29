@@ -129,16 +129,33 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
         iapBundles.add(new ItemBundle(Enums.Iap.VipLevel1, Enums.Tier.Bronze, Enums.Type.Secondary, 1000));
 
         iaps.add(new Iap(Enums.Iap.VipLevel2, true));
-        iapBundles.add(new ItemBundle(Enums.Iap.VipLevel2, Enums.Tier.Bronze, Enums.Type.Bar, 2000));
-        iapBundles.add(new ItemBundle(Enums.Iap.VipLevel2, Enums.Tier.Bronze, Enums.Type.Secondary, 2000));
+        iapBundles.add(new ItemBundle(Enums.Iap.VipLevel2, Enums.Tier.Iron, Enums.Type.Bar, 1000));
+        iapBundles.add(new ItemBundle(Enums.Iap.VipLevel2, Enums.Tier.Iron, Enums.Type.Secondary, 1000));
 
         iaps.add(new Iap(Enums.Iap.VipLevel3, true));
-        iapBundles.add(new ItemBundle(Enums.Iap.VipLevel3, Enums.Tier.Bronze, Enums.Type.Bar, 2000));
-        iapBundles.add(new ItemBundle(Enums.Iap.VipLevel3, Enums.Tier.Bronze, Enums.Type.Secondary, 2000));
+        iapBundles.add(new ItemBundle(Enums.Iap.VipLevel3, Enums.Tier.Steel, Enums.Type.Bar, 1000));
+        iapBundles.add(new ItemBundle(Enums.Iap.VipLevel3, Enums.Tier.Steel, Enums.Type.Secondary, 1000));
 
         iaps.add(new Iap(Enums.Iap.VipLevel4, true));
+        iapBundles.add(new ItemBundle(Enums.Iap.VipLevel4, Enums.Tier.Mithril, Enums.Type.Bar, 1000));
+        iapBundles.add(new ItemBundle(Enums.Iap.VipLevel4, Enums.Tier.Mithril, Enums.Type.Secondary, 1000));
+
         iaps.add(new Iap(Enums.Iap.VipLevel5, true));
+        iapBundles.add(new ItemBundle(Enums.Iap.VipLevel5, Enums.Tier.None, Enums.Type.GemRed, 75));
+        iapBundles.add(new ItemBundle(Enums.Iap.VipLevel5, Enums.Tier.None, Enums.Type.GemBlue, 75));
+        iapBundles.add(new ItemBundle(Enums.Iap.VipLevel5, Enums.Tier.None, Enums.Type.GemGreen, 75));
+        iapBundles.add(new ItemBundle(Enums.Iap.VipLevel5, Enums.Tier.None, Enums.Type.GemOrange, 75));
+        iapBundles.add(new ItemBundle(Enums.Iap.VipLevel5, Enums.Tier.None, Enums.Type.GemYellow, 75));
+
         iaps.add(new Iap(Enums.Iap.VipLevel6, true));
+        iapBundles.add(new ItemBundle(Enums.Iap.VipLevel6, Enums.Tier.Bronze, Enums.Type.Bar, 500));
+        iapBundles.add(new ItemBundle(Enums.Iap.VipLevel6, Enums.Tier.Bronze, Enums.Type.Secondary, 500));
+        iapBundles.add(new ItemBundle(Enums.Iap.VipLevel6, Enums.Tier.Iron, Enums.Type.Bar, 500));
+        iapBundles.add(new ItemBundle(Enums.Iap.VipLevel6, Enums.Tier.Iron, Enums.Type.Secondary, 500));
+        iapBundles.add(new ItemBundle(Enums.Iap.VipLevel6, Enums.Tier.Steel, Enums.Type.Bar, 500));
+        iapBundles.add(new ItemBundle(Enums.Iap.VipLevel6, Enums.Tier.Steel, Enums.Type.Secondary, 500));
+        iapBundles.add(new ItemBundle(Enums.Iap.VipLevel6, Enums.Tier.Mithril, Enums.Type.Bar, 500));
+        iapBundles.add(new ItemBundle(Enums.Iap.VipLevel6, Enums.Tier.Mithril, Enums.Type.Secondary, 500));
 
         // Blacksmith's Pass
         iaps.add(new Iap(Enums.Iap.BlacksmithPass, 0, 0, false));
@@ -207,6 +224,35 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
         iapBundles.add(new ItemBundle(Enums.Iap.IronSecondary5000, Enums.Tier.Iron, Enums.Type.Secondary, 5000, 499));
         iaps.add(new Iap(Enums.Iap.IronSecondary10000, false));
         iapBundles.add(new ItemBundle(Enums.Iap.IronSecondary10000, Enums.Tier.Iron, Enums.Type.Secondary, 10000, 799));
+
+        iaps.add(new Iap(Enums.Iap.SteelOre1000, false));
+        iapBundles.add(new ItemBundle(Enums.Iap.SteelOre1000, Enums.Tier.Steel, Enums.Type.Ore, 1000, 249));
+        iaps.add(new Iap(Enums.Iap.SteelOre5000, false));
+        iapBundles.add(new ItemBundle(Enums.Iap.SteelOre5000, Enums.Tier.Steel, Enums.Type.Ore, 5000, 649));
+        iaps.add(new Iap(Enums.Iap.SteelOre10000, false));
+        iapBundles.add(new ItemBundle(Enums.Iap.SteelOre10000, Enums.Tier.Steel, Enums.Type.Ore, 10000, 999));
+
+        iaps.add(new Iap(Enums.Iap.SteelSecondary1000, false));
+        iapBundles.add(new ItemBundle(Enums.Iap.SteelSecondary1000, Enums.Tier.Steel, Enums.Type.Secondary, 1000, 249));
+        iaps.add(new Iap(Enums.Iap.SteelSecondary5000, false));
+        iapBundles.add(new ItemBundle(Enums.Iap.SteelSecondary5000, Enums.Tier.Steel, Enums.Type.Secondary, 5000, 649));
+        iaps.add(new Iap(Enums.Iap.SteelSecondary10000, false));
+        iapBundles.add(new ItemBundle(Enums.Iap.SteelSecondary10000, Enums.Tier.Steel, Enums.Type.Secondary, 10000, 999));
+
+        iaps.add(new Iap(Enums.Iap.MithrilOre1000, false));
+        iapBundles.add(new ItemBundle(Enums.Iap.MithrilOre1000, Enums.Tier.Mithril, Enums.Type.Ore, 1000, 299));
+        iaps.add(new Iap(Enums.Iap.MithrilOre5000, false));
+        iapBundles.add(new ItemBundle(Enums.Iap.MithrilOre5000, Enums.Tier.Mithril, Enums.Type.Ore, 5000, 749));
+        iaps.add(new Iap(Enums.Iap.MithrilOre10000, false));
+        iapBundles.add(new ItemBundle(Enums.Iap.MithrilOre10000, Enums.Tier.Mithril, Enums.Type.Ore, 10000, 1199));
+
+        iaps.add(new Iap(Enums.Iap.MithrilSecondary1000, false));
+        iapBundles.add(new ItemBundle(Enums.Iap.MithrilSecondary1000, Enums.Tier.Mithril, Enums.Type.Secondary, 1000, 299));
+        iaps.add(new Iap(Enums.Iap.MithrilSecondary5000, false));
+        iapBundles.add(new ItemBundle(Enums.Iap.MithrilSecondary5000, Enums.Tier.Mithril, Enums.Type.Secondary, 5000, 749));
+        iaps.add(new Iap(Enums.Iap.MithrilSecondary10000, false));
+        iapBundles.add(new ItemBundle(Enums.Iap.MithrilSecondary10000, Enums.Tier.Mithril, Enums.Type.Secondary, 10000, 1199));
+
         Iap.saveInTx(iaps);
         ItemBundle.saveInTx(iapBundles);
     }

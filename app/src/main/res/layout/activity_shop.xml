@@ -172,7 +172,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="30sp"
-                android:padding="10dp"
+                android:paddingTop="10dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="2dp"
                 style="@style/PassTabText" />
             <ScrollView
                 android:layout_width="match_parent"
@@ -185,7 +188,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="25sp"
-                    android:padding="10dp"
+                    android:paddingTop="2dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:paddingBottom="10dp"
                     style="@style/PassTabText"/>
             </ScrollView>
         </RelativeLayout>
