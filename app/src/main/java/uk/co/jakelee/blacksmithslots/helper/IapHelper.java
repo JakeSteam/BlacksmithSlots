@@ -54,11 +54,19 @@ public class IapHelper {
     }
 
     public static List<ItemBundle> getUniqueBundleItems() {
-        return Select.from(ItemBundle.class).where("a > " + Enums.Iap.VipLevel6.value + " AND f = " + Enums.ItemBundleType.IapReward.value + " GROUP BY b, c ORDER BY b, c").list();
+        List<ItemBundle> bundles =  Select.from(ItemBundle.class).where("a > " + Enums.Iap.VipLevel6.value + " " +
+                "AND f = " + Enums.ItemBundleType.IapReward.value + " " +
+                "AND b <> " + Enums.Tier.None.value + " " +
+                "GROUP BY b, c ORDER BY b, c").list();
+        bundles.add(new ItemBundle(0, 0, 0));return bundles;
     }
 
     public static List<ItemBundle> getBundlesForItem(int tier, int type) {
-        return Select.from(ItemBundle.class).where("a > " + Enums.Iap.VipLevel6.value + " AND f = " + Enums.ItemBundleType.IapReward.value + " AND b = " + tier + " AND c = " + type).list();
+        if (tier == Enums.Tier.None.value) {
+            return Select.from(ItemBundle.class).where("a > " + Enums.Iap.VipLevel6.value + " AND f = " + Enums.ItemBundleType.IapReward.value + " AND b = " + tier).list();
+        } else {
+            return Select.from(ItemBundle.class).where("a > " + Enums.Iap.VipLevel6.value + " AND f = " + Enums.ItemBundleType.IapReward.value + " AND b = " + tier + " AND c = " + type).list();
+        }
     }
 
     public static int getVipPrice(int level) {

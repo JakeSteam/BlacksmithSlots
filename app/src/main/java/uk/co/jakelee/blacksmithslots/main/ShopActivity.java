@@ -211,7 +211,11 @@ public class ShopActivity extends BaseActivity implements BillingProcessor.IBill
             if (preloadingTier > 0 && preloadingType > 0 && item.getTier().value == preloadingTier && item.getType().value == preloadingType) {
                 preloadedItemPosition = i;
             }
-            envAdapter.add(Inventory.getName(this, item.getTier(), item.getType()));
+            if (item.getTier() == Enums.Tier.None) {
+                envAdapter.add(getString(R.string.gems));
+            } else {
+                envAdapter.add(Inventory.getName(this, item.getTier(), item.getType()));
+            }
             dropdownItems.add(new Pair<>(item.getTier().value, item.getType().value));
         }
 
@@ -237,7 +241,7 @@ public class ShopActivity extends BaseActivity implements BillingProcessor.IBill
 
         for (ItemBundle iap : iaps) {
             LinearLayout itemTile = (LinearLayout) inflater.inflate(R.layout.custom_iap_tile, null).findViewById(R.id.iapTile);
-            int imageResource = getResources().getIdentifier(DisplayHelper.getItemImageFile(item.first, item.second, iap.getQuantity()), "drawable", getPackageName());
+            int imageResource = getResources().getIdentifier(DisplayHelper.getItemImageFile(iap), "drawable", getPackageName());
 
             ((ImageView)itemTile.findViewById(R.id.itemImage)).setImageResource(imageResource);
             ((TextView)itemTile.findViewById(R.id.itemPrice)).setText(iap.getPrice());
@@ -251,7 +255,7 @@ public class ShopActivity extends BaseActivity implements BillingProcessor.IBill
             itemTile.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    buyIAP(iapItem.getIapName());
+                    buyIAP(iapItem.getIapName().toLowerCase());
                 }
             });
             bundleItemContainer.addView(itemTile, params);

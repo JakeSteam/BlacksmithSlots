@@ -52,7 +52,7 @@ public class Enums {
         SteelSecondary1000(25), SteelSecondary5000(26),SteelSecondary10000(27),
         MithrilOre1000(28), MithrilOre5000(29),MithrilOre10000(30),
         MithrilSecondary1000(31), MithrilSecondary5000(32),MithrilSecondary10000(33),
-        GemRed(34), GemBlue(35), GemGreen(36), GremOrange(37), GemYellow(38);
+        GemRed(34), GemBlue(35), GemGreen(36), GemOrange(37), GemYellow(38);
         public int value;
         Iap(int value) {
             this.value = value;

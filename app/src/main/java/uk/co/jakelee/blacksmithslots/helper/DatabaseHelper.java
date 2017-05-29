@@ -253,6 +253,17 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
         iaps.add(new Iap(Enums.Iap.MithrilSecondary10000, false));
         iapBundles.add(new ItemBundle(Enums.Iap.MithrilSecondary10000, Enums.Tier.Mithril, Enums.Type.Secondary, 10000, 1199));
 
+        iaps.add(new Iap(Enums.Iap.GemBlue, false));
+        iapBundles.add(new ItemBundle(Enums.Iap.GemBlue, Enums.Tier.None, Enums.Type.GemBlue, 75, 149));
+        iaps.add(new Iap(Enums.Iap.GemGreen, false));
+        iapBundles.add(new ItemBundle(Enums.Iap.GemGreen, Enums.Tier.None, Enums.Type.GemGreen, 75, 149));
+        iaps.add(new Iap(Enums.Iap.GemOrange, false));
+        iapBundles.add(new ItemBundle(Enums.Iap.GemOrange, Enums.Tier.None, Enums.Type.GemOrange, 75, 149));
+        iaps.add(new Iap(Enums.Iap.GemRed, false));
+        iapBundles.add(new ItemBundle(Enums.Iap.GemRed, Enums.Tier.None, Enums.Type.GemRed, 75, 149));
+        iaps.add(new Iap(Enums.Iap.GemYellow, false));
+        iapBundles.add(new ItemBundle(Enums.Iap.GemYellow, Enums.Tier.None, Enums.Type.GemYellow, 75, 149));
+
         Iap.saveInTx(iaps);
         ItemBundle.saveInTx(iapBundles);
     }

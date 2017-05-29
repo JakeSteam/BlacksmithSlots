@@ -1029,4 +1029,5 @@
     <string name="dice_total_multiplier">Your total of %1$d earns you %2$s!</string>
     <string name="roll">Roll</string>
     <string name="reward_chances">Reward Chances</string>
+    <string name="gems">Gems</string>
 </resources>
