@@ -100,6 +100,7 @@
 
     <string name="tab_bundle">Item Bundles</string>
     <string name="bundle_item_select">Item:</string>
+    <string name="bundle_item_chance">Chance:</string>
 
     <!-- Inventory -->
     <string name="itemSourcesButton">Sources</string>
@@ -1027,4 +1028,5 @@
     <string name="unlocked">Unlocked</string>
     <string name="dice_total_multiplier">Your total of %1$d earns you %2$s!</string>
     <string name="roll">Roll</string>
+    <string name="reward_chances">Reward Chances</string>
 </resources>

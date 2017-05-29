@@ -87,6 +87,9 @@
         <activity android:name=".main.SlotDialogActivity"
             android:screenOrientation="sensorLandscape"
             android:theme="@style/Theme.Dimmed" />
+        <activity android:name=".main.SlotChancesActivity"
+            android:screenOrientation="sensorLandscape"
+            android:theme="@style/Theme.Dimmed" />
     </application>
 
 </manifest>

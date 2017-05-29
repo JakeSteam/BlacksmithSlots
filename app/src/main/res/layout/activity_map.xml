@@ -244,6 +244,13 @@
                         android:text="@string/message_log"
                         android:layout_margin="5dp"
                         style="@style/SlotText"/>
+                    <uk.co.jakelee.blacksmithslots.components.FontTextView
+                        android:id="@+id/openRewardChances"
+                        android:layout_width="match_parent"
+                        android:background="@drawable/box_white"
+                        android:text="@string/reward_chances"
+                        android:layout_margin="5dp"
+                        style="@style/SlotText"/>
                 </LinearLayout>
             </ScrollView>
         </RelativeLayout>
