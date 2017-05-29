@@ -31,13 +31,13 @@ import uk.co.jakelee.blacksmithslots.model.Setting;
 import uk.co.jakelee.blacksmithslots.model.Slot;
 
 public class InventoryActivity extends BaseActivity {
-    @BindView(R.id.inventoryTable) TableLayout inventoryTable;
+    @BindView(R.id.dataTable) TableLayout inventoryTable;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setContentView(R.layout.activity_inventory);
+        setContentView(R.layout.activity_data_table);
         ButterKnife.bind(this);
 
         LayoutInflater inflater = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);

@@ -38,7 +38,7 @@ public class SettingsActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setContentView(R.layout.activity_settings);
+        setContentView(R.layout.activity_data_table);
     }
 
     @Override
@@ -89,7 +89,7 @@ public class SettingsActivity extends BaseActivity {
     private void populateSettings() {
         spinnersInitialised = 0;
         LayoutInflater inflater = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        TableLayout settingTable = (TableLayout)findViewById(R.id.settingsTable);
+        TableLayout settingTable = (TableLayout)findViewById(R.id.dataTable);
         settingTable.removeAllViews();
         for (Enums.SettingGroup group : Enums.SettingGroup.values()) {
             if (group == Enums.SettingGroup.Internal) {

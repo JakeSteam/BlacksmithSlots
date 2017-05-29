@@ -24,10 +24,10 @@ public class StatisticsActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setContentView(R.layout.activity_statistics);
+        setContentView(R.layout.activity_data_table);
 
         LayoutInflater inflater = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        TableLayout statTable = (TableLayout)findViewById(R.id.statisticsTable);
+        TableLayout statTable = (TableLayout)findViewById(R.id.dataTable);
         for (Enums.StatisticType statisticType : Enums.StatisticType.values()) {
             List<Statistic> statistics = Statistic.find(Statistic.class, "i = " + statisticType.value);
             FontTextView textView = new FontTextView(this);

@@ -23,10 +23,10 @@ public class SlotChancesActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setContentView(R.layout.activity_slot_chances);
+        setContentView(R.layout.activity_data_table);
 
         LayoutInflater inflater = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        TableLayout statTable = (TableLayout)findViewById(R.id.dialogTable);
+        TableLayout statTable = (TableLayout)findViewById(R.id.dataTable);
 
         Intent intent = getIntent();
         Slot selectedSlot = Slot.get(intent.getIntExtra(Constants.INTENT_SLOT, 0));

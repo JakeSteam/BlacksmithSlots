@@ -12,7 +12,7 @@ public class CreditsActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setContentView(R.layout.activity_credits);
+        setContentView(R.layout.activity_data_table);
 
         // Android Wheel by ???
         // Sugar ORM

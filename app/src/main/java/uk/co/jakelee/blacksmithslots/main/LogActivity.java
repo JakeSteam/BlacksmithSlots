@@ -25,10 +25,10 @@ public class LogActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setContentView(R.layout.activity_log);
+        setContentView(R.layout.activity_data_table);
 
         LayoutInflater inflater = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        TableLayout statTable = (TableLayout)findViewById(R.id.messagesTable);
+        TableLayout statTable = (TableLayout)findViewById(R.id.dataTable);
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         List<Message> messages = Select.from(Message.class).orderBy("a DESC").list();
         for (Message message : messages) {
