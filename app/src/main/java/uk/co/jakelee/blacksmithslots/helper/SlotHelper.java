@@ -163,6 +163,7 @@ public class SlotHelper {
                         if (minigameToLoad != null) {
                             Class classToLoad = MinigameActivity.getClassToLoad(minigameToLoad);
                             int requestCode = MinigameActivity.getRequestCode(minigameToLoad);
+                            Statistic.add(MinigameActivity.getStatistic(minigameToLoad));
                             if (classToLoad != null && requestCode > 0) {
                                 activity.startActivityForResult(new Intent(activity, classToLoad)
                                                 .addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT)

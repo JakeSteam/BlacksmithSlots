@@ -978,8 +978,11 @@
     <string name="statistic_14_name">Last Advert Watched</string>
     <string name="statistic_15_name">BS Pass Current Day</string>
     <string name="statistic_16_name">BS Pass Highest Day</string>
-    <string name="statistic_17_name">BS Pass Days Claimed</string>
-    <string name="statistic_18_name">BS Pass Extra Months</string>
+    <string name="statistic_17_name">BS Pass Extra Months</string>
+    <string name="statistic_18_name">BS Pass Days Claimed</string>
+    <string name="statistic_19_name">Dice</string>
+    <string name="statistic_20_name">Chest</string>
+    <string name="statistic_21_name">Gamble</string>
     <string name="statistic_next_claim_name">Next Bonus Claim</string>
 
     <string name="statistictype_1_name">Progress</string>
@@ -987,6 +990,7 @@
     <string name="statistictype_3_name">Bonuses</string>
     <string name="statistictype_4_name">Blacksmith Pass</string>
     <string name="statistictype_5_name">Misc</string>
+    <string name="statistictype_6_name">Minigames</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
     <string name="alert_autospin">Autospin</string>

@@ -135,10 +135,12 @@ public class MinigameChestActivity extends MinigameActivity {
 
     @Override
     public void confirmClose() {
-        setResult(1, new Intent()
-                .putExtra("tier", winnings.getTier().value)
-                .putExtra("type", winnings.getType().value)
-                .putExtra("quantity", winnings.getQuantity()));
+        if (winnings != null) {
+            setResult(1, new Intent()
+                    .putExtra("tier", winnings.getTier().value)
+                    .putExtra("type", winnings.getType().value)
+                    .putExtra("quantity", winnings.getQuantity()));
+        }
         finish();
     }
 }

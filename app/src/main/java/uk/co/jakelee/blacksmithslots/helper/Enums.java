@@ -197,7 +197,7 @@ public class Enums {
     public enum Statistic {
         Xp(1), Level(2), TotalSpins(3), QuestsCompleted(4), LastAutosave(5), ResourcesGambled(6), ResourcesWon(7), AdvertsWatched(8), PacksPurchased(9),
         CollectedBonuses(10), VipLevel(11), LastBonusClaimed(12), SaveImported(13), LastAdvertWatched(14), CurrentPassClaimedDay(15), HighestPassClaimedDay(16), ExtraPassMonths(17),
-        TotalPassDaysClaimed(17);
+        TotalPassDaysClaimed(18), MinigameDice(19), MinigameChest(20), MinigameFlip(21);
         public int value;
         Statistic(int value) {
             this.value = value;
@@ -213,7 +213,7 @@ public class Enums {
     }
 
     public enum StatisticType {
-        Progress(1), Events(2), Bonuses(3), BlacksmithPass(4), Misc(5);
+        Progress(1), Events(2), Bonuses(3), BlacksmithPass(4), Misc(5), Minigames(6);
         public int value;
         StatisticType(int value) {
             this.value = value;

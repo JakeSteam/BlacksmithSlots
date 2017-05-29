@@ -35,4 +35,13 @@ public class MinigameActivity extends BaseActivity {
         }
         return 0;
     }
+
+    public static Enums.Statistic getStatistic(Enums.Type type) {
+        switch(type) {
+            case MinigameFlip: return Enums.Statistic.MinigameFlip;
+            case MinigameDice: return Enums.Statistic.MinigameDice;
+            case MinigameChest: return Enums.Statistic.MinigameChest;
+        }
+        return Enums.Statistic.Xp;
+    }
 }

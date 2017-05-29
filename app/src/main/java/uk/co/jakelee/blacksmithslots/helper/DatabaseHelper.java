@@ -1679,6 +1679,9 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
         statistics.add(new Statistic(Enums.StatisticType.BlacksmithPass, Enums.Statistic.HighestPassClaimedDay, "", "", 0));
         statistics.add(new Statistic(Enums.StatisticType.BlacksmithPass, Enums.Statistic.TotalPassDaysClaimed, "", "", 0));
         statistics.add(new Statistic(Enums.StatisticType.BlacksmithPass, Enums.Statistic.ExtraPassMonths, "", "", 0));
+        statistics.add(new Statistic(Enums.StatisticType.Minigames, Enums.Statistic.MinigameChest, "", "", 0));
+        statistics.add(new Statistic(Enums.StatisticType.Minigames, Enums.Statistic.MinigameDice, "", "", 0));
+        statistics.add(new Statistic(Enums.StatisticType.Minigames, Enums.Statistic.MinigameFlip, "", "", 0));
         Statistic.saveInTx(statistics);
     }
 }
