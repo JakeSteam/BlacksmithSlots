@@ -151,6 +151,32 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
             iapBundles.add(new ItemBundle(8, Enums.Tier.Bronze, Enums.Type.Ore, 180));
             iapBundles.add(new ItemBundle(9, Enums.Tier.Bronze, Enums.Type.Ore, 190));
             iapBundles.add(new ItemBundle(10, Enums.Tier.Bronze, Enums.Type.Ore, 250));
+            iapBundles.add(new ItemBundle(11, Enums.Tier.Iron, Enums.Type.Ore, 100));
+            iapBundles.add(new ItemBundle(12, Enums.Tier.Iron, Enums.Type.Ore, 120));
+            iapBundles.add(new ItemBundle(13, Enums.Tier.Iron, Enums.Type.Ore, 130));
+            iapBundles.add(new ItemBundle(14, Enums.Tier.Iron, Enums.Type.Ore, 140));
+            iapBundles.add(new ItemBundle(15, Enums.Tier.Iron, Enums.Type.Ore, 150));
+            iapBundles.add(new ItemBundle(16, Enums.Tier.Iron, Enums.Type.Ore, 160));
+            iapBundles.add(new ItemBundle(17, Enums.Tier.Iron, Enums.Type.Ore, 170));
+            iapBundles.add(new ItemBundle(18, Enums.Tier.Iron, Enums.Type.Ore, 180));
+            iapBundles.add(new ItemBundle(19, Enums.Tier.Iron, Enums.Type.Ore, 190));
+            iapBundles.add(new ItemBundle(20, Enums.Tier.Iron, Enums.Type.Ore, 250));
+            iapBundles.add(new ItemBundle(20, Enums.Tier.Bronze, Enums.Type.Ore, 250));
+            iapBundles.add(new ItemBundle(21, Enums.Tier.Iron, Enums.Type.Ore, 100));
+            iapBundles.add(new ItemBundle(22, Enums.Tier.Iron, Enums.Type.Ore, 120));
+            iapBundles.add(new ItemBundle(23, Enums.Tier.Iron, Enums.Type.Ore, 130));
+            iapBundles.add(new ItemBundle(24, Enums.Tier.Iron, Enums.Type.Ore, 140));
+            iapBundles.add(new ItemBundle(25, Enums.Tier.Iron, Enums.Type.Ore, 150));
+            iapBundles.add(new ItemBundle(26, Enums.Tier.Iron, Enums.Type.Ore, 160));
+            iapBundles.add(new ItemBundle(27, Enums.Tier.Iron, Enums.Type.Ore, 170));
+            iapBundles.add(new ItemBundle(28, Enums.Tier.Iron, Enums.Type.Ore, 180));
+            iapBundles.add(new ItemBundle(29, Enums.Tier.Bronze, Enums.Type.Ore, 190));
+            iapBundles.add(new ItemBundle(29, Enums.Tier.Iron, Enums.Type.Ore, 190));
+            iapBundles.add(new ItemBundle(29, Enums.Tier.Steel, Enums.Type.Ore, 190));
+            iapBundles.add(new ItemBundle(30, Enums.Tier.Bronze, Enums.Type.Ore, 250));
+            iapBundles.add(new ItemBundle(30, Enums.Tier.Iron, Enums.Type.Ore, 250));
+            iapBundles.add(new ItemBundle(30, Enums.Tier.Steel, Enums.Type.Ore, 250));
+            iapBundles.add(new ItemBundle(31, Enums.Tier.Steel, Enums.Type.Ore, 1000));
 
             // Bundles
             iaps.add(new Iap(Enums.Iap.BronzeOre1000, false));

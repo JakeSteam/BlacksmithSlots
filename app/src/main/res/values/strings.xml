@@ -84,7 +84,7 @@
     <!-- Shop -->
     <string name="shop">Shop</string>
     <string name="tab_pass">Blacksmith Pass</string>
-    <string name="pass_purchase">Buy Pass</string>
+    <string name="pass_purchase">Buy Pass ($3.99)</string>
     <string name="pass_claim">Claim</string>
     <string name="pass_days_left">%1$d days left</string>
     <string name="pass_desc_owned">Whilst your Blacksmith Pass is valid, you will receive free items every day!\n\nCheck back anytime between 00:00 and 23:59 to claim!</string>
