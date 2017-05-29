@@ -50,22 +50,29 @@ public class MinigameChestActivity extends MinigameActivity {
             List<ItemBundle> uniqueRewards = getUniqueRewards(slotId);
             if (uniqueRewards == null) {
                 finish();
+            } else {
+                populatePotentialRewards(uniqueRewards);
+                populateChests();
             }
-            populatePotentialRewards(uniqueRewards);
-            populateChests();
         }
     }
 
     private void populatePotentialRewards(List<ItemBundle> rewards) {
+        List<ItemBundle> rewardBundles = new ArrayList<>();
         ItemBundle rewardOne = rewards.get(0);
-        potentialRewards.add(new Pair<>(chestDrawables[0], new ItemBundle(rewardOne.getTier(), rewardOne.getType(), 0)));
-        potentialRewards.add(new Pair<>(chestDrawables[1], new ItemBundle(rewardOne.getTier(), rewardOne.getType(), 1)));
-        potentialRewards.add(new Pair<>(chestDrawables[2], new ItemBundle(rewardOne.getTier(), rewardOne.getType(), 5)));
-        potentialRewards.add(new Pair<>(chestDrawables[3], new ItemBundle(rewardOne.getTier(), rewardOne.getType(), 25)));
-
         ItemBundle rewardTwo = rewards.get(1);
-        potentialRewards.add(new Pair<>(chestDrawables[4], new ItemBundle(rewardTwo.getTier(), rewardTwo.getType(), 1)));
-        potentialRewards.add(new Pair<>(chestDrawables[5], new ItemBundle(rewardTwo.getTier(), rewardTwo.getType(), 5)));
+
+        rewardBundles.add(new ItemBundle(rewardOne.getTier(), rewardOne.getType(), 0));
+        rewardBundles.add(new ItemBundle(rewardOne.getTier(), rewardOne.getType(), 1));
+        rewardBundles.add(new ItemBundle(rewardOne.getTier(), rewardOne.getType(), 5));
+        rewardBundles.add(new ItemBundle(rewardOne.getTier(), rewardOne.getType(), 25));
+        rewardBundles.add(new ItemBundle(rewardTwo.getTier(), rewardTwo.getType(), 1));
+        rewardBundles.add(new ItemBundle(rewardTwo.getTier(), rewardTwo.getType(), 5));
+        Collections.shuffle(rewardBundles);
+
+        for (int i = 0; i < 6; i++) {
+            potentialRewards.add(new Pair<>(chestDrawables[i], rewardBundles.get(i)));
+        }
 
         Collections.shuffle(potentialRewards);
     }

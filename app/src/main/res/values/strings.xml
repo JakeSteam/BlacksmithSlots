@@ -1002,6 +1002,7 @@
     <string name="minigame_flip_gamble">Take another gamble?</string>
     <string name="minigame_chest_info">Pick a chest, you only get one chance!</string>
     <string name="minigame_dice_info">Roll 3 dice, you win your stake multiplied by the total shown on the dice!</string>
+    <string name="minigame_claim">Claim Prize</string>
     <string name="gamble">Gamble</string>
     <string name="stick">Stick</string>
     <string name="close">Close</string>
@@ -1021,4 +1022,5 @@
     <string name="task_description">Task %1$d (%2$s)</string>
     <string name="unlocked">Unlocked</string>
     <string name="dice_total_multiplier">Your total of %1$d earns you %2$s!</string>
+    <string name="roll">Roll</string>
 </resources>
