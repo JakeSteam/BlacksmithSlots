@@ -123,7 +123,7 @@ public class SlotHelper {
                         data.getIntExtra("type", 0),
                         data.getIntExtra("quantity", 0)
                 );
-                AlertHelper.success(activity, "Won " + winnings.toString(activity) + " from flip minigame!", true);
+                AlertHelper.success(activity, "Won " + winnings.toString(activity) + " from chest minigame!", true);
             } else {
                 AlertHelper.info(activity, "Unlucky, won nothing from chest minigame!", false);
             }

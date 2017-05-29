@@ -253,7 +253,7 @@ public class Enums {
         GemYellow(35), GemOrange(36), GemGreen(37), GemBlue(38), GemRed(39), GemPurple(40),
         SandRed(41), SandBlue(42), SandYellow(43), SandGreen(44),
         BookRed(45), BookYellow(46), BookGreen(47), BookBlue(48), BookPink(49), BookBrown(50), BookBlack(51), BookGrey(52), BookCollection(53),
-        Wildcard (999), MinigameFlip(998);
+        Wildcard (999), MinigameFlip(998), MinigameChest(997);
         public int value;
         Type(int value) {
             this.value = value;
