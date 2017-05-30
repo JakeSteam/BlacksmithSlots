@@ -175,6 +175,8 @@ public class SettingsActivity extends BaseActivity {
             haveImportedStat.setBoolValue(true);
             haveImportedStat.save();
 
+            Statistic.add(Enums.Statistic.SaveImported);
+
             populateSettings();
         } else {
             AlertHelper.error(this, R.string.error_failed_pb_import, false);

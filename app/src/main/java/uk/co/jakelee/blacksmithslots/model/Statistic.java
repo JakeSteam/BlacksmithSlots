@@ -209,7 +209,7 @@ public class Statistic extends SugarRecord {
         List<Task> tasks = Select.from(Task.class).where(
                 Condition.prop("c").eq(stat.value), // Tasks of this stat
                 Condition.prop("c").notEq(Enums.Statistic.Level), // Except levels
-                Condition.prop("h").gt(0), // That have been started
+                Condition.prop("c").notEq(Enums.Statistic.SaveImported), // and saves imported
                 Condition.prop("i").eq(0), // And not completed
                 Condition.prop("g").gt(0) // And not waiting to be handed in
         ).list();
@@ -218,6 +218,11 @@ public class Statistic extends SugarRecord {
         if (stat == Enums.Statistic.Level) {
             tasks.addAll(Select.from(Task.class).where(
                     Condition.prop("c").eq(Enums.Statistic.Level.value),
+                    Condition.prop("i").eq(0),
+                    Condition.prop("g").gt(0)).list());
+        } else if (stat == Enums.Statistic.SaveImported) {
+            tasks.addAll(Select.from(Task.class).where(
+                    Condition.prop("c").eq(Enums.Statistic.SaveImported.value),
                     Condition.prop("i").eq(0),
                     Condition.prop("g").gt(0)).list());
         }
