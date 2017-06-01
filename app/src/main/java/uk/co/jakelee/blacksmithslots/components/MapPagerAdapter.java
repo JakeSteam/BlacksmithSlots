@@ -14,6 +14,7 @@ import com.orm.query.Select;
 import java.util.Locale;
 
 import uk.co.jakelee.blacksmithslots.R;
+import uk.co.jakelee.blacksmithslots.helper.Constants;
 import uk.co.jakelee.blacksmithslots.helper.DisplayHelper;
 import uk.co.jakelee.blacksmithslots.helper.TaskHelper;
 import uk.co.jakelee.blacksmithslots.helper.TextHelper;
@@ -50,7 +51,7 @@ public class MapPagerAdapter extends PagerAdapter {
 
         // The lowest required slot for this map
         Slot firstSlotUnlocked = Select.from(Slot.class).where(Condition.prop("m").eq(position + 1)).orderBy("k ASC").first();
-        boolean isUnlocked = position == 0 || firstSlotUnlocked == null || !TaskHelper.isSlotLocked(firstSlotUnlocked.getRequiredSlot());
+        boolean isUnlocked = Constants.DEBUG_UNLOCK_ALL ? true : (position == 0 || firstSlotUnlocked == null || !TaskHelper.isSlotLocked(firstSlotUnlocked.getRequiredSlot()));
         itemView.findViewById(R.id.lockedMapBlocker).setVisibility(isUnlocked ? View.GONE : View.VISIBLE);
         if (!isUnlocked) {
             Slot requiredSlot = Slot.get(firstSlotUnlocked.getRequiredSlot());

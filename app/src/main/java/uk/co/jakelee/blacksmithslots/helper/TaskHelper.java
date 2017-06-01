@@ -12,7 +12,7 @@ public class TaskHelper {
         List<Task> tasks = Select.from(Task.class).where(
                 Condition.prop("i").eq(0),
                 Condition.prop("a").eq(slot)).list();
-        return tasks.size() > 0;
+        return Constants.DEBUG_UNLOCK_ALL ? false : tasks.size() > 0;
     }
 
     public static Task getCurrentTask(List<Task> tasks) {

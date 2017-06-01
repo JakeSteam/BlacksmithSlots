@@ -90,6 +90,9 @@
         <activity android:name=".main.SlotChancesActivity"
             android:screenOrientation="sensorLandscape"
             android:theme="@style/Theme.Dimmed" />
+        <activity android:name=".main.CloudSaveActivity"
+            android:screenOrientation="sensorLandscape"
+            android:theme="@style/Theme.Dimmed" />
     </application>
 
 </manifest>

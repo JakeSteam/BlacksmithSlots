@@ -137,7 +137,7 @@ public class MapActivity extends BaseActivity implements
     protected void onResume() {
         super.onResume();
 
-        //onConnected(null);
+        onConnected(null);
     }
 
     @OnClick(R.id.googlePlayLoginRow)
@@ -430,6 +430,28 @@ public class MapActivity extends BaseActivity implements
             }
         } else {
             GooglePlayHelper.ActivityResult(this, requestCode, resultCode);
+        }
+    }
+
+    @OnClick(R.id.playAchievements)
+    public void openAchievements() {
+        if (GooglePlayHelper.IsConnected()) {
+            startActivityForResult(Games.Achievements.getAchievementsIntent(GooglePlayHelper.mGoogleApiClient), GooglePlayHelper.RC_ACHIEVEMENTS);
+        }
+    }
+
+    @OnClick(R.id.playLeaderboard)
+    public void openLeaderboards() {
+        if (GooglePlayHelper.IsConnected()) {
+            startActivityForResult(Games.Leaderboards.getAllLeaderboardsIntent(GooglePlayHelper.mGoogleApiClient), GooglePlayHelper.RC_LEADERBOARDS);
+        }
+    }
+
+    @OnClick(R.id.playCloudSave)
+    public void openCloudSave() {
+        if (GooglePlayHelper.IsConnected()) {
+            startActivity(new Intent(this, CloudSaveActivity.class)
+                    .addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT));
         }
     }
 }

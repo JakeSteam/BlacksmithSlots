@@ -50,7 +50,7 @@
     <string name="settinggroup_1">Audio</string>
     <string name="settinggroup_2">Gameplay</string>
     <string name="settinggroup_3">Notifications</string>
-    <string name="settinggroup_4">Misc</string>
+    <string name="settinggroup_4">Google Play</string>
 
     <!-- UI -->
     <!-- Misc -->
@@ -205,7 +205,8 @@
     <string name="setting_11">Order Items By Tier</string>
     <string name="setting_12">Reverse Item Ordering</string>
     <string name="setting_13">Blacksmith Pass Notification</string>
-    <string name="setting_14">Google Play Logout</string>
+    <string name="setting_14">Logout</string>
+    <string name="setting_15">Autosave</string>
 
     <string name="slot_1_name">Mom</string>
     <string name="slot_1_locked">I\'ve been trapped by the disaster, please help me out!</string>
@@ -1040,4 +1041,9 @@
     <string name="import_save">Import Save</string>
     <string name="alert_logged_out">Successfully logged out of Google Play Games!</string>
     <string name="logout">Logout</string>
+    <string name="enabled">enabled</string>
+    <string name="not_enabled">not enabled</string>
+    <string name="manual_save">Save Cloud Save</string>
+    <string name="manual_load">Load Cloud Save</string>
+    <string name="cloud_saves">Cloud Saves</string>
 </resources>

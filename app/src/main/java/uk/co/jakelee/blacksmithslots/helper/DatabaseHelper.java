@@ -283,7 +283,8 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
         settings.add(new Setting(Enums.SettingGroup.Gameplay, Enums.Setting.OrderByTier, false));
         settings.add(new Setting(Enums.SettingGroup.Gameplay, Enums.Setting.OrderReversed, false));
         settings.add(new Setting(Enums.SettingGroup.Notifications, Enums.Setting.BlacksmithPassNotification, true));
-        settings.add(new Setting(Enums.SettingGroup.Misc, Enums.Setting.PlayLogout, true));
+        settings.add(new Setting(Enums.SettingGroup.GooglePlay, Enums.Setting.PlayLogout, true));
+        settings.add(new Setting(Enums.SettingGroup.GooglePlay, Enums.Setting.Autosave, false));
         Setting.saveInTx(settings);
     }
 

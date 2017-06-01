@@ -2,6 +2,8 @@ package uk.co.jakelee.blacksmithslots.helper;
 
 public class Constants {
     // Game constants
+    public final static boolean DEBUG_UNLOCK_ALL = true;
+
     public final static int ROWS = 5;
     public final static Double LEVEL_MODIFIER = 0.07;
     public final static int STARTING_XP = 205;

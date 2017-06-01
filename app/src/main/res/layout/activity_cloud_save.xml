@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/parent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="uk.co.jakelee.blacksmithslots.main.CloudSaveActivity">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="true"
+        android:onClick="close"/>
+
+    <LinearLayout
+        android:layout_margin="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:clickable="true"
+        android:onClick="suppress"
+        android:background="@drawable/box_yellow"
+        android:padding="8dp"
+        android:layout_centerInParent="true">
+        <uk.co.jakelee.blacksmithslots.components.FontTextView
+            android:id="@+id/autosaveStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            style="@style/FontSize"/>
+        <uk.co.jakelee.blacksmithslots.components.FontTextView
+            android:id="@+id/lastSaveInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            style="@style/FontSize"/>
+        <uk.co.jakelee.blacksmithslots.components.FontTextView
+            android:id="@+id/manualSave"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/manual_save"
+            android:layout_margin="5dp"
+            android:paddingLeft="12dp"
+            android:paddingRight="12dp"
+            android:background="@drawable/box_green"
+            style="@style/SlotText"/>
+        <uk.co.jakelee.blacksmithslots.components.FontTextView
+            android:id="@+id/manualLoad"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/manual_load"
+            android:layout_margin="5dp"
+            android:paddingLeft="12dp"
+            android:paddingRight="12dp"
+            android:background="@drawable/box_orange"
+            style="@style/SlotText"/>
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/close"
+        android:layout_alignParentRight="true"
+        android:layout_margin="10dp"
+        android:onClick="close"/>
+
+    <LinearLayout
+        android:id="@+id/croutonview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:onClick="closeAlert"/>
+</RelativeLayout>
