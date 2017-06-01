@@ -130,7 +130,7 @@ public class Enums {
 
     public enum Setting {
         Music(1), Sound(2), AttemptLogin(3), AutosaveMinutes(4), OnlyActiveResources(5), Language(6), NotificationSounds(7), PeriodicBonusNotification(8), SaveImported(9),
-        OnlyShowStocked(10), OrderByTier(11), OrderReversed(12), BlacksmithPassNotification(13);
+        OnlyShowStocked(10), OrderByTier(11), OrderReversed(12), BlacksmithPassNotification(13), PlayLogout(14);
         public int value;
         Setting(int value) {
             this.value = value;
@@ -146,7 +146,7 @@ public class Enums {
     }
 
     public enum SettingGroup {
-        Internal(0), Audio(1), Gameplay(2), Notifications(3);
+        Internal(0), Audio(1), Gameplay(2), Notifications(3), Misc(4);
         public int value;
         SettingGroup(int value) {
             this.value = value;

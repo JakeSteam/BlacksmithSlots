@@ -8,11 +8,11 @@
         android:id="@+id/settingName"
         style="@style/DataText"/>
     <uk.co.jakelee.blacksmithslots.components.FontTextView
-        android:id="@+id/importButton"
+        android:id="@+id/logoutButton"
         android:layout_width="wrap_content"
         android:background="@drawable/box_green"
-        android:text="@string/import_save"
-        android:onClick="importSave"
+        android:text="@string/logout"
+        android:onClick="logout"
         android:maxLines="1"
         android:layout_margin="5dp"
         style="@style/SlotText"/>

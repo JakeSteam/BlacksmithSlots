@@ -21,6 +21,7 @@ import uk.co.jakelee.blacksmithslots.components.FontTextView;
 import uk.co.jakelee.blacksmithslots.helper.AlertHelper;
 import uk.co.jakelee.blacksmithslots.helper.DisplayHelper;
 import uk.co.jakelee.blacksmithslots.helper.Enums;
+import uk.co.jakelee.blacksmithslots.helper.GooglePlayHelper;
 import uk.co.jakelee.blacksmithslots.helper.IncomeHelper;
 import uk.co.jakelee.blacksmithslots.helper.LanguageHelper;
 import uk.co.jakelee.blacksmithslots.helper.StorageHelper;
@@ -119,20 +120,34 @@ public class SettingsActivity extends BaseActivity {
             row.findViewById(R.id.importButton).setEnabled(!setting.getBooleanValue());
             row.findViewById(R.id.importButton).setBackgroundResource(setting.getBooleanValue() ? R.drawable.box_orange : R.drawable.box_green);
             row.findViewById(R.id.importButton).setAlpha(setting.getBooleanValue() ? 0.5f : 1f);
+        } else if (setting.getSetting() == Enums.Setting.PlayLogout) {
+            row.findViewById(R.id.logoutButton).setEnabled(GooglePlayHelper.IsConnected());
+            row.findViewById(R.id.logoutButton).setBackgroundResource(GooglePlayHelper.IsConnected() ? R.drawable.box_orange : R.drawable.box_green);
+            row.findViewById(R.id.logoutButton).setAlpha(GooglePlayHelper.IsConnected() ? 1f : 0.5f);
         } else if (setting.getSetting() == Enums.Setting.Language) {
             createDropdown((Spinner) row.findViewById(R.id.languagePicker), 3, 1, Enums.Setting.Language);
         } else if (setting.getDataType() == Enums.DataType.Boolean.value) {
-            ((TextView)row.findViewById(R.id.settingValue)).setText(setting.getBooleanValue() ? "On" : "Off");
+            ((TextView)row.findViewById(R.id.settingValue)).setText(setting.getBooleanValue() ? getString(R.string.on) : getString(R.string.off));
         } else if (setting.getDataType() == Enums.DataType.Integer.value) {
             ((TextView)row.findViewById(R.id.settingValue)).setText(setting.getIntValue() + " mins");
         }
         return row;
     }
 
+    public void logout(View v) {
+        if (GooglePlayHelper.IsConnected()) {
+            GooglePlayHelper.mGoogleApiClient.disconnect();
+            populateSettings();
+            AlertHelper.success(this, getString(R.string.alert_logged_out), true);
+        }
+    }
+
     private int getRowLayout(Setting setting) {
         if (setting.getDataType() == Enums.DataType.Boolean.value) {
             if (setting.getSetting() == Enums.Setting.SaveImported) {
                 return R.layout.custom_setting_boolean_save_import;
+            } else if (setting.getSetting() == Enums.Setting.PlayLogout) {
+                return R.layout.custom_setting_boolean_logout;
             }
             return R.layout.custom_setting_boolean;
         } else if (setting.getDataType() == Enums.DataType.Integer.value) {

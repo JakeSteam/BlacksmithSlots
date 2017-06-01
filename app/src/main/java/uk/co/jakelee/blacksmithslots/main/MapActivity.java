@@ -52,6 +52,7 @@ import uk.co.jakelee.blacksmithslots.model.Slot;
 import uk.co.jakelee.blacksmithslots.model.Task;
 
 import static android.view.View.GONE;
+import static uk.co.jakelee.blacksmithslots.model.Setting.getBoolean;
 
 public class MapActivity extends BaseActivity implements
         GoogleApiClient.ConnectionCallbacks,
@@ -79,6 +80,8 @@ public class MapActivity extends BaseActivity implements
     @BindView(R.id.slotUnlockedDescription) TextView unlockedDescription;
     @BindView(R.id.watchAdvert) TextView watchAdvert;
     @BindView(R.id.claimBonus) TextView claimBonus;
+    @BindView(R.id.googlePlayRow) LinearLayout googlePlayRow;
+    @BindView(R.id.googlePlayLoginRow) LinearLayout googlePlayLoginRow;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -97,7 +100,7 @@ public class MapActivity extends BaseActivity implements
                 .addApi(Games.API).addScope(Games.SCOPE_GAMES)
                 .addApi(Drive.API).addScope(Drive.SCOPE_APPFOLDER)
                 .build();
-        tryGoogleLogin();
+        tryGoogleLogin(false);
 
         mapPagerAdapter = new MapPagerAdapter(this);
         mapPager.setAdapter(mapPagerAdapter);
@@ -130,6 +133,18 @@ public class MapActivity extends BaseActivity implements
         mapTextView.setText(R.string.map_1);
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        //onConnected(null);
+    }
+
+    @OnClick(R.id.googlePlayLoginRow)
+    public void tryLogin() {
+        tryGoogleLogin(true);
+    }
+
     private void setPeriodicBonusUnclaimable() {
         claimBonus.setBackgroundResource(R.drawable.box_orange);
         handler.post(Runnables.updateTimeToPeriodicBonusClaim(handler, claimBonus));
@@ -144,22 +159,25 @@ public class MapActivity extends BaseActivity implements
     protected void onStop() {
         super.onStop();
 
-        boolean notificationSound = Setting.getBoolean(Enums.Setting.NotificationSounds);
-        if (Setting.getBoolean(Enums.Setting.PeriodicBonusNotification)) {
+        boolean notificationSound = getBoolean(Enums.Setting.NotificationSounds);
+        if (getBoolean(Enums.Setting.PeriodicBonusNotification)) {
             NotificationHelper.addBonusNotification(this, notificationSound);
         }
-        if (Setting.getBoolean(Enums.Setting.BlacksmithPassNotification)) {
+        if (getBoolean(Enums.Setting.BlacksmithPassNotification)) {
             NotificationHelper.addBlacksmithPassNotification(this, notificationSound);
         }
         handler.removeCallbacks(null);
     }
 
-    public void tryGoogleLogin() {
+    public void tryGoogleLogin(boolean forceAttempt) {
         // If we've got all we need, and we need to sign in, or it is first run.
-        if (GooglePlayHelper.AreGooglePlayServicesInstalled(this)
-                && !GooglePlayHelper.IsConnected()
-                && !GooglePlayHelper.mGoogleApiClient.isConnecting()
-                && (Setting.getBoolean(Enums.Setting.AttemptLogin) || prefs.getInt("databaseVersion", DatabaseHelper.NO_DATABASE) <= DatabaseHelper.NO_DATABASE)) {
+        boolean a = GooglePlayHelper.AreGooglePlayServicesInstalled(this);
+        boolean b = !GooglePlayHelper.IsConnected();
+        boolean c = !GooglePlayHelper.mGoogleApiClient.isConnecting();
+        boolean d = forceAttempt;
+        boolean e = Setting.getBoolean(Enums.Setting.AttemptLogin);
+        boolean f = prefs.getInt("databaseVersion", DatabaseHelper.NO_DATABASE) <= DatabaseHelper.NO_DATABASE;
+        if (a && b && c && (d || e || f)) {
             GooglePlayHelper.mGoogleApiClient.connect();
         }
     }
@@ -382,9 +400,13 @@ public class MapActivity extends BaseActivity implements
 
     @Override
     public void onConnected(Bundle connectionHint) {
-        if (GooglePlayHelper.IsConnected()) {
+        boolean isConnected = GooglePlayHelper.IsConnected();
+        if (isConnected) {
             Games.Quests.registerQuestUpdateListener(GooglePlayHelper.mGoogleApiClient, this);
         }
+
+        googlePlayLoginRow.setVisibility(isConnected ? GONE : View.VISIBLE);
+        googlePlayRow.setVisibility(isConnected ? View.VISIBLE : GONE);
     }
 
     @Override
