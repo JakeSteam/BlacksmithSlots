@@ -262,6 +262,19 @@
             android:layout_height="match_parent"
             android:background="@drawable/background_tan"
             android:orientation="vertical">
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                style="@style/VerticalScrollbar">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/title"
+                android:adjustViewBounds="true"/>
             <uk.co.jakelee.blacksmithslots.components.FontTextView
                 android:id="@+id/inventory"
                 android:layout_width="match_parent"
@@ -368,6 +381,8 @@
                     android:layout_margin="3dp"
                     style="@style/SlotText"/>
             </LinearLayout>
+                </LinearLayout>
+            </ScrollView>
         </LinearLayout>
     </RelativeLayout>
 

@@ -136,7 +136,7 @@ public class SettingsActivity extends BaseActivity {
 
     public void logout(View v) {
         if (GooglePlayHelper.IsConnected()) {
-            GooglePlayHelper.mGoogleApiClient.disconnect();
+            GooglePlayHelper.disconnect();
             populateSettings();
             AlertHelper.success(this, getString(R.string.alert_logged_out), true);
         }
@@ -195,7 +195,7 @@ public class SettingsActivity extends BaseActivity {
 
             populateSettings();
         } else {
-            AlertHelper.error(this, R.string.error_failed_pb_import, false);
+            AlertHelper.error(this, R.string.google_cloud_save_error, false);
         }
     }
 

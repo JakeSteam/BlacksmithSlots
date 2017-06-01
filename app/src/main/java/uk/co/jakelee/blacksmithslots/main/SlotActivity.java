@@ -15,6 +15,7 @@ import uk.co.jakelee.blacksmithslots.R;
 import uk.co.jakelee.blacksmithslots.helper.AlertDialogHelper;
 import uk.co.jakelee.blacksmithslots.helper.AlertHelper;
 import uk.co.jakelee.blacksmithslots.helper.Constants;
+import uk.co.jakelee.blacksmithslots.helper.GooglePlayHelper;
 import uk.co.jakelee.blacksmithslots.helper.LevelHelper;
 import uk.co.jakelee.blacksmithslots.helper.SlotHelper;
 import uk.co.jakelee.blacksmithslots.model.Slot;
@@ -57,6 +58,10 @@ public class SlotActivity extends BaseActivity {
             }, 50);
         }
         ((TextView)findViewById(R.id.vipLevel)).setText(String.format(Locale.ENGLISH, getString(R.string.vip_level_display), LevelHelper.getVipLevel()));
+
+        if (GooglePlayHelper.shouldAutosave()) {
+            GooglePlayHelper.autosave(this);
+        }
     }
 
     @Override

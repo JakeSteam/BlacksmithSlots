@@ -1,5 +1,6 @@
 package uk.co.jakelee.blacksmithslots.helper;
 
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.util.Log;
@@ -28,6 +29,7 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
 
     public final static int LATEST_PATCH = V0_0_1;
 
+    private Context context;
     private SplashScreenActivity callingActivity;
     private TextView progressText;
     private ProgressBar progressBar;
@@ -35,12 +37,15 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
     public DatabaseHelper() {
     }
 
-    public DatabaseHelper(SplashScreenActivity activity, boolean runningFromMain) {
+    public DatabaseHelper(SplashScreenActivity activity) {
+        this.context = activity;
         this.callingActivity = activity;
-        if (runningFromMain) {
-            this.progressText = (TextView) activity.findViewById(R.id.progressText);
-            this.progressBar = (ProgressBar) activity.findViewById(R.id.progressBar);
-        }
+        this.progressText = (TextView) activity.findViewById(R.id.progressText);
+        this.progressBar = (ProgressBar) activity.findViewById(R.id.progressBar);
+    }
+
+    public DatabaseHelper(Context context) {
+        this.context = context;
     }
 
     private void createDatabase() {
@@ -68,7 +73,7 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
 
     @Override
     protected String doInBackground(String... params) {
-        SharedPreferences prefs = callingActivity.getSharedPreferences("uk.co.jakelee.blacksmithslots", MODE_PRIVATE);
+        SharedPreferences prefs = context.getSharedPreferences("uk.co.jakelee.blacksmithslots", MODE_PRIVATE);
 
         if (prefs.getInt("databaseVersion", DatabaseHelper.NO_DATABASE) <= DatabaseHelper.NO_DATABASE) {
             createDatabase();

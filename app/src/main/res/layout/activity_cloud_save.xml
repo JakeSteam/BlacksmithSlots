@@ -24,36 +24,33 @@
         android:layout_centerInParent="true">
         <uk.co.jakelee.blacksmithslots.components.FontTextView
             android:id="@+id/autosaveStatus"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
+            android:gravity="center_horizontal"
             style="@style/FontSize"/>
         <uk.co.jakelee.blacksmithslots.components.FontTextView
             android:id="@+id/lastSaveInfo"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
+            android:gravity="center_horizontal"
             style="@style/FontSize"/>
-        <uk.co.jakelee.blacksmithslots.components.FontTextView
-            android:id="@+id/manualSave"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/manual_save"
-            android:layout_margin="5dp"
-            android:paddingLeft="12dp"
-            android:paddingRight="12dp"
-            android:background="@drawable/box_green"
-            style="@style/SlotText"/>
-        <uk.co.jakelee.blacksmithslots.components.FontTextView
-            android:id="@+id/manualLoad"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/manual_load"
-            android:layout_margin="5dp"
-            android:paddingLeft="12dp"
-            android:paddingRight="12dp"
-            android:background="@drawable/box_orange"
-            style="@style/SlotText"/>
+            android:orientation="horizontal">
+            <uk.co.jakelee.blacksmithslots.components.FontTextView
+                android:id="@+id/manageSaves"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/manage_cloud_saves"
+                android:layout_margin="5dp"
+                android:background="@drawable/box_orange"
+                style="@style/SlotText"/>
+        </LinearLayout>
+
     </LinearLayout>
 
     <ImageView

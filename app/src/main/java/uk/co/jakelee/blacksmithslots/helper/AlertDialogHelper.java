@@ -11,6 +11,9 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import java.util.Locale;
+
+import uk.co.jakelee.blacksmithslots.BuildConfig;
 import uk.co.jakelee.blacksmithslots.R;
 import uk.co.jakelee.blacksmithslots.constructs.DialogAction;
 import uk.co.jakelee.blacksmithslots.main.MinigameActivity;
@@ -109,21 +112,23 @@ public class AlertDialogHelper {
                 }));
     }
 
-    public static void confirmCloudLoad(final Activity activity, int localStars, int localCurrency, int cloudStars, int cloudCurrency) {
+    public static void confirmCloudLoad(final Activity activity, int localXp, int localItems, int cloudXp, int cloudItems) {
         final AlertDialog.Builder alertDialog = new AlertDialog.Builder(activity, R.style.Theme_AlertDialog);
-        /*alertDialog.setMessage(String.format(Locale.ENGLISH, Text.get("DIALOG_CLOUD_LOAD_CONFIRM"),
-                localStars,
-                localCurrency,
-                cloudStars,
-                cloudCurrency));*/
+        alertDialog.setMessage(String.format(Locale.ENGLISH, activity.getString(R.string.google_cloud_load_confirm),
+                LevelHelper.convertXpToLevel(localXp),
+                localXp,
+                localItems,
+                LevelHelper.convertXpToLevel(cloudXp),
+                cloudXp,
+                cloudItems));
 
-        alertDialog.setPositiveButton("Load", new DialogInterface.OnClickListener() {
+        alertDialog.setPositiveButton(R.string.load, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
                 GooglePlayHelper.forceLoadFromCloud();
             }
         });
 
-        alertDialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+        alertDialog.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
                 dialog.cancel();
             }
@@ -137,23 +142,24 @@ public class AlertDialogHelper {
         });
     }
 
-    public static void confirmCloudSave(final Activity activity, int localStars, int localCurrency, String desc, long saveTime, String deviceName) {
+    public static void confirmCloudSave(final Activity activity, int localXp, int localItems, String desc, long saveTime, String deviceName) {
         final AlertDialog.Builder alertDialog = new AlertDialog.Builder(activity, R.style.Theme_AlertDialog);
-        /*alertDialog.setMessage(String.format(Locale.ENGLISH, Text.get("DIALOG_CLOUD_SAVE_CONFIRM"),
+        alertDialog.setMessage(String.format(Locale.ENGLISH, activity.getString(R.string.google_cloud_save_confirm),
                 desc,
-                DateHelper.displayTime(saveTime, DateHelper.datetime),
+                DateHelper.timestampToDateTime(saveTime),
                 deviceName,
-                localStars,
-                localCurrency,
-                BuildConfig.VERSION_NAME));*/
+                BuildConfig.VERSION_NAME,
+                LevelHelper.convertXpToLevel(localXp),
+                localXp,
+                localItems));
 
-        alertDialog.setPositiveButton("Save", new DialogInterface.OnClickListener() {
+        alertDialog.setPositiveButton(R.string.save, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
                 GooglePlayHelper.forceSaveToCloud();
             }
         });
 
-        alertDialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+        alertDialog.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
                 dialog.cancel();
             }

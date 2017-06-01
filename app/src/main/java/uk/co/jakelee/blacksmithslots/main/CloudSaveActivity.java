@@ -14,9 +14,12 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import uk.co.jakelee.blacksmithslots.BaseActivity;
 import uk.co.jakelee.blacksmithslots.R;
+import uk.co.jakelee.blacksmithslots.helper.AlertHelper;
+import uk.co.jakelee.blacksmithslots.helper.DateHelper;
 import uk.co.jakelee.blacksmithslots.helper.Enums;
 import uk.co.jakelee.blacksmithslots.helper.GooglePlayHelper;
 import uk.co.jakelee.blacksmithslots.model.Setting;
+import uk.co.jakelee.blacksmithslots.model.Statistic;
 
 public class CloudSaveActivity extends BaseActivity {
     @BindView(R.id.autosaveStatus) TextView autosaveStatus;
@@ -33,23 +36,28 @@ public class CloudSaveActivity extends BaseActivity {
     }
 
     private void populateLayout() {
-        autosaveStatus.setText(String.format(Locale.ENGLISH, "Google Play is currently %1$s, and automatic cloud saves are %2$s. These can be changed in the settings.",
+        autosaveStatus.setText(String.format(Locale.ENGLISH, getString(R.string.google_play_autosave_status),
                 GooglePlayHelper.IsConnected() ? getString(R.string.enabled) : getString(R.string.not_enabled),
                 Setting.getBoolean(Enums.Setting.Autosave) ? getString(R.string.enabled) : getString(R.string.not_enabled)));
-        lastSaveInfo.setText("Current cloud save: " + (Setting.getBoolean(Enums.Setting.Autosave) ? "Level 20, lots of items, etc" : "N/A"));
+        lastSaveInfo.setText(String.format(Locale.ENGLISH, getString(R.string.google_play_last_autosave),
+                (!Setting.getBoolean(Enums.Setting.Autosave) || Statistic.get(Enums.Statistic.LastAutosave).getLongValue() == 0) ?
+                "N/A" :
+                DateHelper.timestampToDateTime(Statistic.get(Enums.Statistic.LastAutosave).getLongValue())));
     }
 
-    @OnClick(R.id.manualSave)
-    public void manualSave() {
-
-    }
-
-    @OnClick(R.id.manualLoad)
-    public void manualLoad() {
+    @OnClick(R.id.manageSaves)
+    public void manageCloudSaves() {
         if (GooglePlayHelper.mGoogleApiClient.isConnected()) {
             Intent savedGamesIntent = Games.Snapshots.getSelectSnapshotIntent(GooglePlayHelper.mGoogleApiClient,
-                    getString(R.string.cloud_saves), false, true, 1);
+                    getString(R.string.cloud_saves), true, true, 2);
             startActivityForResult(savedGamesIntent, GooglePlayHelper.RC_SAVED_GAMES);
+        }
+    }
+
+    protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
+        if (intent != null) {
+            AlertHelper.info(this, R.string.google_cloud_comparing, true);
+            GooglePlayHelper.SavedGamesIntent(getApplicationContext(), this, intent);
         }
     }
 }

@@ -32,12 +32,13 @@
     <string name="alert_item_unknown">Nowhere!?</string>
     <string name="alert_map_locked">To unlock map \"%1$s\" slot \"%2$s\" must be completed!</string>
 
+    <string name="google_cloud_comparing">Comparing local and cloud saves...</string>
     <string name="google_cloud_save_loading">Loading...</string>
     <string name="google_cloud_save_loaded">Loaded cloud save!</string>
     <string name="google_cloud_save_saving">Saving...</string>
     <string name="google_cloud_save_saved">Saved cloud save!</string>
     <string name="google_cloud_save_conflict">Cloud save conflict! Attempting to resolve, this may take a few seconds.</string>
-    <string name="google_cloud_save_error">An error occurred, please contact the dev if this happens repeatedly!</string>
+    <string name="google_cloud_save_error">An error occurred, please contact blacksmithslots@jakelee.co.uk if this happens repeatedly!</string>
 
     <string name="log_spin">%1$s at %2$s.</string>
     <string name="log_error">Error: %1$s</string>
@@ -1043,7 +1044,13 @@
     <string name="logout">Logout</string>
     <string name="enabled">enabled</string>
     <string name="not_enabled">not enabled</string>
-    <string name="manual_save">Save Cloud Save</string>
-    <string name="manual_load">Load Cloud Save</string>
     <string name="cloud_saves">Cloud Saves</string>
+    <string name="load">Load</string>
+    <string name="google_cloud_load_confirm">Are you sure you want to load this cloud save?\n\nLocal: Lev %1$d (%2$d XP), %3$d Unique Items\nCloud: Lev %4$d (%5$d XP), %6$d Unique Items</string>
+    <string name="save_description">V%1$s | Lev %2$d (%3$d XP) | %4$d Unique Items</string>
+    <string name="save">Save</string>
+    <string name="google_cloud_save_confirm">Are you sure you wish to overwrite your cloud save:\n%1$s\n\n(Created on %2$s on your %3$s) with your local save:\n\nV%4$s | Lev %5$d (%6$d XP) | %7$d Unique Items?</string>
+    <string name="manage_cloud_saves">Manage Cloud Saves</string>
+    <string name="google_play_autosave_status">Google Play is currently %1$s, and automatic cloud saves are %2$s. These can be changed in the settings.</string>
+    <string name="google_play_last_autosave">Last autosave: %1$s</string>
 </resources>

@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
+import android.util.Log;
 import android.util.Pair;
 
 import com.google.android.gms.common.ConnectionResult;
@@ -13,7 +14,6 @@ import com.google.android.gms.common.GoogleApiAvailability;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.games.Games;
 import com.google.android.gms.games.GamesStatusCodes;
-import com.google.android.gms.games.quest.Quest;
 import com.google.android.gms.games.quest.QuestBuffer;
 import com.google.android.gms.games.quest.Quests;
 import com.google.android.gms.games.snapshot.Snapshot;
@@ -24,13 +24,16 @@ import com.google.gson.Gson;
 import com.orm.SugarRecord;
 
 import java.io.IOException;
-import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
+import uk.co.jakelee.blacksmithslots.BuildConfig;
 import uk.co.jakelee.blacksmithslots.R;
 import uk.co.jakelee.blacksmithslots.main.MapActivity;
+import uk.co.jakelee.blacksmithslots.model.Iap;
 import uk.co.jakelee.blacksmithslots.model.Inventory;
+import uk.co.jakelee.blacksmithslots.model.Message;
 import uk.co.jakelee.blacksmithslots.model.Setting;
 import uk.co.jakelee.blacksmithslots.model.Statistic;
 import uk.co.jakelee.blacksmithslots.model.Task;
@@ -39,7 +42,6 @@ public class GooglePlayHelper implements com.google.android.gms.common.api.Resul
     public static final int RC_ACHIEVEMENTS = 9002;
     public static final int RC_LEADERBOARDS = 9003;
     public static final int RC_SAVED_GAMES = 9004;
-    public static final int RC_QUESTS = 9005;
     private static final int RESULT_OK = -1;
     private static final int RC_SIGN_IN = 9001;
     private static final String SAVE_DELIMITER = "UNIQUEDELIMITINGSTRING";
@@ -73,41 +75,12 @@ public class GooglePlayHelper implements com.google.android.gms.common.api.Resul
         }
     }
 
-    public static String CompleteQuest(Quest quest) {
-        Games.Quests.claim(mGoogleApiClient, quest.getQuestId(),
-                quest.getCurrentMilestone().getMilestoneId());
-
-        String questName = quest.getName();
-        String questDifficulty = new String(quest.getCurrentMilestone().getCompletionRewardData(), Charset.forName("UTF-8"));
-        int questCoins = getQuestReward(questDifficulty);
-
-        Statistic.add(Enums.Statistic.QuestsCompleted);
-        return "Completed"; /*String.format(Locale.ENGLISH, Text.get("QUEST_COMPLETED_TEXT"),
-                questDifficulty,
-                questName,
-                questCoins);*/
-    }
-
     public static void addEvent(String eventString, int quantity) {
         if (!IsConnected() || quantity <= 0) {
             return;
         }
 
         Games.Events.increment(mGoogleApiClient, eventString, quantity);
-    }
-
-    private static int getQuestReward(String questDifficulty) {
-        /*switch (questDifficulty) {
-            case "Easy":
-                return Constants.CURRENCY_QUEST_EASY;
-            case "Medium":
-                return Constants.CURRENCY_QUEST_MEDIUM;
-            case "Hard":
-                return Constants.CURRENCY_QUEST_HARD;
-            case "Elite":
-                return Constants.CURRENCY_QUEST_ELITE;
-        }*/
-        return 999;
     }
 
     public static void updateLeaderboards(String leaderboardID, int value) {
@@ -196,14 +169,14 @@ public class GooglePlayHelper implements com.google.android.gms.common.api.Resul
             }
         });
 
-        Pair<Integer, Integer> cloudData = getStarsAndCoinsFromSave(cloudSaveData);
+        Pair<Integer, Integer> cloudData = getXpAndItemsFromSave(cloudSaveData);
 
         if (!checkIsImprovement || newSaveIsBetter(cloudData)) {
             applyBackup(new String(cloudSaveData));
         } else {
             AlertDialogHelper.confirmCloudLoad(callingActivity,
-                    LevelHelper.getLevel(),
                     LevelHelper.getXp(),
+                    Inventory.getUniqueItemCount(),
                     cloudData.first,
                     cloudData.second);
         }
@@ -228,11 +201,12 @@ public class GooglePlayHelper implements com.google.android.gms.common.api.Resul
         new Thread(new Runnable() {
             public void run() {
                 byte[] data = createBackup();
-                String desc = "Desc"; /*String.format(Locale.ENGLISH, Text.get("CLOUD_SAVE_DESC"),
-                        PuzzleHelper.getTotalStars(),
-                        Statistic.getCurrency(),
-                        BuildConfig.VERSION_NAME);*/
-                Bitmap cover = BitmapFactory.decodeResource(callingContext.getResources(), R.drawable.arrow_orange);
+                String desc = String.format(Locale.ENGLISH, callingActivity.getString(R.string.save_description),
+                        BuildConfig.VERSION_NAME,
+                        LevelHelper.getLevel(),
+                        LevelHelper.getXp(),
+                        Inventory.getUniqueItemCount());
+                Bitmap cover = BitmapFactory.decodeResource(callingContext.getResources(), R.drawable.title);
 
                 loadedSnapshot.getSnapshotContents().writeBytes(data);
 
@@ -254,51 +228,55 @@ public class GooglePlayHelper implements com.google.android.gms.common.api.Resul
         }).start();
     }
 
-    public static void autosave(Context context) {
-        if (!IsConnected()) {
-            return;
-        }
+    public static void autosave(final Activity activity) {
+        new Thread(new Runnable() {
+            public void run() {
+                if (!IsConnected()) {
+                    return;
+                }
 
-        Snapshots.OpenSnapshotResult result = Games.Snapshots.open(mGoogleApiClient, "autoSave", true).await();
-        byte[] data = createBackup();
-        String desc = "Autosave"; /*String.format(Locale.ENGLISH, Text.get("CLOUD_AUTOSAVE_DESC"),
-                PuzzleHelper.getTotalStars(),
-                Statistic.getCurrency(),
-                BuildConfig.VERSION_NAME);*/
-        Bitmap cover = BitmapFactory.decodeResource(context.getResources(), R.drawable.arrow_orange);
+                Snapshots.OpenSnapshotResult result = Games.Snapshots.open(mGoogleApiClient, "autoSave", true).await();
+                byte[] data = createBackup();
+                String desc = String.format(Locale.ENGLISH, "(Auto) " + activity.getString(R.string.save_description),
+                        BuildConfig.VERSION_NAME,
+                        LevelHelper.getLevel(),
+                        LevelHelper.getXp(),
+                        Inventory.getUniqueItemCount());
+                Bitmap cover = BitmapFactory.decodeResource(activity.getResources(), R.drawable.title);
 
-        // Check the result of the open operation
-        if (result.getStatus().isSuccess()) {
-            Snapshot snapshot = result.getSnapshot();
-            snapshot.getSnapshotContents().writeBytes(data);
+                // Check the result of the open operation
+                if (result.getStatus().isSuccess()) {
+                    Snapshot snapshot = result.getSnapshot();
+                    snapshot.getSnapshotContents().writeBytes(data);
 
-            // Create the change operation
-            SnapshotMetadataChange metadataChange = new
-                    SnapshotMetadataChange.Builder()
-                    .setCoverImage(cover)
-                    .setDescription(desc)
-                    .build();
+                    // Create the change operation
+                    SnapshotMetadataChange metadataChange = new
+                            SnapshotMetadataChange.Builder()
+                            .setCoverImage(cover)
+                            .setDescription(desc)
+                            .build();
 
-            Games.Snapshots.commitAndClose(mGoogleApiClient, snapshot, metadataChange);
+                    Games.Snapshots.commitAndClose(mGoogleApiClient, snapshot, metadataChange);
 
-            Statistic lastAutosave = Statistic.get(Enums.Statistic.LastAutosave);
-            if (lastAutosave != null) {
-                lastAutosave.setLongValue(System.currentTimeMillis());
-                lastAutosave.save();
+                    Statistic lastAutosave = Statistic.get(Enums.Statistic.LastAutosave);
+                    if (lastAutosave != null) {
+                        lastAutosave.setLongValue(System.currentTimeMillis());
+                        lastAutosave.save();
+                    }
+                }
             }
-        }
+        }).start();
     }
 
     public static boolean shouldAutosave() {
-        Statistic lastAutosave = Statistic.get(Enums.Statistic.LastAutosave);
-        int minutesBetweenSaves = Setting.getInt(Enums.Setting.AutosaveMinutes);
+        if (GooglePlayHelper.IsConnected() && Setting.getBoolean(Enums.Setting.Autosave)) {
+            Statistic lastAutosave = Statistic.get(Enums.Statistic.LastAutosave);
 
-        if (minutesBetweenSaves == -1) {
-            return false;
+            long nextAutosave = lastAutosave.getLongValue() + Constants.TIME_BETWEEN_AUTOSAVES;
+            Log.d("Autosave", "Next autosave is at " + DateHelper.timestampToDateTime(nextAutosave));
+            return nextAutosave <= System.currentTimeMillis();
         }
-
-        long nextAutosave = lastAutosave.getLongValue() + (100 * 1000);
-        return nextAutosave <= System.currentTimeMillis();
+        return false;
     }
 
     private static void saveToCloud() {
@@ -310,8 +288,8 @@ public class GooglePlayHelper implements com.google.android.gms.common.api.Resul
             forceSaveToCloud();
         } else {
             AlertDialogHelper.confirmCloudSave(callingActivity,
-                    LevelHelper.getLevel(),
                     LevelHelper.getXp(),
+                    Inventory.getUniqueItemCount(),
                     loadedSnapshot.getMetadata().getDescription(),
                     loadedSnapshot.getMetadata().getLastModifiedTimestamp(),
                     loadedSnapshot.getMetadata().getDeviceName());
@@ -329,9 +307,25 @@ public class GooglePlayHelper implements com.google.android.gms.common.api.Resul
         return GooglePlayHelper.mGoogleApiClient != null && GooglePlayHelper.mGoogleApiClient.isConnected();
     }
 
+    public static void disconnect() {
+        if (!GooglePlayHelper.mGoogleApiClient.isConnected()) {
+            return;
+        }
+
+        Games.signOut(GooglePlayHelper.mGoogleApiClient);
+        GooglePlayHelper.mGoogleApiClient.disconnect();
+
+        Setting signIn = Setting.get(Enums.Setting.AttemptLogin);
+        signIn.setBooleanValue(false);
+        signIn.save();
+    }
+
+
     @SuppressWarnings("unchecked")
     private static Class<? extends SugarRecord>[] backupClasses = new Class[] {
+            Iap.class,
             Inventory.class,
+            Message.class,
             Setting.class,
             Statistic.class,
             Task.class
@@ -341,8 +335,8 @@ public class GooglePlayHelper implements com.google.android.gms.common.api.Resul
         Gson gson = new Gson();
 
         String backupString = DatabaseHelper.LATEST_PATCH + GooglePlayHelper.SAVE_DELIMITER;
-        backupString += LevelHelper.getLevel() + GooglePlayHelper.SAVE_DELIMITER;
         backupString += LevelHelper.getXp() + GooglePlayHelper.SAVE_DELIMITER;
+        backupString += Inventory.getUniqueItemCount() + GooglePlayHelper.SAVE_DELIMITER;
 
         for (Class<? extends SugarRecord> backupClass : backupClasses) {
             backupString += gson.toJson(SugarRecord.listAll(backupClass)) + GooglePlayHelper.SAVE_DELIMITER;
@@ -363,7 +357,7 @@ public class GooglePlayHelper implements com.google.android.gms.common.api.Resul
             MapActivity.prefs.edit().putInt("databaseVersion", Integer.parseInt(splitData[0])).apply();
         }
 
-        // 0 is db version, 1 & 2 are stars & coins
+        // 0 is db version, 1 & 2 are xp & item count
         int backupPosition = 3;
         for (Class<? extends SugarRecord> backupClass : backupClasses) {
             if (splitData.length > backupPosition) {
@@ -372,7 +366,7 @@ public class GooglePlayHelper implements com.google.android.gms.common.api.Resul
             }
         }
 
-        new DatabaseHelper().execute();
+        new DatabaseHelper(callingActivity).execute();
 
         if (callingActivity != null) {
             callingActivity.runOnUiThread(new Runnable() {
@@ -394,21 +388,21 @@ public class GooglePlayHelper implements com.google.android.gms.common.api.Resul
         return list;
     }
 
-    public static Pair<Integer, Integer> getStarsAndCoinsFromSave(byte[] saveBytes) {
-        int stars = 0;
-        int coins = 0;
+    public static Pair<Integer, Integer> getXpAndItemsFromSave(byte[] saveBytes) {
+        int xp = 0;
+        int items = 0;
 
         String[] splitData = splitBackupData(new String(saveBytes));
         if (splitData.length > 2) {
-            stars = Integer.parseInt(splitData[1]);
-            coins = Integer.parseInt(splitData[2]);
+            xp = Integer.parseInt(splitData[1]);
+            items = Integer.parseInt(splitData[2]);
         }
 
-        return new Pair<>(stars, coins);
+        return new Pair<>(xp, items);
     }
 
     public static boolean newSaveIsBetter(Pair<Integer, Integer> newValues) {
-        return !(newValues.first <= LevelHelper.getXp() && newValues.second <= LevelHelper.getLevel());
+        return !(newValues.first <= LevelHelper.getXp() && newValues.second <= Inventory.getUniqueItemCount());
     }
 
     private static String[] splitBackupData(String backupData) {

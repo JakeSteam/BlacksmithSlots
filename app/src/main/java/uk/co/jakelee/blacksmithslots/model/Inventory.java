@@ -116,4 +116,8 @@ public class Inventory extends SugarRecord {
                 " " +
                 TextHelper.getInstance(context).getText(DisplayHelper.getItemTypeString(type));
     }
+
+    public static int getUniqueItemCount() {
+        return (int)Select.from(Inventory.class).count();
+    }
 }

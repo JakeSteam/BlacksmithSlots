@@ -41,7 +41,7 @@ public class SplashScreenActivity extends BaseActivity {
             }
         });
 
-        new DatabaseHelper(this, true).execute();
+        new DatabaseHelper(this).execute();
     }
 
     private String getRandomItemOrSlotDrawable() {
