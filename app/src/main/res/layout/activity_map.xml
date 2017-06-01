@@ -241,7 +241,7 @@
                         android:id="@+id/openSlotDialog"
                         android:layout_width="match_parent"
                         android:background="@drawable/box_white"
-                        android:text="@string/message_log"
+                        android:text="@string/dialog_log"
                         android:layout_margin="5dp"
                         style="@style/SlotText"/>
                     <uk.co.jakelee.blacksmithslots.components.FontTextView
@@ -256,30 +256,12 @@
         </RelativeLayout>
 
         <!-- No slot selected -->
-        <RelativeLayout
+        <LinearLayout
             android:id="@+id/noSlotSelected"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/background_tan">
-            <uk.co.jakelee.blacksmithslots.components.FontTextView
-                android:id="@+id/settings"
-                android:layout_width="match_parent"
-                android:background="@drawable/box_yellow"
-                android:text="@string/settings"
-                android:maxLines="2"
-                android:layout_marginTop="3dp"
-                android:layout_marginBottom="3dp"
-                style="@style/SlotText"/>
-            <uk.co.jakelee.blacksmithslots.components.FontTextView
-                android:id="@+id/statistics"
-                android:layout_width="match_parent"
-                android:background="@drawable/box_yellow"
-                android:text="@string/statistics"
-                android:maxLines="2"
-                android:layout_marginTop="3dp"
-                android:layout_marginBottom="3dp"
-                android:layout_below="@id/settings"
-                style="@style/SlotText"/>
+            android:background="@drawable/background_tan"
+            android:orientation="vertical">
             <uk.co.jakelee.blacksmithslots.components.FontTextView
                 android:id="@+id/inventory"
                 android:layout_width="match_parent"
@@ -288,7 +270,6 @@
                 android:maxLines="2"
                 android:layout_marginTop="3dp"
                 android:layout_marginBottom="3dp"
-                android:layout_below="@id/statistics"
                 style="@style/SlotText"/>
             <uk.co.jakelee.blacksmithslots.components.FontTextView
                 android:id="@+id/claimBonus"
@@ -298,7 +279,6 @@
                 android:maxLines="2"
                 android:layout_marginTop="3dp"
                 android:layout_marginBottom="3dp"
-                android:layout_below="@id/inventory"
                 style="@style/SlotText"/>
             <uk.co.jakelee.blacksmithslots.components.FontTextView
                 android:id="@+id/watchAdvert"
@@ -308,7 +288,6 @@
                 android:maxLines="2"
                 android:layout_marginTop="3dp"
                 android:layout_marginBottom="3dp"
-                android:layout_below="@id/claimBonus"
                 style="@style/SlotText"/>
             <uk.co.jakelee.blacksmithslots.components.FontTextView
                 android:id="@+id/openShop"
@@ -318,9 +297,63 @@
                 android:maxLines="2"
                 android:layout_marginTop="3dp"
                 android:layout_marginBottom="3dp"
-                android:layout_below="@id/watchAdvert"
                 style="@style/SlotText"/>
-        </RelativeLayout>
+            <LinearLayout
+                android:id="@+id/iconRow"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <uk.co.jakelee.blacksmithslots.components.AwesomeTextView
+                    android:id="@+id/settings"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/box_yellow"
+                    android:text="@string/icon_settings"
+                    android:layout_margin="3dp"
+                    style="@style/SlotText"/>
+                <uk.co.jakelee.blacksmithslots.components.AwesomeTextView
+                    android:id="@+id/statistics"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/box_yellow"
+                    android:text="@string/icon_statistics"
+                    android:layout_margin="3dp"
+                    style="@style/SlotText"/>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/googlePlayRow"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <ImageView
+                    android:id="@+id/playAchievements"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="45dp"
+                    android:background="@drawable/box_yellow"
+                    android:src="@drawable/play_achievements"
+                    android:layout_margin="3dp"
+                    style="@style/SlotText"/>
+                <ImageView
+                    android:id="@+id/playLeaderboard"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="45dp"
+                    android:background="@drawable/box_yellow"
+                    android:src="@drawable/play_leaderboards"
+                    android:layout_margin="3dp"
+                    style="@style/SlotText"/>
+                <ImageView
+                    android:id="@+id/playCloudSave"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="45dp"
+                    android:background="@drawable/box_yellow"
+                    android:src="@drawable/play_cloud_saves"
+                    android:layout_margin="3dp"
+                    style="@style/SlotText"/>
+            </LinearLayout>
+        </LinearLayout>
     </RelativeLayout>
 
     <android.support.v4.view.ViewPager

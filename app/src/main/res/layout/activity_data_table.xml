@@ -22,14 +22,25 @@
             android:onClick="suppress"
             style="@style/VerticalScrollbar"
             android:padding="8dp">
-            <TableLayout
-                android:id="@+id/dataTable"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:stretchColumns="*"
-                android:shrinkColumns="*"
-                android:divider="?android:attr/dividerHorizontal"
-                android:showDividers="middle"/>
+                android:orientation="vertical">
+                <uk.co.jakelee.blacksmithslots.components.FontTextView
+                    android:id="@+id/activityTitle"
+                    android:layout_width="wrap_content"
+                    style="@style/DataText"
+                    android:text=""
+                    android:textSize="45sp"/>
+                <TableLayout
+                    android:id="@+id/dataTable"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:stretchColumns="*"
+                    android:shrinkColumns="*"
+                    android:divider="?android:attr/dividerHorizontal"
+                    android:showDividers="middle" />
+            </LinearLayout>
         </ScrollView>
     </LinearLayout>
 

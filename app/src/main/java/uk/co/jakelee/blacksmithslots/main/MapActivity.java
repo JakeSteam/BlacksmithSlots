@@ -65,7 +65,7 @@ public class MapActivity extends BaseActivity implements
 
     @BindView(R.id.townScroller) ViewPager mapPager;
     @BindView(R.id.mapName) TextView mapTextView;
-    @BindView(R.id.noSlotSelected) RelativeLayout noSlotSidebar;
+    @BindView(R.id.noSlotSelected) LinearLayout noSlotSidebar;
     @BindView(R.id.superlockedSlot) RelativeLayout superLockedSlot;
     @BindView(R.id.slotSuperlockedDescription) TextView superLockedDescription;
 

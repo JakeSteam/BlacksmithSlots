@@ -7,6 +7,8 @@
     <string name="icon_quantity" translatable = "false">&#xe802;</string>
     <string name="icon_left" translatable = "false">&#xe803;</string>
     <string name="icon_right" translatable = "false">&#xe804;</string>
+    <string name="icon_settings" translatable = "false">&#xe805;</string>
+    <string name="icon_statistics" translatable = "false">&#xe806;</string>
 
     <string name="rate_dialog_title">Rate Blacksmith Slots</string>
     <string name="rate_dialog_message">If you\'re enjoying Blacksmith Slots, would you mind leaving a rating? It helps more people discover the game, and encourages future development!\n\nThanks &lt;3</string>
@@ -1024,6 +1026,7 @@
     <string name="error_iap_failed">IAP failed, this can be caused by poor internet or third party software interfering with the process.</string>
     <string name="error_advert_unverified">Something went wrong, and the ad view couldn\'t be verified. Sorry!</string>
     <string name="message_log">Message Log</string>
+    <string name="dialog_log">Dialog Log</string>
     <string name="task_description">Task %1$d (%2$s)</string>
     <string name="unlocked">Unlocked</string>
     <string name="dice_total_multiplier">Your total of %1$d earns you %2$s!</string>

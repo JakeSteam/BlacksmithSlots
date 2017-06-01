@@ -39,6 +39,7 @@ public class InventoryActivity extends BaseActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_data_table);
         ButterKnife.bind(this);
+        ((TextView)findViewById(R.id.activityTitle)).setText(R.string.inventory);
 
         LayoutInflater inflater = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         boolean onlyShowStockedItems = Setting.getBoolean(Enums.Setting.OnlyShowStocked);
@@ -86,7 +87,9 @@ public class InventoryActivity extends BaseActivity {
 
         StringBuilder itemUseText = new StringBuilder();
         for (String name : slotNames) {
+            itemUseText.append("\"");
             itemUseText.append(name);
+            itemUseText.append("\"");
             itemUseText.append(", ");
         }
 

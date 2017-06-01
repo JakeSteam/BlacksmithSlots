@@ -24,6 +24,7 @@ public class SlotChancesActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_data_table);
+        ((TextView)findViewById(R.id.activityTitle)).setText(R.string.reward_chances);
 
         LayoutInflater inflater = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         TableLayout statTable = (TableLayout)findViewById(R.id.dataTable);
