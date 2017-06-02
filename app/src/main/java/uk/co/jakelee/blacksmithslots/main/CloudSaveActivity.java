@@ -2,7 +2,6 @@ package uk.co.jakelee.blacksmithslots.main;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.WindowManager;
 import android.widget.TextView;
 
 import com.google.android.gms.games.Games;
@@ -28,7 +27,6 @@ public class CloudSaveActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_cloud_save);
         ButterKnife.bind(this);
 

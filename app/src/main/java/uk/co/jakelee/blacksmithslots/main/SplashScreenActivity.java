@@ -3,7 +3,6 @@ package uk.co.jakelee.blacksmithslots.main;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.view.WindowManager;
 import android.widget.ImageView;
 
 import com.squareup.picasso.MemoryPolicy;
@@ -20,7 +19,6 @@ public class SplashScreenActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_splashscreen);
 
         final Picasso picasso = new Picasso.Builder(this).build();
