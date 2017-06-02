@@ -26,31 +26,36 @@ import uk.co.jakelee.blacksmithslots.main.SlotActivity;
 
 public class AlertDialogHelper {
 
-    private static void displayAlertDialog(Context context, String title, String body, DialogAction... actions) {
-        LayoutInflater inflater = LayoutInflater.from(context);
-        final LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT, 1);
-        final View inflatedLayout = inflater.inflate(R.layout.custom_alert_dialog, null);
-        final AlertDialog dialog = new AlertDialog.Builder(context).create();
-        dialog.setView(inflatedLayout);
+    private static void displayAlertDialog(final Activity activity, final String title, final String body, final DialogAction... actions) {
+        activity.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                LayoutInflater inflater = LayoutInflater.from(activity);
+                final LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT, 1);
+                final View inflatedLayout = inflater.inflate(R.layout.custom_alert_dialog, null);
+                final AlertDialog dialog = new AlertDialog.Builder(activity).create();
+                dialog.setView(inflatedLayout);
 
-        ((TextView)inflatedLayout.findViewById(R.id.title)).setText(title);
-        ((TextView)inflatedLayout.findViewById(R.id.body)).setText(body);
-        final LinearLayout buttonContainer = (LinearLayout)inflatedLayout.findViewById(R.id.buttonContainer);
+                ((TextView) inflatedLayout.findViewById(R.id.title)).setText(title);
+                ((TextView) inflatedLayout.findViewById(R.id.body)).setText(body);
+                final LinearLayout buttonContainer = (LinearLayout) inflatedLayout.findViewById(R.id.buttonContainer);
 
-        for (final DialogAction action : actions) {
-            TextView button = (TextView)inflater.inflate(R.layout.custom_alert_dialog_button, null);
-            button.setText(action.getText());
-            button.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    action.getRunnable().run();
-                    dialog.dismiss();
+                for (final DialogAction action : actions) {
+                    TextView button = (TextView) inflater.inflate(R.layout.custom_alert_dialog_button, null);
+                    button.setText(action.getText());
+                    button.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            action.getRunnable().run();
+                            dialog.dismiss();
+                        }
+                    });
+                    buttonContainer.addView(button, params);
                 }
-            });
-            buttonContainer.addView(button, params);
-        }
 
-        dialog.show();
+                dialog.show();
+            }
+        });
     }
 
     public static void enterSupportCode(final Context context, final Activity activity) {
@@ -60,7 +65,7 @@ public class AlertDialogHelper {
         alertDialog.setMessage(R.string.alert_enter_support_code);
         alertDialog.setView(supportCodeBox);
 
-        alertDialog.setPositiveButton("Apply", new DialogInterface.OnClickListener() {
+        alertDialog.setPositiveButton(R.string.apply, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
                 //String supportCode = SupportCodeHelper.encode((System.currentTimeMillis() + 259200000) + "|UPDATE b SET c = 999");
                 String supportCode = supportCodeBox.getText().toString().trim();
@@ -152,63 +157,47 @@ public class AlertDialogHelper {
     }
 
     public static void confirmCloudLoad(final Activity activity, int localXp, int localItems, int cloudXp, int cloudItems) {
-        final AlertDialog.Builder alertDialog = new AlertDialog.Builder(activity, R.style.Theme_AlertDialog);
-        alertDialog.setMessage(String.format(Locale.ENGLISH, activity.getString(R.string.google_cloud_load_confirm),
+        displayAlertDialog(activity, activity.getString(R.string.cloud_load), String.format(Locale.ENGLISH, activity.getString(R.string.google_cloud_load_confirm),
                 LevelHelper.convertXpToLevel(localXp),
                 localXp,
                 localItems,
                 LevelHelper.convertXpToLevel(cloudXp),
                 cloudXp,
-                cloudItems));
+                cloudItems),
+                new DialogAction(activity.getString(R.string.load), new Runnable() {
+                    @Override
+                    public void run() {
+                        GooglePlayHelper.forceLoadFromCloud();
+                    }
+                }),
+                new DialogAction(activity.getString(R.string.cancel), new Runnable() {
+                    @Override
+                    public void run() {
 
-        alertDialog.setPositiveButton(R.string.load, new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int which) {
-                GooglePlayHelper.forceLoadFromCloud();
-            }
-        });
-
-        alertDialog.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.cancel();
-            }
-        });
-
-        activity.runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                alertDialog.show();
-            }
-        });
+                    }
+                }));
     }
 
     public static void confirmCloudSave(final Activity activity, int localXp, int localItems, String desc, long saveTime, String deviceName) {
-        final AlertDialog.Builder alertDialog = new AlertDialog.Builder(activity, R.style.Theme_AlertDialog);
-        alertDialog.setMessage(String.format(Locale.ENGLISH, activity.getString(R.string.google_cloud_save_confirm),
+        displayAlertDialog(activity, activity.getString(R.string.cloud_save), String.format(Locale.ENGLISH, activity.getString(R.string.google_cloud_save_confirm),
                 desc,
                 DateHelper.timestampToDateTime(saveTime),
                 deviceName,
                 BuildConfig.VERSION_NAME,
                 LevelHelper.convertXpToLevel(localXp),
                 localXp,
-                localItems));
+                localItems),
+                new DialogAction(activity.getString(R.string.save), new Runnable() {
+                    @Override
+                    public void run() {
+                        GooglePlayHelper.forceSaveToCloud();
+                    }
+                }),
+                new DialogAction(activity.getString(R.string.cancel), new Runnable() {
+                    @Override
+                    public void run() {
 
-        alertDialog.setPositiveButton(R.string.save, new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int which) {
-                GooglePlayHelper.forceSaveToCloud();
-            }
-        });
-
-        alertDialog.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.cancel();
-            }
-        });
-
-        activity.runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                alertDialog.show();
-            }
-        });
+                    }
+                }));
     }
 }

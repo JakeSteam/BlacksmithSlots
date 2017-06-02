@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TableLayout;
 import android.widget.TableRow;
@@ -116,11 +117,13 @@ public class SettingsActivity extends BaseActivity {
             }
         }
 
-        TableRow socialRow = (TableRow)inflater.inflate(R.layout.custom_social_row, null).findViewById(R.id.socialRow);
+        LinearLayout socialRow = (LinearLayout)inflater.inflate(R.layout.custom_social_row, null).findViewById(R.id.socialRow);
         settingTable.addView(socialRow);
 
         TableRow supportRow = (TableRow)inflater.inflate(R.layout.custom_support_row, null).findViewById(R.id.supportRow);
         settingTable.addView(supportRow);
+
+
     }
 
     public void openLink(View v) {

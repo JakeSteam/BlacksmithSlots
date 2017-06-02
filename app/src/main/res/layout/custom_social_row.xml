@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TableRow xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/socialRow"
     android:layout_width="match_parent"
@@ -33,4 +33,4 @@
         android:onClick="openLink"
         android:tag="https://play.google.com/store/apps/dev?id=7913107864735774894"
         style="@style/SlotText"/>
-</TableRow>
+</LinearLayout>
