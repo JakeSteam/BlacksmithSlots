@@ -2,6 +2,8 @@ package uk.co.jakelee.blacksmithslots.main;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,6 +20,7 @@ import java.util.List;
 import uk.co.jakelee.blacksmithslots.BaseActivity;
 import uk.co.jakelee.blacksmithslots.R;
 import uk.co.jakelee.blacksmithslots.components.FontTextView;
+import uk.co.jakelee.blacksmithslots.helper.AlertDialogHelper;
 import uk.co.jakelee.blacksmithslots.helper.AlertHelper;
 import uk.co.jakelee.blacksmithslots.helper.DisplayHelper;
 import uk.co.jakelee.blacksmithslots.helper.Enums;
@@ -112,6 +115,28 @@ public class SettingsActivity extends BaseActivity {
                 settingTable.addView(tableRow);
             }
         }
+
+        TableRow socialRow = (TableRow)inflater.inflate(R.layout.custom_social_row, null).findViewById(R.id.socialRow);
+        settingTable.addView(socialRow);
+
+        TableRow supportRow = (TableRow)inflater.inflate(R.layout.custom_support_row, null).findViewById(R.id.supportRow);
+        settingTable.addView(supportRow);
+    }
+
+    public void openLink(View v) {
+        String url = (String)v.getTag();
+        startActivity(new Intent(Intent.ACTION_VIEW).setData(Uri.parse(url)));
+    }
+
+    public void openSupportCode(View v) {
+        AlertDialogHelper.enterSupportCode(this, this);
+    }
+
+    public void openEmail(View v) {
+        Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts(
+                "mailto","blacksmithslots@jakelee.co.uk", null));
+        startActivity(Intent.createChooser(emailIntent, getString(R.string.send_an_email)));
+        AlertHelper.info(this, getString(R.string.alert_email_fallback), true);
     }
 
     private TableRow createTableRow(LayoutInflater inflater, Setting setting) {

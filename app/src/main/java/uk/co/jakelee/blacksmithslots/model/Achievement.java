@@ -8,9 +8,6 @@ import uk.co.jakelee.blacksmithslots.helper.Enums;
 
 @Table(name = "j")
 public class Achievement extends SugarRecord {
-    @Column(name = "a")
-    private String name;
-
     @Column(name = "b")
     private int maximumValue;
 
@@ -23,19 +20,10 @@ public class Achievement extends SugarRecord {
     public Achievement() {
     }
 
-    public Achievement(String name, int maximumValue, Enums.Statistic statistic, String remoteID) {
-        this.name = name;
+    public Achievement(int maximumValue, Enums.Statistic statistic, String remoteID) {
         this.maximumValue = maximumValue;
         this.statistic = statistic.value;
         this.remoteID = remoteID;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public int getMaximumValue() {

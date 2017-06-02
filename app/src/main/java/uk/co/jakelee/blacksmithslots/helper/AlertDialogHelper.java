@@ -2,12 +2,16 @@ package uk.co.jakelee.blacksmithslots.helper;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -21,6 +25,7 @@ import uk.co.jakelee.blacksmithslots.main.ShopActivity;
 import uk.co.jakelee.blacksmithslots.main.SlotActivity;
 
 public class AlertDialogHelper {
+
     private static void displayAlertDialog(Context context, String title, String body, DialogAction... actions) {
         LayoutInflater inflater = LayoutInflater.from(context);
         final LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT, 1);
@@ -46,6 +51,40 @@ public class AlertDialogHelper {
         }
 
         dialog.show();
+    }
+
+    public static void enterSupportCode(final Context context, final Activity activity) {
+        final EditText supportCodeBox = new EditText(context);
+
+        AlertDialog.Builder alertDialog = new AlertDialog.Builder(activity);
+        alertDialog.setMessage(R.string.alert_enter_support_code);
+        alertDialog.setView(supportCodeBox);
+
+        alertDialog.setPositiveButton("Apply", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                //String supportCode = SupportCodeHelper.encode((System.currentTimeMillis() + 259200000) + "|UPDATE b SET c = 999");
+                String supportCode = supportCodeBox.getText().toString().trim();
+
+                Log.d("Code", supportCode);
+                if (SupportCodeHelper.applyCode(supportCode)) {
+                    AlertHelper.success(activity, activity.getString(R.string.alert_support_code_successful), true);
+                } else {
+                    AlertHelper.error(activity, activity.getString(R.string.alert_support_code_failed), true);
+                }
+            }
+        });
+
+        alertDialog.setNegativeButton(context.getString(R.string.cancel), new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+
+        final Dialog dialog = alertDialog.create();
+        dialog.getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE, WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE);
+        dialog.show();
+        dialog.getWindow().getDecorView().setSystemUiVisibility(activity.getWindow().getDecorView().getSystemUiVisibility());
+        dialog.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE);
     }
 
     public static void outOfItems(final Activity activity, final int itemTier, final int itemType) {

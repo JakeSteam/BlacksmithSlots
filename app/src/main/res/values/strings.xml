@@ -52,6 +52,7 @@
     <string name="settinggroup_2">Gameplay</string>
     <string name="settinggroup_3">Notifications</string>
     <string name="settinggroup_4">Google Play</string>
+    <string name="settinggroup_5">More</string>
 
     <!-- UI -->
     <!-- Misc -->
@@ -1053,4 +1054,15 @@
     <string name="manage_cloud_saves">Manage Cloud Saves</string>
     <string name="google_play_autosave_status">Google Play is currently %1$s, and automatic cloud saves are %2$s. These can be changed in the settings.</string>
     <string name="google_play_last_autosave">Last autosave: %1$s</string>
+    <string name="more">More</string>
+    <string name="reddit">Reddit</string>
+    <string name="email">Email</string>
+    <string name="more_games">More Games</string>
+    <string name="send_an_email">Send an email</string>
+    <string name="alert_email_fallback">If no email client appeared, email blacksmithslots@jakelee.co.uk!</string>
+    <string name="support_code">Support Code</string>
+    <string name="leave_rating">Leave Rating</string>
+    <string name="alert_support_code_successful">Support code successfully applied!</string>
+    <string name="alert_support_code_failed">Error whilst applying code. Please contact support!</string>
+    <string name="alert_enter_support_code"><![CDATA[Enter support code (copy & paste recommended!)]]></string>
 </resources>

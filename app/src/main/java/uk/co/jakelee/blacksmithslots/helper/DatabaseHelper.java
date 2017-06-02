@@ -281,7 +281,6 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
         settings.add(new Setting(Enums.SettingGroup.Audio, Enums.Setting.Music, true));
         settings.add(new Setting(Enums.SettingGroup.Audio, Enums.Setting.Sound, true));
         settings.add(new Setting(Enums.SettingGroup.Internal, Enums.Setting.AttemptLogin, true));
-        settings.add(new Setting(Enums.SettingGroup.Gameplay, Enums.Setting.AutosaveMinutes, 10));
         settings.add(new Setting(Enums.SettingGroup.Gameplay, Enums.Setting.OnlyActiveResources, true));
         settings.add(new Setting(Enums.SettingGroup.Gameplay, Enums.Setting.Language, Enums.Language.English.value));
         settings.add(new Setting(Enums.SettingGroup.Notifications, Enums.Setting.NotificationSounds, true));
@@ -1728,16 +1727,36 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
 
     private void createAchievements() {
         List<Achievement> achievements = new ArrayList<>();
-        achievements.add(new Achievement("1Spin", 1, Enums.Statistic.TotalSpins, "TEST1spin"));
-        achievements.add(new Achievement("10Spin", 10, Enums.Statistic.TotalSpins, "TEST10spin"));
-        achievements.add(new Achievement("100Spin", 100, Enums.Statistic.TotalSpins, "TEST100spin"));
+        achievements.add(new Achievement(100, Enums.Statistic.TotalSpins, "CgkIoMe6hp0eEAIQGA"));
+        achievements.add(new Achievement(1000, Enums.Statistic.TotalSpins, "CgkIoMe6hp0eEAIQGQ"));
+        achievements.add(new Achievement(10000, Enums.Statistic.TotalSpins, "CgkIoMe6hp0eEAIQGg"));
+        achievements.add(new Achievement(5, Enums.Statistic.Level, "CgkIoMe6hp0eEAIQGw"));
+        achievements.add(new Achievement(10, Enums.Statistic.Level, "CgkIoMe6hp0eEAIQHA"));
+        achievements.add(new Achievement(15, Enums.Statistic.Level, "CgkIoMe6hp0eEAIQHQ"));
+        achievements.add(new Achievement(20, Enums.Statistic.Level, "CgkIoMe6hp0eEAIQHg"));
+        achievements.add(new Achievement(500, Enums.Statistic.ResourcesGambled, "CgkIoMe6hp0eEAIQHw"));
+        achievements.add(new Achievement(5000, Enums.Statistic.ResourcesGambled, "CgkIoMe6hp0eEAIQIA"));
+        achievements.add(new Achievement(10000, Enums.Statistic.ResourcesGambled, "CgkIoMe6hp0eEAIQIQ"));
+        achievements.add(new Achievement(1, Enums.Statistic.MinigameChest, "CgkIoMe6hp0eEAIQAQ"));
+        achievements.add(new Achievement(10, Enums.Statistic.MinigameChest, "CgkIoMe6hp0eEAIQIg"));
+        achievements.add(new Achievement(100, Enums.Statistic.MinigameChest, "CgkIoMe6hp0eEAIQIw"));
+        achievements.add(new Achievement(1, Enums.Statistic.MinigameDice, "CgkIoMe6hp0eEAIQAg"));
+        achievements.add(new Achievement(10, Enums.Statistic.MinigameDice, "CgkIoMe6hp0eEAIQJA"));
+        achievements.add(new Achievement(100, Enums.Statistic.MinigameDice, "CgkIoMe6hp0eEAIQJQ"));
+        achievements.add(new Achievement(1, Enums.Statistic.MinigameFlip, "CgkIoMe6hp0eEAIQAw"));
+        achievements.add(new Achievement(10, Enums.Statistic.MinigameFlip, "CgkIoMe6hp0eEAIQJg"));
+        achievements.add(new Achievement(100, Enums.Statistic.MinigameFlip, "CgkIoMe6hp0eEAIQJw"));
+        achievements.add(new Achievement(1, Enums.Statistic.CollectedBonuses, "CgkIoMe6hp0eEAIQBA"));
+        achievements.add(new Achievement(10, Enums.Statistic.CollectedBonuses, "CgkIoMe6hp0eEAIQKA"));
+        achievements.add(new Achievement(30, Enums.Statistic.CollectedBonuses, "CgkIoMe6hp0eEAIQKQ"));
+        achievements.add(new Achievement(1, Enums.Statistic.VipLevel, "CgkIoMe6hp0eEAIQBQ"));
         Achievement.saveInTx(achievements);
     }
 
     private void createStatistics() {
         List<Statistic> statistics = new ArrayList<>();
         statistics.add(new Statistic(Enums.StatisticType.Progress, Enums.Statistic.Xp, "", "", Constants.STARTING_XP));
-        statistics.add(new Statistic(Enums.StatisticType.Progress, Enums.Statistic.Level, "CgkIoMe6hp0eEAIQBw", "CgkIoMe6hp0eEAIQEA", 1, 1));
+        statistics.add(new Statistic(Enums.StatisticType.Progress, Enums.Statistic.Level, "CgkIoMe6hp0eEAIQBw", "CgkIoMe6hp0eEAIQEA", 1, 0));
         statistics.add(new Statistic(Enums.StatisticType.Progress, Enums.Statistic.VipLevel, "CgkIoMe6hp0eEAIQDw", "", 0, 0));
         statistics.add(new Statistic(Enums.StatisticType.Events, Enums.Statistic.TotalSpins, "CgkIoMe6hp0eEAIQCA", "CgkIoMe6hp0eEAIQEQ", 0, 0));
         statistics.add(new Statistic(Enums.StatisticType.Events, Enums.Statistic.QuestsCompleted, "", "", 0, 0));

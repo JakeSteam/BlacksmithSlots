@@ -35,5 +35,6 @@ dependencies {
     compile 'de.keyboardsurfer.android.widget:crouton:1.8.5@aar'
     compile 'com.anjlab.android.iab.v3:library:1.0.38'
     compile 'com.jakewharton:butterknife:8.5.1'
+    compile 'com.scottyab:aescrypt:0.0.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
 }
