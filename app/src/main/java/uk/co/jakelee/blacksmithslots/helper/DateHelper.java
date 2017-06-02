@@ -6,6 +6,10 @@ import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
 public class DateHelper {
+    public static final int MILLISECONDS_IN_SECOND = 1000;
+    public static final int SECONDS_IN_MINUTE = 60;
+    private static final int MINUTES_IN_HOUR = 60;
+
     public static long hoursToMillis(double hours) {
         return TimeUnit.MINUTES.toMillis((long)Math.ceil(hours * 60d));
     }

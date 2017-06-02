@@ -9,6 +9,7 @@ public class Constants {
     public final static int STARTING_XP = 205;
     public final static int MESSAGE_LOG_LIMIT = 100;
     public final static long TIME_BETWEEN_AUTOSAVES = 180000; // 3 mins
+    public static final int STATISTIC_NOT_TRACKED = -1;
 
     public final static int NOTIFICATION_PERIODIC_BONUS = 100;
     public final static int NOTIFICATION_PASS_BONUS = 101;

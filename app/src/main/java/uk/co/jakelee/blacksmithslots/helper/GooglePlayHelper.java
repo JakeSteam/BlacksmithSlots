@@ -22,6 +22,8 @@ import com.google.android.gms.games.snapshot.Snapshots;
 import com.google.example.games.basegameutils.BaseGameUtils;
 import com.google.gson.Gson;
 import com.orm.SugarRecord;
+import com.orm.query.Condition;
+import com.orm.query.Select;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -31,6 +33,7 @@ import java.util.Locale;
 import uk.co.jakelee.blacksmithslots.BuildConfig;
 import uk.co.jakelee.blacksmithslots.R;
 import uk.co.jakelee.blacksmithslots.main.MapActivity;
+import uk.co.jakelee.blacksmithslots.model.Achievement;
 import uk.co.jakelee.blacksmithslots.model.Iap;
 import uk.co.jakelee.blacksmithslots.model.Inventory;
 import uk.co.jakelee.blacksmithslots.model.Message;
@@ -91,9 +94,51 @@ public class GooglePlayHelper implements com.google.android.gms.common.api.Resul
         Games.Leaderboards.submitScore(mGoogleApiClient, leaderboardID, value);
     }
 
-    private static void UnlockAchievement(Enums.Achievement achievement) {
-        if (IsConnected()) {
-            Games.Achievements.unlock(mGoogleApiClient, achievement.value);
+    public static void UpdateAchievements() {
+        if (!IsConnected()) {
+            return;
+        }
+
+        List<Statistic> statistics = Select.from(Statistic.class).where(
+                Condition.prop("j").notEq(Constants.STATISTIC_NOT_TRACKED)).list();
+
+        for (Statistic statistic : statistics) {
+            int currentValue = statistic.getIntValue();
+            int lastSentValue = statistic.getLastSentValue();
+            List<Achievement> achievements = Select.from(Achievement.class).where(
+                    Condition.prop("c").eq(statistic.getStatistic().value)).orderBy("b ASC").list();
+
+            for (Achievement achievement : achievements) {
+                UpdateAchievement(achievement, currentValue, lastSentValue);
+            }
+
+            UpdateStatistic(statistic, currentValue, lastSentValue);
+        }
+    }
+
+    private static void UpdateAchievement(uk.co.jakelee.blacksmithslots.model.Achievement achievement, int currentValue, int lastSentValue) {
+        boolean hasChanged = (currentValue > lastSentValue);
+        boolean isAchieved = (achievement.getMaximumValue() <= lastSentValue);
+        if (hasChanged && !isAchieved && mGoogleApiClient.isConnected()) {
+            int difference = currentValue - lastSentValue;
+            if (achievement.getMaximumValue() == 1) {
+                Games.Achievements.unlock(mGoogleApiClient, achievement.getRemoteID());
+            } else {
+                Games.Achievements.increment(mGoogleApiClient, achievement.getRemoteID(), difference);
+            }
+        }
+    }
+
+    public static void UnlockAchievement(String achievementID) {
+        if (mGoogleApiClient.isConnected()) {
+            Games.Achievements.unlock(mGoogleApiClient, achievementID);
+        }
+    }
+
+    private static void UpdateStatistic(Statistic statistic, int currentValue, int lastSentValue) {
+        if (currentValue > lastSentValue && mGoogleApiClient.isConnected()) {
+            statistic.setLastSentValue(currentValue);
+            statistic.save();
         }
     }
 

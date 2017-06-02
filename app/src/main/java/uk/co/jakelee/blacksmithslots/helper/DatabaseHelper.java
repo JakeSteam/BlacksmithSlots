@@ -12,6 +12,7 @@ import java.util.List;
 
 import uk.co.jakelee.blacksmithslots.R;
 import uk.co.jakelee.blacksmithslots.main.SplashScreenActivity;
+import uk.co.jakelee.blacksmithslots.model.Achievement;
 import uk.co.jakelee.blacksmithslots.model.Iap;
 import uk.co.jakelee.blacksmithslots.model.Inventory;
 import uk.co.jakelee.blacksmithslots.model.ItemBundle;
@@ -60,7 +61,9 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
         createSlotsMap1();
         setProgress("Statistics", 75);
         createStatistics();
-        setProgress("Almost finished..!", 90);
+        setProgress("Achievements", 90);
+        createAchievements();
+        setProgress("Almost finished..!", 99);
         Log.d("TimeTaken", "Main db: " + (System.currentTimeMillis() - start));
     }
 
@@ -1723,18 +1726,26 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
         Task.saveInTx(tasks);
     }
 
+    private void createAchievements() {
+        List<Achievement> achievements = new ArrayList<>();
+        achievements.add(new Achievement("1Spin", 1, Enums.Statistic.TotalSpins, "TEST1spin"));
+        achievements.add(new Achievement("10Spin", 10, Enums.Statistic.TotalSpins, "TEST10spin"));
+        achievements.add(new Achievement("100Spin", 100, Enums.Statistic.TotalSpins, "TEST100spin"));
+        Achievement.saveInTx(achievements);
+    }
+
     private void createStatistics() {
         List<Statistic> statistics = new ArrayList<>();
         statistics.add(new Statistic(Enums.StatisticType.Progress, Enums.Statistic.Xp, "", "", Constants.STARTING_XP));
-        statistics.add(new Statistic(Enums.StatisticType.Progress, Enums.Statistic.Level, "CgkIoMe6hp0eEAIQBw", "CgkIoMe6hp0eEAIQEA", 1));
-        statistics.add(new Statistic(Enums.StatisticType.Progress, Enums.Statistic.VipLevel, "CgkIoMe6hp0eEAIQDw", "", 0));
-        statistics.add(new Statistic(Enums.StatisticType.Events, Enums.Statistic.TotalSpins, "CgkIoMe6hp0eEAIQCA", "CgkIoMe6hp0eEAIQEQ", 0));
-        statistics.add(new Statistic(Enums.StatisticType.Events, Enums.Statistic.QuestsCompleted, "CgkIoMe6hp0eEAIQCQ", "CgkIoMe6hp0eEAIQEg", 0));
-        statistics.add(new Statistic(Enums.StatisticType.Events, Enums.Statistic.ResourcesGambled, "CgkIoMe6hp0eEAIQCg", "CgkIoMe6hp0eEAIQEw", 0));
-        statistics.add(new Statistic(Enums.StatisticType.Events, Enums.Statistic.ResourcesWon, "CgkIoMe6hp0eEAIQCw", "CgkIoMe6hp0eEAIQFA", 0));
-        statistics.add(new Statistic(Enums.StatisticType.Events, Enums.Statistic.AdvertsWatched, "CgkIoMe6hp0eEAIQDA", "CgkIoMe6hp0eEAIQFQ", 0));
-        statistics.add(new Statistic(Enums.StatisticType.Misc, Enums.Statistic.PacksPurchased, "CgkIoMe6hp0eEAIQDQ", "CgkIoMe6hp0eEAIQFg", 0));
-        statistics.add(new Statistic(Enums.StatisticType.Bonuses, Enums.Statistic.CollectedBonuses, "CgkIoMe6hp0eEAIQDg", "CgkIoMe6hp0eEAIQFw", 0));
+        statistics.add(new Statistic(Enums.StatisticType.Progress, Enums.Statistic.Level, "CgkIoMe6hp0eEAIQBw", "CgkIoMe6hp0eEAIQEA", 1, 1));
+        statistics.add(new Statistic(Enums.StatisticType.Progress, Enums.Statistic.VipLevel, "CgkIoMe6hp0eEAIQDw", "", 0, 0));
+        statistics.add(new Statistic(Enums.StatisticType.Events, Enums.Statistic.TotalSpins, "CgkIoMe6hp0eEAIQCA", "CgkIoMe6hp0eEAIQEQ", 0, 0));
+        statistics.add(new Statistic(Enums.StatisticType.Events, Enums.Statistic.QuestsCompleted, "", "", 0, 0));
+        statistics.add(new Statistic(Enums.StatisticType.Events, Enums.Statistic.ResourcesGambled, "CgkIoMe6hp0eEAIQCg", "CgkIoMe6hp0eEAIQEw", 0, 0));
+        statistics.add(new Statistic(Enums.StatisticType.Events, Enums.Statistic.ResourcesWon, "CgkIoMe6hp0eEAIQCw", "CgkIoMe6hp0eEAIQFA", 0, 0));
+        statistics.add(new Statistic(Enums.StatisticType.Events, Enums.Statistic.AdvertsWatched, "CgkIoMe6hp0eEAIQDA", "CgkIoMe6hp0eEAIQFQ", 0, 0));
+        statistics.add(new Statistic(Enums.StatisticType.Misc, Enums.Statistic.PacksPurchased, "CgkIoMe6hp0eEAIQDQ", "CgkIoMe6hp0eEAIQFg", 0, 0));
+        statistics.add(new Statistic(Enums.StatisticType.Bonuses, Enums.Statistic.CollectedBonuses, "CgkIoMe6hp0eEAIQDg", "CgkIoMe6hp0eEAIQFw", 0, 0));
         statistics.add(new Statistic(Enums.StatisticType.Misc, Enums.Statistic.SaveImported, "", "", false));
         statistics.add(new Statistic(Enums.StatisticType.Bonuses, Enums.Statistic.LastBonusClaimed, "", "", 0L));
         statistics.add(new Statistic(Enums.StatisticType.Misc, Enums.Statistic.LastAutosave, "", "", 0L));
@@ -1743,9 +1754,9 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
         statistics.add(new Statistic(Enums.StatisticType.BlacksmithPass, Enums.Statistic.HighestPassClaimedDay, "", "", 0));
         statistics.add(new Statistic(Enums.StatisticType.BlacksmithPass, Enums.Statistic.TotalPassDaysClaimed, "", "", 0));
         statistics.add(new Statistic(Enums.StatisticType.BlacksmithPass, Enums.Statistic.ExtraPassMonths, "", "", 0));
-        statistics.add(new Statistic(Enums.StatisticType.Minigames, Enums.Statistic.MinigameChest, "", "", 0));
-        statistics.add(new Statistic(Enums.StatisticType.Minigames, Enums.Statistic.MinigameDice, "", "", 0));
-        statistics.add(new Statistic(Enums.StatisticType.Minigames, Enums.Statistic.MinigameFlip, "", "", 0));
+        statistics.add(new Statistic(Enums.StatisticType.Minigames, Enums.Statistic.MinigameChest, "", "", 0, 0));
+        statistics.add(new Statistic(Enums.StatisticType.Minigames, Enums.Statistic.MinigameDice, "", "", 0, 0));
+        statistics.add(new Statistic(Enums.StatisticType.Minigames, Enums.Statistic.MinigameFlip, "", "", 0, 0));
         Statistic.saveInTx(statistics);
     }
 }

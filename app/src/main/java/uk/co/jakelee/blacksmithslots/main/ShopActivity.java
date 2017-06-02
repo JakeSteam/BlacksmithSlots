@@ -371,6 +371,7 @@ public class ShopActivity extends BaseActivity implements BillingProcessor.IBill
             createPassTab();
         } else {
             items = IapHelper.getBundleRewards(iap.getIapId());
+            Statistic.add(Enums.Statistic.PacksPurchased);
             AlertHelper.success(this, String.format(Locale.ENGLISH, getString(R.string.iap_bundle_purchased), DisplayHelper.bundlesToString(this, items)), true);
         }
 

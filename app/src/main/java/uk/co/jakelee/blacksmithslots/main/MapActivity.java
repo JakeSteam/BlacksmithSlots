@@ -49,6 +49,7 @@ import uk.co.jakelee.blacksmithslots.model.Inventory;
 import uk.co.jakelee.blacksmithslots.model.ItemBundle;
 import uk.co.jakelee.blacksmithslots.model.Setting;
 import uk.co.jakelee.blacksmithslots.model.Slot;
+import uk.co.jakelee.blacksmithslots.model.Statistic;
 import uk.co.jakelee.blacksmithslots.model.Task;
 
 import static android.view.View.GONE;
@@ -138,6 +139,20 @@ public class MapActivity extends BaseActivity implements
         super.onResume();
 
         onConnected(null);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        final Runnable everyMinute = new Runnable() {
+            @Override
+            public void run() {
+                GooglePlayHelper.UpdateAchievements();
+                handler.postDelayed(this, DateHelper.MILLISECONDS_IN_SECOND * DateHelper.SECONDS_IN_MINUTE);
+            }
+        };
+        handler.postDelayed(everyMinute, DateHelper.MILLISECONDS_IN_SECOND * DateHelper.SECONDS_IN_MINUTE);
     }
 
     @OnClick(R.id.googlePlayLoginRow)
@@ -290,6 +305,7 @@ public class MapActivity extends BaseActivity implements
 
     public void rewardAdvertItems() {
         AlertHelper.success(this, getString(R.string.advert_watch_verified) + IncomeHelper.claimAdvertBonus(this), true);
+        Statistic.add(Enums.Statistic.AdvertsWatched);
         setAdvertUnclaimable();
     }
 

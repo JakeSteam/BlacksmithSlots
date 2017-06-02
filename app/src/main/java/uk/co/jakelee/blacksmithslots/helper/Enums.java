@@ -1,13 +1,6 @@
 package uk.co.jakelee.blacksmithslots.helper;
 
 public class Enums {
-    public enum Achievement {
-        UnlockSlot1("achievementcode");
-        public String value;
-        Achievement(String value) {
-            this.value = value;
-        }
-    }
 
     public enum DataType {
         Integer(1), Boolean(2), String(3), Long(4);

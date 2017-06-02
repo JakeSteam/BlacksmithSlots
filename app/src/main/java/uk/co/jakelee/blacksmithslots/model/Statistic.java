@@ -11,6 +11,7 @@ import com.orm.query.Select;
 
 import java.util.List;
 
+import uk.co.jakelee.blacksmithslots.helper.Constants;
 import uk.co.jakelee.blacksmithslots.helper.DateHelper;
 import uk.co.jakelee.blacksmithslots.helper.Enums;
 import uk.co.jakelee.blacksmithslots.helper.GooglePlayHelper;
@@ -45,7 +46,20 @@ public class Statistic extends SugarRecord {
     @Column(name = "i")
     private int statisticType;
 
+    @Column(name = "j")
+    private int lastSentValue;
+
     public Statistic() {
+    }
+
+    public Statistic(Enums.StatisticType statisticType, Enums.Statistic statistic, String eventId, String leaderboardId, int intValue, int lastSentValue) {
+        this.statisticType = statisticType.value;
+        this.statistic = statistic.value;
+        this.eventId = eventId;
+        this.leaderboardId = leaderboardId;
+        this.datatype = Enums.DataType.Integer.value;
+        this.intValue = intValue;
+        this.lastSentValue = lastSentValue;
     }
 
     public Statistic(Enums.StatisticType statisticType, Enums.Statistic statistic, String eventId, String leaderboardId, int intValue) {
@@ -55,6 +69,7 @@ public class Statistic extends SugarRecord {
         this.leaderboardId = leaderboardId;
         this.datatype = Enums.DataType.Integer.value;
         this.intValue = intValue;
+        this.lastSentValue = Constants.STATISTIC_NOT_TRACKED;
     }
 
     public Statistic(Enums.StatisticType statisticType, Enums.Statistic statistic, String eventId, String leaderboardId, long longValue) {
@@ -64,6 +79,7 @@ public class Statistic extends SugarRecord {
         this.leaderboardId = leaderboardId;
         this.datatype = Enums.DataType.Long.value;
         this.longValue = longValue;
+        this.lastSentValue = Constants.STATISTIC_NOT_TRACKED;
     }
 
     public Statistic(Enums.StatisticType statisticType, Enums.Statistic statistic, String eventId, String leaderboardId, boolean boolValue) {
@@ -73,6 +89,7 @@ public class Statistic extends SugarRecord {
         this.leaderboardId = leaderboardId;
         this.datatype = Enums.DataType.Boolean.value;
         this.boolValue = boolValue;
+        this.lastSentValue = Constants.STATISTIC_NOT_TRACKED;
     }
 
     public Statistic(Enums.StatisticType statisticType, Enums.Statistic statistic, String eventId, String leaderboardId, String stringValue) {
@@ -82,6 +99,7 @@ public class Statistic extends SugarRecord {
         this.leaderboardId = leaderboardId;
         this.datatype = Enums.DataType.String.value;
         this.stringValue = stringValue;
+        this.lastSentValue = Constants.STATISTIC_NOT_TRACKED;
     }
 
     public static Statistic get(Enums.Statistic statistic) {
@@ -160,6 +178,14 @@ public class Statistic extends SugarRecord {
 
     public void setStatisticType(Enums.StatisticType statisticType) {
         this.statisticType = statisticType.value;
+    }
+
+    public int getLastSentValue() {
+        return lastSentValue;
+    }
+
+    public void setLastSentValue(int lastSentValue) {
+        this.lastSentValue = lastSentValue;
     }
 
     public static void add(Enums.Statistic stat) {
