@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
@@ -205,8 +206,10 @@ public class SettingsActivity extends BaseActivity {
 
     public void importSave(View v) {
         StorageHelper.confirmStoragePermissions(this);
-        if (StorageHelper.checkForPBSave()) {
-            AlertHelper.success(this, IncomeHelper.claimMiscBonus(this), false);
+        Pair<Integer, Integer> pbData = StorageHelper.getPBSave();
+        if (pbData != null) {
+
+            AlertHelper.success(this, IncomeHelper.claimImportBonus(this, pbData.first), false);
 
             // Reward fixed amount for now, ideally dependant on prestige / premium?
             Setting haveImported = Setting.get(Enums.Setting.SaveImported);
@@ -221,7 +224,7 @@ public class SettingsActivity extends BaseActivity {
 
             populateSettings();
         } else {
-            AlertHelper.error(this, R.string.google_cloud_save_error, false);
+            AlertHelper.error(this, R.string.error_failed_pb_import, false);
         }
     }
 

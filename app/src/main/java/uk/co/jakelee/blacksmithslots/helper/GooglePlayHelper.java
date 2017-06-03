@@ -200,6 +200,10 @@ public class GooglePlayHelper implements com.google.android.gms.common.api.Resul
         task.execute();
     }
 
+    public static void getInfoFromPBSave() {
+        Pair<Integer, Integer> cloudData = getXpAndItemsFromSave(cloudSaveData);
+    }
+
     private static void loadFromCloud(final boolean checkIsImprovement) {
         if (!IsConnected() || callingContext == null || callingActivity == null || cloudSaveData == null) {
             return;
@@ -444,6 +448,19 @@ public class GooglePlayHelper implements com.google.android.gms.common.api.Resul
         }
 
         return new Pair<>(xp, items);
+    }
+
+    public static Pair<Integer, Integer> getPrestigeAndXpFromPBSave(byte[] saveBytes) {
+        int prestige = 0;
+        int xp = 0;
+
+        String[] splitData = splitBackupData(new String(saveBytes));
+        if (splitData.length > 2) {
+            prestige = Integer.parseInt(splitData[1]);
+            xp = Integer.parseInt(splitData[2]);
+        }
+
+        return new Pair<>(prestige, xp);
     }
 
     public static boolean newSaveIsBetter(Pair<Integer, Integer> newValues) {

@@ -6,7 +6,8 @@
     android:id="@+id/parent"
     android:layout_height="match_parent"
     android:layout_width="match_parent"
-    tools:context="uk.co.jakelee.blacksmithslots.main.SlotActivity">
+    tools:context="uk.co.jakelee.blacksmithslots.main.SlotActivity"
+    android:background="@drawable/background_white">
 
     <android.support.percent.PercentRelativeLayout
         android:layout_width="match_parent"

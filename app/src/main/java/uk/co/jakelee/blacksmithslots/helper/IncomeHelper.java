@@ -45,6 +45,10 @@ public class IncomeHelper {
         return claimBonus(context, getAdvertBonus(), false, true);
     }
 
+    public static String claimImportBonus(Context context, Integer prestige) {
+        return "Save has a prestige level of " + prestige + ". " + claimBonus(context, getBonus(1 + (prestige > 5 ? 5 : prestige)), false, false);
+    }
+
     private static String claimBonus(Context context, List<ItemBundle> bonus, boolean claimingPeriodicBonus, boolean claimingAdvertBonus) {
         StringBuilder winningsText = new StringBuilder().append("Claimed: ");
         for (ItemBundle result : bonus) {
