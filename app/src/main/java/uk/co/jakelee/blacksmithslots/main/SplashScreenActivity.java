@@ -4,9 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.LinearInterpolator;
-import android.view.animation.RotateAnimation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -30,36 +28,58 @@ public class SplashScreenActivity extends BaseActivity {
         setContentView(R.layout.activity_splashscreen);
         ButterKnife.bind(this);
 
-        RotateAnimation rotateAnimation = new RotateAnimation(0, 360f,
-                Animation.RELATIVE_TO_SELF, 0.5f,
-                Animation.RELATIVE_TO_SELF, 0.5f);
-
-        rotateAnimation.setInterpolator(new LinearInterpolator());
-        rotateAnimation.setDuration(10000);
-        rotateAnimation.setRepeatCount(Animation.INFINITE);
-        globeImage.startAnimation(rotateAnimation);
-
-        handler.postDelayed(stage2, 5000);
-        handler.postDelayed(stage3, 10000);
-
         new DatabaseHelper(this).execute();
     }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        handler.removeCallbacksAndMessages(null);
+    }
+
+    public void startIntro() {
+        changeButton(false);
+
+        handler.post(stage1);
+        handler.postDelayed(stage2, 5000);
+        handler.postDelayed(stage3, 10000);
+        handler.postDelayed(stage4, 11000);
+    }
+
+    private Runnable stage1 = new Runnable() {
+        @Override
+        public void run() {
+            globeImage.setVisibility(View.VISIBLE);
+            globeImage.startAnimation(AnimationUtils.loadAnimation(getApplicationContext(), R.anim.rotate));
+            setTopText("First everything was fine :D");
+        }
+    };
 
     private Runnable stage2 = new Runnable() {
         @Override
         public void run() {
             globeImage.setImageResource(R.drawable.globe_purple);
-            topBar.setText("Then things went badly, when the Purple came :(");
+            setTopText("Then things went badly, when the Purple came :(");
         }
     };
 
     private Runnable stage3 = new Runnable() {
         @Override
         public void run() {
-            topBar.setText("Make it right again, thanks!");
-            changeSkipToStart();
+            setTopText("Make it right again, thanks!");
         }
     };
+
+    private Runnable stage4 = new Runnable() {
+        @Override
+        public void run() {
+            changeButton(true);
+        }
+    };
+
+    public void setTopText(String string) {
+        topBar.setText(string);
+    }
 
     public void enableStartButton() {
         startButton.setVisibility(View.VISIBLE);
@@ -71,8 +91,9 @@ public class SplashScreenActivity extends BaseActivity {
         });
     }
 
-    public void changeSkipToStart() {
-        startButton.setText(R.string.start);
+    public void changeButton(boolean toStart) {
+        startButton.setText(toStart ? R.string.start : R.string.skip);
+        startButton.setBackgroundResource(toStart ? R.drawable.box_green : R.drawable.box_orange);
     }
 
     public void startGame() {

@@ -27,6 +27,7 @@ import static android.content.Context.MODE_PRIVATE;
 public class DatabaseHelper extends AsyncTask<String, String, String> {
     public final static int NO_DATABASE = 0;
     public final static int V0_0_1 = 1;
+    //public final static int V0_0_2 = 2;
 
     public final static int LATEST_PATCH = V0_0_1;
 
@@ -63,7 +64,6 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
         createStatistics();
         setProgress("Achievements", 90);
         createAchievements();
-        setProgress("Loaded!", 100);
         Log.d("TimeTaken", "Main db: " + (System.currentTimeMillis() - start));
     }
 
@@ -77,13 +77,15 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
     @Override
     protected String doInBackground(String... params) {
         SharedPreferences prefs = context.getSharedPreferences("uk.co.jakelee.blacksmithslots", MODE_PRIVATE);
+        boolean appliedDbChanges = false;
+        boolean isFirstInstall = false;
 
         if (prefs.getInt("databaseVersion", DatabaseHelper.NO_DATABASE) <= DatabaseHelper.NO_DATABASE) {
+            callingActivity.startIntro();
             createDatabase();
-
             prefs.edit().putInt("databaseVersion", V0_0_1).apply();
-            Message.log("Installed!");
-
+            appliedDbChanges = true;
+            isFirstInstall = true;
             new Thread(new Runnable() {
                 @Override
                 public void run() {
@@ -93,10 +95,20 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
         }
 
         /*if (prefs.getInt("databaseVersion", DatabaseHelper.NO_DATABASE) < DatabaseHelper.V0_0_2) {
-            setProgress("Patch 0.0.2", 60);
-            patchTo002();
+            if (!isFirstInstall) {
+                callingActivity.setTopText("This is a shiny new version, with new features!");
+            }
+            setProgress("Patch 0.0.2", 30);
+            //patchTo002();
+            appliedDbChanges = true;
             prefs.edit().putInt("databaseVersion", DatabaseHelper.V0_0_2).apply();
         }*/
+
+        if (appliedDbChanges) {
+            setProgress("Game installed!", 100);
+        } else {
+            callingActivity.startGame();
+        }
         return "";
     }
 
