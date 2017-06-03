@@ -63,13 +63,13 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
         createStatistics();
         setProgress("Achievements", 90);
         createAchievements();
-        setProgress("Almost finished..!", 99);
+        setProgress("Loaded!", 100);
         Log.d("TimeTaken", "Main db: " + (System.currentTimeMillis() - start));
     }
 
     private void setProgress(String currentTask, int percentage) {
         if (progressText != null && progressBar != null) {
-            publishProgress(currentTask);
+            publishProgress(percentage + "%: " + currentTask);
             progressBar.setProgress(percentage);
         }
     }
@@ -108,7 +108,7 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
         }
 
         if (callingActivity != null) {
-            callingActivity.startGame();
+            callingActivity.enableStartButton();
         }
     }
 
@@ -118,7 +118,7 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
 
     @Override
     protected void onProgressUpdate(String... values) {
-        progressText.setText("Installing:\n" + values[0]);
+        progressText.setText(values[0]);
     }
 
     private void createInventories() {

@@ -2,40 +2,60 @@
 <RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:background="@color/black">
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <LinearLayout
+    <RelativeLayout
+        android:id="@+id/bottomBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:gravity="center_horizontal"
-        android:orientation="vertical">
-        <ImageView
-            android:id="@+id/image"
-            android:layout_width="150dp"
-            android:layout_height="150dp"/>
+        android:layout_alignParentBottom="true"
+        android:padding="5dp">
         <uk.co.jakelee.blacksmithslots.components.FontTextView
-            android:id="@+id/imageDescription"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingBottom="20dp"
-            android:textColor="@color/white"
-            android:textSize="20sp" />
-        <uk.co.jakelee.blacksmithslots.components.FontTextView
-            android:id="@+id/progressText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:textColor="@color/white"
-            android:textSize="40sp" />
+            android:visibility="invisible"
+            android:id="@+id/startButton"
+            style="@style/SlotText"
+            android:layout_height="40dp"
+            android:background="@drawable/box_orange"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="10dp"
+            android:text="@string/skip"/>
         <ProgressBar
             android:id="@+id/progressBar"
             style="?android:attr/progressBarStyleHorizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
             android:indeterminate="false"
-            android:max="100" />
-    </LinearLayout>
+            android:max="100"
+            android:layout_toLeftOf="@id/startButton"
+            android:progressDrawable="@drawable/custom_progress_bar_simple"
+            android:minHeight="40dp"
+            android:maxHeight="40dp"/>
+        <uk.co.jakelee.blacksmithslots.components.FontTextView
+            android:id="@+id/progressText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@id/startButton"
+            style="@style/SlotText"
+            android:background="@color/transparent"/>
+    </RelativeLayout>
+
+    <uk.co.jakelee.blacksmithslots.components.FontTextView
+        android:id="@+id/topBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:textColor="@color/white"
+        android:text="First everything was fine :D"
+        style="@style/FontSize"/>
+
+    <ImageView
+        android:id="@+id/globe"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:adjustViewBounds="true"
+        android:layout_above="@id/bottomBar"
+        android:layout_below="@id/topBar"
+        android:layout_centerHorizontal="true"
+        android:background="@color/transparent"
+        android:src="@drawable/globe"/>
 </RelativeLayout>

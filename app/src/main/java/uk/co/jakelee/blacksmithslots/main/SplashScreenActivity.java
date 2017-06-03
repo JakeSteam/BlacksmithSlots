@@ -3,57 +3,76 @@ package uk.co.jakelee.blacksmithslots.main;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.LinearInterpolator;
+import android.view.animation.RotateAnimation;
 import android.widget.ImageView;
+import android.widget.TextView;
 
-import com.squareup.picasso.MemoryPolicy;
-import com.squareup.picasso.NetworkPolicy;
-import com.squareup.picasso.Picasso;
-
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import uk.co.jakelee.blacksmithslots.BaseActivity;
 import uk.co.jakelee.blacksmithslots.R;
-import uk.co.jakelee.blacksmithslots.helper.CalculationHelper;
 import uk.co.jakelee.blacksmithslots.helper.DatabaseHelper;
-import uk.co.jakelee.blacksmithslots.helper.DisplayHelper;
 
 public class SplashScreenActivity extends BaseActivity {
+    Handler handler = new Handler();
+
+    @BindView(R.id.globe) ImageView globeImage;
+    @BindView(R.id.topBar) TextView topBar;
+    @BindView(R.id.progressText) TextView progressText;
+    @BindView(R.id.startButton) TextView startButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splashscreen);
+        ButterKnife.bind(this);
 
-        final Picasso picasso = new Picasso.Builder(this).build();
-        final ImageView imageView = (ImageView)findViewById(R.id.image);
-        final Handler h = new Handler();
-        h.post(new Runnable(){
-            public void run(){
-                String resource = getRandomItemOrSlotDrawable();
-                int resourceId = getResources().getIdentifier(resource, "drawable", getPackageName());
-                if (resourceId == 0) {
-                    resourceId = getResources().getIdentifier(DisplayHelper.getItemImageFile(999, 999), "drawable", getPackageName());
-                }
-                picasso.load(resourceId)
-                        .memoryPolicy(MemoryPolicy.NO_CACHE)
-                        .networkPolicy(NetworkPolicy.NO_CACHE)
-                        .into(imageView);
-                h.postDelayed(this, 700);
-            }
-        });
+        RotateAnimation rotateAnimation = new RotateAnimation(0, 360f,
+                Animation.RELATIVE_TO_SELF, 0.5f,
+                Animation.RELATIVE_TO_SELF, 0.5f);
+
+        rotateAnimation.setInterpolator(new LinearInterpolator());
+        rotateAnimation.setDuration(10000);
+        rotateAnimation.setRepeatCount(Animation.INFINITE);
+        globeImage.startAnimation(rotateAnimation);
+
+        handler.postDelayed(stage2, 5000);
+        handler.postDelayed(stage3, 10000);
 
         new DatabaseHelper(this).execute();
     }
 
-    private String getRandomItemOrSlotDrawable() {
-        if (CalculationHelper.randomBoolean()) {
-            int tier = CalculationHelper.randomNumber(1, 10);
-            if (tier == 8 || tier == 9) {
-                tier = 0;
-            }
-            int minType = DisplayHelper.getMinTypeForTier(tier);
-            int maxType = DisplayHelper.getMaxTypeForTier(tier);
-            return DisplayHelper.getItemImageFile(tier, CalculationHelper.randomNumber(minType, maxType));
-        } else {
-            return DisplayHelper.getPersonImageFile(CalculationHelper.randomNumber(1, 42));
+    private Runnable stage2 = new Runnable() {
+        @Override
+        public void run() {
+            globeImage.setImageResource(R.drawable.globe_purple);
+            topBar.setText("Then things went badly, when the Purple came :(");
         }
+    };
+
+    private Runnable stage3 = new Runnable() {
+        @Override
+        public void run() {
+            topBar.setText("Make it right again, thanks!");
+            changeSkipToStart();
+        }
+    };
+
+    public void enableStartButton() {
+        startButton.setVisibility(View.VISIBLE);
+        startButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startGame();
+            }
+        });
+    }
+
+    public void changeSkipToStart() {
+        startButton.setText(R.string.start);
     }
 
     public void startGame() {

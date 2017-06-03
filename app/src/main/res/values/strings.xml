@@ -1068,4 +1068,6 @@
     <string name="apply">Apply</string>
     <string name="cloud_load">Cloud Load</string>
     <string name="cloud_save">Cloud Save</string>
+    <string name="skip">Skip</string>
+    <string name="start">Start</string>
 </resources>
