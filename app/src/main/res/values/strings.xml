@@ -40,7 +40,7 @@
     <string name="google_cloud_save_conflict">Cloud save conflict! Attempting to resolve, this may take a few seconds.</string>
     <string name="google_cloud_save_error">An error occurred, please contact blacksmithslots@jakelee.co.uk if this happens repeatedly!</string>
 
-    <string name="log_spin">%1$s at %2$s.</string>
+    <string name="log_spin">%1$s at \"%2$s\".</string>
     <string name="log_error">Error: %1$s</string>
 
     <string name="time_hours">%1.1f hrs</string>
