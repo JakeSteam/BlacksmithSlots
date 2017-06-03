@@ -10,6 +10,14 @@
         android:layout_width="0dp"
         android:layout_weight="1"
         android:background="@drawable/box_orange"
+        android:text="@string/replay_intro"
+        android:layout_margin="3dp"
+        android:onClick="replayIntro"
+        style="@style/SlotText"/>
+    <uk.co.jakelee.blacksmithslots.components.FontTextView
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:background="@drawable/box_orange"
         android:text="@string/support_code"
         android:layout_margin="3dp"
         android:onClick="openSupportCode"

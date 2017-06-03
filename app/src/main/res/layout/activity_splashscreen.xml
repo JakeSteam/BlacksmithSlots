@@ -2,7 +2,8 @@
 <RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@drawable/globe_background">
 
     <RelativeLayout
         android:id="@+id/bottomBar"
@@ -39,23 +40,30 @@
             android:background="@color/transparent"/>
     </RelativeLayout>
 
-    <uk.co.jakelee.blacksmithslots.components.FontTextView
-        android:id="@+id/topBar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:textColor="@color/white"
-        style="@style/FontSize"/>
-
     <ImageView
         android:id="@+id/globe"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:adjustViewBounds="true"
         android:layout_above="@id/bottomBar"
-        android:layout_below="@id/topBar"
+        android:layout_marginTop="65dp"
+        android:layout_marginLeft="35dp"
+        android:layout_marginRight="35dp"
+        android:layout_marginBottom="35dp"
         android:layout_centerHorizontal="true"
         android:background="@color/transparent"
-        android:src="@drawable/globe"
+        android:src="@drawable/globe_1"
         android:visibility="invisible"/>
+
+    <uk.co.jakelee.blacksmithslots.components.FontTextView
+        android:id="@+id/topBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:textColor="@color/black"
+        android:background="@color/white"
+        android:alpha="0.9"
+        android:maxLines="4"
+        android:textSize="30sp"
+        android:padding="5dp"/>
 </RelativeLayout>

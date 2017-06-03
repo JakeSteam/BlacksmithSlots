@@ -116,10 +116,10 @@ public class SettingsActivity extends BaseActivity {
             }
         }
 
-        LinearLayout socialRow = (LinearLayout)inflater.inflate(R.layout.custom_social_row, null).findViewById(R.id.socialRow);
+        LinearLayout socialRow = (LinearLayout)inflater.inflate(R.layout.custom_row_social, null).findViewById(R.id.socialRow);
         settingTable.addView(socialRow);
 
-        TableRow supportRow = (TableRow)inflater.inflate(R.layout.custom_support_row, null).findViewById(R.id.supportRow);
+        TableRow supportRow = (TableRow)inflater.inflate(R.layout.custom_row_misc, null).findViewById(R.id.supportRow);
         settingTable.addView(supportRow);
 
 
@@ -128,6 +128,12 @@ public class SettingsActivity extends BaseActivity {
     public void openLink(View v) {
         String url = (String)v.getTag();
         startActivity(new Intent(Intent.ACTION_VIEW).setData(Uri.parse(url)));
+    }
+
+    public void replayIntro(View v) {
+        startActivity(new Intent(this, SplashScreenActivity.class)
+                .putExtra("replayingIntro", true)
+                .addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT));
     }
 
     public void openSupportCode(View v) {

@@ -14,6 +14,7 @@ public class CreditsActivity extends BaseActivity {
 
         // Android Wheel by ???
         // Sugar ORM
-        //
+        // https://opengameart.org/content/big-space-gun-free-pixel-art-graphics-for-your-game-0
+        // https://github.com/JuneLeGency/TransitionDrawable
     }
 }

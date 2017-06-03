@@ -1070,4 +1070,5 @@
     <string name="cloud_save">Cloud Save</string>
     <string name="skip">Skip</string>
     <string name="start">Start</string>
+    <string name="replay_intro">Replay Intro</string>
 </resources>

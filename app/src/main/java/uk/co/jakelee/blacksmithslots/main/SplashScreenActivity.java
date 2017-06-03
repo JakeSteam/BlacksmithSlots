@@ -8,14 +8,19 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import uk.co.jakelee.blacksmithslots.BaseActivity;
 import uk.co.jakelee.blacksmithslots.R;
+import uk.co.jakelee.blacksmithslots.components.TransitionDrawable;
 import uk.co.jakelee.blacksmithslots.helper.DatabaseHelper;
 
 public class SplashScreenActivity extends BaseActivity {
-    Handler handler = new Handler();
+    private Handler handler = new Handler();
+    private Picasso picasso;
+    private TransitionDrawable transitionDrawable;
 
     @BindView(R.id.globe) ImageView globeImage;
     @BindView(R.id.topBar) TextView topBar;
@@ -27,8 +32,16 @@ public class SplashScreenActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splashscreen);
         ButterKnife.bind(this);
+        picasso = Picasso.with(this);
 
-        new DatabaseHelper(this).execute();
+        Intent intent = getIntent();
+        if (intent != null && intent.getBooleanExtra("replayingIntro", false)) {
+            startIntro();
+            enableStartButton();
+            changeButton(true);
+        } else {
+            new DatabaseHelper(this).execute();
+        }
     }
 
     @Override
@@ -40,10 +53,18 @@ public class SplashScreenActivity extends BaseActivity {
     public void startIntro() {
         changeButton(false);
 
+        transitionDrawable = new TransitionDrawable(
+                getResources().getDrawable(R.drawable.globe_1),
+                getResources().getDrawable(R.drawable.globe_2),
+                getResources().getDrawable(R.drawable.globe_3),
+                getResources().getDrawable(R.drawable.globe_4));
+        globeImage.setImageDrawable(transitionDrawable);
+
         handler.post(stage1);
         handler.postDelayed(stage2, 5000);
         handler.postDelayed(stage3, 10000);
-        handler.postDelayed(stage4, 11000);
+        handler.postDelayed(stage4, 15000);
+        handler.postDelayed(stage5, 20000);
     }
 
     private Runnable stage1 = new Runnable() {
@@ -51,28 +72,41 @@ public class SplashScreenActivity extends BaseActivity {
         public void run() {
             globeImage.setVisibility(View.VISIBLE);
             globeImage.startAnimation(AnimationUtils.loadAnimation(getApplicationContext(), R.anim.rotate));
-            setTopText("First everything was fine :D");
+            setTopText("This is the world. Pretty nice right?");
         }
     };
 
     private Runnable stage2 = new Runnable() {
         @Override
         public void run() {
-            globeImage.setImageResource(R.drawable.globe_purple);
-            setTopText("Then things went badly, when the Purple came :(");
+            //picasso.load(R.drawable.globe_2).into(globeImage);
+            transitionDrawable.startTransition(1000);
+            setTopText("Well, it was.. Until the Purple appeared one day...");
         }
     };
 
     private Runnable stage3 = new Runnable() {
         @Override
         public void run() {
-            setTopText("Make it right again, thanks!");
+            //picasso.load(R.drawable.globe_3).into(globeImage);
+            transitionDrawable.startTransition(1000);
+            setTopText("It spread quickly, causing chaos and destruction everywhere it touched.");
         }
     };
 
     private Runnable stage4 = new Runnable() {
         @Override
         public void run() {
+            //picasso.load(R.drawable.globe_4).into(globeImage);
+            transitionDrawable.startTransition(1000);
+            setTopText("Can you help us stop it? Talk to people, help them out, and find the Purple's source.");
+        }
+    };
+
+    private Runnable stage5 = new Runnable() {
+        @Override
+        public void run() {
+            setTopText("Thank you!");
             changeButton(true);
         }
     };
@@ -97,8 +131,8 @@ public class SplashScreenActivity extends BaseActivity {
     }
 
     public void startGame() {
-        Intent intent = new Intent(this, MapActivity.class);
-        startActivity(intent);
+        startActivity(new Intent(this, MapActivity.class)
+                .addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT));
         finish();
     }
 }
