@@ -10,6 +10,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="5dp">
+        <uk.co.jakelee.blacksmithslots.components.AwesomeTextView
+            android:id="@+id/muteButton"
+            style="@style/SlotText"
+            android:layout_height="40dp"
+            android:background="@drawable/box_green"
+            android:layout_marginRight="10dp"
+            android:textSize="22sp"
+            android:text="@string/icon_volume"/>
         <uk.co.jakelee.blacksmithslots.components.FontTextView
             android:visibility="invisible"
             android:id="@+id/startButton"
@@ -27,6 +35,7 @@
             android:indeterminate="false"
             android:max="100"
             android:layout_toLeftOf="@id/startButton"
+            android:layout_toRightOf="@id/muteButton"
             android:progressDrawable="@drawable/custom_progress_bar_simple"
             android:minHeight="40dp"
             android:maxHeight="40dp"/>
@@ -35,6 +44,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_toLeftOf="@id/startButton"
+            android:layout_toRightOf="@id/muteButton"
             style="@style/SlotText"
             android:background="@color/transparent"/>
     </RelativeLayout>

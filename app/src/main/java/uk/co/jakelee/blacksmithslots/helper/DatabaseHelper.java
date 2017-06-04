@@ -51,13 +51,14 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
     }
 
     private void createDatabase() {
+        MusicHelper.getInstance(context).playIfPossible(R.raw.time_passes);
         long start = System.currentTimeMillis();
-        setProgress("Inventory", 15);
-        createInventories();
-        setProgress("Shop", 30);
-        createShop();
-        setProgress("Settings", 45);
+        setProgress("Settings", 15);
         createSettings();
+        setProgress("Inventory", 30);
+        createInventories();
+        setProgress("Shop", 45);
+        createShop();
         setProgress("Maps", 60);
         createSlotsMap1();
         setProgress("Statistics", 75);

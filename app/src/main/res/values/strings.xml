@@ -9,6 +9,8 @@
     <string name="icon_right" translatable = "false">&#xe804;</string>
     <string name="icon_settings" translatable = "false">&#xe805;</string>
     <string name="icon_statistics" translatable = "false">&#xe806;</string>
+    <string name="icon_volume" translatable = "false">&#xe807;</string>
+    <string name="icon_mute" translatable = "false">&#xe808;</string>
 
     <string name="rate_dialog_title">Rate Blacksmith Slots</string>
     <string name="rate_dialog_message">If you\'re enjoying Blacksmith Slots, would you mind leaving a rating? It helps more people discover the game, and encourages future development!\n\nThanks &lt;3</string>
@@ -1107,5 +1109,5 @@ AESCrypt (https://goo.gl/Ewk2tq) - Support code encryption.
 \nKenney (https://kenney.nl/) - Map and UI assets.
     </string>
     <string name="credits_audio_title">Audio</string>
-    <string name="credits_audio">\"Village Consort\" Kevin MacLeod (incompetech.com): Licensed under Creative Commons By Attribution 3.0 License (https://goo.gl/yKRP3S)</string>
+    <string name="credits_audio">\"Village Consort\" &amp; \"Time Passes\" Kevin MacLeod (incompetech.com): Licensed under Creative Commons By Attribution 3.0 License (https://goo.gl/yKRP3S)</string>
 </resources>

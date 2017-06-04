@@ -11,10 +11,14 @@ import android.widget.TextView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import uk.co.jakelee.blacksmithslots.BaseActivity;
 import uk.co.jakelee.blacksmithslots.R;
 import uk.co.jakelee.blacksmithslots.components.TransitionDrawable;
 import uk.co.jakelee.blacksmithslots.helper.DatabaseHelper;
+import uk.co.jakelee.blacksmithslots.helper.Enums;
+import uk.co.jakelee.blacksmithslots.helper.MusicHelper;
+import uk.co.jakelee.blacksmithslots.model.Setting;
 
 public class SplashScreenActivity extends BaseActivity {
     private Handler handler = new Handler();
@@ -25,6 +29,7 @@ public class SplashScreenActivity extends BaseActivity {
     @BindView(R.id.textBar) TextView textBar;
     @BindView(R.id.progressText) TextView progressText;
     @BindView(R.id.startButton) TextView startButton;
+    @BindView(R.id.muteButton) TextView muteButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,11 +39,30 @@ public class SplashScreenActivity extends BaseActivity {
 
         Intent intent = getIntent();
         if (intent != null && intent.getBooleanExtra("replayingIntro", false)) {
+            MusicHelper.getInstance(this).playIfPossible(R.raw.time_passes);
             startIntro();
             enableStartButton();
             changeButton(true);
         } else {
             new DatabaseHelper(this).execute();
+        }
+    }
+
+    @OnClick(R.id.muteButton)
+    public void mute() {
+        boolean mutingMusic = MusicHelper.getInstance(this).isMusicServiceIsStarted();
+        if (mutingMusic) {
+            MusicHelper.getInstance(this).stopMusic();
+        } else {
+            MusicHelper.getInstance(this).playIfPossible(R.raw.time_passes);
+        }
+
+        muteButton.setText(mutingMusic ? R.string.icon_mute : R.string.icon_volume);
+        muteButton.setBackgroundResource(mutingMusic ? R.drawable.box_orange : R.drawable.box_green);
+        Setting setting = Setting.get(Enums.Setting.Music);
+        if (setting != null) {
+            setting.setBooleanValue(!mutingMusic);
+            setting.save();
         }
     }
 
@@ -126,8 +150,10 @@ public class SplashScreenActivity extends BaseActivity {
     }
 
     public void startGame() {
+        MusicHelper.getInstance(this).setMovingInApp(true);
         startActivity(new Intent(this, MapActivity.class)
                 .addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT)
                 .putExtra("isFirstInstall", isFirstInstall));
+        finish();
     }
 }

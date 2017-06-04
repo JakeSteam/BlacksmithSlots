@@ -7,8 +7,6 @@ import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.IBinder;
 
-import uk.co.jakelee.blacksmithslots.R;
-
 public class MusicService extends Service {
     private MediaPlayer player;
 
@@ -16,20 +14,17 @@ public class MusicService extends Service {
         return null;
     }
 
-    @Override
-    public void onCreate() {
-        super.onCreate();
-
+    public int onStartCommand(Intent intent, int flags, int startId) {
         AudioManager audioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
         int volume = audioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
 
-        player = MediaPlayer.create(this, R.raw.village_consort);
-        player.setLooping(true);
-        player.setVolume(volume, volume);
-    }
-
-    public int onStartCommand(Intent intent, int flags, int startId) {
-        player.start();
+        int songId = intent.getIntExtra("songId", 0);
+        if (songId > 0) {
+            player = MediaPlayer.create(this, songId);
+            player.setLooping(true);
+            player.setVolume(volume, volume);
+            player.start();
+        }
 
         return Service.START_NOT_STICKY;
     }

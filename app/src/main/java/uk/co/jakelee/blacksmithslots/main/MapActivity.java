@@ -146,14 +146,13 @@ public class MapActivity extends BaseActivity implements
             runTutorial(1);
             isFirstInstall = true;
         }
-
-        MusicHelper.getInstance(this).checkMusic();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
         onConnected(null);
+        MusicHelper.getInstance(this).playIfPossible(R.raw.village_consort);
     }
 
     @Override
@@ -182,7 +181,7 @@ public class MapActivity extends BaseActivity implements
             case 5: runTutorial("Awesome, she's free! Let's go play the slot!", findViewById(R.id.openSlot), Gravity.LEFT|Gravity.TOP, true); break;
         }
     }
-    private void runTutorial(String text, View view, int gravity, boolean insideClickable) {
+    private void endTutorial() {
         if (mTutorialHandler != null) {
             try {
                 mTutorialHandler.cleanUp();
@@ -190,6 +189,9 @@ public class MapActivity extends BaseActivity implements
 
             }
         }
+    }
+    private void runTutorial(String text, View view, int gravity, boolean insideClickable) {
+        endTutorial();
         ToolTip toolTip = new ToolTip()
                 .setDescription(text)
                 .setBackgroundColor(Color.parseColor("#AAae6c37"))
@@ -273,7 +275,8 @@ public class MapActivity extends BaseActivity implements
                     .putExtra("isFirstInstall", isFirstInstall)
                     .addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT));
             if (isFirstInstall) {
-                runTutorial(0);
+                isFirstInstall = false;
+                endTutorial();
             }
         }
     }

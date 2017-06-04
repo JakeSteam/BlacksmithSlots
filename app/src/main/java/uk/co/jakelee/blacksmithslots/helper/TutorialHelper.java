@@ -2,7 +2,6 @@ package uk.co.jakelee.blacksmithslots.helper;
 
 import android.app.Activity;
 import android.graphics.Color;
-import android.view.Gravity;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
@@ -34,28 +33,8 @@ public class TutorialHelper {
         enterAnimation.setFillAfter(false);
     }
 
-    public void addTutorial(View view, int bodyID, boolean clickable) {
-        addTutorial(view, activity.getString(bodyID), Overlay.Style.CIRCLE, clickable, Gravity.CENTER);
-    }
-
     public void addTutorial(View view, int bodyID, boolean clickable, int gravity) {
-        addTutorial(view, activity.getString(bodyID), Overlay.Style.CIRCLE, clickable, gravity);
-    }
-
-    public void addTutorialNoOverlay(View view, int bodyID, boolean clickable) {
-        addTutorial(view, activity.getString(bodyID), Overlay.Style.NO_HOLE, clickable, Gravity.CENTER);
-    }
-
-    public void addTutorialNoOverlay(View view, int bodyID, boolean clickable, int gravity) {
-        addTutorial(view, activity.getString(bodyID), Overlay.Style.NO_HOLE, clickable, gravity);
-    }
-
-    public void addTutorialRectangle(View view, int bodyID, boolean clickable, int gravity) {
-        addTutorial(view, activity.getString(bodyID), Overlay.Style.RECTANGLE, clickable, gravity);
-    }
-
-    public void addTutorialRectangle(View view, int bodyID, boolean clickable) {
-        addTutorial(view, activity.getString(bodyID), Overlay.Style.RECTANGLE, clickable, Gravity.CENTER);
+        addTutorial(view, activity.getString(bodyID), Overlay.Style.ROUNDED_RECTANGLE, clickable, gravity);
     }
 
     private void addTutorial(View view, String body, Overlay.Style style, boolean clickable, int gravity) {
