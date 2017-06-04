@@ -59,7 +59,7 @@ public class Slot extends SugarRecord {
         this.currentStake = minimumStake;
         this.maximumStake = maximumStake;
         this.minimumRows = 1;
-        this.currentRows = minimumRows;
+        this.currentRows = slot.value == Enums.Slot.Map1Mom.value ? getMaxRowsBySlots(slots) : minimumRows;
         this.maximumRows = getMaxRowsBySlots(slots);
         this.slots = slots;
         this.requiredSlot = slot.value - 1;

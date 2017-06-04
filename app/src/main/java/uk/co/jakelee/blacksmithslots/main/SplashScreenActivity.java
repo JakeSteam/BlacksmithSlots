@@ -129,6 +129,7 @@ public class SplashScreenActivity extends BaseActivity {
         startActivity(new Intent(this, MapActivity.class)
                 .addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT)
                 .putExtra("isFirstInstall", isFirstInstall));
-        finish();
+        overridePendingTransition(R.anim.zoom_in, R.anim.zoom_out);
+
     }
 }
