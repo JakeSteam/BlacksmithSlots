@@ -169,10 +169,10 @@ public class MapActivity extends BaseActivity implements
         handler.postDelayed(everyMinute, DateHelper.MILLISECONDS_IN_SECOND * DateHelper.SECONDS_IN_MINUTE);
 
         TutorialHelper th = new TutorialHelper(this, 1);
-        th.addTutorialRectangle(watchAdvert, R.string.alert_autospin, R.string.alert_autospin, false);
-        th.addTutorialRectangle(claimBonus, R.string.alert_autospin, R.string.alert_autospin, false);
-        th.addTutorialRectangle(mapTextView, R.string.alert_autospin, R.string.alert_autospin, false);
-        th.addTutorialRectangle(mapPager, R.string.alert_autospin, R.string.alert_autospin, false);
+        th.addTutorialRectangle(watchAdvert, R.string.alert_autospin, false);
+        th.addTutorialRectangle(claimBonus, R.string.alert_autospin, false);
+        th.addTutorialRectangle(mapTextView, R.string.alert_autospin, false);
+        th.addTutorialRectangle(mapPager, R.string.alert_autospin, false);
         th.start();
     }
 

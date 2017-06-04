@@ -34,38 +34,37 @@ public class TutorialHelper {
         enterAnimation.setFillAfter(false);
     }
 
-    public void addTutorial(View view, int titleID, int bodyID, boolean clickable) {
-        addTutorial(view, activity.getString(titleID), activity.getString(bodyID), Overlay.Style.CIRCLE, clickable, Gravity.CENTER);
+    public void addTutorial(View view, int bodyID, boolean clickable) {
+        addTutorial(view, activity.getString(bodyID), Overlay.Style.CIRCLE, clickable, Gravity.CENTER);
     }
 
-    public void addTutorial(View view, int titleID, int bodyID, boolean clickable, int gravity) {
-        addTutorial(view, activity.getString(titleID), activity.getString(bodyID), Overlay.Style.CIRCLE, clickable, gravity);
+    public void addTutorial(View view, int bodyID, boolean clickable, int gravity) {
+        addTutorial(view, activity.getString(bodyID), Overlay.Style.CIRCLE, clickable, gravity);
     }
 
-    public void addTutorialNoOverlay(View view, int titleID, int bodyID, boolean clickable) {
-        addTutorial(view, activity.getString(titleID), activity.getString(bodyID), Overlay.Style.NO_HOLE, clickable, Gravity.CENTER);
+    public void addTutorialNoOverlay(View view, int bodyID, boolean clickable) {
+        addTutorial(view, activity.getString(bodyID), Overlay.Style.NO_HOLE, clickable, Gravity.CENTER);
     }
 
-    public void addTutorialNoOverlay(View view, int titleID, int bodyID, boolean clickable, int gravity) {
-        addTutorial(view, activity.getString(titleID), activity.getString(bodyID), Overlay.Style.NO_HOLE, clickable, gravity);
+    public void addTutorialNoOverlay(View view, int bodyID, boolean clickable, int gravity) {
+        addTutorial(view, activity.getString(bodyID), Overlay.Style.NO_HOLE, clickable, gravity);
     }
 
-    public void addTutorialRectangle(View view, int titleID, int bodyID, boolean clickable, int gravity) {
-        addTutorial(view, activity.getString(titleID), activity.getString(bodyID), Overlay.Style.RECTANGLE, clickable, gravity);
+    public void addTutorialRectangle(View view, int bodyID, boolean clickable, int gravity) {
+        addTutorial(view, activity.getString(bodyID), Overlay.Style.RECTANGLE, clickable, gravity);
     }
 
-    public void addTutorialRectangle(View view, int titleID, int bodyID, boolean clickable) {
-        addTutorial(view, activity.getString(titleID), activity.getString(bodyID), Overlay.Style.RECTANGLE, clickable, Gravity.CENTER);
+    public void addTutorialRectangle(View view, int bodyID, boolean clickable) {
+        addTutorial(view, activity.getString(bodyID), Overlay.Style.RECTANGLE, clickable, Gravity.CENTER);
     }
 
-    private void addTutorial(View view, String title, String body, Overlay.Style style, boolean clickable, int gravity) {
+    private void addTutorial(View view, String body, Overlay.Style style, boolean clickable, int gravity) {
         if (view == null) {
             return;
         }
         tourGuides.add(ChainTourGuide.init(activity)
                 .with(TourGuide.Technique.CLICK)
                 .setToolTip(new ToolTip()
-                        .setTitle(title)
                         .setDescription(body)
                         .setGravity(gravity)
                         .setBackgroundColor(Color.parseColor("#AAae6c37"))
