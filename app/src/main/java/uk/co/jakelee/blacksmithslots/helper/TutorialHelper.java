@@ -89,4 +89,8 @@ public class TutorialHelper {
                 .init(activity)
                 .playInSequence(sequence);
     }
+
+    public void next() {
+        chainTourGuide.cleanUp();
+    }
 }

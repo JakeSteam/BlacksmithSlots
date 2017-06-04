@@ -110,7 +110,7 @@
         <item name="layout_heightPercent">6.66%</item>
         <item name="layout_widthPercent">6.66%</item>
         <item name="android:background">@drawable/highlight</item>
-        <item name="android:alpha">0.6</item>
+        <item name="android:alpha">1</item>
     </style>
 
     <style name="SlotPerson">

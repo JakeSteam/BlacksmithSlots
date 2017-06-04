@@ -65,6 +65,7 @@ public class MapActivity extends BaseActivity implements
     private Handler handler = new Handler();
     private MapPagerAdapter mapPagerAdapter;
     private AdvertHelper advertHelper;
+    private boolean isFirstInstall = false;
 
     @BindView(R.id.townScroller) ViewPager mapPager;
     @BindView(R.id.mapName) TextView mapTextView;
@@ -133,7 +134,11 @@ public class MapActivity extends BaseActivity implements
 
         mapTextView.setText(R.string.map_1);
 
-        createTutorial();
+        Intent intent = getIntent();
+        if (intent != null && intent.getBooleanExtra("isFirstInstall", false)) {
+            startTutorial();
+            isFirstInstall = true;
+        }
     }
 
     @Override
@@ -156,7 +161,7 @@ public class MapActivity extends BaseActivity implements
         handler.postDelayed(everyMinute, DateHelper.MILLISECONDS_IN_SECOND * DateHelper.SECONDS_IN_MINUTE);
     }
 
-    public void createTutorial() {
+    public void startTutorial() {
         TutorialHelper th = new TutorialHelper(this, 1);
         th.addTutorialNoOverlay(findViewById(R.id.mapName), R.string.tutorial_1, false, Gravity.BOTTOM);
         th.addTutorialNoOverlay(findViewById(R.id.mapName), R.string.tutorial_2, false, Gravity.BOTTOM);
@@ -221,6 +226,7 @@ public class MapActivity extends BaseActivity implements
         if (selectedSlot > 0 && !TaskHelper.isSlotLocked(selectedSlot)) {
             startActivity(new Intent(this, SlotActivity.class)
                     .putExtra(Constants.INTENT_SLOT, selectedSlot)
+                    .putExtra("isFirstInstall", isFirstInstall)
                     .addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT));
         }
     }

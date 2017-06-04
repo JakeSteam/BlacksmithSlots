@@ -3,6 +3,7 @@ package uk.co.jakelee.blacksmithslots.main;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
@@ -18,6 +19,7 @@ import uk.co.jakelee.blacksmithslots.helper.DatabaseHelper;
 public class SplashScreenActivity extends BaseActivity {
     private Handler handler = new Handler();
     private TransitionDrawable transitionDrawable;
+    public boolean isFirstInstall = false;
 
     @BindView(R.id.globe) ImageView globeImage;
     @BindView(R.id.textBar) TextView textBar;
@@ -50,10 +52,10 @@ public class SplashScreenActivity extends BaseActivity {
         changeButton(false);
 
         transitionDrawable = new TransitionDrawable(
-                getResources().getDrawable(R.drawable.globe_1),
-                getResources().getDrawable(R.drawable.globe_2),
-                getResources().getDrawable(R.drawable.globe_3),
-                getResources().getDrawable(R.drawable.globe_4));
+                ContextCompat.getDrawable(this, R.drawable.globe_1),
+                ContextCompat.getDrawable(this, R.drawable.globe_2),
+                ContextCompat.getDrawable(this, R.drawable.globe_3),
+                ContextCompat.getDrawable(this, R.drawable.globe_4));
         globeImage.setImageDrawable(transitionDrawable);
 
         handler.post(stage1);
@@ -68,41 +70,38 @@ public class SplashScreenActivity extends BaseActivity {
         public void run() {
             globeImage.setVisibility(View.VISIBLE);
             globeImage.startAnimation(AnimationUtils.loadAnimation(getApplicationContext(), R.anim.rotate));
-            setStoryText("This is the world. Pretty nice right?");
+            setStoryText(getString(R.string.stage_1));
         }
     };
 
     private Runnable stage2 = new Runnable() {
         @Override
         public void run() {
-            //picasso.load(R.drawable.globe_2).into(globeImage);
             transitionDrawable.startTransition(4000);
-            setStoryText("Well, it was.. Until the Purple appeared one day...");
+            setStoryText(getString(R.string.stage_2));
         }
     };
 
     private Runnable stage3 = new Runnable() {
         @Override
         public void run() {
-            //picasso.load(R.drawable.globe_3).into(globeImage);
             transitionDrawable.startTransition(4000);
-            setStoryText("It spread quickly, causing chaos and destruction everywhere it touched.");
+            setStoryText(getString(R.string.stage_3));
         }
     };
 
     private Runnable stage4 = new Runnable() {
         @Override
         public void run() {
-            //picasso.load(R.drawable.globe_4).into(globeImage);
             transitionDrawable.startTransition(4000);
-            setStoryText("Can you help us stop it? Talk to people, help them out, and find the Purple's source.");
+            setStoryText(getString(R.string.stage_4));
         }
     };
 
     private Runnable stage5 = new Runnable() {
         @Override
         public void run() {
-            setStoryText("Thank you!");
+            setStoryText(getString(R.string.stage_5));
             changeButton(true);
         }
     };
@@ -128,7 +127,8 @@ public class SplashScreenActivity extends BaseActivity {
 
     public void startGame() {
         startActivity(new Intent(this, MapActivity.class)
-                .addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT));
+                .addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT)
+                .putExtra("isFirstInstall", isFirstInstall));
         finish();
     }
 }

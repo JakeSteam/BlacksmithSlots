@@ -78,14 +78,13 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
     protected String doInBackground(String... params) {
         SharedPreferences prefs = context.getSharedPreferences("uk.co.jakelee.blacksmithslots", MODE_PRIVATE);
         boolean appliedDbChanges = false;
-        boolean isFirstInstall = false;
 
         if (prefs.getInt("databaseVersion", DatabaseHelper.NO_DATABASE) <= DatabaseHelper.NO_DATABASE) {
             callingActivity.startIntro();
             createDatabase();
             prefs.edit().putInt("databaseVersion", V0_0_1).apply();
             appliedDbChanges = true;
-            isFirstInstall = true;
+            callingActivity.isFirstInstall = true;
             new Thread(new Runnable() {
                 @Override
                 public void run() {

@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.TextView;
 
@@ -17,6 +18,7 @@ import uk.co.jakelee.blacksmithslots.helper.Constants;
 import uk.co.jakelee.blacksmithslots.helper.GooglePlayHelper;
 import uk.co.jakelee.blacksmithslots.helper.LevelHelper;
 import uk.co.jakelee.blacksmithslots.helper.SlotHelper;
+import uk.co.jakelee.blacksmithslots.helper.TutorialHelper;
 import uk.co.jakelee.blacksmithslots.model.Slot;
 
 import static uk.co.jakelee.blacksmithslots.helper.LevelHelper.convertLevelToXp;
@@ -25,13 +27,16 @@ import static uk.co.jakelee.blacksmithslots.helper.LevelHelper.getXp;
 
 public class SlotActivity extends BaseActivity {
     private SlotHelper slotHelper;
+    private boolean isFirstInstall = false;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_slot);
 
-        final Slot slot = Slot.get(getIntent().getIntExtra(Constants.INTENT_SLOT, 0));
+        Intent intent = getIntent();
+        final Slot slot = Slot.get(intent.getIntExtra(Constants.INTENT_SLOT, 0));
+        isFirstInstall = intent.getBooleanExtra("isFirstInstall", false);
         if (slot == null) {
             finish();
         } else {
@@ -52,6 +57,10 @@ public class SlotActivity extends BaseActivity {
                     slotHelper.updateResourceCount();
                     slotHelper.afterSpinUpdate();
                     alert.dismiss();
+
+                    if (isFirstInstall) {
+                        startTutorial();
+                    }
                 }
             }, 50);
         }
@@ -76,6 +85,22 @@ public class SlotActivity extends BaseActivity {
         if(slotHelper != null) {
             slotHelper.pause();
         }
+    }
+
+    public void startTutorial() {
+        final TutorialHelper th = new TutorialHelper(this, 1);
+        th.addTutorialRectangle(findViewById(R.id.topBar), R.string.tutorial_3, false, Gravity.BOTTOM);
+        th.addTutorialRectangle(findViewById(R.id.stakeModifiers), R.string.tutorial_4, false, Gravity.TOP);
+        th.addTutorialRectangle(findViewById(R.id.autospinButton), R.string.tutorial_5, false, Gravity.TOP);
+        th.addTutorialRectangle(findViewById(R.id.spinButton), R.string.tutorial_6, true, Gravity.TOP);
+        th.start();
+        findViewById(R.id.spinButton).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                th.next();
+                spin(v);
+            }
+        });
     }
 
     public void spin(View v) {
