@@ -13,6 +13,8 @@
     <uk.co.jakelee.blacksmithslots.components.FontTextView
         android:id="@+id/dataValue"
         android:layout_width="wrap_content"
+        android:textColorLink="@color/defaultLink"
         android:maxLines="5"
+        android:clickable="true"
         style="@style/DataText"/>
 </TableRow>

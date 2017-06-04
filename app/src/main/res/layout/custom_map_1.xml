@@ -14,6 +14,7 @@
         android:src="@drawable/map1"/>
 
     <ImageView
+        android:id="@+id/firstSlot"
         android:tag="1"
         style="@style/SlotClickArea"
         app:layout_marginTopPercent="10%"

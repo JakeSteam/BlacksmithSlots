@@ -15,4 +15,6 @@
     <color name="greyText">#b5b5b5</color>
     <color name="blackText">#000000</color>
     <color name="redText">#7a1313</color>
+
+    <color name="defaultLink">#0000EE</color>
 </resources>

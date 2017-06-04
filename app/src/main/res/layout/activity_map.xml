@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.percent.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_map"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -11,27 +11,30 @@
         android:id="@+id/sidebar"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_widthPercent="33%"
+        android:layout_alignParentRight="true"
         android:background="@drawable/box_metal"
-        android:layout_alignParentRight="true">
+        app:layout_widthPercent="33%">
+
         <LinearLayout
             android:id="@+id/slotInfo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
+
             <pl.droidsonroids.gif.GifImageView
                 android:id="@+id/person"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:padding="5dp"
-                android:src="@drawable/person_1"/>
+                android:src="@drawable/person_1" />
+
             <uk.co.jakelee.blacksmithslots.components.FontTextView
                 android:id="@+id/slotTitle"
+                style="@style/SidebarText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:maxLines="3"
-                android:textSize="30sp"
-                style="@style/SidebarText"/>
+                android:textSize="30sp" />
         </LinearLayout>
 
         <!-- Locked slot due to previous slot -->
@@ -41,41 +44,47 @@
             android:layout_height="match_parent"
             android:layout_below="@id/slotInfo"
             android:visibility="gone">
+
             <LinearLayout
                 android:id="@+id/buttonBar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true">
+
                 <uk.co.jakelee.blacksmithslots.components.FontTextView
+                    style="@style/SlotText"
                     android:layout_width="wrap_content"
-                    android:background="@drawable/box_orange"
-                    android:text="x"
                     android:layout_marginRight="5dp"
+                    android:background="@drawable/box_orange"
                     android:onClick="loadSidebar"
-                    style="@style/SlotText"/>
+                    android:text="x" />
+
                 <uk.co.jakelee.blacksmithslots.components.FontTextView
                     android:id="@+id/lockedButton"
+                    style="@style/SlotText"
                     android:layout_width="match_parent"
-                    android:background="@drawable/box_orange"
-                    android:text="@string/locked"
                     android:alpha="0.5"
-                    style="@style/SlotText"/>
+                    android:background="@drawable/box_orange"
+                    android:text="@string/locked" />
             </LinearLayout>
+
             <ScrollView
+                style="@style/VerticalScrollbar"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_above="@id/buttonBar"
-                style="@style/VerticalScrollbar">
+                android:layout_above="@id/buttonBar">
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
+
                     <uk.co.jakelee.blacksmithslots.components.FontTextView
                         android:id="@+id/slotSuperlockedDescription"
+                        style="@style/SidebarText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:maxLines="8"
-                        style="@style/SidebarText"/>
+                        android:maxLines="8" />
                 </LinearLayout>
             </ScrollView>
         </RelativeLayout>
@@ -87,73 +96,83 @@
             android:layout_height="match_parent"
             android:layout_below="@id/slotInfo"
             android:visibility="gone">
+
             <LinearLayout
                 android:id="@+id/buttonBarLocked"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true">
+
                 <uk.co.jakelee.blacksmithslots.components.FontTextView
+                    style="@style/SlotText"
                     android:layout_width="wrap_content"
-                    android:background="@drawable/box_orange"
-                    android:text="x"
                     android:layout_marginRight="5dp"
+                    android:background="@drawable/box_orange"
                     android:onClick="loadSidebar"
-                    style="@style/SlotText"/>
+                    android:text="x" />
+
                 <uk.co.jakelee.blacksmithslots.components.FontTextView
                     android:id="@+id/handInButton"
+                    style="@style/SlotText"
                     android:layout_width="match_parent"
-                    android:background="@drawable/box_yellow"
-                    android:text="@string/hand_in"
                     android:layout_alignParentBottom="true"
-                    style="@style/SlotText"/>
+                    android:background="@drawable/box_yellow"
+                    android:text="@string/hand_in" />
             </LinearLayout>
+
             <ScrollView
+                style="@style/VerticalScrollbar"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_above="@id/buttonBarLocked"
-                style="@style/VerticalScrollbar">
+                android:layout_above="@id/buttonBarLocked">
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
+
                     <uk.co.jakelee.blacksmithslots.components.FontTextView
                         android:id="@+id/slotLockedDescription"
+                        style="@style/SidebarText"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        style="@style/SidebarText"/>
+                        android:layout_height="wrap_content" />
+
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
+
                         <uk.co.jakelee.blacksmithslots.components.FontTextView
                             android:id="@+id/taskRequirement"
+                            style="@style/SidebarText"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            style="@style/SidebarText"/>
+                            android:layout_height="wrap_content" />
+
                         <ProgressBar
                             android:id="@+id/taskProgressBar"
                             style="?android:attr/progressBarStyleHorizontal"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
+                            android:layout_below="@id/taskRequirement"
                             android:indeterminate="false"
+                            android:max="100"
                             android:minHeight="50dp"
                             android:minWidth="100dp"
                             android:progress="60"
-                            android:max="100"
-                            android:progressDrawable="@drawable/custom_progress_bar_items"
-                            android:layout_below="@id/taskRequirement"/>
+                            android:progressDrawable="@drawable/custom_progress_bar_items" />
+
                         <uk.co.jakelee.blacksmithslots.components.FontTextView
                             android:id="@+id/taskProgressText"
+                            style="@style/SidebarText"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_below="@id/taskRequirement"
-                            android:layout_alignTop="@id/taskProgressBar"
+                            android:layout_alignBottom="@id/taskProgressBar"
                             android:layout_alignLeft="@id/taskProgressBar"
                             android:layout_alignRight="@id/taskProgressBar"
-                            android:layout_alignBottom="@id/taskProgressBar"
+                            android:layout_alignTop="@id/taskProgressBar"
+                            android:layout_below="@id/taskRequirement"
                             android:gravity="center"
                             android:padding="10dp"
-                            android:textSize="18sp"
-                            style="@style/SidebarText"/>
+                            android:textSize="18sp" />
                     </RelativeLayout>
                 </LinearLayout>
             </ScrollView>
@@ -165,71 +184,83 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@id/slotInfo">
+
             <LinearLayout
                 android:id="@+id/buttonBarUnlocked"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true">
+
                 <uk.co.jakelee.blacksmithslots.components.FontTextView
+                    style="@style/SlotText"
                     android:layout_width="wrap_content"
-                    android:background="@drawable/box_orange"
-                    android:text="x"
                     android:layout_marginRight="5dp"
+                    android:background="@drawable/box_orange"
                     android:onClick="loadSidebar"
-                    style="@style/SlotText"/>
+                    android:text="x" />
+
                 <uk.co.jakelee.blacksmithslots.components.FontTextView
                     android:id="@+id/openSlot"
+                    style="@style/SlotText"
                     android:layout_width="match_parent"
                     android:background="@drawable/box_green"
-                    android:text="@string/open_slot"
-                    style="@style/SlotText"/>
+                    android:text="@string/open_slot" />
             </LinearLayout>
+
             <ScrollView
+                style="@style/VerticalScrollbar"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_above="@id/buttonBarUnlocked"
-                style="@style/VerticalScrollbar">
+                android:layout_above="@id/buttonBarUnlocked">
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
+
                     <uk.co.jakelee.blacksmithslots.components.FontTextView
                         android:id="@+id/slotUnlockedDescription"
+                        style="@style/SidebarText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:maxLines="8"
-                        style="@style/SidebarText"/>
+                        android:maxLines="8" />
+
                     <uk.co.jakelee.blacksmithslots.components.FontTextView
                         android:id="@+id/slotResource"
+                        style="@style/SidebarText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="0dp"
-                        android:text="@string/resources"
-                        style="@style/SidebarText"/>
+                        android:text="@string/resources" />
+
                     <HorizontalScrollView
                         android:id="@+id/resourceRow"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fadeScrollbars="false">
+
                         <LinearLayout
                             android:id="@+id/resourceContainer"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:orientation="horizontal"
-                            android:paddingBottom="10dp"/>
+                            android:paddingBottom="10dp" />
                     </HorizontalScrollView>
+
                     <uk.co.jakelee.blacksmithslots.components.FontTextView
                         android:id="@+id/slotReward"
+                        style="@style/SidebarText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="0dp"
-                        android:text="@string/rewards"
-                        style="@style/SidebarText"/>
+                        android:text="@string/rewards" />
+
                     <HorizontalScrollView
                         android:id="@+id/rewardRow"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fadeScrollbars="false">
+
                         <LinearLayout
                             android:id="@+id/rewardContainer"
                             android:layout_width="wrap_content"
@@ -237,20 +268,22 @@
                             android:orientation="horizontal"
                             android:paddingBottom="10dp" />
                     </HorizontalScrollView>
+
                     <uk.co.jakelee.blacksmithslots.components.FontTextView
                         android:id="@+id/openSlotDialog"
+                        style="@style/SlotText"
                         android:layout_width="match_parent"
-                        android:background="@drawable/box_white"
-                        android:text="@string/dialog_log"
                         android:layout_margin="5dp"
-                        style="@style/SlotText"/>
+                        android:background="@drawable/box_white"
+                        android:text="@string/dialog_log" />
+
                     <uk.co.jakelee.blacksmithslots.components.FontTextView
                         android:id="@+id/openRewardChances"
+                        style="@style/SlotText"
                         android:layout_width="match_parent"
-                        android:background="@drawable/box_white"
-                        android:text="@string/reward_chances"
                         android:layout_margin="5dp"
-                        style="@style/SlotText"/>
+                        android:background="@drawable/box_white"
+                        android:text="@string/reward_chances" />
                 </LinearLayout>
             </ScrollView>
         </RelativeLayout>
@@ -262,125 +295,151 @@
             android:layout_height="match_parent"
             android:background="@drawable/background_tan"
             android:orientation="vertical">
+
             <ScrollView
+                style="@style/VerticalScrollbar"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                style="@style/VerticalScrollbar">
+                android:layout_height="match_parent">
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:src="@drawable/title"
-                android:adjustViewBounds="true"/>
-            <uk.co.jakelee.blacksmithslots.components.FontTextView
-                android:id="@+id/inventory"
-                android:layout_width="match_parent"
-                android:background="@drawable/box_yellow"
-                android:text="@string/inventory"
-                android:maxLines="2"
-                android:layout_marginTop="3dp"
-                android:layout_marginBottom="3dp"
-                style="@style/SlotText"/>
-            <uk.co.jakelee.blacksmithslots.components.FontTextView
-                android:id="@+id/claimBonus"
-                android:layout_width="match_parent"
-                android:background="@drawable/box_green"
-                android:text="@string/claim_bonus"
-                android:maxLines="2"
-                android:layout_marginTop="3dp"
-                android:layout_marginBottom="3dp"
-                style="@style/SlotText"/>
-            <uk.co.jakelee.blacksmithslots.components.FontTextView
-                android:id="@+id/watchAdvert"
-                android:layout_width="match_parent"
-                android:background="@drawable/box_green"
-                android:text="@string/watch_advert"
-                android:maxLines="2"
-                android:layout_marginTop="3dp"
-                android:layout_marginBottom="3dp"
-                style="@style/SlotText"/>
-            <uk.co.jakelee.blacksmithslots.components.FontTextView
-                android:id="@+id/openShop"
-                android:layout_width="match_parent"
-                android:background="@drawable/box_green"
-                android:text="@string/shop"
-                android:maxLines="2"
-                android:layout_marginTop="3dp"
-                android:layout_marginBottom="3dp"
-                style="@style/SlotText"/>
-            <LinearLayout
-                android:id="@+id/iconRow"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <uk.co.jakelee.blacksmithslots.components.AwesomeTextView
-                    android:id="@+id/settings"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/box_yellow"
-                    android:text="@string/icon_settings"
-                    android:layout_margin="3dp"
-                    style="@style/SlotText"/>
-                <uk.co.jakelee.blacksmithslots.components.AwesomeTextView
-                    android:id="@+id/statistics"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/box_yellow"
-                    android:text="@string/icon_statistics"
-                    android:layout_margin="3dp"
-                    style="@style/SlotText"/>
-            </LinearLayout>
-            <LinearLayout
-                android:id="@+id/googlePlayLoginRow"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <ImageView
-                    android:id="@+id/playController"
-                    android:layout_width="match_parent"
-                    android:layout_height="45dp"
-                    android:background="@drawable/box_yellow"
-                    android:src="@drawable/play_controller"
-                    android:layout_margin="3dp"
-                    style="@style/SlotText"/>
-            </LinearLayout>
-            <LinearLayout
-                android:id="@+id/googlePlayRow"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:visibility="gone">
-                <ImageView
-                    android:id="@+id/playAchievements"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="45dp"
-                    android:background="@drawable/box_yellow"
-                    android:src="@drawable/play_achievements"
-                    android:layout_margin="3dp"
-                    style="@style/SlotText"/>
-                <ImageView
-                    android:id="@+id/playLeaderboard"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="45dp"
-                    android:background="@drawable/box_yellow"
-                    android:src="@drawable/play_leaderboards"
-                    android:layout_margin="3dp"
-                    style="@style/SlotText"/>
-                <ImageView
-                    android:id="@+id/playCloudSave"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="45dp"
-                    android:background="@drawable/box_yellow"
-                    android:src="@drawable/play_cloud_saves"
-                    android:layout_margin="3dp"
-                    style="@style/SlotText"/>
-            </LinearLayout>
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:adjustViewBounds="true"
+                        android:src="@drawable/title" />
+
+                    <uk.co.jakelee.blacksmithslots.components.FontTextView
+                        android:id="@+id/inventory"
+                        style="@style/SlotText"
+                        android:layout_width="match_parent"
+                        android:layout_marginBottom="3dp"
+                        android:layout_marginTop="3dp"
+                        android:background="@drawable/box_yellow"
+                        android:maxLines="2"
+                        android:text="@string/inventory" />
+
+                    <uk.co.jakelee.blacksmithslots.components.FontTextView
+                        android:id="@+id/claimBonus"
+                        style="@style/SlotText"
+                        android:layout_width="match_parent"
+                        android:layout_marginBottom="3dp"
+                        android:layout_marginTop="3dp"
+                        android:background="@drawable/box_green"
+                        android:maxLines="2"
+                        android:text="@string/claim_bonus" />
+
+                    <uk.co.jakelee.blacksmithslots.components.FontTextView
+                        android:id="@+id/watchAdvert"
+                        style="@style/SlotText"
+                        android:layout_width="match_parent"
+                        android:layout_marginBottom="3dp"
+                        android:layout_marginTop="3dp"
+                        android:background="@drawable/box_green"
+                        android:maxLines="2"
+                        android:text="@string/watch_advert" />
+
+                    <uk.co.jakelee.blacksmithslots.components.FontTextView
+                        android:id="@+id/openShop"
+                        style="@style/SlotText"
+                        android:layout_width="match_parent"
+                        android:layout_marginBottom="3dp"
+                        android:layout_marginTop="3dp"
+                        android:background="@drawable/box_green"
+                        android:maxLines="2"
+                        android:text="@string/shop" />
+
+                    <LinearLayout
+                        android:id="@+id/iconRow"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <uk.co.jakelee.blacksmithslots.components.AwesomeTextView
+                            android:id="@+id/settings"
+                            style="@style/SlotText"
+                            android:layout_width="0dp"
+                            android:layout_margin="3dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/box_yellow"
+                            android:text="@string/icon_settings" />
+
+                        <uk.co.jakelee.blacksmithslots.components.AwesomeTextView
+                            android:id="@+id/statistics"
+                            style="@style/SlotText"
+                            android:layout_width="0dp"
+                            android:layout_margin="3dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/box_yellow"
+                            android:text="@string/icon_statistics" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/googlePlayLoginRow"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:id="@+id/playController"
+                            style="@style/SlotText"
+                            android:layout_width="match_parent"
+                            android:layout_height="45dp"
+                            android:layout_margin="3dp"
+                            android:background="@drawable/box_yellow"
+                            android:src="@drawable/play_controller" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/googlePlayRow"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:visibility="gone">
+
+                        <ImageView
+                            android:id="@+id/playAchievements"
+                            style="@style/SlotText"
+                            android:layout_width="0dp"
+                            android:layout_height="45dp"
+                            android:layout_margin="3dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/box_yellow"
+                            android:src="@drawable/play_achievements" />
+
+                        <ImageView
+                            android:id="@+id/playLeaderboard"
+                            style="@style/SlotText"
+                            android:layout_width="0dp"
+                            android:layout_height="45dp"
+                            android:layout_margin="3dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/box_yellow"
+                            android:src="@drawable/play_leaderboards" />
+
+                        <ImageView
+                            android:id="@+id/playCloudSave"
+                            style="@style/SlotText"
+                            android:layout_width="0dp"
+                            android:layout_height="45dp"
+                            android:layout_margin="3dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/box_yellow"
+                            android:src="@drawable/play_cloud_saves" />
+                    </LinearLayout>
+
+                    <uk.co.jakelee.blacksmithslots.components.FontTextView
+                        android:id="@+id/openCredits"
+                        style="@style/SlotText"
+                        android:layout_width="match_parent"
+                        android:layout_marginBottom="3dp"
+                        android:layout_marginTop="3dp"
+                        android:background="@drawable/box_green"
+                        android:maxLines="2"
+                        android:text="@string/credits" />
                 </LinearLayout>
             </ScrollView>
         </LinearLayout>
@@ -390,61 +449,62 @@
         android:id="@+id/townScroller"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_toLeftOf="@id/sidebar"/>
+        android:layout_toLeftOf="@id/sidebar" />
 
     <uk.co.jakelee.blacksmithslots.components.FontTextView
         android:id="@+id/mapName"
-        android:layout_height="wrap_content"
+        style="@style/SidebarText"
         android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignLeft="@id/townScroller"
         android:layout_alignRight="@id/townScroller"
-        style="@style/SidebarText"
-        android:gravity="center_horizontal"
-        android:background="@color/white"
+        android:layout_centerHorizontal="true"
         android:alpha="0.6"
-        android:textSize="30sp"
+        android:background="@color/white"
+        android:gravity="center_horizontal"
         android:padding="5dp"
-        android:layout_centerHorizontal="true"/>
+        android:textSize="30sp" />
 
     <RelativeLayout
         android:id="@+id/navigationBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@id/townScroller"
-        android:layout_alignRight="@id/townScroller"
         android:layout_alignParentBottom="true"
-        android:padding="8dp"
-        android:gravity="center_vertical">
+        android:layout_alignRight="@id/townScroller"
+        android:gravity="center_vertical"
+        android:padding="8dp">
+
         <ImageView
             android:id="@+id/leftArrow"
             android:layout_width="24dp"
             android:layout_height="36dp"
             android:layout_alignParentLeft="true"
             android:src="@drawable/left"
-            android:visibility="invisible"/>
+            android:visibility="invisible" />
 
         <uk.co.jakelee.blacksmithslots.components.ViewPagerIndicator
-            android:id = "@+id/view_pager_indicator"
-            android:layout_width = "wrap_content"
-            android:layout_height = "wrap_content"
+            android:id="@+id/view_pager_indicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:padding="10dp"
-            app:delimiterSize = "3dp"
-            app:itemSize = "8dp"/>
+            app:delimiterSize="3dp"
+            app:itemSize="8dp" />
 
         <ImageView
             android:id="@+id/rightArrow"
             android:layout_width="24dp"
             android:layout_height="36dp"
             android:layout_alignParentRight="true"
-            android:src="@drawable/left"
-            android:rotation="180"/>
+            android:rotation="180"
+            android:src="@drawable/left" />
     </RelativeLayout>
 
     <LinearLayout
         android:id="@+id/croutonview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:onClick="closeAlert"/>
+        android:onClick="closeAlert"
+        android:orientation="horizontal" />
 </android.support.percent.PercentRelativeLayout>

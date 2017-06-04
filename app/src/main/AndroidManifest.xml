@@ -49,9 +49,6 @@
             android:name=".main.SlotActivity"
             android:screenOrientation="sensorLandscape"/>
         <activity
-            android:name=".main.CreditsActivity"
-            android:screenOrientation="sensorLandscape"/>
-        <activity
             android:name=".main.MapActivity"
             android:screenOrientation="sensorLandscape">
         </activity>
@@ -92,6 +89,9 @@
             android:screenOrientation="sensorLandscape"
             android:theme="@style/Theme.Dimmed" />
         <activity android:name=".main.CloudSaveActivity"
+            android:screenOrientation="sensorLandscape"
+            android:theme="@style/Theme.Dimmed" />
+        <activity android:name=".main.CreditsActivity"
             android:screenOrientation="sensorLandscape"
             android:theme="@style/Theme.Dimmed" />
     </application>

@@ -1075,12 +1075,37 @@
     <string name="tutorial_2">Tap a slot (white outline) to find out what tasks need to be completed, then play the slots to gain new items.\n\nFirst, free Mom!</string>
 
     <string name="tutorial_3">A log of spins, and your current VIP / XP level progress are shown at the top of the screen.</string>
-    <string name="tutorial_4">The quantity gambled per row &amp; number of active rows can be changed before each spin.</string>
-    <string name="tutorial_5">Additionally, up to 65 autospins can be enabled, alongside a normal spin.</string>
-    <string name="tutorial_6">Get spinning, and get some resources to take into town (the next map)!</string>
+    <string name="tutorial_4">The resources required to spin and your current inventory are displayed on the left.</string>
+    <string name="tutorial_5">The quantity gambled per row &amp; number of active rows can be changed before each spin.</string>
+    <string name="tutorial_6">Additionally, up to 65 autospins can be enabled, alongside a normal spin.</string>
+    <string name="tutorial_7">Get spinning, and get some resources to take into town (the next map)!</string>
     <string name="stage_1">This is the world. Pretty nice right?</string>
     <string name="stage_2">Well, it was.. Until the Purple appeared one day...</string>
     <string name="stage_3">It spread quickly, causing chaos and destruction everywhere it touched.</string>
     <string name="stage_4">Can you help us stop it? Talk to people, help them out, and find the Purple\'s source.</string>
     <string name="stage_5">Thank you!</string>
+    <string name="credits">Credits</string>
+    <string name="credits_library_title">Libraries</string>
+    <string name="credits_library"><![CDATA[
+        <a href=\'https://twitter.com/7souldesign\'>@7SoulDesign</a> - Icon assets.<br>
+        <a href=\'https://kenney.nl/\'>Kenney</a> - Map and UI assets.<br>
+    ]]></string>
+    <string name="credits_graphics_title">Graphics</string>
+    <string name="credits_graphics"><![CDATA[
+        <a href=\"https://github.com/scottyab/AESCrypt-Android\">AESCrypt</a> - Support code encryption.<br>
+        <a href=\"https://github.com/koral--/android-gif-drawable\">Android-Gif-Drawable</a> - Animated GIF support.<br>
+        <a href=\"http://hotchemi.github.io/Android-Rate/\">Android-Rate</a> - Rating / review prompt.<br>
+        <a href=\"https://www.applovin.com/\">AppLovin</a> - Advertising.<br>
+        <a href=\"https://github.com/playgameservices/android-basic-samples\">BaseGameUtils</a> - Google Play integration.<br>
+        <a href=\"http://jakewharton.github.io/butterknife/\">Butterknife</a> - Field / method binding.<br>
+        <a href=\"https://github.com/keyboardsurfer/Crouton\">Crouton</a> - Pop-up alerts.<br>
+        <a href=\"https://github.com/google/gson\">GSON</a> - Cloud save storage.<br>
+        <a href=\"https://github.com/anjlab/android-inapp-billing-v3\">IAB Helper</a> - In-app purchases.<br>
+        <a href=\"https://github.com/maarek/android-wheel\">Kankan"s Wheel</a> - Slot machine.<br>
+        <a href=\"http://square.github.io/picasso/\">Picasso</a> - Image loading.<br>
+        <a href=\"http://satyan.github.io/sugar/\">Sugar ORM</a> - Database management.<br>
+        <a href=\"https://github.com/worker8/TourGuide\">TourGuide</a> - Tutorial.<br>
+    ]]></string>
+    <string name="credits_audio_title">Audio</string>
+    <string name="credits_audio">No audio yet!</string>
 </resources>

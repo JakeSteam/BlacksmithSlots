@@ -254,6 +254,12 @@ public class MapActivity extends BaseActivity implements
             .addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT));
     }
 
+    @OnClick(R.id.openCredits)
+    public void openCredits() {
+        startActivity(new Intent(this, CreditsActivity.class)
+                .addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT));
+    }
+
     @OnClick(R.id.openShop)
     public void openShop() {
         startActivity(new Intent(this, ShopActivity.class)
