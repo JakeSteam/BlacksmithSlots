@@ -1,12 +1,12 @@
 package uk.co.jakelee.blacksmithslots;
 
+import android.app.Activity;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import de.keyboardsurfer.android.widget.crouton.Crouton;
 
-public class BaseActivity extends AppCompatActivity {
+public class BaseActivity extends Activity {
     @Override
     public void finish() {
         super.finish();
