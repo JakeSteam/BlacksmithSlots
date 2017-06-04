@@ -1086,26 +1086,26 @@
     <string name="stage_5">Thank you!</string>
     <string name="credits">Credits</string>
     <string name="credits_library_title">Libraries</string>
-    <string name="credits_library"><![CDATA[
-        <a href=\'https://twitter.com/7souldesign\'>@7SoulDesign</a> - Icon assets.<br>
-        <a href=\'https://kenney.nl/\'>Kenney</a> - Map and UI assets.<br>
-    ]]></string>
+    <string name="credits_library">
+AESCrypt (https://goo.gl/Ewk2tq) - Support code encryption.
+\nAndroid-Gif-Drawable (https://goo.gl/b8OewX) - Animated GIF support.
+\nAndroid-Rate (https://goo.gl/qmJ4j6) - Rating / review prompt.
+\nAppLovin (https://goo.gl/SwXLVy) - Advertising.
+\nBaseGameUtils (https://goo.gl/Xwt8AM) - Google Play integration.
+\nButterknife (https://goo.gl/Z2CU2Y) - Field / method binding.
+\nCrouton (https://goo.gl/x3Flgw) - Pop-up alerts.
+\nGSON (https://goo.gl/A8t4cc) - Cloud save storage.
+\nIAB Helper (https://goo.gl/rHczTu) - In-app purchases.
+\nKankan\'s Wheel (https://goo.gl/IoROPJ) - Slot machine.
+\nPicasso (https://goo.gl/KxYjyO) - Image loading.
+\nSugar ORM (https://goo.gl/4FJROS) - Database management.
+\nTourGuide (https://goo.gl/awlGa1) - Tutorial.
+    </string>
     <string name="credits_graphics_title">Graphics</string>
-    <string name="credits_graphics"><![CDATA[
-        <a href=\"https://github.com/scottyab/AESCrypt-Android\">AESCrypt</a> - Support code encryption.<br>
-        <a href=\"https://github.com/koral--/android-gif-drawable\">Android-Gif-Drawable</a> - Animated GIF support.<br>
-        <a href=\"http://hotchemi.github.io/Android-Rate/\">Android-Rate</a> - Rating / review prompt.<br>
-        <a href=\"https://www.applovin.com/\">AppLovin</a> - Advertising.<br>
-        <a href=\"https://github.com/playgameservices/android-basic-samples\">BaseGameUtils</a> - Google Play integration.<br>
-        <a href=\"http://jakewharton.github.io/butterknife/\">Butterknife</a> - Field / method binding.<br>
-        <a href=\"https://github.com/keyboardsurfer/Crouton\">Crouton</a> - Pop-up alerts.<br>
-        <a href=\"https://github.com/google/gson\">GSON</a> - Cloud save storage.<br>
-        <a href=\"https://github.com/anjlab/android-inapp-billing-v3\">IAB Helper</a> - In-app purchases.<br>
-        <a href=\"https://github.com/maarek/android-wheel\">Kankan"s Wheel</a> - Slot machine.<br>
-        <a href=\"http://square.github.io/picasso/\">Picasso</a> - Image loading.<br>
-        <a href=\"http://satyan.github.io/sugar/\">Sugar ORM</a> - Database management.<br>
-        <a href=\"https://github.com/worker8/TourGuide\">TourGuide</a> - Tutorial.<br>
-    ]]></string>
+    <string name="credits_graphics">\
+@7SoulDesign (https://twitter.com/7souldesign) - Icon assets.
+\nKenney (https://kenney.nl/) - Map and UI assets.
+    </string>
     <string name="credits_audio_title">Audio</string>
     <string name="credits_audio">No audio yet!</string>
 </resources>

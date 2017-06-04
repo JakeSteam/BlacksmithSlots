@@ -2,7 +2,6 @@ package uk.co.jakelee.blacksmithslots.main;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.text.Html;
 import android.util.Pair;
 import android.view.LayoutInflater;
 import android.widget.TableLayout;
@@ -29,7 +28,8 @@ public class CreditsActivity extends BaseActivity {
         for (Pair<Integer, Integer> credit : credits) {
             TableRow tableRow = (TableRow) inflater.inflate(R.layout.custom_data_row, null).findViewById(R.id.dataRow);
             ((TextView) tableRow.findViewById(R.id.dataName)).setText(credit.first);
-            ((TextView) tableRow.findViewById(R.id.dataValue)).setText(Html.fromHtml(getString(credit.second)));
+            ((TextView) tableRow.findViewById(R.id.dataName)).setMaxLines(1);
+            ((TextView) tableRow.findViewById(R.id.dataValue)).setText(credit.second);
             ((TextView) tableRow.findViewById(R.id.dataValue)).setLineSpacing(0, 1.5f);
             ((TextView) tableRow.findViewById(R.id.dataValue)).setMaxLines(99);
             statTable.addView(tableRow);

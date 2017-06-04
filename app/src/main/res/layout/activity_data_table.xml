@@ -36,8 +36,8 @@
                     android:id="@+id/dataTable"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:stretchColumns="*"
-                    android:shrinkColumns="*"
+                    android:stretchColumns="1"
+                    android:shrinkColumns="1"
                     android:divider="?android:attr/dividerHorizontal"
                     android:showDividers="middle" />
             </LinearLayout>
