@@ -91,6 +91,6 @@ public class TutorialHelper {
     }
 
     public void next() {
-        chainTourGuide.cleanUp();
+        chainTourGuide.next();
     }
 }

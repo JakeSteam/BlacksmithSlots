@@ -29,6 +29,7 @@ public class CreditsActivity extends BaseActivity {
             TableRow tableRow = (TableRow) inflater.inflate(R.layout.custom_data_row, null).findViewById(R.id.dataRow);
             ((TextView) tableRow.findViewById(R.id.dataName)).setText(credit.first);
             ((TextView) tableRow.findViewById(R.id.dataName)).setMaxLines(1);
+            ((TextView) tableRow.findViewById(R.id.dataName)).setTextSize(28);
             ((TextView) tableRow.findViewById(R.id.dataValue)).setText(credit.second);
             ((TextView) tableRow.findViewById(R.id.dataValue)).setLineSpacing(0, 1.5f);
             ((TextView) tableRow.findViewById(R.id.dataValue)).setMaxLines(99);

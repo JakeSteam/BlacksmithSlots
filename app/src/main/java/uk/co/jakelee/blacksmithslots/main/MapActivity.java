@@ -2,6 +2,7 @@ package uk.co.jakelee.blacksmithslots.main;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.view.ViewPager;
@@ -45,13 +46,16 @@ import uk.co.jakelee.blacksmithslots.helper.NotificationHelper;
 import uk.co.jakelee.blacksmithslots.helper.Runnables;
 import uk.co.jakelee.blacksmithslots.helper.TaskHelper;
 import uk.co.jakelee.blacksmithslots.helper.TextHelper;
-import uk.co.jakelee.blacksmithslots.helper.TutorialHelper;
 import uk.co.jakelee.blacksmithslots.model.Inventory;
 import uk.co.jakelee.blacksmithslots.model.ItemBundle;
 import uk.co.jakelee.blacksmithslots.model.Setting;
 import uk.co.jakelee.blacksmithslots.model.Slot;
 import uk.co.jakelee.blacksmithslots.model.Statistic;
 import uk.co.jakelee.blacksmithslots.model.Task;
+import uk.co.jakelee.blacksmithslots.tourguide.Overlay;
+import uk.co.jakelee.blacksmithslots.tourguide.Pointer;
+import uk.co.jakelee.blacksmithslots.tourguide.ToolTip;
+import uk.co.jakelee.blacksmithslots.tourguide.TourGuide;
 
 import static android.view.View.GONE;
 import static uk.co.jakelee.blacksmithslots.model.Setting.getBoolean;
@@ -136,7 +140,7 @@ public class MapActivity extends BaseActivity implements
 
         Intent intent = getIntent();
         if (intent != null && intent.getBooleanExtra("isFirstInstall", false)) {
-            startTutorial();
+            runTutorial(1);
             isFirstInstall = true;
         }
     }
@@ -161,11 +165,43 @@ public class MapActivity extends BaseActivity implements
         handler.postDelayed(everyMinute, DateHelper.MILLISECONDS_IN_SECOND * DateHelper.SECONDS_IN_MINUTE);
     }
 
-    public void startTutorial() {
-        TutorialHelper th = new TutorialHelper(this, 1);
-        th.addTutorialNoOverlay(findViewById(R.id.mapName), R.string.tutorial_1, false, Gravity.BOTTOM);
-        th.addTutorialNoOverlay(findViewById(R.id.mapName), R.string.tutorial_2, false, Gravity.BOTTOM);
-        th.start();
+    private TourGuide mTutorialHandler;
+    private void runTutorial(int stage) {
+        findViewById(R.id.firstSlot).setVisibility(View.VISIBLE);
+
+        switch(stage) {
+            case 1: runTutorial("Welcome to Blacksmith Slots!\n\nExplore the area, talk to people, and try to save the world from the Purple!\n\nTap the logo to begin.", findViewById(R.id.title), Gravity.LEFT, true); break;
+            //case 2: runTutorial("The world can be navigated by swiping left and right, there's plenty of areas to be explored in your quest to defeat the Purple!", findViewById(R.id.settings), Gravity.LEFT, true); break;
+            case 3: runTutorial("Oh no, Mom is trapped! Slots like this have a white outline on the map.", findViewById(R.id.firstSlot), Gravity.RIGHT, true); break;
+            case 4: runTutorial("She needs a hatchet to cut herself out, luckily you've got one! Hand in the quest.", findViewById(R.id.openSlot), Gravity.LEFT|Gravity.TOP, true); break;
+            case 5: runTutorial("Awesome, she's free! Let's go play the slot!", findViewById(R.id.openSlot), Gravity.LEFT|Gravity.TOP, true); break;
+        }
+    }
+    private void runTutorial(String text, View view, int gravity, boolean insideClickable) {
+        if (mTutorialHandler != null) {
+            try {
+                mTutorialHandler.cleanUp();
+            } catch (RuntimeException e) {
+
+            }
+        }
+        ToolTip toolTip = new ToolTip()
+                .setDescription(text)
+                .setBackgroundColor(Color.parseColor("#AAae6c37"))
+                .setShadow(true)
+                .setGravity(gravity);
+        mTutorialHandler = TourGuide.init(this).with(TourGuide.Technique.CLICK)
+                .setToolTip(toolTip)
+                .setOverlay(new Overlay()
+                        .setStyle(Overlay.Style.ROUNDED_RECTANGLE)
+                        .disableClick(true)
+                        .disableClickThroughHole(!insideClickable))
+                .setPointer(new Pointer())
+                .playOn(view);
+    }
+
+    public void clickTitle(View v) {
+        runTutorial(3);
     }
 
     @OnClick(R.id.googlePlayLoginRow)
@@ -228,12 +264,18 @@ public class MapActivity extends BaseActivity implements
                     .putExtra(Constants.INTENT_SLOT, selectedSlot)
                     .putExtra("isFirstInstall", isFirstInstall)
                     .addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT));
+            if (isFirstInstall) {
+                runTutorial(0);
+            }
         }
     }
 
     public void selectSlot(View v) {
         selectedSlot = Integer.parseInt((String)v.getTag());
         populateSlotInfo();
+        if (isFirstInstall) {
+            runTutorial(4);
+        }
     }
 
     @OnClick(R.id.settings)
@@ -355,6 +397,10 @@ public class MapActivity extends BaseActivity implements
             mapPagerAdapter.notifyDataSetChanged();
         } else {
             AlertHelper.error(this, R.string.alert_unfinished_task, false);
+        }
+
+        if (isFirstInstall) {
+            runTutorial(5);
         }
         populateSlotInfo();
     }

@@ -307,50 +307,59 @@
                     android:orientation="vertical">
 
                     <ImageView
+                        android:id="@+id/title"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:adjustViewBounds="true"
+                        android:clickable="true"
+                        android:onClick="clickTitle"
                         android:src="@drawable/title" />
 
-                    <uk.co.jakelee.blacksmithslots.components.FontTextView
-                        android:id="@+id/inventory"
-                        style="@style/SlotText"
+                    <LinearLayout
+                        android:id="@+id/buttonLayout"
                         android:layout_width="match_parent"
-                        android:layout_marginBottom="3dp"
-                        android:layout_marginTop="3dp"
-                        android:background="@drawable/box_yellow"
-                        android:maxLines="2"
-                        android:text="@string/inventory" />
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <uk.co.jakelee.blacksmithslots.components.FontTextView
+                            android:id="@+id/inventory"
+                            style="@style/SlotText"
+                            android:layout_width="match_parent"
+                            android:layout_marginBottom="3dp"
+                            android:layout_marginTop="3dp"
+                            android:background="@drawable/box_yellow"
+                            android:maxLines="2"
+                            android:text="@string/inventory" />
 
-                    <uk.co.jakelee.blacksmithslots.components.FontTextView
-                        android:id="@+id/claimBonus"
-                        style="@style/SlotText"
-                        android:layout_width="match_parent"
-                        android:layout_marginBottom="3dp"
-                        android:layout_marginTop="3dp"
-                        android:background="@drawable/box_green"
-                        android:maxLines="2"
-                        android:text="@string/claim_bonus" />
+                        <uk.co.jakelee.blacksmithslots.components.FontTextView
+                            android:id="@+id/claimBonus"
+                            style="@style/SlotText"
+                            android:layout_width="match_parent"
+                            android:layout_marginBottom="3dp"
+                            android:layout_marginTop="3dp"
+                            android:background="@drawable/box_green"
+                            android:maxLines="2"
+                            android:text="@string/claim_bonus" />
 
-                    <uk.co.jakelee.blacksmithslots.components.FontTextView
-                        android:id="@+id/watchAdvert"
-                        style="@style/SlotText"
-                        android:layout_width="match_parent"
-                        android:layout_marginBottom="3dp"
-                        android:layout_marginTop="3dp"
-                        android:background="@drawable/box_green"
-                        android:maxLines="2"
-                        android:text="@string/watch_advert" />
+                        <uk.co.jakelee.blacksmithslots.components.FontTextView
+                            android:id="@+id/watchAdvert"
+                            style="@style/SlotText"
+                            android:layout_width="match_parent"
+                            android:layout_marginBottom="3dp"
+                            android:layout_marginTop="3dp"
+                            android:background="@drawable/box_green"
+                            android:maxLines="2"
+                            android:text="@string/watch_advert" />
 
-                    <uk.co.jakelee.blacksmithslots.components.FontTextView
-                        android:id="@+id/openShop"
-                        style="@style/SlotText"
-                        android:layout_width="match_parent"
-                        android:layout_marginBottom="3dp"
-                        android:layout_marginTop="3dp"
-                        android:background="@drawable/box_green"
-                        android:maxLines="2"
-                        android:text="@string/shop" />
+                        <uk.co.jakelee.blacksmithslots.components.FontTextView
+                            android:id="@+id/openShop"
+                            style="@style/SlotText"
+                            android:layout_width="match_parent"
+                            android:layout_marginBottom="3dp"
+                            android:layout_marginTop="3dp"
+                            android:background="@drawable/box_green"
+                            android:maxLines="2"
+                            android:text="@string/shop" />
+                    </LinearLayout>
 
                     <LinearLayout
                         android:id="@+id/iconRow"
@@ -450,6 +459,22 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_toLeftOf="@id/sidebar" />
+
+    <android.support.percent.PercentRelativeLayout
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:layout_alignLeft="@id/townScroller"
+        android:layout_alignTop="@id/townScroller"
+        android:layout_alignRight="@id/townScroller"
+        android:layout_alignBottom="@id/townScroller">
+        <ImageView
+            android:id="@+id/firstSlot"
+            app:layout_marginTopPercent="10%"
+            app:layout_marginLeftPercent="10%"
+            app:layout_heightPercent="24%"
+            app:layout_widthPercent="20%"
+            android:visibility="gone"/>
+    </android.support.percent.PercentRelativeLayout>
 
     <uk.co.jakelee.blacksmithslots.components.FontTextView
         android:id="@+id/mapName"
