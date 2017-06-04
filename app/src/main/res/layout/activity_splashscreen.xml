@@ -6,10 +6,9 @@
     android:background="@drawable/globe_background">
 
     <RelativeLayout
-        android:id="@+id/bottomBar"
+        android:id="@+id/controlBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
         android:padding="5dp">
         <uk.co.jakelee.blacksmithslots.components.FontTextView
             android:visibility="invisible"
@@ -45,21 +44,22 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:adjustViewBounds="true"
-        android:layout_above="@id/bottomBar"
-        android:layout_marginTop="65dp"
+        android:layout_below="@id/controlBar"
+        android:layout_marginTop="35dp"
         android:layout_marginLeft="35dp"
         android:layout_marginRight="35dp"
-        android:layout_marginBottom="35dp"
+        android:layout_marginBottom="65dp"
         android:layout_centerHorizontal="true"
         android:background="@color/transparent"
         android:src="@drawable/globe_1"
         android:visibility="invisible"/>
 
     <uk.co.jakelee.blacksmithslots.components.FontTextView
-        android:id="@+id/topBar"
+        android:id="@+id/textBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
+        android:layout_alignParentBottom="true"
         android:textColor="@color/black"
         android:background="@color/white"
         android:alpha="0.9"

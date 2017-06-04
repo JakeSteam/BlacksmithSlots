@@ -8,8 +8,6 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.squareup.picasso.Picasso;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import uk.co.jakelee.blacksmithslots.BaseActivity;
@@ -19,11 +17,10 @@ import uk.co.jakelee.blacksmithslots.helper.DatabaseHelper;
 
 public class SplashScreenActivity extends BaseActivity {
     private Handler handler = new Handler();
-    private Picasso picasso;
     private TransitionDrawable transitionDrawable;
 
     @BindView(R.id.globe) ImageView globeImage;
-    @BindView(R.id.topBar) TextView topBar;
+    @BindView(R.id.textBar) TextView textBar;
     @BindView(R.id.progressText) TextView progressText;
     @BindView(R.id.startButton) TextView startButton;
 
@@ -32,7 +29,6 @@ public class SplashScreenActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splashscreen);
         ButterKnife.bind(this);
-        picasso = Picasso.with(this);
 
         Intent intent = getIntent();
         if (intent != null && intent.getBooleanExtra("replayingIntro", false)) {
@@ -72,7 +68,7 @@ public class SplashScreenActivity extends BaseActivity {
         public void run() {
             globeImage.setVisibility(View.VISIBLE);
             globeImage.startAnimation(AnimationUtils.loadAnimation(getApplicationContext(), R.anim.rotate));
-            setTopText("This is the world. Pretty nice right?");
+            setStoryText("This is the world. Pretty nice right?");
         }
     };
 
@@ -81,7 +77,7 @@ public class SplashScreenActivity extends BaseActivity {
         public void run() {
             //picasso.load(R.drawable.globe_2).into(globeImage);
             transitionDrawable.startTransition(4000);
-            setTopText("Well, it was.. Until the Purple appeared one day...");
+            setStoryText("Well, it was.. Until the Purple appeared one day...");
         }
     };
 
@@ -90,7 +86,7 @@ public class SplashScreenActivity extends BaseActivity {
         public void run() {
             //picasso.load(R.drawable.globe_3).into(globeImage);
             transitionDrawable.startTransition(4000);
-            setTopText("It spread quickly, causing chaos and destruction everywhere it touched.");
+            setStoryText("It spread quickly, causing chaos and destruction everywhere it touched.");
         }
     };
 
@@ -99,20 +95,20 @@ public class SplashScreenActivity extends BaseActivity {
         public void run() {
             //picasso.load(R.drawable.globe_4).into(globeImage);
             transitionDrawable.startTransition(4000);
-            setTopText("Can you help us stop it? Talk to people, help them out, and find the Purple's source.");
+            setStoryText("Can you help us stop it? Talk to people, help them out, and find the Purple's source.");
         }
     };
 
     private Runnable stage5 = new Runnable() {
         @Override
         public void run() {
-            setTopText("Thank you!");
+            setStoryText("Thank you!");
             changeButton(true);
         }
     };
 
-    public void setTopText(String string) {
-        topBar.setText(string);
+    public void setStoryText(String string) {
+        textBar.setText(string);
     }
 
     public void enableStartButton() {

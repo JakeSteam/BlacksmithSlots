@@ -96,7 +96,7 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
 
         /*if (prefs.getInt("databaseVersion", DatabaseHelper.NO_DATABASE) < DatabaseHelper.V0_0_2) {
             if (!isFirstInstall) {
-                callingActivity.setTopText("This is a shiny new version, with new features!");
+                callingActivity.setStoryText("This is a shiny new version, with new features!");
             }
             setProgress("Patch 0.0.2", 30);
             //patchTo002();
