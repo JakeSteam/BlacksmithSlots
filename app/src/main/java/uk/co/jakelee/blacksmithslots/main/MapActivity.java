@@ -94,7 +94,6 @@ public class MapActivity extends BaseActivity implements
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map);
-        overridePendingTransition(R.anim.zoom_in, R.anim.zoom_out);
         prefs = getSharedPreferences("uk.co.jakelee.blacksmithslots", MODE_PRIVATE);
         LanguageHelper.updateLanguage(getApplicationContext());
         ButterKnife.bind(this);

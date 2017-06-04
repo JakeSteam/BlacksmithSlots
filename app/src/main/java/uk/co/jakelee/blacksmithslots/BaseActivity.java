@@ -47,6 +47,7 @@ public class BaseActivity extends Activity {
      */
     protected void overridePendingTransitionEnter() {
         overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left);
+        // new activity anim, old activity anim
     }
 
     /**
