@@ -19,8 +19,6 @@ import com.google.android.gms.games.Games;
 import com.google.android.gms.games.quest.Quest;
 import com.google.android.gms.games.quest.QuestUpdateListener;
 import com.popalay.tutors.TutorialListener;
-import com.popalay.tutors.Tutors;
-import com.popalay.tutors.TutorsBuilder;
 
 import java.util.Iterator;
 import java.util.LinkedHashMap;
@@ -35,6 +33,8 @@ import hotchemi.android.rate.AppRate;
 import uk.co.jakelee.blacksmithslots.BaseActivity;
 import uk.co.jakelee.blacksmithslots.R;
 import uk.co.jakelee.blacksmithslots.components.MapPagerAdapter;
+import uk.co.jakelee.blacksmithslots.components.TutorsBuilderFullscreen;
+import uk.co.jakelee.blacksmithslots.components.TutorsFullscreen;
 import uk.co.jakelee.blacksmithslots.components.ViewPagerIndicator;
 import uk.co.jakelee.blacksmithslots.helper.AdvertHelper;
 import uk.co.jakelee.blacksmithslots.helper.AlertHelper;
@@ -73,7 +73,7 @@ public class MapActivity extends BaseActivity implements
 
     private Map<String, View> tutorials;
     private Iterator<Map.Entry<String, View>> iterator;
-    private Tutors tutors;
+    private TutorsFullscreen tutors;
 
     @BindView(R.id.townScroller) ViewPager mapPager;
     @BindView(R.id.mapName) TextView mapTextView;
@@ -166,26 +166,6 @@ public class MapActivity extends BaseActivity implements
             }
         };
         handler.postDelayed(everyMinute, DateHelper.MILLISECONDS_IN_SECOND * DateHelper.SECONDS_IN_MINUTE);
-    }
-
-    private void initTutorials() {
-        tutors = new TutorsBuilder()
-                .textColorRes(android.R.color.white)
-                .shadowColorRes(R.color.shadow)
-                .textSizeRes(R.dimen.textNormal)
-                .completeIconRes(R.drawable.ic_cross_24_white)
-                .spacingRes(R.dimen.spacingNormal)
-                .lineWidthRes(R.dimen.lineWidth)
-                .cancelable(false)
-                .build();
-
-        tutors.setListener(this);
-
-        tutorials = new LinkedHashMap<>();
-        tutorials.put("It's a toolbar", mapPager);
-        tutorials.put("It's a button", watchAdvert);
-        tutorials.put("It's a borderless button", claimBonus);
-        tutorials.put("It's a text", mapTextView);
     }
 
     @OnClick(R.id.googlePlayLoginRow)
@@ -518,6 +498,26 @@ public class MapActivity extends BaseActivity implements
     @Override
     public void onCompleteAll() {
         tutors.close();
+    }
+
+    private void initTutorials() {
+        tutors = new TutorsBuilderFullscreen()
+                .textColorRes(android.R.color.white)
+                .shadowColorRes(R.color.shadow)
+                .textSizeRes(R.dimen.textNormal)
+                .completeIconRes(R.drawable.ic_cross_24_white)
+                .spacingRes(R.dimen.spacingNormal)
+                .lineWidthRes(R.dimen.lineWidth)
+                .cancelable(false)
+                .build();
+
+        tutors.setListener(this);
+
+        tutorials = new LinkedHashMap<>();
+        tutorials.put("It's a toolbar", mapPager);
+        tutorials.put("It's a button", watchAdvert);
+        tutorials.put("It's a borderless button", claimBonus);
+        tutorials.put("It's a text", mapTextView);
     }
 
     private void showTutorial(Iterator<Map.Entry<String, View>> iterator) {
