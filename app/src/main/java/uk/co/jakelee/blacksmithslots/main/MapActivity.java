@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.view.ViewPager;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -131,12 +132,13 @@ public class MapActivity extends BaseActivity implements
         advertHelper = AdvertHelper.getInstance(this);
 
         mapTextView.setText(R.string.map_1);
+
+        createTutorial();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-
         onConnected(null);
     }
 
@@ -152,12 +154,12 @@ public class MapActivity extends BaseActivity implements
             }
         };
         handler.postDelayed(everyMinute, DateHelper.MILLISECONDS_IN_SECOND * DateHelper.SECONDS_IN_MINUTE);
+    }
 
+    public void createTutorial() {
         TutorialHelper th = new TutorialHelper(this, 1);
-        th.addTutorialRectangle(watchAdvert, R.string.alert_autospin, false);
-        th.addTutorialRectangle(claimBonus, R.string.alert_autospin, false);
-        th.addTutorialRectangle(mapTextView, R.string.alert_autospin, false);
-        th.addTutorialRectangle(mapPager, R.string.alert_autospin, false);
+        th.addTutorialNoOverlay(findViewById(R.id.mapName), R.string.tutorial_1, false, Gravity.BOTTOM);
+        th.addTutorialNoOverlay(findViewById(R.id.mapName), R.string.tutorial_2, false, Gravity.BOTTOM);
         th.start();
     }
 
@@ -423,9 +425,6 @@ public class MapActivity extends BaseActivity implements
     @Override
     public void onConnected(Bundle connectionHint) {
         boolean isConnected = GooglePlayHelper.IsConnected();
-        if (isConnected) {
-            Games.Quests.registerQuestUpdateListener(GooglePlayHelper.mGoogleApiClient, this);
-        }
 
         googlePlayLoginRow.setVisibility(isConnected ? GONE : View.VISIBLE);
         googlePlayRow.setVisibility(isConnected ? View.VISIBLE : GONE);

@@ -75,7 +75,6 @@ public class TutorialHelper {
                         .disableClickThroughHole(!clickable)
                         .setStyle(style))
                 .playLater(view));
-
     }
 
     public void start() {

@@ -1071,4 +1071,6 @@
     <string name="skip">Skip</string>
     <string name="start">Start</string>
     <string name="replay_intro">Replay Intro</string>
+    <string name="tutorial_1">It\'s time to save the world! Explore the world, helping people along the way.</string>
+    <string name="tutorial_2">Tap areas with a white outline to find out what tasks need to be completed, then play the slots to gain new items.</string>
 </resources>
