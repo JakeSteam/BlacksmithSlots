@@ -35,6 +35,8 @@
         <meta-data android:name="applovin.sdk.key"
             android:value="d8B0h7p58eRdbK8r8r6cntx7TDbAl2WMBiNtqAyypOaPikFsTLSKCNSgb3rL5MiG347uE4r2SPSA7h0g1S_ErR"  />
 
+        <service android:name=".service.MusicService" />
+
         <activity
             android:name=".main.SplashScreenActivity"
             android:theme="@style/AppTheme.Splash"

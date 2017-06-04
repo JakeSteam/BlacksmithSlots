@@ -52,6 +52,7 @@ import uk.co.jakelee.blacksmithslots.model.Setting;
 import uk.co.jakelee.blacksmithslots.model.Slot;
 import uk.co.jakelee.blacksmithslots.model.Statistic;
 import uk.co.jakelee.blacksmithslots.model.Task;
+import uk.co.jakelee.blacksmithslots.service.MusicService;
 import uk.co.jakelee.blacksmithslots.tourguide.Overlay;
 import uk.co.jakelee.blacksmithslots.tourguide.Pointer;
 import uk.co.jakelee.blacksmithslots.tourguide.ToolTip;
@@ -69,6 +70,8 @@ public class MapActivity extends BaseActivity implements
     private Handler handler = new Handler();
     private MapPagerAdapter mapPagerAdapter;
     private AdvertHelper advertHelper;
+    private Intent musicService;
+    private boolean musicServiceIsStarted = false;
     private boolean isFirstInstall = false;
 
     @BindView(R.id.townScroller) ViewPager mapPager;
@@ -135,6 +138,7 @@ public class MapActivity extends BaseActivity implements
         }
 
         advertHelper = AdvertHelper.getInstance(this);
+        musicService = new Intent(this, MusicService.class);
 
         mapTextView.setText(R.string.map_1);
 
@@ -145,10 +149,26 @@ public class MapActivity extends BaseActivity implements
         }
     }
 
+    private void checkMusic() {
+        new Thread(new Runnable() {
+            public void run() {
+                if (Setting.getBoolean(Enums.Setting.Music) && !musicServiceIsStarted) {
+                    startService(musicService);
+                    musicServiceIsStarted = true;
+                } else if (!Setting.getBoolean(Enums.Setting.Music) && musicServiceIsStarted) {
+                    stopService(musicService);
+                    musicServiceIsStarted = false;
+                }
+            }
+        }).start();
+    }
+
     @Override
     protected void onResume() {
         super.onResume();
         onConnected(null);
+
+        checkMusic();
     }
 
     @Override
@@ -230,6 +250,13 @@ public class MapActivity extends BaseActivity implements
         if (getBoolean(Enums.Setting.BlacksmithPassNotification)) {
             NotificationHelper.addBlacksmithPassNotification(this, notificationSound);
         }
+
+        if (musicServiceIsStarted) {
+            stopService(musicService);
+            musicServiceIsStarted = false;
+        }
+
+        GooglePlayHelper.mGoogleApiClient.disconnect();
         handler.removeCallbacks(null);
     }
 

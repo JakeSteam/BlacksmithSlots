@@ -1107,5 +1107,5 @@ AESCrypt (https://goo.gl/Ewk2tq) - Support code encryption.
 \nKenney (https://kenney.nl/) - Map and UI assets.
     </string>
     <string name="credits_audio_title">Audio</string>
-    <string name="credits_audio">No audio yet!</string>
+    <string name="credits_audio">\"Village Consort\" Kevin MacLeod (incompetech.com): Licensed under Creative Commons By Attribution 3.0 License (https://goo.gl/yKRP3S)</string>
 </resources>
