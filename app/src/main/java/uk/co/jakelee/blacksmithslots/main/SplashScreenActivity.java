@@ -80,7 +80,7 @@ public class SplashScreenActivity extends BaseActivity {
         @Override
         public void run() {
             //picasso.load(R.drawable.globe_2).into(globeImage);
-            transitionDrawable.startTransition(1000);
+            transitionDrawable.startTransition(4000);
             setTopText("Well, it was.. Until the Purple appeared one day...");
         }
     };
@@ -89,7 +89,7 @@ public class SplashScreenActivity extends BaseActivity {
         @Override
         public void run() {
             //picasso.load(R.drawable.globe_3).into(globeImage);
-            transitionDrawable.startTransition(1000);
+            transitionDrawable.startTransition(4000);
             setTopText("It spread quickly, causing chaos and destruction everywhere it touched.");
         }
     };
@@ -98,7 +98,7 @@ public class SplashScreenActivity extends BaseActivity {
         @Override
         public void run() {
             //picasso.load(R.drawable.globe_4).into(globeImage);
-            transitionDrawable.startTransition(1000);
+            transitionDrawable.startTransition(4000);
             setTopText("Can you help us stop it? Talk to people, help them out, and find the Purple's source.");
         }
     };
