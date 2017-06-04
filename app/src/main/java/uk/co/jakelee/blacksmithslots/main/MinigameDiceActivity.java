@@ -17,6 +17,7 @@ import butterknife.OnClick;
 import uk.co.jakelee.blacksmithslots.R;
 import uk.co.jakelee.blacksmithslots.helper.CalculationHelper;
 import uk.co.jakelee.blacksmithslots.helper.DisplayHelper;
+import uk.co.jakelee.blacksmithslots.helper.SoundHelper;
 import uk.co.jakelee.blacksmithslots.model.ItemBundle;
 import uk.co.jakelee.blacksmithslots.model.Slot;
 
@@ -52,6 +53,7 @@ public class MinigameDiceActivity extends MinigameActivity {
 
     @OnClick(R.id.roll)
     public void roll(View v) {
+        SoundHelper.playSound(this, SoundHelper.diceSounds);
         roll.setVisibility(View.INVISIBLE);
 
         final long startTime = System.currentTimeMillis();

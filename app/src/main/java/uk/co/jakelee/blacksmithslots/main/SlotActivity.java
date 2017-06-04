@@ -17,6 +17,7 @@ import uk.co.jakelee.blacksmithslots.helper.AlertHelper;
 import uk.co.jakelee.blacksmithslots.helper.Constants;
 import uk.co.jakelee.blacksmithslots.helper.GooglePlayHelper;
 import uk.co.jakelee.blacksmithslots.helper.LevelHelper;
+import uk.co.jakelee.blacksmithslots.helper.MusicHelper;
 import uk.co.jakelee.blacksmithslots.helper.SlotHelper;
 import uk.co.jakelee.blacksmithslots.helper.TutorialHelper;
 import uk.co.jakelee.blacksmithslots.model.Slot;
@@ -72,7 +73,7 @@ public class SlotActivity extends BaseActivity {
     }
 
     @Override
-    protected void onResume() {
+    public void onResume() {
         super.onResume();
         if (slotHelper != null) {
             slotHelper.updateResourceCount();
@@ -80,7 +81,7 @@ public class SlotActivity extends BaseActivity {
     }
 
     @Override
-    protected void onPause() {
+    public void onPause() {
         super.onPause();
         if(slotHelper != null) {
             slotHelper.pause();
@@ -109,11 +110,13 @@ public class SlotActivity extends BaseActivity {
     }
 
     public void openLog(View v) {
+        MusicHelper.getInstance(this).setMovingInApp(true);
         startActivity(new Intent(this, LogActivity.class)
                 .addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT));
     }
 
     public void openVip(View v) {
+        MusicHelper.getInstance(this).setMovingInApp(true);
         startActivity(new Intent(this, VipComparisonActivity.class)
                 .addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT));
     }

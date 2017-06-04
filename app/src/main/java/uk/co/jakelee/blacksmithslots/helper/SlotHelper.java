@@ -221,6 +221,7 @@ public class SlotHelper {
         List<List<ItemBundle>> results = retrieveSpinResult();
         List<ItemBundle> wonItems = getWinnings(results);
         if (wonItems.size() > 0) {
+            SoundHelper.playSound(activity, SoundHelper.coinSounds);
             String winText = applyWinnings(wonItems);
             if (winText.length() > 0) {
                 Message.logSpin(activity, slot.getSlotId(), winText);
@@ -341,6 +342,7 @@ public class SlotHelper {
 
     public void spin(boolean checkNotAutospinning) {
         if (stillSpinningSlots <= 1 && (!checkNotAutospinning || autospinsLeft <= 0)) {
+            SoundHelper.playSound(activity, SoundHelper.spinSounds);
             Inventory failedItem = null;
             for (ItemBundle item : slot.getResources()) {
                 Inventory inventory = Inventory.getInventory(item.getTier().value, item.getType().value);

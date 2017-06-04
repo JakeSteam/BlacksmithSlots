@@ -17,6 +17,7 @@ import butterknife.ButterKnife;
 import uk.co.jakelee.blacksmithslots.R;
 import uk.co.jakelee.blacksmithslots.helper.DisplayHelper;
 import uk.co.jakelee.blacksmithslots.helper.Enums;
+import uk.co.jakelee.blacksmithslots.helper.SoundHelper;
 import uk.co.jakelee.blacksmithslots.model.ItemBundle;
 import uk.co.jakelee.blacksmithslots.model.Slot;
 
@@ -89,6 +90,7 @@ public class MinigameChestActivity extends MinigameActivity {
 
     public void selectChest(View v) {
         if (!selected) {
+            SoundHelper.playSound(this, SoundHelper.chestSounds);
             selected = true;
             Pair<Integer, ItemBundle> rewardPair = potentialRewards.get((int) v.getTag());
             winnings = rewardPair.second;

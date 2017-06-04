@@ -42,8 +42,10 @@ import uk.co.jakelee.blacksmithslots.helper.Enums;
 import uk.co.jakelee.blacksmithslots.helper.GooglePlayHelper;
 import uk.co.jakelee.blacksmithslots.helper.IncomeHelper;
 import uk.co.jakelee.blacksmithslots.helper.LanguageHelper;
+import uk.co.jakelee.blacksmithslots.helper.MusicHelper;
 import uk.co.jakelee.blacksmithslots.helper.NotificationHelper;
 import uk.co.jakelee.blacksmithslots.helper.Runnables;
+import uk.co.jakelee.blacksmithslots.helper.SoundHelper;
 import uk.co.jakelee.blacksmithslots.helper.TaskHelper;
 import uk.co.jakelee.blacksmithslots.helper.TextHelper;
 import uk.co.jakelee.blacksmithslots.model.Inventory;
@@ -52,7 +54,6 @@ import uk.co.jakelee.blacksmithslots.model.Setting;
 import uk.co.jakelee.blacksmithslots.model.Slot;
 import uk.co.jakelee.blacksmithslots.model.Statistic;
 import uk.co.jakelee.blacksmithslots.model.Task;
-import uk.co.jakelee.blacksmithslots.service.MusicService;
 import uk.co.jakelee.blacksmithslots.tourguide.Overlay;
 import uk.co.jakelee.blacksmithslots.tourguide.Pointer;
 import uk.co.jakelee.blacksmithslots.tourguide.ToolTip;
@@ -70,8 +71,6 @@ public class MapActivity extends BaseActivity implements
     private Handler handler = new Handler();
     private MapPagerAdapter mapPagerAdapter;
     private AdvertHelper advertHelper;
-    private Intent musicService;
-    private boolean musicServiceIsStarted = false;
     private boolean isFirstInstall = false;
 
     @BindView(R.id.townScroller) ViewPager mapPager;
@@ -116,6 +115,7 @@ public class MapActivity extends BaseActivity implements
 
         ViewPager.OnPageChangeListener pageChangeListener = new ViewPager.SimpleOnPageChangeListener() {
             public void onPageSelected(int position) {
+                SoundHelper.playSound(getApplicationContext(), SoundHelper.swipeSounds);
                 findViewById(R.id.leftArrow).setVisibility(position == 0 ? View.INVISIBLE : View.VISIBLE);
                 findViewById(R.id.rightArrow).setVisibility(position == (MapPagerAdapter.townLayouts.length - 1) ? View.INVISIBLE : View.VISIBLE);
 
@@ -138,7 +138,6 @@ public class MapActivity extends BaseActivity implements
         }
 
         advertHelper = AdvertHelper.getInstance(this);
-        musicService = new Intent(this, MusicService.class);
 
         mapTextView.setText(R.string.map_1);
 
@@ -147,28 +146,14 @@ public class MapActivity extends BaseActivity implements
             runTutorial(1);
             isFirstInstall = true;
         }
-    }
 
-    private void checkMusic() {
-        new Thread(new Runnable() {
-            public void run() {
-                if (Setting.getBoolean(Enums.Setting.Music) && !musicServiceIsStarted) {
-                    startService(musicService);
-                    musicServiceIsStarted = true;
-                } else if (!Setting.getBoolean(Enums.Setting.Music) && musicServiceIsStarted) {
-                    stopService(musicService);
-                    musicServiceIsStarted = false;
-                }
-            }
-        }).start();
+        MusicHelper.getInstance(this).checkMusic();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
         onConnected(null);
-
-        checkMusic();
     }
 
     @Override
@@ -251,11 +236,6 @@ public class MapActivity extends BaseActivity implements
             NotificationHelper.addBlacksmithPassNotification(this, notificationSound);
         }
 
-        if (musicServiceIsStarted) {
-            stopService(musicService);
-            musicServiceIsStarted = false;
-        }
-
         GooglePlayHelper.mGoogleApiClient.disconnect();
         handler.removeCallbacks(null);
     }
@@ -287,6 +267,7 @@ public class MapActivity extends BaseActivity implements
     @OnClick(R.id.openSlot)
     public void openSlot() {
         if (selectedSlot > 0 && !TaskHelper.isSlotLocked(selectedSlot)) {
+            MusicHelper.getInstance(this).setMovingInApp(true);
             startActivity(new Intent(this, SlotActivity.class)
                     .putExtra(Constants.INTENT_SLOT, selectedSlot)
                     .putExtra("isFirstInstall", isFirstInstall)
@@ -307,30 +288,35 @@ public class MapActivity extends BaseActivity implements
 
     @OnClick(R.id.settings)
     public void openSettings() {
+        MusicHelper.getInstance(this).setMovingInApp(true);
         startActivity(new Intent(this, SettingsActivity.class)
                 .addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT));
     }
 
     @OnClick(R.id.statistics)
     public void openStatistics() {
+        MusicHelper.getInstance(this).setMovingInApp(true);
         startActivity(new Intent(this, StatisticsActivity.class)
                 .addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT));
     }
 
     @OnClick(R.id.inventory)
     public void openInventory() {
+        MusicHelper.getInstance(this).setMovingInApp(true);
         startActivity(new Intent(this, InventoryActivity.class)
             .addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT));
     }
 
     @OnClick(R.id.openCredits)
     public void openCredits() {
+        MusicHelper.getInstance(this).setMovingInApp(true);
         startActivity(new Intent(this, CreditsActivity.class)
                 .addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT));
     }
 
     @OnClick(R.id.openShop)
     public void openShop() {
+        MusicHelper.getInstance(this).setMovingInApp(true);
         startActivity(new Intent(this, ShopActivity.class)
                 .addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT));
     }
@@ -365,6 +351,7 @@ public class MapActivity extends BaseActivity implements
     @OnClick(R.id.openRewardChances)
     public void openRewardChances() {
         if (selectedSlot > 0 && !TaskHelper.isSlotLocked(selectedSlot)) {
+            MusicHelper.getInstance(this).setMovingInApp(true);
             startActivity(new Intent(this, SlotChancesActivity.class)
                     .putExtra(Constants.INTENT_SLOT, selectedSlot)
                     .addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT));
@@ -374,6 +361,7 @@ public class MapActivity extends BaseActivity implements
     @OnClick(R.id.openSlotDialog)
     public void openSlotDialog() {
         if (selectedSlot > 0 && !TaskHelper.isSlotLocked(selectedSlot)) {
+            MusicHelper.getInstance(this).setMovingInApp(true);
             startActivity(new Intent(this, SlotDialogActivity.class)
                     .putExtra(Constants.INTENT_SLOT, selectedSlot)
                     .addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT));
@@ -556,6 +544,7 @@ public class MapActivity extends BaseActivity implements
     @OnClick(R.id.playCloudSave)
     public void openCloudSave() {
         if (GooglePlayHelper.IsConnected()) {
+            MusicHelper.getInstance(this).setMovingInApp(true);
             startActivity(new Intent(this, CloudSaveActivity.class)
                     .addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT));
         }

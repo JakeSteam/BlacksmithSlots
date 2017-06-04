@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.view.View;
 
 import de.keyboardsurfer.android.widget.crouton.Crouton;
+import uk.co.jakelee.blacksmithslots.helper.MusicHelper;
 
 public class BaseActivity extends Activity {
     @Override
@@ -22,6 +23,7 @@ public class BaseActivity extends Activity {
     @Override
     protected void onResume() {
         super.onResume();
+        MusicHelper.getInstance(this).setMovingInApp(false);
         getWindow().getDecorView().setSystemUiVisibility(
                 View.SYSTEM_UI_FLAG_LAYOUT_STABLE
                         | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
@@ -32,14 +34,11 @@ public class BaseActivity extends Activity {
     }
 
     @Override
-    protected void onStart() {
-        super.onStart();
-    }
-
-    //session end
-    @Override
-    protected void onStop() {
-        super.onStop();
+    public void onPause() {
+        super.onPause();
+        if (!MusicHelper.getInstance(this).isMovingInApp()) {
+            MusicHelper.getInstance(this).stopMusic();
+        }
     }
 
     /**
@@ -62,6 +61,7 @@ public class BaseActivity extends Activity {
     }
 
     public void close(View v) {
+        MusicHelper.getInstance(this).setMovingInApp(true);
         finish();
     }
 
