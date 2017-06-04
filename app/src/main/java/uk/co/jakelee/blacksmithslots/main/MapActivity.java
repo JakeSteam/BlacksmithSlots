@@ -44,6 +44,7 @@ import uk.co.jakelee.blacksmithslots.helper.NotificationHelper;
 import uk.co.jakelee.blacksmithslots.helper.Runnables;
 import uk.co.jakelee.blacksmithslots.helper.TaskHelper;
 import uk.co.jakelee.blacksmithslots.helper.TextHelper;
+import uk.co.jakelee.blacksmithslots.helper.TutorialHelper;
 import uk.co.jakelee.blacksmithslots.model.Inventory;
 import uk.co.jakelee.blacksmithslots.model.ItemBundle;
 import uk.co.jakelee.blacksmithslots.model.Setting;
@@ -151,6 +152,13 @@ public class MapActivity extends BaseActivity implements
             }
         };
         handler.postDelayed(everyMinute, DateHelper.MILLISECONDS_IN_SECOND * DateHelper.SECONDS_IN_MINUTE);
+
+        TutorialHelper th = new TutorialHelper(this, 1);
+        th.addTutorialRectangle(watchAdvert, R.string.alert_autospin, R.string.alert_autospin, false);
+        th.addTutorialRectangle(claimBonus, R.string.alert_autospin, R.string.alert_autospin, false);
+        th.addTutorialRectangle(mapTextView, R.string.alert_autospin, R.string.alert_autospin, false);
+        th.addTutorialRectangle(mapPager, R.string.alert_autospin, R.string.alert_autospin, false);
+        th.start();
     }
 
     @OnClick(R.id.googlePlayLoginRow)
