@@ -5,7 +5,7 @@ android {
     buildToolsVersion compilerVersion
     defaultConfig {
         applicationId "uk.co.jakelee.blacksmithslots"
-        minSdkVersion 15
+        minSdkVersion 16
         targetSdkVersion apiVersion
         versionCode 3
         versionName "0.0.1"
@@ -43,5 +43,6 @@ dependencies {
     compile 'com.anjlab.android.iab.v3:library:1.0.38'
     compile 'com.jakewharton:butterknife:8.5.1'
     compile 'com.scottyab:aescrypt:0.0.1'
+    compile 'com.github.popalay:tutors:1.0.4'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
 }
