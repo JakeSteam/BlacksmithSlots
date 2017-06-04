@@ -18,9 +18,15 @@ import com.google.android.gms.drive.Drive;
 import com.google.android.gms.games.Games;
 import com.google.android.gms.games.quest.Quest;
 import com.google.android.gms.games.quest.QuestUpdateListener;
+import com.popalay.tutors.TutorialListener;
+import com.popalay.tutors.Tutors;
+import com.popalay.tutors.TutorsBuilder;
 
+import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -57,12 +63,17 @@ import static uk.co.jakelee.blacksmithslots.model.Setting.getBoolean;
 public class MapActivity extends BaseActivity implements
         GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener,
-        QuestUpdateListener {
+        QuestUpdateListener,
+        TutorialListener{
     public static SharedPreferences prefs;
     private int selectedSlot = 1;
     private Handler handler = new Handler();
     private MapPagerAdapter mapPagerAdapter;
     private AdvertHelper advertHelper;
+
+    private Map<String, View> tutorials;
+    private Iterator<Map.Entry<String, View>> iterator;
+    private Tutors tutors;
 
     @BindView(R.id.townScroller) ViewPager mapPager;
     @BindView(R.id.mapName) TextView mapTextView;
@@ -130,6 +141,10 @@ public class MapActivity extends BaseActivity implements
         advertHelper = AdvertHelper.getInstance(this);
 
         mapTextView.setText(R.string.map_1);
+
+        initTutorials();
+        iterator = tutorials.entrySet().iterator();
+        showTutorial(iterator);
     }
 
     @Override
@@ -151,6 +166,26 @@ public class MapActivity extends BaseActivity implements
             }
         };
         handler.postDelayed(everyMinute, DateHelper.MILLISECONDS_IN_SECOND * DateHelper.SECONDS_IN_MINUTE);
+    }
+
+    private void initTutorials() {
+        tutors = new TutorsBuilder()
+                .textColorRes(android.R.color.white)
+                .shadowColorRes(R.color.shadow)
+                .textSizeRes(R.dimen.textNormal)
+                .completeIconRes(R.drawable.ic_cross_24_white)
+                .spacingRes(R.dimen.spacingNormal)
+                .lineWidthRes(R.dimen.lineWidth)
+                .cancelable(false)
+                .build();
+
+        tutors.setListener(this);
+
+        tutorials = new LinkedHashMap<>();
+        tutorials.put("It's a toolbar", mapPager);
+        tutorials.put("It's a button", watchAdvert);
+        tutorials.put("It's a borderless button", claimBonus);
+        tutorials.put("It's a text", mapTextView);
     }
 
     @OnClick(R.id.googlePlayLoginRow)
@@ -466,6 +501,32 @@ public class MapActivity extends BaseActivity implements
         if (GooglePlayHelper.IsConnected()) {
             startActivity(new Intent(this, CloudSaveActivity.class)
                     .addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT));
+        }
+    }
+
+
+    @Override
+    public void onNext() {
+        showTutorial(iterator);
+    }
+
+    @Override
+    public void onComplete() {
+        tutors.close();
+    }
+
+    @Override
+    public void onCompleteAll() {
+        tutors.close();
+    }
+
+    private void showTutorial(Iterator<Map.Entry<String, View>> iterator) {
+        if (iterator == null) {
+            return;
+        }
+        if (iterator.hasNext()) {
+            Map.Entry<String, View> next = iterator.next();
+            tutors.show(getSupportFragmentManager(), next.getValue(), next.getKey(), !iterator.hasNext());
         }
     }
 }
