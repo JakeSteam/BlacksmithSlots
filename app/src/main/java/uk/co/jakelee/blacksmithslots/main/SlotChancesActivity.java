@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.widget.TableLayout;
-import android.widget.TableRow;
 import android.widget.TextView;
 
 import java.util.List;
@@ -13,6 +12,7 @@ import java.util.List;
 import uk.co.jakelee.blacksmithslots.BaseActivity;
 import uk.co.jakelee.blacksmithslots.R;
 import uk.co.jakelee.blacksmithslots.helper.Constants;
+import uk.co.jakelee.blacksmithslots.helper.DisplayHelper;
 import uk.co.jakelee.blacksmithslots.model.ItemBundle;
 import uk.co.jakelee.blacksmithslots.model.Slot;
 
@@ -31,17 +31,11 @@ public class SlotChancesActivity extends BaseActivity {
         Slot selectedSlot = Slot.get(intent.getIntExtra(Constants.INTENT_SLOT, 0));
         if (selectedSlot == null) { finish(); }
 
-        TableRow header = (TableRow) inflater.inflate(R.layout.custom_data_row, null).findViewById(R.id.dataRow);
-        ((TextView) header.findViewById(R.id.dataName)).setText(R.string.bundle_item_select);
-        ((TextView) header.findViewById(R.id.dataValue)).setText(R.string.bundle_item_chance);
-        statTable.addView(header);
+        statTable.addView(DisplayHelper.getTableRow(inflater, R.string.bundle_item_select, R.string.bundle_item_chance));
 
         List<ItemBundle> rewards = selectedSlot.getRewards(false);
         for (ItemBundle reward : rewards) {
-            TableRow lockedMessage = (TableRow) inflater.inflate(R.layout.custom_data_row, null).findViewById(R.id.dataRow);
-            ((TextView) lockedMessage.findViewById(R.id.dataName)).setText(reward.toString(this));
-            ((TextView) lockedMessage.findViewById(R.id.dataValue)).setText(Integer.toString(reward.getWeighting()));
-            statTable.addView(lockedMessage);
+            statTable.addView(DisplayHelper.getTableRow(inflater, reward.toString(this), Integer.toString(reward.getWeighting())));
         }
     }
 }

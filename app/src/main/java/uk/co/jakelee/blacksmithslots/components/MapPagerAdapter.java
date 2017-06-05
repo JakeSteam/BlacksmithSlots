@@ -1,16 +1,19 @@
 package uk.co.jakelee.blacksmithslots.components;
 
+import android.app.Activity;
 import android.content.Context;
 import android.support.percent.PercentRelativeLayout;
 import android.support.v4.view.PagerAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.orm.query.Condition;
 import com.orm.query.Select;
 
+import java.util.List;
 import java.util.Locale;
 
 import uk.co.jakelee.blacksmithslots.R;
@@ -18,6 +21,8 @@ import uk.co.jakelee.blacksmithslots.helper.Constants;
 import uk.co.jakelee.blacksmithslots.helper.DisplayHelper;
 import uk.co.jakelee.blacksmithslots.helper.TaskHelper;
 import uk.co.jakelee.blacksmithslots.helper.TextHelper;
+import uk.co.jakelee.blacksmithslots.model.Inventory;
+import uk.co.jakelee.blacksmithslots.model.ItemBundle;
 import uk.co.jakelee.blacksmithslots.model.Slot;
 
 public class MapPagerAdapter extends PagerAdapter {
@@ -75,5 +80,17 @@ public class MapPagerAdapter extends PagerAdapter {
     @Override
     public int getItemPosition(Object object) {
         return PagerAdapter.POSITION_NONE;
+    }
+
+    public void populateItemContainer(int id, List<ItemBundle> items, Activity activity) {
+        LinearLayout rewardContainer = (LinearLayout) activity.findViewById(id);
+        rewardContainer.removeAllViews();
+        for (ItemBundle itemBundle : items) {
+            rewardContainer.addView(DisplayHelper.createImageView(activity,
+                    DisplayHelper.getItemImageFile(itemBundle.getTier().value, itemBundle.getType().value, itemBundle.getQuantity()),
+                    30,
+                    30,
+                    itemBundle.getQuantity() + "x " + Inventory.getName(activity, itemBundle.getTier(), itemBundle.getType())));
+        }
     }
 }

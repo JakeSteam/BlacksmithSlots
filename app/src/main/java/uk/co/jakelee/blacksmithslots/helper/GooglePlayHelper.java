@@ -41,6 +41,8 @@ import uk.co.jakelee.blacksmithslots.model.Setting;
 import uk.co.jakelee.blacksmithslots.model.Statistic;
 import uk.co.jakelee.blacksmithslots.model.Task;
 
+import static android.content.Context.MODE_PRIVATE;
+
 public class GooglePlayHelper implements com.google.android.gms.common.api.ResultCallback {
     public static final int RC_ACHIEVEMENTS = 9002;
     public static final int RC_LEADERBOARDS = 9003;
@@ -474,6 +476,19 @@ public class GooglePlayHelper implements com.google.android.gms.common.api.Resul
         }
 
         return splitData;
+    }
+
+    public static void tryGoogleLogin(Activity activity, boolean forceAttempt) {
+        // If we've got all we need, and we need to sign in, or it is first run.
+        boolean a = AreGooglePlayServicesInstalled(activity);
+        boolean b = !IsConnected();
+        boolean c = !mGoogleApiClient.isConnecting();
+        boolean d = forceAttempt;
+        boolean e = Setting.getBoolean(Enums.Setting.AttemptLogin);
+        boolean f = activity.getSharedPreferences("uk.co.jakelee.blacksmithslots", MODE_PRIVATE).getInt("databaseVersion", DatabaseHelper.NO_DATABASE) <= DatabaseHelper.NO_DATABASE;
+        if (a && b && c && (d || e || f)) {
+            mGoogleApiClient.connect();
+        }
     }
 
     public void onResult(com.google.android.gms.common.api.Result result) {

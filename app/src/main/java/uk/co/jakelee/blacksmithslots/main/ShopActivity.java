@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
 import android.util.Pair;
 import android.view.LayoutInflater;
@@ -17,7 +18,6 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TableLayout;
-import android.widget.TableRow;
 import android.widget.TextView;
 
 import com.anjlab.android.iab.v3.BillingProcessor;
@@ -152,28 +152,31 @@ public class ShopActivity extends BaseActivity implements BillingProcessor.IBill
         LayoutInflater inflater = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         List<List<ItemBundle>> dailyRewards = IapHelper.getPassRewards();
         for (int day = 1; day <= dailyRewards.size(); day++) {
-            List<ItemBundle> dailyReward = dailyRewards.get(day - 1);
-
-            String itemsString = DisplayHelper.bundlesToString(this, dailyReward);
-            int colour = R.color.greyText;
-            if (day == dayOfPass && day > daysClaimed) {
-                // Ready to claim today's reward!
-                colour = R.color.orangeText;
-            } else if ((day == dayOfPass && day == daysClaimed) || day < dayOfPass) {
-                // Already claimed today, or previously claimed day
-                colour = R.color.greenText;
-            } else if (day > dayOfPass && day > highestDaysClaimed){
-                // Future day, we've never seen it before!
-                itemsString = getString(R.string.unknown);
-            }
-
-            TableRow tableRow = (TableRow)inflater.inflate(R.layout.custom_data_row, null).findViewById(R.id.dataRow);
-            ((TextView)tableRow.findViewById(R.id.dataName)).setText(String.format(Locale.ENGLISH, getString(R.string.pass_days), day));
-            ((TextView)tableRow.findViewById(R.id.dataValue)).setText(itemsString);
-            ((TextView)tableRow.findViewById(R.id.dataValue)).setTextColor(ContextCompat.getColor(this, colour));
-            passRewardsContainer.addView(tableRow);
+            displayDayRow(dayOfPass, daysClaimed, highestDaysClaimed, inflater, dailyRewards, day);
         }
         passRewardsContainer.scrollTo(0,0);
+    }
+
+    private void displayDayRow(int dayOfPass, int daysClaimed, int highestDaysClaimed, LayoutInflater inflater, List<List<ItemBundle>> dailyRewards, int day) {
+        List<ItemBundle> dailyReward = dailyRewards.get(day - 1);
+
+        String itemsString = DisplayHelper.bundlesToString(this, dailyReward);
+        int colour = R.color.greyText;
+        if (day == dayOfPass && day > daysClaimed) {
+            // Ready to claim today's reward!
+            colour = R.color.orangeText;
+        } else if ((day == dayOfPass && day == daysClaimed) || day < dayOfPass) {
+            // Already claimed today, or previously claimed day
+            colour = R.color.greenText;
+        } else if (day > dayOfPass && day > highestDaysClaimed){
+            // Future day, we've never seen it before!
+            itemsString = getString(R.string.unknown);
+        }
+
+        passRewardsContainer.addView(DisplayHelper.getTableRow(inflater,
+                String.format(Locale.ENGLISH, getString(R.string.pass_days), day),
+                itemsString,
+                colour));
     }
 
     private void createVipTab() {
@@ -186,15 +189,21 @@ public class ShopActivity extends BaseActivity implements BillingProcessor.IBill
             vipIntro.setText(String.format(Locale.ENGLISH, getString(R.string.vip_intro), vipLevel + 1));
             vipUpgrade.setText(String.format(Locale.ENGLISH, getString(R.string.vip_upgrade_price), DisplayHelper.centsToDollars(IapHelper.getVipPrice(vipLevel + 1))));
 
-            String vipBonusesText = DisplayHelper.bundlesToString(this, IapHelper.getVipRewardsForLevel(vipLevel + 1), 1, true, "- ", "\n");
-            vipBonusesText += "-" + getString(R.string.chest_cooldown) + " -" + String.format(Locale.ENGLISH, getString(R.string.time_hours), Constants.CHEST_COOLDOWN_VIP_REDUCTION);
-            vipBonusesText += "\n-" + getString(R.string.reward_boost) + " +" + Constants.VIP_LEVEL_MODIFIER + "%";
-            vipBonusesText += "\n-" + getString(R.string.advert_cooldown) + " -" + String.format(Locale.ENGLISH, getString(R.string.time_mins), (int)(60 * Constants.ADVERT_COOLDOWN_VIP_REDUCTION));
-            vipBonusesText += "\n-" + getString(R.string.daily_bonus) + " +" + Constants.VIP_DAILY_BONUS_MODIFIER + "%";
-            vipBonusesText += "\n-" + getString(R.string.autospins) + " +" + Constants.AUTOSPIN_INCREASE;
+            String vipBonusesText = getVipBonusesText(vipLevel);
 
             vipBonuses.setText(vipBonusesText);
         }
+    }
+
+    @NonNull
+    private String getVipBonusesText(int vipLevel) {
+        String vipBonusesText = DisplayHelper.bundlesToString(this, IapHelper.getVipRewardsForLevel(vipLevel + 1), 1, true, "- ", "\n");
+        vipBonusesText += "-" + getString(R.string.chest_cooldown) + " -" + String.format(Locale.ENGLISH, getString(R.string.time_hours), Constants.CHEST_COOLDOWN_VIP_REDUCTION);
+        vipBonusesText += "\n-" + getString(R.string.reward_boost) + " +" + Constants.VIP_LEVEL_MODIFIER + "%";
+        vipBonusesText += "\n-" + getString(R.string.advert_cooldown) + " -" + String.format(Locale.ENGLISH, getString(R.string.time_mins), (int)(60 * Constants.ADVERT_COOLDOWN_VIP_REDUCTION));
+        vipBonusesText += "\n-" + getString(R.string.daily_bonus) + " +" + Constants.VIP_DAILY_BONUS_MODIFIER + "%";
+        vipBonusesText += "\n-" + getString(R.string.autospins) + " +" + Constants.AUTOSPIN_INCREASE;
+        return vipBonusesText;
     }
 
     private void createBundleTab() {
@@ -238,26 +247,35 @@ public class ShopActivity extends BaseActivity implements BillingProcessor.IBill
         List<ItemBundle> iaps = IapHelper.getBundlesForItem(item.first, item.second);
 
         for (ItemBundle iap : iaps) {
-            LinearLayout itemTile = (LinearLayout) inflater.inflate(R.layout.custom_iap_tile, null).findViewById(R.id.iapTile);
-            int imageResource = getResources().getIdentifier(DisplayHelper.getItemImageFile(iap), "drawable", getPackageName());
-
-            ((ImageView)itemTile.findViewById(R.id.itemImage)).setImageResource(imageResource);
-            ((TextView)itemTile.findViewById(R.id.itemPrice)).setText(iap.getPrice());
-            final Iap iapItem = Iap.get(iap.getIdentifier());
-            if (bp != null) {
-                SkuDetails iapInfo = bp.getPurchaseListingDetails(iapItem.getIapName());
-                if (iapInfo != null) {
-                    ((TextView) itemTile.findViewById(R.id.itemPrice)).setText(iapInfo.toString());
-                }
-            }
-            itemTile.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    buyIAP(iapItem.getIapName().toLowerCase());
-                }
-            });
-            bundleItemContainer.addView(itemTile, params);
+            displayIap(params, inflater, iap);
         }
+    }
+
+    private void displayIap(LinearLayout.LayoutParams params, LayoutInflater inflater, ItemBundle iap) {
+        LinearLayout itemTile = (LinearLayout) inflater.inflate(R.layout.custom_iap_tile, null).findViewById(R.id.iapTile);
+        int imageResource = getResources().getIdentifier(DisplayHelper.getItemImageFile(iap), "drawable", getPackageName());
+
+        ((ImageView)itemTile.findViewById(R.id.itemImage)).setImageResource(imageResource);
+        ((TextView)itemTile.findViewById(R.id.itemPrice)).setText(iap.getPrice());
+        final Iap iapItem = Iap.get(iap.getIdentifier());
+        if (bp != null) {
+            SkuDetails iapInfo = bp.getPurchaseListingDetails(iapItem.getIapName());
+            if (iapInfo != null) {
+                ((TextView) itemTile.findViewById(R.id.itemPrice)).setText(iapInfo.toString());
+            }
+        }
+        itemTile.setOnClickListener(getItemOnClick(iapItem));
+        bundleItemContainer.addView(itemTile, params);
+    }
+
+    @NonNull
+    private View.OnClickListener getItemOnClick(final Iap iapItem) {
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                buyIAP(iapItem.getIapName().toLowerCase());
+            }
+        };
     }
 
     @OnClick(R.id.passClaim)
@@ -270,34 +288,42 @@ public class ShopActivity extends BaseActivity implements BillingProcessor.IBill
         } else if (Statistic.get(Enums.Statistic.CurrentPassClaimedDay).getIntValue() >= dayOfPass) {
             AlertHelper.error(this, R.string.error_claimed_pass_already, false);
         } else {
-            Statistic.add(Enums.Statistic.TotalPassDaysClaimed);
-            Statistic.set(Enums.Statistic.CurrentPassClaimedDay, dayOfPass);
+            claimTodaysPassReward(daysLeft, dayOfPass);
+        }
+    }
 
-            Statistic highestDaysClaimed = Statistic.get(Enums.Statistic.HighestPassClaimedDay);
-            if (highestDaysClaimed.getIntValue() < dayOfPass) {
-                highestDaysClaimed.setIntValue(dayOfPass);
-                highestDaysClaimed.save();
-            }
+    private void claimTodaysPassReward(int daysLeft, int dayOfPass) {
+        Statistic.add(Enums.Statistic.TotalPassDaysClaimed);
+        Statistic.set(Enums.Statistic.CurrentPassClaimedDay, dayOfPass);
 
-            AlertHelper.success(this, String.format(Locale.ENGLISH, getString(R.string.alert_claimed_pass_day),
-                    dayOfPass,
-                    DisplayHelper.bundlesToString(this, IapHelper.getPassRewardsForDay(dayOfPass))
-                    ), true);
+        Statistic highestDaysClaimed = Statistic.get(Enums.Statistic.HighestPassClaimedDay);
+        if (highestDaysClaimed.getIntValue() < dayOfPass) {
+            highestDaysClaimed.setIntValue(dayOfPass);
+            highestDaysClaimed.save();
+        }
 
-            // If it's the last day and there's months left, use them up
-            if (daysLeft == 1) {
-                Statistic monthsLeft = Statistic.get(Enums.Statistic.ExtraPassMonths);
-                if (monthsLeft.getIntValue() > 0) {
-                    monthsLeft.setIntValue(monthsLeft.getIntValue() - 1);
-                    monthsLeft.save();
+        AlertHelper.success(this, String.format(Locale.ENGLISH, getString(R.string.alert_claimed_pass_day),
+                dayOfPass,
+                DisplayHelper.bundlesToString(this, IapHelper.getPassRewardsForDay(dayOfPass))
+                ), true);
 
-                    Iap iap = Iap.get(Enums.Iap.BlacksmithPass);
-                    iap.setLastPurchased(DateHelper.getYesterdayMidnight().getTimeInMillis());
-                    iap.save();
-                }
-            }
+        // If it's the last day and there's months left, use them up
+        if (daysLeft == 1) {
+            useUpMonth();
+        }
 
-            createPassTab();
+        createPassTab();
+    }
+
+    private void useUpMonth() {
+        Statistic monthsLeft = Statistic.get(Enums.Statistic.ExtraPassMonths);
+        if (monthsLeft.getIntValue() > 0) {
+            monthsLeft.setIntValue(monthsLeft.getIntValue() - 1);
+            monthsLeft.save();
+
+            Iap iap = Iap.get(Enums.Iap.BlacksmithPass);
+            iap.setLastPurchased(DateHelper.getYesterdayMidnight().getTimeInMillis());
+            iap.save();
         }
     }
 
@@ -335,47 +361,62 @@ public class ShopActivity extends BaseActivity implements BillingProcessor.IBill
 
         List<ItemBundle> items = new ArrayList<>();
         if (iap.isVipPurchase()) {
-            Statistic vipLevel = Statistic.get(Enums.Statistic.VipLevel);
-            if (vipLevel.getIntValue() < Constants.MAX_VIP_LEVEL) {
-                vipLevel.setIntValue(vipLevel.getIntValue() + 1);
-                vipLevel.save();
-                createVipTab();
-            }
-
-            items = IapHelper.getVipRewardsForLevel(vipLevel.getIntValue());
-            AlertHelper.success(this, String.format(Locale.ENGLISH, getString(R.string.vip_level_increased),
-                    vipLevel.getIntValue(), DisplayHelper.
-                            bundlesToString(this, items)), true);
+            items = onVipPurchased();
         } else if (iap.getIapId() == Enums.Iap.BlacksmithPass.value) {
-            int daysLeft = IapHelper.getPassDaysLeft();
-
-            if (daysLeft == 0) {
-                iap.setLastPurchased(DateHelper.getYesterdayMidnight().getTimeInMillis());
-                Statistic.set(Enums.Statistic.CurrentPassClaimedDay, 0);
-            } else {
-                Statistic.add(Enums.Statistic.ExtraPassMonths);
-            }
-            iap.save();
-
-            Statistic vipLevel = Statistic.get(Enums.Statistic.VipLevel);
-            if (vipLevel.getIntValue() == 0) {
-                vipLevel.setIntValue(1);
-                vipLevel.save();
-                AlertHelper.success(this, R.string.alert_pass_purchased_bonus_vip, true);
-            } else {
-                AlertHelper.success(this, R.string.alert_pass_purchased, true);
-            }
-
-            createPassTab();
+            onPassPurchased(iap);
         } else {
-            items = IapHelper.getBundleRewards(iap.getIapId());
-            Statistic.add(Enums.Statistic.PacksPurchased);
-            AlertHelper.success(this, String.format(Locale.ENGLISH, getString(R.string.iap_bundle_purchased), DisplayHelper.bundlesToString(this, items)), true);
+            items = onBundlePurchased(iap);
         }
 
         for (ItemBundle item : items) {
             Inventory.addInventory(item);
         }
+    }
+
+    private List<ItemBundle> onBundlePurchased(Iap iap) {
+        List<ItemBundle> items;
+        items = IapHelper.getBundleRewards(iap.getIapId());
+        Statistic.add(Enums.Statistic.PacksPurchased);
+        AlertHelper.success(this, String.format(Locale.ENGLISH, getString(R.string.iap_bundle_purchased), DisplayHelper.bundlesToString(this, items)), true);
+        return items;
+    }
+
+    private void onPassPurchased(Iap iap) {
+        int daysLeft = IapHelper.getPassDaysLeft();
+
+        if (daysLeft == 0) {
+            iap.setLastPurchased(DateHelper.getYesterdayMidnight().getTimeInMillis());
+            Statistic.set(Enums.Statistic.CurrentPassClaimedDay, 0);
+        } else {
+            Statistic.add(Enums.Statistic.ExtraPassMonths);
+        }
+        iap.save();
+
+        Statistic vipLevel = Statistic.get(Enums.Statistic.VipLevel);
+        if (vipLevel.getIntValue() == 0) {
+            vipLevel.setIntValue(1);
+            vipLevel.save();
+            AlertHelper.success(this, R.string.alert_pass_purchased_bonus_vip, true);
+        } else {
+            AlertHelper.success(this, R.string.alert_pass_purchased, true);
+        }
+
+        createPassTab();
+    }
+
+    private List<ItemBundle> onVipPurchased() {
+        List<ItemBundle> items;Statistic vipLevel = Statistic.get(Enums.Statistic.VipLevel);
+        if (vipLevel.getIntValue() < Constants.MAX_VIP_LEVEL) {
+            vipLevel.setIntValue(vipLevel.getIntValue() + 1);
+            vipLevel.save();
+            createVipTab();
+        }
+
+        items = IapHelper.getVipRewardsForLevel(vipLevel.getIntValue());
+        AlertHelper.success(this, String.format(Locale.ENGLISH, getString(R.string.vip_level_increased),
+                vipLevel.getIntValue(), DisplayHelper.
+                        bundlesToString(this, items)), true);
+        return items;
     }
 
     @Override

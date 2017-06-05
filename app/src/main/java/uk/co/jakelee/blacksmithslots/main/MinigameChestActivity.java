@@ -11,6 +11,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -112,10 +113,10 @@ public class MinigameChestActivity extends MinigameActivity {
 
     private String getWinText(ItemBundle reward) {
         switch (reward.getQuantity()) {
-            case 0: return "Unlucky, you won nothing!";
-            case 1: return "Well, it's something.. you won " + reward.toString(this) + ".";
-            case 5: return "Pretty good! You won " + reward.toString(this) + "!";
-            case 25: return "Wow, very nice! You've earned yourself " + reward.toString(this) + "!";
+            case 0: return getString(R.string.minigame_chest_win_0);
+            case 1: return String.format(Locale.ENGLISH, getString(R.string.minigame_chest_win_1), reward.toString(this));
+            case 5: return String.format(Locale.ENGLISH, getString(R.string.minigame_chest_win_5), reward.toString(this));
+            case 25: return String.format(Locale.ENGLISH, getString(R.string.minigame_chest_win_25), reward.toString(this));
             default: return "";
         }
     }

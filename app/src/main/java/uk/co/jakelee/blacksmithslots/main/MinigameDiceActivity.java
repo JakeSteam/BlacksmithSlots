@@ -3,6 +3,7 @@ package uk.co.jakelee.blacksmithslots.main;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.annotation.NonNull;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -60,22 +61,26 @@ public class MinigameDiceActivity extends MinigameActivity {
         for (int i = 0; i < diceContainer.getChildCount(); i++) {
             final ImageView dice = (ImageView)diceContainer.getChildAt(i);
             final int millisecondsToRollFor = CalculationHelper.randomNumber(1000, 5000);
-            final Runnable diceRoll = new Runnable() {
-                @Override
-                public void run() {
-                    int diceRoll = CalculationHelper.randomNumber(1, 6);
-                    dice.setImageResource(diceDrawables[diceRoll - 1]);
-                    dice.setTag(diceRoll);
-                    if (System.currentTimeMillis() - startTime < millisecondsToRollFor) {
-                        handler.postDelayed(this, 100);
-                    } else {
-                        rollFinished();
-                    }
-                }
-            };
-            handler.post(diceRoll);
+            handler.post(getDiceRollRunnable(startTime, dice, millisecondsToRollFor));
 
         }
+    }
+
+    @NonNull
+    private Runnable getDiceRollRunnable(final long startTime, final ImageView dice, final int millisecondsToRollFor) {
+        return new Runnable() {
+            @Override
+            public void run() {
+                int diceRoll = CalculationHelper.randomNumber(1, 6);
+                dice.setImageResource(diceDrawables[diceRoll - 1]);
+                dice.setTag(diceRoll);
+                if (System.currentTimeMillis() - startTime < millisecondsToRollFor) {
+                    handler.postDelayed(this, 100);
+                } else {
+                    rollFinished();
+                }
+            }
+        };
     }
 
     public void rollFinished() {

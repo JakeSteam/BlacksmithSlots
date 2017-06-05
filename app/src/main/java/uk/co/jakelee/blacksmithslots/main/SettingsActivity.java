@@ -97,23 +97,7 @@ public class SettingsActivity extends BaseActivity {
         TableLayout settingTable = (TableLayout)findViewById(R.id.dataTable);
         settingTable.removeAllViews();
         for (Enums.SettingGroup group : Enums.SettingGroup.values()) {
-            if (group == Enums.SettingGroup.Internal) {
-                continue;
-            }
-
-            FontTextView textView = new FontTextView(this);
-            textView.setPadding(5, 20, 0, 0);
-            textView.setText(TextHelper.getInstance(this).getText(DisplayHelper.getSettingGroupString(group.value)));
-            textView.setTextSize(30);
-            settingTable.addView(textView);
-
-            List<Setting> settings = Setting.getByGroup(group);
-            for (Setting setting : settings) {
-                TableRow tableRow = createTableRow(inflater, setting);
-                tableRow.setTag(setting.getSetting().value);
-                ((TextView)tableRow.findViewById(R.id.settingName)).setText(setting.getName(this));
-                settingTable.addView(tableRow);
-            }
+            displaySettingGroup(inflater, settingTable, group);
         }
 
         LinearLayout socialRow = (LinearLayout)inflater.inflate(R.layout.custom_row_social, null).findViewById(R.id.socialRow);
@@ -123,6 +107,30 @@ public class SettingsActivity extends BaseActivity {
         settingTable.addView(supportRow);
 
 
+    }
+
+    private void displaySettingGroup(LayoutInflater inflater, TableLayout settingTable, Enums.SettingGroup group) {
+        if (group == Enums.SettingGroup.Internal) {
+            return;
+        }
+
+        FontTextView textView = new FontTextView(this);
+        textView.setPadding(5, 20, 0, 0);
+        textView.setText(TextHelper.getInstance(this).getText(DisplayHelper.getSettingGroupString(group.value)));
+        textView.setTextSize(30);
+        settingTable.addView(textView);
+
+        List<Setting> settings = Setting.getByGroup(group);
+        for (Setting setting : settings) {
+            displaySetting(inflater, settingTable, setting);
+        }
+    }
+
+    private void displaySetting(LayoutInflater inflater, TableLayout settingTable, Setting setting) {
+        TableRow tableRow = createTableRow(inflater, setting);
+        tableRow.setTag(setting.getSetting().value);
+        ((TextView)tableRow.findViewById(R.id.settingName)).setText(setting.getName(this));
+        settingTable.addView(tableRow);
     }
 
     public void openLink(View v) {
@@ -217,7 +225,6 @@ public class SettingsActivity extends BaseActivity {
 
             AlertHelper.success(this, IncomeHelper.claimImportBonus(this, pbData.first), false);
 
-            // Reward fixed amount for now, ideally dependant on prestige / premium?
             Setting haveImported = Setting.get(Enums.Setting.SaveImported);
             haveImported.setBooleanValue(true);
             haveImported.save();

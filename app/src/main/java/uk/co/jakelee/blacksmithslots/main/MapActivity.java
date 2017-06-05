@@ -35,7 +35,6 @@ import uk.co.jakelee.blacksmithslots.components.ViewPagerIndicator;
 import uk.co.jakelee.blacksmithslots.helper.AdvertHelper;
 import uk.co.jakelee.blacksmithslots.helper.AlertHelper;
 import uk.co.jakelee.blacksmithslots.helper.Constants;
-import uk.co.jakelee.blacksmithslots.helper.DatabaseHelper;
 import uk.co.jakelee.blacksmithslots.helper.DateHelper;
 import uk.co.jakelee.blacksmithslots.helper.DisplayHelper;
 import uk.co.jakelee.blacksmithslots.helper.Enums;
@@ -48,11 +47,7 @@ import uk.co.jakelee.blacksmithslots.helper.Runnables;
 import uk.co.jakelee.blacksmithslots.helper.SoundHelper;
 import uk.co.jakelee.blacksmithslots.helper.TaskHelper;
 import uk.co.jakelee.blacksmithslots.helper.TextHelper;
-import uk.co.jakelee.blacksmithslots.model.Inventory;
-import uk.co.jakelee.blacksmithslots.model.ItemBundle;
-import uk.co.jakelee.blacksmithslots.model.Setting;
 import uk.co.jakelee.blacksmithslots.model.Slot;
-import uk.co.jakelee.blacksmithslots.model.Statistic;
 import uk.co.jakelee.blacksmithslots.model.Task;
 import uk.co.jakelee.blacksmithslots.tourguide.Overlay;
 import uk.co.jakelee.blacksmithslots.tourguide.Pointer;
@@ -65,32 +60,46 @@ import static uk.co.jakelee.blacksmithslots.model.Setting.getBoolean;
 public class MapActivity extends BaseActivity implements
         GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener,
-        QuestUpdateListener{
+        QuestUpdateListener {
     public static SharedPreferences prefs;
+    @BindView(R.id.townScroller)
+    ViewPager mapPager;
+    @BindView(R.id.mapName)
+    TextView mapTextView;
+    @BindView(R.id.noSlotSelected)
+    LinearLayout noSlotSidebar;
+    @BindView(R.id.superlockedSlot)
+    RelativeLayout superLockedSlot;
+    @BindView(R.id.slotSuperlockedDescription)
+    TextView superLockedDescription;
+    @BindView(R.id.lockedSlot)
+    RelativeLayout lockedSlot;
+    @BindView(R.id.slotLockedDescription)
+    TextView lockedDescription;
+    @BindView(R.id.taskRequirement)
+    TextView lockedTaskRequirement;
+    @BindView(R.id.taskProgressBar)
+    ProgressBar lockedTaskProgressBar;
+    @BindView(R.id.taskProgressText)
+    TextView lockedTaskProgressText;
+    @BindView(R.id.unlockedSlot)
+    RelativeLayout unlockedSlot;
+    @BindView(R.id.slotUnlockedDescription)
+    TextView unlockedDescription;
+    @BindView(R.id.watchAdvert)
+    TextView watchAdvert;
+    @BindView(R.id.claimBonus)
+    TextView claimBonus;
+    @BindView(R.id.googlePlayRow)
+    LinearLayout googlePlayRow;
+    @BindView(R.id.googlePlayLoginRow)
+    LinearLayout googlePlayLoginRow;
     private int selectedSlot = 1;
     private Handler handler = new Handler();
     private MapPagerAdapter mapPagerAdapter;
-    private AdvertHelper advertHelper;
+    public AdvertHelper advertHelper;
     private boolean isFirstInstall = false;
-
-    @BindView(R.id.townScroller) ViewPager mapPager;
-    @BindView(R.id.mapName) TextView mapTextView;
-    @BindView(R.id.noSlotSelected) LinearLayout noSlotSidebar;
-    @BindView(R.id.superlockedSlot) RelativeLayout superLockedSlot;
-    @BindView(R.id.slotSuperlockedDescription) TextView superLockedDescription;
-
-    @BindView(R.id.lockedSlot) RelativeLayout lockedSlot;
-    @BindView(R.id.slotLockedDescription) TextView lockedDescription;
-    @BindView(R.id.taskRequirement) TextView lockedTaskRequirement;
-    @BindView(R.id.taskProgressBar) ProgressBar lockedTaskProgressBar;
-    @BindView(R.id.taskProgressText) TextView lockedTaskProgressText;
-
-    @BindView(R.id.unlockedSlot) RelativeLayout unlockedSlot;
-    @BindView(R.id.slotUnlockedDescription) TextView unlockedDescription;
-    @BindView(R.id.watchAdvert) TextView watchAdvert;
-    @BindView(R.id.claimBonus) TextView claimBonus;
-    @BindView(R.id.googlePlayRow) LinearLayout googlePlayRow;
-    @BindView(R.id.googlePlayLoginRow) LinearLayout googlePlayLoginRow;
+    private TourGuide mTutorialHandler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -102,33 +111,10 @@ public class MapActivity extends BaseActivity implements
 
         ratingPrompt();
 
-        GooglePlayHelper.mGoogleApiClient = new GoogleApiClient.Builder(this)
-                .addConnectionCallbacks(this)
-                .addOnConnectionFailedListener(this)
-                .addApi(Games.API).addScope(Games.SCOPE_GAMES)
-                .addApi(Drive.API).addScope(Drive.SCOPE_APPFOLDER)
-                .build();
-        tryGoogleLogin(false);
+        createGooglePlayClient();
+        GooglePlayHelper.tryGoogleLogin(this, false);
 
-        mapPagerAdapter = new MapPagerAdapter(this);
-        mapPager.setAdapter(mapPagerAdapter);
-
-        ViewPager.OnPageChangeListener pageChangeListener = new ViewPager.SimpleOnPageChangeListener() {
-            public void onPageSelected(int position) {
-                SoundHelper.playSound(getApplicationContext(), SoundHelper.swipeSounds);
-                findViewById(R.id.leftArrow).setVisibility(position == 0 ? View.INVISIBLE : View.VISIBLE);
-                findViewById(R.id.rightArrow).setVisibility(position == (MapPagerAdapter.townLayouts.length - 1) ? View.INVISIBLE : View.VISIBLE);
-
-                String mapName = TextHelper.getInstance(getApplicationContext()).getText(DisplayHelper.getMapString(position + 1));
-                mapTextView.setText(mapName);
-                selectedSlot = 0;
-                loadSidebar(null);
-            }
-        };
-
-        ViewPagerIndicator indicator = (ViewPagerIndicator)findViewById(R.id.view_pager_indicator);
-        indicator.setupWithViewPager(mapPager);
-        indicator.addOnPageChangeListener(pageChangeListener);
+        createMapPager();
 
         if (IncomeHelper.getNextPeriodicClaimTime() - System.currentTimeMillis() > 0) {
             setPeriodicBonusUnclaimable();
@@ -146,6 +132,35 @@ public class MapActivity extends BaseActivity implements
             runTutorial(1);
             isFirstInstall = true;
         }
+    }
+
+    private void createMapPager() {
+        mapPagerAdapter = new MapPagerAdapter(this);
+        mapPager.setAdapter(mapPagerAdapter);
+
+        ViewPagerIndicator indicator = (ViewPagerIndicator) findViewById(R.id.view_pager_indicator);
+        indicator.setupWithViewPager(mapPager);
+        indicator.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
+            public void onPageSelected(int position) {
+                SoundHelper.playSound(getApplicationContext(), SoundHelper.swipeSounds);
+                findViewById(R.id.leftArrow).setVisibility(position == 0 ? View.INVISIBLE : View.VISIBLE);
+                findViewById(R.id.rightArrow).setVisibility(position == (MapPagerAdapter.townLayouts.length - 1) ? View.INVISIBLE : View.VISIBLE);
+
+                String mapName = TextHelper.getInstance(getApplicationContext()).getText(DisplayHelper.getMapString(position + 1));
+                mapTextView.setText(mapName);
+                selectedSlot = 0;
+                loadSidebar(null);
+            }
+        });
+    }
+
+    private void createGooglePlayClient() {
+        GooglePlayHelper.mGoogleApiClient = new GoogleApiClient.Builder(this)
+                .addConnectionCallbacks(this)
+                .addOnConnectionFailedListener(this)
+                .addApi(Games.API).addScope(Games.SCOPE_GAMES)
+                .addApi(Drive.API).addScope(Drive.SCOPE_APPFOLDER)
+                .build();
     }
 
     @Override
@@ -169,18 +184,26 @@ public class MapActivity extends BaseActivity implements
         handler.postDelayed(everyMinute, DateHelper.MILLISECONDS_IN_SECOND * DateHelper.SECONDS_IN_MINUTE);
     }
 
-    private TourGuide mTutorialHandler;
     private void runTutorial(int stage) {
         findViewById(R.id.firstSlot).setVisibility(View.VISIBLE);
 
-        switch(stage) {
-            case 1: runTutorial("Welcome to Blacksmith Slots!\n\nExplore the area, talk to people, and try to save the world from the Purple!\n\nTap the logo to begin.", findViewById(R.id.title), Gravity.LEFT, true); break;
+        switch (stage) {
+            case 1:
+                runTutorial("Welcome to Blacksmith Slots!\n\nExplore the area, talk to people, and try to save the world from the Purple!\n\nTap the logo to begin.", findViewById(R.id.title), Gravity.LEFT, true);
+                break;
             //case 2: runTutorial("The world can be navigated by swiping left and right, there's plenty of areas to be explored in your quest to defeat the Purple!", findViewById(R.id.settings), Gravity.LEFT, true); break;
-            case 3: runTutorial("Oh no, Mom is trapped! Slots like this have a white outline on the map.", findViewById(R.id.firstSlot), Gravity.RIGHT, true); break;
-            case 4: runTutorial("She needs a hatchet to cut herself out, luckily you've got one! Hand in the quest.", findViewById(R.id.openSlot), Gravity.LEFT|Gravity.TOP, true); break;
-            case 5: runTutorial("Awesome, she's free! Let's go play the slot!", findViewById(R.id.openSlot), Gravity.LEFT|Gravity.TOP, true); break;
+            case 3:
+                runTutorial("Oh no, Mom is trapped! Slots like this have a white outline on the map.", findViewById(R.id.firstSlot), Gravity.RIGHT, true);
+                break;
+            case 4:
+                runTutorial("She needs a hatchet to cut herself out, luckily you've got one! Hand in the quest.", findViewById(R.id.openSlot), Gravity.LEFT | Gravity.TOP, true);
+                break;
+            case 5:
+                runTutorial("Awesome, she's free! Let's go play the slot!", findViewById(R.id.openSlot), Gravity.LEFT | Gravity.TOP, true);
+                break;
         }
     }
+
     private void endTutorial() {
         if (mTutorialHandler != null) {
             try {
@@ -190,6 +213,7 @@ public class MapActivity extends BaseActivity implements
             }
         }
     }
+
     private void runTutorial(String text, View view, int gravity, boolean insideClickable) {
         endTutorial();
         ToolTip toolTip = new ToolTip()
@@ -213,7 +237,7 @@ public class MapActivity extends BaseActivity implements
 
     @OnClick(R.id.googlePlayLoginRow)
     public void tryLogin() {
-        tryGoogleLogin(true);
+        GooglePlayHelper.tryGoogleLogin(this, true);
     }
 
     private void setPeriodicBonusUnclaimable() {
@@ -240,19 +264,6 @@ public class MapActivity extends BaseActivity implements
 
         GooglePlayHelper.mGoogleApiClient.disconnect();
         handler.removeCallbacks(null);
-    }
-
-    public void tryGoogleLogin(boolean forceAttempt) {
-        // If we've got all we need, and we need to sign in, or it is first run.
-        boolean a = GooglePlayHelper.AreGooglePlayServicesInstalled(this);
-        boolean b = !GooglePlayHelper.IsConnected();
-        boolean c = !GooglePlayHelper.mGoogleApiClient.isConnecting();
-        boolean d = forceAttempt;
-        boolean e = Setting.getBoolean(Enums.Setting.AttemptLogin);
-        boolean f = prefs.getInt("databaseVersion", DatabaseHelper.NO_DATABASE) <= DatabaseHelper.NO_DATABASE;
-        if (a && b && c && (d || e || f)) {
-            GooglePlayHelper.mGoogleApiClient.connect();
-        }
     }
 
     private void ratingPrompt() {
@@ -282,7 +293,7 @@ public class MapActivity extends BaseActivity implements
     }
 
     public void selectSlot(View v) {
-        selectedSlot = Integer.parseInt((String)v.getTag());
+        selectedSlot = Integer.parseInt((String) v.getTag());
         populateSlotInfo();
         if (isFirstInstall) {
             runTutorial(4);
@@ -307,7 +318,7 @@ public class MapActivity extends BaseActivity implements
     public void openInventory() {
         MusicHelper.getInstance(this).setMovingInApp(true);
         startActivity(new Intent(this, InventoryActivity.class)
-            .addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT));
+                .addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT));
     }
 
     @OnClick(R.id.openCredits)
@@ -383,19 +394,13 @@ public class MapActivity extends BaseActivity implements
         }
     }
 
-    public void rewardAdvertItems() {
-        AlertHelper.success(this, getString(R.string.advert_watch_verified) + IncomeHelper.claimAdvertBonus(this), true);
-        Statistic.add(Enums.Statistic.AdvertsWatched);
-        setAdvertUnclaimable();
-    }
-
     public void loadSidebar(View v) {
         noSlotSidebar.setVisibility(View.VISIBLE);
     }
 
     @OnClick(R.id.handInButton)
     public void handIn(View v) {
-        Task task = Task.findById(Task.class, (long)v.getTag());
+        Task task = Task.findById(Task.class, (long) v.getTag());
         if (task.getTier() != null && task.itemsCanBeSubmitted()) {
             task.submitItems();
             if (task.getRemaining() == 0) {
@@ -478,24 +483,12 @@ public class MapActivity extends BaseActivity implements
     private void populateSlotInfoUnlocked(Slot slot) {
         unlockedDescription.setText(slot.getUnlockedText(this));
 
-        populateItemContainer(R.id.resourceContainer, slot.getResources());
-        populateItemContainer(R.id.rewardContainer, slot.getRewards(false));
+        mapPagerAdapter.populateItemContainer(R.id.resourceContainer, slot.getResources(), this);
+        mapPagerAdapter.populateItemContainer(R.id.rewardContainer, slot.getRewards(false), this);
 
         superLockedSlot.setVisibility(GONE);
         lockedSlot.setVisibility(GONE);
         unlockedSlot.setVisibility(View.VISIBLE);
-    }
-
-    private void populateItemContainer(int id, List<ItemBundle> items) {
-        LinearLayout rewardContainer = (LinearLayout)findViewById(id);
-        rewardContainer.removeAllViews();
-        for (ItemBundle itemBundle : items) {
-            rewardContainer.addView(DisplayHelper.createImageView(this,
-                    DisplayHelper.getItemImageFile(itemBundle.getTier().value, itemBundle.getType().value, itemBundle.getQuantity()),
-                    30,
-                    30,
-                    itemBundle.getQuantity() + "x " + Inventory.getName(this, itemBundle.getTier(), itemBundle.getType())));
-        }
     }
 
     @Override
@@ -523,7 +516,7 @@ public class MapActivity extends BaseActivity implements
     protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
         if (requestCode == Constants.ADVERT_WATCH) {
             if (resultCode > 0) {
-                rewardAdvertItems();
+                advertHelper.rewardAdvertItems(this);
             }
         } else {
             GooglePlayHelper.ActivityResult(this, requestCode, resultCode);

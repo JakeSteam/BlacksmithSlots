@@ -16,6 +16,7 @@ import java.util.Map;
 import uk.co.jakelee.blacksmithslots.R;
 import uk.co.jakelee.blacksmithslots.main.InterstitialActivity;
 import uk.co.jakelee.blacksmithslots.main.MapActivity;
+import uk.co.jakelee.blacksmithslots.model.Statistic;
 
 public class AdvertHelper implements AppLovinAdRewardListener, AppLovinAdDisplayListener, AppLovinAdVideoPlaybackListener {
     public AppLovinIncentivizedInterstitial advert;
@@ -57,7 +58,7 @@ public class AdvertHelper implements AppLovinAdRewardListener, AppLovinAdDisplay
     @Override
     public void adHidden(AppLovinAd appLovinAd) {
         if (verified) {
-            activity.rewardAdvertItems();
+            activity.advertHelper.rewardAdvertItems(activity);
         } else {
             AlertHelper.error(activity, activity.getString(R.string.error_advert_unverified), false);
         }
@@ -78,4 +79,9 @@ public class AdvertHelper implements AppLovinAdRewardListener, AppLovinAdDisplay
     @Override public void validationRequestFailed(AppLovinAd appLovinAd, int i) {}
     @Override public void userDeclinedToViewAd(AppLovinAd appLovinAd) {}
 
+    public void rewardAdvertItems(MapActivity mapActivity) {
+        AlertHelper.success(mapActivity, context.getString(R.string.advert_watch_verified) + IncomeHelper.claimAdvertBonus(mapActivity), true);
+        Statistic.add(Enums.Statistic.AdvertsWatched);
+        mapActivity.setAdvertUnclaimable();
+    }
 }

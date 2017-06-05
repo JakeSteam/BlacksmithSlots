@@ -1110,4 +1110,8 @@ AESCrypt (https://goo.gl/Ewk2tq) - Support code encryption.
     </string>
     <string name="credits_audio_title">Audio</string>
     <string name="credits_audio">\"Village Consort\" &amp; \"Time Passes\" Kevin MacLeod (incompetech.com): Licensed under Creative Commons By Attribution 3.0 License (https://goo.gl/yKRP3S)</string>
+    <string name="minigame_chest_win_0">Unlucky, you won nothing!</string>
+    <string name="minigame_chest_win_1">Well, it\'s something.. you won %1$s.</string>
+    <string name="minigame_chest_win_5">Pretty good! You won %1$s!</string>
+    <string name="minigame_chest_win_25">Wow, very nice! You\'ve earned yourself %1$s!</string>
 </resources>

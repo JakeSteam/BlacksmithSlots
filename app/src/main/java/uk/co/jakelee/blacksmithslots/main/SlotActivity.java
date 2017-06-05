@@ -147,6 +147,11 @@ public class SlotActivity extends BaseActivity {
         }
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        slotHelper.onActivityResult(requestCode, resultCode, data);
+    }
+
     public void levelInfo(View v) {
         int currentLevel = getLevel();
         int nextLevelXP = convertLevelToXp(currentLevel + 1);
@@ -155,10 +160,5 @@ public class SlotActivity extends BaseActivity {
                 currentLevel + 1,
                 getXp(),
                 nextLevelXP), false);
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        slotHelper.onActivityResult(requestCode, resultCode, data);
     }
 }

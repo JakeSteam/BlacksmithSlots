@@ -45,20 +45,24 @@ public class InventoryActivity extends BaseActivity {
         boolean reverseOrder = Setting.getBoolean(Enums.Setting.OrderReversed);
         List<Inventory> inventories = Inventory.listAll(Inventory.class, (orderByTier ? "a " : "c ") + (reverseOrder ? "ASC" : "DESC"));
         for (Inventory inventory : inventories) {
-            if (onlyShowStockedItems && inventory.getQuantity() <= 0) {
-                continue;
-            }
-            TableRow tableRow = (TableRow)inflater.inflate(R.layout.custom_inventory_row, null).findViewById(R.id.inventoryRow);
-            tableRow.setTag(R.id.item_tier, inventory.getTier());
-            tableRow.setTag(R.id.item_type, inventory.getType());
-
-            ((ImageView)tableRow.findViewById(R.id.itemImage)).setImageResource(
-                    getResources().getIdentifier(DisplayHelper.getItemImageFile(
-                            inventory.getTier(),
-                            inventory.getType()), "drawable", getPackageName()));
-            ((TextView)tableRow.findViewById(R.id.itemInfo)).setText(inventory.getQuantity() + "x " + inventory.getName(this));
-            inventoryTable.addView(tableRow);
+            displayInventoryItem(inflater, onlyShowStockedItems, inventory);
         }
+    }
+
+    private void displayInventoryItem(LayoutInflater inflater, boolean onlyShowStockedItems, Inventory inventory) {
+        if (onlyShowStockedItems && inventory.getQuantity() <= 0) {
+            return;
+        }
+        TableRow tableRow = (TableRow)inflater.inflate(R.layout.custom_inventory_row, null).findViewById(R.id.inventoryRow);
+        tableRow.setTag(R.id.item_tier, inventory.getTier());
+        tableRow.setTag(R.id.item_type, inventory.getType());
+
+        ((ImageView)tableRow.findViewById(R.id.itemImage)).setImageResource(
+                getResources().getIdentifier(DisplayHelper.getItemImageFile(
+                        inventory.getTier(),
+                        inventory.getType()), "drawable", getPackageName()));
+        ((TextView)tableRow.findViewById(R.id.itemInfo)).setText(inventory.getQuantity() + "x " + inventory.getName(this));
+        inventoryTable.addView(tableRow);
     }
 
     public void itemSources(View v) {
