@@ -30,7 +30,7 @@ public class MusicHelper {
         new Thread(new Runnable() {
             public void run() {
                 // If music should be playing, and it isn't, or is the wrong track, fix that!
-                if ((trackToPlay == R.raw.time_passes || Setting.getBoolean(Enums.Setting.Music)) &&
+                if ((isIntroMusic(R.raw.time_passes) || Setting.getBoolean(Enums.Setting.Music)) &&
                         (trackToPlay != currentTrack || !musicServiceIsStarted)) {
                     musicService = new Intent(context.getApplicationContext(), MusicService.class)
                         .putExtra("songId", trackToPlay);
@@ -43,6 +43,10 @@ public class MusicHelper {
                 }
             }
         }).start();
+    }
+
+    private boolean isIntroMusic(int track) {
+        return track == R.raw.time_passes;
     }
 
     public void stopMusic() {
@@ -61,9 +65,5 @@ public class MusicHelper {
 
     public boolean isMusicServiceIsStarted() {
         return musicServiceIsStarted;
-    }
-
-    public void setMusicServiceIsStarted(boolean musicServiceIsStarted) {
-        this.musicServiceIsStarted = musicServiceIsStarted;
     }
 }
