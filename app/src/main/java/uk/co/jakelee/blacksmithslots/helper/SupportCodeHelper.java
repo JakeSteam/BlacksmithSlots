@@ -7,6 +7,7 @@ import com.scottyab.aescrypt.AESCrypt;
 import java.security.GeneralSecurityException;
 
 import uk.co.jakelee.blacksmithslots.model.Statistic;
+import uk.co.jakelee.blacksmithslots.model.SupportCode;
 
 public class SupportCodeHelper {
     private static final String encryptionPwd = "it's" + "just a" + "support code, why bother" + "cracking!";
@@ -24,6 +25,10 @@ public class SupportCodeHelper {
                 }
             }
             successful = true;
+        }
+
+        if (successful) {
+            (new SupportCode(code)).save();
         }
         return successful;
     }

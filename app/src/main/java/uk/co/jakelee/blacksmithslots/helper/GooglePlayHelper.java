@@ -39,6 +39,7 @@ import uk.co.jakelee.blacksmithslots.model.Inventory;
 import uk.co.jakelee.blacksmithslots.model.Message;
 import uk.co.jakelee.blacksmithslots.model.Setting;
 import uk.co.jakelee.blacksmithslots.model.Statistic;
+import uk.co.jakelee.blacksmithslots.model.SupportCode;
 import uk.co.jakelee.blacksmithslots.model.Task;
 
 import static android.content.Context.MODE_PRIVATE;
@@ -379,6 +380,7 @@ public class GooglePlayHelper implements com.google.android.gms.common.api.Resul
             Message.class,
             Setting.class,
             Statistic.class,
+            SupportCode.class,
             Task.class
     };
 

@@ -1065,6 +1065,7 @@
     <string name="support_code">Support Code</string>
     <string name="leave_rating">Leave Rating</string>
     <string name="alert_support_code_successful">Support code successfully applied!</string>
+    <string name="alert_support_code_used">Support code already used! Don't be cheeky!</string>
     <string name="alert_support_code_failed">Error whilst applying code. Please contact support!</string>
     <string name="alert_enter_support_code"><![CDATA[Enter support code (copy & paste recommended!)]]></string>
     <string name="apply">Apply</string>

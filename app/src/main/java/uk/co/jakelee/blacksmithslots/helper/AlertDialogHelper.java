@@ -23,6 +23,7 @@ import uk.co.jakelee.blacksmithslots.constructs.DialogAction;
 import uk.co.jakelee.blacksmithslots.main.MinigameActivity;
 import uk.co.jakelee.blacksmithslots.main.ShopActivity;
 import uk.co.jakelee.blacksmithslots.main.SlotActivity;
+import uk.co.jakelee.blacksmithslots.model.SupportCode;
 
 public class AlertDialogHelper {
 
@@ -74,7 +75,9 @@ public class AlertDialogHelper {
                 String supportCode = supportCodeBox.getText().toString().trim();
 
                 Log.d("Code", supportCode);
-                if (SupportCodeHelper.applyCode(supportCode)) {
+                if (SupportCode.alreadyApplied(supportCode)) {
+                    AlertHelper.error(activity, activity.getString(R.string.alert_support_code_successful), true);
+                } else if (SupportCodeHelper.applyCode(supportCode)) {
                     AlertHelper.success(activity, activity.getString(R.string.alert_support_code_successful), true);
                 } else {
                     AlertHelper.error(activity, activity.getString(R.string.alert_support_code_failed), true);
