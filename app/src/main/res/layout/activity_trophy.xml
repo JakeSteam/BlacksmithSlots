@@ -28,20 +28,17 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal">
-            <ScrollView
+            <GridView
+                android:id="@+id/trophyGrid"
                 android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:clickable="true"
                 android:layout_weight="7"
-                style="@style/VerticalScrollbar"
-                android:padding="8dp">
-                <TableLayout
-                    android:id="@+id/trophyTable"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:divider="?android:attr/dividerHorizontal"
-                    android:showDividers="middle" />
-            </ScrollView>
+                android:layout_height="match_parent"
+                android:columnWidth="90dp"
+                android:numColumns="auto_fit"
+                android:verticalSpacing="10dp"
+                android:horizontalSpacing="10dp"
+                android:stretchMode="columnWidth"
+                android:gravity="center"/>
             <LinearLayout
                 android:id="@+id/trophySidebar"
                 android:layout_width="0dp"

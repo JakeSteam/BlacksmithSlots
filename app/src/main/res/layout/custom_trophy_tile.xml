@@ -4,8 +4,7 @@
     android:orientation="vertical"
     android:layout_width="0dp"
     android:layout_weight="1"
-    android:layout_height="wrap_content"
-    android:onClick="openTrophy">
+    android:layout_height="wrap_content">
     <ImageView
         android:id="@+id/itemImage"
         android:layout_width="match_parent"

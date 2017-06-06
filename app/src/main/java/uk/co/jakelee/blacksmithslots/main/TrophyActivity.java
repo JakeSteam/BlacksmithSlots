@@ -4,9 +4,12 @@ import android.content.Context;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TableLayout;
@@ -24,6 +27,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import uk.co.jakelee.blacksmithslots.BaseActivity;
 import uk.co.jakelee.blacksmithslots.R;
+import uk.co.jakelee.blacksmithslots.components.TrophyGridAdapter;
 import uk.co.jakelee.blacksmithslots.helper.AlertDialogHelper;
 import uk.co.jakelee.blacksmithslots.helper.AlertHelper;
 import uk.co.jakelee.blacksmithslots.helper.DisplayHelper;
@@ -32,6 +36,7 @@ import uk.co.jakelee.blacksmithslots.model.Inventory;
 import uk.co.jakelee.blacksmithslots.model.Trophy;
 
 public class TrophyActivity extends BaseActivity {
+    @BindView(R.id.trophyGrid) GridView trophyGrid;
     @BindView(R.id.itemImage) ImageView itemImage;
     @BindView(R.id.itemName) TextView itemName;
     @BindView(R.id.itemInfo) TextView itemInfo;
@@ -49,15 +54,18 @@ public class TrophyActivity extends BaseActivity {
     }
 
     private void populateTrophyList() {
-        LayoutInflater inflater = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        TableLayout trophyTable = (TableLayout)findViewById(R.id.trophyTable);
-        trophyTable.removeAllViews();
-        List<Trophy> trophies = Trophy.listAll(Trophy.class);
-        for (int i = 0; i < trophies.size(); i++) {
-            
-            trophyTable.addView(populateTrophyTile(inflater, trophies.get(i)));
-        }
-        populateSidebar();
+        trophyGrid.setAdapter(new TrophyGridAdapter(this));
+        trophyGrid.setOnItemClickListener(getTrophyClickListener());
+    }
+
+    @NonNull
+    private AdapterView.OnItemClickListener getTrophyClickListener() {
+        return new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
+                currentTrophy = (int)v.getTag();
+                populateSidebar();
+            }
+        };
     }
 
     private LinearLayout populateTrophyTile(LayoutInflater inflater, Trophy trophy) {
@@ -87,25 +95,11 @@ public class TrophyActivity extends BaseActivity {
                 progress);
     }
 
-    public void openTrophy(View v) {
-        currentTrophy = (int)v.getTag();
-        populateSidebar();
-    }
-
     private void populateSidebar() {
         Trophy trophy = Trophy.findById(Trophy.class, currentTrophy);
         itemImage.setImageResource(getTrophyResource(trophy));
         itemName.setText(getTrophyName(trophy));
         itemInfo.setText(trophy.isAchieved() ? "Achieved!" : (trophy.getItemsHandedIn() + "/" + trophy.getItemsRequired()));
-    }
-
-    private int getTrophyResource(Trophy trophy) {
-        String itemFile = DisplayHelper.getItemImageFile(trophy.getItemTier().value, trophy.getItemType().value);
-        return DisplayHelper.getDrawableId(this, itemFile);
-    }
-
-    private String getTrophyName(Trophy trophy) {
-        return Inventory.getName(this, trophy.getItemTier(), trophy.getItemType());
     }
 
     @OnClick(R.id.handInButton)
