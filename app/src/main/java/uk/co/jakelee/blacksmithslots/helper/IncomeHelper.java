@@ -4,7 +4,9 @@ import android.content.Context;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
+import uk.co.jakelee.blacksmithslots.R;
 import uk.co.jakelee.blacksmithslots.constructs.TierRange;
 import uk.co.jakelee.blacksmithslots.model.Inventory;
 import uk.co.jakelee.blacksmithslots.model.ItemBundle;
@@ -46,11 +48,13 @@ public class IncomeHelper {
     }
 
     public static String claimImportBonus(Context context, Integer prestige) {
-        return "Save has a prestige level of " + prestige + ". " + claimBonus(context, getBonus(1 + (prestige > 5 ? 5 : prestige)), false, false);
+        return String.format(Locale.ENGLISH, context.getString(R.string.pb_save_import),
+                prestige,
+                claimBonus(context, getBonus(1 + (prestige > 5 ? 5 : prestige)), false, false));
     }
 
     private static String claimBonus(Context context, List<ItemBundle> bonus, boolean claimingPeriodicBonus, boolean claimingAdvertBonus) {
-        StringBuilder winningsText = new StringBuilder().append("Claimed: ");
+        StringBuilder winningsText = new StringBuilder().append(context.getString(R.string.claimed_prefix));
         for (ItemBundle result : bonus) {
             Inventory.addInventory(result);
             winningsText.append(result.toString(context)).append(", ");
@@ -90,7 +94,10 @@ public class IncomeHelper {
                 int levelMultiplier = adjustedLevel - tierRange.getMin() + 1;
                 int adjustedAmount = (int)Math.ceil(tierRange.getItemPerLevel() * modifier);
                 bonus.add(new ItemBundle(tierRange.getTier(), Enums.Type.Bar, levelMultiplier * adjustedAmount));
-                bonus.add(new ItemBundle(tierRange.getTier(), Enums.Type.Secondary, levelMultiplier * adjustedAmount));
+
+                if (tierRange.getTier() != Enums.Tier.Gold && tierRange.getTier() != Enums.Tier.Silver) {
+                    bonus.add(new ItemBundle(tierRange.getTier(), Enums.Type.Secondary, levelMultiplier * adjustedAmount));
+                }
             }
         }
 

@@ -43,6 +43,18 @@ public class Constants {
     public final static int IRON_MIN_LEVEL = 5;
     public final static int IRON_MAX_LEVEL = 9;
     public final static int IRON_PER_LEVEL = 60;
+    public final static int STEEL_MIN_LEVEL = 10;
+    public final static int STEEL_MAX_LEVEL = 14;
+    public final static int STEEL_PER_LEVEL = 40;
+    public final static int MITHRIL_MIN_LEVEL = 15;
+    public final static int MITHRIL_MAX_LEVEL = 20;
+    public final static int MITHRIL_PER_LEVEL = 50;
+    public final static int SILVER_MIN_LEVEL = 12;
+    public final static int SILVER_MAX_LEVEL = 16;
+    public final static int SILVER_PER_LEVEL = 5;
+    public final static int GOLD_MIN_LEVEL = 15;
+    public final static int GOLD_MAX_LEVEL = 20;
+    public final static int GOLD_PER_LEVEL = 5;
 
     // Slots routes
     public final static int SLOTS_2_MAX_ROUTES = 5;

@@ -1115,4 +1115,6 @@ AESCrypt (https://goo.gl/Ewk2tq) - Support code encryption.
     <string name="minigame_chest_win_1">Well, it\'s something.. you won %1$s.</string>
     <string name="minigame_chest_win_5">Pretty good! You won %1$s!</string>
     <string name="minigame_chest_win_25">Wow, very nice! You\'ve earned yourself %1$s!</string>
+    <string name="pb_save_import">Save has prestiged %1$d times. %2$s</string>
+    <string name="claimed_prefix">Claimed:</string>
 </resources>
