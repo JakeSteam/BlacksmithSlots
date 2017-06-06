@@ -1121,7 +1121,7 @@ AESCrypt (https://goo.gl/Ewk2tq) - Support code encryption.
     <string name="trophies">Trophies</string>
     <string name="trophies_progress">Trophies: %1$d/%2$d (%3$d%%)</string>
     <string name="hand_in_items">Hand in items</string>
-    <string name="hand_in_items_long">How many %1$s would you like to hand in?  Handing in %2$d will unlock the trophy!</string>
+    <string name="hand_in_items_long">How many %1$s would you like to hand in?\n\nHanding in %2$d will unlock the trophy!</string>
     <string name="error_trophy_already_unlocked">You can\'t hand in items for an already unlocked Trophy!</string>
     <string name="error_trophy_no_items">You can\'t hand in items you don\'t own!</string>
 </resources>

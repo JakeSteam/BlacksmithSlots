@@ -122,7 +122,7 @@ public class AlertDialogHelper {
                         activity.handInItems(maximumPossible);
                     }
                 }),
-                new DialogAction(activity.getString(R.string.shop), new Runnable() {
+                new DialogAction(halfMax + "", new Runnable() {
                     @Override
                     public void run() {
                         activity.handInItems(halfMax);

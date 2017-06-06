@@ -46,7 +46,7 @@ public class TrophyActivity extends BaseActivity {
         TrophyGridAdapter adapter = new TrophyGridAdapter(this, Select.from(Trophy.class).list());
         trophyGrid.setAdapter(adapter);
         trophyGrid.setOnItemClickListener(getTrophyClickListener());
-        adapter.notifyDataSetChanged();
+        populateSidebar();
 
     }
 
@@ -59,23 +59,6 @@ public class TrophyActivity extends BaseActivity {
             }
         };
     }
-
-    /*private LinearLayout populateTrophyTile(LayoutInflater inflater, Trophy trophy) {
-        LinearLayout trophyTile = (LinearLayout) inflater.inflate(R.layout.custom_trophy_tile, null).findViewById(R.id.trophyTile);
-        trophyTile.setTag(trophy.getId());
-
-        ImageView itemImage = (ImageView)trophyTile.findViewById(R.id.itemImage);
-        itemImage.setImageResource(TrophyGridAdapter.getTrophyResource(trophy));
-        if (trophy.isAchieved()) {
-            itemImage.getDrawable().clearColorFilter();
-        } else {
-            itemImage.getDrawable().setColorFilter(Color.BLACK, PorterDuff.Mode.MULTIPLY);
-        }
-
-        ((TextView) trophyTile.findViewById(R.id.itemName)).setText(getTrophyName(trophy));
-
-        return trophyTile;
-    }*/
 
     private String getTrophyProgressString() {
         int achievedTrophies = (int)Select.from(Trophy.class).where(Condition.prop("e").gt(0)).count();

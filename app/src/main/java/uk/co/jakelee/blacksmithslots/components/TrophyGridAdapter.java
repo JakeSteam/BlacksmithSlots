@@ -30,7 +30,6 @@ public class TrophyGridAdapter extends BaseAdapter {
     }
 
     public int getCount() {
-        int size = trophies.size();
         return trophies.size();
     }
 
