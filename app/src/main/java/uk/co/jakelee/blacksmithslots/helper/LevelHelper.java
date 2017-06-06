@@ -52,10 +52,13 @@ public class LevelHelper {
     }
 
     public static String addXp(Context context, int xp) {
-        Log.d("XP", "Added: " + xp);
-        Statistic.add(Enums.Statistic.Xp, xp);
+        double xpMultiplier = percentToMultiplier(Statistic.get(Enums.Statistic.TrophiesEarned).getIntValue());
+        int modifiedXp = (int)Math.floor(xp * xpMultiplier);
 
+        Statistic.add(Enums.Statistic.Xp, modifiedXp);
         Statistic savedLevel = Statistic.get(Enums.Statistic.Level);
+        Log.d("XP", "Added: " + xp + ", modified: " + modifiedXp);
+
         int level = LevelHelper.getLevel();
         if (savedLevel != null && savedLevel.getIntValue() < level) {
             Statistic.add(Enums.Statistic.Level, level - savedLevel.getIntValue());
@@ -68,13 +71,9 @@ public class LevelHelper {
         return "";
     }
 
-    public static Enums.Tier getCurrentTierByLevel(int level) {
-        if (level <= Constants.BRONZE_MAX_LEVEL) {
-            return Enums.Tier.Bronze;
-        } else if (level <= Constants.IRON_MAX_LEVEL) {
-            return Enums.Tier.Iron;
-        }
-        return Enums.Tier.Bronze;
+    private static double percentToMultiplier(int percent) {
+        double percentMultiplier = percent + 100;
+        return percentMultiplier / 100;
     }
 
     public static int getAutospinsByVip(int vipLevel) {
