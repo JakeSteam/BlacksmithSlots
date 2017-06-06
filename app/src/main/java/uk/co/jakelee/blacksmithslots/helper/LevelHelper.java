@@ -52,7 +52,7 @@ public class LevelHelper {
     }
 
     public static String addXp(Context context, int xp) {
-        double xpMultiplier = percentToMultiplier(Statistic.get(Enums.Statistic.TrophiesEarned).getIntValue());
+        double xpMultiplier = Constants.TROPHY_XP_MODIFIER * percentToMultiplier(Statistic.get(Enums.Statistic.TrophiesEarned).getIntValue());
         int modifiedXp = (int)Math.floor(xp * xpMultiplier);
 
         Statistic.add(Enums.Statistic.Xp, modifiedXp);

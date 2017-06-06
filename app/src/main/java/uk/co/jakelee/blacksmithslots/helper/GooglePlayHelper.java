@@ -381,7 +381,8 @@ public class GooglePlayHelper implements com.google.android.gms.common.api.Resul
             Setting.class,
             Statistic.class,
             SupportCode.class,
-            Task.class
+            Task.class,
+            Trophy.class
     };
 
     public static byte[] createBackup() {

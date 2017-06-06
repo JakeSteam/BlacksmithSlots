@@ -21,14 +21,15 @@ import uk.co.jakelee.blacksmithslots.R;
 import uk.co.jakelee.blacksmithslots.components.TrophyGridAdapter;
 import uk.co.jakelee.blacksmithslots.helper.AlertDialogHelper;
 import uk.co.jakelee.blacksmithslots.helper.AlertHelper;
+import uk.co.jakelee.blacksmithslots.helper.Constants;
 import uk.co.jakelee.blacksmithslots.model.Inventory;
 import uk.co.jakelee.blacksmithslots.model.Trophy;
 
 public class TrophyActivity extends BaseActivity {
     @BindView(R.id.trophyGrid) GridView trophyGrid;
     @BindView(R.id.itemImage) ImageView itemImage;
-    @BindView(R.id.itemName) TextView itemName;
     @BindView(R.id.itemProgress) TextView itemProgress;
+    @BindView(R.id.handInButton) TextView handInButton;
 
     private int currentTrophy = 1;
 
@@ -38,11 +39,11 @@ public class TrophyActivity extends BaseActivity {
         setContentView(R.layout.activity_trophy);
         ButterKnife.bind(this);
 
-        ((TextView)findViewById(R.id.trophyTitle)).setText(getTrophyProgressString());
         populateTrophyList();
     }
 
     private void populateTrophyList() {
+        ((TextView)findViewById(R.id.trophyTitle)).setText(getTrophyProgressString());
         TrophyGridAdapter adapter = new TrophyGridAdapter(this, Select.from(Trophy.class).list());
         trophyGrid.setAdapter(adapter);
         trophyGrid.setOnItemClickListener(getTrophyClickListener());
@@ -63,18 +64,29 @@ public class TrophyActivity extends BaseActivity {
     private String getTrophyProgressString() {
         int achievedTrophies = (int)Select.from(Trophy.class).where(Condition.prop("e").gt(0)).count();
         int totalTrophies = (int)Trophy.count(Trophy.class);
-        int progress = (int)Math.ceil((achievedTrophies * 100d) / totalTrophies);
+        double boost = achievedTrophies * Constants.TROPHY_XP_MODIFIER;
         return String.format(Locale.ENGLISH, getString(R.string.trophies_progress),
                 achievedTrophies,
                 totalTrophies,
-                progress);
+                boost);
     }
 
     private void populateSidebar() {
         Trophy trophy = Trophy.findById(Trophy.class, currentTrophy);
         itemImage.setImageResource(TrophyGridAdapter.getTrophyResource(this, trophy));
-        itemName.setText(TrophyGridAdapter.getTrophyName(this, trophy));
-        itemProgress.setText(trophy.isAchieved() ? "Achieved!" : (trophy.getItemsHandedIn() + "/" + trophy.getItemsRequired()));
+        String itemName = TrophyGridAdapter.getTrophyName(this, trophy);
+        if (trophy.isAchieved()) {
+            itemProgress.setText(String.format(Locale.ENGLISH, getString(R.string.trophy_progress_achieved), itemName));
+            handInButton.setBackgroundResource(R.drawable.box_green);
+            handInButton.setText(R.string.get_fact);
+        } else {
+            itemProgress.setText(String.format(Locale.ENGLISH, getString(R.string.trophy_progress_unachieved),
+                    trophy.getItemsHandedIn(),
+                    trophy.getItemsRequired(),
+                    itemName));
+            handInButton.setBackgroundResource(R.drawable.box_orange);
+            handInButton.setText(R.string.hand_in);
+        }
     }
 
     @OnClick(R.id.handInButton)
@@ -82,7 +94,7 @@ public class TrophyActivity extends BaseActivity {
         Trophy trophy = Trophy.findById(Trophy.class, currentTrophy);
         Inventory inventory = Inventory.getInventory(trophy.getItemTier(), trophy.getItemType());
         if (trophy.isAchieved()) {
-            AlertHelper.error(this, getString(R.string.error_trophy_already_unlocked), false);
+            AlertHelper.info(this, trophy.getFact(this), false);
         } else if (inventory.getQuantity() <= 0) {
             AlertHelper.error(this, getString(R.string.error_trophy_no_items), false);
         } else {
@@ -104,6 +116,7 @@ public class TrophyActivity extends BaseActivity {
         if (trophy.getItemsRemaining() <= 0) {
             trophy.setAchieved();
             trophy.save();
+            ((TextView)findViewById(R.id.trophyTitle)).setText(getTrophyProgressString());
             populateTrophyList();
         } else {
             populateSidebar();

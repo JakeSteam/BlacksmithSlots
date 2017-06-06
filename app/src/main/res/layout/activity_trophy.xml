@@ -57,7 +57,7 @@
                     android:id="@+id/handInButton"
                     style="@style/SlotText"
                     android:layout_width="match_parent"
-                    android:background="@drawable/box_yellow"
+                    android:background="@drawable/box_orange"
                     android:layout_alignParentBottom="true"
                     android:text="@string/hand_in" />
                 <ScrollView
@@ -73,11 +73,6 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:adjustViewBounds="true"/>
-                        <uk.co.jakelee.blacksmithslots.components.FontTextView
-                            android:id="@+id/itemName"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            style="@style/FontSize"/>
                         <uk.co.jakelee.blacksmithslots.components.FontTextView
                             android:id="@+id/itemProgress"
                             android:layout_width="match_parent"
