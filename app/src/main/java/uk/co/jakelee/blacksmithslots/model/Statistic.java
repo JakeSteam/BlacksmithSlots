@@ -220,11 +220,6 @@ public class Statistic extends SugarRecord {
             }
             Task.saveInTx(tasks);
         }
-
-        if (!statistic.getEventId().equals("")) {
-            Log.d("Event", "Adding " + amount + " to " + statistic.getEventId());
-            GooglePlayHelper.addEvent(statistic.getEventId(), amount);
-        }
         if (!statistic.getLeaderboardId().equals("") && statistic.getIntValue() > 0) {
             Log.d("Leaderboard", "Adding " + amount + " to " + statistic.getLeaderboardId());
             GooglePlayHelper.updateLeaderboards(statistic.getLeaderboardId(), statistic.getIntValue());

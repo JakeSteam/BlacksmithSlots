@@ -8,12 +8,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.GridView;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import uk.co.jakelee.blacksmithslots.R;
@@ -26,13 +23,14 @@ public class TrophyGridAdapter extends BaseAdapter {
     private LayoutInflater layoutInflater;
     private List<Trophy> trophies;
 
-    public TrophyGridAdapter(Activity activity) {
-        activity = activity;
+    public TrophyGridAdapter(Activity activity, List<Trophy> trophies) {
+        this.activity = activity;
         layoutInflater = (LayoutInflater)activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        trophies = Trophy.listAll(Trophy.class);
+        this.trophies = trophies;
     }
 
     public int getCount() {
+        int size = trophies.size();
         return trophies.size();
     }
 
@@ -44,34 +42,33 @@ public class TrophyGridAdapter extends BaseAdapter {
         return 0;
     }
 
-    // create a new ImageView for each item referenced by the Adapter
     public View getView(int position, View trophyTile, ViewGroup parent) {
         Trophy trophy = trophies.get(position);
         if (trophyTile == null) {
             trophyTile = layoutInflater.inflate(R.layout.custom_trophy_tile, null).findViewById(R.id.trophyTile);
         }
 
-        trophyTile.setTag(trophy.getId());
+        trophyTile.setTag((int)(long)trophy.getId());
 
         ImageView itemImage = (ImageView)trophyTile.findViewById(R.id.itemImage);
-        itemImage.setImageResource(getTrophyResource(trophy));
+        itemImage.setImageResource(getTrophyResource(activity, trophy));
         if (trophy.isAchieved()) {
             itemImage.getDrawable().clearColorFilter();
         } else {
             itemImage.getDrawable().setColorFilter(Color.BLACK, PorterDuff.Mode.MULTIPLY);
         }
 
-        ((TextView) trophyTile.findViewById(R.id.itemName)).setText(getTrophyName(trophy));
+        ((TextView) trophyTile.findViewById(R.id.itemName)).setText(getTrophyName(activity, trophy));
 
         return trophyTile;
     }
 
-    private int getTrophyResource(Trophy trophy) {
+    public static int getTrophyResource(Activity activity, Trophy trophy) {
         String itemFile = DisplayHelper.getItemImageFile(trophy.getItemTier().value, trophy.getItemType().value);
         return DisplayHelper.getDrawableId(activity, itemFile);
     }
 
-    private String getTrophyName(Trophy trophy) {
+    public static String getTrophyName(Activity activity, Trophy trophy) {
         return Inventory.getName(activity, trophy.getItemTier(), trophy.getItemType());
     }
 }

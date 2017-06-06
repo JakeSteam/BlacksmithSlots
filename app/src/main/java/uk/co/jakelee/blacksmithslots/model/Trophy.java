@@ -14,6 +14,9 @@ public class Trophy extends SugarRecord {
     @Column(name = "d") private int itemsRequired;
     @Column(name = "e") private long achieved;
 
+    public Trophy() {
+    }
+
     public Trophy(int itemTier, int itemType) {
         this.itemTier = itemTier;
         this.itemType = itemType;

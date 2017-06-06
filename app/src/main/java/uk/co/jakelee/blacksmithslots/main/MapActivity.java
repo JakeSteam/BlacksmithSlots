@@ -129,7 +129,9 @@ public class MapActivity extends BaseActivity implements
 
         Intent intent = getIntent();
         if (intent != null && intent.getBooleanExtra("isFirstInstall", false)) {
-            runTutorial(1);
+            if (!Constants.DEBUG_UNLOCK_ALL) {
+                runTutorial(1);
+            }
             isFirstInstall = true;
         }
     }

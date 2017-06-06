@@ -1,25 +1,16 @@
 package uk.co.jakelee.blacksmithslots.main;
 
-import android.content.Context;
-import android.graphics.Color;
-import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.v4.view.ViewPager;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TableLayout;
-import android.widget.TableRow;
 import android.widget.TextView;
 
 import com.orm.query.Condition;
 import com.orm.query.Select;
 
-import java.util.List;
 import java.util.Locale;
 
 import butterknife.BindView;
@@ -30,8 +21,6 @@ import uk.co.jakelee.blacksmithslots.R;
 import uk.co.jakelee.blacksmithslots.components.TrophyGridAdapter;
 import uk.co.jakelee.blacksmithslots.helper.AlertDialogHelper;
 import uk.co.jakelee.blacksmithslots.helper.AlertHelper;
-import uk.co.jakelee.blacksmithslots.helper.DisplayHelper;
-import uk.co.jakelee.blacksmithslots.helper.Enums;
 import uk.co.jakelee.blacksmithslots.model.Inventory;
 import uk.co.jakelee.blacksmithslots.model.Trophy;
 
@@ -39,7 +28,7 @@ public class TrophyActivity extends BaseActivity {
     @BindView(R.id.trophyGrid) GridView trophyGrid;
     @BindView(R.id.itemImage) ImageView itemImage;
     @BindView(R.id.itemName) TextView itemName;
-    @BindView(R.id.itemInfo) TextView itemInfo;
+    @BindView(R.id.itemProgress) TextView itemProgress;
 
     private int currentTrophy = 1;
 
@@ -49,13 +38,16 @@ public class TrophyActivity extends BaseActivity {
         setContentView(R.layout.activity_trophy);
         ButterKnife.bind(this);
 
-        ((TextView)findViewById(R.id.activityTitle)).setText(getTrophyProgressString());
+        ((TextView)findViewById(R.id.trophyTitle)).setText(getTrophyProgressString());
         populateTrophyList();
     }
 
     private void populateTrophyList() {
-        trophyGrid.setAdapter(new TrophyGridAdapter(this));
+        TrophyGridAdapter adapter = new TrophyGridAdapter(this, Select.from(Trophy.class).list());
+        trophyGrid.setAdapter(adapter);
         trophyGrid.setOnItemClickListener(getTrophyClickListener());
+        adapter.notifyDataSetChanged();
+
     }
 
     @NonNull
@@ -68,12 +60,12 @@ public class TrophyActivity extends BaseActivity {
         };
     }
 
-    private LinearLayout populateTrophyTile(LayoutInflater inflater, Trophy trophy) {
+    /*private LinearLayout populateTrophyTile(LayoutInflater inflater, Trophy trophy) {
         LinearLayout trophyTile = (LinearLayout) inflater.inflate(R.layout.custom_trophy_tile, null).findViewById(R.id.trophyTile);
         trophyTile.setTag(trophy.getId());
 
         ImageView itemImage = (ImageView)trophyTile.findViewById(R.id.itemImage);
-        itemImage.setImageResource(getTrophyResource(trophy));
+        itemImage.setImageResource(TrophyGridAdapter.getTrophyResource(trophy));
         if (trophy.isAchieved()) {
             itemImage.getDrawable().clearColorFilter();
         } else {
@@ -83,7 +75,7 @@ public class TrophyActivity extends BaseActivity {
         ((TextView) trophyTile.findViewById(R.id.itemName)).setText(getTrophyName(trophy));
 
         return trophyTile;
-    }
+    }*/
 
     private String getTrophyProgressString() {
         int achievedTrophies = (int)Select.from(Trophy.class).where(Condition.prop("e").gt(0)).count();
@@ -97,9 +89,9 @@ public class TrophyActivity extends BaseActivity {
 
     private void populateSidebar() {
         Trophy trophy = Trophy.findById(Trophy.class, currentTrophy);
-        itemImage.setImageResource(getTrophyResource(trophy));
-        itemName.setText(getTrophyName(trophy));
-        itemInfo.setText(trophy.isAchieved() ? "Achieved!" : (trophy.getItemsHandedIn() + "/" + trophy.getItemsRequired()));
+        itemImage.setImageResource(TrophyGridAdapter.getTrophyResource(this, trophy));
+        itemName.setText(TrophyGridAdapter.getTrophyName(this, trophy));
+        itemProgress.setText(trophy.isAchieved() ? "Achieved!" : (trophy.getItemsHandedIn() + "/" + trophy.getItemsRequired()));
     }
 
     @OnClick(R.id.handInButton)

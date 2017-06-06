@@ -66,6 +66,8 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
         createStatistics();
         setProgress("Achievements", 90);
         createAchievements();
+        setProgress("Trophies", 95);
+        createTrophies();
         Log.d("TimeTaken", "Main db: " + (System.currentTimeMillis() - start));
     }
 
