@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/parent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="true"
+        android:onClick="close"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="30dp"
+        android:onClick="suppress"
+        android:background="@drawable/box_yellow">
+        <uk.co.jakelee.blacksmithslots.components.FontTextView
+            android:id="@+id/trophyTitle"
+            android:layout_width="wrap_content"
+            style="@style/DataText"
+            android:text=""
+            android:padding="5dp"
+            android:textSize="45sp"/>
+        <LinearLayout
+            android:baselineAligned="false"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+            <ScrollView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:clickable="true"
+                android:layout_weight="7"
+                style="@style/VerticalScrollbar"
+                android:padding="8dp">
+                <TableLayout
+                    android:id="@+id/trophyTable"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:divider="?android:attr/dividerHorizontal"
+                    android:showDividers="middle" />
+            </ScrollView>
+            <LinearLayout
+                android:id="@+id/trophySidebar"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="3"
+                android:orientation="vertical">
+                <ImageView
+                    android:id="@+id/itemImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"/>
+                <uk.co.jakelee.blacksmithslots.components.FontTextView
+                    android:id="@+id/itemName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/FontSize"/>
+                <uk.co.jakelee.blacksmithslots.components.FontTextView
+                    android:id="@+id/itemProgress"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/FontSize"/>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/close"
+        android:layout_alignParentRight="true"
+        android:layout_margin="10dp"
+        android:onClick="close"/>
+
+    <LinearLayout
+        android:id="@+id/croutonview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:onClick="closeAlert"/>
+</RelativeLayout>

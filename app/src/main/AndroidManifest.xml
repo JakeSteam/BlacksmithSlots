@@ -96,6 +96,9 @@
         <activity android:name=".main.CreditsActivity"
             android:screenOrientation="sensorLandscape"
             android:theme="@style/Theme.Dimmed" />
+        <activity android:name=".main.TrophyActivity"
+            android:screenOrientation="sensorLandscape"
+            android:theme="@style/Theme.Dimmed" />
     </application>
 
 </manifest>
