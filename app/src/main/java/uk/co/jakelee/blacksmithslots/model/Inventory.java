@@ -66,6 +66,10 @@ public class Inventory extends SugarRecord {
         return getInventory(item.getTier().value, item.getType().value);
     }
 
+    public static Inventory getInventory(Enums.Tier tier, Enums.Type type) {
+        return getInventory(tier.value, type.value);
+    }
+
     public static Inventory getInventory(int tier, int type) {
         List<Inventory> inventories = Select.from(Inventory.class).where(
                 Condition.prop("a").eq(tier),

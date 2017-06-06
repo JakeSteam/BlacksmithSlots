@@ -63,6 +63,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     style="@style/FontSize"/>
+                <uk.co.jakelee.blacksmithslots.components.FontTextView
+                    android:id="@+id/handInButton"
+                    style="@style/SlotText"
+                    android:layout_width="match_parent"
+                    android:background="@drawable/box_yellow"
+                    android:text="@string/hand_in" />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>

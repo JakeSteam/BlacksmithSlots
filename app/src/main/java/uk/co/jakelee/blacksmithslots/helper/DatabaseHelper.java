@@ -1763,6 +1763,10 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
         achievements.add(new Achievement(10, Enums.Statistic.CollectedBonuses, "CgkIoMe6hp0eEAIQKA"));
         achievements.add(new Achievement(30, Enums.Statistic.CollectedBonuses, "CgkIoMe6hp0eEAIQKQ"));
         achievements.add(new Achievement(1, Enums.Statistic.VipLevel, "CgkIoMe6hp0eEAIQBQ"));
+        achievements.add(new Achievement(1, Enums.Statistic.TrophiesEarned, "CgkIoMe6hp0eEAIQKw"));
+        achievements.add(new Achievement(10, Enums.Statistic.TrophiesEarned, "CgkIoMe6hp0eEAIQLA"));
+        achievements.add(new Achievement(100, Enums.Statistic.TrophiesEarned, "CgkIoMe6hp0eEAIQLQ"));
+        achievements.add(new Achievement(146, Enums.Statistic.TrophiesEarned, ""));
         Achievement.saveInTx(achievements);
     }
 

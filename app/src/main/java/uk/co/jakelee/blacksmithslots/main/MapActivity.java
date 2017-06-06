@@ -335,6 +335,13 @@ public class MapActivity extends BaseActivity implements
                 .addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT));
     }
 
+    @OnClick(R.id.openTrophy)
+    public void openTrophy() {
+        MusicHelper.getInstance(this).setMovingInApp(true);
+        startActivity(new Intent(this, TrophyActivity.class)
+                .addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT));
+    }
+
     @OnClick(R.id.leftArrow)
     public void moveLeft() {
         if (mapPager.getCurrentItem() > 0) {

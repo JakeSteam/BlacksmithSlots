@@ -359,6 +359,16 @@
                             android:background="@drawable/box_green"
                             android:maxLines="2"
                             android:text="@string/shop" />
+
+                        <uk.co.jakelee.blacksmithslots.components.FontTextView
+                            android:id="@+id/openTrophy"
+                            style="@style/SlotText"
+                            android:layout_width="match_parent"
+                            android:layout_marginBottom="3dp"
+                            android:layout_marginTop="3dp"
+                            android:background="@drawable/box_green"
+                            android:maxLines="2"
+                            android:text="@string/trophies" />
                     </LinearLayout>
 
                     <LinearLayout

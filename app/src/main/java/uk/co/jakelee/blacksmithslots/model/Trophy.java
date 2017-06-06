@@ -64,9 +64,14 @@ public class Trophy extends SugarRecord {
 
     public void setAchieved() {
         this.achieved = System.currentTimeMillis();
+        Statistic.add(Enums.Statistic.TrophiesEarned);
     }
 
     public boolean isAchieved() {
         return achieved > 0;
+    }
+
+    public int getItemsRemaining() {
+        return itemsRequired - itemsHandedIn;
     }
 }

@@ -21,8 +21,11 @@ import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import uk.co.jakelee.blacksmithslots.BaseActivity;
 import uk.co.jakelee.blacksmithslots.R;
+import uk.co.jakelee.blacksmithslots.helper.AlertDialogHelper;
+import uk.co.jakelee.blacksmithslots.helper.AlertHelper;
 import uk.co.jakelee.blacksmithslots.helper.DisplayHelper;
 import uk.co.jakelee.blacksmithslots.helper.Enums;
 import uk.co.jakelee.blacksmithslots.model.Inventory;
@@ -42,13 +45,19 @@ public class TrophyActivity extends BaseActivity {
         ButterKnife.bind(this);
 
         ((TextView)findViewById(R.id.activityTitle)).setText(getTrophyProgressString());
+        populateTrophyList();
+    }
 
+    private void populateTrophyList() {
         LayoutInflater inflater = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         TableLayout trophyTable = (TableLayout)findViewById(R.id.trophyTable);
+        trophyTable.removeAllViews();
         List<Trophy> trophies = Trophy.listAll(Trophy.class);
-        for (Trophy trophy : trophies) {
-            trophyTable.addView(populateTrophyTile(inflater, trophy));
+        for (int i = 0; i < trophies.size(); i++) {
+            
+            trophyTable.addView(populateTrophyTile(inflater, trophies.get(i)));
         }
+        populateSidebar();
     }
 
     private LinearLayout populateTrophyTile(LayoutInflater inflater, Trophy trophy) {
@@ -97,5 +106,38 @@ public class TrophyActivity extends BaseActivity {
 
     private String getTrophyName(Trophy trophy) {
         return Inventory.getName(this, trophy.getItemTier(), trophy.getItemType());
+    }
+
+    @OnClick(R.id.handInButton)
+    public void handInItems() {
+        Trophy trophy = Trophy.findById(Trophy.class, currentTrophy);
+        Inventory inventory = Inventory.getInventory(trophy.getItemTier(), trophy.getItemType());
+        if (trophy.isAchieved()) {
+            AlertHelper.error(this, getString(R.string.error_trophy_already_unlocked), false);
+        } else if (inventory.getQuantity() <= 0) {
+            AlertHelper.error(this, getString(R.string.error_trophy_no_items), false);
+        } else {
+            AlertDialogHelper.trophyHandIn(this, trophy, inventory);
+        }
+    }
+
+    public void handInItems(int quantity) {
+        Trophy trophy = Trophy.findById(Trophy.class, currentTrophy);
+        Inventory inventory = Inventory.getInventory(trophy.getItemTier(), trophy.getItemType());
+
+        inventory.setQuantity(inventory.getQuantity() - quantity);
+        trophy.setItemsHandedIn(trophy.getItemsHandedIn() + quantity);
+
+        inventory.save();
+        trophy.save();
+
+        // If we've just unlocked a trophy, update the main trophy list
+        if (trophy.getItemsRemaining() <= 0) {
+            trophy.setAchieved();
+            trophy.save();
+            populateTrophyList();
+        } else {
+            populateSidebar();
+        }
     }
 }

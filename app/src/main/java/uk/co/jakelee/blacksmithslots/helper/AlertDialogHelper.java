@@ -23,7 +23,10 @@ import uk.co.jakelee.blacksmithslots.constructs.DialogAction;
 import uk.co.jakelee.blacksmithslots.main.MinigameActivity;
 import uk.co.jakelee.blacksmithslots.main.ShopActivity;
 import uk.co.jakelee.blacksmithslots.main.SlotActivity;
+import uk.co.jakelee.blacksmithslots.main.TrophyActivity;
+import uk.co.jakelee.blacksmithslots.model.Inventory;
 import uk.co.jakelee.blacksmithslots.model.SupportCode;
+import uk.co.jakelee.blacksmithslots.model.Trophy;
 
 public class AlertDialogHelper {
 
@@ -96,6 +99,35 @@ public class AlertDialogHelper {
         dialog.show();
         dialog.getWindow().getDecorView().setSystemUiVisibility(activity.getWindow().getDecorView().getSystemUiVisibility());
         dialog.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE);
+    }
+
+    public static void trophyHandIn(final TrophyActivity activity, Trophy trophy, Inventory inventory) {
+        String itemName = inventory.getName(activity);
+        final int maximumPossible = trophy.getItemsRemaining() > inventory.getQuantity() ? inventory.getQuantity() : trophy.getItemsRemaining();
+        final int halfMax = (int)Math.ceil(maximumPossible / 2d);
+
+        displayAlertDialog(activity, activity.getString(R.string.hand_in_items),
+                String.format(Locale.ENGLISH, activity.getString(R.string.hand_in_items_long),
+                    itemName,
+                    trophy.getItemsRequired() - trophy.getItemsHandedIn()),
+                new DialogAction(activity.getString(R.string.cancel), new Runnable() {
+                    @Override
+                    public void run() {
+
+                    }
+                }),
+                new DialogAction(maximumPossible + "", new Runnable() {
+                    @Override
+                    public void run() {
+                        activity.handInItems(maximumPossible);
+                    }
+                }),
+                new DialogAction(activity.getString(R.string.shop), new Runnable() {
+                    @Override
+                    public void run() {
+                        activity.handInItems(halfMax);
+                    }
+                }));
     }
 
     public static void outOfItems(final Activity activity, final int itemTier, final int itemType) {
