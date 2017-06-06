@@ -993,6 +993,7 @@
     <string name="statistic_19_name">Dice</string>
     <string name="statistic_20_name">Chest</string>
     <string name="statistic_21_name">Gamble</string>
+    <string name="statistic_22_name">Trophies Earned</string>
     <string name="statistic_next_claim_name">Next Bonus Claim</string>
 
     <string name="statistictype_1_name">Progress</string>

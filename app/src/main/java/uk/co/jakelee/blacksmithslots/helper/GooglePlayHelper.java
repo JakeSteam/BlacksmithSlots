@@ -81,13 +81,13 @@ public class GooglePlayHelper implements com.google.android.gms.common.api.Resul
         }
     }
 
-    public static void addEvent(String eventString, int quantity) {
+    /*public static void addEvent(String eventString, int quantity) {
         if (!IsConnected() || quantity <= 0) {
             return;
         }
 
         Games.Events.increment(mGoogleApiClient, eventString, quantity);
-    }
+    }*/
 
     public static void updateLeaderboards(String leaderboardID, int value) {
         if (!IsConnected()) {

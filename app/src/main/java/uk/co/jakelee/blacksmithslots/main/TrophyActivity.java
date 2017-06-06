@@ -86,7 +86,8 @@ public class TrophyActivity extends BaseActivity {
     private void populateSidebar() {
         Trophy trophy = Trophy.findById(Trophy.class, currentTrophy);
         itemImage.setImageResource(getTrophyResource(trophy));
-        itemName.setText(getTrophyName(trophy))
+        itemName.setText(getTrophyName(trophy));
+        itemInfo.setText(trophy.isAchieved() ? "Achieved!" : (trophy.getItemsHandedIn() + "/" + trophy.getItemsRequired()));
     }
 
     private int getTrophyResource(Trophy trophy) {
