@@ -38,10 +38,6 @@ public class DisplayHelper {
         return "setting_" + setting;
     }
 
-    public static String getTrophyFactString(long trophy) {
-        return "trophy_fact_" + trophy;
-    }
-
     public static String getItemTypeString(int type) {
         return "type_" + type;
     }

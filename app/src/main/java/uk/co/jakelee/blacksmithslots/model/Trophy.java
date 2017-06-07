@@ -81,8 +81,4 @@ public class Trophy extends SugarRecord {
     public int getItemsRemaining() {
         return itemsRequired - itemsHandedIn;
     }
-
-    public String getFact(Context context) {
-        return TextHelper.getInstance(context).getText(DisplayHelper.getTrophyFactString(getId()));
-    }
 }

@@ -76,16 +76,13 @@ public class TrophyActivity extends BaseActivity {
         itemImage.setImageResource(TrophyGridAdapter.getTrophyResource(this, trophy));
         String itemName = TrophyGridAdapter.getTrophyName(this, trophy);
         if (trophy.isAchieved()) {
-            itemProgress.setText(String.format(Locale.ENGLISH, getString(R.string.trophy_progress_achieved), itemName));
-            handInButton.setBackgroundResource(R.drawable.box_green);
-            handInButton.setText(R.string.get_fact);
+            itemProgress.setVisibility(View.INVISIBLE);
         } else {
+            itemProgress.setVisibility(View.VISIBLE);
             itemProgress.setText(String.format(Locale.ENGLISH, getString(R.string.trophy_progress_unachieved),
                     trophy.getItemsHandedIn(),
                     trophy.getItemsRequired(),
                     itemName));
-            handInButton.setBackgroundResource(R.drawable.box_orange);
-            handInButton.setText(R.string.hand_in);
         }
     }
 
@@ -93,12 +90,13 @@ public class TrophyActivity extends BaseActivity {
     public void handInItems() {
         Trophy trophy = Trophy.findById(Trophy.class, currentTrophy);
         Inventory inventory = Inventory.getInventory(trophy.getItemTier(), trophy.getItemType());
-        if (trophy.isAchieved()) {
-            AlertHelper.info(this, trophy.getFact(this), false);
-        } else if (inventory.getQuantity() <= 0) {
-            AlertHelper.error(this, getString(R.string.error_trophy_no_items), false);
-        } else {
-            AlertDialogHelper.trophyHandIn(this, trophy, inventory);
+
+        if (!trophy.isAchieved()) {
+            if (inventory.getQuantity() <= 0) {
+                AlertHelper.error(this, getString(R.string.error_trophy_no_items), false);
+            } else {
+                AlertDialogHelper.trophyHandIn(this, trophy, inventory);
+            }
         }
     }
 
