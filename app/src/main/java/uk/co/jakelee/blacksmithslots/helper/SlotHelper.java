@@ -130,7 +130,7 @@ public class SlotHelper {
     }
 
     public void setBackground() {
-        activity.findViewById(R.id.parent).setBackgroundResource(activity.getResources().getIdentifier(DisplayHelper.getMapBackgroundImageFile(slot.getMapId()), "drawable", activity.getPackageName()));
+        activity.findViewById(R.id.mainSlotArea).setBackgroundResource(activity.getResources().getIdentifier(DisplayHelper.getMapBackgroundImageFile(slot.getMapId()), "drawable", activity.getPackageName()));
     }
 
     public void createWheel() {

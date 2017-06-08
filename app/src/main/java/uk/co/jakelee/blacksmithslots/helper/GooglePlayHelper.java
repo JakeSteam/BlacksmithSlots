@@ -41,6 +41,7 @@ import uk.co.jakelee.blacksmithslots.model.Setting;
 import uk.co.jakelee.blacksmithslots.model.Statistic;
 import uk.co.jakelee.blacksmithslots.model.SupportCode;
 import uk.co.jakelee.blacksmithslots.model.Task;
+import uk.co.jakelee.blacksmithslots.model.Trophy;
 
 import static android.content.Context.MODE_PRIVATE;
 

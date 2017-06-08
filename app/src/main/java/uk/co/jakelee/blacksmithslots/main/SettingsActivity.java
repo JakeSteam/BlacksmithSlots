@@ -103,7 +103,7 @@ public class SettingsActivity extends BaseActivity {
         LinearLayout socialRow = (LinearLayout)inflater.inflate(R.layout.custom_row_social, null).findViewById(R.id.socialRow);
         settingTable.addView(socialRow);
 
-        TableRow supportRow = (TableRow)inflater.inflate(R.layout.custom_row_misc, null).findViewById(R.id.supportRow);
+        LinearLayout supportRow = (LinearLayout) inflater.inflate(R.layout.custom_row_misc, null).findViewById(R.id.supportRow);
         settingTable.addView(supportRow);
 
 
