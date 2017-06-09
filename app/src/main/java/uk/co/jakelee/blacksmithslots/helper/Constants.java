@@ -4,6 +4,10 @@ public class Constants {
     // Game constants
     public final static boolean DEBUG_UNLOCK_ALL = true;
 
+    public final static int STATUS_WILDCARD = -1;
+    public final static int STATUS_NO_MATCH = 0;
+    public final static int STATUS_MATCH = 1;
+
     public final static int ROWS = 5;
     public final static Double LEVEL_MODIFIER = 0.07;
     public final static int STARTING_XP = 205;

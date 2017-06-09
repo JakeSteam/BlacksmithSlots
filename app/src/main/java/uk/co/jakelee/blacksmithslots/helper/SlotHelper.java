@@ -284,7 +284,16 @@ public class SlotHelper {
                 results.add(rows.get(route.get(j)).get(j));
             }
 
-            if (isRouteAWin(results)) {
+            int routeResult = isRouteAWin(results);
+            if (routeResult != Constants.STATUS_NO_MATCH) {
+                if (routeResult == Constants.STATUS_WILDCARD) {
+                    // If all tiles are wildcards, reward 10x their bet
+                    List<ItemBundle> wildcardRewards = new ArrayList<>();
+                    for (ItemBundle slotResource : slotResources) {
+                        wildcardRewards.add(new ItemBundle(slotResource.getTier(), slotResource.getType(), slotResource.getQuantity() * 10));
+                    }
+                    results = wildcardRewards;
+                }
                 winningRoutes.add(route);
                 winningResults.addAll(results);
 
@@ -303,21 +312,31 @@ public class SlotHelper {
         return winningResults;
     }
 
-    private boolean isRouteAWin(List<ItemBundle> routeTiles) {
+    private int isRouteAWin(List<ItemBundle> routeTiles) {
+        boolean allWildcards = true;
         ItemBundle checkedResult = new ItemBundle();
         for (ItemBundle routeTile : routeTiles) {
-            // If there's no tile to check, set it to current
-            if (checkedResult.getTier().value == 0 && checkedResult.getType().value == 0
-                    && (routeTile.getType() != Enums.Type.Wildcard)) {
+            if (checkedResult.getTier().value == 0 && checkedResult.getType().value == 0 && (routeTile.getType() != Enums.Type.Wildcard)) {
+                // If we haven't found a good tile yet, and it isn't a wildcard, set the checker to the current tile.
                 checkedResult = routeTile;
             } else {
+                // Tiles here must be a wildcard, or a tile other than the first.
+                // If the tile doesn't match the check tile (and it's not a wildcard), it's not a match!
                 if ((routeTile.getType() != checkedResult.getType() && routeTile.getType() != checkedResult.getType())
                         && (routeTile.getType() != Enums.Type.Wildcard)) {
-                    return false;
+                    return Constants.STATUS_NO_MATCH;
                 }
             }
+
+            // Keep track of whether or not we've encountered any non-wildcards
+            if (routeTile.getType() != Enums.Type.Wildcard) {
+                allWildcards = false;
+            }
         }
-        return true;
+        if (allWildcards) {
+            return Constants.STATUS_WILDCARD;
+        }
+        return Constants.STATUS_MATCH;
     }
 
     private List<List<ItemBundle>> retrieveSpinResult() {
