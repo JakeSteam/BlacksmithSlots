@@ -13,6 +13,7 @@ import java.util.List;
 
 import uk.co.jakelee.blacksmithslots.helper.Constants;
 import uk.co.jakelee.blacksmithslots.helper.Enums;
+import uk.co.jakelee.blacksmithslots.helper.LevelHelper;
 import uk.co.jakelee.blacksmithslots.helper.TextHelper;
 
 @Table(name = "g")
@@ -185,7 +186,7 @@ public class Slot extends SugarRecord {
         this.mapId = mapId;
     }
 
-    public List<ItemBundle> getRewards(boolean applyWeights) {
+    public List<ItemBundle> getRewards(boolean applyWeights, boolean applyBonusWildcard) {
         List<ItemBundle> weightedItemBundles = new ArrayList<>();
         List<ItemBundle> rawItemBundles = Select.from(ItemBundle.class).where(
                 Condition.prop("a").eq(slotId),
@@ -194,9 +195,18 @@ public class Slot extends SugarRecord {
             return rawItemBundles;
         }
 
+        int vipLevel = LevelHelper.getVipLevel();
         for (ItemBundle bundle : rawItemBundles) {
+            // Add one item bundle per weighting point!
             for (int i = 0; i < bundle.getWeighting(); i++) {
                 weightedItemBundles.add(bundle);
+            }
+
+            // Add one wildcard item per VIP level
+            if (applyBonusWildcard && vipLevel > 0 && bundle.getType() == Enums.Type.Wildcard) {
+                for (int i = 0; i < vipLevel; i++) {
+                    weightedItemBundles.add(bundle);
+                }
             }
         }
         return weightedItemBundles;

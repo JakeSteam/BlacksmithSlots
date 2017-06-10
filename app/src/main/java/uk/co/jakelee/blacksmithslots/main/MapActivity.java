@@ -506,7 +506,7 @@ public class MapActivity extends BaseActivity implements
         unlockedDescription.setText(slot.getUnlockedText(this));
 
         mapPagerAdapter.populateItemContainer(R.id.resourceContainer, slot.getResources(), this);
-        mapPagerAdapter.populateItemContainer(R.id.rewardContainer, slot.getRewards(false), this);
+        mapPagerAdapter.populateItemContainer(R.id.rewardContainer, slot.getRewards(false, false), this);
 
         superLockedSlot.setVisibility(GONE);
         lockedSlot.setVisibility(GONE);

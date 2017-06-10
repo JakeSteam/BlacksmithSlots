@@ -76,9 +76,10 @@ public class TrophyActivity extends BaseActivity {
         itemImage.setImageResource(TrophyGridAdapter.getTrophyResource(this, trophy));
         String itemName = TrophyGridAdapter.getTrophyName(this, trophy);
         if (trophy.isAchieved()) {
-            itemProgress.setVisibility(View.INVISIBLE);
+            handInButton.setVisibility(View.GONE);
+            itemProgress.setText(String.format(Locale.ENGLISH, getString(R.string.trophy_progress_achieved), itemName));
         } else {
-            itemProgress.setVisibility(View.VISIBLE);
+            handInButton.setVisibility(View.VISIBLE);
             itemProgress.setText(String.format(Locale.ENGLISH, getString(R.string.trophy_progress_unachieved),
                     trophy.getItemsHandedIn(),
                     trophy.getItemsRequired(),

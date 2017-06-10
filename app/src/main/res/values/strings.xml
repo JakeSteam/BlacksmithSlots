@@ -75,8 +75,8 @@
     <string name="settings">Settings</string>
     <string name="statistics">Statistics</string>
     <string name="inventory">Inventory</string>
-    <string name="claim_bonus">Claim Bonus</string>
-    <string name="watch_advert">Free Stuff! (vid)</string>
+    <string name="claim_bonus">Free Items</string>
+    <string name="watch_advert">Video Items</string>
     <string name="task_completion">Task %1$d/%2$d: %3$s</string>
     <string name="open_slot">Play!</string>
 
@@ -1121,12 +1121,12 @@ AESCrypt (https://goo.gl/Ewk2tq) - Support code encryption.
     <string name="trophies">Trophies</string>
     <string name="trophies_progress">Trophies:\u00A0\u00A0%1$d/%2$d\u00A0\u00A0(+%3$,.1f%% XP)</string>
     <string name="trophy_progress_unachieved">%1$d/%2$dx %3$s</string>
-    <string name="trophy_progress_achieved">%1$s achieved!</string>
     <string name="hand_in_items">Hand in items</string>
     <string name="hand_in_items_long">How many %1$s would you like to hand in?\n\nHanding in %2$d will unlock the trophy!</string>
     <string name="error_trophy_no_items">You can\'t hand in items you don\'t own!</string>
     <string name="get_fact">Get fact!</string>
     <string name="hints">Hints</string>
+    <string name="trophy_progress_achieved">%1$s trophy unlocked!</string>
 
     <string-array name="hints">
         <item>If a slot is all wildcards, you\'ll win 10x the basic bet instead!</item>

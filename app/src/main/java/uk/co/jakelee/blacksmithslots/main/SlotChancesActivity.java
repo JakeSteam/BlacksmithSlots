@@ -13,6 +13,8 @@ import uk.co.jakelee.blacksmithslots.BaseActivity;
 import uk.co.jakelee.blacksmithslots.R;
 import uk.co.jakelee.blacksmithslots.helper.Constants;
 import uk.co.jakelee.blacksmithslots.helper.DisplayHelper;
+import uk.co.jakelee.blacksmithslots.helper.Enums;
+import uk.co.jakelee.blacksmithslots.helper.LevelHelper;
 import uk.co.jakelee.blacksmithslots.model.ItemBundle;
 import uk.co.jakelee.blacksmithslots.model.Slot;
 
@@ -33,9 +35,15 @@ public class SlotChancesActivity extends BaseActivity {
 
         statTable.addView(DisplayHelper.getTableRow(inflater, R.string.bundle_item_select, R.string.bundle_item_chance));
 
-        List<ItemBundle> rewards = selectedSlot.getRewards(false);
+        int vipLevel = LevelHelper.getVipLevel();
+        List<ItemBundle> rewards = selectedSlot.getRewards(false, false);
         for (ItemBundle reward : rewards) {
-            statTable.addView(DisplayHelper.getTableRow(inflater, reward.toString(this), Integer.toString(reward.getWeighting())));
+            // If VIP and it's a wildcard, there'll be extra items
+            if (vipLevel > 0 && reward.getType() == Enums.Type.Wildcard) {
+                statTable.addView(DisplayHelper.getTableRow(inflater, reward.toString(this), Integer.toString(reward.getWeighting()) + " (+" + vipLevel + ")"));
+            } else {
+                statTable.addView(DisplayHelper.getTableRow(inflater, reward.toString(this), Integer.toString(reward.getWeighting())));
+            }
         }
     }
 }
