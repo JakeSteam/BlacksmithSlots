@@ -1126,4 +1126,18 @@ AESCrypt (https://goo.gl/Ewk2tq) - Support code encryption.
     <string name="hand_in_items_long">How many %1$s would you like to hand in?\n\nHanding in %2$d will unlock the trophy!</string>
     <string name="error_trophy_no_items">You can\'t hand in items you don\'t own!</string>
     <string name="get_fact">Get fact!</string>
+    <string name="hints">Hints</string>
+
+    <string-array name="hints">
+        <item>If a slot is all wildcards, you\'ll win 10x the basic bet instead!</item>
+        <item>You can swipe left and right as well as tap the arrows to change map!</item>
+        <item>Curious what to do with an item? Discover the uses of it in the Inventory screen!</item>
+        <item>Check out the subreddit at https://reddit.com/r/BlacksmithSlots!</item>
+        <item>Each map has a different slot background! Unlock all the areas to check them all out.</item>
+        <item>Want to help out? Leave a review / rating (via the settings)!</item>
+        <item>By the way, this was all made by one person, me! Hello!</item>
+        <item>Got feedback, bugs to report, or suggestions? Email blacksmithslots@jakelee.co.uk!</item>
+        <item>Did you know Blacksmith Slots is based on my previous game, Pixel Blacksmith? Try it out!</item>
+        <item>Turn on Cloud Saves in the settings if you want to change devices, you\'ll lose no progress!</item>
+    </string-array>
 </resources>

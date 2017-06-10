@@ -329,6 +329,19 @@ public class MapActivity extends BaseActivity implements
         startActivity(new Intent(this, CreditsActivity.class)
                 .addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT));
     }
+    
+    @OnClick(R.id.displayHint)
+    public void displayHint() {
+        int thisHint = prefs.getInt("nextHint", 0);
+        String[] hintArray = getResources().getStringArray(R.array.hints);
+        if (thisHint >= hintArray.length) {
+            thisHint = 0;
+        }
+
+        String hintMessage = "Hint " + (thisHint + 1) + "/" + hintArray.length + ": " + hintArray[thisHint];
+        AlertHelper.info(this, hintMessage, false);
+        prefs.edit().putInt("nextHint", ++thisHint).apply();
+    }
 
     @OnClick(R.id.openShop)
     public void openShop() {

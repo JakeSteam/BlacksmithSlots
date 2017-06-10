@@ -331,6 +331,16 @@
                             android:text="@string/inventory" />
 
                         <uk.co.jakelee.blacksmithslots.components.FontTextView
+                            android:id="@+id/displayHint"
+                            style="@style/SlotText"
+                            android:layout_width="match_parent"
+                            android:layout_marginBottom="3dp"
+                            android:layout_marginTop="3dp"
+                            android:background="@drawable/box_yellow"
+                            android:maxLines="2"
+                            android:text="@string/hints" />
+
+                        <uk.co.jakelee.blacksmithslots.components.FontTextView
                             android:id="@+id/claimBonus"
                             style="@style/SlotText"
                             android:layout_width="match_parent"
