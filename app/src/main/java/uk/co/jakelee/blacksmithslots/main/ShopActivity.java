@@ -52,6 +52,7 @@ public class ShopActivity extends BaseActivity implements BillingProcessor.IBill
     private List<Pair<Integer, Integer>> dropdownItems = new ArrayList<>();
     int preloadingTier = 0;
     int preloadingType = 0;
+    boolean preloadingVip = false;
 
     boolean canBuyIAPs = false;
     private BillingProcessor bp;
@@ -86,8 +87,11 @@ public class ShopActivity extends BaseActivity implements BillingProcessor.IBill
         Intent intent = getIntent();
         preloadingTier = intent.getIntExtra("tier", 0);
         preloadingType = intent.getIntExtra("type", 0);
+        preloadingVip = intent.getBooleanExtra("vip", false);
         if (preloadingTier > 0 && preloadingType > 0) {
             prefs.edit().putInt("selectedShopTabId", R.id.bundleTabTab).apply();
+        } else if (preloadingVip) {
+            prefs.edit().putInt("selectedShopTabId", R.id.vipTabTab).apply();
         }
 
         canBuyIAPs = BillingProcessor.isIabServiceAvailable(this);
@@ -203,6 +207,7 @@ public class ShopActivity extends BaseActivity implements BillingProcessor.IBill
         vipBonusesText += "\n-" + getString(R.string.advert_cooldown) + " -" + String.format(Locale.ENGLISH, getString(R.string.time_mins), (int)(60 * Constants.ADVERT_COOLDOWN_VIP_REDUCTION));
         vipBonusesText += "\n-" + getString(R.string.daily_bonus) + " +" + Constants.VIP_DAILY_BONUS_MODIFIER + "%";
         vipBonusesText += "\n-" + getString(R.string.autospins) + " +" + Constants.AUTOSPIN_INCREASE;
+        vipBonusesText += "\n-" + (vipLevel + 1) + " " + getString(R.string.extra_wildcards);
         return vipBonusesText;
     }
 

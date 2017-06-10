@@ -1127,6 +1127,10 @@ AESCrypt (https://goo.gl/Ewk2tq) - Support code encryption.
     <string name="get_fact">Get fact!</string>
     <string name="hints">Hints</string>
     <string name="trophy_progress_achieved">%1$s trophy unlocked!</string>
+    <string name="extra_wildcards">Extra Wildcards</string>
+    <string name="vip_comparison">VIP Comparison</string>
+    <string name="upgrade_vip_level">Upgrade VIP Level</string>
+    <string name="vip_comparison_info">Higher VIP levels receive more benefits, swipe right on the table below to see more! Your current level is highlighted in green.\nTap a benefit to view more information about it.</string>
 
     <string-array name="hints">
         <item>If a slot is all wildcards, you\'ll win 10x the basic bet instead!</item>
