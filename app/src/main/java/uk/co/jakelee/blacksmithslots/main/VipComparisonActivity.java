@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TableLayout;
 import android.widget.TableRow;
@@ -16,6 +17,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import uk.co.jakelee.blacksmithslots.BaseActivity;
 import uk.co.jakelee.blacksmithslots.R;
+import uk.co.jakelee.blacksmithslots.helper.AlertHelper;
 import uk.co.jakelee.blacksmithslots.helper.Constants;
 import uk.co.jakelee.blacksmithslots.helper.IncomeHelper;
 import uk.co.jakelee.blacksmithslots.helper.LevelHelper;
@@ -53,6 +55,23 @@ public class VipComparisonActivity extends BaseActivity {
         startActivity(new Intent(this, ShopActivity.class)
                 .addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT)
                 .putExtra("vip", true));
+    }
 
+    @OnClick({R.id.vipLevel, R.id.chestRestock, R.id.chestBoost, R.id.advertRestock, R.id.dailyBonus, R.id.maxAutospins, R.id.extraWildcards})
+    public void displayColumnInfo(View v) {
+        AlertHelper.info(this, getColumnInfo(v.getId()), false);
+    }
+
+    private String getColumnInfo(int viewId) {
+        switch (viewId) {
+            case R.id.vipLevel: return "VIP";
+            case R.id.chestRestock: return "Chest";
+            case R.id.chestBoost: return "VIP";
+            case R.id.advertRestock: return "VIP";
+            case R.id.dailyBonus: return "VIP";
+            case R.id.maxAutospins: return "auto";
+            case R.id.extraWildcards: return "wild";
+            default: return "";
+        }
     }
 }

@@ -48,6 +48,12 @@ public class Inventory extends SugarRecord {
         this.quantity = quantity;
     }
 
+    public static void addInventory(List<ItemBundle> itemBundles) {
+        for (ItemBundle itemBundle : itemBundles) {
+            addInventory(itemBundle);
+        }
+    }
+
     public static void addInventory(ItemBundle result) {
         addInventory(result.getTier(), result.getType(), result.getQuantity());
     }

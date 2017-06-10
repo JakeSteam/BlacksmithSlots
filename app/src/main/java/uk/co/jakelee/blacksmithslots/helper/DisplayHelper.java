@@ -208,7 +208,7 @@ public class DisplayHelper {
         TableRow tableRow = (TableRow) inflater.inflate(R.layout.custom_data_row, null).findViewById(R.id.dataRow);
         ((TextView) tableRow.findViewById(R.id.dataName)).setText(name);
         ((TextView) tableRow.findViewById(R.id.dataValue)).setText(value);
-        if (valueColour > 0) {
+        if (valueColour != 0) {
             ((TextView) tableRow.findViewById(R.id.dataValue)).setTextColor(valueColour);
         }
         return tableRow;

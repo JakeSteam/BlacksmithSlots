@@ -85,7 +85,7 @@
     <string name="chest_cooldown">Chest Restock</string>
     <string name="reward_boost">Chest Boost</string>
     <string name="advert_cooldown">Advert Restock</string>
-    <string name="daily_bonus">Daily Bonus</string>
+    <string name="daily_bonus">BS Pass Bonus</string>
     <string name="autospins">Max Auto Spins</string>
 
     <!-- Shop -->
@@ -95,7 +95,7 @@
     <string name="pass_claim">Claim</string>
     <string name="pass_days_left">%1$d days left</string>
     <string name="pass_desc_owned">Whilst your Blacksmith Pass is valid, you will receive free items every day!\n\nCheck back anytime between 00:00 and 23:59 to claim!</string>
-    <string name="pass_desc_unowned">Purchasing a Blacksmith Pass entitles you to %1$d days of free daily goodies!\n\nYour first purchase will also upgrade you to VIP 1!</string>
+    <string name="pass_desc_unowned">Purchasing a Blacksmith Pass entitles you to %1$d days of free daily goodies!\n\nYour first purchase will also upgrade you to VIP 1! Higher VIP levels earn more from a BS pass!</string>
     <string name="pass_days">Day %1$d:</string>
 
     <string name="tab_vip">VIP Levels</string>
@@ -1130,7 +1130,7 @@ AESCrypt (https://goo.gl/Ewk2tq) - Support code encryption.
     <string name="extra_wildcards">Extra Wildcards</string>
     <string name="vip_comparison">VIP Comparison</string>
     <string name="upgrade_vip_level">Upgrade VIP Level</string>
-    <string name="vip_comparison_info">Higher VIP levels receive more benefits, swipe right on the table below to see more! Your current level is highlighted in green.\nTap a benefit to view more information about it.</string>
+    <string name="vip_comparison_info">Higher VIP levels receive more benefits, swipe right on the table below to see more! Your current level is highlighted in green.\nTap a benefit name to view more information about it.</string>
 
     <string-array name="hints">
         <item>If a slot is all wildcards, you\'ll win 10x the basic bet instead!</item>

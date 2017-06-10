@@ -34,6 +34,7 @@ import butterknife.OnClick;
 import uk.co.jakelee.blacksmithslots.BaseActivity;
 import uk.co.jakelee.blacksmithslots.R;
 import uk.co.jakelee.blacksmithslots.helper.AlertHelper;
+import uk.co.jakelee.blacksmithslots.helper.CalculationHelper;
 import uk.co.jakelee.blacksmithslots.helper.Constants;
 import uk.co.jakelee.blacksmithslots.helper.DateHelper;
 import uk.co.jakelee.blacksmithslots.helper.DisplayHelper;
@@ -153,16 +154,18 @@ public class ShopActivity extends BaseActivity implements BillingProcessor.IBill
                 String.format(Locale.ENGLISH, getString(R.string.pass_desc_unowned), Constants.PASS_DAYS));
         passRewardsContainer.removeAllViews();
 
+        int vipLevel = LevelHelper.getVipLevel();
         LayoutInflater inflater = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         List<List<ItemBundle>> dailyRewards = IapHelper.getPassRewards();
         for (int day = 1; day <= dailyRewards.size(); day++) {
-            displayDayRow(dayOfPass, daysClaimed, highestDaysClaimed, inflater, dailyRewards, day);
+            displayDayRow(dayOfPass, daysClaimed, highestDaysClaimed, inflater, dailyRewards, day, vipLevel);
         }
         passRewardsContainer.scrollTo(0,0);
     }
 
-    private void displayDayRow(int dayOfPass, int daysClaimed, int highestDaysClaimed, LayoutInflater inflater, List<List<ItemBundle>> dailyRewards, int day) {
-        List<ItemBundle> dailyReward = dailyRewards.get(day - 1);
+
+    private void displayDayRow(int dayOfPass, int daysClaimed, int highestDaysClaimed, LayoutInflater inflater, List<List<ItemBundle>> dailyRewards, int day, int vipLevel) {
+        List<ItemBundle> dailyReward = adjustDayRewardForVip(dailyRewards.get(day - 1), vipLevel);
 
         String itemsString = DisplayHelper.bundlesToString(this, dailyReward);
         int colour = R.color.greyText;
@@ -180,7 +183,16 @@ public class ShopActivity extends BaseActivity implements BillingProcessor.IBill
         passRewardsContainer.addView(DisplayHelper.getTableRow(inflater,
                 String.format(Locale.ENGLISH, getString(R.string.pass_days), day),
                 itemsString,
-                colour));
+                ContextCompat.getColor(this, colour)));
+    }
+
+    private List<ItemBundle> adjustDayRewardForVip(List<ItemBundle> dailyReward, int vipLevel) {
+        if (vipLevel > 0) {
+            for (ItemBundle reward : dailyReward) {
+                reward.setQuantity(CalculationHelper.increaseByPercentage(reward.getQuantity(), Constants.VIP_DAILY_BONUS_MODIFIER * vipLevel));
+            }
+        }
+        return dailyReward;
     }
 
     private void createVipTab() {
@@ -307,9 +319,11 @@ public class ShopActivity extends BaseActivity implements BillingProcessor.IBill
             highestDaysClaimed.save();
         }
 
+        List<ItemBundle> dailyReward = adjustDayRewardForVip(IapHelper.getPassRewardsForDay(dayOfPass), LevelHelper.getVipLevel());
+        Inventory.addInventory(dailyReward);
         AlertHelper.success(this, String.format(Locale.ENGLISH, getString(R.string.alert_claimed_pass_day),
                 dayOfPass,
-                DisplayHelper.bundlesToString(this, IapHelper.getPassRewardsForDay(dayOfPass))
+                DisplayHelper.bundlesToString(this, dailyReward)
                 ), true);
 
         // If it's the last day and there's months left, use them up
@@ -395,6 +409,7 @@ public class ShopActivity extends BaseActivity implements BillingProcessor.IBill
         } else {
             Statistic.add(Enums.Statistic.ExtraPassMonths);
         }
+        iap.setTimesPurchased(iap.getTimesPurchased()+1);
         iap.save();
 
         Statistic vipLevel = Statistic.get(Enums.Statistic.VipLevel);

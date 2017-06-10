@@ -50,6 +50,7 @@
                     android:showDividers="middle">
                     <TableRow>
                         <uk.co.jakelee.blacksmithslots.components.FontTextView
+                            android:id="@+id/vipLevel"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textAppearance="@style/FontSize"
@@ -59,6 +60,7 @@
                             android:layout_margin="3dp"
                             android:text="@string/vip_level"/>
                         <uk.co.jakelee.blacksmithslots.components.FontTextView
+                            android:id="@+id/chestRestock"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textAppearance="@style/FontSize"
@@ -68,6 +70,7 @@
                             android:layout_margin="3dp"
                             android:text="@string/chest_cooldown"/>
                         <uk.co.jakelee.blacksmithslots.components.FontTextView
+                            android:id="@+id/chestBoost"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textAppearance="@style/FontSize"
@@ -77,6 +80,7 @@
                             android:layout_margin="3dp"
                             android:text="@string/reward_boost"/>
                         <uk.co.jakelee.blacksmithslots.components.FontTextView
+                            android:id="@+id/advertRestock"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textAppearance="@style/FontSize"
@@ -86,6 +90,7 @@
                             android:layout_margin="3dp"
                             android:text="@string/advert_cooldown"/>
                         <uk.co.jakelee.blacksmithslots.components.FontTextView
+                            android:id="@+id/dailyBonus"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textAppearance="@style/FontSize"
@@ -95,6 +100,7 @@
                             android:layout_margin="3dp"
                             android:text="@string/daily_bonus"/>
                         <uk.co.jakelee.blacksmithslots.components.FontTextView
+                            android:id="@+id/maxAutospins"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textAppearance="@style/FontSize"
@@ -104,6 +110,7 @@
                             android:layout_margin="3dp"
                             android:text="@string/autospins"/>
                         <uk.co.jakelee.blacksmithslots.components.FontTextView
+                            android:id="@+id/extraWildcards"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textAppearance="@style/FontSize"
