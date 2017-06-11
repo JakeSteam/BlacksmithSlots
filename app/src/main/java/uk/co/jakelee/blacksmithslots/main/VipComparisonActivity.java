@@ -7,6 +7,7 @@ import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -45,8 +46,13 @@ public class VipComparisonActivity extends BaseActivity {
             ((TextView)tableRow.findViewById(R.id.dailyBonus)).setText("+" + (i * Constants.VIP_DAILY_BONUS_MODIFIER) + "%");
             ((TextView)tableRow.findViewById(R.id.autospins)).setText("" + LevelHelper.getAutospinsByVip(i));
             ((TextView)tableRow.findViewById(R.id.bonusWildcards)).setText(Integer.toString(i));
+            ((ImageView)tableRow.findViewById(R.id.subredditFlair)).setImageResource(getVipResource(i));
             comparisonTable.addView(tableRow, params);
         }
+    }
+
+    private int getVipResource(int vipLevel) {
+        return getResources().getIdentifier("vip_" + vipLevel, "drawable", getPackageName());
     }
 
     @OnClick(R.id.upgradeButton)
@@ -71,6 +77,7 @@ public class VipComparisonActivity extends BaseActivity {
             case R.id.dailyBonus: return R.string.daily_bonus_desc;
             case R.id.maxAutospins: return R.string.max_autospins_desc;
             case R.id.extraWildcards: return R.string.extra_wildcards_desc;
+            case R.id.subredditFlair: return R.string.subreddit_flair_desc;
             default: return R.string.empty;
         }
     }

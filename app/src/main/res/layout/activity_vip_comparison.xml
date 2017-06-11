@@ -40,7 +40,8 @@
                 android:maxLines="8"/>
             <HorizontalScrollView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                style="@style/VerticalScrollbar">
                 <TableLayout
                     android:id="@+id/comparisonTable"
                     android:layout_width="wrap_content"
@@ -51,74 +52,44 @@
                     <TableRow>
                         <uk.co.jakelee.blacksmithslots.components.FontTextView
                             android:id="@+id/vipLevel"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textAppearance="@style/FontSize"
                             android:maxWidth="50dp"
-                            android:maxLines="3"
-                            android:layout_gravity="center_vertical"
-                            android:layout_margin="3dp"
-                            android:text="@string/vip_level"/>
+                            android:text="@string/vip_level"
+                            style="@style/VipHeader"/>
                         <uk.co.jakelee.blacksmithslots.components.FontTextView
                             android:id="@+id/chestRestock"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textAppearance="@style/FontSize"
-                            android:maxLines="3"
                             android:maxWidth="65dp"
-                            android:layout_gravity="center_vertical"
-                            android:layout_margin="3dp"
-                            android:text="@string/chest_cooldown"/>
+                            android:text="@string/chest_cooldown"
+                            style="@style/VipHeader"/>
                         <uk.co.jakelee.blacksmithslots.components.FontTextView
                             android:id="@+id/chestBoost"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textAppearance="@style/FontSize"
-                            android:maxLines="3"
                             android:maxWidth="65dp"
-                            android:layout_gravity="center_vertical"
-                            android:layout_margin="3dp"
-                            android:text="@string/reward_boost"/>
+                            android:text="@string/reward_boost"
+                            style="@style/VipHeader"/>
                         <uk.co.jakelee.blacksmithslots.components.FontTextView
                             android:id="@+id/advertRestock"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textAppearance="@style/FontSize"
-                            android:maxLines="3"
                             android:maxWidth="65dp"
-                            android:layout_gravity="center_vertical"
-                            android:layout_margin="3dp"
-                            android:text="@string/advert_cooldown"/>
+                            android:text="@string/advert_cooldown"
+                            style="@style/VipHeader"/>
                         <uk.co.jakelee.blacksmithslots.components.FontTextView
                             android:id="@+id/dailyBonus"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textAppearance="@style/FontSize"
-                            android:maxLines="3"
                             android:maxWidth="65dp"
-                            android:layout_gravity="center_vertical"
-                            android:layout_margin="3dp"
-                            android:text="@string/daily_bonus"/>
+                            android:text="@string/daily_bonus"
+                            style="@style/VipHeader"/>
                         <uk.co.jakelee.blacksmithslots.components.FontTextView
                             android:id="@+id/maxAutospins"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textAppearance="@style/FontSize"
-                            android:maxLines="3"
                             android:maxWidth="70dp"
-                            android:layout_gravity="center_vertical"
-                            android:layout_margin="3dp"
-                            android:text="@string/autospins"/>
+                            android:text="@string/autospins"
+                            style="@style/VipHeader"/>
                         <uk.co.jakelee.blacksmithslots.components.FontTextView
                             android:id="@+id/extraWildcards"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textAppearance="@style/FontSize"
-                            android:maxLines="3"
                             android:maxWidth="85dp"
-                            android:layout_gravity="center_vertical"
-                            android:layout_margin="3dp"
-                            android:text="@string/extra_wildcards"/>
+                            android:text="@string/extra_wildcards"
+                            style="@style/VipHeader"/>
+                        <uk.co.jakelee.blacksmithslots.components.FontTextView
+                            android:id="@+id/subredditFlair"
+                            android:maxWidth="85dp"
+                            android:text="@string/subreddit_flair"
+                            style="@style/VipHeader"/>
                     </TableRow>
                 </TableLayout>
             </HorizontalScrollView>

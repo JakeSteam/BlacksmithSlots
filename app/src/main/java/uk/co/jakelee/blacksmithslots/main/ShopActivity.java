@@ -214,12 +214,13 @@ public class ShopActivity extends BaseActivity implements BillingProcessor.IBill
     @NonNull
     private String getVipBonusesText(int vipLevel) {
         String vipBonusesText = DisplayHelper.bundlesToString(this, IapHelper.getVipRewardsForLevel(vipLevel + 1), 1, true, "- ", "\n");
-        vipBonusesText += "-" + getString(R.string.chest_cooldown) + " -" + String.format(Locale.ENGLISH, getString(R.string.time_hours), Constants.CHEST_COOLDOWN_VIP_REDUCTION);
-        vipBonusesText += "\n-" + getString(R.string.reward_boost) + " +" + Constants.VIP_LEVEL_MODIFIER + "%";
-        vipBonusesText += "\n-" + getString(R.string.advert_cooldown) + " -" + String.format(Locale.ENGLISH, getString(R.string.time_mins), (int)(60 * Constants.ADVERT_COOLDOWN_VIP_REDUCTION));
-        vipBonusesText += "\n-" + getString(R.string.daily_bonus) + " +" + Constants.VIP_DAILY_BONUS_MODIFIER + "%";
-        vipBonusesText += "\n-" + getString(R.string.autospins) + " +" + Constants.AUTOSPIN_INCREASE;
-        vipBonusesText += "\n-" + (vipLevel + 1) + " " + getString(R.string.extra_wildcards);
+        vipBonusesText += "- " + getString(R.string.chest_cooldown) + " -" + String.format(Locale.ENGLISH, getString(R.string.time_hours), Constants.CHEST_COOLDOWN_VIP_REDUCTION);
+        vipBonusesText += "\n- " + getString(R.string.reward_boost) + " +" + Constants.VIP_LEVEL_MODIFIER + "%";
+        vipBonusesText += "\n- " + getString(R.string.advert_cooldown) + " -" + String.format(Locale.ENGLISH, getString(R.string.time_mins), (int)(60 * Constants.ADVERT_COOLDOWN_VIP_REDUCTION));
+        vipBonusesText += "\n- " + getString(R.string.daily_bonus) + " +" + Constants.VIP_DAILY_BONUS_MODIFIER + "%";
+        vipBonusesText += "\n- " + getString(R.string.autospins) + " +" + Constants.AUTOSPIN_INCREASE;
+        vipBonusesText += "\n- " + (vipLevel + 1) + " " + getString(R.string.extra_wildcards);
+        vipBonusesText += "\n- " + "Exclusive /r/BlacksmithSlots flair";
         return vipBonusesText;
     }
 
