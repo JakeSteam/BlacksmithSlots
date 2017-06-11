@@ -111,9 +111,9 @@ public class SlotHelper {
                 String resourceString = itemText.toString();
                 resourceString = resourceString.length() > 0 ? resourceString.substring(0, resourceString.length() - 2) : "";
 
-                AlertHelper.success(activity, "Won " + resourceString + " from minigame!", true);
+                AlertHelper.success(activity, String.format(Locale.ENGLISH, activity.getString(R.string.minigame_won_something), resourceString), true);
             } else {
-                AlertHelper.info(activity, "Unlucky, won nothing from minigame!", false);
+                AlertHelper.info(activity, activity.getString(R.string.minigame_won_nothing), false);
             }
         } else if (requestCode == Constants.MINIGAME_CHEST) {
             if (data.getIntExtra("quantity", 0) > 0) {
