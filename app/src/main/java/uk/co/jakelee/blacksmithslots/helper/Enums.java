@@ -211,7 +211,7 @@ public class Enums {
     }
 
     public enum StatisticType {
-        Progress(1), Events(2), Bonuses(3), BlacksmithPass(4), Misc(5), Minigames(6);
+        Progress(1), Events(2), Bonuses(3), BlacksmithPass(4), Misc(5), Minigames(6), Version(7);
         public int value;
         StatisticType(int value) {
             this.value = value;

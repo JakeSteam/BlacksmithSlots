@@ -4,14 +4,15 @@ import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.widget.TableLayout;
-import android.widget.TableRow;
 import android.widget.TextView;
 
 import java.util.List;
 
 import uk.co.jakelee.blacksmithslots.BaseActivity;
+import uk.co.jakelee.blacksmithslots.BuildConfig;
 import uk.co.jakelee.blacksmithslots.R;
 import uk.co.jakelee.blacksmithslots.components.FontTextView;
+import uk.co.jakelee.blacksmithslots.helper.DatabaseHelper;
 import uk.co.jakelee.blacksmithslots.helper.DateHelper;
 import uk.co.jakelee.blacksmithslots.helper.DisplayHelper;
 import uk.co.jakelee.blacksmithslots.helper.Enums;
@@ -43,12 +44,14 @@ public class StatisticsActivity extends BaseActivity {
             }
 
             if (statisticType == Enums.StatisticType.Bonuses) {
-                TableRow tableRow = (TableRow)inflater.inflate(R.layout.custom_data_row, null).findViewById(R.id.dataRow);
-                ((TextView)tableRow.findViewById(R.id.dataName)).setText(R.string.statistic_next_claim_name);
-
                 long nextClaim = IncomeHelper.getNextPeriodicClaimTime();
-                ((TextView)tableRow.findViewById(R.id.dataValue)).setText(nextClaim > 0 && nextClaim > System.currentTimeMillis() ? DateHelper.timestampToDateTime(nextClaim) : "Never!");
-                statTable.addView(tableRow);
+                statTable.addView(DisplayHelper.getTableRow(inflater, getString(R.string.statistic_next_claim_name), (nextClaim > 0 && nextClaim > System.currentTimeMillis() ? DateHelper.timestampToDateTime(nextClaim) : "Never!")));
+            }
+
+            if (statisticType == Enums.StatisticType.Version) {
+                statTable.addView(DisplayHelper.getTableRow(inflater, getString(R.string.statistic_version_name), BuildConfig.VERSION_NAME + " (" + BuildConfig.BUILD_TYPE + ")"));
+                statTable.addView(DisplayHelper.getTableRow(inflater, getString(R.string.statistic_version_number), "" + BuildConfig.VERSION_CODE));
+                statTable.addView(DisplayHelper.getTableRow(inflater, getString(R.string.statistic_version_database), "" + DatabaseHelper.LATEST_PATCH));
             }
         }
     }

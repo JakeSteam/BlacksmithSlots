@@ -1003,6 +1003,7 @@
     <string name="statistictype_4_name">Blacksmith Pass</string>
     <string name="statistictype_5_name">Misc</string>
     <string name="statistictype_6_name">Minigames</string>
+    <string name="statistictype_7_name">Version</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
     <string name="alert_autospin">Autospin</string>
@@ -1140,6 +1141,9 @@ AESCrypt (https://goo.gl/Ewk2tq) - Support code encryption.
     <string name="extra_wildcards_desc">Extra Wildcards is the number of extra wildcards added to each slot, increasing the chances of a match. The effect of these can be viewed on the Slot Chances screen.</string>
     <string name="subreddit_flair_desc">Each VIP level receives exclusive flair on the /r/BlacksmithSlots subreddit, after messaging /u/JakeSteam with order number!</string>
     <string name="subreddit_flair">Subreddit Flair</string>
+    <string name="statistic_version_name">Name</string>
+    <string name="statistic_version_number">Number</string>
+    <string name="statistic_version_database">Database</string>
 
     <string-array name="hints">
         <item>If a slot is all wildcards, you\'ll win 10x the basic bet instead!</item>
