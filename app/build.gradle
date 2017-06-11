@@ -7,7 +7,7 @@ android {
         applicationId "uk.co.jakelee.blacksmithslots"
         minSdkVersion 15
         targetSdkVersion apiVersion
-        versionCode 3
+        versionCode 4
         versionName "0.0.1"
     }
     buildTypes {
@@ -44,7 +44,7 @@ dependencies {
     compile 'com.github.hotchemi:android-rate:1.0.1'
     compile 'pl.droidsonroids.gif:android-gif-drawable:1.1.16'
     compile 'de.keyboardsurfer.android.widget:crouton:1.8.5@aar'
-    compile 'com.anjlab.android.iab.v3:library:1.0.38'
+    compile 'com.anjlab.android.iab.v3:library:1.0.40'
     compile 'com.jakewharton:butterknife:8.5.1'
     compile 'com.scottyab:aescrypt:0.0.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'

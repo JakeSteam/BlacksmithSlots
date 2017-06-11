@@ -307,7 +307,7 @@ public class SlotHelper {
         }
 
         this.highlightedRoutes = winningRoutes;
-        highlightResults();
+        //highlightResults();
 
         return winningResults;
     }
@@ -487,7 +487,7 @@ public class SlotHelper {
                     finalValue = 4;
                 }*/
 
-                if (finalValue < 0) {
+                /*if (finalValue < 0) {
                     finalValue += 4;
                     fixed += "ADDED";
                 } else if (finalValue > 4) {
@@ -497,7 +497,7 @@ public class SlotHelper {
                         finalValue = 0;
                         fixed += "2";
                     }
-                }
+                }*/
 
                 Log.d("Highlight", "Size " + slots.get(i).itemsLayout.getChildCount() + " (" + numItems +" - " + currItem + " - " + offset + ") = " + finalValue + fixed);
                 View imageViewSelected = slots.get(i).itemsLayout.getChildAt(finalValue);

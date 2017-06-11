@@ -63,7 +63,7 @@ public class VipComparisonActivity extends BaseActivity {
                 .putExtra("vip", true));
     }
 
-    @OnClick({R.id.vipLevel, R.id.chestRestock, R.id.chestBoost, R.id.advertRestock, R.id.dailyBonus, R.id.maxAutospins, R.id.extraWildcards})
+    @OnClick({R.id.vipLevel, R.id.chestRestock, R.id.chestBoost, R.id.advertRestock, R.id.dailyBonus, R.id.maxAutospins, R.id.extraWildcards, R.id.subredditFlair})
     public void displayColumnInfo(View v) {
         AlertHelper.info(this, getString(getColumnInfo(v.getId())), false);
     }
