@@ -1146,6 +1146,9 @@ AESCrypt (https://goo.gl/Ewk2tq) - Support code encryption.
     <string name="statistic_version_database">Database</string>
     <string name="minigame_won_nothing">Unlucky, won nothing from minigame!</string>
     <string name="minigame_won_something">Won %1$s from minigame!</string>
+    <string name="progress_installed">Game installed!</string>
+    <string name="maps">Maps</string>
+    <string name="achievements">Achievements</string>
 
     <string-array name="hints">
         <item>If a slot is all wildcards, you\'ll win 10x the basic bet instead!</item>

@@ -40,8 +40,7 @@
 
         <activity
             android:name=".main.SplashScreenActivity"
-            android:theme="@style/AppTheme.Splash"
-            android:screenOrientation="sensorLandscape">
+            android:theme="@style/AppTheme.Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -54,26 +54,26 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
     private void createDatabase() {
         MusicHelper.getInstance(context).playIfPossible(R.raw.time_passes);
         long start = System.currentTimeMillis();
-        setProgress("Settings", 15);
+        setProgress(context.getString(R.string.settings), 15);
         createSettings();
-        setProgress("Inventory", 30);
+        setProgress(context.getString(R.string.inventory), 30);
         createInventories();
-        setProgress("Shop", 45);
+        setProgress(context.getString(R.string.shop), 45);
         createShop();
-        setProgress("Maps", 60);
+        setProgress(context.getString(R.string.maps), 60);
         createSlotsMap1();
-        setProgress("Statistics", 75);
+        setProgress(context.getString(R.string.statistics), 75);
         createStatistics();
-        setProgress("Achievements", 90);
+        setProgress(context.getString(R.string.achievements), 90);
         createAchievements();
-        setProgress("Trophies", 95);
+        setProgress(context.getString(R.string.trophies), 95);
         createTrophies();
         Log.d("TimeTaken", "Main db: " + (System.currentTimeMillis() - start));
     }
 
     private void setProgress(String currentTask, int percentage) {
         if (progressText != null && progressBar != null) {
-            publishProgress(percentage + "% Installed: " + currentTask);
+            publishProgress(percentage + "%: " + currentTask);
             progressBar.setProgress(percentage);
         }
     }
@@ -108,7 +108,7 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
         }*/
 
         if (appliedDbChanges) {
-            setProgress("Game installed!", 100);
+            setProgress(context.getString(R.string.progress_installed), 100);
         } else {
             callingActivity.startGame();
         }

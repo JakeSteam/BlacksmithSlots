@@ -81,7 +81,7 @@
                 android:layout_width="match_parent"
                 android:background="@drawable/background_brown"
                 android:layout_margin="3dp"
-                android:paddingLeft="3dp"
+                android:paddingLeft="8dp"
                 android:paddingRight="3dp"
                 android:paddingBottom="15dp"
                 style="@style/VerticalScrollbar">
