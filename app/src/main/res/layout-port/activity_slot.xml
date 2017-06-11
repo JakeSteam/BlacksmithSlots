@@ -84,7 +84,6 @@
                 android:paddingLeft="3dp"
                 android:paddingRight="3dp"
                 android:paddingBottom="15dp"
-
                 style="@style/VerticalScrollbar">
                 <TableLayout
                     android:id="@+id/resourceDisplay"
