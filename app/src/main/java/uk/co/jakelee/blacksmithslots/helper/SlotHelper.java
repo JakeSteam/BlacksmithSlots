@@ -361,7 +361,6 @@ public class SlotHelper {
 
     public void spin(boolean checkNotAutospinning) {
         if (stillSpinningSlots <= 1 && (!checkNotAutospinning || autospinsLeft <= 0)) {
-            SoundHelper.playSound(activity, SoundHelper.spinSounds);
             Inventory failedItem = null;
             for (ItemBundle item : slot.getResources()) {
                 Inventory inventory = Inventory.getInventory(item.getTier().value, item.getType().value);
@@ -378,6 +377,7 @@ public class SlotHelper {
                 }
                 AlertDialogHelper.outOfItems(activity, failedItem.getTier(), failedItem.getType());
             } else {
+                SoundHelper.playSound(activity, SoundHelper.spinSounds);
                 activity.findViewById(R.id.slotContainer).bringToFront();
                 if (highlightedRoutes != null) {
                     resetRouteColours();

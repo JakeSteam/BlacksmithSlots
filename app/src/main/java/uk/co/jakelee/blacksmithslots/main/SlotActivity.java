@@ -44,7 +44,7 @@ public class SlotActivity extends BaseActivity {
             final SlotActivity activity = this;
             final ProgressDialog alert = new ProgressDialog(this);
             alert.setIndeterminate(true);
-            alert.setTitle("Loading, hang on!");
+            alert.setTitle("Loading slot, hang on!");
             alert.setMessage("Fetching resources from the warehouse...");
             alert.show();
             final Handler handler = new Handler();
@@ -57,11 +57,18 @@ public class SlotActivity extends BaseActivity {
                     slotHelper.createRoutes();
                     slotHelper.updateResourceCount();
                     slotHelper.afterSpinUpdate();
-                    alert.dismiss();
 
                     if (isFirstInstall) {
                         startTutorial();
                     }
+
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            alert.dismiss();
+                        }
+                    }, 60);
+
                 }
             }, 50);
         }

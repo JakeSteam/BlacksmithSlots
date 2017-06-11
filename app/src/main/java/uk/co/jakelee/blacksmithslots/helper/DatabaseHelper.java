@@ -73,7 +73,7 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
 
     private void setProgress(String currentTask, int percentage) {
         if (progressText != null && progressBar != null) {
-            publishProgress(percentage + "%: " + currentTask);
+            publishProgress(percentage + "% Installed: " + currentTask);
             progressBar.setProgress(percentage);
         }
     }
