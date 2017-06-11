@@ -59,19 +59,19 @@ public class VipComparisonActivity extends BaseActivity {
 
     @OnClick({R.id.vipLevel, R.id.chestRestock, R.id.chestBoost, R.id.advertRestock, R.id.dailyBonus, R.id.maxAutospins, R.id.extraWildcards})
     public void displayColumnInfo(View v) {
-        AlertHelper.info(this, getColumnInfo(v.getId()), false);
+        AlertHelper.info(this, getString(getColumnInfo(v.getId())), false);
     }
 
-    private String getColumnInfo(int viewId) {
+    private int getColumnInfo(int viewId) {
         switch (viewId) {
-            case R.id.vipLevel: return "VIP";
-            case R.id.chestRestock: return "Chest";
-            case R.id.chestBoost: return "VIP";
-            case R.id.advertRestock: return "VIP";
-            case R.id.dailyBonus: return "VIP";
-            case R.id.maxAutospins: return "auto";
-            case R.id.extraWildcards: return "wild";
-            default: return "";
+            case R.id.vipLevel: return R.string.empty;
+            case R.id.chestRestock: return R.string.chest_restock_desc;
+            case R.id.chestBoost: return R.string.chest_boost_desc;
+            case R.id.advertRestock: return R.string.advert_restock_desc;
+            case R.id.dailyBonus: return R.string.daily_bonus_desc;
+            case R.id.maxAutospins: return R.string.max_autospins_desc;
+            case R.id.extraWildcards: return R.string.extra_wildcards_desc;
+            default: return R.string.empty;
         }
     }
 }

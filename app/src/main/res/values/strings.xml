@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name" translatable="false">Blacksmith Slots</string>
     <string name="app_id" translatable="false">1038590321568</string>
+    <string name="empty" translatable="false"></string>
 
     <string name="icon_autospin" translatable = "false">&#xe800;</string>
     <string name="icon_rows" translatable = "false">&#xe801;</string>
@@ -1131,6 +1132,12 @@ AESCrypt (https://goo.gl/Ewk2tq) - Support code encryption.
     <string name="vip_comparison">VIP Comparison</string>
     <string name="upgrade_vip_level">Upgrade VIP Level</string>
     <string name="vip_comparison_info">Higher VIP levels receive more benefits, swipe right on the table below to see more! Your current level is highlighted in green.\nTap a benefit name to view more information about it.</string>
+    <string name="chest_restock_desc">Chest Restock is the time between the free items chest being available.</string>
+    <string name="chest_boost_desc">Chest Boost is the amount of bonus items included in the free items chest.</string>
+    <string name="advert_restock_desc">Advert Restock is the minimum time between advert watches.</string>
+    <string name="daily_bonus_desc">BS Pass Bonus is the amount of bonus items included in daily Blacksmith Pass rewards.</string>
+    <string name="max_autospins_desc">Max Auto Spins is the maximum number of autospins that can be performed at once.</string>
+    <string name="extra_wildcards_desc">Extra Wildcards is the number of extra wildcards added to each slot, increasing the chances of a match. The effect of these can be viewed on the Slot Chances screen.</string>
 
     <string-array name="hints">
         <item>If a slot is all wildcards, you\'ll win 10x the basic bet instead!</item>
