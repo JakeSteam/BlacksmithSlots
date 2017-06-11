@@ -2,7 +2,7 @@ package uk.co.jakelee.blacksmithslots.helper;
 
 public class Constants {
     // Game constants
-    public final static boolean DEBUG_UNLOCK_ALL = true;
+    public final static boolean DEBUG_UNLOCK_ALL = false;
 
     public final static int STATUS_WILDCARD = -1;
     public final static int STATUS_NO_MATCH = 0;

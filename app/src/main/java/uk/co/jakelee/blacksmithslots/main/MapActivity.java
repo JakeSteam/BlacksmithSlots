@@ -2,6 +2,7 @@ package uk.co.jakelee.blacksmithslots.main;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
@@ -189,19 +190,20 @@ public class MapActivity extends BaseActivity implements
     private void runTutorial(int stage) {
         findViewById(R.id.firstSlot).setVisibility(View.VISIBLE);
 
+        boolean isLandscape = getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE;
         switch (stage) {
             case 1:
-                runTutorial(getString(R.string.tutorial_map_1), findViewById(R.id.title), Gravity.LEFT, true);
+                runTutorial(getString(R.string.tutorial_map_1), findViewById(R.id.title), isLandscape ? Gravity.LEFT : Gravity.TOP, true);
                 break;
             //case 2: runTutorial("The world can be navigated by swiping left and right, there's plenty of areas to be explored in your quest to defeat the Purple!", findViewById(R.id.settings), Gravity.LEFT, true); break;
             case 3:
                 runTutorial(getString(R.string.tutorial_map_3), findViewById(R.id.firstSlot), Gravity.RIGHT, true);
                 break;
             case 4:
-                runTutorial(getString(R.string.tutorial_map_4), findViewById(R.id.openSlot), Gravity.LEFT | Gravity.TOP, true);
+                runTutorial(getString(R.string.tutorial_map_4), findViewById(R.id.openSlot), isLandscape ? (Gravity.LEFT | Gravity.TOP) : Gravity.TOP, true);
                 break;
             case 5:
-                runTutorial(getString(R.string.tutorial_map_5), findViewById(R.id.openSlot), Gravity.LEFT | Gravity.TOP, true);
+                runTutorial(getString(R.string.tutorial_map_5), findViewById(R.id.openSlot), isLandscape ? (Gravity.LEFT | Gravity.TOP) : Gravity.TOP, true);
                 break;
         }
     }
