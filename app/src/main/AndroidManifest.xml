@@ -50,55 +50,40 @@
         </activity>
         <activity
             android:name=".main.SlotActivity"
-            android:screenOrientation="sensorLandscape"/>
+            android:configChanges="screenLayout|screenSize"/>
         <activity
             android:name=".main.MapActivity"
-            android:screenOrientation="sensorLandscape">
+            android:configChanges="screenLayout|screenSize">
         </activity>
         <activity android:name=".main.SettingsActivity"
-            android:screenOrientation="sensorLandscape"
             android:theme="@style/Theme.Dimmed" />
         <activity android:name=".main.StatisticsActivity"
-            android:screenOrientation="sensorLandscape"
             android:theme="@style/Theme.Dimmed" />
         <activity android:name=".main.VipComparisonActivity"
-            android:screenOrientation="sensorLandscape"
             android:theme="@style/Theme.Dimmed" />
         <activity android:name=".main.LogActivity"
-            android:screenOrientation="sensorLandscape"
             android:theme="@style/Theme.Dimmed" />
         <activity android:name=".main.InventoryActivity"
-            android:screenOrientation="sensorLandscape"
             android:theme="@style/Theme.Dimmed" />
         <activity android:name=".main.MinigameFlipActivity"
-            android:screenOrientation="sensorLandscape"
             android:theme="@style/Theme.Dimmed" />
         <activity android:name=".main.MinigameChestActivity"
-            android:screenOrientation="sensorLandscape"
             android:theme="@style/Theme.Dimmed" />
         <activity android:name=".main.MinigameDiceActivity"
-            android:screenOrientation="sensorLandscape"
             android:theme="@style/Theme.Dimmed" />
         <activity android:name=".main.ShopActivity"
-            android:screenOrientation="sensorLandscape"
             android:theme="@style/Theme.Dimmed" />
         <activity android:name=".main.InterstitialActivity"
-            android:screenOrientation="sensorLandscape"
             android:theme="@style/Theme.Dimmed" />
         <activity android:name=".main.SlotDialogActivity"
-            android:screenOrientation="sensorLandscape"
             android:theme="@style/Theme.Dimmed" />
         <activity android:name=".main.SlotChancesActivity"
-            android:screenOrientation="sensorLandscape"
             android:theme="@style/Theme.Dimmed" />
         <activity android:name=".main.CloudSaveActivity"
-            android:screenOrientation="sensorLandscape"
             android:theme="@style/Theme.Dimmed" />
         <activity android:name=".main.CreditsActivity"
-            android:screenOrientation="sensorLandscape"
             android:theme="@style/Theme.Dimmed" />
         <activity android:name=".main.TrophyActivity"
-            android:screenOrientation="sensorLandscape"
             android:theme="@style/Theme.Dimmed" />
     </application>
 
