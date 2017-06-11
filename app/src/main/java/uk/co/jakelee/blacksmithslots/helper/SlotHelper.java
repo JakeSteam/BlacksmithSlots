@@ -210,7 +210,11 @@ public class SlotHelper {
     }
 
     public void afterSpinUpdate() {
-        ((TextView)activity.findViewById(R.id.autospinButton)).setText(autospinsLeft > 0 ? "" + autospinsLeft : activity.getString(R.string.icon_autospin));
+        activity.findViewById(R.id.autospinButton).setVisibility(autospinsLeft > 0 ? View.INVISIBLE : View.VISIBLE);
+        activity.findViewById(R.id.autospinsRemainingButton).setVisibility(autospinsLeft > 0 ? View.VISIBLE : View.INVISIBLE);
+        ((TextView)activity.findViewById(R.id.autospinsRemainingButton)).setText("" + autospinsLeft);
+
+
         ((TextView)activity.findViewById(R.id.currentLevel)).setText("Lev " + LevelHelper.getLevel());
         int levelProgress = LevelHelper.getLevelProgress();
         Log.d("Progress", "" + levelProgress);
