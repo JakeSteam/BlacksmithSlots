@@ -66,6 +66,10 @@ public class DisplayHelper {
         return "item_" + tier + "_" + type + (quantity > 1 ? "_" + quantity : "");
     }
 
+    public static String getOrientationString(int orientation) {
+        return "orientation_" + orientation;
+    }
+
     public static String getMapBackgroundImageFile(int map) {
         return "background_" + map;
     }

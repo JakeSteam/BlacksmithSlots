@@ -9,6 +9,6 @@
         style="@style/DataText"/>
 
     <Spinner
-        android:id="@+id/languagePicker"
+        android:id="@+id/settingPicker"
         style="@style/DataText"/>
 </TableRow>

@@ -5,7 +5,9 @@ import android.content.Intent;
 import android.view.View;
 
 import de.keyboardsurfer.android.widget.crouton.Crouton;
+import uk.co.jakelee.blacksmithslots.helper.Enums;
 import uk.co.jakelee.blacksmithslots.helper.MusicHelper;
+import uk.co.jakelee.blacksmithslots.model.Setting;
 
 public class BaseActivity extends Activity {
     @Override
@@ -23,6 +25,9 @@ public class BaseActivity extends Activity {
     @Override
     protected void onResume() {
         super.onResume();
+
+        //noinspection ResourceType
+        setRequestedOrientation(Setting.get(Enums.Setting.Orientation).getIntValue());
         MusicHelper.getInstance(this).setMovingInApp(false);
         getWindow().getDecorView().setSystemUiVisibility(
                 View.SYSTEM_UI_FLAG_LAYOUT_STABLE

@@ -97,11 +97,11 @@ public class SlotActivity extends BaseActivity {
 
     public void startTutorial() {
         final TutorialHelper th = new TutorialHelper(this, 1);
-        th.addTutorial(findViewById(R.id.topBar), R.string.tutorial_3, false, Gravity.BOTTOM);
-        th.addTutorial(findViewById(R.id.inventoryContainer), R.string.tutorial_4, false, Gravity.RIGHT | Gravity.TOP);
-        th.addTutorial(findViewById(R.id.stakeModifiers), R.string.tutorial_5, false, Gravity.TOP);
-        th.addTutorial(findViewById(R.id.autospinButton), R.string.tutorial_6, false, Gravity.TOP);
-        th.addTutorial(findViewById(R.id.spinButton), R.string.tutorial_7, true, Gravity.TOP);
+        th.addTutorial(findViewById(R.id.topBar), R.string.tutorial_slot_1, false, Gravity.BOTTOM);
+        th.addTutorial(findViewById(R.id.inventoryContainer), R.string.tutorial_slot_2, false, Gravity.RIGHT | Gravity.TOP);
+        th.addTutorial(findViewById(R.id.stakeModifiers), R.string.tutorial_slot_3, false, Gravity.TOP);
+        th.addTutorial(findViewById(R.id.autospinButton), R.string.tutorial_slot_4, false, Gravity.TOP);
+        th.addTutorial(findViewById(R.id.spinButton), R.string.tutorial_slot_5, true, Gravity.TOP);
         th.start();
         findViewById(R.id.spinButton).setOnClickListener(new View.OnClickListener() {
             @Override

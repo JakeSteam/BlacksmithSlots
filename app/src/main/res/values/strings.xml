@@ -212,6 +212,11 @@
     <string name="setting_13">Blacksmith Pass Notification</string>
     <string name="setting_14">Logout</string>
     <string name="setting_15">Autosave</string>
+    <string name="setting_16">Orientation</string>
+
+    <string name="orientation_4">Auto-rotate</string>
+    <string name="orientation_6">Landscape</string>
+    <string name="orientation_7">Portrait</string>
 
     <string name="slot_1_name">Mom</string>
     <string name="slot_1_locked">I\'ve been trapped by the disaster, please help me out!</string>
@@ -1077,14 +1082,11 @@
     <string name="skip">Skip</string>
     <string name="start">Start</string>
     <string name="replay_intro">Replay Intro</string>
-    <string name="tutorial_1">It\'s time to save the world!\n\nExplore the world, help people out, and defeat the Purple.</string>
-    <string name="tutorial_2">Tap a slot (white outline) to find out what tasks need to be completed, then play the slots to gain new items.\n\nFirst, free Mom!</string>
-
-    <string name="tutorial_3">A log of spins, and your current VIP / XP level progress are shown at the top of the screen.</string>
-    <string name="tutorial_4">The resources required to spin and your current inventory are displayed on the left.</string>
-    <string name="tutorial_5">The quantity gambled per row &amp; number of active rows can be changed before each spin.</string>
-    <string name="tutorial_6">Additionally, up to 65 autospins can be enabled, alongside a normal spin.</string>
-    <string name="tutorial_7">Get spinning, and get some resources to take into town (the next map)!</string>
+    <string name="tutorial_slot_1">A log of spins, and your current VIP / XP level progress are shown at the top of the screen.</string>
+    <string name="tutorial_slot_2">The resources required to spin and your current inventory are displayed on the left.</string>
+    <string name="tutorial_slot_3">The quantity gambled per row &amp; number of active rows can be changed before each spin.</string>
+    <string name="tutorial_slot_4">Additionally, up to 65 autospins can be enabled, alongside a normal spin.</string>
+    <string name="tutorial_slot_5">Get spinning, and get some resources to take into town (the next map)!</string>
     <string name="stage_1">This is the world. Pretty nice right?</string>
     <string name="stage_2">Well, it was.. Until the Purple appeared one day...</string>
     <string name="stage_3">It spread quickly, causing chaos and destruction everywhere it touched.</string>
@@ -1149,6 +1151,11 @@ AESCrypt (https://goo.gl/Ewk2tq) - Support code encryption.
     <string name="progress_installed">Game installed!</string>
     <string name="maps">Maps</string>
     <string name="achievements">Achievements</string>
+    <string name="tutorial_map_1">Welcome to Blacksmith Slots!\n\nExplore the area, talk to people, and try to save the world from the Purple!\n\nTap the logo to begin.</string>
+    <string name="tutorial_map_3">Oh no, Mom is trapped! Slots like this have a white outline on the map.</string>
+    <string name="tutorial_map_4">She needs a hatchet to cut herself out, luckily you\'ve got one! Hand in the quest.</string>
+    <string name="tutorial_map_5">Awesome, she\'s free! Let\'s go play the slot!</string>
+    <string name="hint">Hint</string>
 
     <string-array name="hints">
         <item>If a slot is all wildcards, you\'ll win 10x the basic bet instead!</item>

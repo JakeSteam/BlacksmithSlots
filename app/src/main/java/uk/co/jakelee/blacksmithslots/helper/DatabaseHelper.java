@@ -2,6 +2,7 @@ package uk.co.jakelee.blacksmithslots.helper;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.content.pm.ActivityInfo;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.ProgressBar;
@@ -307,6 +308,7 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
         settings.add(new Setting(Enums.SettingGroup.Notifications, Enums.Setting.BlacksmithPassNotification, true));
         settings.add(new Setting(Enums.SettingGroup.GooglePlay, Enums.Setting.PlayLogout, true));
         settings.add(new Setting(Enums.SettingGroup.GooglePlay, Enums.Setting.Autosave, false));
+        settings.add(new Setting(Enums.SettingGroup.Gameplay, Enums.Setting.Orientation, ActivityInfo.SCREEN_ORIENTATION_SENSOR));
         Setting.saveInTx(settings);
     }
 

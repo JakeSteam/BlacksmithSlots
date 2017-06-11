@@ -23,6 +23,7 @@ import uk.co.jakelee.blacksmithslots.R;
 import uk.co.jakelee.blacksmithslots.components.FontTextView;
 import uk.co.jakelee.blacksmithslots.helper.AlertDialogHelper;
 import uk.co.jakelee.blacksmithslots.helper.AlertHelper;
+import uk.co.jakelee.blacksmithslots.helper.Constants;
 import uk.co.jakelee.blacksmithslots.helper.DisplayHelper;
 import uk.co.jakelee.blacksmithslots.helper.Enums;
 import uk.co.jakelee.blacksmithslots.helper.GooglePlayHelper;
@@ -37,7 +38,7 @@ import static uk.co.jakelee.blacksmithslots.model.Setting.get;
 
 public class SettingsActivity extends BaseActivity {
     private int spinnersInitialised = 0;
-    private int totalSpinners = 1;
+    private int totalSpinners = 2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,13 +60,35 @@ public class SettingsActivity extends BaseActivity {
         envAdapter.setDropDownViewResource(R.layout.custom_spinner_item);
 
         for (int i = min; i <= max; i++) {
-            String text = LanguageHelper.getFlagById(i) + " " + LanguageHelper.getLanguageById(this, i);
-            envAdapter.add(text);
+            if (settingEnum == Enums.Setting.Language) {
+                envAdapter.add(LanguageHelper.getFlagById(i) + " " + LanguageHelper.getLanguageById(this, i));
+            } else if (settingEnum == Enums.Setting.Orientation && i != Constants.ORIENTATION_INBETWEEN) {
+                String orientationName = TextHelper.getInstance(this).getText(DisplayHelper.getOrientationString(i));
+                envAdapter.add(orientationName);
+            }
         }
 
         spinner.setAdapter(envAdapter);
-        spinner.setSelection(setting.getIntValue() - 1);
+        spinner.setSelection(getSpinnerPosition(setting));
         spinner.setOnItemSelectedListener(getListener(setting));
+    }
+
+    private int getSpinnerPosition(Setting setting) {
+        if (setting.getSetting() == Enums.Setting.Orientation) {
+            if (setting.getIntValue() == Constants.ORIENTATION_AUTO) {
+                return setting.getIntValue() - 4;
+            }
+            return setting.getIntValue() - 5;
+        }
+        return setting.getIntValue() - 1;
+    }
+
+    private int getOrientationValue(int position) {
+        switch (position) {
+            case 1: return Constants.ORIENTATION_LANDSCAPE;
+            case 2: return Constants.ORIENTATION_PORTRAIT;
+            default: return Constants.ORIENTATION_AUTO;
+        }
     }
 
     private AdapterView.OnItemSelectedListener getListener(final Setting setting) {
@@ -76,11 +99,20 @@ public class SettingsActivity extends BaseActivity {
                 if (spinnersInitialised < totalSpinners) {
                     spinnersInitialised++;
                 } else {
-                    setting.setIntValue(position + 1);
-                    setting.save();
+                    if (setting.getSetting() == Enums.Setting.Language) {
+                        setting.setIntValue(position + 1);
+                        setting.save();
 
-                    LanguageHelper.changeLanguage(activity, position + 1);
-                    AlertHelper.success(activity, "Set language to " + parentView.getSelectedItem().toString(), true);
+                        LanguageHelper.changeLanguage(activity, position + 1);
+                        AlertHelper.success(activity, "Set language to " + parentView.getSelectedItem().toString(), true);
+                    } else if (setting.getSetting() == Enums.Setting.Orientation) {
+                        setting.setIntValue(getOrientationValue(position));
+                        setting.save();
+
+                        //noinspection ResourceType
+                        setRequestedOrientation(setting.getIntValue());
+                        AlertHelper.success(activity, "Updated orientation!", true);
+                    }
                     onResume();
                 }
             }
@@ -166,7 +198,9 @@ public class SettingsActivity extends BaseActivity {
             row.findViewById(R.id.logoutButton).setBackgroundResource(GooglePlayHelper.IsConnected() ? R.drawable.box_orange : R.drawable.box_green);
             row.findViewById(R.id.logoutButton).setAlpha(GooglePlayHelper.IsConnected() ? 1f : 0.5f);
         } else if (setting.getSetting() == Enums.Setting.Language) {
-            createDropdown((Spinner) row.findViewById(R.id.languagePicker), 3, 1, Enums.Setting.Language);
+            createDropdown((Spinner) row.findViewById(R.id.settingPicker), 3, 1, Enums.Setting.Language);
+        } else if (setting.getSetting() == Enums.Setting.Orientation) {
+            createDropdown((Spinner) row.findViewById(R.id.settingPicker), Constants.ORIENTATION_PORTRAIT, Constants.ORIENTATION_AUTO, Enums.Setting.Orientation);
         } else if (setting.getDataType() == Enums.DataType.Boolean.value) {
             ((TextView)row.findViewById(R.id.settingValue)).setText(setting.getBooleanValue() ? getString(R.string.on) : getString(R.string.off));
         } else if (setting.getDataType() == Enums.DataType.Integer.value) {
@@ -192,8 +226,8 @@ public class SettingsActivity extends BaseActivity {
             }
             return R.layout.custom_setting_boolean;
         } else if (setting.getDataType() == Enums.DataType.Integer.value) {
-            if (setting.getSetting() == Enums.Setting.Language) {
-                return R.layout.custom_setting_integer_language;
+            if (setting.getSetting() == Enums.Setting.Language || setting.getSetting() == Enums.Setting.Orientation) {
+                return R.layout.custom_setting_integer_spinner;
             }
             return R.layout.custom_setting_integer;
         } else {

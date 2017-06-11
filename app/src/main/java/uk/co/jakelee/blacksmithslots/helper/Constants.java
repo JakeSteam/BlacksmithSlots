@@ -19,6 +19,11 @@ public class Constants {
     public final static int NOTIFICATION_PERIODIC_BONUS = 100;
     public final static int NOTIFICATION_PASS_BONUS = 101;
 
+    public final static int ORIENTATION_AUTO = 4;
+    public final static int ORIENTATION_INBETWEEN = 5;
+    public final static int ORIENTATION_LANDSCAPE = 6;
+    public final static int ORIENTATION_PORTRAIT = 7;
+
     public final static int MINIGAME_FLIP = 123;
     public final static int MINIGAME_CHEST = 1723;
     public final static int MINIGAME_DICE = 1923;

@@ -191,17 +191,17 @@ public class MapActivity extends BaseActivity implements
 
         switch (stage) {
             case 1:
-                runTutorial("Welcome to Blacksmith Slots!\n\nExplore the area, talk to people, and try to save the world from the Purple!\n\nTap the logo to begin.", findViewById(R.id.title), Gravity.LEFT, true);
+                runTutorial(getString(R.string.tutorial_map_1), findViewById(R.id.title), Gravity.LEFT, true);
                 break;
             //case 2: runTutorial("The world can be navigated by swiping left and right, there's plenty of areas to be explored in your quest to defeat the Purple!", findViewById(R.id.settings), Gravity.LEFT, true); break;
             case 3:
-                runTutorial("Oh no, Mom is trapped! Slots like this have a white outline on the map.", findViewById(R.id.firstSlot), Gravity.RIGHT, true);
+                runTutorial(getString(R.string.tutorial_map_3), findViewById(R.id.firstSlot), Gravity.RIGHT, true);
                 break;
             case 4:
-                runTutorial("She needs a hatchet to cut herself out, luckily you've got one! Hand in the quest.", findViewById(R.id.openSlot), Gravity.LEFT | Gravity.TOP, true);
+                runTutorial(getString(R.string.tutorial_map_4), findViewById(R.id.openSlot), Gravity.LEFT | Gravity.TOP, true);
                 break;
             case 5:
-                runTutorial("Awesome, she's free! Let's go play the slot!", findViewById(R.id.openSlot), Gravity.LEFT | Gravity.TOP, true);
+                runTutorial(getString(R.string.tutorial_map_5), findViewById(R.id.openSlot), Gravity.LEFT | Gravity.TOP, true);
                 break;
         }
     }
@@ -338,7 +338,7 @@ public class MapActivity extends BaseActivity implements
             thisHint = 0;
         }
 
-        String hintMessage = "Hint " + (thisHint + 1) + "/" + hintArray.length + ": " + hintArray[thisHint];
+        String hintMessage = getString(R.string.hint) + " " + (thisHint + 1) + "/" + hintArray.length + ": " + hintArray[thisHint];
         AlertHelper.info(this, hintMessage, false);
         prefs.edit().putInt("nextHint", ++thisHint).apply();
     }
