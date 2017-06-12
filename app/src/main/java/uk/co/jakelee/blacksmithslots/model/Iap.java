@@ -30,7 +30,7 @@ public class Iap extends SugarRecord {
 
     public Iap(Enums.Iap iap, long lastPurchased, int timesPurchased, boolean isVipPurchase) {
         this.iapId = iap.value;
-        this.iapName = iap.name();
+        this.iapName = iap.name().toLowerCase();
         this.lastPurchased = lastPurchased;
         this.timesPurchased = timesPurchased;
         this.isVipPurchase = isVipPurchase;
@@ -38,7 +38,7 @@ public class Iap extends SugarRecord {
 
     public Iap(Enums.Iap iap, boolean isVipPurchase) {
         this.iapId = iap.value;
-        this.iapName = iap.name();
+        this.iapName = iap.name().toLowerCase();
         this.lastPurchased = 0;
         this.timesPurchased = 0;
         this.isVipPurchase = isVipPurchase;

@@ -30,7 +30,7 @@ public class MusicHelper {
         new Thread(new Runnable() {
             public void run() {
                 // If music should be playing, and it isn't, or is the wrong track, fix that!
-                if ((isIntroMusic(R.raw.time_passes) || Setting.getBoolean(Enums.Setting.Music)) &&
+                if ((isIntroMusic(trackToPlay) || Setting.getBoolean(Enums.Setting.Music)) &&
                         (trackToPlay != currentTrack || !musicServiceIsStarted)) {
                     musicService = new Intent(context.getApplicationContext(), MusicService.class)
                         .putExtra("songId", trackToPlay);

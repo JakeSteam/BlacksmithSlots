@@ -8,6 +8,7 @@ import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
+import android.util.Log;
 import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -98,6 +99,13 @@ public class ShopActivity extends BaseActivity implements BillingProcessor.IBill
         canBuyIAPs = BillingProcessor.isIabServiceAvailable(this);
         if (canBuyIAPs) {
             bp = new BillingProcessor(this, getPublicKey(), this);
+        }
+
+        SkuDetails skuDetails = bp.getPurchaseListingDetails("ironore10000");
+        if (skuDetails != null) {
+            Log.d("IAP Debug1", "Currency: " + skuDetails.currency + " priceValue: " + (skuDetails.priceValue) + " priceText: " + skuDetails.priceText);
+        } else {
+            Log.d("IAP Debug1", "It didn't load...");
         }
     }
 
@@ -351,6 +359,13 @@ public class ShopActivity extends BaseActivity implements BillingProcessor.IBill
     public void compareVip() {
         startActivity(new Intent(this, VipComparisonActivity.class)
                 .addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT));
+
+        SkuDetails skuDetails = bp.getPurchaseListingDetails("bronzeore10000");
+        if (skuDetails != null) {
+            Log.d("IAP Debug2", "Currency: " + skuDetails.currency + " priceValue: " + (skuDetails.priceValue) + " priceText: " + skuDetails.priceText);
+        } else {
+            Log.d("IAP Debug2", "It didn't load...");
+        }
     }
 
     @OnClick({ R.id.passTabTab, R.id.vipTabTab, R.id.bundleTabTab })
@@ -375,6 +390,9 @@ public class ShopActivity extends BaseActivity implements BillingProcessor.IBill
 
     @Override
     public void onProductPurchased(String productId, TransactionDetails details) {
+        productId = productId.toLowerCase();
+        bp.consumePurchase(productId);
+
         Iap iap = Iap.get(productId);
         iap.setTimesPurchased(iap.getTimesPurchased() + 1);
         iap.save();
@@ -443,7 +461,7 @@ public class ShopActivity extends BaseActivity implements BillingProcessor.IBill
     @Override
     public void onBillingError(int errorCode, Throwable error) {
         if (errorCode != com.anjlab.android.iab.v3.Constants.BILLING_RESPONSE_RESULT_USER_CANCELED) {
-            AlertHelper.error(this, getString(R.string.error_iap_failed), false);
+            AlertHelper.error(this, getString(R.string.error_iap_failed) + errorCode, false);
         }
     }
 
@@ -476,12 +494,12 @@ public class ShopActivity extends BaseActivity implements BillingProcessor.IBill
     public void upgradeVip() {
         int vipLevel = LevelHelper.getVipLevel();
         if (vipLevel < Constants.MAX_VIP_LEVEL) {
-            buyIAP(("VipLevel" + (vipLevel + 1)));
+            buyIAP(("viplevel" + (vipLevel + 1)));
         }
     }
 
     @OnClick(R.id.passPurchase)
     public void buyPass() {
-        buyIAP("BlacksmithPass");
+        buyIAP("blacksmithpass");
     }
 }
