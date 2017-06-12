@@ -99,10 +99,6 @@ public class ShopActivity extends BaseActivity implements BillingProcessor.IBill
         canBuyIAPs = BillingProcessor.isIabServiceAvailable(this);
         if (canBuyIAPs) {
             bp = new BillingProcessor(this, getPublicKey(), this);
-            if (!bp.isOneTimePurchaseSupported()) {
-                canBuyIAPs = false;
-                AlertHelper.error(this, "This device is unable to perform in-app payments!", true);
-            }
         }
 
         SkuDetails skuDetails = bp.getPurchaseListingDetails("ironore10000");
