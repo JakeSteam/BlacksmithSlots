@@ -104,10 +104,10 @@ public class SplashScreenActivity extends Activity {
         globeImage.setImageDrawable(transitionDrawable);
 
         handler.post(stage1);
-        handler.postDelayed(stage2, 5000);
-        handler.postDelayed(stage3, 10000);
-        handler.postDelayed(stage4, 15000);
-        handler.postDelayed(stage5, 20000);
+        handler.postDelayed(stage2, 6000);
+        handler.postDelayed(stage3, 12000);
+        handler.postDelayed(stage4, 18000);
+        handler.postDelayed(stage5, 24000);
     }
 
     private Runnable stage1 = new Runnable() {

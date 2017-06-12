@@ -543,6 +543,7 @@ public class MapActivity extends BaseActivity implements
                 advertHelper.rewardAdvertItems(this);
             }
         } else {
+            onConnected(null);
             GooglePlayHelper.ActivityResult(this, requestCode, resultCode);
         }
     }

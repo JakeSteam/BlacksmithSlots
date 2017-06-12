@@ -351,16 +351,6 @@
                             android:text="@string/claim_bonus" />
 
                         <uk.co.jakelee.blacksmithslots.components.FontTextView
-                            android:id="@+id/watchAdvert"
-                            style="@style/SlotText"
-                            android:layout_width="match_parent"
-                            android:layout_marginBottom="3dp"
-                            android:layout_marginTop="3dp"
-                            android:background="@drawable/box_green"
-                            android:maxLines="2"
-                            android:text="@string/watch_advert" />
-
-                        <uk.co.jakelee.blacksmithslots.components.FontTextView
                             android:id="@+id/openShop"
                             style="@style/SlotText"
                             android:layout_width="match_parent"
@@ -469,6 +459,16 @@
                         android:background="@drawable/box_green"
                         android:maxLines="2"
                         android:text="@string/credits" />
+
+                    <uk.co.jakelee.blacksmithslots.components.FontTextView
+                        android:id="@+id/watchAdvert"
+                        style="@style/SlotText"
+                        android:layout_width="match_parent"
+                        android:layout_marginBottom="3dp"
+                        android:layout_marginTop="3dp"
+                        android:background="@drawable/box_green"
+                        android:maxLines="2"
+                        android:text="@string/watch_advert" />
                 </LinearLayout>
             </ScrollView>
         </LinearLayout>

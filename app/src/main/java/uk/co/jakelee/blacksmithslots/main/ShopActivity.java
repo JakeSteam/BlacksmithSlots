@@ -8,7 +8,6 @@ import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
-import android.util.Log;
 import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -100,13 +99,6 @@ public class ShopActivity extends BaseActivity implements BillingProcessor.IBill
         if (canBuyIAPs) {
             bp = new BillingProcessor(this, getPublicKey(), this);
         }
-
-        SkuDetails skuDetails = bp.getPurchaseListingDetails("ironore10000");
-        if (skuDetails != null) {
-            Log.d("IAP Debug1", "Currency: " + skuDetails.currency + " priceValue: " + (skuDetails.priceValue) + " priceText: " + skuDetails.priceText);
-        } else {
-            Log.d("IAP Debug1", "It didn't load...");
-        }
     }
 
     private String getPublicKey() {
@@ -155,7 +147,10 @@ public class ShopActivity extends BaseActivity implements BillingProcessor.IBill
         }
         passDaysLeft.setText(String.format(Locale.ENGLISH, getString(R.string.pass_days_left), daysLeft + (Constants.PASS_DAYS * monthsLeft)));
         passDaysLeft.setTextColor(ContextCompat.getColor(this, daysLeft > 0 ? R.color.greenText : R.color.redText));
+
         passPurchase.setTag(Enums.Iap.BlacksmithPass);
+        passPurchase.setText(String.format(Locale.ENGLISH, getString(R.string.pass_purchase), getPriceIfPossible("blacksmithpass", "$3.99")));
+
         passClaim.setVisibility(canClaimPass ? View.VISIBLE : View.GONE);
         passDescription.setText(daysLeft > 0 ?
                 getString(R.string.pass_desc_owned) :
@@ -211,7 +206,9 @@ public class ShopActivity extends BaseActivity implements BillingProcessor.IBill
             vipUpgrade.setVisibility(View.GONE);
         } else {
             vipIntro.setText(String.format(Locale.ENGLISH, getString(R.string.vip_intro), vipLevel + 1));
-            vipUpgrade.setText(String.format(Locale.ENGLISH, getString(R.string.vip_upgrade_price), DisplayHelper.centsToDollars(IapHelper.getVipPrice(vipLevel + 1))));
+            vipUpgrade.setText(String.format(Locale.ENGLISH, getString(R.string.vip_upgrade_price), getPriceIfPossible(
+                            "viplevel" + (vipLevel + 1),
+                            DisplayHelper.centsToDollars(IapHelper.getVipPrice(vipLevel + 1)))));
 
             String vipBonusesText = getVipBonusesText(vipLevel);
 
@@ -282,14 +279,8 @@ public class ShopActivity extends BaseActivity implements BillingProcessor.IBill
         int imageResource = getResources().getIdentifier(DisplayHelper.getItemImageFile(iap), "drawable", getPackageName());
 
         ((ImageView)itemTile.findViewById(R.id.itemImage)).setImageResource(imageResource);
-        ((TextView)itemTile.findViewById(R.id.itemPrice)).setText(iap.getPrice());
-        final Iap iapItem = Iap.get(iap.getIdentifier());
-        if (bp != null) {
-            SkuDetails iapInfo = bp.getPurchaseListingDetails(iapItem.getIapName());
-            if (iapInfo != null) {
-                ((TextView) itemTile.findViewById(R.id.itemPrice)).setText(iapInfo.toString());
-            }
-        }
+        Iap iapItem = Iap.get(iap.getIdentifier());
+        ((TextView)itemTile.findViewById(R.id.itemPrice)).setText(getPriceIfPossible(iapItem.getIapName(), iap.getPrice()));
         itemTile.setOnClickListener(getItemOnClick(iapItem));
         bundleItemContainer.addView(itemTile, params);
     }
@@ -359,18 +350,21 @@ public class ShopActivity extends BaseActivity implements BillingProcessor.IBill
     public void compareVip() {
         startActivity(new Intent(this, VipComparisonActivity.class)
                 .addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT));
-
-        SkuDetails skuDetails = bp.getPurchaseListingDetails("bronzeore10000");
-        if (skuDetails != null) {
-            Log.d("IAP Debug2", "Currency: " + skuDetails.currency + " priceValue: " + (skuDetails.priceValue) + " priceText: " + skuDetails.priceText);
-        } else {
-            Log.d("IAP Debug2", "It didn't load...");
-        }
     }
 
     @OnClick({ R.id.passTabTab, R.id.vipTabTab, R.id.bundleTabTab })
     public void changeTab(View v) {
         updateTabs(v.getId());
+    }
+
+    private String getPriceIfPossible(String iapName, String defaultPrice) {
+        if (bp != null) {
+            SkuDetails iapInfo = bp.getPurchaseListingDetails(iapName);
+            if (iapInfo != null) {
+                return iapInfo.priceText;
+            }
+        }
+        return defaultPrice;
     }
 
     private void updateTabs(int id) {
