@@ -17,6 +17,7 @@ import android.widget.TableRow;
 import android.widget.TextView;
 
 import java.util.List;
+import java.util.Locale;
 
 import uk.co.jakelee.blacksmithslots.BaseActivity;
 import uk.co.jakelee.blacksmithslots.R;
@@ -104,14 +105,14 @@ public class SettingsActivity extends BaseActivity {
                         setting.save();
 
                         LanguageHelper.changeLanguage(activity, position + 1);
-                        AlertHelper.success(activity, "Set language to " + parentView.getSelectedItem().toString(), true);
+                        AlertHelper.success(activity, getString(R.string.setting_changed_language) + parentView.getSelectedItem().toString(), true);
                     } else if (setting.getSetting() == Enums.Setting.Orientation) {
                         setting.setIntValue(getOrientationValue(position));
                         setting.save();
 
                         //noinspection ResourceType
                         setRequestedOrientation(setting.getIntValue());
-                        AlertHelper.success(activity, "Updated orientation!", true);
+                        AlertHelper.success(activity, getString(R.string.updated_orientation), true);
                     }
                     onResume();
                 }
@@ -241,7 +242,7 @@ public class SettingsActivity extends BaseActivity {
         setting.save();
         onResume();
 
-        AlertHelper.success(this, "Turned " + setting.getName(this) + (setting.getBooleanValue() ? " on" : " off") + "!", true);
+        AlertHelper.success(this, String.format(Locale.ENGLISH, getString(setting.getBooleanValue() ? R.string.setting_turned_on : R.string.setting_turned_off), setting.getName(this)), true);
     }
 
     public void changeString(View v) {

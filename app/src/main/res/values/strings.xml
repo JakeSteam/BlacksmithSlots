@@ -1156,6 +1156,10 @@ AESCrypt (https://goo.gl/Ewk2tq) - Support code encryption.
     <string name="tutorial_map_4">She needs a hatchet to cut herself out, luckily you\'ve got one! Hand in the quest.</string>
     <string name="tutorial_map_5">Awesome, she\'s free! Let\'s go play the slot!</string>
     <string name="hint">Hint</string>
+    <string name="setting_changed_language">Set language to</string>
+    <string name="updated_orientation">Updated orientation!</string>
+    <string name="setting_turned_on">Turned %1$s on</string>
+    <string name="setting_turned_off">Turned %1$s off!</string>
 
     <string-array name="hints">
         <item>If a slot is all wildcards, you\'ll win 10x the basic bet instead!</item>
