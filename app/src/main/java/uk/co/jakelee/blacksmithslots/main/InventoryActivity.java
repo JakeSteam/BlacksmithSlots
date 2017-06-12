@@ -54,8 +54,10 @@ public class InventoryActivity extends BaseActivity {
             return;
         }
         TableRow tableRow = (TableRow)inflater.inflate(R.layout.custom_inventory_row, null).findViewById(R.id.inventoryRow);
-        tableRow.setTag(R.id.item_tier, inventory.getTier());
-        tableRow.setTag(R.id.item_type, inventory.getType());
+        tableRow.findViewById(R.id.itemSources).setTag(R.id.item_tier, inventory.getTier());
+        tableRow.findViewById(R.id.itemSources).setTag(R.id.item_type, inventory.getType());
+        tableRow.findViewById(R.id.itemUses).setTag(R.id.item_tier, inventory.getTier());
+        tableRow.findViewById(R.id.itemUses).setTag(R.id.item_type, inventory.getType());
 
         ((ImageView)tableRow.findViewById(R.id.itemImage)).setImageResource(
                 getResources().getIdentifier(DisplayHelper.getItemImageFile(
@@ -66,13 +68,11 @@ public class InventoryActivity extends BaseActivity {
     }
 
     public void itemSources(View v) {
-        TableRow parent = (TableRow)v.getParent();
-        getItemInfo((int)parent.getTag(R.id.item_tier), (int)parent.getTag(R.id.item_type), true);
+        getItemInfo((int)v.getTag(R.id.item_tier), (int)v.getTag(R.id.item_type), true);
     }
 
     public void itemUses(View v) {
-        TableRow parent = (TableRow)v.getParent();
-        getItemInfo((int)parent.getTag(R.id.item_tier), (int)parent.getTag(R.id.item_type), false);
+        getItemInfo((int)v.getTag(R.id.item_tier), (int)v.getTag(R.id.item_type), false);
     }
 
     private void getItemInfo(int tier, int type, boolean gettingSources) {
