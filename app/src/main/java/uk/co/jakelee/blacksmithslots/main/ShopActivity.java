@@ -390,6 +390,7 @@ public class ShopActivity extends BaseActivity implements BillingProcessor.IBill
 
     @Override
     public void onProductPurchased(String productId, TransactionDetails details) {
+        productId = productId.toLowerCase();
         bp.consumePurchase(productId);
 
         Iap iap = Iap.get(productId);
@@ -460,7 +461,7 @@ public class ShopActivity extends BaseActivity implements BillingProcessor.IBill
     @Override
     public void onBillingError(int errorCode, Throwable error) {
         if (errorCode != com.anjlab.android.iab.v3.Constants.BILLING_RESPONSE_RESULT_USER_CANCELED) {
-            AlertHelper.error(this, getString(R.string.error_iap_failed), false);
+            AlertHelper.error(this, getString(R.string.error_iap_failed) + errorCode, false);
         }
     }
 
@@ -493,12 +494,12 @@ public class ShopActivity extends BaseActivity implements BillingProcessor.IBill
     public void upgradeVip() {
         int vipLevel = LevelHelper.getVipLevel();
         if (vipLevel < Constants.MAX_VIP_LEVEL) {
-            buyIAP(("VipLevel" + (vipLevel + 1)));
+            buyIAP(("viplevel" + (vipLevel + 1)));
         }
     }
 
     @OnClick(R.id.passPurchase)
     public void buyPass() {
-        buyIAP("BlacksmithPass");
+        buyIAP("blacksmithpass");
     }
 }
