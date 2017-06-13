@@ -319,9 +319,9 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
         slots.add(new Slot(Enums.Slot.Map1Mom, 1, 2, 2, Enums.Person.Mom, Enums.Map.Home));
         itemBundles.add(new ItemBundle(Enums.Slot.Map1Mom, Enums.Tier.None, Enums.Type.LuckyCoin, 1));
         tasks.add(new Task(Enums.Slot.Map1Mom, 1, Enums.Tier.Bronze, Enums.Type.Hatchet, 1));
-        itemBundles.add(new ItemBundle(Enums.Slot.Map1Mom, Enums.Tier.Bronze, Enums.Type.Ore, 5, 10));
-        itemBundles.add(new ItemBundle(Enums.Slot.Map1Mom, Enums.Tier.Bronze, Enums.Type.Secondary, 5, 10));
-        itemBundles.add(new ItemBundle(Enums.Slot.Map1Mom, Enums.Tier.Internal, Enums.Type.Wildcard, 1, 3));
+        //itemBundles.add(new ItemBundle(Enums.Slot.Map1Mom, Enums.Tier.Bronze, Enums.Type.Ore, 5, 10));
+        //itemBundles.add(new ItemBundle(Enums.Slot.Map1Mom, Enums.Tier.Bronze, Enums.Type.Secondary, 5, 10));
+        itemBundles.add(new ItemBundle(Enums.Slot.Map1Mom, Enums.Tier.Internal, Enums.Type.MinigameHigher, 1, 3));
         Slot.saveInTx(slots);
         ItemBundle.saveInTx(itemBundles);
         Task.saveInTx(tasks);
@@ -348,8 +348,6 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
         createSlotsMap18();
         createSlotsMap19();
         createSlotsMap20();
-        Log.d("TimeTaken", "Maps 2-20: " + (System.currentTimeMillis() - start));
-        Log.d("TimeTaken", "--");
     }
 
     private void createSlotsMap2() {
@@ -389,6 +387,7 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
         itemBundles.add(new ItemBundle(Enums.Slot.Map2Tools, Enums.Tier.Bronze, Enums.Type.FishingRod, 1, 5));
         itemBundles.add(new ItemBundle(Enums.Slot.Map2Tools, Enums.Tier.Bronze, Enums.Type.Hammer, 1, 5));
         itemBundles.add(new ItemBundle(Enums.Slot.Map2Tools, Enums.Tier.Internal, Enums.Type.Wildcard, 1, 8));
+        itemBundles.add(new ItemBundle(Enums.Slot.Map2Tools, Enums.Tier.Internal, Enums.Type.MinigameHigher, 1, 4));
 
         slots.add(new Slot(Enums.Slot.Map2Weapons, 1, 8, 3, Enums.Person.LowLevelBlacksmith, Enums.Map.Neighbourhood));
         itemBundles.add(new ItemBundle(Enums.Slot.Map2Weapons, Enums.Tier.Bronze, Enums.Type.Bar, 2));
@@ -674,6 +673,7 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
         itemBundles.add(new ItemBundle(Enums.Slot.Map6Elitist, Enums.Tier.Mithril, Enums.Type.Ore, 4, 7));
         itemBundles.add(new ItemBundle(Enums.Slot.Map6Elitist, Enums.Tier.Adamant, Enums.Type.Ore, 4, 3));
         itemBundles.add(new ItemBundle(Enums.Slot.Map6Elitist, Enums.Tier.Internal, Enums.Type.Wildcard, 1, 20));
+        itemBundles.add(new ItemBundle(Enums.Slot.Map6Elitist, Enums.Tier.Internal, Enums.Type.MinigameHigher, 1, 8));
 
         slots.add(new Slot(Enums.Slot.Map6Armoury, 1, 7, 4, Enums.Person.MineWorker, Enums.Map.Mines));
         itemBundles.add(new ItemBundle(Enums.Slot.Map6Armoury, Enums.Tier.Bronze, Enums.Type.Chainmail, 1));
@@ -787,6 +787,7 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
         itemBundles.add(new ItemBundle(Enums.Slot.Map7Interchange, Enums.Tier.Iron, Enums.Type.FullShield, 2, 5));
         itemBundles.add(new ItemBundle(Enums.Slot.Map7Interchange, Enums.Tier.Internal, Enums.Type.Wildcard, 1, 11));
         itemBundles.add(new ItemBundle(Enums.Slot.Map7Interchange, Enums.Tier.Internal, Enums.Type.MinigameFlip, 1, 6));
+        itemBundles.add(new ItemBundle(Enums.Slot.Map7Interchange, Enums.Tier.Internal, Enums.Type.MinigameHigher, 1, 6));
         Slot.saveInTx(slots);
         ItemBundle.saveInTx(itemBundles);
         Task.saveInTx(tasks);
@@ -941,6 +942,7 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
         itemBundles.add(new ItemBundle(Enums.Slot.Map9Charon, Enums.Tier.Iron, Enums.Type.HalfHelmet, 1, 5));
         itemBundles.add(new ItemBundle(Enums.Slot.Map9Charon, Enums.Tier.Steel, Enums.Type.HalfHelmet, 1, 5));
         itemBundles.add(new ItemBundle(Enums.Slot.Map9Charon, Enums.Tier.Internal, Enums.Type.Wildcard, 1, 7));
+        itemBundles.add(new ItemBundle(Enums.Slot.Map9Charon, Enums.Tier.Internal, Enums.Type.MinigameHigher, 1, 3));
 
         Slot.saveInTx(slots);
         ItemBundle.saveInTx(itemBundles);
@@ -1210,6 +1212,7 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
         itemBundles.add(new ItemBundle(Enums.Slot.Map14Jimmy, Enums.Tier.Silver, Enums.Type.Bar, 1, 3));
         itemBundles.add(new ItemBundle(Enums.Slot.Map14Jimmy, Enums.Tier.None, Enums.Type.GemBlue, 1, 2));
         itemBundles.add(new ItemBundle(Enums.Slot.Map14Jimmy, Enums.Tier.Internal, Enums.Type.Wildcard, 1, 2));
+        itemBundles.add(new ItemBundle(Enums.Slot.Map14Jimmy, Enums.Tier.Internal, Enums.Type.MinigameHigher, 1, 2));
 
         slots.add(new Slot(Enums.Slot.Map14BigTony, 1, 5, 5, Enums.Person.Mercenary, Enums.Map.Mercenaria));
         itemBundles.add(new ItemBundle(Enums.Slot.Map14BigTony, Enums.Tier.Silver, Enums.Type.Bar, 1));
@@ -1272,6 +1275,7 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
         itemBundles.add(new ItemBundle(Enums.Slot.Map15Blue, Enums.Tier.None, Enums.Type.BookPink, 1, 3));
         itemBundles.add(new ItemBundle(Enums.Slot.Map15Blue, Enums.Tier.Mithril, Enums.Type.Secondary, 1, 5));
         itemBundles.add(new ItemBundle(Enums.Slot.Map15Blue, Enums.Tier.Internal, Enums.Type.Wildcard, 1, 4));
+        itemBundles.add(new ItemBundle(Enums.Slot.Map15Blue, Enums.Tier.Internal, Enums.Type.MinigameHigher, 1, 2));
 
         slots.add(new Slot(Enums.Slot.Map15Robot, 1, 15, 5, Enums.Person.Robot, Enums.Map.Library));
         itemBundles.add(new ItemBundle(Enums.Slot.Map15Robot, Enums.Tier.None, Enums.Type.BookRed, 1));
@@ -1330,6 +1334,7 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
         itemBundles.add(new ItemBundle(Enums.Slot.Map16Tools, Enums.Tier.Mithril, Enums.Type.FishingRod, 1, 5));
         itemBundles.add(new ItemBundle(Enums.Slot.Map16Tools, Enums.Tier.Mithril, Enums.Type.Hammer, 1, 5));
         itemBundles.add(new ItemBundle(Enums.Slot.Map16Tools, Enums.Tier.Internal, Enums.Type.Wildcard, 1, 8));
+        itemBundles.add(new ItemBundle(Enums.Slot.Map16Tools, Enums.Tier.Internal, Enums.Type.MinigameHigher, 1, 3));
 
         slots.add(new Slot(Enums.Slot.Map16Weapons, 1, 5, 3, Enums.Person.Ghost2, Enums.Map.HauntedCorridors));
         itemBundles.add(new ItemBundle(Enums.Slot.Map16Weapons, Enums.Tier.Mithril, Enums.Type.Bar, 2));
