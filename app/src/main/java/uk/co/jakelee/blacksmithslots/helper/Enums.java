@@ -195,7 +195,7 @@ public class Enums {
     public enum Statistic {
         Xp(1), Level(2), TotalSpins(3), QuestsCompleted(4), LastAutosave(5), ResourcesGambled(6), ResourcesWon(7), AdvertsWatched(8), PacksPurchased(9),
         CollectedBonuses(10), VipLevel(11), LastBonusClaimed(12), SaveImported(13), LastAdvertWatched(14), CurrentPassClaimedDay(15), HighestPassClaimedDay(16), ExtraPassMonths(17),
-        TotalPassDaysClaimed(18), MinigameDice(19), MinigameChest(20), MinigameFlip(21), TrophiesEarned(22);
+        TotalPassDaysClaimed(18), MinigameDice(19), MinigameChest(20), MinigameFlip(21), TrophiesEarned(22), MinigameHigher(23);
         public int value;
         Statistic(int value) {
             this.value = value;
@@ -251,7 +251,7 @@ public class Enums {
         GemYellow(35), GemOrange(36), GemGreen(37), GemBlue(38), GemRed(39), GemPurple(40),
         SandRed(41), SandBlue(42), SandYellow(43), SandGreen(44),
         BookRed(45), BookYellow(46), BookGreen(47), BookBlue(48), BookPink(49), BookBrown(50), BookBlack(51), BookGrey(52), BookCollection(53),
-        Wildcard (999), MinigameFlip(998), MinigameChest(997), MinigameDice(996);
+        Wildcard (999), MinigameFlip(998), MinigameChest(997), MinigameDice(996), MinigameHigher(995);
         public int value;
         Type(int value) {
             this.value = value;

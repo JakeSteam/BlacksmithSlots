@@ -70,6 +70,8 @@
             android:theme="@style/Theme.Dimmed" />
         <activity android:name=".main.MinigameDiceActivity"
             android:theme="@style/Theme.Dimmed" />
+        <activity android:name=".main.MinigameHigherActivity"
+            android:theme="@style/Theme.Dimmed" />
         <activity android:name=".main.ShopActivity"
             android:theme="@style/Theme.Dimmed" />
         <activity android:name=".main.InterstitialActivity"

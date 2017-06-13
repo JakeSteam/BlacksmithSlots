@@ -192,6 +192,7 @@
     <string name="type_52">Grey Book</string>
     <string name="type_53">Collection</string>
 
+    <string name="type_995">Higher Minigame</string>
     <string name="type_996">Dice Minigame</string>
     <string name="type_997">Chest Minigame</string>
     <string name="type_998">Flip Minigame</string>
@@ -1162,6 +1163,12 @@ AESCrypt (https://goo.gl/Ewk2tq) - Support code encryption.
     <string name="setting_turned_off">Turned %1$s off!</string>
     <string name="loading_title">Loading slot, hang on!</string>
     <string name="loading_body">Fetching resources from the warehouse...</string>
+    <string name="current_stake">Current stake:</string>
+    <string name="current_card">Current card:</string>
+    <string name="ace">Ace</string>
+    <string name="jack">Jack</string>
+    <string name="queen">Queen</string>
+    <string name="king">King</string>
 
     <string-array name="hints">
         <item>If a slot is all wildcards, you\'ll win 10x the basic bet instead!</item>

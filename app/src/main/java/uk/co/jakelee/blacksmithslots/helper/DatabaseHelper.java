@@ -1892,6 +1892,7 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
         statistics.add(new Statistic(Enums.StatisticType.Minigames, Enums.Statistic.MinigameChest, "", "", 0, 0));
         statistics.add(new Statistic(Enums.StatisticType.Minigames, Enums.Statistic.MinigameDice, "", "", 0, 0));
         statistics.add(new Statistic(Enums.StatisticType.Minigames, Enums.Statistic.MinigameFlip, "", "", 0, 0));
+        statistics.add(new Statistic(Enums.StatisticType.Minigames, Enums.Statistic.MinigameHigher, "", "", 0, 0));
         Statistic.saveInTx(statistics);
     }
 }

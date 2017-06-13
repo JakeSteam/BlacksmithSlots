@@ -23,6 +23,7 @@ public class MinigameActivity extends BaseActivity {
             case MinigameFlip: return MinigameFlipActivity.class;
             case MinigameDice: return MinigameDiceActivity.class;
             case MinigameChest: return MinigameChestActivity.class;
+            case MinigameHigher: return MinigameHigherActivity.class;
         }
         return null;
     }
@@ -32,6 +33,7 @@ public class MinigameActivity extends BaseActivity {
             case MinigameFlip: return Constants.MINIGAME_FLIP;
             case MinigameDice: return Constants.MINIGAME_DICE;
             case MinigameChest: return Constants.MINIGAME_CHEST;
+            case MinigameHigher: return Constants.MINIGAME_HIGHER;
         }
         return 0;
     }
@@ -41,6 +43,7 @@ public class MinigameActivity extends BaseActivity {
             case MinigameFlip: return Enums.Statistic.MinigameFlip;
             case MinigameDice: return Enums.Statistic.MinigameDice;
             case MinigameChest: return Enums.Statistic.MinigameChest;
+            case MinigameHigher: return Enums.Statistic.MinigameHigher;
         }
         return Enums.Statistic.Xp;
     }

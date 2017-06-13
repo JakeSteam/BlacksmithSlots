@@ -95,7 +95,7 @@ public class SlotHelper {
     }
 
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == Constants.MINIGAME_FLIP || requestCode == Constants.MINIGAME_DICE) {
+        if (requestCode == Constants.MINIGAME_FLIP || requestCode == Constants.MINIGAME_DICE || requestCode == Constants.MINIGAME_HIGHER) {
             if (resultCode > 0) {
                 StringBuilder itemText = new StringBuilder();
                 for (ItemBundle itemBundle : slotResources) {
