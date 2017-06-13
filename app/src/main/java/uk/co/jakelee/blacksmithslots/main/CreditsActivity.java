@@ -1,6 +1,7 @@
 package uk.co.jakelee.blacksmithslots.main;
 
 import android.content.Context;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.util.Pair;
 import android.view.LayoutInflater;
@@ -27,13 +28,19 @@ public class CreditsActivity extends BaseActivity {
         TableLayout statTable = (TableLayout)findViewById(R.id.dataTable);
         for (Pair<Integer, Integer> credit : credits) {
             TableRow tableRow = (TableRow) inflater.inflate(R.layout.custom_data_row, null).findViewById(R.id.dataRow);
-            ((TextView) tableRow.findViewById(R.id.dataName)).setText(credit.first);
+
             ((TextView) tableRow.findViewById(R.id.dataName)).setMaxLines(1);
             ((TextView) tableRow.findViewById(R.id.dataName)).setTextSize(28);
-            ((TextView) tableRow.findViewById(R.id.dataValue)).setText(credit.second);
             ((TextView) tableRow.findViewById(R.id.dataValue)).setLineSpacing(0, 1.5f);
             ((TextView) tableRow.findViewById(R.id.dataValue)).setMaxLines(99);
             statTable.addView(tableRow);
+
+            if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
+                ((TextView) tableRow.findViewById(R.id.dataName)).setText(credit.first);
+                ((TextView) tableRow.findViewById(R.id.dataValue)).setText(credit.second);
+            } else {
+                ((TextView) tableRow.findViewById(R.id.dataValue)).setText(getString(credit.first) + ":\n" + getString(credit.second));
+            }
         }
     }
 

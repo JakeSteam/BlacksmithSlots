@@ -1181,5 +1181,20 @@ AESCrypt (https://goo.gl/Ewk2tq) - Support code encryption.
         <item>Got feedback, bugs to report, or suggestions? Email blacksmithslots@jakelee.co.uk!</item>
         <item>Did you know Blacksmith Slots is based on my previous game, Pixel Blacksmith? Try it out!</item>
         <item>Turn on Cloud Saves in the settings if you want to change devices, you\'ll lose no progress!</item>
+        <item>The game can be locked to landscape or portrait in the settings!</item>
+        <item>Revisit past slots to gather resources!</item>
+        <item>The language can be changed in the settings if you\'d rather another language!</item>
+        <item>Higher VIP levels get more bonuses!</item>
+        <item>Make sure to regularly claim your free bonus items!</item>
+        <item>You can optionally watch adverts for extra bonus items.</item>
+        <item>Sick of waiting too long between bonuses? Upgrade your VIP level!</item>
+        <item>Want more bonus items? Check out the Blacksmith Pass for 30 days of bonus items!</item>
+        <item>Once a slot is unlocked, the Dialog Log shows a history of all messages with the slot owner.</item>
+        <item>Additionally, the Reward Chances of all rewards can be seen for unlocked slots.</item>
+        <item>Trophies can be earned for almost all items in the game, and will provide extra bonus XP for each trophy gained.</item>
+        <item>Looked away? A log of recent spins can be viewed from inside the slot.</item>
+        <item>Tapping the VIP or level number areas on the slot screen will provide more information.</item>
+        <item>Make sure to utilise autospin!</item>
+        <item>Curious what was used to make the game? Check out the Credits!</item>
     </string-array>
 </resources>
