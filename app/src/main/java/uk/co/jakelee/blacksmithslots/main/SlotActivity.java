@@ -2,6 +2,7 @@ package uk.co.jakelee.blacksmithslots.main;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.Handler;
@@ -30,11 +31,13 @@ import static uk.co.jakelee.blacksmithslots.helper.LevelHelper.getXp;
 public class SlotActivity extends BaseActivity {
     private SlotHelper slotHelper;
     private boolean isFirstInstall = false;
+    public static SharedPreferences prefs;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_slot);
+        prefs = getSharedPreferences("uk.co.jakelee.blacksmithslots", MODE_PRIVATE);
 
         Intent intent = getIntent();
         final Slot slot = Slot.get(intent.getIntExtra(Constants.INTENT_SLOT, 0));
@@ -45,8 +48,8 @@ public class SlotActivity extends BaseActivity {
             final SlotActivity activity = this;
             final ProgressDialog alert = new ProgressDialog(this);
             alert.setIndeterminate(true);
-            alert.setTitle("Loading slot, hang on!");
-            alert.setMessage("Fetching resources from the warehouse...");
+            alert.setTitle(getString(R.string.loading_title));
+            alert.setMessage(getString(R.string.loading_body));
             alert.show();
             final Handler handler = new Handler();
             handler.postDelayed(new Runnable() {
@@ -59,7 +62,7 @@ public class SlotActivity extends BaseActivity {
                     slotHelper.updateResourceCount();
                     slotHelper.afterSpinUpdate();
 
-                    if (isFirstInstall) {
+                    if (isFirstInstall && prefs.getInt("tutorialStageCompleted", 0) < 2) {
                         startTutorial();
                     }
 
@@ -117,6 +120,10 @@ public class SlotActivity extends BaseActivity {
 
     public void spin(View v) {
         slotHelper.spin(true);
+        if (isFirstInstall) {
+            isFirstInstall = false;
+            prefs.edit().putInt("tutorialStageCompleted", 2).apply();
+        }
     }
 
     public void openLog(View v) {

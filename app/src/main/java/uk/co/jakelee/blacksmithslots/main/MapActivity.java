@@ -130,7 +130,7 @@ public class MapActivity extends BaseActivity implements
 
         Intent intent = getIntent();
         if (intent != null && intent.getBooleanExtra("isFirstInstall", false)) {
-            if (!Constants.DEBUG_UNLOCK_ALL) {
+            if (!Constants.DEBUG_UNLOCK_ALL && prefs.getInt("tutorialStageCompleted", 0) < 1) {
                 runTutorial(1);
             }
             isFirstInstall = true;
@@ -292,6 +292,7 @@ public class MapActivity extends BaseActivity implements
             if (isFirstInstall) {
                 isFirstInstall = false;
                 endTutorial();
+                prefs.edit().putInt("tutorialStageCompleted", 1).apply();
             }
         }
     }

@@ -1160,6 +1160,8 @@ AESCrypt (https://goo.gl/Ewk2tq) - Support code encryption.
     <string name="updated_orientation">Updated orientation!</string>
     <string name="setting_turned_on">Turned %1$s on</string>
     <string name="setting_turned_off">Turned %1$s off!</string>
+    <string name="loading_title">Loading slot, hang on!</string>
+    <string name="loading_body">Fetching resources from the warehouse...</string>
 
     <string-array name="hints">
         <item>If a slot is all wildcards, you\'ll win 10x the basic bet instead!</item>
