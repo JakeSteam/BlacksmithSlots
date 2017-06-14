@@ -46,8 +46,8 @@
     <string name="log_spin">%1$s at \"%2$s\".</string>
     <string name="log_error">Error: %1$s</string>
 
-    <string name="time_hours">%1.1f hrs</string>
-    <string name="time_mins">%1d mins</string>
+    <string name="time_hours">%1$.1f hrs</string>
+    <string name="time_mins">%1$d mins</string>
 
     <string name="notification_periodic_bonus">Your bonus is ready to claim!</string>
 
@@ -70,7 +70,7 @@
 \n\nOr even check out the original game, <a href="https://play.google.com/store/apps/details?id=uk.co.jakelee.blacksmith">Pixel Blacksmith</a>. I think it\'s rather fun!</string>
 
     <!-- Slot -->
-    <string name="vip_level_display">VIP %1$d</string>
+    <string name="vip_level_display" translatable="false">VIP %1$d</string>
 
     <!-- Map -->
     <string name="settings">Settings</string>
@@ -1132,7 +1132,7 @@ AESCrypt (https://goo.gl/Ewk2tq) - Support code encryption.
     <string name="claimed_prefix">Claimed:</string>
     <string name="trophies">Trophies</string>
     <string name="trophies_progress">Trophies:\u00A0\u00A0%1$d/%2$d\u00A0\u00A0(+%3$,.1f%% XP)</string>
-    <string name="trophy_progress_unachieved">%1$d/%2$dx %3$s</string>
+    <string name="trophy_progress_unachieved" translatable="false">%1$d/%2$dx %3$s</string>
     <string name="hand_in_items">Hand in items</string>
     <string name="hand_in_items_long">How many %1$s would you like to hand in?\n\nHanding in %2$d will unlock the trophy!</string>
     <string name="error_trophy_no_items">You can\'t hand in items you don\'t own!</string>
