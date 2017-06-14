@@ -1176,32 +1176,30 @@ AESCrypt (https://goo.gl/Ewk2tq) - Support code encryption.
     <string name="jack">Jack</string>
     <string name="queen">Queen</string>
     <string name="king">King</string>
-
-    <string-array name="hints">
-        <item>If a slot is all wildcards, you\'ll win 10x the basic bet instead!</item>
-        <item>You can swipe left and right as well as tap the arrows to change map!</item>
-        <item>Curious what to do with an item? Discover the uses of it in the Inventory screen!</item>
-        <item>Check out the subreddit at https://reddit.com/r/BlacksmithSlots!</item>
-        <item>Each map has a different slot background! Unlock all the areas to check them all out.</item>
-        <item>Want to help out? Leave a review / rating (via the settings)!</item>
-        <item>By the way, this was all made by one person, me! Hello!</item>
-        <item>Got feedback, bugs to report, or suggestions? Email blacksmithslots@jakelee.co.uk!</item>
-        <item>Did you know Blacksmith Slots is based on my previous game, Pixel Blacksmith? Try it out!</item>
-        <item>Turn on Cloud Saves in the settings if you want to change devices, you\'ll lose no progress!</item>
-        <item>The game can be locked to landscape or portrait in the settings!</item>
-        <item>Revisit past slots to gather resources!</item>
-        <item>The language can be changed in the settings if you\'d rather another language!</item>
-        <item>Higher VIP levels get more bonuses!</item>
-        <item>Make sure to regularly claim your free bonus items!</item>
-        <item>You can optionally watch adverts for extra bonus items.</item>
-        <item>Sick of waiting too long between bonuses? Upgrade your VIP level!</item>
-        <item>Want more bonus items? Check out the Blacksmith Pass for 30 days of bonus items!</item>
-        <item>Once a slot is unlocked, the Dialog Log shows a history of all messages with the slot owner.</item>
-        <item>Additionally, the Reward Chances of all rewards can be seen for unlocked slots.</item>
-        <item>Trophies can be earned for almost all items in the game, and will provide extra bonus XP for each trophy gained.</item>
-        <item>Looked away? A log of recent spins can be viewed from inside the slot.</item>
-        <item>Tapping the VIP or level number areas on the slot screen will provide more information.</item>
-        <item>Make sure to utilise autospin!</item>
-        <item>Curious what was used to make the game? Check out the Credits!</item>
-    </string-array>
+    <string name="never">Never!</string>
+    <string name="hint_1">If a slot is all wildcards, you\'ll win 10x the basic bet instead!</string>
+    <string name="hint_2">You can swipe left and right as well as tap the arrows to change map!</string>
+    <string name="hint_3">Curious what to do with an item? Discover the uses of it in the Inventory screen!</string>
+    <string name="hint_4">Check out the subreddit at https://reddit.com/r/BlacksmithSlots!</string>
+    <string name="hint_5">Each map has a different slot background! Unlock all the areas to check them all out.</string>
+    <string name="hint_6">Want to help out? Leave a review / rating (via the settings)!</string>
+    <string name="hint_7">By the way, this was all made by one person, me! Hello!</string>
+    <string name="hint_8">Got feedback, bugs to report, or suggestions? Email blacksmithslots@jakelee.co.uk!</string>
+    <string name="hint_9">Did you know Blacksmith Slots is based on my previous game, Pixel Blacksmith? Try it out!</string>
+    <string name="hint_10">Turn on Cloud Saves in the settings if you want to change devices, you\'ll lose no progress!</string>
+    <string name="hint_11">The game can be locked to landscape or portrait in the settings!</string>
+    <string name="hint_12">Revisit past slots to gather resources!</string>
+    <string name="hint_13">The language can be changed in the settings if you\'d rather another language!</string>
+    <string name="hint_14">Higher VIP levels get more bonuses!</string>
+    <string name="hint_15">Make sure to regularly claim your free bonus items!</string>
+    <string name="hint_16">You can optionally watch adverts for extra bonus items.</string>
+    <string name="hint_17">Sick of waiting too long between bonuses? Upgrade your VIP level!</string>
+    <string name="hint_18">Want more bonus items? Check out the Blacksmith Pass for 30 days of bonus items!</string>
+    <string name="hint_19">Once a slot is unlocked, the Dialog Log shows a history of all messages with the slot owner.</string>
+    <string name="hint_20">Additionally, the Reward Chances of all rewards can be seen for unlocked slots.</string>
+    <string name="hint_21">Trophies can be earned for almost all items in the game, and will provide extra bonus XP for each trophy gained.</string>
+    <string name="hint_22">Looked away? A log of recent spins can be viewed from inside the slot.</string>
+    <string name="hint_23">Tapping the VIP or level number areas on the slot screen will provide more information.</string>
+    <string name="hint_24">Make sure to utilise autospin!</string>
+    <string name="hint_25">Curious what was used to make the game? Check out the Credits!</string>
 </resources>

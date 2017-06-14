@@ -45,7 +45,7 @@ public class StatisticsActivity extends BaseActivity {
 
             if (statisticType == Enums.StatisticType.Bonuses) {
                 long nextClaim = IncomeHelper.getNextPeriodicClaimTime();
-                statTable.addView(DisplayHelper.getTableRow(inflater, getString(R.string.statistic_next_claim_name), (nextClaim > 0 && nextClaim > System.currentTimeMillis() ? DateHelper.timestampToDateTime(nextClaim) : "Never!")));
+                statTable.addView(DisplayHelper.getTableRow(inflater, getString(R.string.statistic_next_claim_name), (nextClaim > 0 && nextClaim > System.currentTimeMillis() ? DateHelper.timestampToDateTime(nextClaim) : getString(R.string.never))));
             }
 
             if (statisticType == Enums.StatisticType.Version) {

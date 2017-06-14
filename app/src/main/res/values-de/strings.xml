@@ -512,7 +512,7 @@
     <string name="slot_9_locked">Oog Hmph</string>
     <string name="slot_9_name">Mensch, wer Mann</string>
     <string name="slot_9_unlocked">Oog! Oog oog</string>
-    <string name="slot_superlocked">Slot \"% 1 $ s\" muss zuerst entriegelt werden!</string>
+    <string name="slot_superlocked">Slot \"%1$s\" muss zuerst entriegelt werden!</string>
     <string name="spin">Drehen</string>
     <string name="stage_1">Das ist die Welt. Ziemlich schön richtig?</string>
     <string name="stage_2">Nun, es war .. Bis das Purple eines Tages erschien ...</string>
@@ -898,8 +898,8 @@
     <string name="task_99_6_text">Nein? Oh, okay dann ...</string>
     <string name="task_9_1_text">Oog! Gratis Gegenstände! Oooog</string>
     <string name="task_9_2_text">Ooog! Hungrig!</string>
-    <string name="task_completion">Aufgabe% 1 $ d /% 2 $ d:% 3 $ s</string>
-    <string name="task_description">Aufgabe% 1 $ d (% 2 $ s)</string>
+    <string name="task_completion">Aufgabe %1$d/%2$d: %3$s</string>
+    <string name="task_description">Aufgabe %1$d (%2$s)</string>
     <string name="tier_0" translatable="false"></string>
     <string name="tier_1">Bronze</string>
     <string name="tier_10">Teilweise</string>
@@ -995,4 +995,30 @@
     <string name="vip_upgrade_price">Upgrade für %1$s</string>
     <string name="watch_advert">Advert Bonus</string>
     <string name="yes">Ja</string>
+    <string name="hint_1">Wenn ein Slot alle Wildcards ist, gewinnst du 10x die Basiswette statt!</string>
+    <string name="hint_10">Schalten Sie die Cloud in den Einstellungen ein, wenn Sie Geräte wechseln möchten, verlieren Sie keinen Fortschritt!</string>
+    <string name="hint_11">Das Spiel kann in den Einstellungen auf Landschaft oder Porträt gesperrt werden!</string>
+    <string name="hint_12">Revisit Vergangenheit Slots, um Ressourcen zu sammeln!</string>
+    <string name="hint_13">Die Sprache kann in den Einstellungen geändert werden, wenn man lieber eine andere Sprache hat!</string>
+    <string name="hint_14">Höhere VIP-Levels erhalten mehr Boni!</string>
+    <string name="hint_15">Achten Sie darauf, regelmäßig behaupten, Ihre kostenlose Bonus-Artikel!</string>
+    <string name="hint_16">Sie können wahlweise Anzeigen für zusätzliche Bonuspunkte ansehen.</string>
+    <string name="hint_17">Krank zu warten zu lange zwischen Boni? Aktualisieren Sie Ihre VIP-Ebene!</string>
+    <string name="hint_18">Möchten Sie mehr Bonusartikel? Schauen Sie sich den Blacksmith Pass für 30 Tage Bonusartikel an!</string>
+    <string name="hint_19">Sobald ein Steckplatz freigeschaltet ist, zeigt das Dialog-Protokoll eine Historie aller Nachrichten mit dem Slot-Besitzer an.</string>
+    <string name="hint_2">Sie können links und rechts wischen und tippen Sie auf die Pfeile, um die Karte zu ändern!</string>
+    <string name="hint_20">Darüber hinaus können die Belohnungschancen aller Belohnungen für freigeschaltete Slots gesehen werden.</string>
+    <string name="hint_21">Trophäen können für fast alle Artikel im Spiel verdient werden, und wird zusätzliche Bonus XP für jede Trophäe gewonnen.</string>
+    <string name="hint_22">Schaute weg? Ein Protokoll der letzten Spins kann von innerhalb des Schlitzes betrachtet werden.</string>
+    <string name="hint_23">Wenn Sie die VIP- oder Level-Nummer-Bereiche auf dem Slot-Bildschirm antippen, erhalten Sie weitere Informationen.</string>
+    <string name="hint_24">Achten Sie darauf, autospin zu nutzen!</string>
+    <string name="hint_25">Neugierig, was benutzt wurde, um das Spiel zu machen? Schauen Sie sich die Credits an!</string>
+    <string name="hint_3">Neugierig, was mit einem Gegenstand zu tun? Entdecken Sie die Verwendung davon im Inventar-Bildschirm!</string>
+    <string name="hint_4">Schauen Sie sich die Subreddit unter https://reddit.com/r/BlacksmithSlots an!</string>
+    <string name="hint_5">Jede Karte hat einen anderen Slot Hintergrund! Entriegeln Sie alle Bereiche, um sie alle zu überprüfen.</string>
+    <string name="hint_6">Willst du helfen? Hinterlasse eine Bewertung / Bewertung (über die Einstellungen)!</string>
+    <string name="hint_7">Übrigens, das war alles von einer Person, ich! Hallo!</string>
+    <string name="hint_8">Got Feedback, Bugs zu berichten oder Vorschläge? E-Mail blacksmithslots@jakelee.co.uk!</string>
+    <string name="hint_9">Wussten Sie, dass Blacksmith Slots auf meinem bisherigen Spiel basiert, Pixel Blacksmith? Versuch es!</string>
+    <string name="never">Nie!</string>
 </resources>

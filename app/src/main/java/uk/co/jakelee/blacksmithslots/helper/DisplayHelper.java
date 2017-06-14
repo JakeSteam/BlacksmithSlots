@@ -46,6 +46,10 @@ public class DisplayHelper {
         return "map_" + map;
     }
 
+    public static String getHintString(int hint) {
+        return "hint_" + hint;
+    }
+
     public static String getItemImageFile(ItemBundle result, boolean useDefault) {
         return getItemImageFile(result.getTier().value, result.getType().value, 1);
     }

@@ -105,9 +105,9 @@ public class MapActivity extends BaseActivity implements
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        LanguageHelper.updateLanguage(getApplicationContext());
         setContentView(R.layout.activity_map);
         prefs = getSharedPreferences("uk.co.jakelee.blacksmithslots", MODE_PRIVATE);
-        LanguageHelper.updateLanguage(getApplicationContext());
         ButterKnife.bind(this);
 
         ratingPrompt();
@@ -171,6 +171,17 @@ public class MapActivity extends BaseActivity implements
         super.onResume();
         onConnected(null);
         MusicHelper.getInstance(this).playIfPossible(R.raw.village_consort);
+        updateText();
+    }
+
+    private void updateText() {
+        ((TextView)findViewById(R.id.inventory)).setText(R.string.inventory);
+        ((TextView)findViewById(R.id.displayHint)).setText(R.string.hints);
+        ((TextView)findViewById(R.id.claimBonus)).setText(R.string.claim_bonus);
+        ((TextView)findViewById(R.id.openShop)).setText(R.string.shop);
+        ((TextView)findViewById(R.id.openTrophy)).setText(R.string.trophies);
+        ((TextView)findViewById(R.id.openCredits)).setText(R.string.credits);
+        ((TextView)findViewById(R.id.watchAdvert)).setText(R.string.watch_advert);
     }
 
     @Override
@@ -335,13 +346,14 @@ public class MapActivity extends BaseActivity implements
     
     @OnClick(R.id.displayHint)
     public void displayHint() {
-        int thisHint = prefs.getInt("nextHint", 0);
-        String[] hintArray = getResources().getStringArray(R.array.hints);
-        if (thisHint >= hintArray.length) {
-            thisHint = 0;
+        int numTips = 25;
+        int thisHint = prefs.getInt("nextHint", 1);
+        if (thisHint > numTips) {
+            thisHint = 1;
         }
 
-        String hintMessage = getString(R.string.hint) + " " + (thisHint + 1) + "/" + hintArray.length + ": " + hintArray[thisHint];
+        String hint = TextHelper.getInstance(this).getText(DisplayHelper.getHintString(thisHint));
+        String hintMessage = getString(R.string.hint) + " " + thisHint + "/" + numTips + ": " + hint;
         AlertHelper.info(this, hintMessage, false);
         prefs.edit().putInt("nextHint", ++thisHint).apply();
     }
