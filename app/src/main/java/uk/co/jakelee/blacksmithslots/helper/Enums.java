@@ -19,7 +19,7 @@ public class Enums {
     }
 
     public enum Language {
-        English(1), French(2), Russian(3);
+        English(1), Chinese(2), Dutch(3), French(4), German(5), Korean(6), Portuguese(7), Russian(8), Spanish(9);
         public int value;
         Language(int value) {
             this.value = value;

@@ -59,7 +59,7 @@
 
     <!-- UI -->
     <!-- Misc -->
-    <string name="unknown">\???</string>
+    <string name="unknown" translatable="false">\???</string>
 
     <!-- Advert -->
     <string name="interstitialTimeLeft">Remaining: %1$ds</string>
@@ -124,10 +124,16 @@
 
     <!-- Lookups -->
     <string name="language_1">English</string>
-    <string name="language_2">French</string>
-    <string name="language_3">Russian</string>
+    <string name="language_2">Chinese</string>
+    <string name="language_3">Dutch</string>
+    <string name="language_4">French</string>
+    <string name="language_5">German</string>
+    <string name="language_6">Korean</string>
+    <string name="language_7">Portuguese</string>
+    <string name="language_8">Russian</string>
+    <string name="language_9">Spanish</string>
 
-    <string name="tier_0"></string>
+    <string name="tier_0" translatable="false"></string>
     <string name="tier_1">Bronze</string>
     <string name="tier_2">Iron</string>
     <string name="tier_3">Steel</string>
@@ -136,7 +142,7 @@
     <string name="tier_6">Silver</string>
     <string name="tier_7">Gold</string>
     <string name="tier_10">Partial</string>
-    <string name="tier_999"></string>
+    <string name="tier_999" translatable="false"></string>
 
     <string name="type_1">Ore</string>
     <string name="type_2">Bar</string>
@@ -1001,6 +1007,7 @@
     <string name="statistic_20_name">Chest</string>
     <string name="statistic_21_name">Gamble</string>
     <string name="statistic_22_name">Trophies Earned</string>
+    <string name="statistic_23_name">Higher / Lower</string>
     <string name="statistic_next_claim_name">Next Bonus Claim</string>
 
     <string name="statistictype_1_name">Progress</string>
@@ -1076,7 +1083,7 @@
     <string name="alert_support_code_successful">Support code successfully applied!</string>
     <string name="alert_support_code_used">Support code already used! Don\'t be cheeky!</string>
     <string name="alert_support_code_failed">Error whilst applying code. Please contact support!</string>
-    <string name="alert_enter_support_code"><![CDATA[Enter support code (copy & paste recommended!)]]></string>
+    <string name="alert_enter_support_code">Enter support code (copy &amp; paste recommended!)</string>
     <string name="apply">Apply</string>
     <string name="cloud_load">Cloud Load</string>
     <string name="cloud_save">Cloud Save</string>
@@ -1095,7 +1102,7 @@
     <string name="stage_5">Thank you!</string>
     <string name="credits">Credits</string>
     <string name="credits_library_title">Libraries</string>
-    <string name="credits_library">
+    <string name="credits_library" translatable="false">
 AESCrypt (https://goo.gl/Ewk2tq) - Support code encryption.
 \nAndroid-Gif-Drawable (https://goo.gl/b8OewX) - Animated GIF support.
 \nAndroid-Rate (https://goo.gl/qmJ4j6) - Rating / review prompt.
@@ -1111,12 +1118,12 @@ AESCrypt (https://goo.gl/Ewk2tq) - Support code encryption.
 \nTourGuide (https://goo.gl/awlGa1) - Tutorial.
     </string>
     <string name="credits_graphics_title">Graphics</string>
-    <string name="credits_graphics">\
+    <string name="credits_graphics" translatable="false">\
 @7SoulDesign (https://twitter.com/7souldesign) - Icon assets.
 \nKenney (https://kenney.nl/) - Map and UI assets.
     </string>
     <string name="credits_audio_title">Audio</string>
-    <string name="credits_audio">\"Village Consort\" &amp; \"Time Passes\" Kevin MacLeod (incompetech.com): Licensed under Creative Commons By Attribution 3.0 License (https://goo.gl/yKRP3S)</string>
+    <string name="credits_audio" translatable="false">\"Village Consort\" &amp; \"Time Passes\" Kevin MacLeod (incompetech.com): Licensed under Creative Commons By Attribution 3.0 License (https://goo.gl/yKRP3S)</string>
     <string name="minigame_chest_win_0">Unlucky, you won nothing!</string>
     <string name="minigame_chest_win_1">Well, it\'s something.. you won %1$s.</string>
     <string name="minigame_chest_win_5">Pretty good! You won %1$s!</string>

@@ -199,7 +199,7 @@ public class SettingsActivity extends BaseActivity {
             row.findViewById(R.id.logoutButton).setBackgroundResource(GooglePlayHelper.IsConnected() ? R.drawable.box_orange : R.drawable.box_green);
             row.findViewById(R.id.logoutButton).setAlpha(GooglePlayHelper.IsConnected() ? 1f : 0.5f);
         } else if (setting.getSetting() == Enums.Setting.Language) {
-            createDropdown((Spinner) row.findViewById(R.id.settingPicker), 3, 1, Enums.Setting.Language);
+            createDropdown((Spinner) row.findViewById(R.id.settingPicker), 9, 1, Enums.Setting.Language);
         } else if (setting.getSetting() == Enums.Setting.Orientation) {
             createDropdown((Spinner) row.findViewById(R.id.settingPicker), Constants.ORIENTATION_PORTRAIT, Constants.ORIENTATION_AUTO, Enums.Setting.Orientation);
         } else if (setting.getDataType() == Enums.DataType.Boolean.value) {
