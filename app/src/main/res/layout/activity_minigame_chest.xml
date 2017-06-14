@@ -31,16 +31,16 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
-                <ImageView style="@style/MinigameIcon"/>
-                <ImageView style="@style/MinigameIcon"/>
-                <ImageView style="@style/MinigameIcon"/>
+                <ImageView style="@style/MinigameChest"/>
+                <ImageView style="@style/MinigameChest"/>
+                <ImageView style="@style/MinigameChest"/>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
-                <ImageView style="@style/MinigameIcon"/>
-                <ImageView style="@style/MinigameIcon"/>
-                <ImageView style="@style/MinigameIcon"/>
+                <ImageView style="@style/MinigameChest"/>
+                <ImageView style="@style/MinigameChest"/>
+                <ImageView style="@style/MinigameChest"/>
             </LinearLayout>
             <uk.co.jakelee.blacksmithslots.components.FontTextView
                 android:id="@+id/description"

@@ -80,14 +80,17 @@
         <item name="android:background">@drawable/background_brown</item>
     </style>
 
-    <style name="MinigameIcon">
+    <style name="MinigameChest" parent="MinigameDice">
+        <item name="android:onClick">selectChest</item>
+    </style>
+
+    <style name="MinigameDice">
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">50dp</item>
         <item name="android:layout_weight">1</item>
         <item name="android:padding">3dp</item>
         <item name="android:layout_margin">7dp</item>
         <item name="android:src">@drawable/chest_1</item>
-        <item name="android:onClick">selectChest</item>
     </style>
 
     <style name="DialogButton" parent="LargeFontSize">

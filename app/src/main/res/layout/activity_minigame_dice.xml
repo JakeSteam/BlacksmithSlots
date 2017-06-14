@@ -31,9 +31,9 @@
                 android:id="@+id/diceContainer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
-                <ImageView style="@style/MinigameIcon" android:src="@drawable/dice_1"/>
-                <ImageView style="@style/MinigameIcon" android:src="@drawable/dice_2"/>
-                <ImageView style="@style/MinigameIcon" android:src="@drawable/dice_3"/>
+                <ImageView style="@style/MinigameDice" android:src="@drawable/dice_1"/>
+                <ImageView style="@style/MinigameDice" android:src="@drawable/dice_2"/>
+                <ImageView style="@style/MinigameDice" android:src="@drawable/dice_3"/>
             </LinearLayout>
             <uk.co.jakelee.blacksmithslots.components.FontTextView
                 android:id="@+id/description"

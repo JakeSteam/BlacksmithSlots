@@ -297,7 +297,7 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
         settings.add(new Setting(Enums.SettingGroup.Audio, Enums.Setting.Music, true));
         settings.add(new Setting(Enums.SettingGroup.Audio, Enums.Setting.Sound, true));
         settings.add(new Setting(Enums.SettingGroup.Internal, Enums.Setting.AttemptLogin, true));
-        settings.add(new Setting(Enums.SettingGroup.Gameplay, Enums.Setting.OnlyActiveResources, true));
+        settings.add(new Setting(Enums.SettingGroup.Gameplay, Enums.Setting.OnlyActiveResources, false));
         settings.add(new Setting(Enums.SettingGroup.Gameplay, Enums.Setting.Language, Enums.Language.English.value));
         settings.add(new Setting(Enums.SettingGroup.Notifications, Enums.Setting.NotificationSounds, true));
         settings.add(new Setting(Enums.SettingGroup.Notifications, Enums.Setting.PeriodicBonusNotification, true));

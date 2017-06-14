@@ -81,8 +81,8 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/background_brown"
                 android:layout_margin="3dp"
-                android:paddingLeft="3dp"
-                android:paddingRight="3dp"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
                 android:paddingBottom="15dp" />
             <ScrollView
                 android:id="@+id/inventory"
@@ -93,9 +93,9 @@
                 android:layout_marginLeft="3dp"
                 android:layout_marginRight="3dp"
                 android:layout_marginBottom="3dp"
-                android:paddingLeft="3dp"
+                android:paddingLeft="8dp"
                 android:paddingRight="8dp"
-                android:paddingBottom="8dp"
+                android:paddingBottom="15dp"
                 android:fadeScrollbars="false">
                 <TableLayout
                     android:id="@+id/inventoryDisplay"

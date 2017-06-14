@@ -77,6 +77,7 @@ public class TrophyActivity extends BaseActivity {
         String itemName = TrophyGridAdapter.getTrophyName(this, trophy);
         if (trophy.isAchieved()) {
             handInButton.setVisibility(View.GONE);
+            itemImage.getDrawable().clearColorFilter();
             itemProgress.setText(String.format(Locale.ENGLISH, getString(R.string.trophy_progress_achieved), itemName));
         } else {
             handInButton.setVisibility(View.VISIBLE);
