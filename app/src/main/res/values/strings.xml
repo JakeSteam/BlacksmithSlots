@@ -322,8 +322,8 @@
     <string name="task_14_1_text">If you want to get thise close to pure Purple, you\'re gonna need to be tough!</string>
 
     <string name="slot_15_name">The Purple</string>
-    <string name="slot_15_locked">...</string>
-    <string name="slot_15_unlocked">..!</string>
+    <string name="slot_15_locked" translatable="false">...</string>
+    <string name="slot_15_unlocked" translatable="false">..!</string>
     <string name="task_15_1_text">Go...</string>
     <string name="task_15_2_text">Away...</string>
 
