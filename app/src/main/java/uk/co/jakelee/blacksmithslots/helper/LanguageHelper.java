@@ -58,7 +58,7 @@ public class LanguageHelper {
             case 4: return new String(Character.toChars(0x1F1EB)) + new String(Character.toChars(0x1F1F7));
             case 5: return new String(Character.toChars(0x1F1E9)) + new String(Character.toChars(0x1F1EA));
             case 6: return new String(Character.toChars(0x1F1F0)) + new String(Character.toChars(0x1F1F7));
-            case 7: return new String(Character.toChars(0x1F1E7)) + new String(Character.toChars(0x1F1E7));
+            case 7: return new String(Character.toChars(0x1F1E7)) + new String(Character.toChars(0x1F1F7));
             case 8: return new String(Character.toChars(0x1F1F7)) + new String(Character.toChars(0x1F1FA));
             case 9: return new String(Character.toChars(0x1F1EA)) + new String(Character.toChars(0x1F1F8));
             default: return "";

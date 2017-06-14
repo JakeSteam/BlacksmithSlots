@@ -39,6 +39,7 @@
                 android:paddingBottom="0dp"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
+                android:clickable="true"
                 android:onClick="openVip"/>
             <uk.co.jakelee.blacksmithslots.components.FontTextView
                 android:id="@+id/currentLevel"

@@ -900,7 +900,6 @@
     <string name="task_9_2_text">Ooog! Hungrig!</string>
     <string name="task_completion">Aufgabe %1$d/%2$d: %3$s</string>
     <string name="task_description">Aufgabe %1$d (%2$s)</string>
-    <string name="tier_0" translatable="false"></string>
     <string name="tier_1">Bronze</string>
     <string name="tier_10">Teilweise</string>
     <string name="tier_2">Eisen</string>

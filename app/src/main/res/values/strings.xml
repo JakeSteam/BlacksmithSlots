@@ -1202,4 +1202,6 @@ AESCrypt (https://goo.gl/Ewk2tq) - Support code encryption.
     <string name="hint_23">Tapping the VIP or level number areas on the slot screen will provide more information.</string>
     <string name="hint_24">Make sure to utilise autospin!</string>
     <string name="hint_25">Curious what was used to make the game? Check out the Credits!</string>
+    <string name="higher">Higher</string>
+    <string name="lower">Lower</string>
 </resources>
