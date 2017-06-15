@@ -192,7 +192,7 @@
                 </LinearLayout>
                 <uk.co.jakelee.blacksmithslots.components.FontTextView
                     android:id="@+id/spinButton"
-                    android:layout_width="80dp"
+                    android:layout_width="60dp"
                     android:background="@drawable/box_filled_green"
                     android:onClick="spin"
                     style="@style/SlotText"/>
