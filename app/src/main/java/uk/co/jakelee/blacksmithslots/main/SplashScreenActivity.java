@@ -104,10 +104,10 @@ public class SplashScreenActivity extends Activity {
         globeImage.setImageDrawable(transitionDrawable);
 
         handler.post(stage1);
-        handler.postDelayed(stage2, 6000);
-        handler.postDelayed(stage3, 12000);
-        handler.postDelayed(stage4, 18000);
-        handler.postDelayed(stage5, 24000);
+        handler.postDelayed(stage2, 7000);
+        handler.postDelayed(stage3, 9000);
+        handler.postDelayed(stage4, 11000);
+        //handler.postDelayed(stage5, 24000);
     }
 
     private Runnable stage1 = new Runnable() {
@@ -122,7 +122,7 @@ public class SplashScreenActivity extends Activity {
     private Runnable stage2 = new Runnable() {
         @Override
         public void run() {
-            transitionDrawable.startTransition(4000);
+            transitionDrawable.startTransition(1900);
             setStoryText(getString(R.string.stage_2));
         }
     };
@@ -130,7 +130,7 @@ public class SplashScreenActivity extends Activity {
     private Runnable stage3 = new Runnable() {
         @Override
         public void run() {
-            transitionDrawable.startTransition(4000);
+            transitionDrawable.startTransition(1900);
             setStoryText(getString(R.string.stage_3));
         }
     };
@@ -138,7 +138,7 @@ public class SplashScreenActivity extends Activity {
     private Runnable stage4 = new Runnable() {
         @Override
         public void run() {
-            transitionDrawable.startTransition(4000);
+            transitionDrawable.startTransition(1900);
             setStoryText(getString(R.string.stage_4));
         }
     };

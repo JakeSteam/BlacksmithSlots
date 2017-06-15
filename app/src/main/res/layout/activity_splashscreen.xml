@@ -9,7 +9,8 @@
         android:id="@+id/controlBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="5dp">
+        android:padding="5dp"
+        android:visibility="invisible">
         <uk.co.jakelee.blacksmithslots.components.AwesomeTextView
             android:id="@+id/muteButton"
             style="@style/SlotText"
@@ -75,5 +76,6 @@
         android:alpha="0.9"
         android:maxLines="4"
         android:textSize="30sp"
+        android:visibility="invisible"
         android:padding="5dp"/>
 </RelativeLayout>
