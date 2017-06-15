@@ -192,16 +192,16 @@ public class SlotHelper {
             wheel.setEnabled(false);
             wheel.setVisibleItems(Constants.ROWS);
 
-            activity.findViewById(R.id.slotSwipeListener).setOnTouchListener(new View.OnTouchListener() {
-                public boolean onTouch(View v, MotionEvent event) {
-                    spin(true);
-                    return true;
-                }
-            });
-
             container.addView(wheel, new LinearLayout.LayoutParams(0, ViewGroup.LayoutParams.MATCH_PARENT, 1f));
             slots.add(wheel);
         }
+
+        activity.findViewById(R.id.slotSwipeListener).setOnTouchListener(new View.OnTouchListener() {
+            public boolean onTouch(View v, MotionEvent event) {
+                spin(true);
+                return true;
+            }
+        });
 
         afterStakeChangeUpdate();
     }
