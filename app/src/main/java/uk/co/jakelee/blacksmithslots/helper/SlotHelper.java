@@ -8,6 +8,7 @@ import android.util.DisplayMetrics;
 import android.util.Log;
 import android.util.Pair;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -147,7 +148,6 @@ public class SlotHelper {
 
             wheel.setViewAdapter(new SlotAdapter(wheel.getContext(), displayMetrics, items.get(i)));
             wheel.setCurrentItem(0);
-
             wheel.addScrollingListener(new OnWheelScrollListener() {
                 @Override
                 public void onScrollingStarted(WheelView wheel) {
@@ -158,6 +158,7 @@ public class SlotHelper {
                 public void onScrollingFinished(WheelView wheel) {
                     stillSpinningSlots--;
                     if (stillSpinningSlots <= 0) {
+                        activity.findViewById(R.id.slotSwipeListener).bringToFront();
                         updateStatus();
                         afterSpinUpdate();
                         if (minigameToLoad != null) {
@@ -190,6 +191,13 @@ public class SlotHelper {
             wheel.setCyclic(true);
             wheel.setEnabled(false);
             wheel.setVisibleItems(Constants.ROWS);
+
+            activity.findViewById(R.id.slotSwipeListener).setOnTouchListener(new View.OnTouchListener() {
+                public boolean onTouch(View v, MotionEvent event) {
+                    spin(true);
+                    return true;
+                }
+            });
 
             container.addView(wheel, new LinearLayout.LayoutParams(0, ViewGroup.LayoutParams.MATCH_PARENT, 1f));
             slots.add(wheel);

@@ -221,6 +221,14 @@
                 android:layout_centerHorizontal="true"
                 android:layout_above="@id/bottomBar">
             </LinearLayout>
+            <View
+                android:id="@+id/slotSwipeListener"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignLeft="@id/slotContainer"
+                android:layout_alignRight="@id/slotContainer"
+                android:layout_alignTop="@id/slotContainer"
+                android:layout_alignBottom="@id/slotContainer" />
         </RelativeLayout>
     </android.support.percent.PercentRelativeLayout>
 
