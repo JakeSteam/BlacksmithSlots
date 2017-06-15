@@ -1,14 +1,11 @@
 package uk.co.jakelee.blacksmithslots.model;
 
-import android.content.Context;
-
 import com.orm.SugarRecord;
 import com.orm.dsl.Column;
 import com.orm.dsl.Table;
 
-import uk.co.jakelee.blacksmithslots.helper.DisplayHelper;
+import uk.co.jakelee.blacksmithslots.helper.CalculationHelper;
 import uk.co.jakelee.blacksmithslots.helper.Enums;
-import uk.co.jakelee.blacksmithslots.helper.TextHelper;
 
 @Table(name="c")
 public class Trophy extends SugarRecord {
@@ -26,7 +23,7 @@ public class Trophy extends SugarRecord {
         this.itemType = itemType;
         this.itemsHandedIn = 0;
         this.itemsRequired = 1000;
-        this.achieved = 0L;
+        this.achieved = CalculationHelper.randomBoolean() ? System.currentTimeMillis() : 0L;
     }
 
     public Trophy(int itemTier, int itemType, int itemsRequired) {
@@ -34,7 +31,7 @@ public class Trophy extends SugarRecord {
         this.itemType = itemType;
         this.itemsHandedIn = 0;
         this.itemsRequired = itemsRequired;
-        this.achieved = 0L;
+        this.achieved = CalculationHelper.randomBoolean() ? System.currentTimeMillis() : 0L;
     }
 
     public Trophy(int itemTier, int itemType, int itemsHandedIn, int itemsRequired, long achieved) {

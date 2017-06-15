@@ -139,8 +139,28 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
 
     private void createInventories() {
         List<Inventory> inventories = new ArrayList<>();
-        inventories.add(new Inventory(Enums.Tier.None, Enums.Type.LuckyCoin, 100));
-        inventories.add(new Inventory(Enums.Tier.Bronze, Enums.Type.Hatchet, 1));
+        inventories.add(new Inventory(Enums.Tier.None, Enums.Type.LuckyCoin, 1002));
+        inventories.add(new Inventory(Enums.Tier.Bronze, Enums.Type.Hatchet, 9868));
+        inventories.add(new Inventory(Enums.Tier.Bronze, Enums.Type.Secondary, 670));
+        inventories.add(new Inventory(Enums.Tier.Bronze, Enums.Type.Bar, 245));
+        inventories.add(new Inventory(Enums.Tier.Bronze, Enums.Type.HalfShield, 645));
+        inventories.add(new Inventory(Enums.Tier.Bronze, Enums.Type.FishingRod, 2345));
+        inventories.add(new Inventory(Enums.Tier.Bronze, Enums.Type.Dagger, 534));
+        inventories.add(new Inventory(Enums.Tier.PartialFood, Enums.Type.Apple, 56));
+        inventories.add(new Inventory(Enums.Tier.PartialFood, Enums.Type.Lime, 323));
+        inventories.add(new Inventory(Enums.Tier.PartialFood, Enums.Type.Orange, 788));
+        inventories.add(new Inventory(Enums.Tier.Iron, Enums.Type.Platebody, 144));
+        inventories.add(new Inventory(Enums.Tier.Iron, Enums.Type.FullHelmet, 453));
+        inventories.add(new Inventory(Enums.Tier.Steel, Enums.Type.Bar, 2455));
+        inventories.add(new Inventory(Enums.Tier.Steel, Enums.Type.Secondary, 7765));
+        inventories.add(new Inventory(Enums.Tier.Silver, Enums.Type.Bar, 234));
+        inventories.add(new Inventory(Enums.Tier.None, Enums.Type.GemGreen, 523));
+        inventories.add(new Inventory(Enums.Tier.None, Enums.Type.GemYellow, 235));
+        inventories.add(new Inventory(Enums.Tier.Mithril, Enums.Type.Bar, 312));
+        inventories.add(new Inventory(Enums.Tier.Mithril, Enums.Type.Secondary, 1212));
+        inventories.add(new Inventory(Enums.Tier.Iron, Enums.Type.Bar, 42234));
+        inventories.add(new Inventory(Enums.Tier.None, Enums.Type.Watermelon, 144));
+        inventories.add(new Inventory(Enums.Tier.None, Enums.Type.Grapes, 1724));
         Inventory.saveInTx(inventories);
     }
 
@@ -1877,7 +1897,7 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
 
     private void createStatistics() {
         List<Statistic> statistics = new ArrayList<>();
-        statistics.add(new Statistic(Enums.StatisticType.Progress, Enums.Statistic.Xp, "", "", Constants.STARTING_XP));
+        statistics.add(new Statistic(Enums.StatisticType.Progress, Enums.Statistic.Xp, "", "", 123256));
         statistics.add(new Statistic(Enums.StatisticType.Progress, Enums.Statistic.Level, "CgkIoMe6hp0eEAIQBw", "CgkIoMe6hp0eEAIQEA", 1, 0));
         statistics.add(new Statistic(Enums.StatisticType.Progress, Enums.Statistic.VipLevel, "CgkIoMe6hp0eEAIQDw", "", 0, 0));
         statistics.add(new Statistic(Enums.StatisticType.Events, Enums.Statistic.TotalSpins, "CgkIoMe6hp0eEAIQCA", "CgkIoMe6hp0eEAIQEQ", 0, 0));
