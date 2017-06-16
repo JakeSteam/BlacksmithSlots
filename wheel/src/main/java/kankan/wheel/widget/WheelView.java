@@ -72,7 +72,6 @@ public class WheelView extends View {
 
 	// Wheel drawables
 	private int wheelBackground = R.drawable.wheel_bg;
-	private int wheelForeground = R.drawable.wheel_val;
 
 	// Shadows drawables
 	private GradientDrawable topShadow;
@@ -448,15 +447,6 @@ public class WheelView extends View {
 	}
 
 	/**
-	 * Sets the drawable for the wheel foreground
-	 * @param resource
-	 */
-	public void setWheelForeground(int resource) {
-		wheelForeground = resource;
-		centerDrawable = getContext().getResources().getDrawable(wheelForeground);
-	}
-
-	/**
 	 * Invalidates wheel
 	 * @param clearCaches if true then cached views will be clear
 	 */
@@ -479,10 +469,6 @@ public class WheelView extends View {
 	 * Initializes resources
 	 */
 	private void initResourcesIfNecessary() {
-		if (centerDrawable == null) {
-			centerDrawable = getContext().getResources().getDrawable(wheelForeground);
-		}
-
 		if (topShadow == null) {
 			topShadow = new GradientDrawable(Orientation.TOP_BOTTOM, SHADOWS_COLORS);
 		}
@@ -650,10 +636,10 @@ public class WheelView extends View {
 	 * @param canvas the canvas for drawing
 	 */
 	private void drawCenterRect(Canvas canvas) {
-		int center = getHeight() / 2;
+		/*int center = getHeight() / 2;
 		int offset = (int) (getItemHeight() / 2 * 1.2);
 		centerDrawable.setBounds(0, center - offset, getWidth(), center + offset);
-		centerDrawable.draw(canvas);
+		centerDrawable.draw(canvas);*/
 	}
 
 	@Override
