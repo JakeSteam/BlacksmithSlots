@@ -15,10 +15,10 @@ public class ToolTip {
     public String mTitle, mDescription;
     public int mBackgroundColor, mTextColor;
     public Animation mEnterAnimation, mExitAnimation;
-    public boolean mShadow;
+    private boolean mShadow;
     public int mGravity;
     public View.OnClickListener mOnClickListener;
-    public ViewGroup mCustomView;
+    private ViewGroup mCustomView;
     public int mWidth;
 
     public ToolTip(){
@@ -87,12 +87,7 @@ public class ToolTip {
         mEnterAnimation = enterAnimation;
         return this;
     }
-    /**
-     * Set exit animation
-     * @param exitAnimation
-     * @return return ToolTip instance for chaining purpose
-     */
-//    TODO:
+    //    TODO:
 //    public ToolTip setExitAnimation(Animation exitAnimation){
 //        mExitAnimation = exitAnimation;
 //        return this;

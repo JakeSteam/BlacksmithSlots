@@ -1,14 +1,10 @@
 package uk.co.jakelee.blacksmithslots.model;
 
-import android.content.Context;
-
 import com.orm.SugarRecord;
 import com.orm.dsl.Column;
 import com.orm.dsl.Table;
 
-import uk.co.jakelee.blacksmithslots.helper.DisplayHelper;
 import uk.co.jakelee.blacksmithslots.helper.Enums;
-import uk.co.jakelee.blacksmithslots.helper.TextHelper;
 
 @Table(name="c")
 public class Trophy extends SugarRecord {

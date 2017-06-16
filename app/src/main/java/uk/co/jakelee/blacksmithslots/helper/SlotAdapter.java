@@ -16,19 +16,19 @@ import java.util.List;
 import kankan.wheel.widget.adapters.AbstractWheelAdapter;
 import uk.co.jakelee.blacksmithslots.model.ItemBundle;
 
-public class SlotAdapter extends AbstractWheelAdapter {
+class SlotAdapter extends AbstractWheelAdapter {
     // Image size
-    int IMAGE_WIDTH = 120;
-    int IMAGE_HEIGHT = 120;
+    private int IMAGE_WIDTH = 120;
+    private int IMAGE_HEIGHT = 120;
 
     // Slot machine symbols
     private final List<ItemBundle> rewards;
 
     // Cached images
-    private List<SoftReference<Bitmap>> images;
+    private final List<SoftReference<Bitmap>> images;
 
     // Layout inflater
-    private Context context;
+    private final Context context;
 
     /**
      * Constructor

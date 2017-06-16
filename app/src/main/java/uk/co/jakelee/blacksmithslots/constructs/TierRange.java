@@ -12,7 +12,7 @@ public class TierRange {
     private int max;
     private int itemPerLevel;
 
-    public TierRange(Enums.Tier tier, int min, int max, int itemPerLevel) {
+    private TierRange(Enums.Tier tier, int min, int max, int itemPerLevel) {
         this.tier = tier;
         this.min = min;
         this.max = max;

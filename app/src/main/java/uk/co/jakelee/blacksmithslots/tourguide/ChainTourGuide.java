@@ -11,7 +11,7 @@ import android.view.View;
 public class ChainTourGuide extends TourGuide {
     private Sequence mSequence;
 
-    public ChainTourGuide(Activity activity) {
+    private ChainTourGuide(Activity activity) {
         super(activity);
     }
 
@@ -83,7 +83,7 @@ public class ChainTourGuide extends TourGuide {
         return this;
     }
 
-    public ChainTourGuide setSequence(Sequence sequence){
+    private ChainTourGuide setSequence(Sequence sequence){
         mSequence = sequence;
         mSequence.setParentTourGuide(this);
         for (ChainTourGuide tourGuide : sequence.mTourGuideArray){

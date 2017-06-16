@@ -8,7 +8,7 @@
     android:background="@color/white"
     android:ellipsize="marquee"
     android:gravity="center_horizontal"
-    android:maxLines="1"
+    android:singleLine="true"
     android:padding="5dp"
     android:textColor="@color/black"
     android:textSize="20sp" />

@@ -8,7 +8,7 @@ public class TextHelper {
     private static TextHelper thInstance = null;
     private final String packageName;
 
-    public TextHelper(Context context) {
+    private TextHelper(Context context) {
         this.resources = context.getResources();
         this.packageName = context.getPackageName();
     }

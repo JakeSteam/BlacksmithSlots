@@ -24,9 +24,9 @@ import uk.co.jakelee.blacksmithslots.model.Slot;
 
 public class MinigameChestActivity extends MinigameActivity {
     private boolean selected = false;
-    private List<Pair<Integer, ItemBundle>> potentialRewards = new ArrayList<>();
+    private final List<Pair<Integer, ItemBundle>> potentialRewards = new ArrayList<>();
     private ItemBundle winnings;
-    public final static int[] chestDrawables = {R.drawable.chest_1, R.drawable.chest_2, R.drawable.chest_3, R.drawable.chest_4, R.drawable.chest_5, R.drawable.chest_6};
+    private final static int[] chestDrawables = {R.drawable.chest_1, R.drawable.chest_2, R.drawable.chest_3, R.drawable.chest_4, R.drawable.chest_5, R.drawable.chest_6};
 
     @BindView(R.id.chestContainer) LinearLayout chestContainer;
     @BindView(R.id.description) TextView description;

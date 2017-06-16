@@ -87,7 +87,7 @@
     <string name="hand_in_items_long">%1$s 몇 통을 들여 보내시겠습니까?\\n\\n%2$d에 나눠 주면 트로피가 해제됩니다!</string>
     <string name="hint">힌트</string>
     <string name="hints">힌트</string>
-    <string name="iap_bundle_purchased">% s을 (를) 포함하는 번들을 받았습니다!</string>
+    <string name="iap_bundle_purchased">%s 을 (를) 포함하는 번들을 받았습니다!</string>
     <string name="import_save">가져 오기 저장</string>
     <string name="interstitialLongText">광고를로드 할 수 없습니다!\\n\\n이는 빈약 한 인터넷, 최근에 광고를 활성화하거나 현재 귀하의 지역에서 광고하는 광고주가 없기 때문에 발생할 수 있습니다.\\n\\n상단의 카운트 다운이 0에 도달하여 녹색으로 바뀔 때까지 기다리면이 창을 닫으면 광고 보상이 제공됩니다.\\n\\n기다리는 동안 <a href="https://play.google.com/store/apps/details?id=uk.co.jakelee.blacksmithslots"> 게임 등급을 유지 </a> 할 수 있습니다. 게임을 성장시키는 데 도움이되는 가장 좋은 방법입니다.\\n\\n또는 원래 게임 인 <a href="https://play.google.com/store/apps/details?id=uk.co.jakelee.blacksmith"> 픽셀 대장장이 </a>를 확인해보십시오. 나는 그것이 다소 재미 있다고 생각한다!</string>
     <string name="interstitialTimeLeft">남은 항목 :  %1$ds</string>

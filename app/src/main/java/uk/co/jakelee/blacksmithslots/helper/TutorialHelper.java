@@ -18,11 +18,11 @@ import uk.co.jakelee.blacksmithslots.tourguide.TourGuide;
 
 public class TutorialHelper {
     public static boolean currentlyInTutorial = false;
-    public static ChainTourGuide chainTourGuide;
-    public static int currentStage;
+    private static ChainTourGuide chainTourGuide;
+    private static int currentStage;
     private final List<ChainTourGuide> tourGuides = new ArrayList<>();
     private final Animation enterAnimation = new AlphaAnimation(0f, 1f);
-    private Activity activity;
+    private final Activity activity;
 
     public TutorialHelper(Activity activity, int stage) {
         currentStage = stage;

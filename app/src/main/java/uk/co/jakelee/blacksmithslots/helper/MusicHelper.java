@@ -11,11 +11,11 @@ public class MusicHelper {
     private static MusicHelper mhInstance = null;
     private boolean movingInApp = false;
     private int currentTrack = 0;
-    private Context context;
+    private final Context context;
     private static Intent musicService;
     private boolean musicServiceIsStarted = false;
 
-    public MusicHelper(Context context) {
+    private MusicHelper(Context context) {
         this.context = context;
     }
 

@@ -17,7 +17,8 @@
         android:supportsRtl="false"
         android:largeHeap="true"
         android:theme="@style/AppTheme"
-        tools:replace="android:supportsRtl">
+        tools:replace="android:supportsRtl"
+        android:fullBackupContent="@xml/backup_descriptor">
         <meta-data
             android:name="DATABASE"
             android:value="blacksmithslots.db" />

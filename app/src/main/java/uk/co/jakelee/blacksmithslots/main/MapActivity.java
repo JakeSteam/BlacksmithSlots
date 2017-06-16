@@ -6,6 +6,7 @@ import android.content.res.Configuration;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.annotation.NonNull;
 import android.support.v4.view.ViewPager;
 import android.view.Gravity;
 import android.view.View;
@@ -96,7 +97,7 @@ public class MapActivity extends BaseActivity implements
     @BindView(R.id.googlePlayLoginRow)
     LinearLayout googlePlayLoginRow;
     private int selectedSlot = 1;
-    private Handler handler = new Handler();
+    private final Handler handler = new Handler();
     private MapPagerAdapter mapPagerAdapter;
     public AdvertHelper advertHelper;
     private boolean isFirstInstall = false;
@@ -538,7 +539,7 @@ public class MapActivity extends BaseActivity implements
     }
 
     @Override
-    public void onConnectionFailed(ConnectionResult connectionResult) {
+    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
         GooglePlayHelper.ConnectionFailed(this, connectionResult);
     }
 

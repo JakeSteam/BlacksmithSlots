@@ -27,8 +27,8 @@ public class MinigameHigherActivity extends MinigameActivity {
     private int multiplier = 5;
     private int currentCard = 6;
     private boolean gambleHigher = false;
-    private Handler handler = new Handler();
-    private int[] cardDrawables = {R.drawable.card_1, R.drawable.card_2,
+    private final Handler handler = new Handler();
+    private final int[] cardDrawables = {R.drawable.card_1, R.drawable.card_2,
             R.drawable.card_3, R.drawable.card_4, R.drawable.card_5, R.drawable.card_6,
             R.drawable.card_7, R.drawable.card_8, R.drawable.card_9, R.drawable.card_10,
             R.drawable.card_11, R.drawable.card_12, R.drawable.card_13};
@@ -68,7 +68,7 @@ public class MinigameHigherActivity extends MinigameActivity {
         gamble();
     }
 
-    public void gamble() {
+    private void gamble() {
         actionButtons.setVisibility(View.INVISIBLE);
 
         final long startTime = System.currentTimeMillis();

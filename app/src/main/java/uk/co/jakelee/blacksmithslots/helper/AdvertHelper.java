@@ -19,13 +19,13 @@ import uk.co.jakelee.blacksmithslots.main.MapActivity;
 import uk.co.jakelee.blacksmithslots.model.Statistic;
 
 public class AdvertHelper implements AppLovinAdRewardListener, AppLovinAdDisplayListener, AppLovinAdVideoPlaybackListener {
-    public AppLovinIncentivizedInterstitial advert;
+    private final AppLovinIncentivizedInterstitial advert;
     private MapActivity activity;
-    private Context context;
+    private final Context context;
     private boolean verified;
     private static AdvertHelper dhInstance = null;
 
-    public AdvertHelper(Context context) {
+    private AdvertHelper(Context context) {
         this.context = context;
 
         AppLovinSdk.initializeSdk(context);

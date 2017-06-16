@@ -36,11 +36,11 @@ public class TourGuide {
     public enum MotionType {
         ALLOW_ALL, CLICK_ONLY, SWIPE_ONLY
     }
-    protected Technique mTechnique;
-    protected View mHighlightedView;
-    private Activity mActivity;
-    protected MotionType mMotionType;
-    protected FrameLayoutWithHole mFrameLayout;
+    private Technique mTechnique;
+    View mHighlightedView;
+    private final Activity mActivity;
+    private MotionType mMotionType;
+    FrameLayoutWithHole mFrameLayout;
     private View mToolTipViewGroup;
     public ToolTip mToolTip;
     public Pointer mPointer;
@@ -58,7 +58,7 @@ public class TourGuide {
     }
 
     /* Constructor */
-    public TourGuide(Activity activity){
+    TourGuide(Activity activity){
         mActivity = activity;
     }
 
@@ -77,7 +77,7 @@ public class TourGuide {
      * @param motionType
      * @return return TourGuide instance for chaining purpose
      */
-    public TourGuide motionType(MotionType motionType){
+    TourGuide motionType(MotionType motionType){
         mMotionType = motionType;
         return this;
     }
@@ -176,7 +176,7 @@ public class TourGuide {
         }
     }
 
-    protected void setupView(){
+    void setupView(){
         // TourGuide can only be setup after all the views is ready and obtain it's position/measurement
         // so when this is the 1st time TourGuide is being added,
         // else block will be executed, and ViewTreeObserver will make TourGuide setup process to be delayed until everything is ready

@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
+import android.support.annotation.NonNull;
 import android.util.Log;
 import android.util.Pair;
 
@@ -350,7 +351,7 @@ public class GooglePlayHelper implements com.google.android.gms.common.api.Resul
 
     }
 
-    public static boolean AreGooglePlayServicesInstalled(Activity activity) {
+    private static boolean AreGooglePlayServicesInstalled(Activity activity) {
         GoogleApiAvailability api = GoogleApiAvailability.getInstance();
         int code = api.isGooglePlayServicesAvailable(activity);
         return code == ConnectionResult.SUCCESS;
@@ -375,7 +376,7 @@ public class GooglePlayHelper implements com.google.android.gms.common.api.Resul
 
 
     @SuppressWarnings("unchecked")
-    private static Class<? extends SugarRecord>[] backupClasses = new Class[] {
+    private static final Class<? extends SugarRecord>[] backupClasses = new Class[] {
             Iap.class,
             Inventory.class,
             Message.class,
@@ -386,21 +387,21 @@ public class GooglePlayHelper implements com.google.android.gms.common.api.Resul
             Trophy.class
     };
 
-    public static byte[] createBackup() {
+    private static byte[] createBackup() {
         Gson gson = new Gson();
 
-        String backupString = DatabaseHelper.LATEST_PATCH + GooglePlayHelper.SAVE_DELIMITER;
-        backupString += LevelHelper.getXp() + GooglePlayHelper.SAVE_DELIMITER;
-        backupString += Inventory.getUniqueItemCount() + GooglePlayHelper.SAVE_DELIMITER;
+        StringBuilder backupString = new StringBuilder(DatabaseHelper.LATEST_PATCH + GooglePlayHelper.SAVE_DELIMITER);
+        backupString.append(LevelHelper.getXp()).append(GooglePlayHelper.SAVE_DELIMITER);
+        backupString.append(Inventory.getUniqueItemCount()).append(GooglePlayHelper.SAVE_DELIMITER);
 
         for (Class<? extends SugarRecord> backupClass : backupClasses) {
-            backupString += gson.toJson(SugarRecord.listAll(backupClass)) + GooglePlayHelper.SAVE_DELIMITER;
+            backupString.append(gson.toJson(SugarRecord.listAll(backupClass))).append(GooglePlayHelper.SAVE_DELIMITER);
         }
 
-        return backupString.getBytes();
+        return backupString.toString().getBytes();
     }
 
-    public static void applyBackup(String backupData) {
+    private static void applyBackup(String backupData) {
         Gson gson = new Gson();
         String[] splitData = splitBackupData(backupData);
 
@@ -443,7 +444,7 @@ public class GooglePlayHelper implements com.google.android.gms.common.api.Resul
         return list;
     }
 
-    public static Pair<Integer, Integer> getXpAndItemsFromSave(byte[] saveBytes) {
+    private static Pair<Integer, Integer> getXpAndItemsFromSave(byte[] saveBytes) {
         int xp = 0;
         int items = 0;
 
@@ -475,8 +476,7 @@ public class GooglePlayHelper implements com.google.android.gms.common.api.Resul
         return new Pair<>(prestige, xp);
     }
 
-    public static String getStringBetweenStrings(String aString, String aPattern1, String aPattern2) {
-        String ret = null;
+    private static String getStringBetweenStrings(String aString, String aPattern1, String aPattern2) {
         int pos1,pos2;
 
         pos1 = aString.indexOf(aPattern1) + aPattern1.length();
@@ -486,10 +486,10 @@ public class GooglePlayHelper implements com.google.android.gms.common.api.Resul
             return aString.substring(pos1, pos2);
         }
 
-        return ret;
+        return null;
     }
 
-    public static boolean newSaveIsBetter(Pair<Integer, Integer> newValues) {
+    private static boolean newSaveIsBetter(Pair<Integer, Integer> newValues) {
         return !(newValues.first <= LevelHelper.getXp() && newValues.second <= Inventory.getUniqueItemCount());
     }
 
@@ -515,7 +515,7 @@ public class GooglePlayHelper implements com.google.android.gms.common.api.Resul
         }
     }
 
-    public void onResult(com.google.android.gms.common.api.Result result) {
+    public void onResult(@NonNull com.google.android.gms.common.api.Result result) {
         Quests.LoadQuestsResult r = (Quests.LoadQuestsResult) result;
         QuestBuffer qb = r.getQuests();
         qb.close();

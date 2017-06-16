@@ -27,20 +27,17 @@ import java.util.ArrayList;
  * TODO: document your custom view class.
  */
 public class FrameLayoutWithHole extends FrameLayout {
-    private TextPaint mTextPaint;
-    private Activity mActivity;
-    private TourGuide.MotionType mMotionType;
+    private final Activity mActivity;
+    private final TourGuide.MotionType mMotionType;
     private Paint mEraser;
 
-    Bitmap mEraserBitmap;
+    private Bitmap mEraserBitmap;
     private Canvas mEraserCanvas;
-    private Paint mPaint;
-    private Paint transparentPaint;
     private View mViewHole; // This is the targeted view to be highlighted, where the hole should be placed
-    private int mRadius;
-    private int[] mPos;
-    private float mDensity;
-    private Overlay mOverlay;
+    private final int mRadius;
+    private final int[] mPos;
+    private final float mDensity;
+    private final Overlay mOverlay;
     private RectF mRectF;
 
     private ArrayList<AnimatorSet> mAnimatorSetArrayList;
@@ -52,7 +49,7 @@ public class FrameLayoutWithHole extends FrameLayout {
 
     public void addAnimatorSet(AnimatorSet animatorSet) {
         if (mAnimatorSetArrayList == null) {
-            mAnimatorSetArrayList = new ArrayList<AnimatorSet>();
+            mAnimatorSetArrayList = new ArrayList<>();
         }
         mAnimatorSetArrayList.add(animatorSet);
     }
@@ -83,7 +80,7 @@ public class FrameLayoutWithHole extends FrameLayout {
         this(context, view, TourGuide.MotionType.ALLOW_ALL);
     }
 
-    public FrameLayoutWithHole(Activity context, View view, TourGuide.MotionType motionType) {
+    private FrameLayoutWithHole(Activity context, View view, TourGuide.MotionType motionType) {
         this(context, view, motionType, new Overlay());
     }
 
@@ -128,7 +125,7 @@ public class FrameLayoutWithHole extends FrameLayout {
 //        a.recycle();
         setWillNotDraw(false);
         // Set up a default TextPaint object
-        mTextPaint = new TextPaint();
+        TextPaint mTextPaint = new TextPaint();
         mTextPaint.setFlags(Paint.ANTI_ALIAS_FLAG);
         mTextPaint.setTextAlign(Paint.Align.LEFT);
 
@@ -147,9 +144,9 @@ public class FrameLayoutWithHole extends FrameLayout {
         mEraserBitmap = Bitmap.createBitmap(size.x + actionBarSize, size.y + actionBarSize, Bitmap.Config.ARGB_8888);
         mEraserCanvas = new Canvas(mEraserBitmap);
 
-        mPaint = new Paint();
+        Paint mPaint = new Paint();
         mPaint.setColor(0xcc000000);
-        transparentPaint = new Paint();
+        Paint transparentPaint = new Paint();
         transparentPaint.setColor(getResources().getColor(android.R.color.transparent));
         transparentPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.CLEAR));
 
@@ -165,7 +162,7 @@ public class FrameLayoutWithHole extends FrameLayout {
 
     private boolean mCleanUpLock = false;
 
-    protected void cleanUp() {
+    void cleanUp() {
         if (getParent() != null) {
             if (mOverlay != null && mOverlay.mExitAnimation != null) {
                 performOverlayExitAnimation();

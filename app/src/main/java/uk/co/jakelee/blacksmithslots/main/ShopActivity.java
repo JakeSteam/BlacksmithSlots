@@ -49,13 +49,13 @@ import uk.co.jakelee.blacksmithslots.model.Statistic;
 public class ShopActivity extends BaseActivity implements BillingProcessor.IBillingHandler {
     private boolean haveSetupTabs = false;
     private int selectedTabId = R.id.vipTabTab;
-    SharedPreferences prefs;
-    private List<Pair<Integer, Integer>> dropdownItems = new ArrayList<>();
-    int preloadingTier = 0;
-    int preloadingType = 0;
-    boolean preloadingVip = false;
+    private SharedPreferences prefs;
+    private final List<Pair<Integer, Integer>> dropdownItems = new ArrayList<>();
+    private int preloadingTier = 0;
+    private int preloadingType = 0;
+    private boolean preloadingVip = false;
 
-    boolean canBuyIAPs = false;
+    private boolean canBuyIAPs = false;
     private BillingProcessor bp;
 
     @BindView(R.id.passImage) ImageView passImage;
@@ -470,7 +470,7 @@ public class ShopActivity extends BaseActivity implements BillingProcessor.IBill
         }
     }
 
-    public void buyIAP(String iapId) {
+    private void buyIAP(String iapId) {
         if (canBuyIAPs) {
             bp.purchase(this, iapId);
         } else {

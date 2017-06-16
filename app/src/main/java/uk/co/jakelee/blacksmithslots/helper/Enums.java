@@ -4,7 +4,7 @@ public class Enums {
 
     public enum DataType {
         Integer(1), Boolean(2), String(3), Long(4);
-        public int value;
+        public final int value;
         DataType(int value) {
             this.value = value;
         }
@@ -20,7 +20,7 @@ public class Enums {
 
     public enum Language {
         English(1), Chinese(2), Dutch(3), French(4), German(5), Korean(6), Portuguese(7), Russian(8), Spanish(9);
-        public int value;
+        public final int value;
         Language(int value) {
             this.value = value;
         }
@@ -46,7 +46,7 @@ public class Enums {
         MithrilOre1000(28), MithrilOre5000(29),MithrilOre10000(30),
         MithrilSecondary1000(31), MithrilSecondary5000(32),MithrilSecondary10000(33),
         GemRed(34), GemBlue(35), GemGreen(36), GemOrange(37), GemYellow(38);
-        public int value;
+        public final int value;
         Iap(int value) {
             this.value = value;
         }
@@ -62,7 +62,7 @@ public class Enums {
 
     public enum ItemBundleType {
         SlotResource(1), SlotReward(2), IapReward(3), PassReward(4);
-        public int value;
+        public final int value;
         ItemBundleType(int value) {
             this.value = value;
         }
@@ -82,7 +82,7 @@ public class Enums {
         Isolates(11), Camp(12), UselessRiches(13), Mercenaria(14), Library(15),
         HauntedCorridors(16), UndeadJewellers(17), NoTurningBack(18), Battle(19),
         TheEnd(20);
-        public int value;
+        public final int value;
         Map(int value) {
             this.value = value;
         }
@@ -106,7 +106,7 @@ public class Enums {
         Skeleton(32), Skeleton2(33), Ghost(34), Ghost2(35), HighLevelBlacksmith(36),
         BronzeAdventurer(37), IronAdventurer(38), SteelAdventurer(39), MithrilAdventurer(40),
         Boss(41), PixelBlacksmith(42), JewellerRed(43), JewellerOrange(44), JewellerGreen(45), JewellerBlue(46);
-        public int value;
+        public final int value;
         Person(int value) {
             this.value = value;
         }
@@ -124,7 +124,7 @@ public class Enums {
     public enum Setting {
         Music(1), Sound(2), AttemptLogin(3), OnlyActiveResources(5), Language(6), NotificationSounds(7), PeriodicBonusNotification(8), SaveImported(9),
         OnlyShowStocked(10), OrderByTier(11), OrderReversed(12), BlacksmithPassNotification(13), PlayLogout(14), Autosave(15), Orientation(16);
-        public int value;
+        public final int value;
         Setting(int value) {
             this.value = value;
         }
@@ -140,7 +140,7 @@ public class Enums {
 
     public enum SettingGroup {
         Internal(0), Audio(1), Gameplay(2), Notifications(3), GooglePlay(4), Misc(5);
-        public int value;
+        public final int value;
         SettingGroup(int value) {
             this.value = value;
         }
@@ -178,7 +178,7 @@ public class Enums {
 
 
 
-        public int value;
+        public final int value;
         Slot(int value) {
             this.value = value;
         }
@@ -196,7 +196,7 @@ public class Enums {
         Xp(1), Level(2), TotalSpins(3), QuestsCompleted(4), LastAutosave(5), ResourcesGambled(6), ResourcesWon(7), AdvertsWatched(8), PacksPurchased(9),
         CollectedBonuses(10), VipLevel(11), LastBonusClaimed(12), SaveImported(13), LastAdvertWatched(14), CurrentPassClaimedDay(15), HighestPassClaimedDay(16), ExtraPassMonths(17),
         TotalPassDaysClaimed(18), MinigameDice(19), MinigameChest(20), MinigameFlip(21), TrophiesEarned(22), MinigameHigher(23);
-        public int value;
+        public final int value;
         Statistic(int value) {
             this.value = value;
         }
@@ -212,7 +212,7 @@ public class Enums {
 
     public enum StatisticType {
         Progress(1), Events(2), Bonuses(3), BlacksmithPass(4), Misc(5), Minigames(6), Version(7);
-        public int value;
+        public final int value;
         StatisticType(int value) {
             this.value = value;
         }
@@ -230,7 +230,7 @@ public class Enums {
         Internal(999), None(0),
         Bronze(1), Iron(2), Steel(3), Mithril(4), Adamant(5), Silver(6), Gold(7),
         PartialFood(10);
-        public int value;
+        public final int value;
         Tier(int value) {
             this.value = value;
         }
@@ -252,7 +252,7 @@ public class Enums {
         SandRed(41), SandBlue(42), SandYellow(43), SandGreen(44),
         BookRed(45), BookYellow(46), BookGreen(47), BookBlue(48), BookPink(49), BookBrown(50), BookBlack(51), BookGrey(52), BookCollection(53),
         Wildcard (999), MinigameFlip(998), MinigameChest(997), MinigameDice(996), MinigameHigher(995);
-        public int value;
+        public final int value;
         Type(int value) {
             this.value = value;
         }

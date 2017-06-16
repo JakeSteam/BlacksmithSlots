@@ -21,7 +21,7 @@ import uk.co.jakelee.blacksmithslots.helper.MusicHelper;
 import uk.co.jakelee.blacksmithslots.model.Setting;
 
 public class SplashScreenActivity extends Activity {
-    private Handler handler = new Handler();
+    private final Handler handler = new Handler();
     private TransitionDrawable transitionDrawable;
     public boolean isFirstInstall = false;
 
@@ -110,7 +110,7 @@ public class SplashScreenActivity extends Activity {
         handler.postDelayed(stage5, 24000);
     }
 
-    private Runnable stage1 = new Runnable() {
+    private final Runnable stage1 = new Runnable() {
         @Override
         public void run() {
             globeImage.setVisibility(View.VISIBLE);
@@ -119,7 +119,7 @@ public class SplashScreenActivity extends Activity {
         }
     };
 
-    private Runnable stage2 = new Runnable() {
+    private final Runnable stage2 = new Runnable() {
         @Override
         public void run() {
             transitionDrawable.startTransition(4000);
@@ -127,7 +127,7 @@ public class SplashScreenActivity extends Activity {
         }
     };
 
-    private Runnable stage3 = new Runnable() {
+    private final Runnable stage3 = new Runnable() {
         @Override
         public void run() {
             transitionDrawable.startTransition(4000);
@@ -135,7 +135,7 @@ public class SplashScreenActivity extends Activity {
         }
     };
 
-    private Runnable stage4 = new Runnable() {
+    private final Runnable stage4 = new Runnable() {
         @Override
         public void run() {
             transitionDrawable.startTransition(4000);
@@ -143,7 +143,7 @@ public class SplashScreenActivity extends Activity {
         }
     };
 
-    private Runnable stage5 = new Runnable() {
+    private final Runnable stage5 = new Runnable() {
         @Override
         public void run() {
             setStoryText(getString(R.string.stage_5));
@@ -151,7 +151,7 @@ public class SplashScreenActivity extends Activity {
         }
     };
 
-    public void setStoryText(String string) {
+    private void setStoryText(String string) {
         textBar.setText(string);
     }
 
@@ -165,7 +165,7 @@ public class SplashScreenActivity extends Activity {
         });
     }
 
-    public void changeButton(boolean toStart) {
+    private void changeButton(boolean toStart) {
         startButton.setText(toStart ? R.string.start : R.string.skip);
         startButton.setBackgroundResource(toStart ? R.drawable.box_green : R.drawable.box_orange);
     }

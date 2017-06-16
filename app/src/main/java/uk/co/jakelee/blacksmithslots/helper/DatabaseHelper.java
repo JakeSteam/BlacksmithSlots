@@ -28,7 +28,7 @@ import static android.content.Context.MODE_PRIVATE;
 
 public class DatabaseHelper extends AsyncTask<String, String, String> {
     public final static int NO_DATABASE = 0;
-    public final static int V0_0_1 = 1;
+    private final static int V0_0_1 = 1;
     //public final static int V0_0_2 = 2;
 
     public final static int LATEST_PATCH = V0_0_1;

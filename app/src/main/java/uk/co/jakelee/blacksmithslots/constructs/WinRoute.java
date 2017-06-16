@@ -1,14 +1,11 @@
 package uk.co.jakelee.blacksmithslots.constructs;
 
-import android.support.annotation.NonNull;
-
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Iterator;
 import java.util.List;
 
 public class WinRoute {
-    private List<Integer> list;
+    private final List<Integer> list;
 
     public WinRoute(Integer... positions) {
         this.list = new ArrayList<>();

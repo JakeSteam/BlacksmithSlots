@@ -62,7 +62,7 @@ public class Inventory extends SugarRecord {
         addInventory(tier.value, type.value, quantity);
     }
 
-    public static void addInventory(int tier, int type, int quantity) {
+    private static void addInventory(int tier, int type, int quantity) {
         Inventory inventory = getInventory(tier, type);
         inventory.setQuantity(inventory.getQuantity() + quantity);
         inventory.save();
@@ -109,7 +109,7 @@ public class Inventory extends SugarRecord {
         return getDrawableId(context, 1);
     }
 
-    public int getDrawableId(Context context, int quantity) {
+    private int getDrawableId(Context context, int quantity) {
         return context.getResources().getIdentifier(DisplayHelper.getItemImageFile(tier, type, quantity), "drawable", context.getPackageName());
     }
 

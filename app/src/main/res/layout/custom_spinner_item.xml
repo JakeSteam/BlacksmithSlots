@@ -9,7 +9,7 @@
     android:background="@color/black"
     android:ellipsize="marquee"
     android:gravity="center_horizontal"
-    android:maxLines="1"
+    android:singleLine="true"
     android:padding="5dp"
     android:textColor="@color/white"
     android:textSize="20sp" />

@@ -44,17 +44,17 @@ import uk.co.jakelee.blacksmithslots.model.Statistic;
 public class SlotHelper {
     private int stillSpinningSlots = 0;
     public int autospinsLeft = 0;
-    private SlotActivity activity;
-    private Slot slot;
-    private List<WheelView> slots = new ArrayList<>();
-    private List<ItemBundle> slotResources;
-    private List<ItemBundle> slotRewards;
-    private List<List<ItemBundle>> items = new ArrayList<>();
+    private final SlotActivity activity;
+    private final Slot slot;
+    private final List<WheelView> slots = new ArrayList<>();
+    private final List<ItemBundle> slotResources;
+    private final List<ItemBundle> slotRewards;
+    private final List<List<ItemBundle>> items = new ArrayList<>();
     private List<WinRoute> highlightedRoutes;
     private List<View> highlightedItems = new ArrayList<>();
-    private Picasso picasso;
-    private LayoutInflater inflater;
-    private Handler handler;
+    private final Picasso picasso;
+    private final LayoutInflater inflater;
+    private final Handler handler;
     private Enums.Type minigameToLoad = null;
 
     public SlotHelper(SlotActivity activity, Handler handler, Slot slot) {
@@ -85,7 +85,7 @@ public class SlotHelper {
         for (int i = 1; i <= allRoutes.size(); i++) {
             int routeResource = activity.getResources().getIdentifier("route_" + slot.getSlots() + "_" + i, "drawable", activity.getPackageName());
 
-            ImageView routeIndicator = (ImageView)inflater.inflate(R.layout.custom_route_indicator, null);
+            ImageView routeIndicator = (ImageView) inflater.inflate(R.layout.custom_route_indicator, null);
             routeIndicator.setId(activity.getResources().getIdentifier("route_" + i, "id", activity.getPackageName()));
             routeIndicator.setImageResource(routeResource);
             if (i <= slot.getCurrentRows()) {
@@ -207,9 +207,9 @@ public class SlotHelper {
     }
 
     private void afterStakeChangeUpdate() {
-        ((TextView)activity.findViewById(R.id.spinButton)).setText(R.string.spin);
-        ((TextView)activity.findViewById(R.id.rowsActive)).setText(Integer.toString(slot.getCurrentRows()));
-        ((TextView)activity.findViewById(R.id.amountGambled)).setText(Integer.toString(slot.getCurrentStake()));
+        ((TextView) activity.findViewById(R.id.spinButton)).setText(R.string.spin);
+        ((TextView) activity.findViewById(R.id.rowsActive)).setText(Integer.toString(slot.getCurrentRows()));
+        ((TextView) activity.findViewById(R.id.amountGambled)).setText(Integer.toString(slot.getCurrentStake()));
 
         activity.findViewById(R.id.increaseRows).setAlpha(slot.getCurrentRows() == slot.getMaximumRows() ? 0.25f : 1);
         activity.findViewById(R.id.decreaseRows).setAlpha(slot.getCurrentRows() == slot.getMinimumRows() ? 0.25f : 1);
@@ -220,13 +220,13 @@ public class SlotHelper {
     public void afterSpinUpdate() {
         activity.findViewById(R.id.autospinButton).setVisibility(autospinsLeft > 0 ? View.INVISIBLE : View.VISIBLE);
         activity.findViewById(R.id.autospinsRemainingButton).setVisibility(autospinsLeft > 0 ? View.VISIBLE : View.INVISIBLE);
-        ((TextView)activity.findViewById(R.id.autospinsRemainingButton)).setText("" + autospinsLeft);
+        ((TextView) activity.findViewById(R.id.autospinsRemainingButton)).setText("" + autospinsLeft);
 
 
-        ((TextView)activity.findViewById(R.id.currentLevel)).setText("Lev " + LevelHelper.getLevel());
+        ((TextView) activity.findViewById(R.id.currentLevel)).setText("Lev " + LevelHelper.getLevel());
         int levelProgress = LevelHelper.getLevelProgress();
         Log.d("Progress", "" + levelProgress);
-        ((ProgressBar)activity.findViewById(R.id.currentLevelProgress)).setProgress(levelProgress);
+        ((ProgressBar) activity.findViewById(R.id.currentLevelProgress)).setProgress(levelProgress);
     }
 
     private void updateStatus() {
@@ -441,23 +441,23 @@ public class SlotHelper {
         DisplayHelper.populateItemRows(activity, R.id.resourceDisplay, inflater, picasso, params, resourceInventories, true);
 
         // Inventory
-        String resourceString = "";
+        StringBuilder resourceString = new StringBuilder();
         for (ItemBundle item : slotResources) {
-            resourceString += "(a != " + item.getTier().value + " OR b != " + item.getType().value + ") AND";
+            resourceString.append("(a != ").append(item.getTier().value).append(" OR b != ").append(item.getType().value).append(") AND");
         }
 
-        String rewardString = "";
+        StringBuilder rewardString = new StringBuilder();
         if (Setting.getBoolean(Enums.Setting.OnlyActiveResources)) {
             for (ItemBundle item : slotRewards) {
-                rewardString += "(a = " + item.getTier().value + " AND b = " + item.getType().value + ") OR ";
+                rewardString.append("(a = ").append(item.getTier().value).append(" AND b = ").append(item.getType().value).append(") OR ");
             }
-            rewardString = "(" + rewardString.substring(0, rewardString.length() - 3) + ")";
+            rewardString = new StringBuilder("(" + rewardString.substring(0, rewardString.length() - 3) + ")");
         } else {
-            resourceString = resourceString.substring(0, resourceString.length() - 4);
+            resourceString = new StringBuilder(resourceString.substring(0, resourceString.length() - 4));
         }
 
         String orderBy = (orderByTier ? "a " : "c ") + (reverseOrder ? "ASC" : "DESC");
-        List<Inventory> inventoryItems = Select.from(Inventory.class).where(resourceString + rewardString).orderBy(orderBy).list();
+        List<Inventory> inventoryItems = Select.from(Inventory.class).where(resourceString + rewardString.toString()).orderBy(orderBy).list();
         boolean onlyShowStockedItems = Setting.getBoolean(Enums.Setting.OnlyShowStocked);
 
         DisplayHelper.populateItemRows(activity, R.id.inventoryDisplay, inflater, picasso, params, inventoryItems, onlyShowStockedItems);
@@ -478,7 +478,7 @@ public class SlotHelper {
 
     private void highlightResults() {
         StringBuilder winningRoutes = new StringBuilder();
-        Log.d("Highlight",";");
+        Log.d("Highlight", ";");
         for (WinRoute route : highlightedRoutes) {
             for (int i = 0; i < route.size(); i++) {
                 int offset = route.get(i);
@@ -511,7 +511,7 @@ public class SlotHelper {
                     }
                 }*/
 
-                Log.d("Highlight", "Size " + slots.get(i).itemsLayout.getChildCount() + " (" + numItems +" - " + currItem + " - " + offset + ") = " + finalValue + fixed);
+                Log.d("Highlight", "Size " + slots.get(i).itemsLayout.getChildCount() + " (" + numItems + " - " + currItem + " - " + offset + ") = " + finalValue + fixed);
                 View imageViewSelected = slots.get(i).itemsLayout.getChildAt(finalValue);
 
                 if (imageViewSelected != null) {

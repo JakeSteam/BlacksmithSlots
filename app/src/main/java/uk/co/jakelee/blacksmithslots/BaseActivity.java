@@ -52,7 +52,7 @@ public class BaseActivity extends Activity {
     /**
      * Overrides the pending Activity transition by performing the "Enter" animation.
      */
-    protected void overridePendingTransitionEnter() {
+    private void overridePendingTransitionEnter() {
         overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left);
         // new activity anim, old activity anim
     }
@@ -60,7 +60,7 @@ public class BaseActivity extends Activity {
     /**
      * Overrides the pending Activity transition by performing the "Exit" animation.
      */
-    protected void overridePendingTransitionExit() {
+    private void overridePendingTransitionExit() {
         overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right);
     }
 

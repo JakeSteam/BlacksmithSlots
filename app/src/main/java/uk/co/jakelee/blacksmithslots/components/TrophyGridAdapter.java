@@ -19,9 +19,9 @@ import uk.co.jakelee.blacksmithslots.model.Inventory;
 import uk.co.jakelee.blacksmithslots.model.Trophy;
 
 public class TrophyGridAdapter extends BaseAdapter {
-    private Activity activity;
-    private LayoutInflater layoutInflater;
-    private List<Trophy> trophies;
+    private final Activity activity;
+    private final LayoutInflater layoutInflater;
+    private final List<Trophy> trophies;
 
     public TrophyGridAdapter(Activity activity, List<Trophy> trophies) {
         this.activity = activity;

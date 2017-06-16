@@ -29,7 +29,7 @@ public class InterstitialActivity extends BaseActivity {
         ((FontTextView)findViewById(R.id.interstitialText)).setMovementMethod(LinkMovementMethod.getInstance());
     }
 
-    public void setupTimer() {
+    private void setupTimer() {
         final TextView countdownTimer = findViewById(R.id.countdownTimer);
         new CountDownTimer(Constants.ADVERT_TIMEOUT, 1000) {
             public void onTick(long millisUntilFinished) {

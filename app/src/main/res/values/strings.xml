@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name" translatable="false">Blacksmith Slots</string>
     <string name="app_id" translatable="false">1038590321568</string>
-    <string name="empty" translatable="false"></string>
+    <string name="empty" translatable="false" />
 
     <string name="icon_autospin" translatable = "false">&#xe800;</string>
     <string name="icon_rows" translatable = "false">&#xe801;</string>
@@ -133,7 +133,7 @@
     <string name="language_8">Russian</string>
     <string name="language_9">Spanish</string>
 
-    <string name="tier_0" translatable="false"></string>
+    <string name="tier_0" translatable="false" />
     <string name="tier_1">Bronze</string>
     <string name="tier_2">Iron</string>
     <string name="tier_3">Steel</string>
@@ -142,7 +142,7 @@
     <string name="tier_6">Silver</string>
     <string name="tier_7">Gold</string>
     <string name="tier_10">Partial</string>
-    <string name="tier_999" translatable="false"></string>
+    <string name="tier_999" translatable="false" />
 
     <string name="type_1">Ore</string>
     <string name="type_2">Bar</string>
@@ -1204,4 +1204,6 @@ AESCrypt (https://goo.gl/Ewk2tq) - Support code encryption.
     <string name="hint_25">Curious what was used to make the game? Check out the Credits!</string>
     <string name="higher">Higher</string>
     <string name="lower">Lower</string>
+    <string name="x">x</string>
+    <string name="minigame_higher_desc">Will the next card be higher or lower? If you\'re unsure, stick!</string>
 </resources>

@@ -29,7 +29,7 @@ public class Overlay {
         this(true, Color.parseColor("#AA000000"), Style.CIRCLE);
     }
 
-    public Overlay(boolean disableClick, int backgroundColor, Style style) {
+    private Overlay(boolean disableClick, int backgroundColor, Style style) {
         mDisableClick = disableClick;
         mBackgroundColor = backgroundColor;
         mStyle = style;

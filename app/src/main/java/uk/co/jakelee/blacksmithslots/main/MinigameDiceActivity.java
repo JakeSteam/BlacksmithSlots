@@ -26,8 +26,8 @@ public class MinigameDiceActivity extends MinigameActivity {
     private List<ItemBundle> resources;
     private int multiplier = 1;
     private int diceRolled = 0;
-    private Handler handler = new Handler();
-    private int[] diceDrawables = {R.drawable.dice_1, R.drawable.dice_2, R.drawable.dice_3, R.drawable.dice_4, R.drawable.dice_5, R.drawable.dice_6};
+    private final Handler handler = new Handler();
+    private final int[] diceDrawables = {R.drawable.dice_1, R.drawable.dice_2, R.drawable.dice_3, R.drawable.dice_4, R.drawable.dice_5, R.drawable.dice_6};
 
     @BindView(R.id.diceContainer) LinearLayout diceContainer;
     @BindView(R.id.description) TextView description;
@@ -83,7 +83,7 @@ public class MinigameDiceActivity extends MinigameActivity {
         };
     }
 
-    public void rollFinished() {
+    private void rollFinished() {
         diceRolled++;
         if (diceRolled >= diceContainer.getChildCount()) {
             roll.setVisibility(View.GONE);

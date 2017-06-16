@@ -33,7 +33,7 @@ import static uk.co.jakelee.blacksmithslots.helper.LevelHelper.getXp;
 public class SlotActivity extends BaseActivity {
     private SlotHelper slotHelper;
     private boolean isFirstInstall = false;
-    public static SharedPreferences prefs;
+    private static SharedPreferences prefs;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -102,7 +102,7 @@ public class SlotActivity extends BaseActivity {
         }
     }
 
-    public void startTutorial() {
+    private void startTutorial() {
         boolean isLandscape = getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE;
 
         final TutorialHelper th = new TutorialHelper(this, 1);

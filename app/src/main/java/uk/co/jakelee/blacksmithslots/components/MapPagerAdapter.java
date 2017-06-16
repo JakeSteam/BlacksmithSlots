@@ -26,7 +26,7 @@ import uk.co.jakelee.blacksmithslots.model.ItemBundle;
 import uk.co.jakelee.blacksmithslots.model.Slot;
 
 public class MapPagerAdapter extends PagerAdapter {
-    private LayoutInflater mLayoutInflater;
+    private final LayoutInflater mLayoutInflater;
     public final static int[] townLayouts = {R.layout.custom_map_1, R.layout.custom_map_2, R.layout.custom_map_3,
             R.layout.custom_map_4, R.layout.custom_map_5, R.layout.custom_map_6,
             R.layout.custom_map_7, R.layout.custom_map_8, R.layout.custom_map_9,

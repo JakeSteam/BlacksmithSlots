@@ -42,7 +42,7 @@ public class TransitionDrawable extends LayerDrawable implements
 
     private float rate;
 
-    private int layer_count;
+    private final int layer_count;
 
     private int present;
 
@@ -127,7 +127,7 @@ public class TransitionDrawable extends LayerDrawable implements
         mTransitionState = TRANSITION_STARTING;
         invalidateSelf();
     }
-    int getNext(){
+    private int getNext(){
         return (present + 1== layer_count) ? 0: (present+1);
     }
     int getPrevious(){
@@ -202,10 +202,6 @@ public class TransitionDrawable extends LayerDrawable implements
         if (!done) {
             invalidateSelf();
         }
-    }
-
-    void setRate() {
-
     }
 
     /**

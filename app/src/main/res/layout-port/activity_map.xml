@@ -79,7 +79,7 @@
                     android:layout_width="wrap_content"
                     android:layout_marginRight="5dp"
                     android:background="@drawable/box_orange"
-                    android:text="x" />
+                    android:text="@string/x" />
 
                 <uk.co.jakelee.blacksmithslots.components.FontTextView
                     android:id="@+id/lockedButton"
@@ -131,13 +131,12 @@
                     android:layout_width="wrap_content"
                     android:layout_marginRight="5dp"
                     android:background="@drawable/box_orange"
-                    android:text="x" />
+                    android:text="@string/x" />
 
                 <uk.co.jakelee.blacksmithslots.components.FontTextView
                     android:id="@+id/handInButton"
                     style="@style/SlotText"
                     android:layout_width="match_parent"
-                    android:layout_alignParentBottom="true"
                     android:background="@drawable/box_yellow"
                     android:text="@string/hand_in" />
             </LinearLayout>
@@ -219,7 +218,7 @@
                     android:layout_width="wrap_content"
                     android:layout_marginRight="5dp"
                     android:background="@drawable/box_orange"
-                    android:text="x" />
+                    android:text="@string/x" />
 
                 <uk.co.jakelee.blacksmithslots.components.FontTextView
                     android:id="@+id/openSlot"

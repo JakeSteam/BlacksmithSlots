@@ -117,7 +117,7 @@ public class DisplayHelper {
         return drawableId;
     }
 
-    public static int convertDpToPixel(Context context, float dp) {
+    private static int convertDpToPixel(Context context, float dp) {
         Resources resources = context.getResources();
         DisplayMetrics metrics = resources.getDisplayMetrics();
         float px = dp * (metrics.densityDpi / 160f);

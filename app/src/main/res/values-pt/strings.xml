@@ -684,7 +684,7 @@
     <string name="task_56_1_text">Bem, quando todos nós reconstruímos o suficiente para começar a jogar pedras ao redor, esses capacetes ajudariam!</string>
     <string name="task_57_1_text">Bem, você tem que dar comida antes que você possa obtê-lo.</string>
     <string name="task_58_1_text">Ataque tudo! Todos! Tenho que ficar rico!</string>
-    <string name="task_58_2_text">Preciso defender! Tenho que defender defender!</string>
+    <string name="task_58_2_text">Preciso defender! Tenho que defender!</string>
     <string name="task_59_1_text">Os meus pés doem da minha jornada ... nunca termina ...</string>
     <string name="task_59_2_text">Eu vi coisas enquanto transportava ... coisas que você não acreditaria ...</string>
     <string name="task_5_1_text">Eu vou pescar neste fim de semana com alguns amigos, você pode me ajudar?</string>
@@ -1001,7 +1001,7 @@
     <string name="hint_13">O idioma pode ser alterado nas configurações se preferir outro idioma!</string>
     <string name="hint_14">Os níveis VIP mais elevados obtêm mais bônus!</string>
     <string name="hint_15">Certifique-se de reivindicar regularmente seus itens de bônus grátis!</string>
-    <string name="hint_16">Você pode, opcionalmente, assistir a anúncios de itens extra extra.</string>
+    <string name="hint_16">Você pode, opcionalmente, assistir a anúncios de itens extra.</string>
     <string name="hint_17">Doente de esperar muito tempo entre bônus? Atualize seu nível VIP!</string>
     <string name="hint_18">Quer mais itens de bônus? Confira o Blacksmith Pass por 30 dias de itens de bônus!</string>
     <string name="hint_19">Uma vez que um slot está desbloqueado, o Registro de Diálogo mostra um histórico de todas as mensagens com o proprietário do slot.</string>

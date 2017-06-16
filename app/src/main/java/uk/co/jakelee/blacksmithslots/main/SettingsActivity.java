@@ -39,7 +39,7 @@ import static uk.co.jakelee.blacksmithslots.model.Setting.get;
 
 public class SettingsActivity extends BaseActivity {
     private int spinnersInitialised = 0;
-    private int totalSpinners = 2;
+    private final int totalSpinners = 2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

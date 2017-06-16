@@ -6,15 +6,15 @@ import android.view.View;
  * {@link Sequence} is used with {@link ChainTourGuide} to make TourGuide run in row.
  */
 public class Sequence {
-    ChainTourGuide [] mTourGuideArray;
-    Overlay mDefaultOverlay;
-    ToolTip mDefaultToolTip;
-    Pointer mDefaultPointer;
+    final ChainTourGuide [] mTourGuideArray;
+    private final Overlay mDefaultOverlay;
+    private final ToolTip mDefaultToolTip;
+    private final Pointer mDefaultPointer;
 
-    ContinueMethod mContinueMethod;
-    boolean mDisableTargetButton;
+    private final ContinueMethod mContinueMethod;
+    private final boolean mDisableTargetButton;
     public int mCurrentSequence;
-    ChainTourGuide mParentTourGuide;
+    private ChainTourGuide mParentTourGuide;
 
     /**
      * {@link ContinueMethod#OVERLAY} -
@@ -38,7 +38,7 @@ public class Sequence {
     /**
      * sets the parent TourGuide that will run this Sequence
      */
-    protected void setParentTourGuide(ChainTourGuide parentTourGuide){
+    void setParentTourGuide(ChainTourGuide parentTourGuide){
         mParentTourGuide = parentTourGuide;
 
         if(mContinueMethod == ContinueMethod.OVERLAY) {

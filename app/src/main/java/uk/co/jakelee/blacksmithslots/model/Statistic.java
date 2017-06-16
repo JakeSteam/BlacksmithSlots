@@ -124,7 +124,7 @@ public class Statistic extends SugarRecord {
         this.eventId = eventId;
     }
 
-    public String getLeaderboardId() {
+    private String getLeaderboardId() {
         return leaderboardId;
     }
 
@@ -132,7 +132,7 @@ public class Statistic extends SugarRecord {
         this.leaderboardId = leaderboardId;
     }
 
-    public int getDatatype() {
+    private int getDatatype() {
         return datatype;
     }
 
@@ -156,7 +156,7 @@ public class Statistic extends SugarRecord {
         this.longValue = longValue;
     }
 
-    public boolean getBoolValue() {
+    private boolean getBoolValue() {
         return boolValue;
     }
 
@@ -164,7 +164,7 @@ public class Statistic extends SugarRecord {
         this.boolValue = boolValue;
     }
 
-    public String getStringValue() {
+    private String getStringValue() {
         return stringValue;
     }
 

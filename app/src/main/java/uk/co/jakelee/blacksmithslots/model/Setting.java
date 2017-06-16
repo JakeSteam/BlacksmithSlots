@@ -137,7 +137,7 @@ public class Setting extends SugarRecord {
         this.intValue = intValue;
     }
 
-    public String getStringValue() {
+    private String getStringValue() {
         return stringValue;
     }
 
