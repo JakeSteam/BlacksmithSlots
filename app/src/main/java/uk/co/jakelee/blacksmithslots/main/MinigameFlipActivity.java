@@ -9,6 +9,8 @@ import android.widget.TextView;
 import java.util.List;
 import java.util.Locale;
 
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 import uk.co.jakelee.blacksmithslots.R;
 import uk.co.jakelee.blacksmithslots.helper.AlertHelper;
 import uk.co.jakelee.blacksmithslots.helper.CalculationHelper;
@@ -24,6 +26,7 @@ public class MinigameFlipActivity extends MinigameActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_minigame_flip);
+        ButterKnife.bind(this);
 
         Intent intent = getIntent();
         int slotId = intent.getIntExtra("slot", 0);
@@ -43,6 +46,7 @@ public class MinigameFlipActivity extends MinigameActivity {
         }
     }
 
+    @OnClick(R.id.gambleButton)
     public void gamble(View v) {
         if (CalculationHelper.randomBoolean()) {
             multiplier = multiplier * 2;
@@ -59,6 +63,7 @@ public class MinigameFlipActivity extends MinigameActivity {
         ((TextView)findViewById(R.id.currentStake)).setText(DisplayHelper.bundlesToString(this, resources, multiplier));
     }
 
+    @OnClick(R.id.stickButton)
     public void stick(View v) {
         if (v == null) {
             updateDisplay();

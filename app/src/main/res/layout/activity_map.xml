@@ -53,10 +53,10 @@
 
                 <uk.co.jakelee.blacksmithslots.components.FontTextView
                     style="@style/SlotText"
+                    android:id="@+id/superlockedClose"
                     android:layout_width="wrap_content"
                     android:layout_marginRight="5dp"
                     android:background="@drawable/box_orange"
-                    android:onClick="loadSidebar"
                     android:text="x" />
 
                 <uk.co.jakelee.blacksmithslots.components.FontTextView
@@ -104,18 +104,17 @@
                 android:layout_alignParentBottom="true">
 
                 <uk.co.jakelee.blacksmithslots.components.FontTextView
+                    android:id="@+id/lockedClose"
                     style="@style/SlotText"
                     android:layout_width="wrap_content"
                     android:layout_marginRight="5dp"
                     android:background="@drawable/box_orange"
-                    android:onClick="loadSidebar"
                     android:text="x" />
 
                 <uk.co.jakelee.blacksmithslots.components.FontTextView
                     android:id="@+id/handInButton"
                     style="@style/SlotText"
                     android:layout_width="match_parent"
-                    android:layout_alignParentBottom="true"
                     android:background="@drawable/box_yellow"
                     android:text="@string/hand_in" />
             </LinearLayout>
@@ -192,11 +191,11 @@
                 android:layout_alignParentBottom="true">
 
                 <uk.co.jakelee.blacksmithslots.components.FontTextView
+                    android:id="@+id/unlockedClose"
                     style="@style/SlotText"
                     android:layout_width="wrap_content"
                     android:layout_marginRight="5dp"
                     android:background="@drawable/box_orange"
-                    android:onClick="loadSidebar"
                     android:text="x" />
 
                 <uk.co.jakelee.blacksmithslots.components.FontTextView

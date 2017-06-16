@@ -431,6 +431,7 @@ public class MapActivity extends BaseActivity implements
         }
     }
 
+    @OnClick({R.id.lockedClose, R.id.unlockedClose, R.id.superlockedClose})
     public void loadSidebar(View v) {
         noSlotSidebar.setVisibility(View.VISIBLE);
     }

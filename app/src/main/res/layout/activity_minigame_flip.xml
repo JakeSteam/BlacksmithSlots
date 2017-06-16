@@ -54,7 +54,6 @@
                     android:layout_width="wrap_content"
                     android:background="@drawable/box_green"
                     android:text="@string/gamble"
-                    android:onClick="gamble"
                     android:maxLines="1"
                     android:layout_margin="5dp"
                     style="@style/SlotText"/>
@@ -63,7 +62,6 @@
                     android:layout_width="wrap_content"
                     android:background="@drawable/box_orange"
                     android:text="@string/stick"
-                    android:onClick="stick"
                     android:maxLines="1"
                     android:layout_margin="5dp"
                     style="@style/SlotText"/>

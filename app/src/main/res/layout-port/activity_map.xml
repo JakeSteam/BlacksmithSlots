@@ -73,11 +73,11 @@
                 android:layout_alignParentBottom="true">
 
                 <uk.co.jakelee.blacksmithslots.components.FontTextView
+                    android:id="@+id/superlockedClose"
                     style="@style/SlotText"
                     android:layout_width="wrap_content"
                     android:layout_marginRight="5dp"
                     android:background="@drawable/box_orange"
-                    android:onClick="loadSidebar"
                     android:text="x" />
 
                 <uk.co.jakelee.blacksmithslots.components.FontTextView
@@ -126,10 +126,10 @@
 
                 <uk.co.jakelee.blacksmithslots.components.FontTextView
                     style="@style/SlotText"
+                    android:id="@+id/lockedClose"
                     android:layout_width="wrap_content"
                     android:layout_marginRight="5dp"
                     android:background="@drawable/box_orange"
-                    android:onClick="loadSidebar"
                     android:text="x" />
 
                 <uk.co.jakelee.blacksmithslots.components.FontTextView
@@ -214,10 +214,10 @@
 
                 <uk.co.jakelee.blacksmithslots.components.FontTextView
                     style="@style/SlotText"
+                    android:id="@+id/unlockedClose"
                     android:layout_width="wrap_content"
                     android:layout_marginRight="5dp"
                     android:background="@drawable/box_orange"
-                    android:onClick="loadSidebar"
                     android:text="x" />
 
                 <uk.co.jakelee.blacksmithslots.components.FontTextView
