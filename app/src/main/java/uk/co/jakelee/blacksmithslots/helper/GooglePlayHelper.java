@@ -460,13 +460,33 @@ public class GooglePlayHelper implements com.google.android.gms.common.api.Resul
         int prestige = 0;
         int xp = 0;
 
-        String[] splitData = splitBackupData(new String(saveBytes));
-        if (splitData.length > 2) {
-            prestige = Integer.parseInt(splitData[1]);
-            xp = Integer.parseInt(splitData[2]);
+        String splitData = new String(saveBytes);
+
+        String prestigeString = getStringBetweenStrings(splitData, ",\"name\":\"Premium\",\"id\":16},{\"intValue\":1,\"lastSentValue\":", ",\"name\":\"Prestige\",\"id\":17}");
+        String xpString = getStringBetweenStrings(splitData, "}]UNIQUEDELIMITINGSTRING[{\"intValue\":", ",\"lastSentValue\":-1,\"name\":\"XP\",\"id\":1}");
+
+        try {
+            xp = Integer.parseInt(xpString);
+            prestige = Integer.parseInt(prestigeString);
+        } catch (Exception e) {
+            Log.d("Parse", "Couldn't parse " + xpString + " and " + prestigeString);
         }
 
         return new Pair<>(prestige, xp);
+    }
+
+    public static String getStringBetweenStrings(String aString, String aPattern1, String aPattern2) {
+        String ret = null;
+        int pos1,pos2;
+
+        pos1 = aString.indexOf(aPattern1) + aPattern1.length();
+        pos2 = aString.indexOf(aPattern2);
+
+        if ((pos1>0) && (pos2>0) && (pos2 > pos1)) {
+            return aString.substring(pos1, pos2);
+        }
+
+        return ret;
     }
 
     public static boolean newSaveIsBetter(Pair<Integer, Integer> newValues) {

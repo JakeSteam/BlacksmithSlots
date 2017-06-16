@@ -10,7 +10,7 @@ import uk.co.jakelee.blacksmithslots.model.Statistic;
 import uk.co.jakelee.blacksmithslots.model.SupportCode;
 
 public class SupportCodeHelper {
-    private static final String encryptionPwd = "it's" + "just a" + "support code, why bother" + "cracking!";
+    private static final String encryptionPwd = "it's" + "just a" + "support code!";
 
     public static boolean applyCode(String code) {
         boolean successful = false;
