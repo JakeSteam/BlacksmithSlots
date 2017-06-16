@@ -1020,4 +1020,6 @@
     <string name="hint_8">피드백,보고 할 버그 또는 제안 사항이 있습니까? 이메일 blacksmithslots@jakelee.co.uk!</string>
     <string name="hint_9">대장장이 슬롯이 이전 게임 인 픽셀 대장장이를 기반으로한다는 것을 알고 계셨습니까? 그것을 밖으로 시도하십시오!</string>
     <string name="never">못!</string>
+    <string name="higher">더 높은</string>
+    <string name="lower">보다 낮은</string>
 </resources>

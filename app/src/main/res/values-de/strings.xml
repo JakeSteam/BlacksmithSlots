@@ -1020,4 +1020,6 @@
     <string name="hint_8">Got Feedback, Bugs zu berichten oder Vorschläge? E-Mail blacksmithslots@jakelee.co.uk!</string>
     <string name="hint_9">Wussten Sie, dass Blacksmith Slots auf meinem bisherigen Spiel basiert, Pixel Blacksmith? Versuch es!</string>
     <string name="never">Nie!</string>
+    <string name="higher">Höher</string>
+    <string name="lower">Niedriger</string>
 </resources>
