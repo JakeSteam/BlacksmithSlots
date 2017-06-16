@@ -25,9 +25,9 @@ public class CreditsActivity extends BaseActivity {
 
         List<Pair<Integer, Integer>> credits = getCredits();
         LayoutInflater inflater = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        TableLayout statTable = (TableLayout)findViewById(R.id.dataTable);
+        TableLayout statTable = findViewById(R.id.dataTable);
         for (Pair<Integer, Integer> credit : credits) {
-            TableRow tableRow = (TableRow) inflater.inflate(R.layout.custom_data_row, null).findViewById(R.id.dataRow);
+            TableRow tableRow = inflater.inflate(R.layout.custom_data_row, null).findViewById(R.id.dataRow);
 
             ((TextView) tableRow.findViewById(R.id.dataName)).setMaxLines(1);
             ((TextView) tableRow.findViewById(R.id.dataName)).setTextSize(28);

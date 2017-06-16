@@ -53,7 +53,7 @@ public class InventoryActivity extends BaseActivity {
         if (onlyShowStockedItems && inventory.getQuantity() <= 0) {
             return;
         }
-        TableRow tableRow = (TableRow)inflater.inflate(R.layout.custom_inventory_row, null).findViewById(R.id.inventoryRow);
+        TableRow tableRow = inflater.inflate(R.layout.custom_inventory_row, null).findViewById(R.id.inventoryRow);
         tableRow.findViewById(R.id.itemSources).setTag(R.id.item_tier, inventory.getTier());
         tableRow.findViewById(R.id.itemSources).setTag(R.id.item_type, inventory.getType());
         tableRow.findViewById(R.id.itemUses).setTag(R.id.item_tier, inventory.getTier());

@@ -27,7 +27,7 @@ public class SlotChancesActivity extends BaseActivity {
         ((TextView)findViewById(R.id.activityTitle)).setText(R.string.reward_chances);
 
         LayoutInflater inflater = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        TableLayout statTable = (TableLayout)findViewById(R.id.dataTable);
+        TableLayout statTable = findViewById(R.id.dataTable);
 
         Intent intent = getIntent();
         Slot selectedSlot = Slot.get(intent.getIntExtra(Constants.INTENT_SLOT, 0));

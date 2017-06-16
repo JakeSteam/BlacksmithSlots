@@ -30,7 +30,7 @@ public class InterstitialActivity extends BaseActivity {
     }
 
     public void setupTimer() {
-        final TextView countdownTimer = (TextView) findViewById(R.id.countdownTimer);
+        final TextView countdownTimer = findViewById(R.id.countdownTimer);
         new CountDownTimer(Constants.ADVERT_TIMEOUT, 1000) {
             public void onTick(long millisUntilFinished) {
                 int timeLeft = (int) Math.ceil(millisUntilFinished / 1000);

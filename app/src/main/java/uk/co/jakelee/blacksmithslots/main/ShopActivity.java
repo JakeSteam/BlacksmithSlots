@@ -275,7 +275,7 @@ public class ShopActivity extends BaseActivity implements BillingProcessor.IBill
     }
 
     private void displayIap(LinearLayout.LayoutParams params, LayoutInflater inflater, ItemBundle iap) {
-        LinearLayout itemTile = (LinearLayout) inflater.inflate(R.layout.custom_iap_tile, null).findViewById(R.id.iapTile);
+        LinearLayout itemTile = inflater.inflate(R.layout.custom_iap_tile, null).findViewById(R.id.iapTile);
         int imageResource = getResources().getIdentifier(DisplayHelper.getItemImageFile(iap), "drawable", getPackageName());
 
         ((ImageView)itemTile.findViewById(R.id.itemImage)).setImageResource(imageResource);

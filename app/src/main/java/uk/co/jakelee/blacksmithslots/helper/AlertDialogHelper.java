@@ -42,7 +42,7 @@ public class AlertDialogHelper {
 
                 ((TextView) inflatedLayout.findViewById(R.id.title)).setText(title);
                 ((TextView) inflatedLayout.findViewById(R.id.body)).setText(body);
-                final LinearLayout buttonContainer = (LinearLayout) inflatedLayout.findViewById(R.id.buttonContainer);
+                final LinearLayout buttonContainer = inflatedLayout.findViewById(R.id.buttonContainer);
 
                 for (final DialogAction action : actions) {
                     TextView button = (TextView) inflater.inflate(R.layout.custom_alert_dialog_button, null);

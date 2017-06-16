@@ -49,7 +49,7 @@ public class TrophyGridAdapter extends BaseAdapter {
 
         trophyTile.setTag((int)(long)trophy.getId());
 
-        ImageView itemImage = (ImageView)trophyTile.findViewById(R.id.itemImage);
+        ImageView itemImage = trophyTile.findViewById(R.id.itemImage);
         itemImage.setImageResource(getTrophyResource(activity, trophy));
         if (trophy.isAchieved()) {
             itemImage.getDrawable().clearColorFilter();

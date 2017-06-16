@@ -44,8 +44,8 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
     public DatabaseHelper(SplashScreenActivity activity) {
         this.context = activity;
         this.callingActivity = activity;
-        this.progressText = (TextView) activity.findViewById(R.id.progressText);
-        this.progressBar = (ProgressBar) activity.findViewById(R.id.progressBar);
+        this.progressText = activity.findViewById(R.id.progressText);
+        this.progressBar = activity.findViewById(R.id.progressBar);
     }
 
     public DatabaseHelper(Context context) {

@@ -153,7 +153,7 @@ public class DisplayHelper {
     }
 
     public static void populateItemRows(Activity activity, int id, LayoutInflater inflater, Picasso picasso, ViewGroup.LayoutParams params, List<Inventory> items, boolean showOutOfStock) {
-        TableLayout layout = (TableLayout)activity.findViewById(id);
+        TableLayout layout = activity.findViewById(id);
         layout.removeAllViews();
         for (Inventory item : items) {
             if (!showOutOfStock && item.getQuantity() <= 0) {
@@ -161,7 +161,7 @@ public class DisplayHelper {
             }
 
             View inflatedView = inflater.inflate(R.layout.custom_resource_info, null);
-            TableRow itemRow = (TableRow) inflatedView.findViewById(R.id.itemRow);
+            TableRow itemRow = inflatedView.findViewById(R.id.itemRow);
 
             picasso.load(item.getDrawableId(activity)).into((ImageView)itemRow.findViewById(R.id.itemImage));
             ((TextView)itemRow.findViewById(R.id.itemInfo)).setText(item.getQuantity() + "x " + item.getName(activity));
@@ -213,7 +213,7 @@ public class DisplayHelper {
     }
 
     public static TableRow getTableRow(LayoutInflater inflater, String name, String value, int valueColour) {
-        TableRow tableRow = (TableRow) inflater.inflate(R.layout.custom_data_row, null).findViewById(R.id.dataRow);
+        TableRow tableRow = inflater.inflate(R.layout.custom_data_row, null).findViewById(R.id.dataRow);
         ((TextView) tableRow.findViewById(R.id.dataName)).setText(name);
         ((TextView) tableRow.findViewById(R.id.dataValue)).setText(value);
         if (valueColour != 0) {

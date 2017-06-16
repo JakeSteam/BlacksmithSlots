@@ -141,7 +141,7 @@ public class MapActivity extends BaseActivity implements
         mapPagerAdapter = new MapPagerAdapter(this);
         mapPager.setAdapter(mapPagerAdapter);
 
-        ViewPagerIndicator indicator = (ViewPagerIndicator) findViewById(R.id.view_pager_indicator);
+        ViewPagerIndicator indicator = findViewById(R.id.view_pager_indicator);
         indicator.setupWithViewPager(mapPager);
         indicator.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
             public void onPageSelected(int position) {

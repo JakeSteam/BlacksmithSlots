@@ -56,7 +56,7 @@ public class MapPagerAdapter extends PagerAdapter {
 
         // The lowest required slot for this map
         Slot firstSlotUnlocked = Select.from(Slot.class).where(Condition.prop("m").eq(position + 1)).orderBy("k ASC").first();
-        boolean isUnlocked = Constants.DEBUG_UNLOCK_ALL ? true : (position == 0 || firstSlotUnlocked == null || !TaskHelper.isSlotLocked(firstSlotUnlocked.getRequiredSlot()));
+        boolean isUnlocked = Constants.DEBUG_UNLOCK_ALL || (position == 0 || firstSlotUnlocked == null || !TaskHelper.isSlotLocked(firstSlotUnlocked.getRequiredSlot()));
         itemView.findViewById(R.id.lockedMapBlocker).setVisibility(isUnlocked ? View.GONE : View.VISIBLE);
         if (!isUnlocked) {
             Slot requiredSlot = Slot.get(firstSlotUnlocked.getRequiredSlot());
@@ -83,7 +83,7 @@ public class MapPagerAdapter extends PagerAdapter {
     }
 
     public void populateItemContainer(int id, List<ItemBundle> items, Activity activity) {
-        LinearLayout rewardContainer = (LinearLayout) activity.findViewById(id);
+        LinearLayout rewardContainer = activity.findViewById(id);
         rewardContainer.removeAllViews();
         for (ItemBundle itemBundle : items) {
             rewardContainer.addView(DisplayHelper.createImageView(activity,

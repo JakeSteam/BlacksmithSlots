@@ -28,7 +28,7 @@ public class StatisticsActivity extends BaseActivity {
         ((TextView)findViewById(R.id.activityTitle)).setText(R.string.statistics);
 
         LayoutInflater inflater = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        TableLayout statTable = (TableLayout)findViewById(R.id.dataTable);
+        TableLayout statTable = findViewById(R.id.dataTable);
         for (Enums.StatisticType statisticType : Enums.StatisticType.values()) {
             List<Statistic> statistics = Statistic.find(Statistic.class, "i = " + statisticType.value);
             FontTextView textView = new FontTextView(this);

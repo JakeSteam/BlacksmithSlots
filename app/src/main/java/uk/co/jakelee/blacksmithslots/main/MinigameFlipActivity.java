@@ -39,7 +39,7 @@ public class MinigameFlipActivity extends MinigameActivity {
             resources = slot.getResources();
 
             updateDisplay();
-            LinearLayout itemImages = (LinearLayout) findViewById(R.id.itemImageContainer);
+            LinearLayout itemImages = findViewById(R.id.itemImageContainer);
             for (ItemBundle resource : resources) {
                 itemImages.addView(DisplayHelper.createImageView(this, DisplayHelper.getItemImageFile(resource.getTier().value, resource.getType().value), 120, 120));
             }

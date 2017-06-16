@@ -27,7 +27,7 @@ public class LogActivity extends BaseActivity {
         ((TextView)findViewById(R.id.activityTitle)).setText(R.string.message_log);
 
         LayoutInflater inflater = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        TableLayout statTable = (TableLayout)findViewById(R.id.dataTable);
+        TableLayout statTable = findViewById(R.id.dataTable);
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         List<Message> messages = Select.from(Message.class).orderBy("a DESC").list();
         for (Message message : messages) {

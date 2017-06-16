@@ -127,16 +127,16 @@ public class SettingsActivity extends BaseActivity {
     private void populateSettings() {
         spinnersInitialised = 0;
         LayoutInflater inflater = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        TableLayout settingTable = (TableLayout)findViewById(R.id.dataTable);
+        TableLayout settingTable = findViewById(R.id.dataTable);
         settingTable.removeAllViews();
         for (Enums.SettingGroup group : Enums.SettingGroup.values()) {
             displaySettingGroup(inflater, settingTable, group);
         }
 
-        LinearLayout socialRow = (LinearLayout)inflater.inflate(R.layout.custom_row_social, null).findViewById(R.id.socialRow);
+        LinearLayout socialRow = inflater.inflate(R.layout.custom_row_social, null).findViewById(R.id.socialRow);
         settingTable.addView(socialRow);
 
-        LinearLayout supportRow = (LinearLayout) inflater.inflate(R.layout.custom_row_misc, null).findViewById(R.id.supportRow);
+        LinearLayout supportRow = inflater.inflate(R.layout.custom_row_misc, null).findViewById(R.id.supportRow);
         settingTable.addView(supportRow);
 
 
@@ -189,7 +189,7 @@ public class SettingsActivity extends BaseActivity {
     }
 
     private TableRow createTableRow(LayoutInflater inflater, Setting setting) {
-        TableRow row = (TableRow)inflater.inflate(getRowLayout(setting), null).findViewById(R.id.dataRow);
+        TableRow row = inflater.inflate(getRowLayout(setting), null).findViewById(R.id.dataRow);
         if (setting.getSetting() == Enums.Setting.SaveImported) {
             row.findViewById(R.id.importButton).setEnabled(!setting.getBooleanValue());
             row.findViewById(R.id.importButton).setBackgroundResource(setting.getBooleanValue() ? R.drawable.box_orange : R.drawable.box_green);

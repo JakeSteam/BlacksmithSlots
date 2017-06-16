@@ -33,11 +33,11 @@ public class VipComparisonActivity extends BaseActivity {
         ButterKnife.bind(this);
 
         LayoutInflater inflater = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        TableLayout comparisonTable = (TableLayout)findViewById(R.id.comparisonTable);
+        TableLayout comparisonTable = findViewById(R.id.comparisonTable);
         TableLayout.LayoutParams params = new TableLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         int vipLevel = LevelHelper.getVipLevel();
         for (int i = 0; i <= Constants.MAX_VIP_LEVEL; i++) {
-            TableRow tableRow = (TableRow)inflater.inflate(R.layout.custom_vip_row, null).findViewById(R.id.dataRow);
+            TableRow tableRow = inflater.inflate(R.layout.custom_vip_row, null).findViewById(R.id.dataRow);
             tableRow.setBackgroundColor(ContextCompat.getColor(this, vipLevel == i ? R.color.green : R.color.white));
             ((TextView)tableRow.findViewById(R.id.vipLevel)).setText(Integer.toString(i));
             ((TextView)tableRow.findViewById(R.id.timeBetweenBonuses)).setText(String.format(Locale.ENGLISH, getString(R.string.time_hours), IncomeHelper.getChestCooldownHours(i)));

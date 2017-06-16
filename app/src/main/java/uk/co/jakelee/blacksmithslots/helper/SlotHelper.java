@@ -73,7 +73,7 @@ public class SlotHelper {
     }
 
     public void createRoutes() {
-        RelativeLayout container = (RelativeLayout)activity.findViewById(R.id.slotArea);
+        RelativeLayout container = activity.findViewById(R.id.slotArea);
         RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         int slotContainerId = container.findViewById(R.id.slotContainer).getId();
         params.addRule(RelativeLayout.ALIGN_TOP, slotContainerId);
@@ -135,7 +135,7 @@ public class SlotHelper {
     }
 
     public void createWheel() {
-        LinearLayout container = (LinearLayout)activity.findViewById(R.id.slotContainer);
+        LinearLayout container = activity.findViewById(R.id.slotContainer);
         for (int i = 0; i < slot.getSlots(); i++) {
             WheelView wheel = new WheelView(activity);
 
@@ -310,7 +310,7 @@ public class SlotHelper {
                 winningResults.addAll(results);
 
                 // Bring winning route to front. +1 due to bottom bar
-                ImageView routeImage = (ImageView)activity.findViewById(activity.getResources().getIdentifier("route_" + (i + 1), "id", activity.getPackageName()));
+                ImageView routeImage = activity.findViewById(activity.getResources().getIdentifier("route_" + (i + 1), "id", activity.getPackageName()));
                 if (routeImage != null) {
                     routeImage.setColorFilter(ContextCompat.getColor(activity, R.color.greenText), PorterDuff.Mode.MULTIPLY);
                     routeImage.bringToFront();
@@ -465,7 +465,7 @@ public class SlotHelper {
 
     private void resetRouteColours() {
         for (int i = 1; i <= slot.getMaximumRows(); i++) {
-            ImageView routeImage = (ImageView)activity.findViewById(activity.getResources().getIdentifier("route_" + (i), "id", activity.getPackageName()));
+            ImageView routeImage = activity.findViewById(activity.getResources().getIdentifier("route_" + (i), "id", activity.getPackageName()));
             if (routeImage != null) {
                 if (i <= slot.getCurrentRows()) {
                     routeImage.setColorFilter(ContextCompat.getColor(activity, R.color.blue), PorterDuff.Mode.MULTIPLY);

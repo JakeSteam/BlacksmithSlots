@@ -27,7 +27,7 @@ public class SlotDialogActivity extends BaseActivity {
         ((TextView)findViewById(R.id.activityTitle)).setText(R.string.dialog_log);
 
         LayoutInflater inflater = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        TableLayout statTable = (TableLayout)findViewById(R.id.dataTable);
+        TableLayout statTable = findViewById(R.id.dataTable);
 
         Intent intent = getIntent();
         Slot selectedSlot = Slot.get(intent.getIntExtra(Constants.INTENT_SLOT, 0));
@@ -43,7 +43,7 @@ public class SlotDialogActivity extends BaseActivity {
                     task.getText(this)));
         }
 
-        TableRow tableRow = (TableRow) inflater.inflate(R.layout.custom_data_row, null).findViewById(R.id.dataRow);
+        TableRow tableRow = inflater.inflate(R.layout.custom_data_row, null).findViewById(R.id.dataRow);
         ((TextView) tableRow.findViewById(R.id.dataName)).setText(R.string.unlocked);
         ((TextView) tableRow.findViewById(R.id.dataValue)).setText(selectedSlot.getUnlockedText(this));
         statTable.addView(tableRow);
