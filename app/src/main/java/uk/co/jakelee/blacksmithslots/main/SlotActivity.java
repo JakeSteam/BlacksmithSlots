@@ -12,6 +12,8 @@ import android.widget.TextView;
 
 import java.util.Locale;
 
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 import uk.co.jakelee.blacksmithslots.BaseActivity;
 import uk.co.jakelee.blacksmithslots.R;
 import uk.co.jakelee.blacksmithslots.helper.AlertDialogHelper;
@@ -38,6 +40,7 @@ public class SlotActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_slot);
         prefs = getSharedPreferences("uk.co.jakelee.blacksmithslots", MODE_PRIVATE);
+        ButterKnife.bind(this);
 
         Intent intent = getIntent();
         final Slot slot = Slot.get(intent.getIntExtra(Constants.INTENT_SLOT, 0));
@@ -118,6 +121,7 @@ public class SlotActivity extends BaseActivity {
         });
     }
 
+    @OnClick(R.id.spinButton)
     public void spin(View v) {
         slotHelper.spin(true);
         if (isFirstInstall) {
@@ -126,34 +130,41 @@ public class SlotActivity extends BaseActivity {
         }
     }
 
+    @OnClick(R.id.logButton)
     public void openLog(View v) {
         MusicHelper.getInstance(this).setMovingInApp(true);
         startActivity(new Intent(this, LogActivity.class)
                 .addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT));
     }
 
+    @OnClick(R.id.vipLevel)
     public void openVip(View v) {
         MusicHelper.getInstance(this).setMovingInApp(true);
         startActivity(new Intent(this, VipComparisonActivity.class)
                 .addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT));
     }
 
+    @OnClick(R.id.increaseStake)
     public void increaseStake(View v) {
         slotHelper.increaseStake();
     }
 
+    @OnClick(R.id.decreaseStake)
     public void decreaseStake(View v) {
         slotHelper.decreaseStake();
     }
 
+    @OnClick(R.id.increaseRows)
     public void increaseRows(View v) {
         slotHelper.increaseRows();
     }
 
+    @OnClick(R.id.decreaseRows)
     public void decreaseRows(View v) {
         slotHelper.decreaseRows();
     }
 
+    @OnClick({R.id.autospinButton, R.id.autospinsRemainingButton})
     public void autospin(View v) {
         if (slotHelper.autospinsLeft > 0) {
             slotHelper.autospinsLeft = 0;
@@ -169,6 +180,7 @@ public class SlotActivity extends BaseActivity {
         slotHelper.onActivityResult(requestCode, resultCode, data);
     }
 
+    @OnClick({R.id.currentLevel, R.id.currentLevelProgress})
     public void levelInfo(View v) {
         int currentLevel = getLevel();
         int nextLevelXP = convertLevelToXp(currentLevel + 1);

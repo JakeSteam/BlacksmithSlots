@@ -92,7 +92,6 @@
                 android:layout_width="wrap_content"
                 android:background="@drawable/box_yellow"
                 android:text="@string/close"
-                android:onClick="forceClose"
                 android:maxLines="1"
                 android:layout_margin="5dp"
                 style="@style/SlotText"

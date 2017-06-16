@@ -132,6 +132,7 @@ public class MinigameHigherActivity extends MinigameActivity {
         }
     }
 
+    @OnClick(R.id.close)
     public void forceClose(View v) {
         confirmClose();
     }

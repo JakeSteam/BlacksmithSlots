@@ -25,10 +25,10 @@
                 android:src="@drawable/close"
                 android:onClick="close"/>
             <ImageView
+                android:id="@+id/logButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/log"
-                android:onClick="openLog"/>
+                android:src="@drawable/log"/>
             <uk.co.jakelee.blacksmithslots.components.FontTextView
                 android:id="@+id/vipLevel"
                 android:layout_width="wrap_content"
@@ -38,8 +38,7 @@
                 android:paddingTop="0dp"
                 android:paddingBottom="0dp"
                 android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:onClick="openVip"/>
+                android:paddingRight="10dp"/>
             <uk.co.jakelee.blacksmithslots.components.FontTextView
                 android:id="@+id/currentLevel"
                 android:layout_width="wrap_content"
@@ -50,7 +49,6 @@
                 android:paddingBottom="0dp"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
-                android:onClick="levelInfo"
                 android:layout_margin="3dp"/>
             <ProgressBar
                 android:id="@+id/currentLevelProgress"
@@ -60,7 +58,6 @@
                 android:indeterminate="false"
                 android:max="10000"
                 android:progressDrawable="@drawable/custom_progress_bar"
-                android:onClick="levelInfo"
                 android:minHeight="30dp"
                 android:maxHeight="30dp"
                 android:paddingTop="5dp"
@@ -135,7 +132,6 @@
                         android:layout_width="30dp"
                         android:layout_height="30dp"
                         android:src="@drawable/arrow_yellow"
-                        android:onClick="decreaseStake"
                         android:rotation="180"/>
                     <LinearLayout
                         android:orientation="horizontal"
@@ -154,14 +150,12 @@
                         android:id="@+id/increaseStake"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:src="@drawable/arrow_yellow"
-                        android:onClick="increaseStake"/>
+                        android:src="@drawable/arrow_yellow"/>
                     <ImageView
                         android:id="@+id/decreaseRows"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
                         android:src="@drawable/arrow_orange"
-                        android:onClick="decreaseRows"
                         android:rotation="180"/>
                     <LinearLayout
                         android:orientation="horizontal"
@@ -180,14 +174,12 @@
                         android:id="@+id/increaseRows"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:src="@drawable/arrow_orange"
-                        android:onClick="increaseRows"/>
+                        android:src="@drawable/arrow_orange"/>
                 </LinearLayout>
                 <uk.co.jakelee.blacksmithslots.components.FontTextView
                     android:id="@+id/spinButton"
                     android:layout_width="80dp"
                     android:background="@drawable/box_filled_green"
-                    android:onClick="spin"
                     style="@style/SlotText"/>
                 <FrameLayout
                     android:layout_width="match_parent"
@@ -200,14 +192,12 @@
                         android:text="@string/icon_autospin"
                         android:textSize="15sp"
                         android:padding="2dp"
-                        android:onClick="autospin"
                         style="@style/SlotText"/>
                     <uk.co.jakelee.blacksmithslots.components.FontTextView
                         android:id="@+id/autospinsRemainingButton"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="@drawable/box_filled_green"
-                        android:onClick="autospin"
                         style="@style/SlotText"/>
                 </FrameLayout>
             </LinearLayout>
