@@ -2,8 +2,11 @@ package uk.co.jakelee.blacksmithslots.main;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.view.animation.AnimationUtils;
@@ -172,9 +175,16 @@ public class SplashScreenActivity extends Activity {
 
     public void startGame() {
         MusicHelper.getInstance(this).setMovingInApp(true);
-        startActivity(new Intent(this, MapActivity.class)
-                .addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT)
-                .putExtra("isFirstInstall", isFirstInstall));
+        if (Build.VERSION.SDK_INT >= 16) {
+            ActivityOptionsCompat options = ActivityOptionsCompat.makeScaleUpAnimation(globeImage, 0, 0, globeImage.getWidth(), globeImage.getHeight());
+            ActivityCompat.startActivity(SplashScreenActivity.this, new Intent(this, MapActivity.class)
+                    .addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT)
+                    .putExtra("isFirstInstall", isFirstInstall), options.toBundle());
+        } else {
+            startActivity(new Intent(this, MapActivity.class)
+                    .addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT)
+                    .putExtra("isFirstInstall", isFirstInstall));
+        }
         finish();
     }
 }
