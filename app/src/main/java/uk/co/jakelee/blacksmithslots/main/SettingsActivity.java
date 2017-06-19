@@ -30,6 +30,7 @@ import uk.co.jakelee.blacksmithslots.helper.Enums;
 import uk.co.jakelee.blacksmithslots.helper.GooglePlayHelper;
 import uk.co.jakelee.blacksmithslots.helper.IncomeHelper;
 import uk.co.jakelee.blacksmithslots.helper.LanguageHelper;
+import uk.co.jakelee.blacksmithslots.helper.PrestigeHelper;
 import uk.co.jakelee.blacksmithslots.helper.StorageHelper;
 import uk.co.jakelee.blacksmithslots.helper.TextHelper;
 import uk.co.jakelee.blacksmithslots.model.Setting;
@@ -194,6 +195,10 @@ public class SettingsActivity extends BaseActivity {
             row.findViewById(R.id.importButton).setEnabled(!setting.getBooleanValue());
             row.findViewById(R.id.importButton).setBackgroundResource(setting.getBooleanValue() ? R.drawable.box_orange : R.drawable.box_green);
             row.findViewById(R.id.importButton).setAlpha(setting.getBooleanValue() ? 0.5f : 1f);
+        } else if (setting.getSetting() == Enums.Setting.Prestige) {
+            boolean canPrestige = PrestigeHelper.canPrestige();
+            row.findViewById(R.id.prestigeButton).setBackgroundResource(canPrestige ? R.drawable.box_green : R.drawable.box_orange);
+            row.findViewById(R.id.prestigeButton).setAlpha(setting.getBooleanValue() ? 1f : 0.5f);
         } else if (setting.getSetting() == Enums.Setting.PlayLogout) {
             row.findViewById(R.id.logoutButton).setEnabled(GooglePlayHelper.IsConnected());
             row.findViewById(R.id.logoutButton).setBackgroundResource(GooglePlayHelper.IsConnected() ? R.drawable.box_orange : R.drawable.box_green);
@@ -222,6 +227,8 @@ public class SettingsActivity extends BaseActivity {
         if (setting.getDataType() == Enums.DataType.Boolean.value) {
             if (setting.getSetting() == Enums.Setting.SaveImported) {
                 return R.layout.custom_setting_boolean_save_import;
+            } else if (setting.getSetting() == Enums.Setting.Prestige) {
+                return R.layout.custom_setting_boolean_prestige;
             } else if (setting.getSetting() == Enums.Setting.PlayLogout) {
                 return R.layout.custom_setting_boolean_logout;
             }
@@ -273,6 +280,14 @@ public class SettingsActivity extends BaseActivity {
             populateSettings();
         } else {
             AlertHelper.error(this, R.string.error_failed_pb_import, false);
+        }
+    }
+
+    public void prestigeGame(View v) {
+        if (PrestigeHelper.canPrestige()) {
+            AlertDialogHelper.confirmPrestige(this);
+        } else {
+            AlertHelper.error(this, getString(R.string.error_prestige_locked), true);
         }
     }
 

@@ -25,6 +25,7 @@
     <string name="alert_quest_completed">Quest completed!</string>
     <string name="alert_unfinished_task">This task can\'t be completed yet!</string>
     <string name="alert_levelled_up">Reached level %1$d! %2$s</string>
+    <string name="alert_levelled_up_prestige">Reached level %1$d, you can now prestige in the settings! %2$s</string>
     <string name="alert_autospin_cancelled">Autospin turned off!</string>
     <string name="alert_claimed_pass_day">Claimed day %1$d bonus of %2$s!</string>
     <string name="alert_pass_purchased">Purchased a Blacksmith Pass!</string>
@@ -220,6 +221,7 @@
     <string name="setting_14">Logout</string>
     <string name="setting_15">Autosave</string>
     <string name="setting_16">Orientation</string>
+    <string name="setting_17">Prestige</string>
 
     <string name="orientation_4">Auto-rotate</string>
     <string name="orientation_6">Landscape</string>
@@ -1008,6 +1010,7 @@
     <string name="statistic_21_name">Gamble</string>
     <string name="statistic_22_name">Trophies Earned</string>
     <string name="statistic_23_name">Higher / Lower</string>
+    <string name="statistic_24_name">Prestiges</string>
     <string name="statistic_next_claim_name">Next Bonus Claim</string>
 
     <string name="statistictype_1_name">Progress</string>
@@ -1206,4 +1209,12 @@ AESCrypt (https://goo.gl/Ewk2tq) - Support code encryption.
     <string name="lower">Lower</string>
     <string name="x" translatable="false">x</string>
     <string name="minigame_higher_desc">Will the next card be higher or lower? If you\'re unsure, stick!</string>
+    <string name="prestige_game">Prestige Game</string>
+    <string name="error_prestige_locked">To prestige (+1 wildcard, -20% XP) you need VIP 1 and Level 25!</string>
+    <string name="prestige_confirm">Are you sure you want to prestige?\n\nYour progress will be reset, but you will keep all of your trophies and statistics (except XP). You will gain 1 extra wildcard per prestige, at the cost of -20% XP.\n\nThis can\'t be undone!</string>
+    <string name="prestige_success">Successfully prestiged, good luck!</string>
+    <string name="can_prestige">Can Prestige</string>
+    <string name="prestige_desc">At level 25, VIP levels 1 and above can prestige, receiving 1 extra wildcard per slot, but 15% less XP.</string>
+    <string name="negative_xp_adjust">%1$d (-%2$.2f%% XP)</string>
+    <string name="positive_xp_adjust">%1$d (+%2$.2f%% XP)</string>
 </resources>

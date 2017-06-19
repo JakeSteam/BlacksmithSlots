@@ -137,7 +137,7 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
         progressText.setText(values[0]);
     }
 
-    private void createInventories() {
+    public static void createInventories() {
         List<Inventory> inventories = new ArrayList<>();
         inventories.add(new Inventory(Enums.Tier.None, Enums.Type.LuckyCoin, 100));
         inventories.add(new Inventory(Enums.Tier.Bronze, Enums.Type.Hatchet, 1));
@@ -309,6 +309,7 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
         settings.add(new Setting(Enums.SettingGroup.GooglePlay, Enums.Setting.PlayLogout, true));
         settings.add(new Setting(Enums.SettingGroup.GooglePlay, Enums.Setting.Autosave, false));
         settings.add(new Setting(Enums.SettingGroup.Gameplay, Enums.Setting.Orientation, ActivityInfo.SCREEN_ORIENTATION_SENSOR));
+        settings.add(new Setting(Enums.SettingGroup.Gameplay, Enums.Setting.Prestige, false));
         Setting.saveInTx(settings);
     }
 
@@ -1892,7 +1893,7 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
         statistics.add(new Statistic(Enums.StatisticType.Bonuses, Enums.Statistic.LastBonusClaimed, "", "", 0L));
         statistics.add(new Statistic(Enums.StatisticType.Misc, Enums.Statistic.LastAutosave, "", "", 0L));
         statistics.add(new Statistic(Enums.StatisticType.Misc, Enums.Statistic.LastAdvertWatched, "", "", 0L));
-        statistics.add(new Statistic(Enums.StatisticType.Misc, Enums.Statistic.TrophiesEarned, "", "CgkIoMe6hp0eEAIQKg", 0, 0));
+        statistics.add(new Statistic(Enums.StatisticType.Progress, Enums.Statistic.TrophiesEarned, "", "CgkIoMe6hp0eEAIQKg", 0, 0));
         statistics.add(new Statistic(Enums.StatisticType.BlacksmithPass, Enums.Statistic.CurrentPassClaimedDay, "", "", 0));
         statistics.add(new Statistic(Enums.StatisticType.BlacksmithPass, Enums.Statistic.HighestPassClaimedDay, "", "", 0));
         statistics.add(new Statistic(Enums.StatisticType.BlacksmithPass, Enums.Statistic.TotalPassDaysClaimed, "", "", 0));

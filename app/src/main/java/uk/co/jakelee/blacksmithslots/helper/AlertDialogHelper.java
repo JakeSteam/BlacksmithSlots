@@ -65,6 +65,22 @@ public class AlertDialogHelper {
         });
     }
 
+    public static void confirmPrestige(final Activity activity) {
+        displayAlertDialog(activity, activity.getString(R.string.setting_17), activity.getString(R.string.prestige_confirm),
+                new DialogAction(activity.getString(R.string.setting_17), new Runnable() {
+                    @Override
+                    public void run() {
+                        PrestigeHelper.prestigeGame();
+                        AlertHelper.success(activity, activity.getString(R.string.prestige_success), true);
+                    }
+                }),
+                new DialogAction(activity.getString(R.string.cancel), new Runnable() {
+                    @Override
+                    public void run() {
+                    }
+                }));
+    }
+
     public static void enterSupportCode(final Context context, final Activity activity) {
         final EditText supportCodeBox = new EditText(context);
 

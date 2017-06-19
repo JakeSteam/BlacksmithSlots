@@ -46,7 +46,11 @@ public class VipComparisonActivity extends BaseActivity {
             ((TextView)tableRow.findViewById(R.id.dailyBonus)).setText("+" + (i * Constants.VIP_DAILY_BONUS_MODIFIER) + "%");
             ((TextView)tableRow.findViewById(R.id.autospins)).setText("" + LevelHelper.getAutospinsByVip(i));
             ((TextView)tableRow.findViewById(R.id.bonusWildcards)).setText(Integer.toString(i));
-            ((ImageView)tableRow.findViewById(R.id.subredditFlair)).setImageResource(getVipResource(i));
+            ((ImageView) tableRow.findViewById(R.id.subredditFlair)).setImageResource(getVipResource(i));
+
+            if (i == 0) {
+                ((ImageView) tableRow.findViewById(R.id.canPrestige)).setImageResource(R.drawable.cross);
+            }
             comparisonTable.addView(tableRow, params);
         }
     }
@@ -78,6 +82,7 @@ public class VipComparisonActivity extends BaseActivity {
             case R.id.maxAutospins: return R.string.max_autospins_desc;
             case R.id.extraWildcards: return R.string.extra_wildcards_desc;
             case R.id.subredditFlair: return R.string.subreddit_flair_desc;
+            case R.id.canPrestige: return R.string.prestige_desc;
             default: return R.string.empty;
         }
     }

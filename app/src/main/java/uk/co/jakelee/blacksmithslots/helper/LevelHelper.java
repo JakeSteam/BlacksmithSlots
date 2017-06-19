@@ -52,8 +52,9 @@ public class LevelHelper {
     }
 
     public static String addXp(Context context, int xp) {
-        double xpMultiplier = Constants.TROPHY_XP_MODIFIER * percentToMultiplier(Statistic.get(Enums.Statistic.TrophiesEarned).getIntValue());
-        int modifiedXp = (int)Math.floor(xp * xpMultiplier);
+        double trophyMultipler = percentToMultiplier(Constants.TROPHY_XP_MODIFIER * Statistic.get(Enums.Statistic.TrophiesEarned).getIntValue());
+        double prestigeMultiplier = Math.pow(Constants.PRESTIGE_XP_ADJUST, Statistic.get(Enums.Statistic.Prestiges).getIntValue());
+        int modifiedXp = (int)Math.ceil(xp * trophyMultipler * prestigeMultiplier);
 
         Statistic.add(Enums.Statistic.Xp, modifiedXp);
         Statistic savedLevel = Statistic.get(Enums.Statistic.Level);
@@ -64,14 +65,14 @@ public class LevelHelper {
             Statistic.add(Enums.Statistic.Level, level - savedLevel.getIntValue());
             Log.d("Level", "Levelled up to " + level);
             return String.format(Locale.ENGLISH,
-                    context.getString(R.string.alert_levelled_up),
+                    context.getString(level == 25 ? R.string.alert_levelled_up_prestige : R.string.alert_levelled_up),
                     level,
                     IncomeHelper.claimMiscBonus(context));
         }
         return "";
     }
 
-    private static double percentToMultiplier(int percent) {
+    private static double percentToMultiplier(double percent) {
         double percentMultiplier = percent + 100;
         return percentMultiplier / 100;
     }

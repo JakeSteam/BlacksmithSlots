@@ -90,6 +90,11 @@
                             android:maxWidth="85dp"
                             android:text="@string/subreddit_flair"
                             style="@style/VipHeader"/>
+                        <uk.co.jakelee.blacksmithslots.components.FontTextView
+                            android:id="@+id/canPrestige"
+                            android:maxWidth="85dp"
+                            android:text="@string/can_prestige"
+                            style="@style/VipHeader"/>
                     </TableRow>
                 </TableLayout>
             </HorizontalScrollView>

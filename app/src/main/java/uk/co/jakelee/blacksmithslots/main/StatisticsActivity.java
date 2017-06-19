@@ -7,11 +7,13 @@ import android.widget.TableLayout;
 import android.widget.TextView;
 
 import java.util.List;
+import java.util.Locale;
 
 import uk.co.jakelee.blacksmithslots.BaseActivity;
 import uk.co.jakelee.blacksmithslots.BuildConfig;
 import uk.co.jakelee.blacksmithslots.R;
 import uk.co.jakelee.blacksmithslots.components.FontTextView;
+import uk.co.jakelee.blacksmithslots.helper.Constants;
 import uk.co.jakelee.blacksmithslots.helper.DatabaseHelper;
 import uk.co.jakelee.blacksmithslots.helper.DateHelper;
 import uk.co.jakelee.blacksmithslots.helper.DisplayHelper;
@@ -38,9 +40,10 @@ public class StatisticsActivity extends BaseActivity {
             statTable.addView(textView);
 
             for (Statistic statistic : statistics) {
+                String value = getStatisticValue(statistic);
                 statTable.addView(DisplayHelper.getTableRow(inflater,
                         Statistic.getName(this, statistic.getStatistic().value),
-                        statistic.getValue()));
+                        value));
             }
 
             if (statisticType == Enums.StatisticType.Bonuses) {
@@ -54,5 +57,18 @@ public class StatisticsActivity extends BaseActivity {
                 statTable.addView(DisplayHelper.getTableRow(inflater, getString(R.string.statistic_version_database), "" + DatabaseHelper.LATEST_PATCH));
             }
         }
+    }
+
+    private String getStatisticValue(Statistic statistic) {
+        if (statistic.getStatistic().value == Enums.Statistic.Prestiges.value) {
+            return String.format(Locale.ENGLISH, getString(R.string.negative_xp_adjust),
+                    statistic.getIntValue(),
+                    100 - (100 * Math.pow(Constants.PRESTIGE_XP_ADJUST, statistic.getIntValue())));
+        } else if (statistic.getStatistic().value == Enums.Statistic.TrophiesEarned.value) {
+            return String.format(Locale.ENGLISH, getString(R.string.positive_xp_adjust),
+                    statistic.getIntValue(),
+                    Constants.TROPHY_XP_MODIFIER * statistic.getIntValue());
+        }
+        return statistic.getValue();
     }
 }

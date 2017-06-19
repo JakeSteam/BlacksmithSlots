@@ -196,18 +196,21 @@ public class Slot extends SugarRecord {
         }
 
         int vipLevel = LevelHelper.getVipLevel();
+        int prestige = Statistic.get(Enums.Statistic.Prestiges).getIntValue();
         for (ItemBundle bundle : rawItemBundles) {
             // Add one item bundle per weighting point!
             for (int i = 0; i < bundle.getWeighting(); i++) {
                 weightedItemBundles.add(bundle);
             }
 
-            // Add one wildcard item per VIP level
+            // Add one wildcard item per VIP level / prestige
             if (applyBonusWildcard && vipLevel > 0 && bundle.getType() == Enums.Type.Wildcard) {
-                for (int i = 0; i < vipLevel; i++) {
+                for (int i = 0; i < vipLevel + prestige; i++) {
                     weightedItemBundles.add(bundle);
                 }
             }
+
+
         }
         return weightedItemBundles;
     }
