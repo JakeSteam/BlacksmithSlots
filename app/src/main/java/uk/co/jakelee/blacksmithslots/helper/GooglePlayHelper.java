@@ -387,7 +387,7 @@ public class GooglePlayHelper implements com.google.android.gms.common.api.Resul
             Trophy.class
     };
 
-    private static byte[] createBackup() {
+    public static byte[] createBackup() {
         Gson gson = new Gson();
 
         StringBuilder backupString = new StringBuilder(DatabaseHelper.LATEST_PATCH + GooglePlayHelper.SAVE_DELIMITER);
@@ -401,7 +401,7 @@ public class GooglePlayHelper implements com.google.android.gms.common.api.Resul
         return backupString.toString().getBytes();
     }
 
-    private static void applyBackup(String backupData) {
+    public static void applyBackup(String backupData) {
         Gson gson = new Gson();
         String[] splitData = splitBackupData(backupData);
 
@@ -444,7 +444,7 @@ public class GooglePlayHelper implements com.google.android.gms.common.api.Resul
         return list;
     }
 
-    private static Pair<Integer, Integer> getXpAndItemsFromSave(byte[] saveBytes) {
+    public static Pair<Integer, Integer> getXpAndItemsFromSave(byte[] saveBytes) {
         int xp = 0;
         int items = 0;
 
@@ -489,7 +489,7 @@ public class GooglePlayHelper implements com.google.android.gms.common.api.Resul
         return null;
     }
 
-    private static boolean newSaveIsBetter(Pair<Integer, Integer> newValues) {
+    public static boolean newSaveIsBetter(Pair<Integer, Integer> newValues) {
         return !(newValues.first <= LevelHelper.getXp() && newValues.second <= Inventory.getUniqueItemCount());
     }
 

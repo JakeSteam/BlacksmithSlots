@@ -210,6 +210,29 @@ public class AlertDialogHelper {
                 }));
     }
 
+    public static void confirmLocalLoad(final Activity activity, int localXp, int localItems, int cloudXp, int cloudItems) {
+        displayAlertDialog(activity, activity.getString(R.string.import_save), String.format(Locale.ENGLISH, activity.getString(R.string.local_load_confirm),
+                LevelHelper.convertXpToLevel(localXp),
+                localXp,
+                localItems,
+                LevelHelper.convertXpToLevel(cloudXp),
+                cloudXp,
+                cloudItems),
+                new DialogAction(activity.getString(R.string.load), new Runnable() {
+                    @Override
+                    public void run() {
+                        StorageHelper.loadLocalSave(activity, false);
+                        AlertHelper.success(activity, R.string.local_save_loaded, true);
+                    }
+                }),
+                new DialogAction(activity.getString(R.string.cancel), new Runnable() {
+                    @Override
+                    public void run() {
+
+                    }
+                }));
+    }
+
     public static void confirmCloudLoad(final Activity activity, int localXp, int localItems, int cloudXp, int cloudItems) {
         displayAlertDialog(activity, activity.getString(R.string.cloud_load), String.format(Locale.ENGLISH, activity.getString(R.string.google_cloud_load_confirm),
                 LevelHelper.convertXpToLevel(localXp),

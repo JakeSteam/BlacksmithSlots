@@ -39,10 +39,15 @@
     <string name="google_cloud_comparing">Comparing local and cloud saves...</string>
     <string name="google_cloud_save_loading">Loading...</string>
     <string name="google_cloud_save_loaded">Loaded cloud save!</string>
+    <string name="local_save_loaded">Successfully loaded and imported local game save!</string>
     <string name="google_cloud_save_saving">Saving...</string>
     <string name="google_cloud_save_saved">Saved cloud save!</string>
+    <string name="local_save_saved">Successfully exported game save to %s on external storage!</string>
     <string name="google_cloud_save_conflict">Cloud save conflict! Attempting to resolve, this may take a few seconds.</string>
     <string name="google_cloud_save_error">An error occurred, please contact blacksmithslots@jakelee.co.uk if this happens repeatedly!</string>
+    <string name="error_failed_export">An error occurred! Please check your storage is correctly connected, and permissions have been given. Error: %s.</string>
+
+    <string name="saveNameFormat" translatable="false">BlacksmithSlots%s.save</string>
 
     <string name="log_spin">%1$s at \"%2$s\".</string>
     <string name="log_error">Error: %1$s</string>
@@ -56,7 +61,8 @@
     <string name="settinggroup_2">Gameplay</string>
     <string name="settinggroup_3">Notifications</string>
     <string name="settinggroup_4">Google Play</string>
-    <string name="settinggroup_5">More</string>
+    <string name="settinggroup_5">Saves</string>
+    <string name="settinggroup_6">More</string>
 
     <!-- UI -->
     <!-- Misc -->
@@ -120,6 +126,7 @@
     <string name="error_bonus_not_ready">Bonus will be ready in %1$s.</string>
     <string name="error_not_enough_resources">Not enough resources to spin!</string>
     <string name="error_failed_pb_import">Failed to find a Pixel Blacksmith save! Make sure you\'ve given permission to access external storage, and try exporting the save again.</string>
+    <string name="error_failed_import">Failed to find a Blacksmith Slots save! Make sure you\'ve given permission to access external storage, and that the save is in /BlacksmithSlots/. Error: %s</string>
     <string name="error_claimed_without_pass">Can\'t claim Blacksmith Pass rewards without having a Blacksmith Pass!</string>
     <string name="error_claimed_pass_already">Already claimed this day\'s reward!</string>
 
@@ -1087,6 +1094,9 @@
     <string name="cloud_saves">Cloud Saves</string>
     <string name="load">Load</string>
     <string name="google_cloud_load_confirm">Are you sure you want to load this cloud save?\n\nLocal: Lev %1$d (%2$d XP), %3$d Unique Items\nCloud: Lev %4$d (%5$d XP), %6$d Unique Items</string>
+    <string name="local_load_confirm">Are you sure you want to load this save?\n\nCurrent: Lev %1$d (%2$d XP), %3$d Unique Items\nSave file: Lev %4$d (%5$d XP), %6$d Unique Items</string>
+
+    <string name="error_no_save_found">Couldn\'t find a save.</string>
     <string name="save_description">V%1$s | Lev %2$d (%3$d XP) | %4$d Unique Items</string>
     <string name="save">Save</string>
     <string name="google_cloud_save_confirm">Are you sure you wish to overwrite your cloud save:\n%1$s\n\n(Created on %2$s on your %3$s) with your local save:\n\nV%4$s | Lev %5$d (%6$d XP) | %7$d Unique Items?</string>
@@ -1239,4 +1249,5 @@ AESCrypt (https://goo.gl/Ewk2tq) - Support code encryption.
     <string name="inventory_subtitle">To find out where to get an item, click Sources. To find out where to use it, click Uses.</string>
     <string name="log_subtitle">Only the last 100 messages are kept.</string>
     <string name="reward_subtitle">Every possible reward is listed. The higher the chance, the more likely the item is to be won!</string>
+    <string name="export_save">Export Save</string>
 </resources>

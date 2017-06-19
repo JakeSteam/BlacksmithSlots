@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/savesRow"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".main.SettingsActivity">
+
+    <uk.co.jakelee.blacksmithslots.components.FontTextView
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:background="@drawable/box_green"
+        android:text="@string/import_save"
+        android:layout_margin="3dp"
+        android:onClick="importSave"
+        style="@style/SlotText"/>
+    <uk.co.jakelee.blacksmithslots.components.FontTextView
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:background="@drawable/box_green"
+        android:text="@string/export_save"
+        android:layout_margin="3dp"
+        android:onClick="exportSave"
+        style="@style/SlotText"/>
+</LinearLayout>

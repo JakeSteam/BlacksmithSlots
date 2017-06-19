@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import uk.co.jakelee.blacksmithslots.R;
+import uk.co.jakelee.blacksmithslots.main.MapActivity;
 import uk.co.jakelee.blacksmithslots.main.SplashScreenActivity;
 import uk.co.jakelee.blacksmithslots.model.Achievement;
 import uk.co.jakelee.blacksmithslots.model.Iap;
@@ -81,7 +82,12 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
 
     @Override
     protected String doInBackground(String... params) {
-        SharedPreferences prefs = context.getSharedPreferences("uk.co.jakelee.blacksmithslots", MODE_PRIVATE);
+        SharedPreferences prefs;
+        if (callingActivity != null) {
+            prefs = callingActivity.getSharedPreferences("uk.co.jakelee.blacksmithslots", MODE_PRIVATE);
+        } else {
+            prefs = MapActivity.prefs;
+        }
         boolean appliedDbChanges = false;
 
         if (prefs.getInt("databaseVersion", DatabaseHelper.NO_DATABASE) <= DatabaseHelper.NO_DATABASE) {
@@ -99,7 +105,7 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
         }
 
         /*if (prefs.getInt("databaseVersion", DatabaseHelper.NO_DATABASE) < DatabaseHelper.V0_0_2) {
-            if (!isFirstInstall) {
+            if (!isFirstInstall && callingActivity != null) {
                 callingActivity.setStoryText("This is a shiny new version, with new features!");
             }
             setProgress("Patch 0.0.2", 30);
@@ -110,7 +116,7 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
 
         if (appliedDbChanges) {
             setProgress(context.getString(R.string.progress_installed), 100);
-        } else {
+        } else if (callingActivity != null) {
             callingActivity.startGame();
         }
         return "";

@@ -136,14 +136,6 @@ public class SettingsActivity extends BaseActivity {
         for (Enums.SettingGroup group : Enums.SettingGroup.values()) {
             displaySettingGroup(inflater, settingTable, group);
         }
-
-        LinearLayout socialRow = inflater.inflate(R.layout.custom_row_social, null).findViewById(R.id.socialRow);
-        settingTable.addView(socialRow);
-
-        LinearLayout supportRow = inflater.inflate(R.layout.custom_row_misc, null).findViewById(R.id.supportRow);
-        settingTable.addView(supportRow);
-
-
     }
 
     private void displaySettingGroup(LayoutInflater inflater, TableLayout settingTable, Enums.SettingGroup group) {
@@ -160,6 +152,17 @@ public class SettingsActivity extends BaseActivity {
         List<Setting> settings = Setting.getByGroup(group);
         for (Setting setting : settings) {
             displaySetting(inflater, settingTable, setting);
+        }
+
+        if (group == Enums.SettingGroup.Saves) {
+            LinearLayout socialRow = inflater.inflate(R.layout.custom_row_saves, null).findViewById(R.id.savesRow);
+            settingTable.addView(socialRow);
+        } else if (group == Enums.SettingGroup.Misc) {
+            LinearLayout socialRow = inflater.inflate(R.layout.custom_row_social, null).findViewById(R.id.socialRow);
+            settingTable.addView(socialRow);
+
+            LinearLayout supportRow = inflater.inflate(R.layout.custom_row_misc, null).findViewById(R.id.supportRow);
+            settingTable.addView(supportRow);
         }
     }
 
@@ -272,9 +275,9 @@ public class SettingsActivity extends BaseActivity {
         AlertHelper.info(this, "This should change the value for setting #" + ((TableRow)v.getParent()).getTag(), true);
     }
 
-    public void importSave(View v) {
+    public void importPBSave(View v) {
         StorageHelper.confirmStoragePermissions(this);
-        Pair<Integer, Integer> pbData = StorageHelper.getPBSave();
+        Pair<Integer, Integer> pbData = StorageHelper.getSave(true);
         if (pbData != null) {
 
             AlertHelper.success(this, IncomeHelper.claimImportBonus(this, pbData.first), false);
@@ -292,6 +295,24 @@ public class SettingsActivity extends BaseActivity {
             populateSettings();
         } else {
             AlertHelper.error(this, R.string.error_failed_pb_import, false);
+        }
+    }
+
+    public void importSave(View v) {
+        String result = StorageHelper.loadLocalSave(this, true);
+        if (result.startsWith("BlacksmithSlots")) {
+            AlertHelper.success(this, R.string.local_save_loaded, true);
+        } else if (!result.equals("")) {
+            AlertHelper.error(this, String.format(Locale.ENGLISH, getString(R.string.error_failed_import), result), false);
+        }
+    }
+
+    public void exportSave(View v) {
+        String result = StorageHelper.saveLocalSave(this);
+        if (result.startsWith("BlacksmithSlots")) {
+            AlertHelper.success(this, String.format(Locale.ENGLISH, getString(R.string.local_save_saved), result), true);
+        } else {
+            AlertHelper.error(this, String.format(Locale.ENGLISH, getString(R.string.error_failed_export), result), false);
         }
     }
 

@@ -2,6 +2,7 @@ package uk.co.jakelee.blacksmithslots.helper;
 
 import android.Manifest;
 import android.app.Activity;
+import android.content.Context;
 import android.content.pm.PackageManager;
 import android.os.Environment;
 import android.support.v4.app.ActivityCompat;
@@ -11,12 +12,18 @@ import android.util.Pair;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.FilenameFilter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Date;
+
+import uk.co.jakelee.blacksmithslots.R;
+import uk.co.jakelee.blacksmithslots.model.Inventory;
 
 public class StorageHelper {
     private static final int REQUEST_EXTERNAL_STORAGE = 1;
@@ -37,14 +44,40 @@ public class StorageHelper {
         }
     }
 
-    public static Pair<Integer, Integer> getPBSave(){
-        File directory = new File(Environment.getExternalStorageDirectory().getPath() + "/PixelBlacksmith");
+    public static Pair<Integer, Integer> getSave(boolean isPbSave) {
+        final String saveName = isPbSave ? "PixelBlacksmith" : "BlacksmithSlots";
+        File directory = new File(Environment.getExternalStorageDirectory().getPath() + "/" + saveName);
 
         // Get a list of all files
         File[] files = directory.listFiles(new FilenameFilter() {
             @Override
             public boolean accept(File dir, String name) {
-                return name.toLowerCase().startsWith("pixelblacksmith");
+                return name.toLowerCase().startsWith(saveName.toLowerCase());
+            }
+        });
+
+        if (files != null && files.length > 0) {
+            Arrays.sort(files, Collections.reverseOrder());
+            String backupText = SupportCodeHelper.decode(getStringFromFile(files[0]));
+
+
+            if (isPbSave) {
+                if (!backupText.equals("")) {
+                    return GooglePlayHelper.getPrestigeAndXpFromPBSave(backupText.getBytes());
+                }
+            }
+        }
+        return null;
+    }
+
+    public static String loadLocalSave(Activity activity, boolean checkIsImprovement) {
+        File directory = new File(Environment.getExternalStorageDirectory().getPath() + "/BlacksmithSlots");
+
+        // Get a list of all files
+        File[] files = directory.listFiles(new FilenameFilter() {
+            @Override
+            public boolean accept(File dir, String name) {
+                return name.toLowerCase().startsWith("blacksmithslots");
             }
         });
 
@@ -53,11 +86,50 @@ public class StorageHelper {
             String backupText = SupportCodeHelper.decode(getStringFromFile(files[0]));
 
             if (!backupText.equals("")) {
-                return GooglePlayHelper.getPrestigeAndXpFromPBSave(backupText.getBytes());
+                Pair<Integer, Integer> cloudData = GooglePlayHelper.getXpAndItemsFromSave(backupText.getBytes());
 
+                if (!checkIsImprovement || GooglePlayHelper.newSaveIsBetter(cloudData)) {
+                    GooglePlayHelper.applyBackup(backupText);
+                } else {
+                    AlertDialogHelper.confirmLocalLoad(activity,
+                            LevelHelper.getXp(),
+                            Inventory.getUniqueItemCount(),
+                            cloudData.first,
+                            cloudData.second);
+                    return "";
+                }
+
+                return files[0].getName();
             }
         }
-        return null;
+        return activity.getString(R.string.error_no_save_found);
+    }
+
+    public static String saveLocalSave(Activity activity) {
+        confirmStoragePermissions(activity);
+
+        try {
+            String filename = getFilename(activity);
+            byte[] backup = SupportCodeHelper.encode(GooglePlayHelper.createBackup());
+
+            File path = new File(Environment.getExternalStorageDirectory() + "/BlacksmithSlots");
+            boolean success = path.mkdirs();
+
+            File file = new File(Environment.getExternalStorageDirectory() + "/BlacksmithSlots", filename);
+
+            FileOutputStream outputStream;
+            outputStream = new FileOutputStream(file);
+            outputStream.write(backup);
+            outputStream.close();
+            return filename;
+        } catch (IOException e) {
+            return e.getMessage();
+        }
+    }
+
+    public static String getFilename(Context context) {
+        String date = new SimpleDateFormat("yyyyMMdd_kkmmss").format(new Date());
+        return String.format(context.getString(R.string.saveNameFormat), date);
     }
 
     private static String getStringFromFile(File file) {

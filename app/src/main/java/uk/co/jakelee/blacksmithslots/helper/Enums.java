@@ -139,7 +139,7 @@ public class Enums {
     }
 
     public enum SettingGroup {
-        Internal(0), Audio(1), Gameplay(2), Notifications(3), GooglePlay(4), Misc(5);
+        Internal(0), Audio(1), Gameplay(2), Notifications(3), GooglePlay(4), Saves(5), Misc(6);
         public final int value;
         SettingGroup(int value) {
             this.value = value;
