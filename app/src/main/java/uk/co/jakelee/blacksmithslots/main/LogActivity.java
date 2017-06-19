@@ -3,6 +3,7 @@ package uk.co.jakelee.blacksmithslots.main;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.TableLayout;
 import android.widget.TextView;
 
@@ -25,6 +26,8 @@ public class LogActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_data_table);
         ((TextView)findViewById(R.id.activityTitle)).setText(R.string.message_log);
+        ((TextView)findViewById(R.id.activitySubtitle)).setVisibility(View.VISIBLE);
+        ((TextView)findViewById(R.id.activitySubtitle)).setText(R.string.log_subtitle);
 
         LayoutInflater inflater = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         TableLayout statTable = findViewById(R.id.dataTable);

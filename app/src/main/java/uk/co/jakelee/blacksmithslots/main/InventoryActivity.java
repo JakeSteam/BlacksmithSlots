@@ -38,6 +38,8 @@ public class InventoryActivity extends BaseActivity {
         setContentView(R.layout.activity_data_table);
         ButterKnife.bind(this);
         ((TextView)findViewById(R.id.activityTitle)).setText(R.string.inventory);
+        ((TextView)findViewById(R.id.activitySubtitle)).setVisibility(View.VISIBLE);
+        ((TextView)findViewById(R.id.activitySubtitle)).setText(R.string.inventory_subtitle);
 
         LayoutInflater inflater = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         boolean onlyShowStockedItems = Setting.getBoolean(Enums.Setting.OnlyShowStocked);

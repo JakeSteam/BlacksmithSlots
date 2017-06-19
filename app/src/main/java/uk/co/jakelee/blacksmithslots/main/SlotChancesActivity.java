@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.TableLayout;
 import android.widget.TextView;
 
@@ -25,6 +26,8 @@ public class SlotChancesActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_data_table);
         ((TextView)findViewById(R.id.activityTitle)).setText(R.string.reward_chances);
+        ((TextView)findViewById(R.id.activitySubtitle)).setVisibility(View.VISIBLE);
+        ((TextView)findViewById(R.id.activitySubtitle)).setText(R.string.reward_subtitle);
 
         LayoutInflater inflater = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         TableLayout statTable = findViewById(R.id.dataTable);

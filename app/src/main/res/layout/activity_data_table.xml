@@ -32,6 +32,12 @@
                     style="@style/DataText"
                     android:text=""
                     android:textSize="45sp"/>
+                <uk.co.jakelee.blacksmithslots.components.FontTextView
+                    android:id="@+id/activitySubtitle"
+                    android:layout_width="wrap_content"
+                    style="@style/DataText"
+                    android:maxLines="6"
+                    android:visibility="gone"/>
                 <TableLayout
                     android:id="@+id/dataTable"
                     android:layout_width="wrap_content"

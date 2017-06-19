@@ -208,13 +208,13 @@
     <string name="setting_1">Music</string>
     <string name="setting_2">Sounds</string>
     <string name="setting_3">(Internal) Attempt Login</string>
-    <string name="setting_4">Autosave Mins</string>
-    <string name="setting_5">Only Show Relevant Resources</string>
+    <string name="setting_4"></string>
+    <string name="setting_5">Only Show Slot Rewards</string>
     <string name="setting_6">Language</string>
     <string name="setting_7">Notification Sounds</string>
     <string name="setting_8">Periodic Bonus Notification</string>
     <string name="setting_9">Import Pixel Blacksmith Save</string>
-    <string name="setting_10">Only Show Owned Items</string>
+    <string name="setting_10">Only Show Owned Inventory Items</string>
     <string name="setting_11">Order Items By Tier</string>
     <string name="setting_12">Reverse Item Ordering</string>
     <string name="setting_13">Blacksmith Pass Notification</string>
@@ -222,6 +222,24 @@
     <string name="setting_15">Autosave</string>
     <string name="setting_16">Orientation</string>
     <string name="setting_17">Prestige</string>
+
+    <string name="setting_desc_1">Enables and disables the in-game background music.</string>
+    <string name="setting_desc_2">Enables and disables the in-game sound effects.</string>
+    <string name="setting_desc_3">(Internal) Attempt Login</string>
+    <string name="setting_desc_4"></string>
+    <string name="setting_desc_5">When enabled, this will only show rewards from the current slot in the inventory tab whilst in a slot.</string>
+    <string name="setting_desc_6">This allows the in-game language to be configured.</string>
+    <string name="setting_desc_7">Enables and disables sounds from notifications.</string>
+    <string name="setting_desc_8">When enabled, a notification will be sent when the free bonus items has recharged.</string>
+    <string name="setting_desc_9">Importing a Pixel Blacksmith save provides some immediate resources, and may help you towards the end of the game.</string>
+    <string name="setting_desc_10">When enabled, the inventory panel in slots will only show items that you have more than zero of.</string>
+    <string name="setting_desc_11">When enabled, the inventory panel in slots will show items ordered by tier, not quantity.</string>
+    <string name="setting_desc_12">When enabled, the inventory panel in slots will show items in a reversed order.</string>
+    <string name="setting_desc_13">When enabled, a notification will be sent when the daily Blacksmith Pass reward is ready.</string>
+    <string name="setting_desc_14">Logout of Google Play.</string>
+    <string name="setting_desc_15">Enables auto-saving, which can be managed via the Google Play settings on the map screen.</string>
+    <string name="setting_desc_16">Configures the game to either lock to portrait or landscape, or match the device\'s current orientation.</string>
+    <string name="setting_desc_17">At level 25+ and VIP level 1+, you can prestige. This will reset your game progress, but keep your current statistics (except XP) and trophy progress. You will receive +1 wildcard per slot, but -20% XP.</string>
 
     <string name="orientation_4">Auto-rotate</string>
     <string name="orientation_6">Landscape</string>
@@ -1217,4 +1235,8 @@ AESCrypt (https://goo.gl/Ewk2tq) - Support code encryption.
     <string name="prestige_desc">At level 25, VIP levels 1 and above can prestige, receiving 1 extra wildcard per slot, but 15% less XP.</string>
     <string name="negative_xp_adjust">%1$d (-%2$.2f%% XP)</string>
     <string name="positive_xp_adjust">%1$d (+%2$.2f%% XP)</string>
+    <string name="settings_desc">Customise your game experience! Tap a setting title to view more information.</string>
+    <string name="inventory_subtitle">To find out where to get an item, click Sources. To find out where to use it, click Uses.</string>
+    <string name="log_subtitle">Only the last 100 messages are kept.</string>
+    <string name="reward_subtitle">Every possible reward is listed. The higher the chance, the more likely the item is to be won!</string>
 </resources>

@@ -46,7 +46,10 @@ public class SettingsActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_data_table);
+
         ((TextView)findViewById(R.id.activityTitle)).setText(R.string.settings);
+        ((TextView)findViewById(R.id.activitySubtitle)).setVisibility(View.VISIBLE);
+        ((TextView)findViewById(R.id.activitySubtitle)).setText(R.string.settings_desc);
     }
 
     @Override
@@ -160,12 +163,21 @@ public class SettingsActivity extends BaseActivity {
         }
     }
 
-    private void displaySetting(LayoutInflater inflater, TableLayout settingTable, Setting setting) {
+    private void displaySetting(LayoutInflater inflater, TableLayout settingTable, final Setting setting) {
+        final Activity activity = this;
         TableRow tableRow = createTableRow(inflater, setting);
         tableRow.setTag(setting.getSetting().value);
         ((TextView)tableRow.findViewById(R.id.settingName)).setText(setting.getName(this));
+        ((TextView)tableRow.findViewById(R.id.settingName)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String settingDesc = TextHelper.getInstance(activity).getText(DisplayHelper.getSettingDescString(setting.getSetting().value));
+                AlertHelper.info(activity, settingDesc, false);
+            }
+        });
         settingTable.addView(tableRow);
     }
+
 
     public void openLink(View v) {
         String url = (String)v.getTag();

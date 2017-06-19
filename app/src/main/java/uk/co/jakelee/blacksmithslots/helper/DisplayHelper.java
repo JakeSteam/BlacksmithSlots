@@ -50,6 +50,10 @@ public class DisplayHelper {
         return "hint_" + hint;
     }
 
+    public static String getSettingDescString(int setting) {
+        return "setting_desc_" + setting;
+    }
+
     public static String getItemImageFile(ItemBundle result, boolean useDefault) {
         return getItemImageFile(result.getTier().value, result.getType().value, 1);
     }
