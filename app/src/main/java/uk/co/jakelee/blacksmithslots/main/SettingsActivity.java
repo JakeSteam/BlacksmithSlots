@@ -198,7 +198,7 @@ public class SettingsActivity extends BaseActivity {
         } else if (setting.getSetting() == Enums.Setting.Prestige) {
             boolean canPrestige = PrestigeHelper.canPrestige();
             row.findViewById(R.id.prestigeButton).setBackgroundResource(canPrestige ? R.drawable.box_green : R.drawable.box_orange);
-            row.findViewById(R.id.prestigeButton).setAlpha(setting.getBooleanValue() ? 1f : 0.5f);
+            row.findViewById(R.id.prestigeButton).setAlpha(canPrestige ? 1f : 0.5f);
         } else if (setting.getSetting() == Enums.Setting.PlayLogout) {
             row.findViewById(R.id.logoutButton).setEnabled(GooglePlayHelper.IsConnected());
             row.findViewById(R.id.logoutButton).setBackgroundResource(GooglePlayHelper.IsConnected() ? R.drawable.box_orange : R.drawable.box_green);
