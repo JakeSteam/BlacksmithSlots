@@ -1778,6 +1778,7 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
         achievements.add(new Achievement(1, Enums.Statistic.MinigameHigher, "CgkIoMe6hp0eEAIQLw"));
         achievements.add(new Achievement(10, Enums.Statistic.MinigameHigher, "CgkIoMe6hp0eEAIQMA"));
         achievements.add(new Achievement(100, Enums.Statistic.MinigameHigher, "CgkIoMe6hp0eEAIQMQ"));
+        achievements.add(new Achievement(1, Enums.Statistic.Prestiges, "CgkIoMe6hp0eEAIQMw"));
         Achievement.saveInTx(achievements);
     }
 
@@ -1900,6 +1901,7 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
         statistics.add(new Statistic(Enums.StatisticType.Minigames, Enums.Statistic.MinigameDice, "", "", 0, 0));
         statistics.add(new Statistic(Enums.StatisticType.Minigames, Enums.Statistic.MinigameFlip, "", "", 0, 0));
         statistics.add(new Statistic(Enums.StatisticType.Minigames, Enums.Statistic.MinigameHigher, "", "", 0, 0));
+        statistics.add(new Statistic(Enums.StatisticType.Progress, Enums.Statistic.Prestiges, "", "CgkIoMe6hp0eEAIQMg", 0, 0));
         Statistic.saveInTx(statistics);
     }
 }

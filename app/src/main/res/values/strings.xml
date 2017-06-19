@@ -1149,7 +1149,7 @@ AESCrypt (https://goo.gl/Ewk2tq) - Support code encryption.
     <string name="daily_bonus_desc">BS Pass Bonus is the amount of bonus items included in daily Blacksmith Pass rewards.</string>
     <string name="max_autospins_desc">Max Auto Spins is the maximum number of autospins that can be performed at once.</string>
     <string name="extra_wildcards_desc">Extra Wildcards is the number of extra wildcards added to each slot, increasing the chances of a match. The effect of these can be viewed on the Slot Chances screen.</string>
-    <string name="subreddit_flair_desc">Each VIP level receives exclusive flair on the /r/BlacksmithSlots subreddit, after messaging /u/JakeSteam with order number!</string>
+    <string name="subreddit_flair_desc">Each VIP level receives exclusive flair on the /r/BlacksmithSlots subreddit, after messaging /u/JakeSteam with your order number!</string>
     <string name="subreddit_flair">Subreddit Flair</string>
     <string name="statistic_version_name">Name</string>
     <string name="statistic_version_number">Number</string>
@@ -1204,6 +1204,6 @@ AESCrypt (https://goo.gl/Ewk2tq) - Support code encryption.
     <string name="hint_25">Curious what was used to make the game? Check out the Credits!</string>
     <string name="higher">Higher</string>
     <string name="lower">Lower</string>
-    <string name="x">x</string>
+    <string name="x" translatable="false">x</string>
     <string name="minigame_higher_desc">Will the next card be higher or lower? If you\'re unsure, stick!</string>
 </resources>
