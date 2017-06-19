@@ -215,7 +215,7 @@
     <string name="setting_1">Music</string>
     <string name="setting_2">Sounds</string>
     <string name="setting_3">(Internal) Attempt Login</string>
-    <string name="setting_4"></string>
+    <string name="setting_4" translatable="false"></string>
     <string name="setting_5">Only Show Slot Rewards</string>
     <string name="setting_6">Language</string>
     <string name="setting_7">Notification Sounds</string>
@@ -232,8 +232,8 @@
 
     <string name="setting_desc_1">Enables and disables the in-game background music.</string>
     <string name="setting_desc_2">Enables and disables the in-game sound effects.</string>
-    <string name="setting_desc_3">(Internal) Attempt Login</string>
-    <string name="setting_desc_4"></string>
+    <string name="setting_desc_3" translatable="false">(Internal) Attempt Login</string>
+    <string name="setting_desc_4" translatable="false"></string>
     <string name="setting_desc_5">When enabled, this will only show rewards from the current slot in the inventory tab whilst in a slot.</string>
     <string name="setting_desc_6">This allows the in-game language to be configured.</string>
     <string name="setting_desc_7">Enables and disables sounds from notifications.</string>
@@ -1243,8 +1243,8 @@ AESCrypt (https://goo.gl/Ewk2tq) - Support code encryption.
     <string name="prestige_success">Successfully prestiged, good luck!</string>
     <string name="can_prestige">Can Prestige</string>
     <string name="prestige_desc">At level 25, VIP levels 1 and above can prestige, receiving 1 extra wildcard per slot, but 15% less XP.</string>
-    <string name="negative_xp_adjust">%1$d (-%2$.2f%% XP)</string>
-    <string name="positive_xp_adjust">%1$d (+%2$.2f%% XP)</string>
+    <string name="negative_xp_adjust" translatable="false">%1$d (-%2$.2f%% XP)</string>
+    <string name="positive_xp_adjust" translatable="false">%1$d (+%2$.2f%% XP)</string>
     <string name="settings_desc">Customise your game experience! Tap a setting title to view more information.</string>
     <string name="inventory_subtitle">To find out where to get an item, click Sources. To find out where to use it, click Uses.</string>
     <string name="log_subtitle">Only the last 100 messages are kept.</string>
