@@ -21,7 +21,6 @@ import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.drive.Drive;
 import com.google.android.gms.games.Games;
 import com.tapjoy.TJPlacement;
-import com.tapjoy.TJPlacementListener;
 
 import java.util.List;
 import java.util.Locale;
@@ -120,9 +119,7 @@ public class MapActivity extends BaseActivity implements
         checkBonuses();
 
         advertHelper = AdvertHelper.getInstance(this);
-        TJPlacementListener placementListener = AdvertHelper.getInstance(this);
-        advertPlacement = new TJPlacement(this, "WatchAdvert", placementListener);
-        advertPlacement.requestContent();
+        advertPlacement = new TJPlacement(this, "WatchAdvert", advertHelper);
 
         mapTextView.setText(R.string.map_1);
 
@@ -441,6 +438,7 @@ public class MapActivity extends BaseActivity implements
     @OnClick(R.id.watchAdvert)
     public void rewardAdvertItems(View v) {
         if (IncomeHelper.canWatchAdvert()) {
+            AlertHelper.info(this, getString(R.string.advert_load_start), false);
             advertHelper.showAdvert(this, advertPlacement);
         } else {
             AlertHelper.error(this, String.format(Locale.ENGLISH,
