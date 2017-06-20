@@ -907,7 +907,7 @@
     <string name="tier_5">Catégorique</string>
     <string name="tier_6">argent</string>
     <string name="tier_7">Or</string>
-    <string name="time_hours">%1$.1 heure</string>
+    <string name="time_hours">%1$.1f heure</string>
     <string name="time_mins">%1$d mins</string>
     <string name="trophies">Trophées</string>
     <string name="trophies_progress">Trophées: %1$d / %2$d (+ %3$,.1f%% XP)</string>

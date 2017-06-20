@@ -165,7 +165,7 @@
     <string name="outOfItemsLong">오, 아니, 너는 물건이 없어! 내기를 낮추거나, 다른 슬롯으로 가거나, 가게에서 더 구입 하시겠습니까?</string>
     <string name="pass_claim">청구</string>
     <string name="pass_days">하루  %1$d :</string>
-    <string name="pass_days_left">" %1$d 일 남았습니다."</string>
+    <string name="pass_days_left">%1$d 일 남았습니다.</string>
     <string name="pass_desc_owned">대장장이 패스가 유효하지만 매일 무료 아이템을 받게됩니다!\n\n청구하려면 00:00에서 23:59 사이에 언제든지 다시 확인하십시오!</string>
     <string name="pass_desc_unowned">대장장이 패스를 구입하면 %1$d 일간 무료로 매일 맛있는 음식을 맛볼 수 있습니다!\n\n처음 구매하시면 VIP 1로 업그레이드됩니다! 높은 VIP 레벨은 BS 패스에서 더 많은 것을 얻습니다!</string>
     <string name="pass_purchase">구매패스 (%1$s)</string>
