@@ -125,7 +125,6 @@ public class SlotActivity extends BaseActivity {
     public void spin(View v) {
         slotHelper.spin(true);
         if (isFirstInstall) {
-            isFirstInstall = false;
             prefs.edit().putInt("tutorialStageCompleted", 2).apply();
         }
     }

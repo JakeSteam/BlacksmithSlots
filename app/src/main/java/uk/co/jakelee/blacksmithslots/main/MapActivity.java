@@ -20,8 +20,6 @@ import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.drive.Drive;
 import com.google.android.gms.games.Games;
-import com.google.android.gms.games.quest.Quest;
-import com.google.android.gms.games.quest.QuestUpdateListener;
 
 import java.util.List;
 import java.util.Locale;
@@ -61,8 +59,7 @@ import static uk.co.jakelee.blacksmithslots.model.Setting.getBoolean;
 
 public class MapActivity extends BaseActivity implements
         GoogleApiClient.ConnectionCallbacks,
-        GoogleApiClient.OnConnectionFailedListener,
-        QuestUpdateListener {
+        GoogleApiClient.OnConnectionFailedListener {
     public static SharedPreferences prefs;
     @BindView(R.id.townScroller)
     ViewPager mapPager;
@@ -173,6 +170,13 @@ public class MapActivity extends BaseActivity implements
         onConnected(null);
         MusicHelper.getInstance(this).playIfPossible(R.raw.village_consort);
         updateText();
+
+        if (isFirstInstall) {
+            int stage = prefs.getInt("tutorialStageCompleted", 0);
+            if (!Constants.DEBUG_UNLOCK_ALL && stage == 2) {
+                runTutorial(6);
+            }
+        }
     }
 
     private void updateText() {
@@ -216,6 +220,9 @@ public class MapActivity extends BaseActivity implements
                 break;
             case 5:
                 runTutorial(getString(R.string.tutorial_map_5), findViewById(R.id.openSlot), isLandscape ? (Gravity.LEFT | Gravity.TOP) : Gravity.TOP, true);
+                break;
+            case 6:
+                runTutorial(getString(R.string.tutorial_map_6), findViewById(R.id.navigationBar), Gravity.TOP, true);
                 break;
         }
     }
@@ -302,7 +309,6 @@ public class MapActivity extends BaseActivity implements
                     .putExtra("isFirstInstall", isFirstInstall)
                     .addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT));
             if (isFirstInstall) {
-                isFirstInstall = false;
                 endTutorial();
                 prefs.edit().putInt("tutorialStageCompleted", 1).apply();
             }
@@ -382,6 +388,12 @@ public class MapActivity extends BaseActivity implements
 
     @OnClick(R.id.rightArrow)
     public void moveRight() {
+        if (isFirstInstall) {
+            isFirstInstall = false;
+            endTutorial();
+            prefs.edit().putInt("tutorialStageCompleted", 3).apply();
+        }
+
         if (mapPager.getCurrentItem() < mapPager.getAdapter().getCount()) {
             mapPager.setCurrentItem(mapPager.getCurrentItem() + 1, true);
         }
@@ -546,10 +558,6 @@ public class MapActivity extends BaseActivity implements
     @Override
     public void onConnectionSuspended(int i) {
         GooglePlayHelper.mGoogleApiClient.connect();
-    }
-
-    public void onQuestCompleted(Quest quest) {
-        AlertHelper.success(this, R.string.alert_quest_completed, true);
     }
 
     protected void onActivityResult(int requestCode, int resultCode, Intent intent) {

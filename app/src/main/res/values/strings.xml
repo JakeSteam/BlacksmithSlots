@@ -1250,4 +1250,5 @@ AESCrypt (https://goo.gl/Ewk2tq) - Support code encryption.
     <string name="log_subtitle">Only the last 100 messages are kept.</string>
     <string name="reward_subtitle">Every possible reward is listed. The higher the chance, the more likely the item is to be won!</string>
     <string name="export_save">Export Save</string>
+    <string name="tutorial_map_6">The next area has been unlocked! Tap the right arrow to view the unlocked slot. Oh, and congratulations on reaching the end of the tutorial!</string>
 </resources>
