@@ -35,6 +35,11 @@
         <meta-data
             android:name="com.google.android.gms.games.APP_ID"
             android:value="@string/app_id" />
+
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+
         <meta-data android:name="applovin.sdk.key"
             android:value="d8B0h7p58eRdbK8r8r6cntx7TDbAl2WMBiNtqAyypOaPikFsTLSKCNSgb3rL5MiG347uE4r2SPSA7h0g1S_ErR"  />
 
@@ -88,6 +93,23 @@
             android:theme="@style/Theme.Dimmed" />
         <activity android:name=".main.TrophyActivity"
             android:theme="@style/Theme.Dimmed" />
+
+        <activity
+            android:name="com.tapjoy.TJAdUnitActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen"
+            android:hardwareAccelerated="true" />
+        <activity
+            android:name="com.tapjoy.mraid.view.ActionHandler"
+            android:configChanges="orientation|keyboardHidden|screenSize" />
+        <activity
+            android:name="com.tapjoy.mraid.view.Browser"
+            android:configChanges="orientation|keyboardHidden|screenSize" />
+
+        <activity
+            android:name="com.tapjoy.TJContentActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
     </application>
 
 </manifest>

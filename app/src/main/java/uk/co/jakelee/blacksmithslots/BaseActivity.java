@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.os.Build;
 import android.view.View;
 
+import com.tapjoy.Tapjoy;
+
 import de.keyboardsurfer.android.widget.crouton.Crouton;
 import uk.co.jakelee.blacksmithslots.helper.Enums;
 import uk.co.jakelee.blacksmithslots.helper.MusicHelper;
@@ -22,6 +24,19 @@ public class BaseActivity extends Activity {
         super.startActivity(intent);
         overridePendingTransitionEnter();
     }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Tapjoy.onActivityStart(this);
+    }
+
+    @Override
+    protected void onStop() {
+        Tapjoy.onActivityStop(this);
+        super.onStop();
+    }
+
 
     @Override
     protected void onResume() {
