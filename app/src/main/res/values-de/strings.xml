@@ -15,7 +15,7 @@
     <string name="alert_item_unknown">Nirgends!?</string>
     <string name="alert_item_use">%1$s wird in %2$s verwendet.</string>
     <string name="alert_items_submitted">Übergeben in %1$s, um die Aufgabe bei \"%2$s\" abzuschließen!</string>
-    <string name="alert_level_progress">%1$.2f% der Weg zu Level %2$d (%3$d/%4$d xp)!</string>
+    <string name="alert_level_progress">%1$.2f%% der Weg zu Level %2$d (%3$d/%4$d xp)!</string>
     <string name="alert_levelled_up">Erreicht Stufe %1$d! %2$s</string>
     <string name="alert_logged_out">Erfolgreich aus Google Play Games abgemeldet!</string>
     <string name="alert_map_locked">Zum Entsperren der Karte \"%1$s\" Slot \"%2$s\" muss ausgefüllt werden!</string>
@@ -911,7 +911,7 @@
     <string name="time_hours">%1$.1f hrs</string>
     <string name="time_mins">%1$d min</string>
     <string name="trophies">Trophäen</string>
-    <string name="trophies_progress">Trophäen: %1$d/%2$d (+%3$.1f% XP)</string>
+    <string name="trophies_progress">Trophäen: %1$d/%2$d (+%3$.1f%% XP)</string>
     <string name="trophy_progress_achieved">%1$s Trophäe freigeschaltet!</string>
     <string name="tutorial_map_1">Willkommen bei Blacksmith Slots!\n\nEntdecken Sie die Gegend, sprechen Sie mit Menschen und versuchen Sie, die Welt vor dem Purpur zu retten!\n\nTippen Sie auf das Logo, um zu begin</string>
     <string name="tutorial_map_3">Oh nein, Mama ist gefangen! Slots wie diese haben eine weiße Kontur auf der Karte.</string>

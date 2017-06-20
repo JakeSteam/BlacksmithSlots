@@ -30,7 +30,7 @@
     <string name="alert_claimed_pass_day">Claimed day %1$d bonus of %2$s!</string>
     <string name="alert_pass_purchased">Purchased a Blacksmith Pass!</string>
     <string name="alert_pass_purchased_bonus_vip">Purchased a Blacksmith Pass, and received a free upgrade to VIP level 1!</string>
-    <string name="alert_level_progress">%1$.2f% of the way to level %2$d (%3$d / %4$d xp)!</string>
+    <string name="alert_level_progress">%1$.2f%% of the way to level %2$d (%3$d / %4$d xp)!</string>
     <string name="alert_item_source">%1$s is obtained from %2$s.</string>
     <string name="alert_item_use">%1$s is used in %2$s.</string>
     <string name="alert_item_unknown">Nowhere!?</string>
@@ -1162,7 +1162,7 @@ AESCrypt (https://goo.gl/Ewk2tq) - Support code encryption.
     <string name="pb_save_import">Save has prestiged %1$d times. %2$s</string>
     <string name="claimed_prefix">Claimed:</string>
     <string name="trophies">Trophies</string>
-    <string name="trophies_progress">Trophies:\u00A0\u00A0%1$d/%2$d\u00A0\u00A0(+%3$,.1f% XP)</string>
+    <string name="trophies_progress">Trophies:\u00A0\u00A0%1$d/%2$d\u00A0\u00A0(+%3$,.1f%% XP)</string>
     <string name="trophy_progress_unachieved" translatable="false">%1$d/%2$dx %3$s</string>
     <string name="hand_in_items">Hand in items</string>
     <string name="hand_in_items_long">How many %1$s would you like to hand in?\n\nHanding in %2$d will unlock the trophy!</string>
@@ -1243,8 +1243,8 @@ AESCrypt (https://goo.gl/Ewk2tq) - Support code encryption.
     <string name="prestige_success">Successfully prestiged, good luck!</string>
     <string name="can_prestige">Can Prestige</string>
     <string name="prestige_desc">At level 25, VIP levels 1 and above can prestige, receiving 1 extra wildcard per slot, but 15% less XP.</string>
-    <string name="negative_xp_adjust" translatable="false">%1$d (-%2$.2f% XP)</string>
-    <string name="positive_xp_adjust" translatable="false">%1$d (+%2$.2f% XP)</string>
+    <string name="negative_xp_adjust" translatable="false">%1$d (-%2$.2f%% XP)</string>
+    <string name="positive_xp_adjust" translatable="false">%1$d (+%2$.2f%% XP)</string>
     <string name="settings_desc">Customise your game experience! Tap a setting title to view more information.</string>
     <string name="inventory_subtitle">To find out where to get an item, click Sources. To find out where to use it, click Uses.</string>
     <string name="log_subtitle">Only the last 100 messages are kept.</string>

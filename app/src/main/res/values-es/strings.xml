@@ -15,7 +15,7 @@
     <string name="alert_item_unknown">¿¡En ninguna parte!?</string>
     <string name="alert_item_use">%1$s se utiliza en %2$s.</string>
     <string name="alert_items_submitted">Entregado en %1$s para completar la tarea en \"%2$s\"!</string>
-    <string name="alert_level_progress">%1$.2f% del camino al nivel %2$d (%3$d/%4$d xp)!</string>
+    <string name="alert_level_progress">%1$.2f%% del camino al nivel %2$d (%3$d/%4$d xp)!</string>
     <string name="alert_levelled_up">Alcanzado el nivel %1$d! %2$s</string>
     <string name="alert_logged_out">¡Salió de Google Play Games con éxito!</string>
     <string name="alert_map_locked">Para desbloquear el mapa \" %1$s\" se debe completar la ranura \"%2$s\".</string>
@@ -910,7 +910,7 @@
     <string name="time_hours">%1$.1f hrs</string>
     <string name="time_mins">%1$d min</string>
     <string name="trophies">Trofeos</string>
-    <string name="trophies_progress">Trofeos: %1$d / %2$d (+%3$,1f% XP)</string>
+    <string name="trophies_progress">Trofeos: %1$d / %2$d (+%3$,1f%% XP)</string>
     <string name="trophy_progress_achieved">%1$s trofeo desbloqueado!</string>
     <string name="tutorial_map_1">Bienvenido a Blacksmith Slots!\n\nExplore la zona, hable con la gente y trate de salvar el mundo del Purple!\n\nToque el logotipo para comenzar.</string>
     <string name="tutorial_map_3">Oh no, mamá está atrapada! Las tragaperras como ésta tienen un contorno blanco en el mapa.</string>

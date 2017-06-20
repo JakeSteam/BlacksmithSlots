@@ -15,7 +15,7 @@
     <string name="alert_item_unknown">Nergens!?</string>
     <string name="alert_item_use">%1$s wordt gebruikt in %2$s.</string>
     <string name="alert_items_submitted">Gehandigd in %1$s om de taak te voltooien bij \"%2$s\"!</string>
-    <string name="alert_level_progress">%1$.2f% van de weg naar level %2$d (%3$d / %4$d xp)!</string>
+    <string name="alert_level_progress">%1$.2f%% van de weg naar level %2$d (%3$d / %4$d xp)!</string>
     <string name="alert_levelled_up">Bereikte niveau %1$d!  %2$s</string>
     <string name="alert_logged_out">Succesvol aangemeld uit Google Play Games!</string>
     <string name="alert_map_locked">Om kaart \"%1$s\" te openen, moet u %2$s voltooien!</string>
@@ -910,7 +910,7 @@
     <string name="time_hours">%1$.1f uur</string>
     <string name="time_mins">%1$d minuten</string>
     <string name="trophies">trofeeën</string>
-    <string name="trophies_progress">Trofeeën: %1$d / %2$d (+%3$,1f% XP)</string>
+    <string name="trophies_progress">Trofeeën: %1$d / %2$d (+%3$,1f%% XP)</string>
     <string name="trophy_progress_achieved">%1$s trofee ontgrendeld!</string>
     <string name="tutorial_map_1">Welkom bij Blacksmith Slots!\n\nVerken het gebied, praat met mensen en probeer de wereld te redden van de Purple!\n\nTik op het logo om te beginnen.</string>
     <string name="tutorial_map_3">Oh nee, mama is gevangen! Slots als deze hebben een witte omtrek op de kaart.</string>
