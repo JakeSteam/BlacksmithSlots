@@ -25,7 +25,6 @@
             android:layout_width="match_parent"
             android:background="@drawable/box_green"
             android:text="@string/itemSourcesButton"
-            android:onClick="itemSources"
             android:maxLines="1"
             android:layout_margin="5dp"
             style="@style/SlotText"/>
@@ -35,7 +34,6 @@
             android:layout_width="match_parent"
             android:background="@drawable/box_orange"
             android:text="@string/itemUsesButton"
-            android:onClick="itemUses"
             android:maxLines="1"
             android:layout_margin="5dp"
             style="@style/SlotText"/>

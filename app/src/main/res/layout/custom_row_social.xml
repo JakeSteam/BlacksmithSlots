@@ -7,30 +7,30 @@
     tools:context=".main.SettingsActivity">
 
     <uk.co.jakelee.blacksmithslots.components.FontTextView
+        android:id="@+id/redditButton"
         android:layout_width="0dp"
         android:layout_weight="1"
         android:background="@drawable/box_orange"
         android:text="@string/reddit"
         android:layout_margin="3dp"
-        android:onClick="openLink"
         android:tag="https://reddit.com/r/blacksmithslots"
         style="@style/SlotText"/>
     <uk.co.jakelee.blacksmithslots.components.FontTextView
+        android:id="@+id/ratingButton"
         android:layout_width="0dp"
         android:layout_weight="1"
         android:background="@drawable/box_orange"
         android:text="@string/leave_rating"
         android:layout_margin="3dp"
-        android:onClick="openLink"
         android:tag="https://play.google.com/store/apps/details?id=uk.co.jakelee.blacksmithslots"
         style="@style/SlotText"/>
     <uk.co.jakelee.blacksmithslots.components.FontTextView
+        android:id="@+id/moreGamesButton"
         android:layout_width="0dp"
         android:layout_weight="1"
         android:background="@drawable/box_orange"
         android:text="@string/more_games"
         android:layout_margin="3dp"
-        android:onClick="openLink"
         android:tag="https://play.google.com/store/apps/dev?id=7913107864735774894"
         style="@style/SlotText"/>
 </LinearLayout>

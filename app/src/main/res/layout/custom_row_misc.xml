@@ -7,27 +7,27 @@
     tools:context=".main.SettingsActivity">
 
     <uk.co.jakelee.blacksmithslots.components.FontTextView
+        android:id="@+id/replayIntroButton"
         android:layout_width="0dp"
         android:layout_weight="1"
         android:background="@drawable/box_orange"
         android:text="@string/replay_intro"
         android:layout_margin="3dp"
-        android:onClick="replayIntro"
         style="@style/SlotText"/>
     <uk.co.jakelee.blacksmithslots.components.FontTextView
+        android:id="@+id/supportCodeButton"
         android:layout_width="0dp"
         android:layout_weight="1"
         android:background="@drawable/box_orange"
         android:text="@string/support_code"
         android:layout_margin="3dp"
-        android:onClick="openSupportCode"
         style="@style/SlotText"/>
     <uk.co.jakelee.blacksmithslots.components.FontTextView
+        android:id="@+id/emailButton"
         android:layout_width="0dp"
         android:layout_weight="1"
         android:background="@drawable/box_orange"
         android:text="@string/email"
         android:layout_margin="3dp"
-        android:onClick="openEmail"
         style="@style/SlotText"/>
 </LinearLayout>

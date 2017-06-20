@@ -10,6 +10,5 @@
 
     <uk.co.jakelee.blacksmithslots.components.FontTextView
         android:id="@+id/settingValue"
-        style="@style/DataText"
-        android:onClick="changeBoolean"/>
+        style="@style/DataText"/>
 </TableRow>

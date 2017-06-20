@@ -7,19 +7,19 @@
     tools:context=".main.SettingsActivity">
 
     <uk.co.jakelee.blacksmithslots.components.FontTextView
+        android:id="@+id/importGameSave"
         android:layout_width="0dp"
         android:layout_weight="1"
         android:background="@drawable/box_green"
         android:text="@string/import_save"
         android:layout_margin="3dp"
-        android:onClick="importSave"
         style="@style/SlotText"/>
     <uk.co.jakelee.blacksmithslots.components.FontTextView
+        android:id="@+id/exportGameSave"
         android:layout_width="0dp"
         android:layout_weight="1"
         android:background="@drawable/box_green"
         android:text="@string/export_save"
         android:layout_margin="3dp"
-        android:onClick="exportSave"
         style="@style/SlotText"/>
 </LinearLayout>

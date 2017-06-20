@@ -58,8 +58,20 @@ public class InventoryActivity extends BaseActivity {
         TableRow tableRow = inflater.inflate(R.layout.custom_inventory_row, null).findViewById(R.id.inventoryRow);
         tableRow.findViewById(R.id.itemSources).setTag(R.id.item_tier, inventory.getTier());
         tableRow.findViewById(R.id.itemSources).setTag(R.id.item_type, inventory.getType());
+        tableRow.findViewById(R.id.itemSources).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                itemSources(view);
+            }
+        });
         tableRow.findViewById(R.id.itemUses).setTag(R.id.item_tier, inventory.getTier());
         tableRow.findViewById(R.id.itemUses).setTag(R.id.item_type, inventory.getType());
+        tableRow.findViewById(R.id.itemUses).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                itemUses(view);
+            }
+        });
 
         ((ImageView)tableRow.findViewById(R.id.itemImage)).setImageResource(
                 getResources().getIdentifier(DisplayHelper.getItemImageFile(

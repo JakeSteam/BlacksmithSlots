@@ -2,10 +2,7 @@ package uk.co.jakelee.blacksmithslots.main;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
-import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
@@ -17,24 +14,20 @@ import android.widget.TableRow;
 import android.widget.TextView;
 
 import java.util.List;
-import java.util.Locale;
 
 import uk.co.jakelee.blacksmithslots.BaseActivity;
 import uk.co.jakelee.blacksmithslots.R;
 import uk.co.jakelee.blacksmithslots.components.FontTextView;
-import uk.co.jakelee.blacksmithslots.helper.AlertDialogHelper;
 import uk.co.jakelee.blacksmithslots.helper.AlertHelper;
 import uk.co.jakelee.blacksmithslots.helper.Constants;
 import uk.co.jakelee.blacksmithslots.helper.DisplayHelper;
 import uk.co.jakelee.blacksmithslots.helper.Enums;
 import uk.co.jakelee.blacksmithslots.helper.GooglePlayHelper;
-import uk.co.jakelee.blacksmithslots.helper.IncomeHelper;
 import uk.co.jakelee.blacksmithslots.helper.LanguageHelper;
+import uk.co.jakelee.blacksmithslots.helper.Listeners;
 import uk.co.jakelee.blacksmithslots.helper.PrestigeHelper;
-import uk.co.jakelee.blacksmithslots.helper.StorageHelper;
 import uk.co.jakelee.blacksmithslots.helper.TextHelper;
 import uk.co.jakelee.blacksmithslots.model.Setting;
-import uk.co.jakelee.blacksmithslots.model.Statistic;
 
 import static uk.co.jakelee.blacksmithslots.model.Setting.get;
 
@@ -128,7 +121,7 @@ public class SettingsActivity extends BaseActivity {
         };
     }
 
-    private void populateSettings() {
+    public void populateSettings() {
         spinnersInitialised = 0;
         LayoutInflater inflater = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         TableLayout settingTable = findViewById(R.id.dataTable);
@@ -139,6 +132,7 @@ public class SettingsActivity extends BaseActivity {
     }
 
     private void displaySettingGroup(LayoutInflater inflater, TableLayout settingTable, Enums.SettingGroup group) {
+        final Activity activity = this;
         if (group == Enums.SettingGroup.Internal) {
             return;
         }
@@ -155,111 +149,62 @@ public class SettingsActivity extends BaseActivity {
         }
 
         if (group == Enums.SettingGroup.Saves) {
-            LinearLayout socialRow = inflater.inflate(R.layout.custom_row_saves, null).findViewById(R.id.savesRow);
-            settingTable.addView(socialRow);
+            LinearLayout saveRow = inflater.inflate(R.layout.custom_row_saves, null).findViewById(R.id.savesRow);
+            saveRow.findViewById(R.id.importGameSave).setOnClickListener(Listeners.importSave(this, activity));
+            saveRow.findViewById(R.id.exportGameSave).setOnClickListener(Listeners.exportSave(this, activity));
+            settingTable.addView(saveRow);
         } else if (group == Enums.SettingGroup.Misc) {
             LinearLayout socialRow = inflater.inflate(R.layout.custom_row_social, null).findViewById(R.id.socialRow);
+            socialRow.findViewById(R.id.redditButton).setOnClickListener(Listeners.openLinkListener(this));
+            socialRow.findViewById(R.id.ratingButton).setOnClickListener(Listeners.openLinkListener(this));
+            socialRow.findViewById(R.id.moreGamesButton).setOnClickListener(Listeners.openLinkListener(this));
             settingTable.addView(socialRow);
 
             LinearLayout supportRow = inflater.inflate(R.layout.custom_row_misc, null).findViewById(R.id.supportRow);
+            supportRow.findViewById(R.id.replayIntroButton).setOnClickListener(Listeners.splashScreenListener(this));
+            supportRow.findViewById(R.id.supportCodeButton).setOnClickListener(Listeners.supportCodeListener(activity));
+            supportRow.findViewById(R.id.emailButton).setOnClickListener(Listeners.emailListener(this, activity));
             settingTable.addView(supportRow);
         }
     }
 
     private void displaySetting(LayoutInflater inflater, TableLayout settingTable, final Setting setting) {
-        final Activity activity = this;
-        TableRow tableRow = createTableRow(inflater, setting);
+        final SettingsActivity activity = this;
+        TableRow tableRow = createTableRow(activity, inflater, setting);
         tableRow.setTag(setting.getSetting().value);
         ((TextView)tableRow.findViewById(R.id.settingName)).setText(setting.getName(this));
-        ((TextView)tableRow.findViewById(R.id.settingName)).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String settingDesc = TextHelper.getInstance(activity).getText(DisplayHelper.getSettingDescString(setting.getSetting().value));
-                AlertHelper.info(activity, settingDesc, false);
-            }
-        });
+        ((TextView)tableRow.findViewById(R.id.settingName)).setOnClickListener(Listeners.displaySettingName(activity, setting));
         settingTable.addView(tableRow);
     }
 
-
-    public void openLink(View v) {
-        String url = (String)v.getTag();
-        startActivity(new Intent(Intent.ACTION_VIEW).setData(Uri.parse(url)));
-    }
-
-    public void replayIntro(View v) {
-        startActivity(new Intent(this, SplashScreenActivity.class)
-                .putExtra("replayingIntro", true)
-                .addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT));
-    }
-
-    public void openSupportCode(View v) {
-        AlertDialogHelper.enterSupportCode(this, this);
-    }
-
-    public void openEmail(View v) {
-        Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts(
-                "mailto","blacksmithslots@jakelee.co.uk", null));
-        startActivity(Intent.createChooser(emailIntent, getString(R.string.send_an_email)));
-        AlertHelper.info(this, getString(R.string.alert_email_fallback), true);
-    }
-
-    private TableRow createTableRow(LayoutInflater inflater, Setting setting) {
+    private TableRow createTableRow(final SettingsActivity activity, LayoutInflater inflater, Setting setting) {
         TableRow row = inflater.inflate(getRowLayout(setting), null).findViewById(R.id.dataRow);
         if (setting.getSetting() == Enums.Setting.SaveImported) {
             row.findViewById(R.id.importButton).setEnabled(!setting.getBooleanValue());
             row.findViewById(R.id.importButton).setBackgroundResource(setting.getBooleanValue() ? R.drawable.box_orange : R.drawable.box_green);
             row.findViewById(R.id.importButton).setAlpha(setting.getBooleanValue() ? 0.5f : 1f);
-            row.findViewById(R.id.importButton).setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    importPBSave(view);
-                }
-            });
+            row.findViewById(R.id.importButton).setOnClickListener(Listeners.importPbSave(activity));
         } else if (setting.getSetting() == Enums.Setting.Prestige) {
             boolean canPrestige = PrestigeHelper.canPrestige();
             row.findViewById(R.id.prestigeButton).setBackgroundResource(canPrestige ? R.drawable.box_green : R.drawable.box_orange);
             row.findViewById(R.id.prestigeButton).setAlpha(canPrestige ? 1f : 0.5f);
-            row.findViewById(R.id.prestigeButton).setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    prestigeGame(view);
-                }
-            });
+            row.findViewById(R.id.prestigeButton).setOnClickListener(Listeners.prestigeAccount(activity));
         } else if (setting.getSetting() == Enums.Setting.PlayLogout) {
             row.findViewById(R.id.logoutButton).setEnabled(GooglePlayHelper.IsConnected());
             row.findViewById(R.id.logoutButton).setBackgroundResource(GooglePlayHelper.IsConnected() ? R.drawable.box_orange : R.drawable.box_green);
             row.findViewById(R.id.logoutButton).setAlpha(GooglePlayHelper.IsConnected() ? 1f : 0.5f);
-            row.findViewById(R.id.logoutButton).setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    logout(view);
-                }
-            });
+            row.findViewById(R.id.logoutButton).setOnClickListener(Listeners.logoutButton(activity, this));
         } else if (setting.getSetting() == Enums.Setting.Language) {
             createDropdown((Spinner) row.findViewById(R.id.settingPicker), 9, 1, Enums.Setting.Language);
         } else if (setting.getSetting() == Enums.Setting.Orientation) {
             createDropdown((Spinner) row.findViewById(R.id.settingPicker), Constants.ORIENTATION_PORTRAIT, Constants.ORIENTATION_AUTO, Enums.Setting.Orientation);
         } else if (setting.getDataType() == Enums.DataType.Boolean.value) {
             ((TextView)row.findViewById(R.id.settingValue)).setText(setting.getBooleanValue() ? getString(R.string.on) : getString(R.string.off));
-            ((TextView)row.findViewById(R.id.settingValue)).setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    changeBoolean(view);
-                }
-            });
+            ((TextView)row.findViewById(R.id.settingValue)).setOnClickListener(Listeners.toggleBoolean(activity));
         } else if (setting.getDataType() == Enums.DataType.Integer.value) {
             ((TextView)row.findViewById(R.id.settingValue)).setText(setting.getIntValue() + " mins");
         }
         return row;
-    }
-
-    public void logout(View v) {
-        if (GooglePlayHelper.IsConnected()) {
-            GooglePlayHelper.disconnect();
-            populateSettings();
-            AlertHelper.success(this, getString(R.string.alert_logged_out), true);
-        }
     }
 
     private int getRowLayout(Setting setting) {
@@ -282,15 +227,6 @@ public class SettingsActivity extends BaseActivity {
         }
     }
 
-    public void changeBoolean(View v) {
-        Setting setting = get((Integer)((TableRow)v.getParent()).getTag());
-        setting.setBooleanValue(!setting.getBooleanValue());
-        setting.save();
-        onResume();
-
-        AlertHelper.success(this, String.format(Locale.ENGLISH, getString(setting.getBooleanValue() ? R.string.setting_turned_on : R.string.setting_turned_off), setting.getName(this)), true);
-    }
-
     public void changeString(View v) {
         AlertHelper.info(this, "Toggle string for " + ((TableRow)v.getParent()).getTag(), true);
     }
@@ -298,54 +234,4 @@ public class SettingsActivity extends BaseActivity {
     public void changeInteger(View v) {
         AlertHelper.info(this, "This should change the value for setting #" + ((TableRow)v.getParent()).getTag(), true);
     }
-
-    public void importPBSave(View v) {
-        StorageHelper.confirmStoragePermissions(this);
-        Pair<Integer, Integer> pbData = StorageHelper.getSave(true);
-        if (pbData != null) {
-
-            AlertHelper.success(this, IncomeHelper.claimImportBonus(this, pbData.first), false);
-
-            Setting haveImported = Setting.get(Enums.Setting.SaveImported);
-            haveImported.setBooleanValue(true);
-            haveImported.save();
-
-            Statistic haveImportedStat = Statistic.get(Enums.Statistic.SaveImported);
-            haveImportedStat.setBoolValue(true);
-            haveImportedStat.save();
-
-            Statistic.add(Enums.Statistic.SaveImported);
-
-            populateSettings();
-        } else {
-            AlertHelper.error(this, R.string.error_failed_pb_import, false);
-        }
-    }
-
-    public void importSave(View v) {
-        String result = StorageHelper.loadLocalSave(this, true);
-        if (result.startsWith("BlacksmithSlots")) {
-            AlertHelper.success(this, R.string.local_save_loaded, true);
-        } else if (!result.equals("")) {
-            AlertHelper.error(this, String.format(Locale.ENGLISH, getString(R.string.error_failed_import), result), false);
-        }
-    }
-
-    public void exportSave(View v) {
-        String result = StorageHelper.saveLocalSave(this);
-        if (result.startsWith("BlacksmithSlots")) {
-            AlertHelper.success(this, String.format(Locale.ENGLISH, getString(R.string.local_save_saved), result), true);
-        } else {
-            AlertHelper.error(this, String.format(Locale.ENGLISH, getString(R.string.error_failed_export), result), false);
-        }
-    }
-
-    public void prestigeGame(View v) {
-        if (PrestigeHelper.canPrestige()) {
-            AlertDialogHelper.confirmPrestige(this);
-        } else {
-            AlertHelper.error(this, getString(R.string.error_prestige_locked), true);
-        }
-    }
-
 }
