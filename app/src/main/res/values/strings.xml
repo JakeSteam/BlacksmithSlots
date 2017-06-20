@@ -90,8 +90,8 @@
 
     <!-- VIP -->
     <string name="vip_level">VIP Level</string>
-    <string name="chest_cooldown">Chest Restock</string>
-    <string name="reward_boost">Chest Boost</string>
+    <string name="chest_cooldown">Free Restock</string>
+    <string name="reward_boost">Free Boost</string>
     <string name="advert_cooldown">Advert Restock</string>
     <string name="daily_bonus">BS Pass Bonus</string>
     <string name="autospins">Max Auto Spins</string>
