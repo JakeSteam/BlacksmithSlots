@@ -1029,12 +1029,12 @@
     <string name="error_prestige_locked">Zum Prestige (+1 Wildcard, -20% XP) benötigst du VIP 1 und Level 25!</string>
     <string name="export_save">Export speichern</string>
     <string name="inventory_subtitle">Um herauszufinden, wo ein Artikel zu bekommen, klicken Sie auf Quellen. Um herauszufinden, wo sie verwendet werden sollen, klicken Sie auf Verwendungen.</string>
-    <string name="local_load_confirm">Bist du sicher, dass du das retten möchtest?\\n\\nAktuell: Lev %1$d ( %2$d XP), %3$d Einzigartige Gegenstände\\nDatei speichern: Lev %4$d ( %5$d XP), %6$d Einzigartige GegenständeBist du sicher, dass du das retten möchtest?\\n\\nAktuell: Lev %1$d ( %2$d XP), %3$d Einzigartige Gegenstände\\nDatei speichern: Lev %4$d ( %5$d XP), %6$d Einzigartige Gegenstände</string>
+    <string name="local_load_confirm">Bist du sicher, dass du das retten möchtest?\n\nAktuell: Lev %1$d ( %2$d XP), %3$d Einzigartige Gegenstände\nDatei speichern: Lev %4$d ( %5$d XP), %6$d Einzigartige GegenständeBist du sicher, dass du das retten möchtest?\n\nAktuell: Lev %1$d ( %2$d XP), %3$d Einzigartige Gegenstände\nDatei speichern: Lev %4$d ( %5$d XP), %6$d Einzigartige Gegenstände</string>
     <string name="local_save_loaded">Erfolgreich geladen und importiert lokales Spiel sparen!</string>
     <string name="local_save_saved">Erfolgreich exportiertes Spiel in %s auf externem Speicher speichern!</string>
     <string name="log_subtitle">Nur die letzten 100 Nachrichten werden gehalten.</string>
     <string name="minigame_higher_desc">Wird die nächste Karte höher oder niedriger? Wenn Sie unsicher sind, halten Sie sich fest!</string>
-    <string name="prestige_confirm">Bist du sicher, dass du prestige willst?\\n\\nDein Fortschritt wird zurückgesetzt, aber du wirst alle deine Trophäen und Statistiken behalten (außer XP). Sie erhalten 1 extra Wildcard pro Prestige, zu den Kosten von -20% Bist du sicher, dass du prestige willst?\\n\\nDein Fortschritt wird zurückgesetzt, aber du wirst alle deine Trophäen und Statistiken behalten (außer XP). Sie erhalten 1 extra Wildcard pro Prestige, zu den Kosten von -20% XP.\\n\\nDas kann nicht rückgängig gemacht werden!XP.\\n\\nDas kann nicht rückgängig gemacht werden!</string>
+    <string name="prestige_confirm">Bist du sicher, dass du prestige willst?\n\nDein Fortschritt wird zurückgesetzt, aber du wirst alle deine Trophäen und Statistiken behalten (außer XP). Sie erhalten 1 extra Wildcard pro Prestige, zu den Kosten von -20% Bist du sicher, dass du prestige willst?\n\nDein Fortschritt wird zurückgesetzt, aber du wirst alle deine Trophäen und Statistiken behalten (außer XP). Sie erhalten 1 extra Wildcard pro Prestige, zu den Kosten von -20% XP.\n\nDas kann nicht rückgängig gemacht werden!XP.\n\nDas kann nicht rückgängig gemacht werden!</string>
     <string name="prestige_desc">Auf Stufe 25, VIP Level 1 und höher kann Prestige, erhalten 1 extra Wildcard pro Slot, aber 15% weniger XP.</string>
     <string name="prestige_game">Prestige Spiel</string>
     <string name="prestige_success">Erfolgreich prestiget, viel Glück!</string>
@@ -1058,5 +1058,5 @@
     <string name="settinggroup_6">Mehr</string>
     <string name="settings_desc">Passen Sie Ihr Spielerlebnis an! Tippen Sie auf einen Einstellungstitel, um weitere Informationen anzuzeigen.</string>
     <string name="statistic_24_name">Prestige</string>
-    <string name="tutorial_map_6">Der nächste Bereich wurde freigeschaltet! Tippen Sie auf den Pfeil nach rechts oder blättern Sie auf der Karte, um den entsperrten Steckplatz anzuzeigen.\\n\\nOh, und herzlichen Glückwunsch zum Ende des Tutorials!</string>
+    <string name="tutorial_map_6">Der nächste Bereich wurde freigeschaltet! Tippen Sie auf den Pfeil nach rechts oder blättern Sie auf der Karte, um den entsperrten Steckplatz anzuzeigen.\n\nOh, und herzlichen Glückwunsch zum Ende des Tutorials!</string>
 </resources>

@@ -72,8 +72,8 @@
     <string name="gems">보석</string>
     <string name="get_fact">사실을 말해!</string>
     <string name="google_cloud_comparing">로컬 및 클라우드 저장 비교 ...</string>
-    <string name="google_cloud_load_confirm">이 클라우드 저장을로드 하시겠습니까?\\n\\n지역: 레프  %1$d (%2$d XP), %3$d 고유 항목\\n구름: 레프  %4$d (%5$d XP), %6$d 고유 항목</string>
-    <string name="google_cloud_save_confirm">클라우드 저장을 덮어 쓰시겠습니까?\\n%1$s\\n\\n(귀하의 %3$s에 %2$s에 생성)과 로컬 저장 :\\n\\nV%4$s | 평균 %5$d (%6$d XP) | %7$d 고유 항목?</string>
+    <string name="google_cloud_load_confirm">이 클라우드 저장을로드 하시겠습니까?\n\n지역: 레프  %1$d (%2$d XP), %3$d 고유 항목\n구름: 레프  %4$d (%5$d XP), %6$d 고유 항목</string>
+    <string name="google_cloud_save_confirm">클라우드 저장을 덮어 쓰시겠습니까?\n%1$s\n\n(귀하의 %3$s에 %2$s에 생성)과 로컬 저장 :\n\nV%4$s | 평균 %5$d (%6$d XP) | %7$d 고유 항목?</string>
     <string name="google_cloud_save_conflict">클라우드 저장 충돌! 문제를 해결하려고하면 몇 초가 걸릴 수 있습니다.</string>
     <string name="google_cloud_save_error">오류가 발생했습니다. 반복적으로 발생하는 경우 blacksmithslots@jakelee.co.uk에 문의하십시오!</string>
     <string name="google_cloud_save_loaded">로드 된 클라우드 저장!</string>
@@ -84,12 +84,12 @@
     <string name="google_play_last_autosave">마지막 자동 저장 :  %1$s</string>
     <string name="hand_in">제출하다</string>
     <string name="hand_in_items">항목을 넣으십시오.</string>
-    <string name="hand_in_items_long">%1$s 몇 통을 들여 보내시겠습니까?\\n\\n%2$d에 나눠 주면 트로피가 해제됩니다!</string>
+    <string name="hand_in_items_long">%1$s 몇 통을 들여 보내시겠습니까?\n\n%2$d에 나눠 주면 트로피가 해제됩니다!</string>
     <string name="hint">힌트</string>
     <string name="hints">힌트</string>
     <string name="iap_bundle_purchased">%s 을 (를) 포함하는 번들을 받았습니다!</string>
     <string name="import_save">가져 오기 저장</string>
-    <string name="interstitialLongText">광고를로드 할 수 없습니다!\\n\\n이는 빈약 한 인터넷, 최근에 광고를 활성화하거나 현재 귀하의 지역에서 광고하는 광고주가 없기 때문에 발생할 수 있습니다.\\n\\n상단의 카운트 다운이 0에 도달하여 녹색으로 바뀔 때까지 기다리면이 창을 닫으면 광고 보상이 제공됩니다.\\n\\n기다리는 동안 <a href="https://play.google.com/store/apps/details?id=uk.co.jakelee.blacksmithslots"> 게임 등급을 유지 </a> 할 수 있습니다. 게임을 성장시키는 데 도움이되는 가장 좋은 방법입니다.\\n\\n또는 원래 게임 인 <a href="https://play.google.com/store/apps/details?id=uk.co.jakelee.blacksmith"> 픽셀 대장장이 </a>를 확인해보십시오. 나는 그것이 다소 재미 있다고 생각한다!</string>
+    <string name="interstitialLongText">광고를로드 할 수 없습니다!\n\n이는 빈약 한 인터넷, 최근에 광고를 활성화하거나 현재 귀하의 지역에서 광고하는 광고주가 없기 때문에 발생할 수 있습니다.\n\n상단의 카운트 다운이 0에 도달하여 녹색으로 바뀔 때까지 기다리면이 창을 닫으면 광고 보상이 제공됩니다.\n\n기다리는 동안 <a href="https://play.google.com/store/apps/details?id=uk.co.jakelee.blacksmithslots"> 게임 등급을 유지 </a> 할 수 있습니다. 게임을 성장시키는 데 도움이되는 가장 좋은 방법입니다.\n\n또는 원래 게임 인 <a href="https://play.google.com/store/apps/details?id=uk.co.jakelee.blacksmith"> 픽셀 대장장이 </a>를 확인해보십시오. 나는 그것이 다소 재미 있다고 생각한다!</string>
     <string name="interstitialTimeLeft">남은 항목 :  %1$ds</string>
     <string name="inventory">목록</string>
     <string name="itemSourcesButton">출처</string>
@@ -166,14 +166,14 @@
     <string name="pass_claim">청구</string>
     <string name="pass_days">하루  %1$d :</string>
     <string name="pass_days_left">" %1$d 일 남았습니다."</string>
-    <string name="pass_desc_owned">대장장이 패스가 유효하지만 매일 무료 아이템을 받게됩니다!\\n\\n청구하려면 00:00에서 23:59 사이에 언제든지 다시 확인하십시오!</string>
-    <string name="pass_desc_unowned">대장장이 패스를 구입하면 % 1 $ d 일간 무료로 매일 맛있는 음식을 맛볼 수 있습니다!\\n\\n처음 구매하시면 VIP 1로 업그레이드됩니다! 높은 VIP 레벨은 BS 패스에서 더 많은 것을 얻습니다!</string>
+    <string name="pass_desc_owned">대장장이 패스가 유효하지만 매일 무료 아이템을 받게됩니다!\n\n청구하려면 00:00에서 23:59 사이에 언제든지 다시 확인하십시오!</string>
+    <string name="pass_desc_unowned">대장장이 패스를 구입하면 %1$d 일간 무료로 매일 맛있는 음식을 맛볼 수 있습니다!\n\n처음 구매하시면 VIP 1로 업그레이드됩니다! 높은 VIP 레벨은 BS 패스에서 더 많은 것을 얻습니다!</string>
     <string name="pass_purchase">구매패스 (%1$s)</string>
     <string name="pb_save_import">저장이 %1$d 배 우선합니다. %2$s</string>
     <string name="progress_installed">게임이 설치되었습니다!</string>
     <string name="queen">퀸</string>
     <string name="rate_dialog_cancel">후에</string>
-    <string name="rate_dialog_message">대장장이 슬롯을 즐기고 계시다면 등급을 남기시겠습니까? 더 많은 사람들이 게임을 발견하고 향후 개발을 장려하는 데 도움이됩니다!\\n\\n감사 &lt;3</string>
+    <string name="rate_dialog_message">대장장이 슬롯을 즐기고 계시다면 등급을 남기시겠습니까? 더 많은 사람들이 게임을 발견하고 향후 개발을 장려하는 데 도움이됩니다!\n\n감사 &lt;3</string>
     <string name="rate_dialog_no">아니요 >:(</string>
     <string name="rate_dialog_ok">괜찮아!</string>
     <string name="rate_dialog_title">Blacksmith Slot을 평가하십시오</string>
@@ -912,7 +912,7 @@
     <string name="trophies">트로피</string>
     <string name="trophies_progress">트로피 : %1$d / %2$d (+ %3$,.1f %%XP)</string>
     <string name="trophy_progress_achieved">%1$s 트로피가 잠금 해제되었습니다!</string>
-    <string name="tutorial_map_1">대장장이 슬롯에 오신 것을 환영합니다!\\n\\n지역을 탐험하고, 사람들과 이야기하고, 보라색에서 세계를 구하려고 노력하십시오!\\n\\n로고를 눌러 시작하십시오.</string>
+    <string name="tutorial_map_1">대장장이 슬롯에 오신 것을 환영합니다!\n\n지역을 탐험하고, 사람들과 이야기하고, 보라색에서 세계를 구하려고 노력하십시오!\n\n로고를 눌러 시작하십시오.</string>
     <string name="tutorial_map_3">오, 아니, 엄마는 갇혀있다! 이처럼 슬롯에는지도에 흰색 윤곽선이 있습니다.</string>
     <string name="tutorial_map_4">그녀는 자기 자신을 자르기 위해 도끼가 필요합니다. 운 좋게도 하나가 있습니다! 퀘스트를 진행하십시오.</string>
     <string name="tutorial_map_5">신난다, 그녀는 자유 롭다! 슬롯을 재생하자!</string>
@@ -984,9 +984,9 @@
     <string name="upgrade_vip_level">VIP 레벨 업그레이드</string>
     <string name="vip_compare">비교</string>
     <string name="vip_comparison">VIP 비교</string>
-    <string name="vip_comparison_info">VIP 레벨이 높을수록 더 많은 혜택을 누릴 수 있습니다. 아래에서 오른쪽으로 스 와이프하면 더 많은 것을 볼 수 있습니다! 현재 레벨은 녹색으로 강조 표시됩니다.\\n혜택 이름을 눌러 자세한 정보를보십시오.</string>
+    <string name="vip_comparison_info">VIP 레벨이 높을수록 더 많은 혜택을 누릴 수 있습니다. 아래에서 오른쪽으로 스 와이프하면 더 많은 것을 볼 수 있습니다! 현재 레벨은 녹색으로 강조 표시됩니다.\n혜택 이름을 눌러 자세한 정보를보십시오.</string>
     <string name="vip_intro">VIP  %1$d (으)로 업그레이드하여 다음 혜택을 받으십시오.</string>
-    <string name="vip_intro_max">당신은 최대 VIP 레벨로 만들었습니다!\\n\\nVIP 레벨은 더 이상 없지만, 충분하지 못하면 아이템 묶음과 대장장이 패스가 있습니다!</string>
+    <string name="vip_intro_max">당신은 최대 VIP 레벨로 만들었습니다!\n\nVIP 레벨은 더 이상 없지만, 충분하지 못하면 아이템 묶음과 대장장이 패스가 있습니다!</string>
     <string name="vip_level">VIP 레벨</string>
     <string name="vip_level_increased">VIP 레벨 %1$d에 올라서 %2$s에 획득했습니다!</string>
     <string name="vip_upgrade">업그레이드</string>
@@ -1029,12 +1029,12 @@
     <string name="error_prestige_locked">명성을 얻으려면 (와일드 카드 +1, -20% XP) VIP 1과 25 레벨이 필요합니다!</string>
     <string name="export_save">저장 저장</string>
     <string name="inventory_subtitle">항목을 가져올 위치를 찾으려면 소스를 클릭하십시오. 사용 위치를 찾으려면 사용을 클릭하십시오.</string>
-    <string name="local_load_confirm">이 저장을로드 하시겠습니까?\\n\\n현재 : Lev  %1$d ( %2$d XP),  %3$d 고유 항목\\n파일 저장 : Lev  %4$d ( %5$d XP),  %6$d 고유 항목이 저장을로드 하시겠습니까?\\n\\n현재 : Lev % 1 $ d (% 2 $ d XP), % 3 $ d 고유 항목\\n파일 저장 : Lev % 4 $ d (% 5 $ d XP), % 6 $ d 고유 항목</string>
+    <string name="local_load_confirm">이 저장을로드 하시겠습니까?\n\n현재 : Lev  %1$d ( %2$d XP),  %3$d 고유 항목\n파일 저장 : Lev  %4$d ( %5$d XP),  %6$d 고유 항목이 저장을로드 하시겠습니까?\n\n현재 : Lev % 1 $ d (% 2 $ d XP), % 3 $ d 고유 항목\n파일 저장 : Lev % 4 $ d (% 5 $ d XP), % 6 $ d 고유 항목</string>
     <string name="local_save_loaded">로컬 게임을 성공적으로로드하고 가져 왔습니다!</string>
     <string name="local_save_saved">외부 저장 장치에서 게임 저장을  %s (으)로 성공적으로 내 보냈습니다!</string>
     <string name="log_subtitle">마지막 100 개의 메시지 만 보관됩니다.</string>
     <string name="minigame_higher_desc">다음 카드가 더 높거나 낮을까요? 확실하지 않으면 붙어있어!</string>
-    <string name="prestige_confirm">명성을 올리시겠습니까?\\n\\n진행 상황은 재설정되지만 모든 트로피 및 통계 (XP 제외)는 유지됩니다. 명성 당 1 개의 추가 와일드 카드를 얻을 수 있습니다 (-20 % XP 비용).\\n\\n이 작업은 실행 취소 할 수 없습니다.명성을 올리시겠습니까?\\n\\n진행 상황은 재설정되지만 모든 트로피 및 통계 (XP 제외)는 유지됩니다. 명성 당 1 개의 추가 와일드 카드를 얻을 수 있습니다 (-20 % XP 비용).\\n\\n이 작업은 실행 취소 할 수 없습니다.</string>
+    <string name="prestige_confirm">명성을 올리시겠습니까?\n\n진행 상황은 재설정되지만 모든 트로피 및 통계 (XP 제외)는 유지됩니다. 명성 당 1 개의 추가 와일드 카드를 얻을 수 있습니다 (-20 % XP 비용).\n\n이 작업은 실행 취소 할 수 없습니다.명성을 올리시겠습니까?\n\n진행 상황은 재설정되지만 모든 트로피 및 통계 (XP 제외)는 유지됩니다. 명성 당 1 개의 추가 와일드 카드를 얻을 수 있습니다 (-20 % XP 비용).\n\n이 작업은 실행 취소 할 수 없습니다.</string>
     <string name="prestige_desc">레벨 25에서 VIP 레벨 1 이상은 슬롯 당 1 개의 추가 와일드 카드를 받지만 XP보다 15% 적은 점수를받을 수 있습니다.</string>
     <string name="prestige_game">프레스티지 게임</string>
     <string name="prestige_success">성공적으로, 행운을 빕니다!</string>
@@ -1058,5 +1058,5 @@
     <string name="settinggroup_6">더</string>
     <string name="settings_desc">게임 경험을 사용자 정의하십시오! 자세한 정보를 보려면 설정 제목을 누릅니다.</string>
     <string name="statistic_24_name">명성</string>
-    <string name="tutorial_map_6">다음 영역이 잠금 해제되었습니다! 잠금 해제 된 슬롯을 보려면지도에서 오른쪽 화살표를 누르거나 스 와이프하십시오.\\n\\n아, 그리고 튜토리얼의 마지막에 도달하신 것을 축하드립니다!다음 영역이 잠금 해제되었습니다! 잠금 해제 된 슬롯을 보려면지도에서 오른쪽 화살표를 누르거나 스 와이프하십시오.\\n\\n아, 그리고 튜토리얼의 마지막에 도달하신 것을 축하드립니다!</string>
+    <string name="tutorial_map_6">다음 영역이 잠금 해제되었습니다! 잠금 해제 된 슬롯을 보려면지도에서 오른쪽 화살표를 누르거나 스 와이프하십시오.\n\n아, 그리고 튜토리얼의 마지막에 도달하신 것을 축하드립니다!다음 영역이 잠금 해제되었습니다! 잠금 해제 된 슬롯을 보려면지도에서 오른쪽 화살표를 누르거나 스 와이프하십시오.\n\n아, 그리고 튜토리얼의 마지막에 도달하신 것을 축하드립니다!</string>
 </resources>

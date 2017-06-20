@@ -1029,12 +1029,12 @@
     <string name="error_prestige_locked">Para el prestigio (+1 comodín, -20% XP) necesita VIP 1 y 25!</string>
     <string name="export_save">Exportar Guardar</string>
     <string name="inventory_subtitle">Para saber dónde obtener un elemento, haga clic en Fuentes. Para saber dónde usarlo, haga clic en Uses.</string>
-    <string name="local_load_confirm">¿Estás seguro de que quieres cargar esta grabación?\\n\\nActual: Lev %1$d ( %2$d XP), %3$d Artículos únicos\\nGuardar archivo: Lev %4$d ( %5$d XP), %6$d Artículos únicos¿Estás seguro de que quieres cargar esta grabación?\\n\\nActual: Lev% 1 $ d (% 2 $ d XP),% 3 $ d Artículos únicos\\nGuardar archivo: Lev% 4 $ d (% 5 $ d XP),% 6 $ d Artículos únicos</string>
+    <string name="local_load_confirm">¿Estás seguro de que quieres cargar esta grabación?\n\nActual: Lev %1$d ( %2$d XP), %3$d Artículos únicos\nGuardar archivo: Lev %4$d ( %5$d XP), %6$d Artículos únicos¿Estás seguro de que quieres cargar esta grabación?\n\nActual: Lev% 1 $ d (% 2 $ d XP),% 3 $ d Artículos únicos\nGuardar archivo: Lev% 4 $ d (% 5 $ d XP),% 6 $ d Artículos únicos</string>
     <string name="local_save_loaded">¡El juego localmente cargado e importado con éxito ahorró!</string>
     <string name="local_save_saved">Exitoso juego exportado a %s en almacenamiento externo!</string>
     <string name="log_subtitle">Sólo se conservan los últimos 100 mensajes.</string>
     <string name="minigame_higher_desc">¿La siguiente carta será más alta o más baja? Si no está seguro, ¡pegue!</string>
-    <string name="prestige_confirm">¿Estás seguro de que quieres prestigio?\\n\\nSu progreso se restablecerá, pero mantendrá todos sus trofeos y estadísticas (excepto XP). Usted ganará 1 wildcard adicional por prestigio, al costo de -20% XP.\\n\\n¡Esto no se puede deshacer!¿Estás seguro de que quieres prestigio?\\n\\nSu progreso se restablecerá, pero mantendrá todos sus trofeos y estadísticas (excepto XP). Usted ganará 1 wildcard adicional por prestigio, al costo de -20% XP.\\n\\n¡Esto no se puede deshacer!</string>
+    <string name="prestige_confirm">¿Estás seguro de que quieres prestigio?\n\nSu progreso se restablecerá, pero mantendrá todos sus trofeos y estadísticas (excepto XP). Usted ganará 1 wildcard adicional por prestigio, al costo de -20% XP.\n\n¡Esto no se puede deshacer!¿Estás seguro de que quieres prestigio?\n\nSu progreso se restablecerá, pero mantendrá todos sus trofeos y estadísticas (excepto XP). Usted ganará 1 wildcard adicional por prestigio, al costo de -20% XP.\n\n¡Esto no se puede deshacer!</string>
     <string name="prestige_desc">En el nivel 25, los niveles VIP 1 y superiores pueden ser de prestigio, recibiendo 1 comodín extra por ranura, pero 15% menos XP.</string>
     <string name="prestige_game">Juego de prestigio</string>
     <string name="prestige_success">Con éxito prestiged, buena suerte!</string>
@@ -1058,5 +1058,5 @@
     <string name="settinggroup_6">Más</string>
     <string name="settings_desc">Personaliza tu experiencia de juego! Toque un título de configuración para ver más información.</string>
     <string name="statistic_24_name">Prestiges</string>
-    <string name="tutorial_map_6">¡La siguiente área ha sido desbloqueada! Presiona la flecha derecha o desliza el mapa para ver la ranura desbloqueada.\\n\\n¡Oh, y felicidades por llegar al final del tutorial!¡La siguiente área ha sido desbloqueada! Presiona la flecha derecha o desliza el mapa para ver la ranura desbloqueada.\\n\\n¡Oh, y felicidades por llegar al final del tutorial!</string>
+    <string name="tutorial_map_6">¡La siguiente área ha sido desbloqueada! Presiona la flecha derecha o desliza el mapa para ver la ranura desbloqueada.\n\n¡Oh, y felicidades por llegar al final del tutorial!¡La siguiente área ha sido desbloqueada! Presiona la flecha derecha o desliza el mapa para ver la ranura desbloqueada.\n\n¡Oh, y felicidades por llegar al final del tutorial!</string>
 </resources>

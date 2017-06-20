@@ -1029,12 +1029,12 @@
     <string name="error_prestige_locked">Au prestige (+1 wildcard, -20% XP), vous avez besoin de VIP 1 et Level 25!</string>
     <string name="export_save">Exporter Sauvegarder</string>
     <string name="inventory_subtitle">Pour savoir où obtenir un élément, cliquez sur Sources. Pour savoir où l\'utiliser, cliquez sur Utilisations.</string>
-    <string name="local_load_confirm">Êtes-vous sûr de vouloir charger cette sauvegarde?\\n\\nCourant: Lev %1$d ( %2$d XP), %3$d Articles uniques\\nEnregistrer le fichier: Lev %4$d ( %5$d XP), %6$d Articles uniquesÊtes-vous sûr de vouloir charger cette sauvegarde?\\n\\nCourant: Lev% 1 $ d (% 2 $ d XP),% 3 $ d Articles uniques\\nEnregistrer le fichier: Lev% 4 $ d (% 5 $ d XP),% 6 $ d Articles uniques</string>
+    <string name="local_load_confirm">Êtes-vous sûr de vouloir charger cette sauvegarde?\n\nCourant: Lev %1$d ( %2$d XP), %3$d Articles uniques\nEnregistrer le fichier: Lev %4$d ( %5$d XP), %6$d Articles uniquesÊtes-vous sûr de vouloir charger cette sauvegarde?\n\nCourant: Lev% 1 $ d (% 2 $ d XP),% 3 $ d Articles uniques\nEnregistrer le fichier: Lev% 4 $ d (% 5 $ d XP),% 6 $ d Articles uniques</string>
     <string name="local_save_loaded">Les sauvegardes locales sauvegardées et importées avec succès!</string>
     <string name="local_save_saved">Le jeu exporté avec succès a sauvegardé en %s sur le stockage externe!</string>
     <string name="log_subtitle">Seuls les 100 derniers messages sont conservés.</string>
     <string name="minigame_higher_desc">La prochaine carte sera-t-elle plus ou moins élevée? Si vous n\'êtes pas certain, collez-vous!</string>
-    <string name="prestige_confirm">Êtes-vous sûr de vouloir prestige?\\n\\nVos progrès seront réinitialisés, mais vous garderez tous vos trophées et statistiques (sauf XP). Vous gagnerez 1 carré supplémentaire par prestige, au prix de -20% XP.\\n\\nCela ne peut pas être annulé!Êtes-vous sûr de vouloir prestige?\\n\\nVos progrès seront réinitialisés, mais vous garderez tous vos trophées et statistiques (sauf XP). Vous gagnerez 1 carré supplémentaire par prestige, au prix de -20% XP.\\n\\nCela ne peut pas être annulé!</string>
+    <string name="prestige_confirm">Êtes-vous sûr de vouloir prestige?\n\nVos progrès seront réinitialisés, mais vous garderez tous vos trophées et statistiques (sauf XP). Vous gagnerez 1 carré supplémentaire par prestige, au prix de -20% XP.\n\nCela ne peut pas être annulé!Êtes-vous sûr de vouloir prestige?\n\nVos progrès seront réinitialisés, mais vous garderez tous vos trophées et statistiques (sauf XP). Vous gagnerez 1 carré supplémentaire par prestige, au prix de -20% XP.\n\nCela ne peut pas être annulé!</string>
     <string name="prestige_desc">Au niveau 25, les niveaux VIP 1 et plus peuvent être de prestige, recevant 1 carré supplémentaire par slot, mais 15% moins XP.</string>
     <string name="prestige_game">Jeu de Prestige</string>
     <string name="prestige_success">Présenté avec succès, bonne chance!</string>
@@ -1058,5 +1058,5 @@
     <string name="settinggroup_6">Plus</string>
     <string name="settings_desc">Personnalisez votre expérience de jeu! Tapez un titre de réglage pour afficher plus d\'informations.</string>
     <string name="statistic_24_name">Prestiges</string>
-    <string name="tutorial_map_6">La prochaine zone a été déverrouillée! Appuyez sur la flèche droite ou glissez sur la carte pour afficher la fente déverrouillée.\\n\\nOh, et félicitations pour avoir terminé le didacticiel!La prochaine zone a été déverrouillée! Appuyez sur la flèche droite ou glissez sur la carte pour afficher la fente déverrouillée.\\n\\nOh, et félicitations pour avoir terminé le didacticiel!</string>
+    <string name="tutorial_map_6">La prochaine zone a été déverrouillée! Appuyez sur la flèche droite ou glissez sur la carte pour afficher la fente déverrouillée.\n\nOh, et félicitations pour avoir terminé le didacticiel!La prochaine zone a été déverrouillée! Appuyez sur la flèche droite ou glissez sur la carte pour afficher la fente déverrouillée.\n\nOh, et félicitations pour avoir terminé le didacticiel!</string>
 </resources>

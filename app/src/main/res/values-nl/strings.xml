@@ -1029,12 +1029,12 @@
     <string name="error_prestige_locked">Naar prestige (+1 wildcard, -20% XP) heb je VIP 1 en Level 25 nodig!</string>
     <string name="export_save">Export opslaan</string>
     <string name="inventory_subtitle">Als u wilt weten waar u een item wilt krijgen, klikt u op Bronnen. Om te weten waar u het wilt gebruiken, klikt u op Gebruiken.</string>
-    <string name="local_load_confirm">Weet u zeker dat u deze opslaan wilt laden?\\n\\nHuidig: Lev %1$d ( %2$d XP), %3$d Unieke items\\nBestand opslaan: Lev %4$d ( %5$d XP), %6$d Unieke itemsWeet u zeker dat u deze opslaan wilt laden?\\n\\nHuidig: Lev% 1 $ d (% 2 $ d XP),% 3 $ d Unieke items\\nBestand opslaan: Lev% 4 $ d (% 5 $ d XP),% 6 $ d Unieke items</string>
+    <string name="local_load_confirm">Weet u zeker dat u deze opslaan wilt laden?\n\nHuidig: Lev %1$d ( %2$d XP), %3$d Unieke items\nBestand opslaan: Lev %4$d ( %5$d XP), %6$d Unieke itemsWeet u zeker dat u deze opslaan wilt laden?\n\nHuidig: Lev% 1 $ d (% 2 $ d XP),% 3 $ d Unieke items\nBestand opslaan: Lev% 4 $ d (% 5 $ d XP),% 6 $ d Unieke items</string>
     <string name="local_save_loaded">Succesvol geladen en geïmporteerd lokale spelbesparing!</string>
     <string name="local_save_saved">Succesvol uitgevoerde game save op %s op externe opslag!</string>
     <string name="log_subtitle">Alleen de laatste 100 berichten worden bewaard.</string>
     <string name="minigame_higher_desc">Zal de volgende kaart hoger of lager zijn? Als je niet zeker bent, houd je vast!</string>
-    <string name="prestige_confirm">Weet u zeker dat u prestige wilt?\\n\\nJe vooruitgang wordt teruggezet, maar je zal al je trofeeën en statistieken behouden (behalve XP). U krijgt 1 extra wildcard per prestige, ten koste van -20% XP.\\n\\nDit kan niet ongedaan gemaakt worden!Weet u zeker dat u prestige wilt?\\n\\nJe vooruitgang wordt teruggezet, maar je zal al je trofeeën en statistieken behouden (behalve XP). U krijgt 1 extra wildcard per prestige, ten koste van -20% XP.\\n\\nDit kan niet ongedaan gemaakt worden!</string>
+    <string name="prestige_confirm">Weet u zeker dat u prestige wilt?\n\nJe vooruitgang wordt teruggezet, maar je zal al je trofeeën en statistieken behouden (behalve XP). U krijgt 1 extra wildcard per prestige, ten koste van -20% XP.\n\nDit kan niet ongedaan gemaakt worden!Weet u zeker dat u prestige wilt?\n\nJe vooruitgang wordt teruggezet, maar je zal al je trofeeën en statistieken behouden (behalve XP). U krijgt 1 extra wildcard per prestige, ten koste van -20% XP.\n\nDit kan niet ongedaan gemaakt worden!</string>
     <string name="prestige_desc">Op niveau 25 kunnen VIP niveaus 1 en hoger prestige ontvangen, 1 extra wildcard per slot ontvangen, maar 15% minder XP.</string>
     <string name="prestige_game">Prestige Game</string>
     <string name="prestige_success">Succesvol gepresenteerd, veel geluk!</string>
@@ -1058,5 +1058,5 @@
     <string name="settinggroup_6">Meer</string>
     <string name="settings_desc">Pas je spelervaring aan! Tik op een instellingstitel om meer informatie te bekijken.</string>
     <string name="statistic_24_name">Prestiges</string>
-    <string name="tutorial_map_6">Het volgende gebied is ontgrendeld! Tik op de rechterpijl of veeg op de kaart om de ontgrendelde sleuf weer te geven.\\n\\nOh, en gefeliciteerd met het einde van de tutorial!Het volgende gebied is ontgrendeld! Tik op de rechterpijl of veeg op de kaart om de ontgrendelde sleuf weer te geven.\\n\\nOh, en gefeliciteerd met het einde van de tutorial!</string>
+    <string name="tutorial_map_6">Het volgende gebied is ontgrendeld! Tik op de rechterpijl of veeg op de kaart om de ontgrendelde sleuf weer te geven.\n\nOh, en gefeliciteerd met het einde van de tutorial!Het volgende gebied is ontgrendeld! Tik op de rechterpijl of veeg op de kaart om de ontgrendelde sleuf weer te geven.\n\nOh, en gefeliciteerd met het einde van de tutorial!</string>
 </resources>
