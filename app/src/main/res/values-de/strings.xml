@@ -197,7 +197,6 @@
     <string name="setting_16">Orientierung</string>
     <string name="setting_2">Geräusche</string>
     <string name="setting_3">(Intern) Versuch Login</string>
-    <string name="setting_4">Autosave Mins</string>
     <string name="setting_5">Nur relevante Ressourcen anzeigen</string>
     <string name="setting_6">Sprache</string>
     <string name="setting_7">Benachrichtigung klingt</string>
@@ -1059,4 +1058,5 @@
     <string name="settinggroup_6">Mehr</string>
     <string name="settings_desc">Passen Sie Ihr Spielerlebnis an! Tippen Sie auf einen Einstellungstitel, um weitere Informationen anzuzeigen.</string>
     <string name="statistic_24_name">Prestige</string>
+    <string name="tutorial_map_6">Der nächste Bereich wurde freigeschaltet! Tippen Sie auf den Pfeil nach rechts oder blättern Sie auf der Karte, um den entsperrten Steckplatz anzuzeigen.\\n\\nOh, und herzlichen Glückwunsch zum Ende des Tutorials!</string>
 </resources>
