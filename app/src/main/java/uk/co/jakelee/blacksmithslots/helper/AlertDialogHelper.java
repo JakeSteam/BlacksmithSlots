@@ -277,4 +277,10 @@ public class AlertDialogHelper {
                     }
                 }));
     }
+
+    public static void openOverlayActivity(Context context, Class activity) {
+        MusicHelper.getInstance(context).setMovingInApp(true);
+        context.startActivity(new Intent(context, activity)
+                .addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT));
+    }
 }

@@ -33,6 +33,7 @@ import uk.co.jakelee.blacksmithslots.R;
 import uk.co.jakelee.blacksmithslots.components.MapPagerAdapter;
 import uk.co.jakelee.blacksmithslots.components.ViewPagerIndicator;
 import uk.co.jakelee.blacksmithslots.helper.AdvertHelper;
+import uk.co.jakelee.blacksmithslots.helper.AlertDialogHelper;
 import uk.co.jakelee.blacksmithslots.helper.AlertHelper;
 import uk.co.jakelee.blacksmithslots.helper.Constants;
 import uk.co.jakelee.blacksmithslots.helper.DateHelper;
@@ -108,24 +109,21 @@ public class MapActivity extends BaseActivity implements
         prefs = getSharedPreferences("uk.co.jakelee.blacksmithslots", MODE_PRIVATE);
         ButterKnife.bind(this);
 
-        ratingPrompt();
-
         createGooglePlayClient();
         GooglePlayHelper.tryGoogleLogin(this, false);
 
+        ratingPrompt();
         createMapPager();
-
-        if (IncomeHelper.getNextPeriodicClaimTime() - System.currentTimeMillis() > 0) {
-            setPeriodicBonusUnclaimable();
-        }
-        if (IncomeHelper.getNextAdvertWatchTime() - System.currentTimeMillis() > 0) {
-            setAdvertUnclaimable();
-        }
+        checkBonuses();
 
         advertHelper = AdvertHelper.getInstance(this);
 
         mapTextView.setText(R.string.map_1);
 
+        tryStartTutorial();
+    }
+
+    private void tryStartTutorial() {
         Intent intent = getIntent();
         if (intent != null && intent.getBooleanExtra("isFirstInstall", false)) {
             if (!Constants.DEBUG_UNLOCK_ALL && prefs.getInt("tutorialStageCompleted", 0) < 1) {
@@ -135,13 +133,27 @@ public class MapActivity extends BaseActivity implements
         }
     }
 
+    private void checkBonuses() {
+        if (IncomeHelper.getNextPeriodicClaimTime() - System.currentTimeMillis() > 0) {
+            setPeriodicBonusUnclaimable();
+        }
+        if (IncomeHelper.getNextAdvertWatchTime() - System.currentTimeMillis() > 0) {
+            setAdvertUnclaimable();
+        }
+    }
+
     private void createMapPager() {
         mapPagerAdapter = new MapPagerAdapter(this);
         mapPager.setAdapter(mapPagerAdapter);
 
         ViewPagerIndicator indicator = findViewById(R.id.view_pager_indicator);
         indicator.setupWithViewPager(mapPager);
-        indicator.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
+        indicator.addOnPageChangeListener(mapChangeListener());
+    }
+
+    @NonNull
+    private ViewPager.SimpleOnPageChangeListener mapChangeListener() {
+        return new ViewPager.SimpleOnPageChangeListener() {
             public void onPageSelected(int position) {
                 SoundHelper.playSound(getApplicationContext(), SoundHelper.swipeSounds);
                 findViewById(R.id.leftArrow).setVisibility(position == 0 ? View.INVISIBLE : View.VISIBLE);
@@ -151,8 +163,14 @@ public class MapActivity extends BaseActivity implements
                 mapTextView.setText(mapName);
                 selectedSlot = 0;
                 loadSidebar(null);
+
+                if (isFirstInstall) {
+                    isFirstInstall = false;
+                    endTutorial();
+                    prefs.edit().putInt("tutorialStageCompleted", 3).apply();
+                }
             }
-        });
+        };
     }
 
     private void createGooglePlayClient() {
@@ -323,34 +341,36 @@ public class MapActivity extends BaseActivity implements
         }
     }
 
+    @OnClick(R.id.openShop)
+    public void openShop() {
+        AlertDialogHelper.openOverlayActivity(this, ShopActivity.class);
+    }
+
+    @OnClick(R.id.openTrophy)
+    public void openTrophy() {
+        AlertDialogHelper.openOverlayActivity(this, TrophyActivity.class);
+    }
+
     @OnClick(R.id.settings)
     public void openSettings() {
-        MusicHelper.getInstance(this).setMovingInApp(true);
-        startActivity(new Intent(this, SettingsActivity.class)
-                .addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT));
+        AlertDialogHelper.openOverlayActivity(this, SettingsActivity.class);
     }
 
     @OnClick(R.id.statistics)
     public void openStatistics() {
-        MusicHelper.getInstance(this).setMovingInApp(true);
-        startActivity(new Intent(this, StatisticsActivity.class)
-                .addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT));
+        AlertDialogHelper.openOverlayActivity(this, StatisticsActivity.class);
     }
 
     @OnClick(R.id.inventory)
     public void openInventory() {
-        MusicHelper.getInstance(this).setMovingInApp(true);
-        startActivity(new Intent(this, InventoryActivity.class)
-                .addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT));
+        AlertDialogHelper.openOverlayActivity(this, InventoryActivity.class);
     }
 
     @OnClick(R.id.openCredits)
     public void openCredits() {
-        MusicHelper.getInstance(this).setMovingInApp(true);
-        startActivity(new Intent(this, CreditsActivity.class)
-                .addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT));
+        AlertDialogHelper.openOverlayActivity(this, CreditsActivity.class);
     }
-    
+
     @OnClick(R.id.displayHint)
     public void displayHint() {
         int numTips = 25;
@@ -365,20 +385,6 @@ public class MapActivity extends BaseActivity implements
         prefs.edit().putInt("nextHint", ++thisHint).apply();
     }
 
-    @OnClick(R.id.openShop)
-    public void openShop() {
-        MusicHelper.getInstance(this).setMovingInApp(true);
-        startActivity(new Intent(this, ShopActivity.class)
-                .addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT));
-    }
-
-    @OnClick(R.id.openTrophy)
-    public void openTrophy() {
-        MusicHelper.getInstance(this).setMovingInApp(true);
-        startActivity(new Intent(this, TrophyActivity.class)
-                .addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT));
-    }
-
     @OnClick(R.id.leftArrow)
     public void moveLeft() {
         if (mapPager.getCurrentItem() > 0) {
@@ -388,12 +394,6 @@ public class MapActivity extends BaseActivity implements
 
     @OnClick(R.id.rightArrow)
     public void moveRight() {
-        if (isFirstInstall) {
-            isFirstInstall = false;
-            endTutorial();
-            prefs.edit().putInt("tutorialStageCompleted", 3).apply();
-        }
-
         if (mapPager.getCurrentItem() < mapPager.getAdapter().getCount()) {
             mapPager.setCurrentItem(mapPager.getCurrentItem() + 1, true);
         }
@@ -453,22 +453,9 @@ public class MapActivity extends BaseActivity implements
     public void handIn(View v) {
         Task task = Task.findById(Task.class, (long) v.getTag());
         if (task.getTier() != null && task.itemsCanBeSubmitted()) {
-            task.submitItems();
-            if (task.getRemaining() == 0) {
-                AlertHelper.success(this, String.format(Locale.ENGLISH, getString(R.string.alert_items_submitted),
-                        task.toString(this),
-                        Slot.getName(this, selectedSlot)), true);
-                task.setCompleted(System.currentTimeMillis());
-            }
-            task.save();
-            mapPagerAdapter.notifyDataSetChanged();
+            handInItemTask(task);
         } else if (task.statisticIsAchieved()) {
-            AlertHelper.success(this, String.format(Locale.ENGLISH, getString(R.string.alert_statistic_achieved),
-                    task.toString(this),
-                    Slot.getName(this, selectedSlot)), true);
-            task.setCompleted(System.currentTimeMillis());
-            task.save();
-            mapPagerAdapter.notifyDataSetChanged();
+            handInStatisticTask(task);
         } else {
             AlertHelper.error(this, R.string.alert_unfinished_task, false);
         }
@@ -477,6 +464,27 @@ public class MapActivity extends BaseActivity implements
             runTutorial(5);
         }
         populateSlotInfo();
+    }
+
+    private void handInStatisticTask(Task task) {
+        AlertHelper.success(this, String.format(Locale.ENGLISH, getString(R.string.alert_statistic_achieved),
+                task.toString(this),
+                Slot.getName(this, selectedSlot)), true);
+        task.setCompleted(System.currentTimeMillis());
+        task.save();
+        mapPagerAdapter.notifyDataSetChanged();
+    }
+
+    private void handInItemTask(Task task) {
+        task.submitItems();
+        if (task.getRemaining() == 0) {
+            AlertHelper.success(this, String.format(Locale.ENGLISH, getString(R.string.alert_items_submitted),
+                    task.toString(this),
+                    Slot.getName(this, selectedSlot)), true);
+            task.setCompleted(System.currentTimeMillis());
+        }
+        task.save();
+        mapPagerAdapter.notifyDataSetChanged();
     }
 
     private void populateSlotInfo() {
@@ -588,9 +596,7 @@ public class MapActivity extends BaseActivity implements
     @OnClick(R.id.playCloudSave)
     public void openCloudSave() {
         if (GooglePlayHelper.IsConnected()) {
-            MusicHelper.getInstance(this).setMovingInApp(true);
-            startActivity(new Intent(this, CloudSaveActivity.class)
-                    .addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT));
+            AlertDialogHelper.openOverlayActivity(this, CloudSaveActivity.class);
         }
     }
 }
