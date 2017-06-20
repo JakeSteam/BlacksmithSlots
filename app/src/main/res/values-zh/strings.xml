@@ -15,7 +15,7 @@
     <string name="alert_item_unknown">无处！？</string>
     <string name="alert_item_use">%1$s用于%2$s。</string>
     <string name="alert_items_submitted">以%1$s方式处理，以“%2$s”完成任务！</string>
-    <string name="alert_level_progress">%1$.2f %%的级别%2$d（%3$d /%4$d xp）！</string>
+    <string name="alert_level_progress">%1$.2f% 的级别%2$d（%3$d /%4$d xp）！</string>
     <string name="alert_levelled_up">达到级别%1$d！%2$s</string>
     <string name="alert_logged_out">成功登出Google Play游戏！</string>
     <string name="alert_map_locked">要解锁地图“%1$s”插槽“%2$s”必须完成！</string>
@@ -910,7 +910,7 @@
     <string name="time_hours">%1$.1f小时</string>
     <string name="time_mins">%1$d分钟</string>
     <string name="trophies">奖杯</string>
-    <string name="trophies_progress">奖杯：%1$d /%2$d（+%3$,.1f%% XP）</string>
+    <string name="trophies_progress">奖杯：%1$d /%2$d（+%3$,.1f% XP）</string>
     <string name="trophy_progress_achieved">%1$s奖杯解锁！</string>
     <string name="tutorial_map_1">欢迎来到铁匠老虎机！\n\n探索该地区，与人交谈，并尝试从紫色中拯救世界！\n\n点击徽标开始。</string>
     <string name="tutorial_map_3">哦不，妈妈被困了！像这样的插槽在地图上有一个白色的轮廓。</string>

@@ -15,7 +15,7 @@
     <string name="alert_item_unknown">Nulle part!?</string>
     <string name="alert_item_use">%1$s est utilisé en %2$s.</string>
     <string name="alert_items_submitted">Mettez en %1$s pour compléter la tâche à \"%2$s\"!</string>
-    <string name="alert_level_progress">%1$.2f%%du niveau %2$d (%3$d / %4$d xp)!</string>
+    <string name="alert_level_progress">%1$.2f% du niveau %2$d (%3$d / %4$d xp)!</string>
     <string name="alert_levelled_up">Niveau atteint %1$d!  %2$s</string>
     <string name="alert_logged_out">Débloqué avec succès de Google Play Games!</string>
     <string name="alert_map_locked">Pour déverrouiller la carte \"%1$s\", le \"%2$s\" doit être complété!</string>
@@ -910,7 +910,7 @@
     <string name="time_hours">%1$.1 heure</string>
     <string name="time_mins">%1$d mins</string>
     <string name="trophies">Trophées</string>
-    <string name="trophies_progress">Trophées: %1$d / %2$d (+ %3$,.1f%% XP)</string>
+    <string name="trophies_progress">Trophées: %1$d / %2$d (+ %3$,.1f% XP)</string>
     <string name="trophy_progress_achieved">%1$s trophée débloqué!</string>
     <string name="tutorial_map_1">Bienvenue dans Blacksmith Slots!\n\nExplorez la zone, discutez avec les gens et essayez de sauver le monde du pourpre!\n\nAppuyez sur le logo pour commencer.</string>
     <string name="tutorial_map_3">Oh non, maman est piégée! Des machines à sous comme celle-ci ont un contour blanc sur la carte.</string>

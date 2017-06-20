@@ -15,7 +15,7 @@
     <string name="alert_item_unknown">아무데도!?</string>
     <string name="alert_item_use">%2$s에서  %1$s이 (가) 사용되었습니다.</string>
     <string name="alert_items_submitted">\"%2$s\"의 작업을 완료하기 위해  %1$s을 (를) 넘겼습니다!</string>
-    <string name="alert_level_progress">%2$d (%3$d/%4$d xp) 수준의  %1$.2f%%!</string>
+    <string name="alert_level_progress">%2$d (%3$d/%4$d xp) 수준의  %1$.2f%!</string>
     <string name="alert_levelled_up">레벨  %1$d에 도달했습니다!  %2$s</string>
     <string name="alert_logged_out">Google Play 게임에서 성공적으로 로그 아웃했습니다.</string>
     <string name="alert_map_locked">지도 \"%1$s\"의 잠금을 해제하려면 \"%2$s\"슬롯을 완료해야합니다!</string>
@@ -910,7 +910,7 @@
     <string name="time_hours">%1$.1f 시간</string>
     <string name="time_mins">%1$d 분</string>
     <string name="trophies">트로피</string>
-    <string name="trophies_progress">트로피 : %1$d / %2$d (+ %3$,.1f %%XP)</string>
+    <string name="trophies_progress">트로피 : %1$d / %2$d (+ %3$,.1f% XP)</string>
     <string name="trophy_progress_achieved">%1$s 트로피가 잠금 해제되었습니다!</string>
     <string name="tutorial_map_1">대장장이 슬롯에 오신 것을 환영합니다!\\n\\n지역을 탐험하고, 사람들과 이야기하고, 보라색에서 세계를 구하려고 노력하십시오!\\n\\n로고를 눌러 시작하십시오.</string>
     <string name="tutorial_map_3">오, 아니, 엄마는 갇혀있다! 이처럼 슬롯에는지도에 흰색 윤곽선이 있습니다.</string>

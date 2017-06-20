@@ -15,7 +15,7 @@
     <string name="alert_item_unknown">Нигде !?</string>
     <string name="alert_item_use">%1$s используется в %2$s.</string>
     <string name="alert_items_submitted">Передано в %1$s для выполнения задачи «%2$s»!</string>
-    <string name="alert_level_progress">%1$.2f%% пути к уровню %2$d (%3$d / %4$d xp)!</string>
+    <string name="alert_level_progress">%1$.2f% пути к уровню %2$d (%3$d / %4$d xp)!</string>
     <string name="alert_levelled_up">Достигнутый уровень %1$d!  %2$s</string>
     <string name="alert_logged_out">Успешно вышли из игры Google Play!</string>
     <string name="alert_map_locked">Для разблокировки карты « %1$s» слот « %2$s» должен быть завершен!</string>
@@ -910,7 +910,7 @@
     <string name="time_hours">%1$.1f hrs</string>
     <string name="time_mins">%1$d мин.</string>
     <string name="trophies">Трофеи</string>
-    <string name="trophies_progress">Трофеи: %1$d / %2$d (+%3$,.1f%% XP)</string>
+    <string name="trophies_progress">Трофеи: %1$d / %2$d (+%3$,.1f% XP)</string>
     <string name="trophy_progress_achieved">Трофей %1$s разблокирован!</string>
     <string name="tutorial_map_1">Добро пожаловать в Blacksmith Slots!\n\nИсследуйте область, поговорите с людьми и попытайтесь спасти мир от Фиолетового!\n\nНажмите логотип, чтобы начать.</string>
     <string name="tutorial_map_3">О нет, мама в ловушке! Слоты, подобные этому, имеют белый контур на карте.</string>
