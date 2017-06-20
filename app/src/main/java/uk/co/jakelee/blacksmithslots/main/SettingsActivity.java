@@ -210,20 +210,44 @@ public class SettingsActivity extends BaseActivity {
             row.findViewById(R.id.importButton).setEnabled(!setting.getBooleanValue());
             row.findViewById(R.id.importButton).setBackgroundResource(setting.getBooleanValue() ? R.drawable.box_orange : R.drawable.box_green);
             row.findViewById(R.id.importButton).setAlpha(setting.getBooleanValue() ? 0.5f : 1f);
+            row.findViewById(R.id.importButton).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    importPBSave(view);
+                }
+            });
         } else if (setting.getSetting() == Enums.Setting.Prestige) {
             boolean canPrestige = PrestigeHelper.canPrestige();
             row.findViewById(R.id.prestigeButton).setBackgroundResource(canPrestige ? R.drawable.box_green : R.drawable.box_orange);
             row.findViewById(R.id.prestigeButton).setAlpha(canPrestige ? 1f : 0.5f);
+            row.findViewById(R.id.prestigeButton).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    prestigeGame(view);
+                }
+            });
         } else if (setting.getSetting() == Enums.Setting.PlayLogout) {
             row.findViewById(R.id.logoutButton).setEnabled(GooglePlayHelper.IsConnected());
             row.findViewById(R.id.logoutButton).setBackgroundResource(GooglePlayHelper.IsConnected() ? R.drawable.box_orange : R.drawable.box_green);
             row.findViewById(R.id.logoutButton).setAlpha(GooglePlayHelper.IsConnected() ? 1f : 0.5f);
+            row.findViewById(R.id.logoutButton).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    logout(view);
+                }
+            });
         } else if (setting.getSetting() == Enums.Setting.Language) {
             createDropdown((Spinner) row.findViewById(R.id.settingPicker), 9, 1, Enums.Setting.Language);
         } else if (setting.getSetting() == Enums.Setting.Orientation) {
             createDropdown((Spinner) row.findViewById(R.id.settingPicker), Constants.ORIENTATION_PORTRAIT, Constants.ORIENTATION_AUTO, Enums.Setting.Orientation);
         } else if (setting.getDataType() == Enums.DataType.Boolean.value) {
             ((TextView)row.findViewById(R.id.settingValue)).setText(setting.getBooleanValue() ? getString(R.string.on) : getString(R.string.off));
+            ((TextView)row.findViewById(R.id.settingValue)).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    changeBoolean(view);
+                }
+            });
         } else if (setting.getDataType() == Enums.DataType.Integer.value) {
             ((TextView)row.findViewById(R.id.settingValue)).setText(setting.getIntValue() + " mins");
         }

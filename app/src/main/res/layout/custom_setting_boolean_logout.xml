@@ -12,7 +12,6 @@
         android:layout_width="wrap_content"
         android:background="@drawable/box_green"
         android:text="@string/logout"
-        android:onClick="logout"
         android:maxLines="1"
         android:layout_margin="5dp"
         style="@style/SlotText"/>

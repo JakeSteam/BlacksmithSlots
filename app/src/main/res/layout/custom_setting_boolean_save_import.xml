@@ -12,7 +12,6 @@
         android:layout_width="wrap_content"
         android:background="@drawable/box_green"
         android:text="@string/import_save"
-        android:onClick="importPBSave"
         android:maxLines="1"
         android:layout_margin="5dp"
         style="@style/SlotText"/>
