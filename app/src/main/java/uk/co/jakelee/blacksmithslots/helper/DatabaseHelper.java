@@ -93,7 +93,9 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
         if (prefs.getInt("databaseVersion", DatabaseHelper.NO_DATABASE) <= DatabaseHelper.NO_DATABASE) {
             callingActivity.startIntro();
             createDatabase();
-            prefs.edit().putInt("databaseVersion", V0_0_1).apply();
+            prefs.edit()
+                .putInt("databaseVersion", V0_0_1)
+                .putBoolean("isBetaTest", true).apply();
             appliedDbChanges = true;
             callingActivity.isFirstInstall = true;
             new Thread(new Runnable() {
