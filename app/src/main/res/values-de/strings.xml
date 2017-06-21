@@ -917,7 +917,7 @@
     <string name="tutorial_map_4">Sie braucht ein Beil, um sich zu schneiden, zum Glück hast du einen! Hand in die Quest.</string>
     <string name="tutorial_map_5">Ehrfürchtig ist sie frei! Lass uns den Slot spielen!</string>
     <string name="tutorial_slot_1">Ein Protokoll der Spins, und Ihr aktueller VIP / XP Level Fortschritt wird am oberen Rand des Bildschirms angezeigt.</string>
-    <string name="tutorial_slot_2">Die benötigten Ressourcen und Ihr aktuelles Inventar werden auf der linken Seite angezeigt.</string>
+    <string name="tutorial_slot_2">Die benötigten Ressourcen und Ihr aktuelles Inventar werden in diesem Bereich angezeigt.</string>
     <string name="tutorial_slot_3">Die Menge gespielt pro Zeile &amp; Die Anzahl der aktiven Zeilen kann vor jedem Spin geändert werden.</string>
     <string name="tutorial_slot_4">Zusätzlich können bis zu 65 Autospins aktiviert werden, neben einem normalen Spin.</string>
     <string name="tutorial_slot_5">Erholen Sie sich und holen Sie sich einige Ressourcen in die Stadt (die nächste Karte)!</string>

@@ -917,7 +917,7 @@
     <string name="tutorial_map_4">Elle a besoin d\'une hache pour se casser, heureusement, vous en avez une! Entrez la quête.</string>
     <string name="tutorial_map_5">Incroyable, elle est gratuite! Allons jouer à la fente!</string>
     <string name="tutorial_slot_1">Un journal des spins et votre progression de niveau VIP / XP est affiché en haut de l\'écran.</string>
-    <string name="tutorial_slot_2">Les ressources nécessaires pour tourner et votre inventaire actuel s\'affiche à gauche.</string>
+    <string name="tutorial_slot_2">Les ressources nécessaires pour tourner et votre inventaire actuel sont affichés dans cette zone.</string>
     <string name="tutorial_slot_3">La quantité jouée par rangée et amp; Le nombre de lignes actives peut être modifié avant chaque rotation.</string>
     <string name="tutorial_slot_4">En outre, jusqu\'à 65 autospins peuvent être activés, parallèlement à un spin normal.</string>
     <string name="tutorial_slot_5">Faites tourner, et obtenez des ressources à prendre en ville (la prochaine carte)!</string>
