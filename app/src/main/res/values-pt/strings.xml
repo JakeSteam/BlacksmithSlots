@@ -162,7 +162,7 @@
     <string name="orientation_6">Panorama</string>
     <string name="orientation_7">Retrato</string>
     <string name="outOfItems">Fora dos itens!</string>
-    <string name="outOfItemsLong">Ah, não, você está sem itens! Gostaria de diminuir a sua aposta, ir para outro slot ou comprar mais da loja?</string>
+    <string name="outOfItemsLong">Ah, não, você está sem itens! Gostaria de diminuir a sua aposta, ir para outro slot ou comprar mais da loja?\\n\\nVocê também pode ter um bônus grátis ou bônus de anúncios esperando por você no menu principal!</string>
     <string name="pass_claim">Afirmação</string>
     <string name="pass_days">Dia %1$d:</string>
     <string name="pass_days_left">%1$d dias restantes</string>

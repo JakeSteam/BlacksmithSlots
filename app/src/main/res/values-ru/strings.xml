@@ -162,7 +162,7 @@
     <string name="orientation_6">Пейзаж</string>
     <string name="orientation_7">Портрет</string>
     <string name="outOfItems">Из предметов!</string>
-    <string name="outOfItemsLong">О нет, у тебя нет предметов! Хотели бы вы опустить свою ставку, пойти в другой слот или купить больше из магазина?</string>
+    <string name="outOfItemsLong">О нет, у тебя нет предметов! Хотели бы вы опустить свою ставку, пойти в другой слот или купить больше из магазина?\\n\\nУ вас также может быть бесплатный бонус или бонус рекламы, ожидающий вас в главном меню!</string>
     <string name="pass_claim">Запрос</string>
     <string name="pass_days">День %1$d:</string>
     <string name="pass_days_left">Осталось %1$d дня в день</string>

@@ -162,7 +162,7 @@
     <string name="orientation_6">경치</string>
     <string name="orientation_7">초상화</string>
     <string name="outOfItems">품절!</string>
-    <string name="outOfItemsLong">오, 아니, 너는 물건이 없어! 내기를 낮추거나, 다른 슬롯으로 가거나, 가게에서 더 구입 하시겠습니까?</string>
+    <string name="outOfItemsLong">오, 아니, 너는 물건이 없어! 내기를 낮추거나, 다른 슬롯으로 가거나, 가게에서 더 구입 하시겠습니까?\\n\\n메인 메뉴에서 무료 보너스 또는 보너스 보너스를 받으실 수 있습니다!</string>
     <string name="pass_claim">청구</string>
     <string name="pass_days">하루  %1$d :</string>
     <string name="pass_days_left">%1$d 일 남았습니다.</string>

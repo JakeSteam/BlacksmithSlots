@@ -162,7 +162,7 @@
     <string name="orientation_6">Landschaft</string>
     <string name="orientation_7">Porträt</string>
     <string name="outOfItems">Aus den Artikeln!</string>
-    <string name="outOfItemsLong">Oh nein, du bist nicht raus! Möchten Sie Ihre Wette senken, gehen Sie zu einem anderen Slot, oder kaufen Sie mehr aus dem Shop?</string>
+    <string name="outOfItemsLong">Oh nein, du bist nicht raus! Möchten Sie Ihre Wette senken, gehen Sie zu einem anderen Slot, oder kaufen Sie mehr aus dem Shop?\\n\\nSie können auch einen kostenlosen Bonus oder Bonus Bonus auf Sie im Hauptmenü warten!</string>
     <string name="pass_claim">Anspruch</string>
     <string name="pass_days">Tag %1$d:</string>
     <string name="pass_days_left">%1$d Tage übrig</string>

@@ -162,7 +162,7 @@
     <string name="orientation_6">Landschap</string>
     <string name="orientation_7">Portret</string>
     <string name="outOfItems">Uit de artikelen!</string>
-    <string name="outOfItemsLong">Oh nee, je bent niet meer van items! Wilt u uw inzet verlagen, naar een andere sleuf gaan of meer kopen uit de winkel?</string>
+    <string name="outOfItemsLong">Oh nee, je bent niet meer van items! Wilt u uw inzet verlagen, naar een andere sleuf gaan of meer kopen uit de winkel?\\n\\nU kunt ook een gratis bonus of advertentie bonus wachten op u in het hoofdmenu!</string>
     <string name="pass_claim">vordering</string>
     <string name="pass_days">Dag %1$d:</string>
     <string name="pass_days_left">%1$d dagen over</string>

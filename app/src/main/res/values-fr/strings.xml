@@ -162,7 +162,7 @@
     <string name="orientation_6">Paysage</string>
     <string name="orientation_7">Portrait</string>
     <string name="outOfItems">Hors des objets!</string>
-    <string name="outOfItemsLong">Oh non, vous êtes hors des objets! Souhaitez-vous réduire votre pari, aller dans une autre fente, ou acheter plus du magasin?</string>
+    <string name="outOfItemsLong">Oh non, vous êtes hors des objets! Souhaitez-vous réduire votre pari, aller dans une autre fente, ou acheter plus du magasin?\\n\\nVous pouvez également avoir un bonus gratuit ou un bonus d\'annonce qui vous attend sur le menu principal!</string>
     <string name="pass_claim">Prétendre</string>
     <string name="pass_days">Jour %1$d:</string>
     <string name="pass_days_left">%1$d jours restants</string>

@@ -162,7 +162,7 @@
     <string name="orientation_6">Paisaje</string>
     <string name="orientation_7">Retrato</string>
     <string name="outOfItems">¡Fuera de artículos!</string>
-    <string name="outOfItemsLong">¡Oh no, usted está fuera de los artículos! ¿Le gustaría bajar su apuesta, ir a otra ranura, o comprar más de la tienda?</string>
+    <string name="outOfItemsLong">¡Oh no, usted está fuera de los artículos! ¿Le gustaría bajar su apuesta, ir a otra ranura, o comprar más de la tienda?\\n\\nUsted también puede tener un bono gratis o bono anuncio que le espera en el menú principal!</string>
     <string name="pass_claim">Reclamación</string>
     <string name="pass_days">Día %1$d:</string>
     <string name="pass_days_left">Faltan %1$d días</string>
