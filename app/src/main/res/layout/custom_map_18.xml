@@ -100,14 +100,20 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:src="@color/black"/>
+            android:src="@color/black"
+            android:alpha="0.8"/>
         <uk.co.jakelee.blacksmithslots.components.FontTextView
             android:id="@+id/lockedMapText"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:textColor="@color/redText"
+            android:layout_height="wrap_content"
+            android:textColor="@color/blackText"
+            android:background="@drawable/box_orange"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
             android:textSize="30sp"
-            android:gravity="center" />
+            android:maxLines="5"
+            android:gravity="center"
+            android:layout_centerVertical="true"/>
     </RelativeLayout>
 
 </android.support.percent.PercentRelativeLayout>

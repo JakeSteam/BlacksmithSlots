@@ -3,7 +3,6 @@ package uk.co.jakelee.blacksmithslots.helper;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Handler;
-import android.util.Log;
 
 import com.applovin.adview.AppLovinIncentivizedInterstitial;
 import com.applovin.adview.AppLovinInterstitialAd;
@@ -61,18 +60,17 @@ public class AdvertHelper implements AppLovinAdRewardListener, AppLovinAdDisplay
             AppLovinInterstitialAd.show(activity);
         } else {
             adPlacement.requestContent();
-        }
-
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                if (!verified && tryingToLoad) {
-                    activity.startActivityForResult(new Intent(activity, InterstitialActivity.class)
-                                    .addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT),
-                            Constants.ADVERT_WATCH);
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    if (!verified && tryingToLoad) {
+                        activity.startActivityForResult(new Intent(activity, InterstitialActivity.class)
+                                        .addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT),
+                                Constants.ADVERT_WATCH);
+                    }
                 }
-            }
-        }, 10000);
+            }, 10000);
+        }
     }
 
     private void tryReward() {
