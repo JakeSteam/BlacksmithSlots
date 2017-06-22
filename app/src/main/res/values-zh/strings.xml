@@ -162,7 +162,7 @@
     <string name="orientation_6">景观</string>
     <string name="orientation_7">肖像</string>
     <string name="outOfItems">超出物品！</string>
-    <string name="outOfItemsLong">哦，不，你没有物品！ 你想降低赌注，去另一个插槽，还是从店里买更多的？</string>
+    <string name="outOfItemsLong">哦，不，你没有物品！ 你想降低赌注，去另一个插槽，还是从店里买更多的？\\n\\n您还可以在主菜单上享受免费红利或广告奖励等待您的支持！</string>
     <string name="pass_claim">要求</string>
     <string name="pass_days">日%1$d：</string>
     <string name="pass_days_left">剩下%1$d天</string>
@@ -917,7 +917,7 @@
     <string name="tutorial_map_4">她需要一个斧头剪掉自己，幸运的是你有一个！手中追求。</string>
     <string name="tutorial_map_5">真棒，她是免费的！我们去玩插槽！</string>
     <string name="tutorial_slot_1">屏幕顶部会显示旋转日志和当前的VIP / XP级别进度。</string>
-    <string name="tutorial_slot_2">旋转所需的资源和您当前的库存显示在左侧。</string>
+    <string name="tutorial_slot_2">旋转所需的资源和您当前的库存显示在此区域。</string>
     <string name="tutorial_slot_3">每行赌博的数量活动行数可以在每次旋转之前更改。</string>
     <string name="tutorial_slot_4">另外，除正常的旋转之外，还可启用多达65个自旋螺丝。</string>
     <string name="tutorial_slot_5">得到旋转，并获得一些资源进城（下一张地图）！</string>

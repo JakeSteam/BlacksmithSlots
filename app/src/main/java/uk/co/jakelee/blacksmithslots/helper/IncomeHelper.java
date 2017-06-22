@@ -23,8 +23,8 @@ public class IncomeHelper {
 
     public static long getNextPeriodicClaimTime() {
         Statistic lastClaimed = Statistic.get(Enums.Statistic.LastBonusClaimed);
-        double hours = IncomeHelper.getChestCooldownHours(LevelHelper.getVipLevel());
-        long millis = DateHelper.hoursToMillis(hours);
+        double mins = IncomeHelper.getChestCooldownMins(LevelHelper.getVipLevel());
+        long millis = DateHelper.minsToMillis((long)mins);
         return lastClaimed.getLongValue() + millis;
     }
 
@@ -109,8 +109,8 @@ public class IncomeHelper {
         return bonus;
     }
 
-    public static double getChestCooldownHours(int vipLevel) {
-        return Constants.CHEST_DEFAULT_COOLDOWN_HOURS - (vipLevel * Constants.CHEST_COOLDOWN_VIP_REDUCTION);
+    public static int getChestCooldownMins(int vipLevel) {
+        return (int)Math.ceil((Constants.CHEST_DEFAULT_COOLDOWN_HOURS - ((vipLevel * Constants.CHEST_COOLDOWN_VIP_REDUCTION))) * 60);
     }
 
     public static int getAdvertCooldownMins(int vipLevel) {

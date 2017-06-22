@@ -1053,7 +1053,7 @@
     <string name="alert_minigame">Minigame</string>
     <string name="alert_minigame_body">Are you sure you want to leave the minigame with no reward?</string>
     <string name="outOfItems">Out of items!</string>
-    <string name="outOfItemsLong">Oh no, you\'re out of items! Would you like to lower your bet, go to another slot, or buy more from the shop?</string>
+    <string name="outOfItemsLong">Oh no, you\'re out of items! Would you like to lower your bet, go to another slot, or buy more from the shop?\n\nYou may also have a free bonus or advert bonus waiting for you on the main menu!</string>
     <string name="lowerBet">Lower Bet</string>
     <string name="exit">Exit</string>
     <string name="spin">Spin</string>
@@ -1122,7 +1122,7 @@
     <string name="start">Start</string>
     <string name="replay_intro">Replay Intro</string>
     <string name="tutorial_slot_1">A log of spins, and your current VIP / XP level progress are shown at the top of the screen.</string>
-    <string name="tutorial_slot_2">The resources required to spin and your current inventory are displayed on the left.</string>
+    <string name="tutorial_slot_2">The resources required to spin and your current inventory are displayed in this area.</string>
     <string name="tutorial_slot_3">The quantity gambled per row &amp; number of active rows can be changed before each spin.</string>
     <string name="tutorial_slot_4">Additionally, up to 65 autospins can be enabled, alongside a normal spin.</string>
     <string name="tutorial_slot_5">Get spinning, and get some resources to take into town (the next map)!</string>

@@ -23,11 +23,11 @@ public class DateHelper {
     }
 
     public static String timestampToTime(long timestamp) {
-        return new SimpleDateFormat("h'hr' mm'min'").format(new Date(timestamp));
+        return new SimpleDateFormat("H'hr' mm'min'").format(new Date(timestamp));
     }
 
     public static String timestampToDetailedTime(long timestamp) {
-        return new SimpleDateFormat("h'hr' mm'min' ss'sec'").format(new Date(timestamp));
+        return new SimpleDateFormat("H'hr' mm'min' ss'sec'").format(new Date(timestamp));
     }
 
     public static Calendar getYesterdayMidnight() {

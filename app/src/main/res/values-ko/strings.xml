@@ -162,7 +162,7 @@
     <string name="orientation_6">경치</string>
     <string name="orientation_7">초상화</string>
     <string name="outOfItems">품절!</string>
-    <string name="outOfItemsLong">오, 아니, 너는 물건이 없어! 내기를 낮추거나, 다른 슬롯으로 가거나, 가게에서 더 구입 하시겠습니까?</string>
+    <string name="outOfItemsLong">오, 아니, 너는 물건이 없어! 내기를 낮추거나, 다른 슬롯으로 가거나, 가게에서 더 구입 하시겠습니까?\\n\\n메인 메뉴에서 무료 보너스 또는 보너스 보너스를 받으실 수 있습니다!</string>
     <string name="pass_claim">청구</string>
     <string name="pass_days">하루  %1$d :</string>
     <string name="pass_days_left">%1$d 일 남았습니다.</string>
@@ -917,7 +917,7 @@
     <string name="tutorial_map_4">그녀는 자기 자신을 자르기 위해 도끼가 필요합니다. 운 좋게도 하나가 있습니다! 퀘스트를 진행하십시오.</string>
     <string name="tutorial_map_5">신난다, 그녀는 자유 롭다! 슬롯을 재생하자!</string>
     <string name="tutorial_slot_1">스핀 로그와 현재 VIP / XP 레벨 진행 상황이 화면 상단에 표시됩니다.</string>
-    <string name="tutorial_slot_2">회전에 필요한 리소스와 현재 인벤토리가 왼쪽에 표시됩니다.</string>
+    <string name="tutorial_slot_2">회전 할 때 필요한 자원과 현재 재고가이 영역에 표시됩니다.</string>
     <string name="tutorial_slot_3">행당 &amp; 도박 된 수량 각 회전 전에 활성 행 수를 변경할 수 있습니다.</string>
     <string name="tutorial_slot_4">또한 일반 스핀과 함께 최대 65 개의 자동 스피킹을 사용할 수 있습니다.</string>
     <string name="tutorial_slot_5">회전하여 마을로 가져갈 수있는 자원을 얻으십시오 (다음 맵)!</string>

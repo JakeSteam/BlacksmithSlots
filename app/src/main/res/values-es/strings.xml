@@ -162,7 +162,7 @@
     <string name="orientation_6">Paisaje</string>
     <string name="orientation_7">Retrato</string>
     <string name="outOfItems">¡Fuera de artículos!</string>
-    <string name="outOfItemsLong">¡Oh no, usted está fuera de los artículos! ¿Le gustaría bajar su apuesta, ir a otra ranura, o comprar más de la tienda?</string>
+    <string name="outOfItemsLong">¡Oh no, usted está fuera de los artículos! ¿Le gustaría bajar su apuesta, ir a otra ranura, o comprar más de la tienda?\\n\\nUsted también puede tener un bono gratis o bono anuncio que le espera en el menú principal!</string>
     <string name="pass_claim">Reclamación</string>
     <string name="pass_days">Día %1$d:</string>
     <string name="pass_days_left">Faltan %1$d días</string>
@@ -917,7 +917,7 @@
     <string name="tutorial_map_4">¡Ella necesita un hacha para cortarse a sí misma, por suerte tiene uno! Mano en la búsqueda.</string>
     <string name="tutorial_map_5">Impresionante, ella es gratis! Vamos a jugar a la ranura!</string>
     <string name="tutorial_slot_1">Un registro de giros, y su nivel actual de progreso VIP / XP se muestran en la parte superior de la pantalla.</string>
-    <string name="tutorial_slot_2">Los recursos necesarios para girar y su inventario actual se muestran a la izquierda.</string>
+    <string name="tutorial_slot_2">Los recursos necesarios para girar y su inventario actual se muestran en esta área.</string>
     <string name="tutorial_slot_3">La cantidad jugada por fila &amp; El número de filas activas se puede cambiar antes de cada vuelta.</string>
     <string name="tutorial_slot_4">Además, se pueden habilitar hasta 65 autospines, junto con un giro normal.</string>
     <string name="tutorial_slot_5">¡Consiga el giro, y consiga algunos recursos tomar en ciudad (el mapa siguiente)!</string>

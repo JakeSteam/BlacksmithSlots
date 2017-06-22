@@ -40,7 +40,7 @@ public class VipComparisonActivity extends BaseActivity {
             TableRow tableRow = inflater.inflate(R.layout.custom_vip_row, null).findViewById(R.id.dataRow);
             tableRow.setBackgroundColor(ContextCompat.getColor(this, vipLevel == i ? R.color.green : R.color.white));
             ((TextView)tableRow.findViewById(R.id.vipLevel)).setText(Integer.toString(i));
-            ((TextView)tableRow.findViewById(R.id.timeBetweenBonuses)).setText(String.format(Locale.ENGLISH, getString(R.string.time_hours), IncomeHelper.getChestCooldownHours(i)));
+            ((TextView)tableRow.findViewById(R.id.timeBetweenBonuses)).setText(String.format(Locale.ENGLISH, getString(R.string.time_mins), IncomeHelper.getChestCooldownMins(i)));
             ((TextView)tableRow.findViewById(R.id.bonusModifier)).setText("+" + (i * Constants.VIP_LEVEL_MODIFIER) + "%");
             ((TextView)tableRow.findViewById(R.id.advertBonus)).setText(String.format(Locale.ENGLISH, getString(R.string.time_mins), IncomeHelper.getAdvertCooldownMins(i)));
             ((TextView)tableRow.findViewById(R.id.dailyBonus)).setText("+" + (i * Constants.VIP_DAILY_BONUS_MODIFIER) + "%");
