@@ -123,9 +123,10 @@ public class SlotHelper {
                         data.getIntExtra("type", 0),
                         data.getIntExtra("quantity", 0)
                 );
-                AlertHelper.success(activity, "Won " + winnings.toString(activity) + " from chest minigame!", true);
+                Inventory.addInventory(winnings);
+                AlertHelper.success(activity, String.format(Locale.ENGLISH,  activity.getString(R.string.minigame_won_something), winnings.toString(activity)), true);
             } else {
-                AlertHelper.info(activity, "Unlucky, won nothing from chest minigame!", false);
+                AlertHelper.info(activity, activity.getString(R.string.minigame_won_nothing), false);
             }
         }
     }
