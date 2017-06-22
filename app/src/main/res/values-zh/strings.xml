@@ -1059,4 +1059,5 @@
     <string name="settings_desc">自定义您的游戏体验！点击设置标题查看更多信息。</string>
     <string name="statistic_24_name">Prestiges</string>
     <string name="tutorial_map_6">下一个区域已经解锁了！ 点击地图上的向右箭头或滑动图来查看未锁定的插槽。\n\n呵呵，恭喜你完成本教程的结尾下一个区域已经解锁了！ 点击地图上的向右箭头或滑动图来查看未锁定的插槽。\n\n呵呵，恭喜你完成本教程的结尾</string>
+    <string name="advert_load_start">开始加载广告...如果在10秒内没有加载广告，将会出现替换屏幕！</string>
 </resources>

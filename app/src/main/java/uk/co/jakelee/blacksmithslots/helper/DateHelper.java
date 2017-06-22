@@ -3,6 +3,7 @@ package uk.co.jakelee.blacksmithslots.helper;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
 public class DateHelper {
@@ -23,11 +24,9 @@ public class DateHelper {
     }
 
     public static String timestampToTime(long timestamp) {
-        return new SimpleDateFormat("H'hr' mm'min'").format(new Date(timestamp));
-    }
-
-    public static String timestampToDetailedTime(long timestamp) {
-        return new SimpleDateFormat("H'hr' mm'min' ss'sec'").format(new Date(timestamp));
+        long hours = TimeUnit.MILLISECONDS.toHours(timestamp);
+        long minutes = TimeUnit.MILLISECONDS.toMinutes(timestamp);
+        return String.format(Locale.ENGLISH, "%1$dhr %2$dmin", hours, minutes);
     }
 
     public static Calendar getYesterdayMidnight() {

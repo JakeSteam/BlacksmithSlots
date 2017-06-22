@@ -1059,4 +1059,5 @@
     <string name="settings_desc">Personaliza tu experiencia de juego! Toque un título de configuración para ver más información.</string>
     <string name="statistic_24_name">Prestiges</string>
     <string name="tutorial_map_6">¡La siguiente área ha sido desbloqueada! Presiona la flecha derecha o desliza el mapa para ver la ranura desbloqueada.\n\n¡Oh, y felicidades por llegar al final del tutorial!¡La siguiente área ha sido desbloqueada! Presiona la flecha derecha o desliza el mapa para ver la ranura desbloqueada.\n\n¡Oh, y felicidades por llegar al final del tutorial!</string>
+    <string name="advert_load_start">Comenzar a cargar el anuncio ... Si no hay anuncio cargado en 10s, aparecerá una pantalla de reemplazo!</string>
 </resources>

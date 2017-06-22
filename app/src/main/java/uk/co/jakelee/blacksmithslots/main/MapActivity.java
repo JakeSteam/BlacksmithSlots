@@ -410,7 +410,7 @@ public class MapActivity extends BaseActivity implements
         } else {
             AlertHelper.error(this, String.format(Locale.ENGLISH,
                     getString(R.string.error_bonus_not_ready),
-                    DateHelper.timestampToDetailedTime(IncomeHelper.getNextPeriodicClaimTime() - System.currentTimeMillis())),
+                    DateHelper.timestampToTime(IncomeHelper.getNextPeriodicClaimTime() - System.currentTimeMillis())),
                     false);
         }
     }
@@ -443,7 +443,7 @@ public class MapActivity extends BaseActivity implements
         } else {
             AlertHelper.error(this, String.format(Locale.ENGLISH,
                     getString(R.string.error_advert_not_ready),
-                    DateHelper.timestampToDetailedTime(IncomeHelper.getNextAdvertWatchTime() - System.currentTimeMillis())),
+                    DateHelper.timestampToTime(IncomeHelper.getNextAdvertWatchTime() - System.currentTimeMillis())),
                     false);
         }
     }

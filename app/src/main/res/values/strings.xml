@@ -1251,5 +1251,5 @@ AESCrypt (https://goo.gl/Ewk2tq) - Support code encryption.
     <string name="reward_subtitle">Every possible reward is listed. The higher the chance, the more likely the item is to be won!</string>
     <string name="export_save">Export Save</string>
     <string name="tutorial_map_6">The next area has been unlocked! Tap the right arrow or swipe on the map to view the unlocked slot.\n\nOh, and congratulations on reaching the end of the tutorial!</string>
-    <string name="advert_load_start">Starting to load advert... If no advert is loaded in 10s, a replacement screen will appear!</string>
+    <string name="advert_load_start">Loading advert...</string>
 </resources>
