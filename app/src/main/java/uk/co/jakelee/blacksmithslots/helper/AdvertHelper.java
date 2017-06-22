@@ -3,9 +3,9 @@ package uk.co.jakelee.blacksmithslots.helper;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Handler;
+import android.util.Log;
 
 import com.applovin.adview.AppLovinIncentivizedInterstitial;
-import com.applovin.adview.AppLovinInterstitialAd;
 import com.applovin.sdk.AppLovinAd;
 import com.applovin.sdk.AppLovinAdDisplayListener;
 import com.applovin.sdk.AppLovinAdRewardListener;
@@ -55,10 +55,10 @@ public class AdvertHelper implements AppLovinAdRewardListener, AppLovinAdDisplay
         tryingToLoad = true;
 
         if (advert.isAdReadyToDisplay()) {
+            Log.d("Advert", "1");
             advert.show(activity, this, this, this);
-        } else if (AppLovinInterstitialAd.isAdReadyToDisplay(activity)) {
-            AppLovinInterstitialAd.show(activity);
         } else {
+            Log.d("Advert", "3");
             adPlacement.requestContent();
             new Handler().postDelayed(new Runnable() {
                 @Override
@@ -75,7 +75,7 @@ public class AdvertHelper implements AppLovinAdRewardListener, AppLovinAdDisplay
 
     private void tryReward() {
         if (verified) {
-            activity.advertHelper.rewardAdvertItems(activity);
+            rewardAdvertItems(activity);
         } else {
             AlertHelper.error(activity, activity.getString(R.string.error_advert_unverified), false);
         }
@@ -87,8 +87,13 @@ public class AdvertHelper implements AppLovinAdRewardListener, AppLovinAdDisplay
         advert.preload(null);
     }
 
-    public void rewardAdvertItems(MapActivity mapActivity) {
-        AlertHelper.success(mapActivity, context.getString(R.string.advert_watch_verified) + " " + IncomeHelper.claimAdvertBonus(mapActivity), true);
+    public void rewardAdvertItems(final MapActivity mapActivity) {
+        mapActivity.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                AlertHelper.success(mapActivity, context.getString(R.string.advert_watch_verified) + " " + IncomeHelper.claimAdvertBonus(mapActivity), true);
+            }
+        });
         Statistic.add(Enums.Statistic.AdvertsWatched);
         mapActivity.setAdvertUnclaimable();
     }
