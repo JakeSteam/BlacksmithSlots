@@ -105,7 +105,7 @@ public class SlotHelper {
                         itemText.append("x ");
                         itemText.append(Inventory.getName(activity, itemBundle.getTier(), itemBundle.getType()));
                         itemText.append(", ");
-                        Inventory.addInventory(itemBundle.getTier(), itemBundle.getType(), itemBundle.getQuantity() * resultCode);
+                        Inventory.addInventory(itemBundle.getTier(), itemBundle.getType(), itemBundle.getQuantity() * slot.getCurrentStake() * resultCode);
                     }
                 }
 
@@ -123,6 +123,7 @@ public class SlotHelper {
                         data.getIntExtra("type", 0),
                         data.getIntExtra("quantity", 0)
                 );
+                winnings.setQuantity(winnings.getQuantity() * slot.getCurrentStake());
                 Inventory.addInventory(winnings);
                 AlertHelper.success(activity, String.format(Locale.ENGLISH,  activity.getString(R.string.minigame_won_something), winnings.toString(activity)), true);
             } else {
