@@ -392,11 +392,11 @@ public class SlotHelper {
                 AlertDialogHelper.outOfItems(activity, failedItem.getTier(), failedItem.getType());
             } else {
                 SoundHelper.playSound(activity, SoundHelper.spinSounds);
-                activity.findViewById(R.id.slotContainer).bringToFront();
                 if (highlightedRoutes != null) {
                     resetRouteColours();
                     highlight(false);
                 }
+                activity.findViewById(R.id.slotContainer).bringToFront();
 
                 stillSpinningSlots = slot.getSlots();
 
@@ -474,6 +474,7 @@ public class SlotHelper {
                 } else {
                     routeImage.clearColorFilter();
                 }
+                routeImage.bringToFront();
             }
         }
     }
