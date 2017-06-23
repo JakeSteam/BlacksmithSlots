@@ -1,5 +1,6 @@
 package uk.co.jakelee.blacksmithslots.main;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
@@ -8,6 +9,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageView;
@@ -15,6 +17,7 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -468,6 +471,17 @@ public class MapActivity extends BaseActivity implements
             runTutorial(5);
         }
         populateSlotInfo();
+    }
+
+    public void displayAdvertSuccess() {
+        final Activity activity = this;
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                Toast.makeText(activity, getString(R.string.advert_watch_verified) + " " + IncomeHelper.claimAdvertBonus(activity), Toast.LENGTH_LONG).show();
+                Log.d("TJ", "Reward Alerted");
+            }
+        });
     }
 
     private void handInStatisticTask(Task task) {

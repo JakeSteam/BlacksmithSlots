@@ -88,13 +88,8 @@ public class AdvertHelper implements AppLovinAdRewardListener, AppLovinAdDisplay
     }
 
     public void rewardAdvertItems(final MapActivity mapActivity) {
-        mapActivity.runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                AlertHelper.success(mapActivity, context.getString(R.string.advert_watch_verified) + " " + IncomeHelper.claimAdvertBonus(mapActivity), true);
-            }
-        });
         Statistic.add(Enums.Statistic.AdvertsWatched);
+        mapActivity.displayAdvertSuccess();
         mapActivity.setAdvertUnclaimable();
     }
 
@@ -116,10 +111,13 @@ public class AdvertHelper implements AppLovinAdRewardListener, AppLovinAdDisplay
     public void onContentReady(TJPlacement placement) {
         tryingToLoad = false;
         placement.showContent();
+        Log.d("TJ", "Ready");
     }
     public void onContentDismiss(TJPlacement placement) {
         verified = true;
         tryReward();
+
+        Log.d("TJ", "Rewarded");
     }
     public void onPurchaseRequest(TJPlacement placement, TJActionRequest tjActionRequest, String string) {} // Called when the SDK has made contact with Tapjoy's servers. It does not necessarily mean that any content is available.
     public void onRewardRequest(TJPlacement placement, TJActionRequest tjActionRequest, String string, int number) {} // Called when the SDK has made contact with Tapjoy's servers. It does not necessarily mean that any content is available.
