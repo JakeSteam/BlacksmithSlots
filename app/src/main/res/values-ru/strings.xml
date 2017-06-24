@@ -162,7 +162,7 @@
     <string name="orientation_6">Пейзаж</string>
     <string name="orientation_7">Портрет</string>
     <string name="outOfItems">Из предметов!</string>
-    <string name="outOfItemsLong">О нет, у тебя нет предметов! Хотели бы вы опустить свою ставку, пойти в другой слот или купить больше из магазина?\\n\\nУ вас также может быть бесплатный бонус или бонус рекламы, ожидающий вас в главном меню!</string>
+    <string name="outOfItemsLong">О нет, у тебя нет предметов! Хотели бы вы опустить свою ставку, пойти в другой слот или купить больше из магазина?\n\nУ вас также может быть бесплатный бонус или бонус рекламы, ожидающий вас в главном меню!</string>
     <string name="pass_claim">Запрос</string>
     <string name="pass_days">День %1$d:</string>
     <string name="pass_days_left">Осталось %1$d дня в день</string>
@@ -1059,4 +1059,20 @@
     <string name="settings_desc">Настройте свой игровой опыт! Нажмите заголовок настройки, чтобы просмотреть дополнительную информацию.</string>
     <string name="statistic_24_name">Prestiges</string>
     <string name="tutorial_map_6">Следующая область была разблокирована! Нажмите стрелку вправо или проведите по карте, чтобы просмотреть разблокированный слот.\n\nО, и поздравляю вас с окончанием учебника!Следующая область была разблокирована! Нажмите стрелку вправо или проведите по карте, чтобы просмотреть разблокированный слот.\n\nО, и поздравляю вас с окончанием учебника!</string>
+    <string name="advert_load_start">Начало загрузки рекламы ... Если реклама не будет загружена за 10 секунд, появится экран замены!</string>
+    <string name="statistic_25_name">Последнее требование памяти</string>
+    <string name="statistic_26_name">Память</string>
+    <string name="win_items_button">Выигрывайте предметы (%1$d / %2$d)</string>
+    <string name="minigame_memory_title">Память Мини-игра</string>
+    <string name="minigame_memory_winnings_added">Добавлены %1$s к выигрышам!</string>
+    <string name="minigame_memory_no_match">Не повезло, нет матча! У вас осталось %1$d.</string>
+    <string name="claim_rewards">Заявить награды</string>
+    <string name="minigame_memory_desc">Флип-карты. Если они совпадут, вы победите! Еще один шанс будет добавлен в %dm.</string>
+    <string name="minigame_memory_earned">Вы заработали </string>
+    <string name="none">Никто!</string>
+    <string name="minigame_memory_next_charge">Еще один шанс в мини-игре памяти будет доступен в %dm!</string>
+    <string name="extra_win_items_charge">Выиграть товар</string>
+    <string name="extra_win_items_desc">Экстремальные партии товаров Увеличивает максимальное количество сборов, которые могут быть собраны.</string>
+    <string name="minigame_memory_game_over">Игра закончена!\n\nНаграды:\n%1$s</string>
+    <string name="patch_092_text">V0.9.2 (2017-06-24):\n-Добавлено «Win Items», надежный источник мини-игр бесплатных предметов!\n-Добавлена система обновлений!\n-Функции отображения таймера\n-Передвиньте все линии вперед, когда меняются выбранные линии\nМини-игра с фейерверком не дает награды\n-Улучшенная обработка объявлений\n-Удаленный коэффициент вознаграждения мини-игр в текущей ставке</string>
 </resources>

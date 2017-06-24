@@ -1036,6 +1036,8 @@
     <string name="statistic_22_name">Trophies Earned</string>
     <string name="statistic_23_name">Higher / Lower</string>
     <string name="statistic_24_name">Prestiges</string>
+    <string name="statistic_25_name">Memory Last Claim</string>
+    <string name="statistic_26_name">Memory</string>
     <string name="statistic_next_claim_name">Next Bonus Claim</string>
 
     <string name="statistictype_1_name">Progress</string>
@@ -1251,5 +1253,18 @@ AESCrypt (https://goo.gl/Ewk2tq) - Support code encryption.
     <string name="reward_subtitle">Every possible reward is listed. The higher the chance, the more likely the item is to be won!</string>
     <string name="export_save">Export Save</string>
     <string name="tutorial_map_6">The next area has been unlocked! Tap the right arrow or swipe on the map to view the unlocked slot.\n\nOh, and congratulations on reaching the end of the tutorial!</string>
-    <string name="advert_load_start">Starting to load advert... If no advert is loaded in 10s, a replacement screen will appear!</string>
+    <string name="advert_load_start">Loading advert...</string>
+    <string name="win_items_button">Win Items (%1$d/%2$d)</string>
+    <string name="minigame_memory_title">Memory Minigame</string>
+    <string name="minigame_memory_winnings_added">Added %1$s to winnings!</string>
+    <string name="minigame_memory_no_match">Unlucky, no match! You have %1$d chances left.</string>
+    <string name="minigame_memory_game_over">Game over!\n\nRewards:\n%1$s</string>
+    <string name="claim_rewards">Claim Rewards</string>
+    <string name="minigame_memory_desc">Flip cards. If they match, you win! Another chance will be added in %dm.</string>
+    <string name="minigame_memory_earned">You\'ve earned </string>
+    <string name="none">None!</string>
+    <string name="minigame_memory_next_charge">Another chance at the memory minigame will be available in %dm!</string>
+    <string name="patch_092_text">v0.9.2 (2017-06-24):\n-Added \"Win Items\", a reliable minigame source of free items!\n-Added this update notes system!\n-Fixing timer displays\n-Move all lines to front when changing lines selected\n-Fixed chest minigame not giving rewards\n-Improved advert handling\n-Made minigame rewards factor in current stake</string>
+    <string name="extra_win_items_charge">Win Items Charge</string>
+    <string name="extra_win_items_desc">Extra Win Items Charge increases the maximum number of charges that can be collected.</string>
 </resources>

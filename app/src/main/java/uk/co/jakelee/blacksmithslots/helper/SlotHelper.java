@@ -105,7 +105,7 @@ public class SlotHelper {
                         itemText.append("x ");
                         itemText.append(Inventory.getName(activity, itemBundle.getTier(), itemBundle.getType()));
                         itemText.append(", ");
-                        Inventory.addInventory(itemBundle.getTier(), itemBundle.getType(), itemBundle.getQuantity() * resultCode);
+                        Inventory.addInventory(itemBundle.getTier(), itemBundle.getType(), itemBundle.getQuantity() * slot.getCurrentStake() * resultCode);
                     }
                 }
 
@@ -123,9 +123,11 @@ public class SlotHelper {
                         data.getIntExtra("type", 0),
                         data.getIntExtra("quantity", 0)
                 );
-                AlertHelper.success(activity, "Won " + winnings.toString(activity) + " from chest minigame!", true);
+                winnings.setQuantity(winnings.getQuantity() * slot.getCurrentStake());
+                Inventory.addInventory(winnings);
+                AlertHelper.success(activity, String.format(Locale.ENGLISH,  activity.getString(R.string.minigame_won_something), winnings.toString(activity)), true);
             } else {
-                AlertHelper.info(activity, "Unlucky, won nothing from chest minigame!", false);
+                AlertHelper.info(activity, activity.getString(R.string.minigame_won_nothing), false);
             }
         }
     }
@@ -245,9 +247,9 @@ public class SlotHelper {
         }
     }
 
-    private String applyWinnings(List<ItemBundle> unmergedWinnings) {
+    private static LinkedHashMap<Pair<Enums.Tier, Enums.Type>, Integer> getMergedItems(List<ItemBundle> unmergedItems) {
         LinkedHashMap<Pair<Enums.Tier, Enums.Type>, Integer> dataStore = new LinkedHashMap<>();
-        for (ItemBundle winning : unmergedWinnings) {
+        for (ItemBundle winning : unmergedItems) {
             Integer temp;
             Pair<Enums.Tier, Enums.Type> pair = new Pair<>(winning.getTier(), winning.getType());
             if (dataStore.containsKey(pair)) {
@@ -257,6 +259,11 @@ public class SlotHelper {
                 dataStore.put(pair, winning.getQuantity());
             }
         }
+        return dataStore;
+    }
+
+    private String applyWinnings(List<ItemBundle> unmergedWinnings) {
+        LinkedHashMap<Pair<Enums.Tier, Enums.Type>, Integer> dataStore = getMergedItems(unmergedWinnings);
 
         int totalResourcesWon = 0;
         StringBuilder winningsText = new StringBuilder().append("Won: ");
@@ -390,11 +397,11 @@ public class SlotHelper {
                 AlertDialogHelper.outOfItems(activity, failedItem.getTier(), failedItem.getType());
             } else {
                 SoundHelper.playSound(activity, SoundHelper.spinSounds);
-                activity.findViewById(R.id.slotContainer).bringToFront();
                 if (highlightedRoutes != null) {
                     resetRouteColours();
                     highlight(false);
                 }
+                activity.findViewById(R.id.slotContainer).bringToFront();
 
                 stillSpinningSlots = slot.getSlots();
 
@@ -472,6 +479,7 @@ public class SlotHelper {
                 } else {
                     routeImage.clearColorFilter();
                 }
+                routeImage.bringToFront();
             }
         }
     }

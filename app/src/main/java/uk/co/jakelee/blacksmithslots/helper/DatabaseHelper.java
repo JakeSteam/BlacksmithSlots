@@ -30,9 +30,9 @@ import static android.content.Context.MODE_PRIVATE;
 public class DatabaseHelper extends AsyncTask<String, String, String> {
     public final static int NO_DATABASE = 0;
     private final static int V0_0_1 = 1;
-    //public final static int V0_0_2 = 2;
+    private final static int V0_0_2 = 2;
 
-    public final static int LATEST_PATCH = V0_0_1;
+    public final static int LATEST_PATCH = V0_0_2;
 
     private Context context;
     private SplashScreenActivity callingActivity;
@@ -106,15 +106,16 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
             }).start();
         }
 
-        /*if (prefs.getInt("databaseVersion", DatabaseHelper.NO_DATABASE) < DatabaseHelper.V0_0_2) {
-            if (!isFirstInstall && callingActivity != null) {
-                callingActivity.setStoryText("This is a shiny new version, with new features!");
+        if (prefs.getInt("databaseVersion", DatabaseHelper.NO_DATABASE) < DatabaseHelper.V0_0_2) {
+            if (callingActivity != null && !callingActivity.isFirstInstall) {
+                callingActivity.setStoryText(context.getString(R.string.patch_092_text));
+                callingActivity.setStoryTextLeftAlign();
             }
-            setProgress("Patch 0.0.2", 30);
-            //patchTo002();
+            setProgress("Patch 0.9.2", 99);
+            patchTo002();
             appliedDbChanges = true;
             prefs.edit().putInt("databaseVersion", DatabaseHelper.V0_0_2).apply();
-        }*/
+        }
 
         if (appliedDbChanges) {
             setProgress(context.getString(R.string.progress_installed), 100);
@@ -122,6 +123,13 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
             callingActivity.startGame();
         }
         return "";
+    }
+
+    private void patchTo002() {
+        ArrayList<Statistic> statistics = new ArrayList<>();
+            statistics.add(new Statistic(Enums.StatisticType.Minigames, Enums.Statistic.MinigameMemoryLastClaim, "", "", 0L));
+            statistics.add(new Statistic(Enums.StatisticType.Minigames, Enums.Statistic.MinigameMemory, "", "", 0));
+        Statistic.saveInTx(statistics);
     }
 
     @Override

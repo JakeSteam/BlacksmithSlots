@@ -162,7 +162,7 @@
     <string name="orientation_6">Landschap</string>
     <string name="orientation_7">Portret</string>
     <string name="outOfItems">Uit de artikelen!</string>
-    <string name="outOfItemsLong">Oh nee, je bent niet meer van items! Wilt u uw inzet verlagen, naar een andere sleuf gaan of meer kopen uit de winkel?\\n\\nU kunt ook een gratis bonus of advertentie bonus wachten op u in het hoofdmenu!</string>
+    <string name="outOfItemsLong">Oh nee, je bent niet meer van items! Wilt u uw inzet verlagen, naar een andere sleuf gaan of meer kopen uit de winkel?\n\nU kunt ook een gratis bonus of advertentie bonus wachten op u in het hoofdmenu!</string>
     <string name="pass_claim">vordering</string>
     <string name="pass_days">Dag %1$d:</string>
     <string name="pass_days_left">%1$d dagen over</string>
@@ -1059,4 +1059,20 @@
     <string name="settings_desc">Pas je spelervaring aan! Tik op een instellingstitel om meer informatie te bekijken.</string>
     <string name="statistic_24_name">Prestiges</string>
     <string name="tutorial_map_6">Het volgende gebied is ontgrendeld! Tik op de rechterpijl of veeg op de kaart om de ontgrendelde sleuf weer te geven.\n\nOh, en gefeliciteerd met het einde van de tutorial!Het volgende gebied is ontgrendeld! Tik op de rechterpijl of veeg op de kaart om de ontgrendelde sleuf weer te geven.\n\nOh, en gefeliciteerd met het einde van de tutorial!</string>
+    <string name="advert_load_start">Advertentie beginnen ... Als er geen advertentie in 10\'s is geladen, verschijnt er een vervangend scherm!</string>
+    <string name="statistic_25_name">Geheugen Laatste vordering</string>
+    <string name="statistic_26_name">Geheugen</string>
+    <string name="win_items_button">Win items (%1$d / %2$d)</string>
+    <string name="minigame_memory_title">Memory Minigame</string>
+    <string name="minigame_memory_winnings_added">%1$s toegevoegd aan winsten!</string>
+    <string name="minigame_memory_no_match">Ongelukkig, geen match! Je hebt %1$d kansen verlaten.</string>
+    <string name="claim_rewards">Claim Beloningen</string>
+    <string name="minigame_memory_desc">Flip-kaarten. Als ze overeenkomen, win je! Een andere kans wordt toegevoegd in %dm.</string>
+    <string name="minigame_memory_earned">Je hebt verdiend </string>
+    <string name="none">Geen!</string>
+    <string name="minigame_memory_next_charge">Een andere kans op de memory minigame zal beschikbaar zijn in %dm!</string>
+    <string name="extra_win_items_charge">Win Items Charge</string>
+    <string name="extra_win_items_desc">Extra Win Items Charge verhoogt het maximale aantal kosten dat u kunt verzamelen.</string>
+    <string name="minigame_memory_game_over">Spel is over!\n\nbeloningen:\n%1$s</string>
+    <string name="patch_092_text">V0.9.2 (2017-06-24):\n-Added \"Win Items\", een betrouwbare minigame bron van gratis items!\n-Added dit update notitiesysteem!\n-Fixing timer displays\n-Verwijder alle lijnen aan de voorkant wanneer u de geselecteerde lijnen wijzigt\n-Fixed chest minigame geen beloningen te geven\n-Procedure voor de verwerking van advertenties\n-Made minigame beloont factor in het huidige spel</string>
 </resources>

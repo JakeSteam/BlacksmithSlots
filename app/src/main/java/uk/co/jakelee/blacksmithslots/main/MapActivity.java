@@ -1,5 +1,6 @@
 package uk.co.jakelee.blacksmithslots.main;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
@@ -8,6 +9,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageView;
@@ -15,6 +17,7 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -43,6 +46,7 @@ import uk.co.jakelee.blacksmithslots.helper.Enums;
 import uk.co.jakelee.blacksmithslots.helper.GooglePlayHelper;
 import uk.co.jakelee.blacksmithslots.helper.IncomeHelper;
 import uk.co.jakelee.blacksmithslots.helper.LanguageHelper;
+import uk.co.jakelee.blacksmithslots.helper.MinigameHelper;
 import uk.co.jakelee.blacksmithslots.helper.MusicHelper;
 import uk.co.jakelee.blacksmithslots.helper.NotificationHelper;
 import uk.co.jakelee.blacksmithslots.helper.Runnables;
@@ -89,6 +93,8 @@ public class MapActivity extends BaseActivity implements
     TextView unlockedDescription;
     @BindView(R.id.watchAdvert)
     TextView watchAdvert;
+    @BindView(R.id.winItems)
+    TextView winItems;
     @BindView(R.id.claimBonus)
     TextView claimBonus;
     @BindView(R.id.googlePlayRow)
@@ -143,6 +149,16 @@ public class MapActivity extends BaseActivity implements
         if (IncomeHelper.getNextAdvertWatchTime() - System.currentTimeMillis() > 0) {
             setAdvertUnclaimable();
         }
+        updateWinItemsButton();
+    }
+
+    private void updateWinItemsButton() {
+        int currentCharges = MinigameHelper.getCurrentCharges();
+        int maxCharges = MinigameHelper.getMaxCharges();
+        winItems.setBackgroundResource(currentCharges > 0 ? R.drawable.box_green : R.drawable.box_orange);
+        winItems.setText(String.format(Locale.ENGLISH, getString(R.string.win_items_button),
+                currentCharges,
+                maxCharges));
     }
 
     private void createMapPager() {
@@ -198,6 +214,8 @@ public class MapActivity extends BaseActivity implements
                 runTutorial(6);
             }
         }
+
+        updateWinItemsButton();
     }
 
     private void updateText() {
@@ -369,6 +387,19 @@ public class MapActivity extends BaseActivity implements
         AlertDialogHelper.openOverlayActivity(this, InventoryActivity.class);
     }
 
+    @OnClick(R.id.winItems)
+    public void winItems() {
+        if (MinigameHelper.getCurrentCharges() > 0) {
+            MusicHelper.getInstance(this).setMovingInApp(true);
+            startActivityForResult(new Intent(this, MinigameMemoryActivity.class)
+                    .addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT), Constants.MINIGAME_MEMORY);
+        } else {
+            AlertHelper.error(this, String.format(Locale.ENGLISH,
+                    getString(R.string.minigame_memory_next_charge),
+                    MinigameHelper.getMinsToNextCharge()), false);
+        }
+    }
+
     @OnClick(R.id.openCredits)
     public void openCredits() {
         AlertDialogHelper.openOverlayActivity(this, CreditsActivity.class);
@@ -410,7 +441,7 @@ public class MapActivity extends BaseActivity implements
         } else {
             AlertHelper.error(this, String.format(Locale.ENGLISH,
                     getString(R.string.error_bonus_not_ready),
-                    DateHelper.timestampToDetailedTime(IncomeHelper.getNextPeriodicClaimTime() - System.currentTimeMillis())),
+                    DateHelper.timestampToTime(IncomeHelper.getNextPeriodicClaimTime() - System.currentTimeMillis())),
                     false);
         }
     }
@@ -443,7 +474,7 @@ public class MapActivity extends BaseActivity implements
         } else {
             AlertHelper.error(this, String.format(Locale.ENGLISH,
                     getString(R.string.error_advert_not_ready),
-                    DateHelper.timestampToDetailedTime(IncomeHelper.getNextAdvertWatchTime() - System.currentTimeMillis())),
+                    DateHelper.timestampToTime(IncomeHelper.getNextAdvertWatchTime() - System.currentTimeMillis())),
                     false);
         }
     }
@@ -468,6 +499,17 @@ public class MapActivity extends BaseActivity implements
             runTutorial(5);
         }
         populateSlotInfo();
+    }
+
+    public void displayAdvertSuccess() {
+        final Activity activity = this;
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                Toast.makeText(activity, getString(R.string.advert_watch_verified) + " " + IncomeHelper.claimAdvertBonus(activity), Toast.LENGTH_LONG).show();
+                Log.d("TJ", "Reward Alerted");
+            }
+        });
     }
 
     private void handInStatisticTask(Task task) {
@@ -572,10 +614,15 @@ public class MapActivity extends BaseActivity implements
         GooglePlayHelper.mGoogleApiClient.connect();
     }
 
+    @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
         if (requestCode == Constants.ADVERT_WATCH) {
             if (resultCode > 0) {
-                advertHelper.rewardAdvertItems(this);
+                displayAdvertSuccess();
+            }
+        } else if (requestCode == Constants.MINIGAME_MEMORY) {
+            if (resultCode > 0) {
+                AlertHelper.success(this, getString(R.string.minigame_memory_earned) + intent.getStringExtra("winningsString"), true);
             }
         } else {
             onConnected(null);

@@ -162,7 +162,7 @@
     <string name="orientation_6">Paysage</string>
     <string name="orientation_7">Portrait</string>
     <string name="outOfItems">Hors des objets!</string>
-    <string name="outOfItemsLong">Oh non, vous êtes hors des objets! Souhaitez-vous réduire votre pari, aller dans une autre fente, ou acheter plus du magasin?\\n\\nVous pouvez également avoir un bonus gratuit ou un bonus d\'annonce qui vous attend sur le menu principal!</string>
+    <string name="outOfItemsLong">Oh non, vous êtes hors des objets! Souhaitez-vous réduire votre pari, aller dans une autre fente, ou acheter plus du magasin?\n\nVous pouvez également avoir un bonus gratuit ou un bonus d\'annonce qui vous attend sur le menu principal!</string>
     <string name="pass_claim">Prétendre</string>
     <string name="pass_days">Jour %1$d:</string>
     <string name="pass_days_left">%1$d jours restants</string>
@@ -1059,4 +1059,20 @@
     <string name="settings_desc">Personnalisez votre expérience de jeu! Tapez un titre de réglage pour afficher plus d\'informations.</string>
     <string name="statistic_24_name">Prestiges</string>
     <string name="tutorial_map_6">La prochaine zone a été déverrouillée! Appuyez sur la flèche droite ou glissez sur la carte pour afficher la fente déverrouillée.\n\nOh, et félicitations pour avoir terminé le didacticiel!La prochaine zone a été déverrouillée! Appuyez sur la flèche droite ou glissez sur la carte pour afficher la fente déverrouillée.\n\nOh, et félicitations pour avoir terminé le didacticiel!</string>
+    <string name="advert_load_start">Commencer à charger une annonce ... Si aucune annonce n\'est chargée en 10s, un écran de remplacement apparaîtra!</string>
+    <string name="statistic_25_name">Mémoire Dernière réclamation</string>
+    <string name="statistic_26_name">Mémoire</string>
+    <string name="win_items_button">Articles gagnants (%1$d / %2$d)</string>
+    <string name="minigame_memory_title">Mémoire Minigame</string>
+    <string name="minigame_memory_winnings_added">Ajout de %1$s pour les gains!</string>
+    <string name="minigame_memory_no_match">Inutile, pas de match! Vous avez plus de 1$de chance.</string>
+    <string name="claim_rewards">Réclamer des récompenses</string>
+    <string name="minigame_memory_desc">Flip cards. S\'ils correspondent, vous gagnez! Une autre chance sera ajoutée en %dm.</string>
+    <string name="minigame_memory_earned">Tu as gagné </string>
+    <string name="none">Aucun!</string>
+    <string name="minigame_memory_next_charge">Une autre chance au minigame de la mémoire sera disponible en %dm!</string>
+    <string name="extra_win_items_charge">Frais d\'articles gagnants</string>
+    <string name="extra_win_items_desc">Les frais additionnels des frais généraux augmentent le nombre maximal de charges pouvant être collectées.</string>
+    <string name="minigame_memory_game_over">Jeu terminé!\n\nRécompenses:\n%1$s</string>
+    <string name="patch_092_text">V0.9.2 (2017-06-24):\n-Added \"Win Items\", une source de mini-jeux fiables d\'articles gratuits!\n-Ajouté ce système de notes de mise à jour!\n-Fixing Timer affiche\n-Amenez toutes les lignes vers l\'avant lorsque vous modifiez les lignes sélectionnées\nMinijame à la poitrine fixée ne donnant pas de récompenses\n- Amélioration de la gestion de l\'annonce\n- facteur de récompense de mini-jeu mis en jeu</string>
 </resources>

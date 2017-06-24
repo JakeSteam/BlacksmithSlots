@@ -162,7 +162,7 @@
     <string name="orientation_6">Landschaft</string>
     <string name="orientation_7">Porträt</string>
     <string name="outOfItems">Aus den Artikeln!</string>
-    <string name="outOfItemsLong">Oh nein, du bist nicht raus! Möchten Sie Ihre Wette senken, gehen Sie zu einem anderen Slot, oder kaufen Sie mehr aus dem Shop?\\n\\nSie können auch einen kostenlosen Bonus oder Bonus Bonus auf Sie im Hauptmenü warten!</string>
+    <string name="outOfItemsLong">Oh nein, du bist nicht raus! Möchten Sie Ihre Wette senken, gehen Sie zu einem anderen Slot, oder kaufen Sie mehr aus dem Shop?\n\nSie können auch einen kostenlosen Bonus oder Bonus Bonus auf Sie im Hauptmenü warten!</string>
     <string name="pass_claim">Anspruch</string>
     <string name="pass_days">Tag %1$d:</string>
     <string name="pass_days_left">%1$d Tage übrig</string>
@@ -1059,4 +1059,20 @@
     <string name="settings_desc">Passen Sie Ihr Spielerlebnis an! Tippen Sie auf einen Einstellungstitel, um weitere Informationen anzuzeigen.</string>
     <string name="statistic_24_name">Prestige</string>
     <string name="tutorial_map_6">Der nächste Bereich wurde freigeschaltet! Tippen Sie auf den Pfeil nach rechts oder blättern Sie auf der Karte, um den entsperrten Steckplatz anzuzeigen.\n\nOh, und herzlichen Glückwunsch zum Ende des Tutorials!</string>
+    <string name="advert_load_start">Starten der Anzeige ... Wenn keine Anzeige in 10s geladen wird, erscheint ein Ersatzbildschirm!</string>
+    <string name="statistic_25_name">Gedächtnis Letzter Anspruch</string>
+    <string name="statistic_26_name">Erinnerung</string>
+    <string name="win_items_button">Gewinne Artikel (%1$d / %2$d)</string>
+    <string name="minigame_memory_title">Speicher Minigame</string>
+    <string name="minigame_memory_winnings_added">Hinzugefügt %1$s zu Gewinnen!</string>
+    <string name="minigame_memory_no_match">Unglück, kein Spiel! Sie haben %1$d Chancen übrig.</string>
+    <string name="claim_rewards">Belohnung entgegennehmen</string>
+    <string name="minigame_memory_desc">Flip-Karten. Wenn sie zusammenkommen, gewinnst du! Eine weitere Chance wird in %dm hinzugefügt.</string>
+    <string name="minigame_memory_earned">Du hast verdient </string>
+    <string name="none">Keiner!</string>
+    <string name="minigame_memory_next_charge">Eine weitere Chance im Speicher Minispiel wird in %dm verfügbar sein!</string>
+    <string name="extra_win_items_charge">Gewinnen Sie Stücke Gebühr</string>
+    <string name="extra_win_items_desc">Extra Win Items Charge erhöht die maximale Anzahl der Gebühren, die gesammelt werden können.</string>
+    <string name="minigame_memory_game_over">Spel is over!\n\nbeloningen:\n%1$s</string>
+    <string name="patch_092_text">V0.9.2 (2017-06-24):\n-Added \"Win Items\", eine zuverlässige Minigame Quelle der freien Artikel!\n-Geben Sie dieses Update Notizen System!\n-Fixing Timer zeigt\n-Verwenden Sie alle Zeilen nach vorne, wenn Sie die markierten Zeilen ändern\n-Fixed Brust Minigame nicht geben Belohnungen\n-Improved Werbung Handling\n-Made minigame belohnt Faktor in der gegenwärtigen Beteiligung</string>
 </resources>
