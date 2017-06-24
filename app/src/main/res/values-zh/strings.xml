@@ -1060,4 +1060,19 @@
     <string name="statistic_24_name">Prestiges</string>
     <string name="tutorial_map_6">下一个区域已经解锁了！ 点击地图上的向右箭头或滑动图来查看未锁定的插槽。\n\n呵呵，恭喜你完成本教程的结尾下一个区域已经解锁了！ 点击地图上的向右箭头或滑动图来查看未锁定的插槽。\n\n呵呵，恭喜你完成本教程的结尾</string>
     <string name="advert_load_start">开始加载广告...如果在10秒内没有加载广告，将会出现替换屏幕！</string>
+    <string name="statistic_25_name">内存最后声明</string>
+    <string name="statistic_26_name">记忆</string>
+    <string name="win_items_button">赢取物品（%1$d /%2$d）</string>
+    <string name="minigame_memory_title">记忆小怪</string>
+    <string name="minigame_memory_winnings_added">增加%1$s给奖金！</string>
+    <string name="minigame_memory_no_match">不幸，不配！ 你有%1$d机会剩下。</string>
+    <string name="claim_rewards">声明积分</string>
+    <string name="minigame_memory_desc">翻转卡。 如果他们匹配，你赢了！ 另外一个机会将被添加到%dm。</string>
+    <string name="minigame_memory_earned">你赚了</string>
+    <string name="none">没有！</string>
+    <string name="minigame_memory_next_charge">记忆体小游戏机的另一个机会将在%dm！</string>
+    <string name="extra_win_items_charge">赢取物品费用</string>
+    <string name="extra_win_items_desc">额外收费项目收费会增加最多可收取的费用。</string>
+    <string name="minigame_memory_game_over">游戏结束！\\n\\n奖励：\\n%1$s</string>
+    <string name="patch_092_text">v0.9.2（2017-06-24）：\\n- 添加“Win Items”，一个可靠的小游戏来源的免费项目！\\n- 添加这个更新说明系统！\\n- 固定定时器显示\\n- 当更改选定的行时，将所有行移动到前面\\n- 固定的胸部小游戏不给予奖励\\n- 改进广告处理\\n- 当前股权中的微型游戏奖励因子</string>
 </resources>

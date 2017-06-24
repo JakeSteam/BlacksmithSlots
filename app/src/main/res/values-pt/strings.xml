@@ -1060,4 +1060,19 @@
     <string name="statistic_24_name">Prestiges</string>
     <string name="tutorial_map_6">A próxima área foi desbloqueada! Toque na seta para a direita ou deslize no mapa para ver o slot desbloqueado.\n\nAh, e parabéns por chegar ao final do tutorial!A próxima área foi desbloqueada! Toque na seta para a direita ou deslize no mapa para ver o slot desbloqueado.\n\nAh, e parabéns por chegar ao final do tutorial!</string>
     <string name="advert_load_start">Começando a carregar o anúncio ... Se nenhum anúncio é carregado em 10s, uma tela de substituição aparecerá!</string>
+    <string name="statistic_25_name">Memória Última Reclamação</string>
+    <string name="statistic_26_name">Memória</string>
+    <string name="win_items_button">Itens de vitória (% 1 $ d /% 2 $ d)</string>
+    <string name="minigame_memory_title">Minigame da memória</string>
+    <string name="minigame_memory_winnings_added">Adicionado% 1 $ s para ganhos!</string>
+    <string name="minigame_memory_no_match">Azarado, sem partida! Você tem chances de% 1 $ d.</string>
+    <string name="claim_rewards">Reivindicar Recompensas</string>
+    <string name="minigame_memory_desc">Flip cards. Se eles combinarem, você ganha! Outra chance será adicionada em% dm.</string>
+    <string name="minigame_memory_earned">Você ganhou</string>
+    <string name="none">Nenhum!</string>
+    <string name="minigame_memory_next_charge">Outra chance no minigame da memória estará disponível em% dm!</string>
+    <string name="extra_win_items_charge">Ganhar itens de carga</string>
+    <string name="extra_win_items_desc">A cobrança de itens adicionais extra aumenta o número máximo de cobranças que podem ser coletadas.</string>
+    <string name="minigame_memory_game_over">Fim de jogo!\\n\\nRecompensas:\\n%1$s</string>
+    <string name="patch_092_text">V0.9.2 (2017-06-24):\\n- Adicionado \"itens de vitória\", uma fonte de minigame confiável de itens gratuitos!\\n-Adicionou este sistema de notas de atualização!\\n-Fixing timer displays\\n- Mude todas as linhas para a frente ao mudar as linhas selecionadas\\nMinigame no peito fixo não dando recompensas\\n- Manuseio de anúncios aprimorado\\n- Fator de recompensa de minigame na participação atual</string>
 </resources>

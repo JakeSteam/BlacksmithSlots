@@ -1060,4 +1060,19 @@
     <string name="statistic_24_name">명성</string>
     <string name="tutorial_map_6">다음 영역이 잠금 해제되었습니다! 잠금 해제 된 슬롯을 보려면지도에서 오른쪽 화살표를 누르거나 스 와이프하십시오.\n\n아, 그리고 튜토리얼의 마지막에 도달하신 것을 축하드립니다!다음 영역이 잠금 해제되었습니다! 잠금 해제 된 슬롯을 보려면지도에서 오른쪽 화살표를 누르거나 스 와이프하십시오.\n\n아, 그리고 튜토리얼의 마지막에 도달하신 것을 축하드립니다!</string>
     <string name="advert_load_start">광고로드 시작 ... 10 초에 광고가로드되지 않으면 대체 화면이 나타납니다!</string>
+    <string name="statistic_25_name">메모리 마지막 클레임</string>
+    <string name="statistic_26_name">기억</string>
+    <string name="win_items_button">항목 승리 ( %1$d / %2$d)</string>
+    <string name="minigame_memory_title">메모리 미니 가메</string>
+    <string name="minigame_memory_winnings_added">위닝에 %1$s을 추가했습니다!</string>
+    <string name="minigame_memory_no_match">운이없는, 일치!  %1$d의 기회가 남아 있습니다.</string>
+    <string name="claim_rewards">보상금 보상</string>
+    <string name="minigame_memory_desc">카드 뒤집기. 그들이 일치하면, 당신은 이긴다! 또 다른 기회가  %dm에 추가됩니다.</string>
+    <string name="minigame_memory_earned">너는 벌었 어.</string>
+    <string name="none">아무도!</string>
+    <string name="minigame_memory_next_charge">메모리 미니 게임에서의 또 다른 기회는  %dm에서 가능합니다!</string>
+    <string name="extra_win_items_charge">아이템 획득 비용</string>
+    <string name="extra_win_items_desc">추가 Win 항목 요금은 수집 할 수있는 최대 청구 횟수를 늘립니다.</string>
+    <string name="minigame_memory_game_over">게임 끝!\\n\\n보상 :\\n%1$s</string>
+    <string name="patch_092_text">v0.9.2 (2017-06-24) :\\n- 무료 아이템 미니 마임 소스 인 \"Win Items\"가 추가되었습니다!\\n-이 업데이트 노트 시스템을 추가했습니다!\\n- 타이머 표시 수정\\n선택한 행을 변경할 때 모든 행을 맨 앞으로 이동합니다.\\n- 보상 된 가슴 미니 게임\\n- 향상된 광고 처리\\n- 현재 지분의 메이저 미니 게임 리워드 요소</string>
 </resources>
