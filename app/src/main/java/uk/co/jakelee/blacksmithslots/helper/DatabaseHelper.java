@@ -31,8 +31,9 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
     public final static int NO_DATABASE = 0;
     private final static int V0_9_0 = 1;
     private final static int V0_9_2 = 2;
+    private final static int V0_9_3 = 3;
 
-    public final static int LATEST_PATCH = V0_9_2;
+    public final static int LATEST_PATCH = V0_9_3;
 
     private Context context;
     private SplashScreenActivity callingActivity;
@@ -113,6 +114,16 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
             }
             setProgress("Patch 0.9.2", 99);
             patchTo092();
+            appliedDbChanges = true;
+            prefs.edit().putInt("databaseVersion", DatabaseHelper.V0_9_2).apply();
+        }
+
+        if (prefs.getInt("databaseVersion", DatabaseHelper.NO_DATABASE) < DatabaseHelper.V0_9_3) {
+            if (callingActivity != null && !callingActivity.isFirstInstall) {
+                callingActivity.setStoryText(context.getString(R.string.patch_093_text));
+                callingActivity.setStoryTextLeftAlign();
+            }
+            setProgress("Patch 0.9.3", 99);
             appliedDbChanges = true;
             prefs.edit().putInt("databaseVersion", DatabaseHelper.V0_9_2).apply();
         }

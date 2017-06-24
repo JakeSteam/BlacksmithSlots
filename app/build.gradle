@@ -7,8 +7,8 @@ android {
         applicationId "uk.co.jakelee.blacksmithslots"
         minSdkVersion 15
         targetSdkVersion apiVersion
-        versionCode 10
-        versionName "0.9.2"
+        versionCode 11
+        versionName "0.9.3"
     }
     buildTypes {
         release {
