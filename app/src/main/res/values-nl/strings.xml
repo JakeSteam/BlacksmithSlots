@@ -53,7 +53,7 @@
     <string name="daily_bonus">BS Pass Bonus</string>
     <string name="daily_bonus_desc">BS Pass Bonus is het bedrag van bonuspunten opgenomen in de dagelijkse Blacksmith Pass beloningen.</string>
     <string name="dialog_log">Dialog Log</string>
-    <string name="dice_total_multiplier">Uw totaal van %1$d verdient u %2$s!</string>
+    <string name="dice_total_multiplier">Uw totaal van %1$d verdient u %2$s, dat wordt vermenigvuldigd met uw eerste inzet!</string>
     <string name="email">E-mail</string>
     <string name="enabled">ingeschakeld</string>
     <string name="error_advert_not_ready">Advertentie is klaar voor %1$s.</string>
