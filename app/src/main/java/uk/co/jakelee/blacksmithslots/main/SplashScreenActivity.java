@@ -154,7 +154,7 @@ public class SplashScreenActivity extends Activity {
         }
     };
 
-    private void setStoryText(String string) {
+    public void setStoryText(String string) {
         textBar.setText(string);
     }
 

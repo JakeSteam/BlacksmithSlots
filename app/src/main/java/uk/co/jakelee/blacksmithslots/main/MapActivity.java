@@ -46,6 +46,7 @@ import uk.co.jakelee.blacksmithslots.helper.Enums;
 import uk.co.jakelee.blacksmithslots.helper.GooglePlayHelper;
 import uk.co.jakelee.blacksmithslots.helper.IncomeHelper;
 import uk.co.jakelee.blacksmithslots.helper.LanguageHelper;
+import uk.co.jakelee.blacksmithslots.helper.MinigameHelper;
 import uk.co.jakelee.blacksmithslots.helper.MusicHelper;
 import uk.co.jakelee.blacksmithslots.helper.NotificationHelper;
 import uk.co.jakelee.blacksmithslots.helper.Runnables;
@@ -92,6 +93,8 @@ public class MapActivity extends BaseActivity implements
     TextView unlockedDescription;
     @BindView(R.id.watchAdvert)
     TextView watchAdvert;
+    @BindView(R.id.winItems)
+    TextView winItems;
     @BindView(R.id.claimBonus)
     TextView claimBonus;
     @BindView(R.id.googlePlayRow)
@@ -146,6 +149,16 @@ public class MapActivity extends BaseActivity implements
         if (IncomeHelper.getNextAdvertWatchTime() - System.currentTimeMillis() > 0) {
             setAdvertUnclaimable();
         }
+        updateWinItemsButton();
+    }
+
+    private void updateWinItemsButton() {
+        int currentCharges = MinigameHelper.getCurrentCharges();
+        int maxCharges = MinigameHelper.getMaxCharges();
+        winItems.setBackgroundResource(currentCharges > 0 ? R.drawable.box_green : R.drawable.box_orange);
+        winItems.setText(String.format(Locale.ENGLISH, getString(R.string.win_items_button),
+                currentCharges,
+                maxCharges));
     }
 
     private void createMapPager() {
@@ -201,6 +214,8 @@ public class MapActivity extends BaseActivity implements
                 runTutorial(6);
             }
         }
+
+        updateWinItemsButton();
     }
 
     private void updateText() {
@@ -374,9 +389,15 @@ public class MapActivity extends BaseActivity implements
 
     @OnClick(R.id.winItems)
     public void winItems() {
-        MusicHelper.getInstance(this).setMovingInApp(true);
-        startActivityForResult(new Intent(this, MinigameMemoryActivity.class)
-                .addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT), Constants.MINIGAME_MEMORY);
+        if (MinigameHelper.getCurrentCharges() > 0) {
+            MusicHelper.getInstance(this).setMovingInApp(true);
+            startActivityForResult(new Intent(this, MinigameMemoryActivity.class)
+                    .addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT), Constants.MINIGAME_MEMORY);
+        } else {
+            AlertHelper.error(this, String.format(Locale.ENGLISH,
+                    getString(R.string.minigame_memory_next_charge),
+                    MinigameHelper.getMinsToNextCharge()), false);
+        }
     }
 
     @OnClick(R.id.openCredits)
@@ -600,7 +621,9 @@ public class MapActivity extends BaseActivity implements
                 displayAdvertSuccess();
             }
         } else if (requestCode == Constants.MINIGAME_MEMORY) {
-            AlertHelper.success(this, getString(R.string.minigame_memory_earned) + intent.getStringExtra("winningsString"), true);
+            if (resultCode > 0) {
+                AlertHelper.success(this, getString(R.string.minigame_memory_earned) + intent.getStringExtra("winningsString"), true);
+            }
         } else {
             onConnected(null);
             GooglePlayHelper.ActivityResult(this, requestCode, resultCode);

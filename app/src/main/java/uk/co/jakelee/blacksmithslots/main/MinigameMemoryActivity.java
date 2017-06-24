@@ -25,6 +25,7 @@ import uk.co.jakelee.blacksmithslots.R;
 import uk.co.jakelee.blacksmithslots.helper.AlertHelper;
 import uk.co.jakelee.blacksmithslots.helper.Constants;
 import uk.co.jakelee.blacksmithslots.helper.DisplayHelper;
+import uk.co.jakelee.blacksmithslots.helper.MinigameHelper;
 import uk.co.jakelee.blacksmithslots.model.Inventory;
 import uk.co.jakelee.blacksmithslots.model.ItemBundle;
 
@@ -46,7 +47,9 @@ public class MinigameMemoryActivity extends MinigameActivity {
         setContentView(R.layout.activity_minigame_memory);
         ButterKnife.bind(this);
 
-        ((TextView)findViewById(R.id.minigameDesc)).setText(String.format(Locale.ENGLISH, getString(R.string.minigame_memory_desc), "10"));
+        MinigameHelper.useCharge();
+
+        ((TextView)findViewById(R.id.minigameDesc)).setText(String.format(Locale.ENGLISH, getString(R.string.minigame_memory_desc), MinigameHelper.getMinsToNextCharge()));
         createRewards();
         populateBoxList();
     }
@@ -123,7 +126,7 @@ public class MinigameMemoryActivity extends MinigameActivity {
                                 findViewById(R.id.boxGrid).setAlpha(0.3f);
                                 findViewById(R.id.gameOverScreen).setVisibility(View.VISIBLE);
                                 ((TextView)findViewById(R.id.minigameRewards)).setText(String.format(Locale.ENGLISH, getString(R.string.minigame_memory_game_over),
-                                        winnings.size() == 0 ? "None!" : DisplayHelper.bundlesToString(activity, winnings)));
+                                        winnings.size() == 0 ? getString(R.string.none) : DisplayHelper.bundlesToString(activity, winnings)));
                             }
                         }
                         boxesOpened = 0;

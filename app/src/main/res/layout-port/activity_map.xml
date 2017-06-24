@@ -339,16 +339,6 @@
                         android:src="@drawable/title_wide" />
 
                     <uk.co.jakelee.blacksmithslots.components.FontTextView
-                        android:id="@+id/winItems"
-                        style="@style/SlotText"
-                        android:layout_width="match_parent"
-                        android:layout_marginBottom="3dp"
-                        android:layout_marginTop="3dp"
-                        android:background="@drawable/box_green"
-                        android:maxLines="2"
-                        android:text="@string/win_items_button" />
-
-                    <uk.co.jakelee.blacksmithslots.components.FontTextView
                         android:id="@+id/inventory"
                         style="@style/SlotText"
                         android:layout_width="match_parent"
@@ -357,6 +347,16 @@
                         android:background="@drawable/box_green"
                         android:maxLines="2"
                         android:text="@string/inventory" />
+
+                    <uk.co.jakelee.blacksmithslots.components.FontTextView
+                        android:id="@+id/winItems"
+                        style="@style/SlotText"
+                        android:layout_width="match_parent"
+                        android:layout_marginBottom="3dp"
+                        android:layout_marginTop="3dp"
+                        android:background="@drawable/box_green"
+                        android:maxLines="2"
+                        android:text="@string/win_items_button" />
 
                     <uk.co.jakelee.blacksmithslots.components.FontTextView
                         android:id="@+id/claimBonus"
