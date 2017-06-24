@@ -108,9 +108,10 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
 
         if (prefs.getInt("databaseVersion", DatabaseHelper.NO_DATABASE) < DatabaseHelper.V0_0_2) {
             if (callingActivity != null && !callingActivity.isFirstInstall) {
-                callingActivity.setStoryText("This patch fixes things");
+                callingActivity.setStoryText(context.getString(R.string.patch_092_text));
+                callingActivity.setStoryTextLeftAlign();
             }
-            setProgress("Patch 0.0.2", 99);
+            setProgress("Patch 0.9.2", 99);
             patchTo002();
             appliedDbChanges = true;
             prefs.edit().putInt("databaseVersion", DatabaseHelper.V0_0_2).apply();
