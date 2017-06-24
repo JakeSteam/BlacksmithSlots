@@ -1065,7 +1065,7 @@
     <string name="win_items_button">Articles gagnants (%1$d / %2$d)</string>
     <string name="minigame_memory_title">Mémoire Minigame</string>
     <string name="minigame_memory_winnings_added">Ajout de %1$s pour les gains!</string>
-    <string name="minigame_memory_no_match">Inutile, pas de match! Vous avez plus de 1$de chance.</string>
+    <string name="minigame_memory_no_match">Inutile, pas de match! Vous avez plus de %1$d chance.</string>
     <string name="claim_rewards">Réclamer des récompenses</string>
     <string name="minigame_memory_desc">Flip cards. S\'ils correspondent, vous gagnez! Une autre chance sera ajoutée en %dm.</string>
     <string name="minigame_memory_earned">Tu as gagné </string>

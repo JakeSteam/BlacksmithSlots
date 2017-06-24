@@ -36,6 +36,7 @@ public class MinigameMemoryActivity extends MinigameActivity {
     private List<ItemBundle> items = new ArrayList<>();
     private int chancesLeft = Constants.MEMORY_GAME_LIVES;
     private int boxesOpened = 0;
+    private int totalPossibleMatches = 8;
     private boolean justFailedCooldown = false;
     private Handler handler = new Handler();
 
@@ -114,26 +115,34 @@ public class MinigameMemoryActivity extends MinigameActivity {
                         openedBoxView = (ImageView)view;
                     } else if (boxesOpened == 2) {
                         if (matchesExisting(boxItem)) {
+                            totalPossibleMatches--;
                             winnings.add(boxItem);
                             AlertHelper.success(activity, String.format(Locale.ENGLISH, getString(R.string.minigame_memory_winnings_added), boxItem.toString(activity)), false);
+
+                            openedBoxView.setOnClickListener(null);
+                            view.setOnClickListener(null);
                         } else {
                             chancesLeft--;
                             AlertHelper.error(activity, String.format(Locale.ENGLISH, getString(R.string.minigame_memory_no_match), chancesLeft), false);
                             justFailedCooldown = true;
                             handler.postDelayed(boxNoMatch((ImageView) view), 1000);
+                        }
 
-                            if (chancesLeft <= 0) {
-                                findViewById(R.id.boxGrid).setAlpha(0.3f);
-                                findViewById(R.id.gameOverScreen).setVisibility(View.VISIBLE);
-                                ((TextView)findViewById(R.id.minigameRewards)).setText(String.format(Locale.ENGLISH, getString(R.string.minigame_memory_game_over),
-                                        winnings.size() == 0 ? getString(R.string.none) : DisplayHelper.bundlesToString(activity, winnings)));
-                            }
+                        if (chancesLeft <= 0 || totalPossibleMatches <= 0) {
+                            displayGameOverScreen();
                         }
                         boxesOpened = 0;
                     }
                 }
             }
         };
+    }
+
+    private void displayGameOverScreen() {
+        findViewById(R.id.boxGrid).setAlpha(0.3f);
+        findViewById(R.id.gameOverScreen).setVisibility(View.VISIBLE);
+        ((TextView)findViewById(R.id.minigameRewards)).setText(String.format(Locale.ENGLISH, getString(R.string.minigame_memory_game_over),
+                winnings.size() == 0 ? getString(R.string.none) : DisplayHelper.bundlesToString(this, winnings)));
     }
 
     @NonNull
