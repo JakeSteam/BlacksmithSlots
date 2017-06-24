@@ -225,6 +225,7 @@ public class ShopActivity extends BaseActivity implements BillingProcessor.IBill
         vipBonusesText += "\n- " + getString(R.string.daily_bonus) + " +" + Constants.VIP_DAILY_BONUS_MODIFIER + "%";
         vipBonusesText += "\n- " + getString(R.string.autospins) + " +" + Constants.AUTOSPIN_INCREASE;
         vipBonusesText += "\n- " + (vipLevel + 1) + " " + getString(R.string.extra_wildcards);
+        vipBonusesText += "\n- " + (vipLevel + 1) + " " + getString(R.string.extra_win_items_charge);
         vipBonusesText += "\n- " + "Exclusive /r/BlacksmithSlots flair";
         return vipBonusesText;
     }

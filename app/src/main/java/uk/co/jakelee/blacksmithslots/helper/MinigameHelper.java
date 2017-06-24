@@ -21,7 +21,7 @@ public class MinigameHelper {
     }
 
     public static int getMaxCharges() {
-        return 5;
+        return Constants.CHARGE_MAX + LevelHelper.getVipLevel();
     }
 
     public static void useCharge() {

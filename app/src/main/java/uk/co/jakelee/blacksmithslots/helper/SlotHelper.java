@@ -247,9 +247,9 @@ public class SlotHelper {
         }
     }
 
-    private String applyWinnings(List<ItemBundle> unmergedWinnings) {
+    private static LinkedHashMap<Pair<Enums.Tier, Enums.Type>, Integer> getMergedItems(List<ItemBundle> unmergedItems) {
         LinkedHashMap<Pair<Enums.Tier, Enums.Type>, Integer> dataStore = new LinkedHashMap<>();
-        for (ItemBundle winning : unmergedWinnings) {
+        for (ItemBundle winning : unmergedItems) {
             Integer temp;
             Pair<Enums.Tier, Enums.Type> pair = new Pair<>(winning.getTier(), winning.getType());
             if (dataStore.containsKey(pair)) {
@@ -259,6 +259,11 @@ public class SlotHelper {
                 dataStore.put(pair, winning.getQuantity());
             }
         }
+        return dataStore;
+    }
+
+    private String applyWinnings(List<ItemBundle> unmergedWinnings) {
+        LinkedHashMap<Pair<Enums.Tier, Enums.Type>, Integer> dataStore = getMergedItems(unmergedWinnings);
 
         int totalResourcesWon = 0;
         StringBuilder winningsText = new StringBuilder().append("Won: ");

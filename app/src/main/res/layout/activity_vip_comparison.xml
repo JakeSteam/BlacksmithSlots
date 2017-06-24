@@ -86,6 +86,11 @@
                             android:text="@string/extra_wildcards"
                             style="@style/VipHeader"/>
                         <uk.co.jakelee.blacksmithslots.components.FontTextView
+                            android:id="@+id/extraWinItems"
+                            android:maxWidth="85dp"
+                            android:text="@string/extra_win_items_charge"
+                            style="@style/VipHeader"/>
+                        <uk.co.jakelee.blacksmithslots.components.FontTextView
                             android:id="@+id/subredditFlair"
                             android:maxWidth="85dp"
                             android:text="@string/subreddit_flair"
