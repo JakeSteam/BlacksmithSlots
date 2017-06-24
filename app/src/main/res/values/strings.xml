@@ -1082,7 +1082,7 @@
     <string name="dialog_log">Dialog Log</string>
     <string name="task_description">Task %1$d (%2$s)</string>
     <string name="unlocked">Unlocked</string>
-    <string name="dice_total_multiplier">Your total of %1$d earns you %2$s!</string>
+    <string name="dice_total_multiplier">Your total of %1$d earns you %2$s, which will be multiplied by your initial stake!</string>
     <string name="roll">Roll</string>
     <string name="reward_chances">Reward Chances</string>
     <string name="gems">Gems</string>
