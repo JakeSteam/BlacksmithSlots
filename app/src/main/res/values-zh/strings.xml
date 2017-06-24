@@ -162,7 +162,7 @@
     <string name="orientation_6">景观</string>
     <string name="orientation_7">肖像</string>
     <string name="outOfItems">超出物品！</string>
-    <string name="outOfItemsLong">哦，不，你没有物品！ 你想降低赌注，去另一个插槽，还是从店里买更多的？\\n\\n您还可以在主菜单上享受免费红利或广告奖励等待您的支持！</string>
+    <string name="outOfItemsLong">哦，不，你没有物品！ 你想降低赌注，去另一个插槽，还是从店里买更多的？\n\n您还可以在主菜单上享受免费红利或广告奖励等待您的支持！</string>
     <string name="pass_claim">要求</string>
     <string name="pass_days">日%1$d：</string>
     <string name="pass_days_left">剩下%1$d天</string>
@@ -1068,11 +1068,11 @@
     <string name="minigame_memory_no_match">不幸，不配！ 你有%1$d机会剩下。</string>
     <string name="claim_rewards">声明积分</string>
     <string name="minigame_memory_desc">翻转卡。 如果他们匹配，你赢了！ 另外一个机会将被添加到%dm。</string>
-    <string name="minigame_memory_earned">你赚了</string>
+    <string name="minigame_memory_earned">你赚了 </string>
     <string name="none">没有！</string>
     <string name="minigame_memory_next_charge">记忆体小游戏机的另一个机会将在%dm！</string>
     <string name="extra_win_items_charge">赢取物品费用</string>
     <string name="extra_win_items_desc">额外收费项目收费会增加最多可收取的费用。</string>
-    <string name="minigame_memory_game_over">游戏结束！\\n\\n奖励：\\n%1$s</string>
-    <string name="patch_092_text">v0.9.2（2017-06-24）：\\n- 添加“Win Items”，一个可靠的小游戏来源的免费项目！\\n- 添加这个更新说明系统！\\n- 固定定时器显示\\n- 当更改选定的行时，将所有行移动到前面\\n- 固定的胸部小游戏不给予奖励\\n- 改进广告处理\\n- 当前股权中的微型游戏奖励因子</string>
+    <string name="minigame_memory_game_over">游戏结束！\n\n奖励：\n%1$s</string>
+    <string name="patch_092_text">v0.9.2（2017-06-24）：\n- 添加“Win Items”，一个可靠的小游戏来源的免费项目！\n- 添加这个更新说明系统！\n- 固定定时器显示\n- 当更改选定的行时，将所有行移动到前面\n- 固定的胸部小游戏不给予奖励\n- 改进广告处理\n- 当前股权中的微型游戏奖励因子</string>
 </resources>

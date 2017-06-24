@@ -34,7 +34,7 @@ public class MinigameMemoryActivity extends MinigameActivity {
     private ItemBundle openedBox;
     private ImageView openedBoxView;
     private List<ItemBundle> items = new ArrayList<>();
-    private int chancesLeft = 1;
+    private int chancesLeft = Constants.MEMORY_GAME_LIVES;
     private int boxesOpened = 0;
     private boolean justFailedCooldown = false;
     private Handler handler = new Handler();
@@ -55,25 +55,25 @@ public class MinigameMemoryActivity extends MinigameActivity {
     }
 
     private void createRewards() {
-        items.add(new ItemBundle(1, 1, 1));
-        items.add(new ItemBundle(1, 1, 1));
-        items.add(new ItemBundle(1, 1, 1));
-        items.add(new ItemBundle(1, 1, 1));
+        items.add(new ItemBundle(1, 1, 10));
+        items.add(new ItemBundle(1, 1, 10));
+        items.add(new ItemBundle(1, 19, 10));
+        items.add(new ItemBundle(1, 19, 10));
 
-        items.add(new ItemBundle(1, 1, 1));
-        items.add(new ItemBundle(1, 1, 1));
-        items.add(new ItemBundle(1, 1, 1));
-        items.add(new ItemBundle(1, 1, 1));
+        items.add(new ItemBundle(2, 1, 10));
+        items.add(new ItemBundle(2, 1, 10));
+        items.add(new ItemBundle(2, 19, 10));
+        items.add(new ItemBundle(2, 19, 10));
 
-        items.add(new ItemBundle(2, 1, 1));
-        items.add(new ItemBundle(2, 1, 1));
-        items.add(new ItemBundle(2, 1, 1));
-        items.add(new ItemBundle(2, 1, 1));
+        items.add(new ItemBundle(3, 1, 10));
+        items.add(new ItemBundle(3, 1, 10));
+        items.add(new ItemBundle(3, 19, 10));
+        items.add(new ItemBundle(3, 19, 10));
 
-        items.add(new ItemBundle(2, 1, 1));
-        items.add(new ItemBundle(2, 1, 1));
-        items.add(new ItemBundle(2, 1, 1));
-        items.add(new ItemBundle(2, 1, 1));
+        items.add(new ItemBundle(4, 1, 10));
+        items.add(new ItemBundle(4, 1, 10));
+        items.add(new ItemBundle(4, 19, 10));
+        items.add(new ItemBundle(4, 19, 10));
         Collections.shuffle(items);
     }
 
