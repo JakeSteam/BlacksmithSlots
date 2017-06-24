@@ -53,7 +53,7 @@
     <string name="daily_bonus">BS Pass Bonus</string>
     <string name="daily_bonus_desc">BS Pass Bonus é a quantidade de itens de bônus incluídos nas recompensas diárias de Blacksmith Pass.</string>
     <string name="dialog_log">Log de diálogo</string>
-    <string name="dice_total_multiplier">Seu total de %1$d ganha você %2$s!</string>
+    <string name="dice_total_multiplier">Seu total de %1$d ganha você %2$s, que será multiplicado pela sua participação inicial!</string>
     <string name="email">O email</string>
     <string name="enabled">ativado</string>
     <string name="error_advert_not_ready">O anúncio estará pronto em %1$s.</string>
@@ -1062,10 +1062,10 @@
     <string name="advert_load_start">Começando a carregar o anúncio ... Se nenhum anúncio é carregado em 10s, uma tela de substituição aparecerá!</string>
     <string name="statistic_25_name">Memória Última Reclamação</string>
     <string name="statistic_26_name">Memória</string>
-    <string name="win_items_button">Itens de vitória (% 1 $ d /% 2 $ d)</string>
+    <string name="win_items_button">Itens de vitória (%1$d/%2$d)</string>
     <string name="minigame_memory_title">Minigame da memória</string>
-    <string name="minigame_memory_winnings_added">Adicionado% 1 $ s para ganhos!</string>
-    <string name="minigame_memory_no_match">Azarado, sem partida! Você tem chances de% 1 $ d.</string>
+    <string name="minigame_memory_winnings_added">Adicionado %1$s para ganhos!</string>
+    <string name="minigame_memory_no_match">Azarado, sem partida! Você tem chances de %1$d.</string>
     <string name="claim_rewards">Reivindicar Recompensas</string>
     <string name="minigame_memory_desc">Flip cards. Se eles combinarem, você ganha! Outra chance será adicionada em% dm.</string>
     <string name="minigame_memory_earned">Você ganhou </string>

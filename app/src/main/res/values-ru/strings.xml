@@ -53,7 +53,7 @@
     <string name="daily_bonus">Бонус BS Pass</string>
     <string name="daily_bonus_desc">Бонус BS Pass - это количество бонусных предметов, включенных в ежедневные награды Blacksmith Pass.</string>
     <string name="dialog_log">Журнал диалогов</string>
-    <string name="dice_total_multiplier">Ваша сумма %1$d зарабатывает вам %2$s!</string>
+    <string name="dice_total_multiplier">Ваша сумма в %1$d зарабатывает вам %2$s, которая будет умножена на ваш первоначальный пакет!</string>
     <string name="email">Эл. адрес</string>
     <string name="enabled">включен</string>
     <string name="error_advert_not_ready">Реклама будет готова в %1$s.</string>

@@ -294,7 +294,9 @@ public class MapActivity extends BaseActivity implements
     }
 
     public void clickTitle(View v) {
-        runTutorial(3);
+        if (isFirstInstall) {
+            runTutorial(3);
+        }
     }
 
     @OnClick(R.id.googlePlayLoginRow)

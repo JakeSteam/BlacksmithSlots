@@ -53,7 +53,7 @@
     <string name="daily_bonus">BS 패스 보너스</string>
     <string name="daily_bonus_desc">BS Pass Bonus는 대장장이 패스 보상에 포함 된 보너스 아이템입니다.</string>
     <string name="dialog_log">대화 상자 로그</string>
-    <string name="dice_total_multiplier">총  %1$d이 (가)  %2$s를 (를) 벌었습니다!</string>
+    <string name="dice_total_multiplier">총 %1$d이 (가) %2$d을 (를) 얻게됩니다.이 금액에는 초기 지분이 곱해집니다!</string>
     <string name="email">이메일</string>
     <string name="enabled">사용 가능한</string>
     <string name="error_advert_not_ready">%1$s에 광고가 준비됩니다.</string>

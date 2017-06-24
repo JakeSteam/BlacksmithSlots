@@ -53,7 +53,7 @@
     <string name="daily_bonus">BS Pass Bonus</string>
     <string name="daily_bonus_desc">BS Pass Bonus est le montant des bonus inclus dans les récompenses quotidiens du Blacksmith Pass.</string>
     <string name="dialog_log">Journal de dialogue</string>
-    <string name="dice_total_multiplier">Votre total de %1$d vous gagne %2$s!</string>
+    <string name="dice_total_multiplier">Votre total de %1$d vous gagne %2$s, qui sera multiplié par votre participation initiale!</string>
     <string name="email">Email</string>
     <string name="error_advert_not_ready">La publicité sera prête en %1$s.</string>
     <string name="error_advert_unverified">Une erreur s\'est produite et l\'affichage de l\'annonce n\'a pas pu être vérifié. Pardon!</string>
@@ -1065,7 +1065,7 @@
     <string name="win_items_button">Articles gagnants (%1$d / %2$d)</string>
     <string name="minigame_memory_title">Mémoire Minigame</string>
     <string name="minigame_memory_winnings_added">Ajout de %1$s pour les gains!</string>
-    <string name="minigame_memory_no_match">Inutile, pas de match! Vous avez plus de 1$de chance.</string>
+    <string name="minigame_memory_no_match">Inutile, pas de match! Vous avez plus de %1$d chance.</string>
     <string name="claim_rewards">Réclamer des récompenses</string>
     <string name="minigame_memory_desc">Flip cards. S\'ils correspondent, vous gagnez! Une autre chance sera ajoutée en %dm.</string>
     <string name="minigame_memory_earned">Tu as gagné </string>

@@ -53,7 +53,7 @@
     <string name="daily_bonus">BS通行证红利</string>
     <string name="daily_bonus_desc">BS Pass奖金是每日Blacksmith Pass奖励中包含的奖金项目金额。</string>
     <string name="dialog_log">对话框日志</string>
-    <string name="dice_total_multiplier">你的总额%1$d赚取你%2$s！</string>
+    <string name="dice_total_multiplier">您的总额%1$d可赚取您的%2$s，这将乘以您的初始股权！</string>
     <string name="email">电子邮件</string>
     <string name="enabled">启用</string>
     <string name="error_advert_not_ready">广告将在%1$s中准备就绪。</string>
