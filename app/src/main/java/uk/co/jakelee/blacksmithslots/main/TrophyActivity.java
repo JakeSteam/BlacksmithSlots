@@ -48,7 +48,6 @@ public class TrophyActivity extends BaseActivity {
         trophyGrid.setAdapter(adapter);
         trophyGrid.setOnItemClickListener(getTrophyClickListener());
         populateSidebar();
-
     }
 
     @NonNull

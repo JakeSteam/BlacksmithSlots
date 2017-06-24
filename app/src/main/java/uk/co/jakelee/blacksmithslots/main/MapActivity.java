@@ -372,6 +372,11 @@ public class MapActivity extends BaseActivity implements
         AlertDialogHelper.openOverlayActivity(this, InventoryActivity.class);
     }
 
+    @OnClick(R.id.winItems)
+    public void winItems() {
+        AlertDialogHelper.openOverlayActivity(this, MinigameMemoryActivity.class);
+    }
+
     @OnClick(R.id.openCredits)
     public void openCredits() {
         AlertDialogHelper.openOverlayActivity(this, CreditsActivity.class);
