@@ -5,28 +5,35 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import uk.co.jakelee.blacksmithslots.R;
 import uk.co.jakelee.blacksmithslots.helper.AlertHelper;
+import uk.co.jakelee.blacksmithslots.helper.Constants;
 import uk.co.jakelee.blacksmithslots.helper.DisplayHelper;
+import uk.co.jakelee.blacksmithslots.model.Inventory;
 import uk.co.jakelee.blacksmithslots.model.ItemBundle;
 
 public class MinigameMemoryActivity extends MinigameActivity {
-    private ItemBundle winnings;
+    private List<ItemBundle> winnings = new ArrayList<>();
     private ItemBundle openedBox;
     private ImageView openedBoxView;
     private List<ItemBundle> items = new ArrayList<>();
-    private int chancesLeft = 5;
+    private int chancesLeft = 1;
     private int boxesOpened = 0;
     private boolean justFailedCooldown = false;
     private Handler handler = new Handler();
@@ -39,16 +46,32 @@ public class MinigameMemoryActivity extends MinigameActivity {
         setContentView(R.layout.activity_minigame_memory);
         ButterKnife.bind(this);
 
-        // Create arraylist of rewards
+        ((TextView)findViewById(R.id.minigameDesc)).setText(String.format(Locale.ENGLISH, getString(R.string.minigame_memory_desc), "10"));
         createRewards();
         populateBoxList();
     }
 
     private void createRewards() {
         items.add(new ItemBundle(1, 1, 1));
-        for (int i = 0; i < 15; i++) {
-            items.add(new ItemBundle(1, i + 1, 1));
-        }
+        items.add(new ItemBundle(1, 1, 1));
+        items.add(new ItemBundle(1, 1, 1));
+        items.add(new ItemBundle(1, 1, 1));
+
+        items.add(new ItemBundle(1, 1, 1));
+        items.add(new ItemBundle(1, 1, 1));
+        items.add(new ItemBundle(1, 1, 1));
+        items.add(new ItemBundle(1, 1, 1));
+
+        items.add(new ItemBundle(2, 1, 1));
+        items.add(new ItemBundle(2, 1, 1));
+        items.add(new ItemBundle(2, 1, 1));
+        items.add(new ItemBundle(2, 1, 1));
+
+        items.add(new ItemBundle(2, 1, 1));
+        items.add(new ItemBundle(2, 1, 1));
+        items.add(new ItemBundle(2, 1, 1));
+        items.add(new ItemBundle(2, 1, 1));
+        Collections.shuffle(items);
     }
 
     private void populateBoxList() {
@@ -63,45 +86,63 @@ public class MinigameMemoryActivity extends MinigameActivity {
             final ImageView imageView = (ImageView)boxRow.getChildAt(i % 4);
             imageView.setImageResource(R.drawable.item_999_997);
             imageView.setTag(i);
-            imageView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(final View view) {
-                    if (boxesOpened < 2 && chancesLeft > 0 && !justFailedCooldown) {
-                        boxesOpened++;
-
-                        ItemBundle boxItem = items.get((int) view.getTag());
-                        int itemImage = getResources().getIdentifier(DisplayHelper.getItemImageFile(boxItem), "drawable", getPackageName());
-                        ((ImageView)view).setImageResource(itemImage);
-
-                        if (boxesOpened == 1) {
-                            openedBox = boxItem;
-                            openedBoxView = (ImageView)view;
-                        } else if (boxesOpened == 2) {
-                            if (matchesExisting(boxItem)) {
-                                AlertHelper.success(activity, "You've won " + boxItem.toString(activity), false);
-                            } else {
-                                chancesLeft--;
-                                AlertHelper.error(activity, "Unlucky! Chances left: " + chancesLeft, false);
-                                justFailedCooldown = true;
-                                handler.postDelayed(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        justFailedCooldown = false;
-                                        openedBoxView.setImageResource(R.drawable.item_999_997);
-                                        ((ImageView)view).setImageResource(R.drawable.item_999_997);
-                                    }
-                                }, 1000);
-                            }
-                            boxesOpened = 0;
-                        }
-                    }
-                }
-            });
+            imageView.setOnClickListener(boxClickListener(activity));
 
             if (i % 4 == 3) {
                 boxTable.addView(boxRow, layoutParams);
             }
         }
+    }
+
+    @NonNull
+    private View.OnClickListener boxClickListener(final Activity activity) {
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(final View view) {
+                if (boxesOpened < 2 && chancesLeft > 0 && !justFailedCooldown) {
+                    boxesOpened++;
+
+                    ItemBundle boxItem = items.get((int) view.getTag());
+                    int itemImage = getResources().getIdentifier(DisplayHelper.getItemImageFile(boxItem), "drawable", getPackageName());
+                    ((ImageView)view).setImageResource(itemImage);
+
+                    if (boxesOpened == 1) {
+                        openedBox = boxItem;
+                        openedBoxView = (ImageView)view;
+                    } else if (boxesOpened == 2) {
+                        if (matchesExisting(boxItem)) {
+                            winnings.add(boxItem);
+                            AlertHelper.success(activity, String.format(Locale.ENGLISH, getString(R.string.minigame_memory_winnings_added), boxItem.toString(activity)), false);
+                        } else {
+                            chancesLeft--;
+                            AlertHelper.error(activity, String.format(Locale.ENGLISH, getString(R.string.minigame_memory_no_match), chancesLeft), false);
+                            justFailedCooldown = true;
+                            handler.postDelayed(boxNoMatch((ImageView) view), 1000);
+
+                            if (chancesLeft <= 0) {
+                                findViewById(R.id.boxGrid).setAlpha(0.3f);
+                                findViewById(R.id.gameOverScreen).setVisibility(View.VISIBLE);
+                                ((TextView)findViewById(R.id.minigameRewards)).setText(String.format(Locale.ENGLISH, getString(R.string.minigame_memory_game_over),
+                                        winnings.size() == 0 ? "None!" : DisplayHelper.bundlesToString(activity, winnings)));
+                            }
+                        }
+                        boxesOpened = 0;
+                    }
+                }
+            }
+        };
+    }
+
+    @NonNull
+    private Runnable boxNoMatch(final ImageView view) {
+        return new Runnable() {
+            @Override
+            public void run() {
+                justFailedCooldown = false;
+                openedBoxView.setImageResource(R.drawable.item_999_997);
+                view.setImageResource(R.drawable.item_999_997);
+            }
+        };
     }
 
     private boolean matchesExisting(ItemBundle boxItem) {
@@ -110,17 +151,17 @@ public class MinigameMemoryActivity extends MinigameActivity {
                 && openedBox.getQuantity() == boxItem.getQuantity();
     }
 
+
     public void forceClose(View v) {
         confirmClose();
     }
 
     @Override
+    @OnClick(R.id.claimRewards)
     public void confirmClose() {
-        if (winnings != null) {
-            setResult(1, new Intent()
-                    .putExtra("tier", winnings.getTier().value)
-                    .putExtra("type", winnings.getType().value)
-                    .putExtra("quantity", winnings.getQuantity()));
+        if (winnings.size() > 0) {
+            Inventory.addInventory(winnings);
+            setResult(Constants.MINIGAME_MEMORY, new Intent().putExtra("winningsString", DisplayHelper.bundlesToString(this, winnings)));
         }
         finish();
     }

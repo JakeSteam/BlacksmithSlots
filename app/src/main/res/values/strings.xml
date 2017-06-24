@@ -1254,4 +1254,10 @@ AESCrypt (https://goo.gl/Ewk2tq) - Support code encryption.
     <string name="advert_load_start">Loading advert...</string>
     <string name="win_items_button">Win Items (%1$s/%2$s)</string>
     <string name="minigame_memory_title">Memory Minigame</string>
+    <string name="minigame_memory_winnings_added">Added %1$s to winnings!</string>
+    <string name="minigame_memory_no_match">Unlucky, no match! You have %1$d chances left.</string>
+    <string name="minigame_memory_game_over">Game over!\n\nRewards:\n%1$s</string>
+    <string name="claim_rewards">Claim Rewards</string>
+    <string name="minigame_memory_desc">Flip cards. If they match, you win! Another chance will be added in %s.</string>
+    <string name="minigame_memory_earned">You\'ve earned</string>
 </resources>

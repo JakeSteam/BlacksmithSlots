@@ -374,7 +374,9 @@ public class MapActivity extends BaseActivity implements
 
     @OnClick(R.id.winItems)
     public void winItems() {
-        AlertDialogHelper.openOverlayActivity(this, MinigameMemoryActivity.class);
+        MusicHelper.getInstance(this).setMovingInApp(true);
+        startActivityForResult(new Intent(this, MinigameMemoryActivity.class)
+                .addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT), Constants.MINIGAME_MEMORY);
     }
 
     @OnClick(R.id.openCredits)
@@ -591,11 +593,14 @@ public class MapActivity extends BaseActivity implements
         GooglePlayHelper.mGoogleApiClient.connect();
     }
 
+    @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
         if (requestCode == Constants.ADVERT_WATCH) {
             if (resultCode > 0) {
-                advertHelper.rewardAdvertItems(this);
+                displayAdvertSuccess();
             }
+        } else if (requestCode == Constants.MINIGAME_MEMORY) {
+            AlertHelper.success(this, getString(R.string.minigame_memory_earned) + intent.getStringExtra("winningsString"), true);
         } else {
             onConnected(null);
             GooglePlayHelper.ActivityResult(this, requestCode, resultCode);

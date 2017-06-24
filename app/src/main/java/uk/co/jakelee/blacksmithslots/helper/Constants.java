@@ -2,7 +2,7 @@ package uk.co.jakelee.blacksmithslots.helper;
 
 public class Constants {
     // Game constants
-    public final static boolean DEBUG_UNLOCK_ALL = false;
+    public final static boolean DEBUG_UNLOCK_ALL = true;
 
     public final static int STATUS_WILDCARD = -1;
     public final static int STATUS_NO_MATCH = 0;
@@ -30,6 +30,7 @@ public class Constants {
     public final static int MINIGAME_CHEST = 1723;
     public final static int MINIGAME_HIGHER = 172883;
     public final static int MINIGAME_DICE = 1923;
+    public final static int MINIGAME_MEMORY = 8923;
     public final static int ADVERT_WATCH = 12223;
 
     // IAP Constants
