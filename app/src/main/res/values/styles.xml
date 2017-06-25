@@ -99,8 +99,7 @@
         <item name="android:background">@drawable/background_brown</item>
     </style>
 
-    <style name="PassTabText">
-        <item name="android:textSize">24sp</item>
+    <style name="PassTabText" parent="FontSize">
         <item name="android:layout_marginLeft">7dp</item>
         <item name="android:layout_marginTop">3dp</item>
         <item name="android:layout_marginBottom">3dp</item>

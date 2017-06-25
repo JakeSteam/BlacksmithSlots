@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="FontSize">
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="LargeFontSize">
+        <item name="android:textSize">22sp</item>
+    </style>
+</resources>

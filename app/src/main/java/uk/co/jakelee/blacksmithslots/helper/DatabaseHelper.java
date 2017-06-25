@@ -125,7 +125,7 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
             }
             setProgress("Patch 0.9.3", 99);
             appliedDbChanges = true;
-            prefs.edit().putInt("databaseVersion", DatabaseHelper.V0_9_2).apply();
+            prefs.edit().putInt("databaseVersion", DatabaseHelper.V0_9_3).apply();
         }
 
         if (appliedDbChanges) {

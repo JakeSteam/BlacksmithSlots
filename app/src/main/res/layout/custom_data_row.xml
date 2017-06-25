@@ -15,6 +15,7 @@
         android:layout_width="wrap_content"
         android:textColorLink="@color/defaultLink"
         android:maxLines="5"
+        android:minWidth="40dp"
         android:autoLink="web"
         style="@style/DataText"/>
 </TableRow>
