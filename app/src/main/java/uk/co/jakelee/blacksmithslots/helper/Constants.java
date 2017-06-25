@@ -1,8 +1,10 @@
 package uk.co.jakelee.blacksmithslots.helper;
 
+import uk.co.jakelee.blacksmithslots.BuildConfig;
+
 public class Constants {
     // Game constants
-    public final static boolean DEBUG_UNLOCK_ALL = false;
+    public final static boolean DEBUG_UNLOCK_ALL = false && BuildConfig.DEBUG;
 
     public final static int STATUS_WILDCARD = -1;
     public final static int STATUS_NO_MATCH = 0;

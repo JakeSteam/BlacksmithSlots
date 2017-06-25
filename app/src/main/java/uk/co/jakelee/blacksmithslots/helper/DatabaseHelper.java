@@ -32,13 +32,16 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
     private final static int V0_9_0 = 1;
     private final static int V0_9_2 = 2;
     private final static int V0_9_3 = 3;
+    private final static int V0_9_4 = 4;
 
-    public final static int LATEST_PATCH = V0_9_3;
+    public final static int LATEST_PATCH = V0_9_4;
 
     private Context context;
     private SplashScreenActivity callingActivity;
     private TextView progressText;
     private ProgressBar progressBar;
+    private boolean updatedDatabase = false;
+    private SharedPreferences prefs;
 
     public DatabaseHelper() {
     }
@@ -83,13 +86,11 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
 
     @Override
     protected String doInBackground(String... params) {
-        SharedPreferences prefs;
         if (callingActivity != null) {
             prefs = callingActivity.getSharedPreferences("uk.co.jakelee.blacksmithslots", MODE_PRIVATE);
         } else {
             prefs = MapActivity.prefs;
         }
-        boolean appliedDbChanges = false;
 
         if (prefs.getInt("databaseVersion", DatabaseHelper.NO_DATABASE) <= DatabaseHelper.NO_DATABASE) {
             callingActivity.startIntro();
@@ -97,7 +98,7 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
             prefs.edit()
                 .putInt("databaseVersion", V0_9_0)
                 .putBoolean("isBetaTest", true).apply();
-            appliedDbChanges = true;
+            updatedDatabase = true;
             callingActivity.isFirstInstall = true;
             new Thread(new Runnable() {
                 @Override
@@ -107,28 +108,11 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
             }).start();
         }
 
-        if (prefs.getInt("databaseVersion", DatabaseHelper.NO_DATABASE) < DatabaseHelper.V0_9_2) {
-            if (callingActivity != null && !callingActivity.isFirstInstall) {
-                callingActivity.setStoryText(context.getString(R.string.patch_092_text));
-                callingActivity.setStoryTextLeftAlign();
-            }
-            setProgress("Patch 0.9.2", 99);
-            patchTo092();
-            appliedDbChanges = true;
-            prefs.edit().putInt("databaseVersion", DatabaseHelper.V0_9_2).apply();
-        }
+        tryApplyPatch(DatabaseHelper.V0_9_2, "Patch 0.9.2", R.string.patch_092_text, patchTo092);
+        tryApplyPatch(DatabaseHelper.V0_9_3, "Patch 0.9.3", R.string.patch_093_text, null);
+        tryApplyPatch(DatabaseHelper.V0_9_4, "Patch 0.9.4", R.string.patch_094_text, null);
 
-        if (prefs.getInt("databaseVersion", DatabaseHelper.NO_DATABASE) < DatabaseHelper.V0_9_3) {
-            if (callingActivity != null && !callingActivity.isFirstInstall) {
-                callingActivity.setStoryText(context.getString(R.string.patch_093_text));
-                callingActivity.setStoryTextLeftAlign();
-            }
-            setProgress("Patch 0.9.3", 99);
-            appliedDbChanges = true;
-            prefs.edit().putInt("databaseVersion", DatabaseHelper.V0_9_2).apply();
-        }
-
-        if (appliedDbChanges) {
+        if (updatedDatabase) {
             setProgress(context.getString(R.string.progress_installed), 100);
         } else if (callingActivity != null) {
             callingActivity.startGame();
@@ -136,12 +120,35 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
         return "";
     }
 
-    private void patchTo092() {
-        ArrayList<Statistic> statistics = new ArrayList<>();
+    private void tryApplyPatch(int patchNumber, String patchName, int patchNotes, Runnable patch) {
+        if (prefs.getInt("databaseVersion", DatabaseHelper.NO_DATABASE) < patchNumber) {
+            // If we've just applied a patch, display notes / progress on screen
+            if (callingActivity != null && !callingActivity.isFirstInstall) {
+                callingActivity.setStoryText(context.getString(patchNotes));
+                callingActivity.setStoryTextLeftAlign();
+            }
+            setProgress(patchName, 99);
+
+            // If we've got a runnable, apply it
+            if (patch != null) {
+                patch.run();
+            }
+
+            // Make sure this patch notes screen stays up, then save the new patch
+            this.updatedDatabase = true;
+            prefs.edit().putInt("databaseVersion", patchNumber).apply();
+        }
+    }
+
+    private Runnable patchTo092 = new Runnable() {
+        @Override
+        public void run() {
+            ArrayList<Statistic> statistics = new ArrayList<>();
             statistics.add(new Statistic(Enums.StatisticType.Minigames, Enums.Statistic.MinigameMemoryLastClaim, "", "", 0L));
             statistics.add(new Statistic(Enums.StatisticType.Minigames, Enums.Statistic.MinigameMemory, "", "", 0));
-        Statistic.saveInTx(statistics);
-    }
+            Statistic.saveInTx(statistics);
+        }
+    };
 
     @Override
     protected void onPostExecute(String result) {

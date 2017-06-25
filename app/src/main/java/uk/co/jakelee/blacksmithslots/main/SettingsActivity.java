@@ -39,10 +39,6 @@ public class SettingsActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_data_table);
-
-        ((TextView)findViewById(R.id.activityTitle)).setText(R.string.settings);
-        ((TextView)findViewById(R.id.activitySubtitle)).setVisibility(View.VISIBLE);
-        ((TextView)findViewById(R.id.activitySubtitle)).setText(R.string.settings_desc);
     }
 
     @Override
@@ -122,6 +118,10 @@ public class SettingsActivity extends BaseActivity {
     }
 
     public void populateSettings() {
+        ((TextView)findViewById(R.id.activityTitle)).setText(R.string.settings);
+        ((TextView)findViewById(R.id.activitySubtitle)).setVisibility(View.VISIBLE);
+        ((TextView)findViewById(R.id.activitySubtitle)).setText(R.string.settings_desc);
+
         spinnersInitialised = 0;
         LayoutInflater inflater = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         TableLayout settingTable = findViewById(R.id.dataTable);
@@ -204,6 +204,7 @@ public class SettingsActivity extends BaseActivity {
         } else if (setting.getDataType() == Enums.DataType.Integer.value) {
             ((TextView)row.findViewById(R.id.settingValue)).setText(setting.getIntValue() + " mins");
         }
+
         return row;
     }
 
