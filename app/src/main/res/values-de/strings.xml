@@ -1074,5 +1074,4 @@
     <string name="extra_win_items_charge">Gewinnen Sie Stücke Gebühr</string>
     <string name="extra_win_items_desc">Extra Win Items Charge erhöht die maximale Anzahl der Gebühren, die gesammelt werden können.</string>
     <string name="minigame_memory_game_over">Spel is over!\n\nbeloningen:\n%1$s</string>
-    <string name="patch_092_text">V0.9.2 (2017-06-24):\n-Added \"Win Items\", eine zuverlässige Minigame Quelle der freien Artikel!\n-Geben Sie dieses Update Notizen System!\n-Fixing Timer zeigt\n-Verwenden Sie alle Zeilen nach vorne, wenn Sie die markierten Zeilen ändern\n-Fixed Brust Minigame nicht geben Belohnungen\n-Improved Werbung Handling\n-Made minigame belohnt Faktor in der gegenwärtigen Beteiligung</string>
 </resources>

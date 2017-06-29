@@ -1074,5 +1074,4 @@
     <string name="extra_win_items_charge">Frais d\'articles gagnants</string>
     <string name="extra_win_items_desc">Les frais additionnels des frais généraux augmentent le nombre maximal de charges pouvant être collectées.</string>
     <string name="minigame_memory_game_over">Jeu terminé!\n\nRécompenses:\n%1$s</string>
-    <string name="patch_092_text">V0.9.2 (2017-06-24):\n-Added \"Win Items\", une source de mini-jeux fiables d\'articles gratuits!\n-Ajouté ce système de notes de mise à jour!\n-Fixing Timer affiche\n-Amenez toutes les lignes vers l\'avant lorsque vous modifiez les lignes sélectionnées\nMinijame à la poitrine fixée ne donnant pas de récompenses\n- Amélioration de la gestion de l\'annonce\n- facteur de récompense de mini-jeu mis en jeu</string>
 </resources>
