@@ -1074,5 +1074,4 @@
     <string name="extra_win_items_charge">Win Items Charge</string>
     <string name="extra_win_items_desc">Extra Win Items Charge verhoogt het maximale aantal kosten dat u kunt verzamelen.</string>
     <string name="minigame_memory_game_over">Spel is over!\n\nbeloningen:\n%1$s</string>
-    <string name="patch_092_text">V0.9.2 (2017-06-24):\n-Added \"Win Items\", een betrouwbare minigame bron van gratis items!\n-Added dit update notitiesysteem!\n-Fixing timer displays\n-Verwijder alle lijnen aan de voorkant wanneer u de geselecteerde lijnen wijzigt\n-Fixed chest minigame geen beloningen te geven\n-Procedure voor de verwerking van advertenties\n-Made minigame beloont factor in het huidige spel</string>
 </resources>
