@@ -29,12 +29,9 @@ import static android.content.Context.MODE_PRIVATE;
 
 public class DatabaseHelper extends AsyncTask<String, String, String> {
     public final static int NO_DATABASE = 0;
-    private final static int V0_9_0 = 1;
-    private final static int V0_9_2 = 2;
-    private final static int V0_9_3 = 3;
-    private final static int V0_9_4 = 4;
+    private final static int V1_0_0 = 4;
 
-    public final static int LATEST_PATCH = V0_9_4;
+    public final static int LATEST_PATCH = V1_0_0;
 
     private Context context;
     private SplashScreenActivity callingActivity;
@@ -96,7 +93,7 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
             callingActivity.startIntro();
             createDatabase();
             prefs.edit()
-                .putInt("databaseVersion", V0_9_0)
+                .putInt("databaseVersion", V1_0_0)
                 .putBoolean("isBetaTest", true).apply();
             updatedDatabase = true;
             callingActivity.isFirstInstall = true;
@@ -107,10 +104,6 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
                 }
             }).start();
         }
-
-        tryApplyPatch(DatabaseHelper.V0_9_2, "Patch 0.9.2", R.string.patch_092_text, patchTo092);
-        tryApplyPatch(DatabaseHelper.V0_9_3, "Patch 0.9.3", R.string.patch_093_text, null);
-        tryApplyPatch(DatabaseHelper.V0_9_4, "Patch 0.9.4", R.string.patch_094_text, null);
 
         if (updatedDatabase) {
             setProgress(context.getString(R.string.progress_installed), 100);
@@ -139,16 +132,6 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
             prefs.edit().putInt("databaseVersion", patchNumber).apply();
         }
     }
-
-    private Runnable patchTo092 = new Runnable() {
-        @Override
-        public void run() {
-            ArrayList<Statistic> statistics = new ArrayList<>();
-            statistics.add(new Statistic(Enums.StatisticType.Minigames, Enums.Statistic.MinigameMemoryLastClaim, "", "", 0L));
-            statistics.add(new Statistic(Enums.StatisticType.Minigames, Enums.Statistic.MinigameMemory, "", "", 0));
-            Statistic.saveInTx(statistics);
-        }
-    };
 
     @Override
     protected void onPostExecute(String result) {
@@ -1936,6 +1919,8 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
         statistics.add(new Statistic(Enums.StatisticType.Minigames, Enums.Statistic.MinigameFlip, "", "", 0, 0));
         statistics.add(new Statistic(Enums.StatisticType.Minigames, Enums.Statistic.MinigameHigher, "", "", 0, 0));
         statistics.add(new Statistic(Enums.StatisticType.Progress, Enums.Statistic.Prestiges, "", "CgkIoMe6hp0eEAIQMg", 0, 0));
+        statistics.add(new Statistic(Enums.StatisticType.Minigames, Enums.Statistic.MinigameMemoryLastClaim, "", "", 0L));
+        statistics.add(new Statistic(Enums.StatisticType.Minigames, Enums.Statistic.MinigameMemory, "", "", 0));
         Statistic.saveInTx(statistics);
     }
 }

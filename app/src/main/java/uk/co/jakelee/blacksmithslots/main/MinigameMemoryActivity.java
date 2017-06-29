@@ -103,6 +103,10 @@ public class MinigameMemoryActivity extends MinigameActivity {
         return new View.OnClickListener() {
             @Override
             public void onClick(final View view) {
+                if (view == openedBoxView) {
+                    return;
+                }
+
                 if (boxesOpened < 2 && chancesLeft > 0 && !justFailedCooldown) {
                     boxesOpened++;
 

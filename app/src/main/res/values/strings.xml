@@ -1264,9 +1264,6 @@ AESCrypt (https://goo.gl/Ewk2tq) - Support code encryption.
     <string name="minigame_memory_earned">You\'ve earned </string>
     <string name="none">None!</string>
     <string name="minigame_memory_next_charge">Another chance at the memory minigame will be available in %dm!</string>
-    <string name="patch_092_text">v0.9.2 (2017-06-24):\n-Added \"Win Items\", a reliable minigame source of free items!\n-Added this update notes system!\n-Fixing timer displays\n-Move all lines to front when changing lines selected\n-Fixed chest minigame not giving rewards\n-Improved advert handling\n-Made minigame rewards factor in current stake</string>
-    <string name="patch_093_text" translatable="false">v0.9.3 (2017-06-24):\n- Doubled wildcard frequency. You\'ll need to reinstall the game (manual / cloud save first!) to see this change. It is optional.\n- Clarified a few texts\n- Fixed timers not updating when &lt; 0\n- Fixed infinite item exploit\n- Fixed unable to exit memory game if very lucky\n- Fixed persistant tutorial</string>
-    <string name="patch_094_text" translatable="false">v0.9.4 (2017-06-25):\n- Full release date: 30th June 2017!\n- Fixed card flip image order.\n- Reduced font size for Korean, Chinese, Russian as a temporary fix to various font issues.\n- Completely rewrote update system, you shouldn\'t notice a difference!\n- Prevented myself ever accidentally releasing a test build again (sorry!)\n</string>
     <string name="extra_win_items_charge">Win Items Charge</string>
     <string name="extra_win_items_desc">Extra Win Items Charge increases the maximum number of charges that can be collected.</string>
 </resources>

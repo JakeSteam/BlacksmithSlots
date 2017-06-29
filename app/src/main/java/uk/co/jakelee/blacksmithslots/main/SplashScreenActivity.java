@@ -174,8 +174,12 @@ public class SplashScreenActivity extends Activity {
     }
 
     private void changeButton(boolean toStart) {
-        startButton.setText(toStart ? R.string.start : R.string.skip);
-        startButton.setBackgroundResource(toStart ? R.drawable.box_green : R.drawable.box_orange);
+        try {
+            startButton.setText(toStart ? R.string.start : R.string.skip);
+            startButton.setBackgroundResource(toStart ? R.drawable.box_green : R.drawable.box_orange);
+        } catch (RuntimeException e) {
+            // Happens rarely on Pixel devices, issue with original thread.
+        }
     }
 
     public void startGame() {

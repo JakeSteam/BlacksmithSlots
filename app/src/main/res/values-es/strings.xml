@@ -1074,5 +1074,4 @@
     <string name="extra_win_items_charge">Carga de artículos</string>
     <string name="extra_win_items_desc">Costo adicional de artículos ganados aumenta el número máximo de cargos que se pueden cobrar.</string>
     <string name="minigame_memory_game_over">¡Juego terminado!\n\nRecompensas:\n %1$s</string>
-    <string name="patch_092_text">V0.9.2 (2017-06-24):\n-Adicionado \"Win Items\", una fuente confiable de minijuegos de artículos gratuitos!\n-Añadido este sistema de notas de actualización!\n-Fijación de las visualizaciones del temporizador\n-Movir todas las líneas al frente al cambiar las líneas seleccionadas\n-Pequeado minijuego de pecho no dando recompensas\n- Mejora del manejo del anuncio\n-Maño de minijuegos recompensa factor en participación actual</string>
 </resources>
