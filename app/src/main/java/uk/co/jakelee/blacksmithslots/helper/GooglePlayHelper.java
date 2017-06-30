@@ -310,12 +310,17 @@ public class GooglePlayHelper implements com.google.android.gms.common.api.Resul
                             .setDescription(desc)
                             .build();
 
-                    Games.Snapshots.commitAndClose(mGoogleApiClient, snapshot, metadataChange);
+                    try {
+                        Games.Snapshots.commitAndClose(mGoogleApiClient, snapshot, metadataChange);
 
-                    Statistic lastAutosave = Statistic.get(Enums.Statistic.LastAutosave);
-                    if (lastAutosave != null) {
-                        lastAutosave.setLongValue(System.currentTimeMillis());
-                        lastAutosave.save();
+
+                        Statistic lastAutosave = Statistic.get(Enums.Statistic.LastAutosave);
+                        if (lastAutosave != null) {
+                            lastAutosave.setLongValue(System.currentTimeMillis());
+                            lastAutosave.save();
+                        }
+                    } catch (IllegalStateException e) {
+                        Log.d("Autosave", "Autosave failed!");
                     }
                 }
             }

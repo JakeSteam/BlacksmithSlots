@@ -15,15 +15,19 @@ public class MusicService extends Service {
     }
 
     public int onStartCommand(Intent intent, int flags, int startId) {
-        AudioManager audioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
-        int volume = audioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
+        try {
+            AudioManager audioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
+            int volume = audioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
 
-        int songId = intent.getIntExtra("songId", 0);
-        if (songId > 0) {
-            player = MediaPlayer.create(this, songId);
-            player.setLooping(true);
-            player.setVolume(volume, volume);
-            player.start();
+            int songId = intent.getIntExtra("songId", 0);
+            if (songId > 0) {
+                player = MediaPlayer.create(this, songId);
+                player.setLooping(true);
+                player.setVolume(volume, volume);
+                player.start();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
 
         return Service.START_NOT_STICKY;

@@ -513,7 +513,7 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
         itemBundles.add(new ItemBundle(Enums.Slot.Map3Mouse2, Enums.Tier.Bronze, Enums.Type.Chainmail, 1));
         itemBundles.add(new ItemBundle(Enums.Slot.Map3Mouse2, Enums.Tier.Bronze, Enums.Type.Platebody, 1));
         itemBundles.add(new ItemBundle(Enums.Slot.Map3Mouse2, Enums.Tier.Bronze, Enums.Type.FullShield, 1));
-        tasks.add(new Task(Enums.Slot.Map3Mouse2, 1, Enums.Statistic.TotalSpins, 1000));
+        tasks.add(new Task(Enums.Slot.Map3Mouse2, 1, Enums.Statistic.TotalSpins, 800));
         itemBundles.add(new ItemBundle(Enums.Slot.Map3Mouse2, Enums.Tier.PartialFood, Enums.Type.Cherry, 1, 10));
         itemBundles.add(new ItemBundle(Enums.Slot.Map3Mouse2, Enums.Tier.PartialFood, Enums.Type.Cherry, 10, 1));
         itemBundles.add(new ItemBundle(Enums.Slot.Map3Mouse2, Enums.Tier.PartialFood, Enums.Type.Watermelon, 1, 10));
@@ -753,7 +753,7 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
         slots.add(new Slot(Enums.Slot.Map7Weapon, 1, 12, 3, Enums.Person.MidLevelBlacksmith, Enums.Map.DeepMines));
         itemBundles.add(new ItemBundle(Enums.Slot.Map7Weapon, Enums.Tier.Iron, Enums.Type.Bar, 2));
         itemBundles.add(new ItemBundle(Enums.Slot.Map7Weapon, Enums.Tier.Iron, Enums.Type.Secondary, 2));
-        tasks.add(new Task(Enums.Slot.Map7Weapon, 1, Enums.Statistic.TotalSpins, 3000));
+        tasks.add(new Task(Enums.Slot.Map7Weapon, 1, Enums.Statistic.TotalSpins, 2500));
         tasks.add(new Task(Enums.Slot.Map7Weapon, 2, Enums.Statistic.CollectedBonuses, 10));
         itemBundles.add(new ItemBundle(Enums.Slot.Map7Weapon, Enums.Tier.Iron, Enums.Type.Dagger, 2, 5));
         itemBundles.add(new ItemBundle(Enums.Slot.Map7Weapon, Enums.Tier.Iron, Enums.Type.Sword, 2, 5));
@@ -817,7 +817,7 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
         slots.add(new Slot(Enums.Slot.Map8Exit, 1, 12, 3, Enums.Person.Guard, Enums.Map.RuinedVillage));
         itemBundles.add(new ItemBundle(Enums.Slot.Map8Exit, Enums.Tier.Iron, Enums.Type.Longsword, 10));
         itemBundles.add(new ItemBundle(Enums.Slot.Map8Exit, Enums.Tier.Iron, Enums.Type.FullHelmet, 10));
-        tasks.add(new Task(Enums.Slot.Map8Exit, 1, Enums.Statistic.TotalSpins, 3500));
+        tasks.add(new Task(Enums.Slot.Map8Exit, 1, Enums.Statistic.TotalSpins, 3000));
         tasks.add(new Task(Enums.Slot.Map8Exit, 2, Enums.Tier.Iron, Enums.Type.Hammer, 150));
         itemBundles.add(new ItemBundle(Enums.Slot.Map8Exit, Enums.Tier.Iron, Enums.Type.Ore, 1, 5));
         itemBundles.add(new ItemBundle(Enums.Slot.Map8Exit, Enums.Tier.Iron, Enums.Type.Secondary, 1, 5));
@@ -860,7 +860,7 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
         itemBundles.add(new ItemBundle(Enums.Slot.Map8Lifer, Enums.Tier.Iron, Enums.Type.Sword, 1));
         tasks.add(new Task(Enums.Slot.Map8Lifer, 1, Enums.Tier.Iron, Enums.Type.Sword, 10));
         tasks.add(new Task(Enums.Slot.Map8Lifer, 2, Enums.Tier.Iron, Enums.Type.FullShield, 10));
-        tasks.add(new Task(Enums.Slot.Map8Lifer, 3, Enums.Statistic.TotalSpins, 4000));
+        tasks.add(new Task(Enums.Slot.Map8Lifer, 3, Enums.Statistic.TotalSpins, 3400));
         itemBundles.add(new ItemBundle(Enums.Slot.Map8Lifer, Enums.Tier.Iron, Enums.Type.FullShield, 1, 5));
         itemBundles.add(new ItemBundle(Enums.Slot.Map8Lifer, Enums.Tier.Iron, Enums.Type.Sword, 1, 5));
         itemBundles.add(new ItemBundle(Enums.Slot.Map8Lifer, Enums.Tier.Internal, Enums.Type.Wildcard, 1, 6));
@@ -1194,7 +1194,7 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
         slots.add(new Slot(Enums.Slot.Map14Frankie, 1, 15, 2, Enums.Person.Mercenary, Enums.Map.Mercenaria));
         itemBundles.add(new ItemBundle(Enums.Slot.Map14Frankie, Enums.Tier.Silver, Enums.Type.Bar, 1));
         itemBundles.add(new ItemBundle(Enums.Slot.Map14Frankie, Enums.Tier.None, Enums.Type.GemYellow, 1));
-        tasks.add(new Task(Enums.Slot.Map14Frankie, 1, Enums.Statistic.TotalSpins, 6500));
+        tasks.add(new Task(Enums.Slot.Map14Frankie, 1, Enums.Statistic.TotalSpins, 5000));
         itemBundles.add(new ItemBundle(Enums.Slot.Map14Frankie, Enums.Tier.Silver, Enums.Type.GemYellow, 1, 3));
         itemBundles.add(new ItemBundle(Enums.Slot.Map14Frankie, Enums.Tier.Silver, Enums.Type.Bar, 1, 3));
         itemBundles.add(new ItemBundle(Enums.Slot.Map14Frankie, Enums.Tier.None, Enums.Type.GemYellow, 1, 2));
