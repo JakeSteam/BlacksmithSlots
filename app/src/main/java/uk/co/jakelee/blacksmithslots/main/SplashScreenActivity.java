@@ -156,7 +156,11 @@ public class SplashScreenActivity extends Activity {
     };
 
     public void setStoryText(String string) {
-        textBar.setText(string);
+        try {
+            textBar.setText(string);
+        } catch (RuntimeException e) {
+            e.printStackTrace();
+        }
     }
 
     public void setStoryTextLeftAlign() {
