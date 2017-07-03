@@ -148,7 +148,7 @@ public class Task extends SugarRecord {
 
     public boolean statisticIsAchieved() {
         return statistic > 0
-            && remaining == 0
+            && (remaining == 0 || (remaining == 1 && (statistic == Enums.Statistic.Level.value)))
             && completed == 0;
     }
 
