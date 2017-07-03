@@ -1074,4 +1074,6 @@
     <string name="extra_win_items_charge">Gewinnen Sie Stücke Gebühr</string>
     <string name="extra_win_items_desc">Extra Win Items Charge erhöht die maximale Anzahl der Gebühren, die gesammelt werden können.</string>
     <string name="minigame_memory_game_over">Spel is over!\n\nbeloningen:\n%1$s</string>
+    <string name="setting_18">Minigames überspringen</string>
+    <string name="setting_desc_18">Wenn aktiviert, werden die Minigames übersprungen, während das Autoplay aktiviert ist.</string>
 </resources>

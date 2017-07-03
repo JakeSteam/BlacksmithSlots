@@ -1074,4 +1074,6 @@
     <string name="extra_win_items_charge">아이템 획득 비용</string>
     <string name="extra_win_items_desc">추가 Win 항목 요금은 수집 할 수있는 최대 청구 횟수를 늘립니다.</string>
     <string name="minigame_memory_game_over">게임 끝!\n\n보상 :\n%1$s</string>
+    <string name="setting_18">미니 게임 스킵</string>
+    <string name="setting_desc_18">사용 설정되면 자동 재생이 사용 설정된 동안 미니 게임을 건너 뜁니다.</string>
 </resources>

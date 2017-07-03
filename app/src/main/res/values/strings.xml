@@ -1268,5 +1268,5 @@ AESCrypt (https://goo.gl/Ewk2tq) - Support code encryption.
     <string name="minigame_memory_next_charge">Another chance at the memory minigame will be available in %dm!</string>
     <string name="extra_win_items_charge">Win Items Charge</string>
     <string name="extra_win_items_desc">Extra Win Items Charge increases the maximum number of charges that can be collected.</string>
-    <string name="patch_1_0_1">Patch 1.0.1:\n</string>
+    <string name="patch_1_0_1" translatable="false">Patch 1.0.1:\n- Doubled default autospins\n- Added skip minigame setting\n- Reduced dice minigame duration\n- Reduced Map 3 spins requirement\n- Fixed level tasks requiring 1 higher level than stated\n- Various crash fixes</string>
 </resources>

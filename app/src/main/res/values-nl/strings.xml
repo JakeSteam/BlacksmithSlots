@@ -1074,4 +1074,6 @@
     <string name="extra_win_items_charge">Win Items Charge</string>
     <string name="extra_win_items_desc">Extra Win Items Charge verhoogt het maximale aantal kosten dat u kunt verzamelen.</string>
     <string name="minigame_memory_game_over">Spel is over!\n\nbeloningen:\n%1$s</string>
+    <string name="setting_18">Minigames overslaan</string>
+    <string name="setting_desc_18">Wanneer ingeschakeld, worden minigames overgeslagen terwijl autoplay is ingeschakeld.</string>
 </resources>
