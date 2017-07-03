@@ -132,6 +132,7 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
                     task.setRemaining(400);
                     task.save();
                 }
+                new Setting(Enums.SettingGroup.Gameplay, Enums.Setting.SkipMinigames, false).save();
             }
         };
     }
@@ -540,7 +541,7 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
         itemBundles.add(new ItemBundle(Enums.Slot.Map3Mouse2, Enums.Tier.Bronze, Enums.Type.Chainmail, 1));
         itemBundles.add(new ItemBundle(Enums.Slot.Map3Mouse2, Enums.Tier.Bronze, Enums.Type.Platebody, 1));
         itemBundles.add(new ItemBundle(Enums.Slot.Map3Mouse2, Enums.Tier.Bronze, Enums.Type.FullShield, 1));
-        tasks.add(new Task(Enums.Slot.Map3Mouse2, 1, Enums.Statistic.TotalSpins, 800));
+        tasks.add(new Task(Enums.Slot.Map3Mouse2, 1, Enums.Statistic.TotalSpins, 400));
         itemBundles.add(new ItemBundle(Enums.Slot.Map3Mouse2, Enums.Tier.PartialFood, Enums.Type.Cherry, 1, 10));
         itemBundles.add(new ItemBundle(Enums.Slot.Map3Mouse2, Enums.Tier.PartialFood, Enums.Type.Cherry, 10, 1));
         itemBundles.add(new ItemBundle(Enums.Slot.Map3Mouse2, Enums.Tier.PartialFood, Enums.Type.Watermelon, 1, 10));

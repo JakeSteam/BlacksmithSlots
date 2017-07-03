@@ -123,7 +123,7 @@ public class Enums {
 
     public enum Setting {
         Music(1), Sound(2), AttemptLogin(3), OnlyActiveResources(5), Language(6), NotificationSounds(7), PeriodicBonusNotification(8), SaveImported(9),
-        OnlyShowStocked(10), OrderByTier(11), OrderReversed(12), BlacksmithPassNotification(13), PlayLogout(14), Autosave(15), Orientation(16), Prestige(17);
+        OnlyShowStocked(10), OrderByTier(11), OrderReversed(12), BlacksmithPassNotification(13), PlayLogout(14), Autosave(15), Orientation(16), Prestige(17), SkipMinigames(18);
         public final int value;
         Setting(int value) {
             this.value = value;
@@ -175,8 +175,6 @@ public class Enums {
         Map18Watchers(83), Map18Guard(84), Map18Bronze(85), Map18Iron(86), Map18Steel(87), Map18Mithril(88), Map18Purple(89),
         Map19Touch(90), Map19Travel(91), Map19Hunger(92), Map19Defence(93), Map19Melee(94), Map19Archery(95), Map19Protection(96), Map19Power(97), Map19Boss(98),
         Map20PixelBlacksmith(99), Map20TradesEntrance(100);
-
-
 
         public final int value;
         Slot(int value) {
