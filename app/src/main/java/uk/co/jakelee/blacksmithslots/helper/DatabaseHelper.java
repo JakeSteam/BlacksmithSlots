@@ -4,9 +4,13 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.os.AsyncTask;
+import android.support.annotation.NonNull;
 import android.util.Log;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+
+import com.orm.query.Condition;
+import com.orm.query.Select;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,8 +34,9 @@ import static android.content.Context.MODE_PRIVATE;
 public class DatabaseHelper extends AsyncTask<String, String, String> {
     public final static int NO_DATABASE = 0;
     private final static int V1_0_0 = 4;
+    private final static int V1_0_1 = 5;
 
-    public final static int LATEST_PATCH = V1_0_0;
+    public final static int LATEST_PATCH = V1_0_1;
 
     private Context context;
     private SplashScreenActivity callingActivity;
@@ -105,6 +110,8 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
             }).start();
         }
 
+        tryApplyPatch(DatabaseHelper.V1_0_1, "Patch 1.0.1", "Update notes", patch101());
+
         if (updatedDatabase) {
             setProgress(context.getString(R.string.progress_installed), 100);
         } else if (callingActivity != null) {
@@ -113,11 +120,27 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
         return "";
     }
 
-    private void tryApplyPatch(int patchNumber, String patchName, int patchNotes, Runnable patch) {
+    @NonNull
+    private Runnable patch101() {
+        return new Runnable() {
+            @Override
+            public void run() {
+                Task task = Select.from(Task.class).where(
+                        Condition.prop("a").eq(Enums.Slot.Map3Mouse2.value),
+                        Condition.prop("c").eq(Enums.Statistic.TotalSpins.value)).first();
+                if (task != null && task.getStarted() == 0 && task.getRemaining() > 400) {
+                    task.setRemaining(400);
+                    task.save();
+                }
+            }
+        };
+    }
+
+    private void tryApplyPatch(int patchNumber, String patchName, String patchNotes, Runnable patch) {
         if (prefs.getInt("databaseVersion", DatabaseHelper.NO_DATABASE) < patchNumber) {
             // If we've just applied a patch, display notes / progress on screen
             if (callingActivity != null && !callingActivity.isFirstInstall) {
-                callingActivity.setStoryText(context.getString(patchNotes));
+                callingActivity.setStoryText(patchNotes);
                 callingActivity.setStoryTextLeftAlign();
             }
             setProgress(patchName, 99);
@@ -131,6 +154,10 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
             this.updatedDatabase = true;
             prefs.edit().putInt("databaseVersion", patchNumber).apply();
         }
+    }
+
+    private void tryApplyPatch(int patchNumber, String patchName, int patchNotes, Runnable patch) {
+        tryApplyPatch(patchNumber, patchName, context.getString(patchNotes), patch);
     }
 
     @Override
