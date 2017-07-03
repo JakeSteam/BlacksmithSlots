@@ -1074,4 +1074,6 @@
     <string name="extra_win_items_charge">Ganhar itens de carga</string>
     <string name="extra_win_items_desc">A cobrança de itens adicionais extra aumenta o número máximo de cobranças que podem ser coletadas.</string>
     <string name="minigame_memory_game_over">Fim de jogo!\n\nRecompensas:\n%1$s</string>
+    <string name="setting_18">Skip Minigames</string>
+    <string name="setting_desc_18">Quando ativado, os minigames serão ignorados enquanto a reprodução automática estiver ativada.</string>
 </resources>

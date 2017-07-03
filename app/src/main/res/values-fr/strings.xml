@@ -1074,4 +1074,6 @@
     <string name="extra_win_items_charge">Frais d\'articles gagnants</string>
     <string name="extra_win_items_desc">Les frais additionnels des frais généraux augmentent le nombre maximal de charges pouvant être collectées.</string>
     <string name="minigame_memory_game_over">Jeu terminé!\n\nRécompenses:\n%1$s</string>
+    <string name="setting_18">Skip Minigames</string>
+    <string name="setting_desc_18">Lorsqu\'ils sont activés, les mini-jeux seront ignorés tandis que le jeu automatique est activé.</string>
 </resources>

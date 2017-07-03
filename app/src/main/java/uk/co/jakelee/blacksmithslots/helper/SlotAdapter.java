@@ -1,5 +1,6 @@
 package uk.co.jakelee.blacksmithslots.helper;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -45,14 +46,20 @@ class SlotAdapter extends AbstractWheelAdapter {
     }
 
     private Bitmap loadImage(ItemBundle reward) {
-        Resources resources = context.getResources();
-        Bitmap bitmap = BitmapFactory.decodeResource(resources, resources.getIdentifier(DisplayHelper.getItemImageFile(reward), "drawable", context.getPackageName()));
-        if (bitmap == null) {
-            bitmap = BitmapFactory.decodeResource(resources, resources.getIdentifier(DisplayHelper.getItemImageFile(reward, true), "drawable", context.getPackageName()));
+        try {
+            Resources resources = context.getResources();
+            Bitmap bitmap = BitmapFactory.decodeResource(resources, resources.getIdentifier(DisplayHelper.getItemImageFile(reward), "drawable", context.getPackageName()));
+            if (bitmap == null) {
+                bitmap = BitmapFactory.decodeResource(resources, resources.getIdentifier(DisplayHelper.getItemImageFile(reward, true), "drawable", context.getPackageName()));
+            }
+            Bitmap scaled = Bitmap.createScaledBitmap(bitmap, IMAGE_WIDTH, IMAGE_HEIGHT, true);
+            bitmap.recycle();
+            return scaled;
+        } catch (OutOfMemoryError e) {
+            AlertHelper.error((Activity)context, "No memory available to resize image! If this happens repeatedly please contact support.", false);
+            e.printStackTrace();
+            return null;
         }
-        Bitmap scaled = Bitmap.createScaledBitmap(bitmap, IMAGE_WIDTH, IMAGE_HEIGHT, true);
-        bitmap.recycle();
-        return scaled;
     }
 
     @Override

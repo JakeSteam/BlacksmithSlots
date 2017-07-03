@@ -72,7 +72,9 @@ public class SlotActivity extends BaseActivity {
                     handler.postDelayed(new Runnable() {
                         @Override
                         public void run() {
-                            alert.dismiss();
+                            if (alert.isShowing()) {
+                                alert.dismiss();
+                            }
                         }
                     }, 60);
 

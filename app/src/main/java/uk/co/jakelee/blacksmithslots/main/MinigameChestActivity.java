@@ -83,7 +83,11 @@ public class MinigameChestActivity extends MinigameActivity {
             LinearLayout row = (LinearLayout) chestContainer.getChildAt(i);
             for (int j = 0; j <= 2; j++) {
                 ImageView chest = (ImageView) row.getChildAt(j);
-                chest.setImageResource(potentialRewards.get(index).first);
+                try {
+                    chest.setImageResource(potentialRewards.get(index).first);
+                } catch (OutOfMemoryError e) {
+                    e.printStackTrace();
+                }
                 chest.setTag(index++);
             }
         }

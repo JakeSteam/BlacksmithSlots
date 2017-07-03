@@ -229,6 +229,7 @@
     <string name="setting_15">Autosave</string>
     <string name="setting_16">Orientation</string>
     <string name="setting_17">Prestige</string>
+    <string name="setting_18">Skip Minigames</string>
 
     <string name="setting_desc_1">Enables and disables the in-game background music.</string>
     <string name="setting_desc_2">Enables and disables the in-game sound effects.</string>
@@ -247,6 +248,7 @@
     <string name="setting_desc_15">Enables auto-saving, which can be managed via the Google Play settings on the map screen.</string>
     <string name="setting_desc_16">Configures the game to either lock to portrait or landscape, or match the device\'s current orientation.</string>
     <string name="setting_desc_17">At level 25+ and VIP level 1+, you can prestige. This will reset your game progress, but keep your current statistics (except XP) and trophy progress. You will receive +1 wildcard per slot, but -20% XP.</string>
+    <string name="setting_desc_18">When enabled, minigames will be skipped whilst autoplay is enabled.</string>
 
     <string name="orientation_4">Auto-rotate</string>
     <string name="orientation_6">Landscape</string>
@@ -1266,4 +1268,5 @@ AESCrypt (https://goo.gl/Ewk2tq) - Support code encryption.
     <string name="minigame_memory_next_charge">Another chance at the memory minigame will be available in %dm!</string>
     <string name="extra_win_items_charge">Win Items Charge</string>
     <string name="extra_win_items_desc">Extra Win Items Charge increases the maximum number of charges that can be collected.</string>
+    <string name="patch_1_0_1" translatable="false">Patch 1.0.1:\n- Doubled default autospins\n- Added skip minigame setting\n- Reduced dice minigame duration\n- Reduced Map 3 spins requirement\n- Fixed level tasks requiring 1 higher level than stated\n- Various crash fixes</string>
 </resources>

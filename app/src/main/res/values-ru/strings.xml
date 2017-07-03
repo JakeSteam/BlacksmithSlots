@@ -1074,4 +1074,6 @@
     <string name="extra_win_items_charge">Выиграть товар</string>
     <string name="extra_win_items_desc">Экстремальные партии товаров Увеличивает максимальное количество сборов, которые могут быть собраны.</string>
     <string name="minigame_memory_game_over">Игра закончена!\n\nНаграды:\n%1$s</string>
+    <string name="setting_18">Пропустить мини-игры</string>
+    <string name="setting_desc_18">Когда включено, мини-игры будут пропущены, пока включена автовоспроизведение.</string>
 </resources>

@@ -60,7 +60,7 @@ public class MinigameDiceActivity extends MinigameActivity {
         final long startTime = System.currentTimeMillis();
         for (int i = 0; i < diceContainer.getChildCount(); i++) {
             final ImageView dice = (ImageView)diceContainer.getChildAt(i);
-            final int millisecondsToRollFor = CalculationHelper.randomNumber(1000, 5000);
+            final int millisecondsToRollFor = CalculationHelper.randomNumber(800, 1600);
             handler.post(getDiceRollRunnable(startTime, dice, millisecondsToRollFor));
 
         }

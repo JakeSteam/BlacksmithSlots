@@ -78,6 +78,6 @@ public class LevelHelper {
     }
 
     public static int getAutospinsByVip(int vipLevel) {
-        return (5 + (Constants.AUTOSPIN_INCREASE * vipLevel));
+        return (Constants.DEFAULT_AUTOSPINS + (Constants.AUTOSPIN_INCREASE * vipLevel));
     }
 }

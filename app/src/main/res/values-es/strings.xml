@@ -1074,4 +1074,6 @@
     <string name="extra_win_items_charge">Carga de artículos</string>
     <string name="extra_win_items_desc">Costo adicional de artículos ganados aumenta el número máximo de cargos que se pueden cobrar.</string>
     <string name="minigame_memory_game_over">¡Juego terminado!\n\nRecompensas:\n %1$s</string>
+    <string name="setting_18">Saltar Minijuegos</string>
+    <string name="setting_desc_18">Cuando está activado, los minijuegos se saltarán mientras se activa la reproducción automática.</string>
 </resources>

@@ -6,12 +6,16 @@ import uk.co.jakelee.blacksmithslots.model.Statistic;
 
 public class MinigameHelper {
     public static int getCurrentCharges() {
-        Statistic lastClaim = Statistic.get(Enums.Statistic.MinigameMemoryLastClaim);
-        long totalMinutes = TimeUnit.MILLISECONDS.toMinutes(System.currentTimeMillis() - lastClaim.getLongValue());
-        long charges = totalMinutes / Constants.MINUTES_PER_CHARGE;
+        try {
+            Statistic lastClaim = Statistic.get(Enums.Statistic.MinigameMemoryLastClaim);
+            long totalMinutes = TimeUnit.MILLISECONDS.toMinutes(System.currentTimeMillis() - lastClaim.getLongValue());
+            long charges = totalMinutes / Constants.MINUTES_PER_CHARGE;
 
-        int maxCharges = getMaxCharges();
-        return charges > getMaxCharges() ? maxCharges : (int)charges;
+            int maxCharges = getMaxCharges();
+            return charges > getMaxCharges() ? maxCharges : (int) charges;
+        } catch (RuntimeException e) {
+            return getMaxCharges();
+        }
     }
 
     public static int getMinsToNextCharge() {

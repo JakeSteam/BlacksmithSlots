@@ -1074,4 +1074,6 @@
     <string name="extra_win_items_charge">赢取物品费用</string>
     <string name="extra_win_items_desc">额外收费项目收费会增加最多可收取的费用。</string>
     <string name="minigame_memory_game_over">游戏结束！\n\n奖励：\n%1$s</string>
+    <string name="setting_18">跳过迷你游戏</string>
+    <string name="setting_desc_18">启用自动播放功能时，会跳过小游戏。</string>
 </resources>
