@@ -47,6 +47,7 @@ public class Constants {
     public final static int VIP_LEVEL_MODIFIER = 25;
     public final static int VIP_DAILY_BONUS_MODIFIER = 50;
     public final static int PASS_DAYS = 30;
+    public final static int DEFAULT_AUTOSPINS = 10;
     public final static int AUTOSPIN_INCREASE = 10;
     public static final int ADVERT_TIMEOUT = 30000;
     public static final double ADVERT_REWARD_MODIFIER = 0.5;
