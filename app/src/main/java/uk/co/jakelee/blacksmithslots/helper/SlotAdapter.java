@@ -2,6 +2,7 @@ package uk.co.jakelee.blacksmithslots.helper;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -37,8 +38,15 @@ class SlotAdapter extends AbstractWheelAdapter {
     public SlotAdapter(Context context, DisplayMetrics displayMetrics, List<ItemBundle> rewards) {
         this.context = context;
         this.rewards = rewards;
-        this.IMAGE_WIDTH = (int)Math.ceil(displayMetrics.heightPixels / 7.5);
-        this.IMAGE_HEIGHT = (int)Math.ceil(displayMetrics.heightPixels / 7.5);
+
+        boolean isLandscape = context.getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE;
+        if (isLandscape) {
+            this.IMAGE_WIDTH = (int) Math.ceil(displayMetrics.heightPixels / 7.5);
+            this.IMAGE_HEIGHT = (int) Math.ceil(displayMetrics.heightPixels / 7.5);
+        } else {
+            this.IMAGE_WIDTH = (int) Math.ceil(displayMetrics.widthPixels / 6.3);
+            this.IMAGE_HEIGHT = (int) Math.ceil(displayMetrics.widthPixels / 6.3);
+        }
         images = new ArrayList<>(rewards.size());
         for (ItemBundle reward : rewards) {
             images.add(new SoftReference<>(loadImage(reward)));
