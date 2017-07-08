@@ -1029,7 +1029,7 @@
     <string name="error_prestige_locked">Naar prestige (+1 wildcard, -20% XP) heb je VIP 1 en Level 25 nodig!</string>
     <string name="export_save">Export opslaan</string>
     <string name="inventory_subtitle">Als u wilt weten waar u een item wilt krijgen, klikt u op Bronnen. Om te weten waar u het wilt gebruiken, klikt u op Gebruiken.</string>
-    <string name="local_load_confirm">Weet u zeker dat u deze opslaan wilt laden?\n\nHuidig: Lev %1$d ( %2$d XP), %3$d Unieke items\nBestand opslaan: Lev %4$d ( %5$d XP), %6$d Unieke itemsWeet u zeker dat u deze opslaan wilt laden?\n\nHuidig: Lev% 1 $ d (% 2 $ d XP),% 3 $ d Unieke items\nBestand opslaan: Lev% 4 $ d (% 5 $ d XP),% 6 $ d Unieke items</string>
+    <string name="local_load_confirm">Weet u zeker dat u deze opslaan wilt laden?\n\nHuidig: Lev %1$d ( %2$d XP), %3$d Unieke items\nBestand opslaan: Lev %4$d ( %5$d XP), %6$d Unieke itemsWeet u zeker dat u deze opslaan wilt laden?\n\nHuidig: Lev%1$d (%2$d XP),%3$d Unieke items\nBestand opslaan: Lev%4$d (%5$d XP),%6$d Unieke items</string>
     <string name="local_save_loaded">Succesvol geladen en geïmporteerd lokale spelbesparing!</string>
     <string name="local_save_saved">Succesvol uitgevoerde game save op %s op externe opslag!</string>
     <string name="log_subtitle">Alleen de laatste 100 berichten worden bewaard.</string>

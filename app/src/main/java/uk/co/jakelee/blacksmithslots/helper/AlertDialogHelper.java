@@ -90,7 +90,7 @@ public class AlertDialogHelper {
 
         alertDialog.setPositiveButton(R.string.apply, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
-                //String supportCode = SupportCodeHelper.encode((System.currentTimeMillis() + 259200000) + "|UPDATE b SET c = 999");
+                //String supportCode = SupportCodeHelper.encode((System.currentTimeMillis() + 259200000) + "|INSERT INTO b (a, b, c) VALUES (2, 18, 15)");
                 String supportCode = supportCodeBox.getText().toString().trim();
 
                 Log.d("Code", supportCode);

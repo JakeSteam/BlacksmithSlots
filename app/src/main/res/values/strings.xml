@@ -1269,4 +1269,5 @@ AESCrypt (https://goo.gl/Ewk2tq) - Support code encryption.
     <string name="extra_win_items_charge">Win Items Charge</string>
     <string name="extra_win_items_desc">Extra Win Items Charge increases the maximum number of charges that can be collected.</string>
     <string name="patch_1_0_1" translatable="false">Patch 1.0.1:\n- Doubled default autospins\n- Added skip minigame setting\n- Reduced dice minigame duration\n- Reduced Map 3 spins requirement\n- Fixed level tasks requiring 1 higher level than stated\n- Various crash fixes</string>
+    <string name="patch_1_0_2" translatable="false">Patch 1.0.2:\n- Fixed a lack of iron hammers.</string>
 </resources>

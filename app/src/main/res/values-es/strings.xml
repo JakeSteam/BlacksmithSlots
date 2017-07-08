@@ -1029,7 +1029,7 @@
     <string name="error_prestige_locked">Para el prestigio (+1 comodín, -20% XP) necesita VIP 1 y 25!</string>
     <string name="export_save">Exportar Guardar</string>
     <string name="inventory_subtitle">Para saber dónde obtener un elemento, haga clic en Fuentes. Para saber dónde usarlo, haga clic en Uses.</string>
-    <string name="local_load_confirm">¿Estás seguro de que quieres cargar esta grabación?\n\nActual: Lev %1$d ( %2$d XP), %3$d Artículos únicos\nGuardar archivo: Lev %4$d ( %5$d XP), %6$d Artículos únicos¿Estás seguro de que quieres cargar esta grabación?\n\nActual: Lev% 1 $ d (% 2 $ d XP),% 3 $ d Artículos únicos\nGuardar archivo: Lev% 4 $ d (% 5 $ d XP),% 6 $ d Artículos únicos</string>
+    <string name="local_load_confirm">¿Estás seguro de que quieres cargar esta grabación?\n\nActual: Lev %1$d ( %2$d XP), %3$d Artículos únicos\nGuardar archivo: Lev %4$d ( %5$d XP), %6$d Artículos únicos¿Estás seguro de que quieres cargar esta grabación?\n\nActual: Lev %1$d (%2$d XP),%3$d Artículos únicos\nGuardar archivo: Lev %4$d (%5$d XP),%6$d Artículos únicos</string>
     <string name="local_save_loaded">¡El juego localmente cargado e importado con éxito ahorró!</string>
     <string name="local_save_saved">Exitoso juego exportado a %s en almacenamiento externo!</string>
     <string name="log_subtitle">Sólo se conservan los últimos 100 mensajes.</string>
