@@ -129,8 +129,8 @@ public class MinigameChestActivity extends MinigameActivity {
         List<ItemBundle> rewards = ItemBundle.find(ItemBundle.class,
                 "f = " + Enums.ItemBundleType.SlotReward.value + " AND " +
                 "a = " + slotId + " AND " +
-                "b <> \"" + Enums.Tier.Internal +
-                "\" GROUP BY b, c");
+                "b <> " + Enums.Tier.Internal.value +
+                " GROUP BY b, c");
         return rewards.size() < 2 ? null : rewards;
     }
 
