@@ -1029,7 +1029,7 @@
     <string name="error_prestige_locked">Para prestígio (+1 curinga, -20% XP), você precisa VIP 1 e Nível 25!</string>
     <string name="export_save">Exportar Salvar</string>
     <string name="inventory_subtitle">Para saber onde obter um item, clique em Fontes. Para descobrir onde usá-lo, clique em Usos.</string>
-    <string name="local_load_confirm">Tem certeza de que deseja carregar esta gravação?\n\nCorrente: Lev %1$d ( %2$d XP), %3$d Itens exclusivos\nSalvar arquivo: Lev %4$d ( %5$d XP), %6$d Itens exclusivosTem certeza de que deseja carregar esta gravação?\n\nCorrente: Lev% 1 $ d (% 2 $ d XP),% 3 $ d Itens exclusivos\nSalvar arquivo: Lev% 4 $ d (% 5 $ d XP),% 6 $ d Itens exclusivos</string>
+    <string name="local_load_confirm">Tem certeza de que deseja carregar esta gravação?\n\nCorrente: Lev %1$d ( %2$d XP), %3$d Itens exclusivos\nSalvar arquivo: Lev %4$d ( %5$d XP), %6$d Itens exclusivosTem certeza de que deseja carregar esta gravação?\n\nCorrente: Lev%1$d (%2$d XP),%3$d Itens exclusivos\nSalvar arquivo: Lev%4$d (%5$d XP),%6$d Itens exclusivos</string>
     <string name="local_save_loaded">Carregado com sucesso e importado para salvar o local!</string>
     <string name="local_save_saved">O jogo exportado com sucesso é salvo em %s no armazenamento externo!</string>
     <string name="log_subtitle">Apenas as últimas 100 mensagens são mantidas.</string>

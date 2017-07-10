@@ -18,6 +18,7 @@ import uk.co.jakelee.blacksmithslots.helper.Enums;
 import uk.co.jakelee.blacksmithslots.helper.LevelHelper;
 import uk.co.jakelee.blacksmithslots.model.ItemBundle;
 import uk.co.jakelee.blacksmithslots.model.Slot;
+import uk.co.jakelee.blacksmithslots.model.Statistic;
 
 public class SlotChancesActivity extends BaseActivity {
 
@@ -43,7 +44,8 @@ public class SlotChancesActivity extends BaseActivity {
         for (ItemBundle reward : rewards) {
             // If VIP and it's a wildcard, there'll be extra items
             if (vipLevel > 0 && reward.getType() == Enums.Type.Wildcard) {
-                statTable.addView(DisplayHelper.getTableRow(inflater, reward.toString(this), Integer.toString(reward.getWeighting()) + " (+" + vipLevel + ")"));
+                int wildcards = vipLevel + Statistic.get(Enums.Statistic.Prestiges).getIntValue();
+                statTable.addView(DisplayHelper.getTableRow(inflater, reward.toString(this), Integer.toString(reward.getWeighting()) + " (+" + wildcards + ")"));
             } else {
                 statTable.addView(DisplayHelper.getTableRow(inflater, reward.toString(this), Integer.toString(reward.getWeighting())));
             }

@@ -62,7 +62,7 @@
             android:configChanges="screenLayout|screenSize" />
         <activity
             android:name=".main.MapActivity"
-            android:configChanges="screenLayout|screenSize"></activity>
+            android:configChanges="screenLayout|screenSize" />
         <activity
             android:name=".main.SettingsActivity"
             android:theme="@style/Theme.Dimmed" />

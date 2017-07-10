@@ -53,7 +53,7 @@
     <string name="daily_bonus">BS 패스 보너스</string>
     <string name="daily_bonus_desc">BS Pass Bonus는 대장장이 패스 보상에 포함 된 보너스 아이템입니다.</string>
     <string name="dialog_log">대화 상자 로그</string>
-    <string name="dice_total_multiplier">총 %1$d이 (가) %2$d을 (를) 얻게됩니다.이 금액에는 초기 지분이 곱해집니다!</string>
+    <string name="dice_total_multiplier">총 %1$d이 (가) %2$s을 (를) 얻게됩니다.이 금액에는 초기 지분이 곱해집니다!</string>
     <string name="email">이메일</string>
     <string name="enabled">사용 가능한</string>
     <string name="error_advert_not_ready">%1$s에 광고가 준비됩니다.</string>
@@ -1029,7 +1029,7 @@
     <string name="error_prestige_locked">명성을 얻으려면 (와일드 카드 +1, -20% XP) VIP 1과 25 레벨이 필요합니다!</string>
     <string name="export_save">저장 저장</string>
     <string name="inventory_subtitle">항목을 가져올 위치를 찾으려면 소스를 클릭하십시오. 사용 위치를 찾으려면 사용을 클릭하십시오.</string>
-    <string name="local_load_confirm">이 저장을로드 하시겠습니까?\n\n현재 : Lev  %1$d ( %2$d XP),  %3$d 고유 항목\n파일 저장 : Lev  %4$d ( %5$d XP),  %6$d 고유 항목이 저장을로드 하시겠습니까?\n\n현재 : Lev % 1 $ d (% 2 $ d XP), % 3 $ d 고유 항목\n파일 저장 : Lev % 4 $ d (% 5 $ d XP), % 6 $ d 고유 항목</string>
+    <string name="local_load_confirm">이 저장을로드 하시겠습니까?\n\n현재 : Lev  %1$d ( %2$d XP),  %3$d 고유 항목\n파일 저장 : Lev  %4$d ( %5$d XP),  %6$d 고유 항목이 저장을로드 하시겠습니까?\n\n현재 : Lev %1$d (%2$d XP), %3$d 고유 항목\n파일 저장 : Lev %4$d (%5$d XP), %6$d 고유 항목</string>
     <string name="local_save_loaded">로컬 게임을 성공적으로로드하고 가져 왔습니다!</string>
     <string name="local_save_saved">외부 저장 장치에서 게임 저장을  %s (으)로 성공적으로 내 보냈습니다!</string>
     <string name="log_subtitle">마지막 100 개의 메시지 만 보관됩니다.</string>

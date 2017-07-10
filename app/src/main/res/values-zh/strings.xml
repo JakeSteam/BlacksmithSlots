@@ -1029,7 +1029,7 @@
     <string name="error_prestige_locked">要声望（+1通配符，-20% XP），您需要VIP 1和25级！</string>
     <string name="export_save">导出保存</string>
     <string name="inventory_subtitle">要了解获取项目的位置，请单击源。要了解使用方法，请点击使用。</string>
-    <string name="local_load_confirm">你确定要加载这个保存吗？\n\n当前：Lev%1$d（%2$d XP），%3$d唯一项目\n保存文件：Lev%4$d（%5$d XP），%6$d唯一你确定要加载这个保存吗？\n\n当前：Lev％1 $ d（％2 $ d XP），％3 $ d唯一项目\n保存文件：Lev％4 $ d（％5 $ d XP），％6 $ d唯一项目</string>
+    <string name="local_load_confirm">你确定要加载这个保存吗？\n\n当前：Lev%1$d（%2$d XP），%3$d唯一项目\n保存文件：Lev%4$d（%5$d XP），%6$d唯一你确定要加载这个保存吗？\n\n当前：Lev%1$d（%2$d XP），%3$d 唯一项目\n保存文件：Lev%4$d（%5$d XP），%6$d 唯一项目</string>
     <string name="local_save_loaded">成功加载和导入本地游戏保存！</string>
     <string name="local_save_saved">成功导出游戏保存到％s外部存储！</string>
     <string name="log_subtitle">只保留最后100条消息。</string>

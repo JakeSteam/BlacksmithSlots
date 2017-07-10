@@ -35,8 +35,10 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
     public final static int NO_DATABASE = 0;
     private final static int V1_0_0 = 4;
     private final static int V1_0_1 = 5;
+    private final static int V1_0_2 = 6;
+    private final static int V1_0_3 = 7;
 
-    public final static int LATEST_PATCH = V1_0_1;
+    public final static int LATEST_PATCH = V1_0_3;
 
     private Context context;
     private SplashScreenActivity callingActivity;
@@ -111,6 +113,8 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
         }
 
         tryApplyPatch(DatabaseHelper.V1_0_1, "Patch 1.0.1", R.string.patch_1_0_1, patch101());
+        tryApplyPatch(DatabaseHelper.V1_0_2, "Patch 1.0.2", R.string.patch_1_0_2, patch102());
+        tryApplyPatch(DatabaseHelper.V1_0_3, "Patch 1.0.3", R.string.patch_1_0_3, patch103());
 
         if (updatedDatabase) {
             setProgress(context.getString(R.string.progress_installed), 100);
@@ -133,6 +137,41 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
                     task.save();
                 }
                 new Setting(Enums.SettingGroup.Gameplay, Enums.Setting.SkipMinigames, false).save();
+            }
+        };
+    }
+
+    @NonNull
+    private Runnable patch102() {
+        return new Runnable() {
+            @Override
+            public void run() {
+                ItemBundle incorrectIronReward = Select.from(ItemBundle.class).where(
+                        Condition.prop("b").eq(2),
+                        Condition.prop("c").eq(11),
+                        Condition.prop("d").eq(1),
+                        Condition.prop("e").eq(5),
+                        Condition.prop("a").eq(27)).first();
+                if (incorrectIronReward != null) {
+                    incorrectIronReward.setType(Enums.Type.Hammer);
+                    incorrectIronReward.save();
+                }
+            }
+        };
+    }
+
+    @NonNull
+    private Runnable patch103() {
+        return new Runnable() {
+            @Override
+            public void run() {
+                List<Task> goldRedSandTasks = Select.from(Task.class).where(
+                        Condition.prop("a").eq(83)
+                ).list();
+                for(Task task : goldRedSandTasks) {
+                    task.setTier(Enums.Tier.None);
+                }
+                Task.saveInTx(goldRedSandTasks);
             }
         };
     }
@@ -774,7 +813,7 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
         itemBundles.add(new ItemBundle(Enums.Slot.Map7Gateman, Enums.Tier.Iron, Enums.Type.Pickaxe, 1, 5));
         itemBundles.add(new ItemBundle(Enums.Slot.Map7Gateman, Enums.Tier.Iron, Enums.Type.Hatchet, 1, 5));
         itemBundles.add(new ItemBundle(Enums.Slot.Map7Gateman, Enums.Tier.Iron, Enums.Type.FishingRod, 1, 5));
-        itemBundles.add(new ItemBundle(Enums.Slot.Map7Gateman, Enums.Tier.Iron, Enums.Type.HalfHelmet, 1, 5));
+        itemBundles.add(new ItemBundle(Enums.Slot.Map7Gateman, Enums.Tier.Iron, Enums.Type.Hammer, 1, 5));
         itemBundles.add(new ItemBundle(Enums.Slot.Map7Gateman, Enums.Tier.Internal, Enums.Type.Wildcard, 1, 10));
         itemBundles.add(new ItemBundle(Enums.Slot.Map7Gateman, Enums.Tier.Internal, Enums.Type.MinigameDice, 1, 6));
 
@@ -1493,10 +1532,10 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
         itemBundles.add(new ItemBundle(Enums.Slot.Map18Watchers, Enums.Tier.None, Enums.Type.SandBlue, 1));
         itemBundles.add(new ItemBundle(Enums.Slot.Map18Watchers, Enums.Tier.None, Enums.Type.SandYellow, 1));
         itemBundles.add(new ItemBundle(Enums.Slot.Map18Watchers, Enums.Tier.None, Enums.Type.SandGreen, 1));
-        tasks.add(new Task(Enums.Slot.Map18Watchers, 1, Enums.Tier.Gold, Enums.Type.SandRed, 10));
-        tasks.add(new Task(Enums.Slot.Map18Watchers, 2, Enums.Tier.Gold, Enums.Type.SandBlue, 10));
-        tasks.add(new Task(Enums.Slot.Map18Watchers, 3, Enums.Tier.Gold, Enums.Type.SandYellow, 10));
-        tasks.add(new Task(Enums.Slot.Map18Watchers, 4, Enums.Tier.Gold, Enums.Type.SandGreen, 10));
+        tasks.add(new Task(Enums.Slot.Map18Watchers, 1, Enums.Tier.None, Enums.Type.SandRed, 10));
+        tasks.add(new Task(Enums.Slot.Map18Watchers, 2, Enums.Tier.None, Enums.Type.SandBlue, 10));
+        tasks.add(new Task(Enums.Slot.Map18Watchers, 3, Enums.Tier.None, Enums.Type.SandYellow, 10));
+        tasks.add(new Task(Enums.Slot.Map18Watchers, 4, Enums.Tier.None, Enums.Type.SandGreen, 10));
         itemBundles.add(new ItemBundle(Enums.Slot.Map18Watchers, Enums.Tier.Gold, Enums.Type.Bar, 1, 5));
         itemBundles.add(new ItemBundle(Enums.Slot.Map18Watchers, Enums.Tier.Silver, Enums.Type.Bar, 1, 5));
         itemBundles.add(new ItemBundle(Enums.Slot.Map18Watchers, Enums.Tier.Internal, Enums.Type.Wildcard, 1, 8));
