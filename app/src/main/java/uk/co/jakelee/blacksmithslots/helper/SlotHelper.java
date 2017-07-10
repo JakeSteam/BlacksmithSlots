@@ -447,7 +447,7 @@ public class SlotHelper {
         for (ItemBundle item : slotResources) {
             resourceInventories.add(Inventory.get(item));
         }
-        DisplayHelper.populateItemRows(activity, R.id.resourceDisplay, inflater, picasso, params, resourceInventories, true);
+        DisplayHelper.populateItemRows(activity, R.id.resourceDisplay, inflater, picasso, params, resourceInventories, true, true);
 
         // Inventory
         StringBuilder resourceString = new StringBuilder();
@@ -469,7 +469,7 @@ public class SlotHelper {
         List<Inventory> inventoryItems = Select.from(Inventory.class).where(resourceString + rewardString.toString()).orderBy(orderBy).list();
         boolean onlyShowStockedItems = Setting.getBoolean(Enums.Setting.OnlyShowStocked);
 
-        DisplayHelper.populateItemRows(activity, R.id.inventoryDisplay, inflater, picasso, params, inventoryItems, onlyShowStockedItems);
+        DisplayHelper.populateItemRows(activity, R.id.inventoryDisplay, inflater, picasso, params, inventoryItems, onlyShowStockedItems, false);
     }
 
     private void resetRouteColours() {

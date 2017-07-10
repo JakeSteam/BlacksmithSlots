@@ -5,6 +5,8 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.util.DisplayMetrics;
@@ -156,7 +158,7 @@ public class DisplayHelper {
         return itemString.length() > 0 ? itemDivider.equals(", ") ? itemString.substring(0, itemString.length() - 2) : itemString : "";
     }
 
-    public static void populateItemRows(Activity activity, int id, LayoutInflater inflater, Picasso picasso, ViewGroup.LayoutParams params, List<Inventory> items, boolean showOutOfStock) {
+    public static void populateItemRows(Activity activity, int id, LayoutInflater inflater, Picasso picasso, ViewGroup.LayoutParams params, List<Inventory> items, boolean showOutOfStock, boolean makeBlack) {
         TableLayout layout = activity.findViewById(id);
         layout.removeAllViews();
         for (Inventory item : items) {
@@ -169,6 +171,15 @@ public class DisplayHelper {
 
             picasso.load(item.getDrawableId(activity)).into((ImageView)itemRow.findViewById(R.id.itemImage));
             ((TextView)itemRow.findViewById(R.id.itemInfo)).setText(item.getQuantity() + "x " + item.getName(activity));
+
+            // TODO: Ideally this should be based on actual slot requirements, not just 1...
+            if (makeBlack && item.getQuantity() < 1) {
+                try {
+                    ((ImageView) itemRow.findViewById(R.id.itemImage)).getDrawable().setColorFilter(Color.BLACK, PorterDuff.Mode.MULTIPLY);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
 
             layout.addView(itemRow, params);
         }
