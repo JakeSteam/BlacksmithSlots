@@ -1271,4 +1271,5 @@ AESCrypt (https://goo.gl/Ewk2tq) - Support code encryption.
     <string name="patch_1_0_1" translatable="false">Patch 1.0.1:\n- Doubled default autospins\n- Added skip minigame setting\n- Reduced dice minigame duration\n- Reduced Map 3 spins requirement\n- Fixed level tasks requiring 1 higher level than stated\n- Various crash fixes</string>
     <string name="patch_1_0_2" translatable="false">Patch 1.0.2:\n- Fixed items being offscreen in portrait mode\n- Fixed a lack of iron hammers\n- Fixed prestiges not being included in slot chances screen</string>
     <string name="patch_1_0_3" translatable="false">Patch 1.0.3:\n- Fixed impossible item\n- Fixed minigame skip not always applying\n- Fixed getting odd items in chest activity\n- Added outlining resource on slot screen when 0 remaining</string>
+    <string name="patch_1_0_3b" translatable="false">Patch 1.0.3b:\n- Tiny fix to prevent crash on minigame-only slot</string>
 </resources>

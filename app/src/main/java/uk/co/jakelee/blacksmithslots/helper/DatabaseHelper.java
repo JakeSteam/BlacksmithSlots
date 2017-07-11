@@ -37,8 +37,9 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
     private final static int V1_0_1 = 5;
     private final static int V1_0_2 = 6;
     private final static int V1_0_3 = 7;
+    private final static int V1_0_3b = 8;
 
-    public final static int LATEST_PATCH = V1_0_3;
+    public final static int LATEST_PATCH = V1_0_3b;
 
     private Context context;
     private SplashScreenActivity callingActivity;
@@ -115,6 +116,7 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
         tryApplyPatch(DatabaseHelper.V1_0_1, "Patch 1.0.1", R.string.patch_1_0_1, patch101());
         tryApplyPatch(DatabaseHelper.V1_0_2, "Patch 1.0.2", R.string.patch_1_0_2, patch102());
         tryApplyPatch(DatabaseHelper.V1_0_3, "Patch 1.0.3", R.string.patch_1_0_3, patch103());
+        tryApplyPatch(DatabaseHelper.V1_0_3b, "Patch 1.0.3b", R.string.patch_1_0_3b, patch103b());
 
         if (updatedDatabase) {
             setProgress(context.getString(R.string.progress_installed), 100);
@@ -172,6 +174,17 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
                     task.setTier(Enums.Tier.None);
                 }
                 Task.saveInTx(goldRedSandTasks);
+            }
+        };
+    }
+
+    @NonNull
+    private Runnable patch103b() {
+        return new Runnable() {
+            @Override
+            public void run() {
+                // Remove dice minigame from purple slot
+                ItemBundle.executeQuery("DELETE FROM d WHERE a = 15 AND b = 999 AND c = 996 AND f = 2");
             }
         };
     }
@@ -643,7 +656,6 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
         itemBundles.add(new ItemBundle(Enums.Slot.Map4Purple, Enums.Tier.Internal, Enums.Type.Wildcard, 1, 20));
         itemBundles.add(new ItemBundle(Enums.Slot.Map4Purple, Enums.Tier.Internal, Enums.Type.MinigameFlip, 1, 10));
         itemBundles.add(new ItemBundle(Enums.Slot.Map4Purple, Enums.Tier.Internal, Enums.Type.MinigameChest, 1, 10));
-        itemBundles.add(new ItemBundle(Enums.Slot.Map4Purple, Enums.Tier.Internal, Enums.Type.MinigameDice, 1, 10));
 
         slots.add(new Slot(Enums.Slot.Map4Guard, 1, 5, 2, Enums.Slot.Map4Fruit3, Enums.Person.Guard, Enums.Map.Marketplace));
         itemBundles.add(new ItemBundle(Enums.Slot.Map4Guard, Enums.Tier.PartialFood, Enums.Type.Steak, 1));
