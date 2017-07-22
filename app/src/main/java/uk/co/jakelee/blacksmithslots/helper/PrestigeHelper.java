@@ -28,7 +28,7 @@ public class PrestigeHelper {
             prestige.setIntValue(prestige.getIntValue() + 1);
             prestige.save();
 
-            Task.executeQuery("UPDATE i SET g = f, h = 0, i = 0");
+            Task.executeQuery("UPDATE i SET g = f, h = 0, i = 0 WHERE c != 3");
         }
     }
 }

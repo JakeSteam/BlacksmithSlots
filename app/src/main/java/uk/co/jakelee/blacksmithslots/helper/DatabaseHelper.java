@@ -38,8 +38,9 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
     private final static int V1_0_2 = 6;
     private final static int V1_0_3 = 7;
     private final static int V1_0_3b = 8;
+    private final static int V1_1_0 = 9;
 
-    public final static int LATEST_PATCH = V1_0_3b;
+    public final static int LATEST_PATCH = V1_1_0;
 
     private Context context;
     private SplashScreenActivity callingActivity;
@@ -117,6 +118,7 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
         tryApplyPatch(DatabaseHelper.V1_0_2, "Patch 1.0.2", R.string.patch_1_0_2, patch102());
         tryApplyPatch(DatabaseHelper.V1_0_3, "Patch 1.0.3", R.string.patch_1_0_3, patch103());
         tryApplyPatch(DatabaseHelper.V1_0_3b, "Patch 1.0.3b", R.string.patch_1_0_3b, patch103b());
+        tryApplyPatch(DatabaseHelper.V1_0_3b, "Patch 1.1.0", R.string.patch_1_1_0, patch110());
 
         if (updatedDatabase) {
             setProgress(context.getString(R.string.progress_installed), 100);
@@ -185,6 +187,16 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
             public void run() {
                 // Remove dice minigame from purple slot
                 ItemBundle.executeQuery("DELETE FROM d WHERE a = 15 AND b = 999 AND c = 996 AND f = 2");
+            }
+        };
+    }
+
+    @NonNull
+    private Runnable patch110() {
+        return new Runnable() {
+            @Override
+            public void run() {
+                Trophy.executeQuery("DELETE FROM c WHERE a = 0 AND b = 40");
             }
         };
     }
@@ -1954,7 +1966,6 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
         trophies.add(new Trophy(0, 37));
         trophies.add(new Trophy(0, 38));
         trophies.add(new Trophy(0, 39));
-        trophies.add(new Trophy(0, 40, 100));
         trophies.add(new Trophy(0, 41));
         trophies.add(new Trophy(0, 42));
         trophies.add(new Trophy(0, 43));
