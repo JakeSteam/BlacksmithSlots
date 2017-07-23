@@ -19,6 +19,7 @@ import uk.co.jakelee.blacksmithslots.R;
 import uk.co.jakelee.blacksmithslots.main.MapActivity;
 import uk.co.jakelee.blacksmithslots.main.SplashScreenActivity;
 import uk.co.jakelee.blacksmithslots.model.Achievement;
+import uk.co.jakelee.blacksmithslots.model.Farm;
 import uk.co.jakelee.blacksmithslots.model.Iap;
 import uk.co.jakelee.blacksmithslots.model.Inventory;
 import uk.co.jakelee.blacksmithslots.model.ItemBundle;
@@ -197,6 +198,68 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
             @Override
             public void run() {
                 Upgrade.executeQuery("DELETE FROM c WHERE a = 0 AND b = 40");
+
+                List<Farm> farms = new ArrayList<>();
+                List<ItemBundle> itemBundles = new ArrayList<>();
+                farms.add(new Farm(Enums.Farm.Mine, Enums.Slot.Map2Furnace, 200, 60, 4, 8));
+                itemBundles.add(new ItemBundle(Enums.Farm.Mine, Enums.Tier.Bronze, Enums.Type.Ore));
+                itemBundles.add(new ItemBundle(Enums.Farm.Mine, Enums.Tier.Iron, Enums.Type.Ore));
+                itemBundles.add(new ItemBundle(Enums.Farm.Mine, Enums.Tier.Steel, Enums.Type.Ore));
+                itemBundles.add(new ItemBundle(Enums.Farm.Mine, Enums.Tier.Mithril, Enums.Type.Ore));
+
+                farms.add(new Farm(Enums.Farm.Secondaries, Enums.Slot.Map2Armour, 200, 60, 4, 8));
+                itemBundles.add(new ItemBundle(Enums.Farm.Secondaries, Enums.Tier.Bronze, Enums.Type.Secondary));
+                itemBundles.add(new ItemBundle(Enums.Farm.Secondaries, Enums.Tier.Iron, Enums.Type.Secondary));
+                itemBundles.add(new ItemBundle(Enums.Farm.Secondaries, Enums.Tier.Steel, Enums.Type.Secondary));
+                itemBundles.add(new ItemBundle(Enums.Farm.Secondaries, Enums.Tier.Mithril, Enums.Type.Secondary));
+                
+                farms.add(new Farm(Enums.Farm.Fruit, Enums.Slot.Map3Frog, 60, 25, 5, 5));
+                itemBundles.add(new ItemBundle(Enums.Farm.Fruit, Enums.Tier.PartialFood, Enums.Type.Apple));
+                itemBundles.add(new ItemBundle(Enums.Farm.Fruit, Enums.Tier.PartialFood, Enums.Type.Lime));
+                itemBundles.add(new ItemBundle(Enums.Farm.Fruit, Enums.Tier.PartialFood, Enums.Type.Orange));
+                itemBundles.add(new ItemBundle(Enums.Farm.Fruit, Enums.Tier.PartialFood, Enums.Type.Peach));
+                itemBundles.add(new ItemBundle(Enums.Farm.Fruit, Enums.Tier.PartialFood, Enums.Type.Pineapple));
+                itemBundles.add(new ItemBundle(Enums.Farm.Fruit, Enums.Tier.PartialFood, Enums.Type.Banana));
+                itemBundles.add(new ItemBundle(Enums.Farm.Fruit, Enums.Tier.PartialFood, Enums.Type.Cherry));
+                itemBundles.add(new ItemBundle(Enums.Farm.Fruit, Enums.Tier.PartialFood, Enums.Type.Watermelon));
+                itemBundles.add(new ItemBundle(Enums.Farm.Fruit, Enums.Tier.PartialFood, Enums.Type.Grapes));
+                itemBundles.add(new ItemBundle(Enums.Farm.Fruit, Enums.Tier.None, Enums.Type.Apple));
+                itemBundles.add(new ItemBundle(Enums.Farm.Fruit, Enums.Tier.None, Enums.Type.Lime));
+                itemBundles.add(new ItemBundle(Enums.Farm.Fruit, Enums.Tier.None, Enums.Type.Orange));
+                itemBundles.add(new ItemBundle(Enums.Farm.Fruit, Enums.Tier.None, Enums.Type.Peach));
+                itemBundles.add(new ItemBundle(Enums.Farm.Fruit, Enums.Tier.None, Enums.Type.Pineapple));
+                itemBundles.add(new ItemBundle(Enums.Farm.Fruit, Enums.Tier.None, Enums.Type.Banana));
+                itemBundles.add(new ItemBundle(Enums.Farm.Fruit, Enums.Tier.None, Enums.Type.Cherry));
+                itemBundles.add(new ItemBundle(Enums.Farm.Fruit, Enums.Tier.None, Enums.Type.Watermelon));
+                itemBundles.add(new ItemBundle(Enums.Farm.Fruit, Enums.Tier.None, Enums.Type.Grapes));
+
+                farms.add(new Farm(Enums.Farm.Merchant, Enums.Slot.Map4Fruit3, 80, 25, 3, 5));
+                itemBundles.add(new ItemBundle(Enums.Farm.Merchant, Enums.Tier.PartialFood, Enums.Type.Grapes));
+                itemBundles.add(new ItemBundle(Enums.Farm.Merchant, Enums.Tier.PartialFood, Enums.Type.Potato));
+                itemBundles.add(new ItemBundle(Enums.Farm.Merchant, Enums.Tier.PartialFood, Enums.Type.Egg));
+                itemBundles.add(new ItemBundle(Enums.Farm.Merchant, Enums.Tier.PartialFood, Enums.Type.Fish));
+                itemBundles.add(new ItemBundle(Enums.Farm.Merchant, Enums.Tier.None, Enums.Type.Grapes));
+                itemBundles.add(new ItemBundle(Enums.Farm.Merchant, Enums.Tier.None, Enums.Type.Potato));
+                itemBundles.add(new ItemBundle(Enums.Farm.Merchant, Enums.Tier.None, Enums.Type.Egg));
+                itemBundles.add(new ItemBundle(Enums.Farm.Merchant, Enums.Tier.None, Enums.Type.Fish));
+
+
+                farms.add(new Farm(Enums.Farm.Sands, Enums.Slot.Map5Gate, 40, 10, 3, 10));
+                itemBundles.add(new ItemBundle(Enums.Farm.Sands, Enums.Tier.None, Enums.Type.SandBlue));
+                itemBundles.add(new ItemBundle(Enums.Farm.Sands, Enums.Tier.None, Enums.Type.SandGreen));
+                itemBundles.add(new ItemBundle(Enums.Farm.Sands, Enums.Tier.None, Enums.Type.SandRed));
+                itemBundles.add(new ItemBundle(Enums.Farm.Sands, Enums.Tier.None, Enums.Type.SandYellow));
+
+                farms.add(new Farm(Enums.Farm.Gems, Enums.Slot.Map6Elitist, 20, 5, 3, 10));
+                itemBundles.add(new ItemBundle(Enums.Farm.Gems, Enums.Tier.None, Enums.Type.GemBlue));
+                itemBundles.add(new ItemBundle(Enums.Farm.Gems, Enums.Tier.None, Enums.Type.GemGreen));
+                itemBundles.add(new ItemBundle(Enums.Farm.Gems, Enums.Tier.None, Enums.Type.GemRed));
+                itemBundles.add(new ItemBundle(Enums.Farm.Gems, Enums.Tier.None, Enums.Type.GemYellow));
+                itemBundles.add(new ItemBundle(Enums.Farm.Gems, Enums.Tier.None, Enums.Type.GemOrange));
+
+                ItemBundle.saveInTx(itemBundles);
+                Farm.saveInTx(farms);
+
             }
         };
     }

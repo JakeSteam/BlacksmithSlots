@@ -168,6 +168,7 @@ public class MapActivity extends BaseActivity implements
         ViewPagerIndicator indicator = findViewById(R.id.view_pager_indicator);
         indicator.setupWithViewPager(mapPager);
         indicator.addOnPageChangeListener(mapChangeListener());
+        mapPager.setCurrentItem(1, false);
     }
 
     @NonNull
@@ -178,7 +179,7 @@ public class MapActivity extends BaseActivity implements
                 findViewById(R.id.leftArrow).setVisibility(position == 0 ? View.INVISIBLE : View.VISIBLE);
                 findViewById(R.id.rightArrow).setVisibility(position == (MapPagerAdapter.townLayouts.length - 1) ? View.INVISIBLE : View.VISIBLE);
 
-                String mapName = TextHelper.getInstance(getApplicationContext()).getText(DisplayHelper.getMapString(position + 1));
+                String mapName = TextHelper.getInstance(getApplicationContext()).getText(DisplayHelper.getMapString(position));
                 mapTextView.setText(mapName);
                 selectedSlot = 0;
                 loadSidebar(null);
@@ -353,6 +354,10 @@ public class MapActivity extends BaseActivity implements
                 prefs.edit().putInt("tutorialStageCompleted", 1).apply();
             }
         }
+    }
+
+    public void selectFarm(View v) {
+        Toast.makeText(this, "Farm: #" + Integer.parseInt((String) v.getTag()), Toast.LENGTH_SHORT).show();
     }
 
     public void selectSlot(View v) {

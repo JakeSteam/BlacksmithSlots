@@ -122,6 +122,10 @@
         <item name="android:alpha">1</item>
     </style>
 
+    <style name="FarmClickArea" parent="SlotClickArea">
+        <item name="android:onClick">selectFarm</item>
+    </style>
+
     <style name="SlotPerson">
         <item name="layout_heightPercent">6.66%</item>
         <item name="layout_widthPercent">6.66%</item>

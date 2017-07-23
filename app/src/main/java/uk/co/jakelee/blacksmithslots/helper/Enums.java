@@ -18,6 +18,22 @@ public class Enums {
         }
     }
 
+    public enum Farm {
+        Mine(1), Secondaries(2), Fruit(3), Merchant(4), Sands(5), Gems(6);
+        public final int value;
+        Farm(int value) {
+            this.value = value;
+        }
+        public static Farm get(int value) {
+            for (Farm item : Farm.values()) {
+                if (value == item.value) {
+                    return item;
+                }
+            }
+            return null;
+        }
+    }
+
     public enum Language {
         English(1), Chinese(2), Dutch(3), French(4), German(5), Korean(6), Portuguese(7), Russian(8), Spanish(9);
         public final int value;
@@ -61,7 +77,7 @@ public class Enums {
     }
 
     public enum ItemBundleType {
-        SlotResource(1), SlotReward(2), IapReward(3), PassReward(4);
+        SlotResource(1), SlotReward(2), IapReward(3), PassReward(4), FarmReward(5);
         public final int value;
         ItemBundleType(int value) {
             this.value = value;

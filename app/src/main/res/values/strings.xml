@@ -990,9 +990,7 @@
     <string name="slot_100_unlocked">Oh, you have! Come on in!</string>
     <string name="task_100_1_text">Have you been before?</string>
 
-
-
-
+    <string name="map_0">Family Farm</string>
     <string name="map_1">Home Sweet Home</string>
     <string name="map_2">The Neighbourhood</string>
     <string name="map_3">The Forest</string>

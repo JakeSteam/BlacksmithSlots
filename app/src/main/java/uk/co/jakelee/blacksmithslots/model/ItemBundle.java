@@ -66,7 +66,6 @@ public class ItemBundle extends SugarRecord {
         this.bundleType = Enums.ItemBundleType.SlotResource.value;
     }
 
-
     // Used by pass reward resources
     public ItemBundle(int day, Enums.Tier tier, Enums.Type type, int quantity) {
         this.tier = tier.value;
@@ -94,6 +93,16 @@ public class ItemBundle extends SugarRecord {
         this.identifier = iap.value;
         this.weighting = price;
         this.bundleType = Enums.ItemBundleType.IapReward.value;
+    }
+
+    // Used by farm items
+    public ItemBundle(Enums.Farm farm, Enums.Tier tier, Enums.Type type) {
+        this.tier = tier.value;
+        this.type = type.value;
+        this.quantity = 0; // used as tier
+        this.identifier = farm.value;
+        this.weighting = 0;
+        this.bundleType = Enums.ItemBundleType.FarmReward.value;
     }
 
     public int getIdentifier() {

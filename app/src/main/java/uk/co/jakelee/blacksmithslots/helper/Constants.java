@@ -25,6 +25,7 @@ public class Constants {
     public static final int MINUTES_PER_CHARGE = 10;
     public static final int CHARGE_MAX = 5;
     public static final int MEMORY_GAME_LIVES = 5;
+    public static final double FARM_TIME_ADJUST = 0.9;
 
     public final static int NOTIFICATION_PERIODIC_BONUS = 100;
     public final static int NOTIFICATION_PASS_BONUS = 101;
