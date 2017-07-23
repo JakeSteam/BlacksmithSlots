@@ -1272,7 +1272,7 @@ AESCrypt (https://goo.gl/Ewk2tq) - Support code encryption.
     <string name="patch_1_0_2" translatable="false">Patch 1.0.2:\n- Fixed items being offscreen in portrait mode\n- Fixed a lack of iron hammers\n- Fixed prestiges not being included in slot chances screen</string>
     <string name="patch_1_0_3" translatable="false">Patch 1.0.3:\n- Fixed impossible item\n- Fixed minigame skip not always applying\n- Fixed getting odd items in chest activity\n- Added outlining resource on slot screen when 0 remaining</string>
     <string name="patch_1_0_3b" translatable="false">Patch 1.0.3b:\n- Tiny fix to prevent crash on minigame-only slot</string>
-    <string name="patch_1_1_0" translatable="false">Patch 1.1.0:\n- Added item upgrades! Merged with the existing trophies, they allow you to improve reward probabilities!</string>
+    <string name="patch_1_1_0" translatable="false">Patch 1.1.0:\n- Added item upgrades! Merged with the existing trophies, they allow you to improve reward probabilities!\n- Fixed leaderboards and achievements.\n- Fixed action buttons appearing on slot open.</string>
     <string name="boost_level">Level %s</string>
     <string name="item_trophy">Trophy:</string>
     <string name="item_boost">Boost:</string>
