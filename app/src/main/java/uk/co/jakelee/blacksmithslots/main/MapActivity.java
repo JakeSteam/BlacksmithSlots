@@ -326,7 +326,6 @@ public class MapActivity extends BaseActivity implements
             NotificationHelper.addBlacksmithPassNotification(this, notificationSound);
         }
 
-        GooglePlayHelper.mGoogleApiClient.disconnect();
         handler.removeCallbacks(null);
     }
 

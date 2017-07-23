@@ -118,7 +118,7 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
         tryApplyPatch(DatabaseHelper.V1_0_2, "Patch 1.0.2", R.string.patch_1_0_2, patch102());
         tryApplyPatch(DatabaseHelper.V1_0_3, "Patch 1.0.3", R.string.patch_1_0_3, patch103());
         tryApplyPatch(DatabaseHelper.V1_0_3b, "Patch 1.0.3b", R.string.patch_1_0_3b, patch103b());
-        tryApplyPatch(DatabaseHelper.V1_0_3b, "Patch 1.1.0", R.string.patch_1_1_0, patch110());
+        tryApplyPatch(DatabaseHelper.V1_1_0, "Patch 1.1.0", R.string.patch_1_1_0, patch110());
 
         if (updatedDatabase) {
             setProgress(context.getString(R.string.progress_installed), 100);
