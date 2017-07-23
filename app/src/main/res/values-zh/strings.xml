@@ -1075,7 +1075,7 @@
     <string name="minigame_memory_game_over">游戏结束！\n\n奖励：\n%1$s</string>
     <string name="setting_18">跳过迷你游戏</string>
     <string name="setting_desc_18">启用自动播放功能时，会跳过小游戏。</string>
-    <string name="boost_handin_body">您是否希望将%1$s升级升级至%2$d，以换取％3$dx%1$s？</string>
+    <string name="boost_handin_body">您是否希望将%1$s升级升级至%2$d，以换取%3$dx%1$s？</string>
     <string name="boost_handin_title">升级项目提升</string>
     <string name="boost_info">升级项目的提升级别会增加项目在插槽中的显示可能性。 如有需要，可以停用。</string>
     <string name="boost_level">等级%s</string>
