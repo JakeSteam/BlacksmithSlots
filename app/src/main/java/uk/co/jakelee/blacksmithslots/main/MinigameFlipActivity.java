@@ -1,7 +1,9 @@
 package uk.co.jakelee.blacksmithslots.main;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -19,8 +21,10 @@ import uk.co.jakelee.blacksmithslots.model.ItemBundle;
 import uk.co.jakelee.blacksmithslots.model.Slot;
 
 public class MinigameFlipActivity extends MinigameActivity {
+    private Handler handler = new Handler();
     private List<ItemBundle> resources;
     private int multiplier = 5;
+    private boolean isAutospin = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +33,7 @@ public class MinigameFlipActivity extends MinigameActivity {
         ButterKnife.bind(this);
 
         Intent intent = getIntent();
+        isAutospin = intent.getBooleanExtra("autospin", false);
         int slotId = intent.getIntExtra("slot", 0);
         if (slotId == 0) {
             confirmClose();
@@ -43,6 +48,16 @@ public class MinigameFlipActivity extends MinigameActivity {
             for (ItemBundle resource : resources) {
                 itemImages.addView(DisplayHelper.createImageView(this, DisplayHelper.getItemImageFile(resource.getTier().value, resource.getType().value), 120, 120));
             }
+        }
+
+        if (isAutospin) {
+            final Activity activity = this;
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    stick(new View(activity));
+                }
+            }, 1000);
         }
     }
 
