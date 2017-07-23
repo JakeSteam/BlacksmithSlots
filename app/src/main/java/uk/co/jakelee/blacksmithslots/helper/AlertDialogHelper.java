@@ -117,6 +117,28 @@ public class AlertDialogHelper {
         dialog.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE);
     }
 
+    public static void boostHandIn(final TrophyActivity activity, Trophy trophy, Inventory inventory) {
+        String itemName = inventory.getName(activity);
+
+        displayAlertDialog(activity, activity.getString(R.string.boost_handin_title),
+                String.format(Locale.ENGLISH, activity.getString(R.string.boost_handin_body),
+                        itemName,
+                        trophy.getBoostTier() + 1,
+                        trophy.getBoostTierUpgradeCost()),
+                new DialogAction(activity.getString(R.string.cancel), new Runnable() {
+                    @Override
+                    public void run() {
+
+                    }
+                }),
+                new DialogAction(activity.getString(R.string.upgrade), new Runnable() {
+                    @Override
+                    public void run() {
+                        activity.upgradeBoostTier();
+                    }
+                }));
+    }
+
     public static void trophyHandIn(final TrophyActivity activity, Trophy trophy, Inventory inventory) {
         String itemName = inventory.getName(activity);
         final int maximumPossible = trophy.getItemsRemaining() > inventory.getQuantity() ? inventory.getQuantity() : trophy.getItemsRemaining();
@@ -135,13 +157,13 @@ public class AlertDialogHelper {
                 new DialogAction(maximumPossible + "", new Runnable() {
                     @Override
                     public void run() {
-                        activity.handInItems(maximumPossible);
+                        activity.handInTrophyItems(maximumPossible);
                     }
                 }),
                 new DialogAction(halfMax + "", new Runnable() {
                     @Override
                     public void run() {
-                        activity.handInItems(halfMax);
+                        activity.handInTrophyItems(halfMax);
                     }
                 }));
     }

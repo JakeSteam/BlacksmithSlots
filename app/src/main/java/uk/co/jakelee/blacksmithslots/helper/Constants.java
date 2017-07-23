@@ -10,6 +10,9 @@ public class Constants {
     public final static int STATUS_NO_MATCH = 0;
     public final static int STATUS_MATCH = 1;
 
+    public final static int ITEM_TIER_BASE = 100;
+    public final static int ITEM_TIER_MULTIPLIER = 4;
+
     public final static int ROWS = 5;
     public final static Double LEVEL_MODIFIER = 0.07;
     public final static int STARTING_XP = 205;

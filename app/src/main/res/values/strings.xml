@@ -1167,13 +1167,13 @@ AESCrypt (https://goo.gl/Ewk2tq) - Support code encryption.
     <string name="claimed_prefix">Claimed:</string>
     <string name="trophies">Trophies</string>
     <string name="trophies_progress">Trophies:\u00A0\u00A0%1$d/%2$d\u00A0\u00A0(+%3$,.1f%% XP)</string>
-    <string name="trophy_progress_unachieved" translatable="false">%1$d/%2$dx %3$s</string>
+    <string name="trophy_progress_unachieved" translatable="false">%1$d/%2$dx</string>
     <string name="hand_in_items">Hand in items</string>
     <string name="hand_in_items_long">How many %1$s would you like to hand in?\n\nHanding in %2$d will unlock the trophy!</string>
     <string name="error_trophy_no_items">You can\'t hand in items you don\'t own!</string>
     <string name="get_fact">Get fact!</string>
     <string name="hints">Hints</string>
-    <string name="trophy_progress_achieved">%1$s trophy unlocked!</string>
+    <string name="trophy_progress_achieved">Unlocked!</string>
     <string name="extra_wildcards">Extra Wildcards</string>
     <string name="vip_comparison">VIP Comparison</string>
     <string name="upgrade_vip_level">Upgrade VIP Level</string>
@@ -1273,4 +1273,16 @@ AESCrypt (https://goo.gl/Ewk2tq) - Support code encryption.
     <string name="patch_1_0_3" translatable="false">Patch 1.0.3:\n- Fixed impossible item\n- Fixed minigame skip not always applying\n- Fixed getting odd items in chest activity\n- Added outlining resource on slot screen when 0 remaining</string>
     <string name="patch_1_0_3b" translatable="false">Patch 1.0.3b:\n- Tiny fix to prevent crash on minigame-only slot</string>
     <string name="patch_1_1_0" translatable="false">Patch 1.1.0</string>
+    <string name="boost_level">Level %s</string>
+    <string name="item_trophy">Trophy:</string>
+    <string name="item_boost">Boost:</string>
+    <string name="question_mark">\?</string>
+    <string name="exclamation_mark">!</string>
+    <string name="boost_info">Upgrading an item\'s boost level increases how likely that item is to appear in slots. It can be deactivated if necessary.</string>
+    <string name="trophy_info">Handing in enough of a specific item unlocks the trophy. Owning a trophy adds bonus XP to every slot spin!</string>
+    <string name="upgrade">Upgrade</string>
+    <string name="boost_handin_title">Upgrade item boost</string>
+    <string name="boost_handin_body">Would you like to upgrade your %1$s boost to level %2$d in exchange for %3$dx %1$s?</string>
+    <string name="trophy_unlocked">Trophy unlocked, enjoy your XP boost!</string>
+    <string name="trophy_items_incomplete">Trophy items handed in, but not yet enough for a trophy!</string>
 </resources>
