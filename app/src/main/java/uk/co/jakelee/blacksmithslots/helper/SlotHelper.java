@@ -115,7 +115,7 @@ public class SlotHelper {
             } else {
                 AlertHelper.info(activity, activity.getString(R.string.minigame_won_nothing), false);
             }
-        } else if (requestCode == Constants.MINIGAME_CHEST) {
+        } else if (requestCode == Constants.MINIGAME_CHEST && data != null) {
             if (data.getIntExtra("quantity", 0) > 0) {
                 ItemBundle winnings = new ItemBundle(
                         data.getIntExtra("tier", 0),

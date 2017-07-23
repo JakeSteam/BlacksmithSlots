@@ -2,11 +2,13 @@ package uk.co.jakelee.blacksmithslots.main;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Pair;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -23,9 +25,12 @@ import uk.co.jakelee.blacksmithslots.model.ItemBundle;
 import uk.co.jakelee.blacksmithslots.model.Slot;
 
 public class MinigameChestActivity extends MinigameActivity {
+    private Handler handler = new Handler();
     private boolean selected = false;
     private final List<Pair<Integer, ItemBundle>> potentialRewards = new ArrayList<>();
     private ItemBundle winnings;
+    private boolean isAutospin = false;
+    private ImageView autospinView;
     private final static int[] chestDrawables = {R.drawable.chest_1, R.drawable.chest_2, R.drawable.chest_3, R.drawable.chest_4, R.drawable.chest_5, R.drawable.chest_6};
 
     @BindView(R.id.chestContainer) LinearLayout chestContainer;
@@ -39,6 +44,7 @@ public class MinigameChestActivity extends MinigameActivity {
         ButterKnife.bind(this);
 
         Intent intent = getIntent();
+        isAutospin = intent.getBooleanExtra("autospin", false);
         int slotId = intent.getIntExtra("slot", 0);
         if (slotId == 0) {
             confirmClose();
@@ -46,14 +52,23 @@ public class MinigameChestActivity extends MinigameActivity {
 
         Slot slot = Slot.get(slotId);
         if (slot != null) {
-
             List<ItemBundle> uniqueRewards = getUniqueRewards(slotId);
             if (uniqueRewards == null) {
+                Toast.makeText(this, "Failed to find enough rewards to populate minigame chests! Please contact support.", Toast.LENGTH_SHORT).show();
                 finish();
             } else {
                 populatePotentialRewards(uniqueRewards);
                 populateChests();
             }
+        }
+
+        if (isAutospin) {
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    selectChest(autospinView);
+                }
+            }, 1000);
         }
     }
 
@@ -89,6 +104,10 @@ public class MinigameChestActivity extends MinigameActivity {
                     e.printStackTrace();
                 }
                 chest.setTag(index++);
+
+                if (isAutospin && autospinView == null) {
+                    autospinView = chest;
+                }
             }
         }
     }
@@ -104,6 +123,15 @@ public class MinigameChestActivity extends MinigameActivity {
             ((ImageView)v).setImageResource(getWinImage(winnings));
 
             close.setVisibility(View.VISIBLE);
+        }
+
+        if (isAutospin) {
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    confirmClose();
+                }
+            }, 1000);
         }
     }
 
