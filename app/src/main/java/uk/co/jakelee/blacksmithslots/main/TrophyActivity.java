@@ -23,7 +23,7 @@ import uk.co.jakelee.blacksmithslots.helper.AlertDialogHelper;
 import uk.co.jakelee.blacksmithslots.helper.AlertHelper;
 import uk.co.jakelee.blacksmithslots.helper.Constants;
 import uk.co.jakelee.blacksmithslots.model.Inventory;
-import uk.co.jakelee.blacksmithslots.model.Trophy;
+import uk.co.jakelee.blacksmithslots.model.Upgrade;
 
 public class TrophyActivity extends BaseActivity {
     @BindView(R.id.trophyGrid) GridView trophyGrid;
@@ -46,7 +46,7 @@ public class TrophyActivity extends BaseActivity {
 
     private void populateTrophyList() {
         ((TextView)findViewById(R.id.trophyTitle)).setText(getTrophyProgressString());
-        TrophyGridAdapter adapter = new TrophyGridAdapter(this, Select.from(Trophy.class).list());
+        TrophyGridAdapter adapter = new TrophyGridAdapter(this, Select.from(Upgrade.class).list());
         trophyGrid.setAdapter(adapter);
         trophyGrid.setOnItemClickListener(getTrophyClickListener());
         populateSidebar();
@@ -74,17 +74,17 @@ public class TrophyActivity extends BaseActivity {
 
     @OnClick(R.id.boostToggle)
     public void toggleBoost() {
-        Trophy trophy = Trophy.findById(Trophy.class, currentTrophy);
-        trophy.setBoostEnabled(!trophy.isBoostEnabled());
-        trophy.save();
-        boostToggle.setBackgroundResource(trophy.isBoostEnabled() ? R.drawable.box_green : R.drawable.box_orange);
-        AlertHelper.info(this, String.format(Locale.ENGLISH, "Trophy's boost is now %s!",
-                getString(trophy.isBoostEnabled() ? R.string.enabled : R.string.not_enabled)), true);
+        Upgrade upgrade = Upgrade.findById(Upgrade.class, currentTrophy);
+        upgrade.setBoostEnabled(!upgrade.isBoostEnabled());
+        upgrade.save();
+        boostToggle.setBackgroundResource(upgrade.isBoostEnabled() ? R.drawable.box_green : R.drawable.box_orange);
+        AlertHelper.info(this, String.format(Locale.ENGLISH, "Upgrade's boost is now %s!",
+                getString(upgrade.isBoostEnabled() ? R.string.enabled : R.string.not_enabled)), true);
     }
 
     private String getTrophyProgressString() {
-        int achievedTrophies = (int)Select.from(Trophy.class).where(Condition.prop("e").gt(0)).count();
-        int totalTrophies = (int)Trophy.count(Trophy.class);
+        int achievedTrophies = (int)Select.from(Upgrade.class).where(Condition.prop("e").gt(0)).count();
+        int totalTrophies = (int) Upgrade.count(Upgrade.class);
         double boost = achievedTrophies * Constants.TROPHY_XP_MODIFIER;
         return String.format(Locale.ENGLISH, getString(R.string.trophies_progress),
                 achievedTrophies,
@@ -93,49 +93,49 @@ public class TrophyActivity extends BaseActivity {
     }
 
     private void populateSidebar() {
-        Trophy trophy = Trophy.findById(Trophy.class, currentTrophy);
-        itemImage.setImageResource(TrophyGridAdapter.getTrophyResource(this, trophy));
-        itemName.setText(TrophyGridAdapter.getTrophyName(this, trophy));
-        boostToggle.setBackgroundResource(trophy.isBoostEnabled() ? R.drawable.box_green : R.drawable.box_orange);
-        trophyHandInButton.setBackgroundResource(trophy.isAchieved() ? R.drawable.box_green : R.drawable.box_orange);
-        this.boostHandInButton.setText(String.format(Locale.ENGLISH, getString(R.string.boost_level), trophy.getBoostTier()));
-        if (trophy.isAchieved()) {
+        Upgrade upgrade = Upgrade.findById(Upgrade.class, currentTrophy);
+        itemImage.setImageResource(TrophyGridAdapter.getTrophyResource(this, upgrade));
+        itemName.setText(TrophyGridAdapter.getTrophyName(this, upgrade));
+        boostToggle.setBackgroundResource(upgrade.isBoostEnabled() ? R.drawable.box_green : R.drawable.box_orange);
+        trophyHandInButton.setBackgroundResource(upgrade.isAchieved() ? R.drawable.box_green : R.drawable.box_orange);
+        this.boostHandInButton.setText(String.format(Locale.ENGLISH, getString(R.string.boost_level), upgrade.getBoostTier()));
+        if (upgrade.isAchieved()) {
             this.trophyHandInButton.setText(R.string.trophy_progress_achieved);
         } else {
             this.trophyHandInButton.setText(String.format(Locale.ENGLISH, getString(R.string.trophy_progress_unachieved),
-                    trophy.getItemsHandedIn(),
-                    trophy.getItemsRequired()));
+                    upgrade.getItemsHandedIn(),
+                    upgrade.getItemsRequired()));
         }
     }
 
     @OnClick(R.id.trophyHandInButton)
     public void handInTrophyItems() {
-        Trophy trophy = Trophy.findById(Trophy.class, currentTrophy);
-        Inventory inventory = Inventory.getInventory(trophy.getItemTier(), trophy.getItemType());
+        Upgrade upgrade = Upgrade.findById(Upgrade.class, currentTrophy);
+        Inventory inventory = Inventory.getInventory(upgrade.getItemTier(), upgrade.getItemType());
 
-        if (!trophy.isAchieved()) {
+        if (!upgrade.isAchieved()) {
             if (inventory.getQuantity() <= 0) {
                 AlertHelper.error(this, getString(R.string.error_trophy_no_items), false);
             } else {
-                AlertDialogHelper.trophyHandIn(this, trophy, inventory);
+                AlertDialogHelper.trophyHandIn(this, upgrade, inventory);
             }
         }
     }
 
     public void handInTrophyItems(int quantity) {
-        Trophy trophy = Trophy.findById(Trophy.class, currentTrophy);
-        Inventory inventory = Inventory.getInventory(trophy.getItemTier(), trophy.getItemType());
+        Upgrade upgrade = Upgrade.findById(Upgrade.class, currentTrophy);
+        Inventory inventory = Inventory.getInventory(upgrade.getItemTier(), upgrade.getItemType());
 
         inventory.setQuantity(inventory.getQuantity() - quantity);
-        trophy.setItemsHandedIn(trophy.getItemsHandedIn() + quantity);
+        upgrade.setItemsHandedIn(upgrade.getItemsHandedIn() + quantity);
 
         inventory.save();
-        trophy.save();
+        upgrade.save();
 
-        // If we've just unlocked a trophy, update the main trophy list
-        if (trophy.getItemsRemaining() <= 0) {
-            trophy.setAchieved();
-            trophy.save();
+        // If we've just unlocked a upgrade, update the main upgrade list
+        if (upgrade.getItemsRemaining() <= 0) {
+            upgrade.setAchieved();
+            upgrade.save();
             ((TextView)findViewById(R.id.trophyTitle)).setText(getTrophyProgressString());
             AlertHelper.success(this, getString(R.string.trophy_unlocked), true);
             populateTrophyList();
@@ -147,21 +147,21 @@ public class TrophyActivity extends BaseActivity {
 
     @OnClick(R.id.boostHandInButton)
     public void handInBoostItems() {
-        Trophy trophy = Trophy.findById(Trophy.class, currentTrophy);
-        Inventory inventory = Inventory.getInventory(trophy.getItemTier(), trophy.getItemType());
+        Upgrade upgrade = Upgrade.findById(Upgrade.class, currentTrophy);
+        Inventory inventory = Inventory.getInventory(upgrade.getItemTier(), upgrade.getItemType());
 
         if (inventory.getQuantity() <= 0) {
             AlertHelper.error(this, getString(R.string.error_trophy_no_items), false);
         } else {
-            AlertDialogHelper.boostHandIn(this, trophy, inventory);
+            AlertDialogHelper.boostHandIn(this, upgrade, inventory);
         }
     }
 
     public void upgradeBoostTier() {
-        Trophy trophy = Trophy.findById(Trophy.class, currentTrophy);
-        Inventory inventory = Inventory.getInventory(trophy.getItemTier(), trophy.getItemType());
+        Upgrade upgrade = Upgrade.findById(Upgrade.class, currentTrophy);
+        Inventory inventory = Inventory.getInventory(upgrade.getItemTier(), upgrade.getItemType());
 
-        int quantityNeeded = trophy.getBoostTierUpgradeCost();
+        int quantityNeeded = upgrade.getBoostTierUpgradeCost();
 
         if (inventory.getQuantity() < quantityNeeded) {
             AlertHelper.error(this, getString(R.string.error_trophy_no_items), false);
@@ -169,8 +169,8 @@ public class TrophyActivity extends BaseActivity {
             inventory.setQuantity(inventory.getQuantity() - quantityNeeded);
             inventory.save();
 
-            trophy.setBoostTier(trophy.getBoostTier() + 1);
-            trophy.save();
+            upgrade.setBoostTier(upgrade.getBoostTier() + 1);
+            upgrade.save();
 
             populateSidebar();
         }

@@ -27,7 +27,7 @@ import uk.co.jakelee.blacksmithslots.model.Setting;
 import uk.co.jakelee.blacksmithslots.model.Slot;
 import uk.co.jakelee.blacksmithslots.model.Statistic;
 import uk.co.jakelee.blacksmithslots.model.Task;
-import uk.co.jakelee.blacksmithslots.model.Trophy;
+import uk.co.jakelee.blacksmithslots.model.Upgrade;
 
 import static android.content.Context.MODE_PRIVATE;
 
@@ -196,7 +196,7 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
         return new Runnable() {
             @Override
             public void run() {
-                Trophy.executeQuery("DELETE FROM c WHERE a = 0 AND b = 40");
+                Upgrade.executeQuery("DELETE FROM c WHERE a = 0 AND b = 40");
             }
         };
     }
@@ -1891,96 +1891,96 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
     }
 
     private void createTrophies() {
-        List<Trophy> trophies = new ArrayList<>();
+        List<Upgrade> trophies = new ArrayList<>();
         // Add bronze to mithril items
         for (int i = Enums.Tier.Bronze.value; i <= Enums.Tier.Mithril.value; i++) {
-            trophies.add(new Trophy(i, 1));
-            trophies.add(new Trophy(i, 2));
-            trophies.add(new Trophy(i, 3));
-            trophies.add(new Trophy(i, 4));
-            trophies.add(new Trophy(i, 5));
-            trophies.add(new Trophy(i, 6));
-            trophies.add(new Trophy(i, 7));
-            trophies.add(new Trophy(i, 8));
-            trophies.add(new Trophy(i, 9));
-            trophies.add(new Trophy(i, 10));
-            trophies.add(new Trophy(i, 11));
-            trophies.add(new Trophy(i, 12));
-            trophies.add(new Trophy(i, 13));
-            trophies.add(new Trophy(i, 14));
-            trophies.add(new Trophy(i, 15));
-            trophies.add(new Trophy(i, 16));
-            trophies.add(new Trophy(i, 17));
-            trophies.add(new Trophy(i, 18));
-            trophies.add(new Trophy(i, 19));
+            trophies.add(new Upgrade(i, 1));
+            trophies.add(new Upgrade(i, 2));
+            trophies.add(new Upgrade(i, 3));
+            trophies.add(new Upgrade(i, 4));
+            trophies.add(new Upgrade(i, 5));
+            trophies.add(new Upgrade(i, 6));
+            trophies.add(new Upgrade(i, 7));
+            trophies.add(new Upgrade(i, 8));
+            trophies.add(new Upgrade(i, 9));
+            trophies.add(new Upgrade(i, 10));
+            trophies.add(new Upgrade(i, 11));
+            trophies.add(new Upgrade(i, 12));
+            trophies.add(new Upgrade(i, 13));
+            trophies.add(new Upgrade(i, 14));
+            trophies.add(new Upgrade(i, 15));
+            trophies.add(new Upgrade(i, 16));
+            trophies.add(new Upgrade(i, 17));
+            trophies.add(new Upgrade(i, 18));
+            trophies.add(new Upgrade(i, 19));
         }
 
         // Add adamant items
-        trophies.add(new Trophy(5, 1, 10));
-        trophies.add(new Trophy(5, 2, 10));
-        trophies.add(new Trophy(5, 5, 10));
-        trophies.add(new Trophy(5, 6, 10));
-        trophies.add(new Trophy(5, 8, 10));
-        trophies.add(new Trophy(5, 10, 10));
-        trophies.add(new Trophy(5, 13, 10));
-        trophies.add(new Trophy(5, 14, 10));
+        trophies.add(new Upgrade(5, 1, 10));
+        trophies.add(new Upgrade(5, 2, 10));
+        trophies.add(new Upgrade(5, 5, 10));
+        trophies.add(new Upgrade(5, 6, 10));
+        trophies.add(new Upgrade(5, 8, 10));
+        trophies.add(new Upgrade(5, 10, 10));
+        trophies.add(new Upgrade(5, 13, 10));
+        trophies.add(new Upgrade(5, 14, 10));
 
         // Add silver and gold items
         for (int i = Enums.Tier.Silver.value; i <= Enums.Tier.Gold.value; i++) {
-            trophies.add(new Trophy(i, 1));
-            trophies.add(new Trophy(i, 2));
-            trophies.add(new Trophy(i, 35));
-            trophies.add(new Trophy(i, 36));
-            trophies.add(new Trophy(i, 37));
-            trophies.add(new Trophy(i, 38));
-            trophies.add(new Trophy(i, 39));
+            trophies.add(new Upgrade(i, 1));
+            trophies.add(new Upgrade(i, 2));
+            trophies.add(new Upgrade(i, 35));
+            trophies.add(new Upgrade(i, 36));
+            trophies.add(new Upgrade(i, 37));
+            trophies.add(new Upgrade(i, 38));
+            trophies.add(new Upgrade(i, 39));
         }
 
         // Gold purple ring
-        trophies.add(new Trophy(7, 40, 10));
+        trophies.add(new Upgrade(7, 40, 10));
 
         // Lucky coin
-        trophies.add(new Trophy(0, 20));
+        trophies.add(new Upgrade(0, 20));
 
         int[] foodTiers = { Enums.Tier.None.value, Enums.Tier.PartialFood.value};
         for (int tier : foodTiers) {
-            trophies.add(new Trophy(tier, 21));
-            trophies.add(new Trophy(tier, 22));
-            trophies.add(new Trophy(tier, 23));
-            trophies.add(new Trophy(tier, 24));
-            trophies.add(new Trophy(tier, 25));
-            trophies.add(new Trophy(tier, 26));
-            trophies.add(new Trophy(tier, 27));
-            trophies.add(new Trophy(tier, 28));
-            trophies.add(new Trophy(tier, 29));
-            trophies.add(new Trophy(tier, 30));
-            trophies.add(new Trophy(tier, 31));
-            trophies.add(new Trophy(tier, 32));
-            trophies.add(new Trophy(tier, 33));
+            trophies.add(new Upgrade(tier, 21));
+            trophies.add(new Upgrade(tier, 22));
+            trophies.add(new Upgrade(tier, 23));
+            trophies.add(new Upgrade(tier, 24));
+            trophies.add(new Upgrade(tier, 25));
+            trophies.add(new Upgrade(tier, 26));
+            trophies.add(new Upgrade(tier, 27));
+            trophies.add(new Upgrade(tier, 28));
+            trophies.add(new Upgrade(tier, 29));
+            trophies.add(new Upgrade(tier, 30));
+            trophies.add(new Upgrade(tier, 31));
+            trophies.add(new Upgrade(tier, 32));
+            trophies.add(new Upgrade(tier, 33));
         }
 
         // Gems / powders / books
-        trophies.add(new Trophy(0, 34));
-        trophies.add(new Trophy(0, 35));
-        trophies.add(new Trophy(0, 36));
-        trophies.add(new Trophy(0, 37));
-        trophies.add(new Trophy(0, 38));
-        trophies.add(new Trophy(0, 39));
-        trophies.add(new Trophy(0, 41));
-        trophies.add(new Trophy(0, 42));
-        trophies.add(new Trophy(0, 43));
-        trophies.add(new Trophy(0, 44));
-        trophies.add(new Trophy(0, 45, 100));
-        trophies.add(new Trophy(0, 46, 100));
-        trophies.add(new Trophy(0, 47, 100));
-        trophies.add(new Trophy(0, 48, 100));
-        trophies.add(new Trophy(0, 49, 100));
-        trophies.add(new Trophy(0, 50, 100));
-        trophies.add(new Trophy(0, 51, 100));
-        trophies.add(new Trophy(0, 52, 100));
-        trophies.add(new Trophy(0, 53, 100));
+        trophies.add(new Upgrade(0, 34));
+        trophies.add(new Upgrade(0, 35));
+        trophies.add(new Upgrade(0, 36));
+        trophies.add(new Upgrade(0, 37));
+        trophies.add(new Upgrade(0, 38));
+        trophies.add(new Upgrade(0, 39));
+        trophies.add(new Upgrade(0, 41));
+        trophies.add(new Upgrade(0, 42));
+        trophies.add(new Upgrade(0, 43));
+        trophies.add(new Upgrade(0, 44));
+        trophies.add(new Upgrade(0, 45, 100));
+        trophies.add(new Upgrade(0, 46, 100));
+        trophies.add(new Upgrade(0, 47, 100));
+        trophies.add(new Upgrade(0, 48, 100));
+        trophies.add(new Upgrade(0, 49, 100));
+        trophies.add(new Upgrade(0, 50, 100));
+        trophies.add(new Upgrade(0, 51, 100));
+        trophies.add(new Upgrade(0, 52, 100));
+        trophies.add(new Upgrade(0, 53, 100));
 
-        Trophy.saveInTx(trophies);
+        Upgrade.saveInTx(trophies);
     }
 
     private void createStatistics() {

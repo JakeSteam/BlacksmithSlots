@@ -26,7 +26,7 @@ import uk.co.jakelee.blacksmithslots.main.SlotActivity;
 import uk.co.jakelee.blacksmithslots.main.TrophyActivity;
 import uk.co.jakelee.blacksmithslots.model.Inventory;
 import uk.co.jakelee.blacksmithslots.model.SupportCode;
-import uk.co.jakelee.blacksmithslots.model.Trophy;
+import uk.co.jakelee.blacksmithslots.model.Upgrade;
 
 public class AlertDialogHelper {
 
@@ -117,14 +117,14 @@ public class AlertDialogHelper {
         dialog.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE);
     }
 
-    public static void boostHandIn(final TrophyActivity activity, Trophy trophy, Inventory inventory) {
+    public static void boostHandIn(final TrophyActivity activity, Upgrade upgrade, Inventory inventory) {
         String itemName = inventory.getName(activity);
 
         displayAlertDialog(activity, activity.getString(R.string.boost_handin_title),
                 String.format(Locale.ENGLISH, activity.getString(R.string.boost_handin_body),
                         itemName,
-                        trophy.getBoostTier() + 1,
-                        trophy.getBoostTierUpgradeCost()),
+                        upgrade.getBoostTier() + 1,
+                        upgrade.getBoostTierUpgradeCost()),
                 new DialogAction(activity.getString(R.string.cancel), new Runnable() {
                     @Override
                     public void run() {
@@ -139,15 +139,15 @@ public class AlertDialogHelper {
                 }));
     }
 
-    public static void trophyHandIn(final TrophyActivity activity, Trophy trophy, Inventory inventory) {
+    public static void trophyHandIn(final TrophyActivity activity, Upgrade upgrade, Inventory inventory) {
         String itemName = inventory.getName(activity);
-        final int maximumPossible = trophy.getItemsRemaining() > inventory.getQuantity() ? inventory.getQuantity() : trophy.getItemsRemaining();
+        final int maximumPossible = upgrade.getItemsRemaining() > inventory.getQuantity() ? inventory.getQuantity() : upgrade.getItemsRemaining();
         final int halfMax = (int)Math.ceil(maximumPossible / 2d);
 
         displayAlertDialog(activity, activity.getString(R.string.hand_in_items),
                 String.format(Locale.ENGLISH, activity.getString(R.string.hand_in_items_long),
                     itemName,
-                    trophy.getItemsRequired() - trophy.getItemsHandedIn()),
+                    upgrade.getItemsRequired() - upgrade.getItemsHandedIn()),
                 new DialogAction(activity.getString(R.string.cancel), new Runnable() {
                     @Override
                     public void run() {

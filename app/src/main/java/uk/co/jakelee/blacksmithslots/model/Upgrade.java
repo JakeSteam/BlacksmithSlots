@@ -10,7 +10,7 @@ import uk.co.jakelee.blacksmithslots.helper.Constants;
 import uk.co.jakelee.blacksmithslots.helper.Enums;
 
 @Table(name="c")
-public class Trophy extends SugarRecord {
+public class Upgrade extends SugarRecord {
     @Column(name = "a") private int itemTier;
     @Column(name = "b") private int itemType;
     @Column(name = "c") private int itemsHandedIn;
@@ -19,10 +19,10 @@ public class Trophy extends SugarRecord {
     @Column(name = "f") private int boostTier;
     @Column(name = "g") private boolean boostEnabled;
 
-    public Trophy() {
+    public Upgrade() {
     }
 
-    public Trophy(int itemTier, int itemType) {
+    public Upgrade(int itemTier, int itemType) {
         this.itemTier = itemTier;
         this.itemType = itemType;
         this.itemsHandedIn = 0;
@@ -32,7 +32,7 @@ public class Trophy extends SugarRecord {
         this.boostEnabled = false;
     }
 
-    public Trophy(int itemTier, int itemType, int itemsRequired) {
+    public Upgrade(int itemTier, int itemType, int itemsRequired) {
         this.itemTier = itemTier;
         this.itemType = itemType;
         this.itemsHandedIn = 0;
@@ -104,11 +104,11 @@ public class Trophy extends SugarRecord {
     }
 
     public static int getBoostTier(int tier, int type) {
-        Trophy trophy = Select.from(Trophy.class).where(
+        Upgrade upgrade = Select.from(Upgrade.class).where(
                 Condition.prop("a").eq(tier),
                 Condition.prop("b").eq(type)).first();
-        if (trophy != null) {
-            return trophy.getBoostTier();
+        if (upgrade != null) {
+            return upgrade.getBoostTier();
         }
         return 0;
     }

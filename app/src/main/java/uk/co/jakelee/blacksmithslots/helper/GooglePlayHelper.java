@@ -42,7 +42,7 @@ import uk.co.jakelee.blacksmithslots.model.Setting;
 import uk.co.jakelee.blacksmithslots.model.Statistic;
 import uk.co.jakelee.blacksmithslots.model.SupportCode;
 import uk.co.jakelee.blacksmithslots.model.Task;
-import uk.co.jakelee.blacksmithslots.model.Trophy;
+import uk.co.jakelee.blacksmithslots.model.Upgrade;
 
 import static android.content.Context.MODE_PRIVATE;
 
@@ -389,7 +389,7 @@ public class GooglePlayHelper implements com.google.android.gms.common.api.Resul
             Statistic.class,
             SupportCode.class,
             Task.class,
-            Trophy.class
+            Upgrade.class
     };
 
     public static byte[] createBackup() {
