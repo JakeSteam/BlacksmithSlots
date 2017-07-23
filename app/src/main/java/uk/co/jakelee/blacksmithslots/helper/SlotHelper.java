@@ -68,7 +68,6 @@ public class SlotHelper {
     }
 
     public void pause() {
-        autospinsLeft = 0;
         handler.removeCallbacksAndMessages(null);
     }
 
@@ -130,6 +129,10 @@ public class SlotHelper {
                 AlertHelper.info(activity, activity.getString(R.string.minigame_won_nothing), false);
             }
         }
+
+        if (autospinsLeft > 0) {
+            spin(false);
+        }
     }
 
     public void setBackground() {
@@ -170,6 +173,7 @@ public class SlotHelper {
                             if (classToLoad != null && requestCode > 0) {
                                 activity.startActivityForResult(new Intent(activity, classToLoad)
                                                 .addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT)
+                                                .putExtra("autospin", autospinsLeft > 0)
                                                 .putExtra("slot", slot.getSlotId()),
                                         requestCode);
                             }
@@ -279,7 +283,6 @@ public class SlotHelper {
                 // Wowsa, they got a minigame match!
                 if (type != Enums.Type.Wildcard) {
                     if (!Setting.get(Enums.Setting.SkipMinigames).getBooleanValue()) {
-                        autospinsLeft = 0;
                         minigameToLoad = type;
                     }
                 }
