@@ -911,7 +911,6 @@
     <string name="time_mins">%1$d min</string>
     <string name="trophies">Trophäen</string>
     <string name="trophies_progress">Trophäen: %1$d/%2$d (+%3$.1f%% XP)</string>
-    <string name="trophy_progress_achieved">%1$s Trophäe freigeschaltet!</string>
     <string name="tutorial_map_1">Willkommen bei Blacksmith Slots!\n\nEntdecken Sie die Gegend, sprechen Sie mit Menschen und versuchen Sie, die Welt vor dem Purpur zu retten!\n\nTippen Sie auf das Logo, um zu begin</string>
     <string name="tutorial_map_3">Oh nein, Mama ist gefangen! Slots wie diese haben eine weiße Kontur auf der Karte.</string>
     <string name="tutorial_map_4">Sie braucht ein Beil, um sich zu schneiden, zum Glück hast du einen! Hand in die Quest.</string>
@@ -1076,4 +1075,15 @@
     <string name="minigame_memory_game_over">Spel is over!\n\nbeloningen:\n%1$s</string>
     <string name="setting_18">Minigames überspringen</string>
     <string name="setting_desc_18">Wenn aktiviert, werden die Minigames übersprungen, während das Autoplay aktiviert ist.</string>
+    <string name="boost_handin_body">Möchten Sie Ihren %1$s-Boost auf Level %2$d im Austausch für %3$dx %1$s aktualisieren?</string>
+    <string name="boost_handin_title">Upgrade von Item Boost</string>
+    <string name="boost_info">Das Aktualisieren des Verstärkungspegels eines Elements erhöht sich, wie wahrscheinlich dieses Element in Slots erscheinen soll. Es kann bei Bedarf deaktiviert werden.</string>
+    <string name="boost_level">Level %s</string>
+    <string name="item_boost">Boost:</string>
+    <string name="item_trophy">Trophäe:</string>
+    <string name="trophy_info">Wenn man genug von einem bestimmten Gegenstand übergibt, entriegelt er die Trophäe. Besitz einer Trophäe fügt Bonus-XP zu jedem Slot Spin!</string>
+    <string name="trophy_items_incomplete">Trophäenartikel reichen ein, aber noch nicht genug für eine Trophäe!</string>
+    <string name="trophy_progress_achieved">Freigeschaltet!</string>
+    <string name="trophy_unlocked">Trophy entriegelt, genieße deinen XP-Boost!</string>
+    <string name="upgrade">Aktualisierung</string>
 </resources>

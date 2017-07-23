@@ -911,7 +911,6 @@
     <string name="time_mins">%1$d mins</string>
     <string name="trophies">Troféus</string>
     <string name="trophies_progress">Troféus: %1$d / %2$d (+%3$,.1f%%XP)</string>
-    <string name="trophy_progress_achieved">%1$s troféu desbloqueado!</string>
     <string name="tutorial_map_1">Bem-vindo ao Blacksmith Slots!\n\nExplore a área, fale com as pessoas e tente salvar o mundo do Purple!\n\nToque no logotipo para começar.</string>
     <string name="tutorial_map_3">Oh não, mamãe está presa! Slots como este têm um contorno branco no mapa.</string>
     <string name="tutorial_map_4">Ela precisa de um machado para se cortar, felizmente você tem um! Entregue a missão.</string>
@@ -1076,4 +1075,15 @@
     <string name="minigame_memory_game_over">Fim de jogo!\n\nRecompensas:\n%1$s</string>
     <string name="setting_18">Skip Minigames</string>
     <string name="setting_desc_18">Quando ativado, os minigames serão ignorados enquanto a reprodução automática estiver ativada.</string>
+    <string name="boost_handin_body">Gostaria de atualizar seu aumento de %1$s para o nível %2$d em troca de %3$dx %1$s?</string>
+    <string name="boost_handin_title">Upgrade item boost</string>
+    <string name="boost_info">A atualização do nível de aumento de um item aumenta a probabilidade de que esse item seja exibido em slots. Pode ser desativado, se necessário.</string>
+    <string name="boost_level">Nível %s</string>
+    <string name="item_boost">Impulso:</string>
+    <string name="item_trophy">Troféu:</string>
+    <string name="trophy_info">Ao entregar um item específico, desbloqueia o troféu. Possuir um troféu adiciona o bônus XP a cada rodada do slot!</string>
+    <string name="trophy_items_incomplete">Artigos de troféu entregues, mas ainda não são suficientes para um troféu!</string>
+    <string name="trophy_progress_achieved">Desbloqueado!</string>
+    <string name="trophy_unlocked">Trophy desbloqueado, aproveite o seu impulso XP!</string>
+    <string name="upgrade">Atualizar</string>
 </resources>

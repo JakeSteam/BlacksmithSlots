@@ -911,7 +911,6 @@
     <string name="time_mins">%1$d мин.</string>
     <string name="trophies">Трофеи</string>
     <string name="trophies_progress">Трофеи: %1$d / %2$d (+%3$,.1f%% XP)</string>
-    <string name="trophy_progress_achieved">Трофей %1$s разблокирован!</string>
     <string name="tutorial_map_1">Добро пожаловать в Blacksmith Slots!\n\nИсследуйте область, поговорите с людьми и попытайтесь спасти мир от Фиолетового!\n\nНажмите логотип, чтобы начать.</string>
     <string name="tutorial_map_3">О нет, мама в ловушке! Слоты, подобные этому, имеют белый контур на карте.</string>
     <string name="tutorial_map_4">Ей нужен топор, чтобы вырезать себя, к счастью, у тебя его есть! Рука в квесте.</string>
@@ -1076,4 +1075,15 @@
     <string name="minigame_memory_game_over">Игра закончена!\n\nНаграды:\n%1$s</string>
     <string name="setting_18">Пропустить мини-игры</string>
     <string name="setting_desc_18">Когда включено, мини-игры будут пропущены, пока включена автовоспроизведение.</string>
+    <string name="boost_handin_body">Вы хотите обновить повышение %1$s до уровня %2$d в обмен на %3$dx %1$s?</string>
+    <string name="boost_handin_title">Повышение уровня обновления</string>
+    <string name="boost_info">Обновление уровня повышения позиции увеличивает вероятность того, что элемент появится в слотах. При необходимости он может быть деактивирован.</string>
+    <string name="boost_level">Уровень %s</string>
+    <string name="item_boost">Увеличение:</string>
+    <string name="item_trophy">Трофей:</string>
+    <string name="trophy_info">Передача достаточно определенного предмета открывает трофей. Владение трофеем добавляет бонус XP к каждому слоту!</string>
+    <string name="trophy_items_incomplete">Трофейные предметы сданы, но еще недостаточно для трофея!</string>
+    <string name="trophy_progress_achieved">Разблокирована!</string>
+    <string name="trophy_unlocked">Trophy разблокирован, получите удовольствие от XP!</string>
+    <string name="upgrade">Обновить</string>
 </resources>

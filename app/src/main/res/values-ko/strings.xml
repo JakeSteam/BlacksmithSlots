@@ -911,7 +911,6 @@
     <string name="time_mins">%1$d 분</string>
     <string name="trophies">트로피</string>
     <string name="trophies_progress">트로피 : %1$d / %2$d (+ %3$,.1f %%XP)</string>
-    <string name="trophy_progress_achieved">%1$s 트로피가 잠금 해제되었습니다!</string>
     <string name="tutorial_map_1">대장장이 슬롯에 오신 것을 환영합니다!\n\n지역을 탐험하고, 사람들과 이야기하고, 보라색에서 세계를 구하려고 노력하십시오!\n\n로고를 눌러 시작하십시오.</string>
     <string name="tutorial_map_3">오, 아니, 엄마는 갇혀있다! 이처럼 슬롯에는지도에 흰색 윤곽선이 있습니다.</string>
     <string name="tutorial_map_4">그녀는 자기 자신을 자르기 위해 도끼가 필요합니다. 운 좋게도 하나가 있습니다! 퀘스트를 진행하십시오.</string>
@@ -1076,4 +1075,15 @@
     <string name="minigame_memory_game_over">게임 끝!\n\n보상 :\n%1$s</string>
     <string name="setting_18">미니 게임 스킵</string>
     <string name="setting_desc_18">사용 설정되면 자동 재생이 사용 설정된 동안 미니 게임을 건너 뜁니다.</string>
+    <string name="boost_handin_body">" %3$dx  %1$s와 (과) 교환하여  %1$s 부스트를 레벨  %2$d (으)로 업그레이드 하시겠습니까?"</string>
+    <string name="boost_handin_title">아이템 업그레이드 업그레이드</string>
+    <string name="boost_info">항목의 부스트 수준을 업그레이드하면 해당 항목을 슬롯에 표시 할 가능성이 높아집니다. 필요한 경우 비활성화 할 수 있습니다.</string>
+    <string name="boost_level">레벨  %s</string>
+    <string name="item_boost">후원:</string>
+    <string name="item_trophy">트로피:</string>
+    <string name="trophy_info">특정 항목을 충분히 넘겨 트로피의 잠금을 해제합니다. 트로피를 소유하면 모든 슬롯 스핀에 보너스 XP가 추가됩니다!</string>
+    <string name="trophy_items_incomplete">트로피 항목이 전달되었지만 아직 트로피가 충분하지 않습니다!</string>
+    <string name="trophy_progress_achieved">잠금 해제!</string>
+    <string name="trophy_unlocked">트로피가 풀려서, 당신의 XP 부스트를 즐기십시오!</string>
+    <string name="upgrade">업그레이드</string>
 </resources>

@@ -911,7 +911,6 @@
     <string name="time_mins">%1$d minuten</string>
     <string name="trophies">trofeeën</string>
     <string name="trophies_progress">Trofeeën: %1$d / %2$d (+%3$,1f%% XP)</string>
-    <string name="trophy_progress_achieved">%1$s trofee ontgrendeld!</string>
     <string name="tutorial_map_1">Welkom bij Blacksmith Slots!\n\nVerken het gebied, praat met mensen en probeer de wereld te redden van de Purple!\n\nTik op het logo om te beginnen.</string>
     <string name="tutorial_map_3">Oh nee, mama is gevangen! Slots als deze hebben een witte omtrek op de kaart.</string>
     <string name="tutorial_map_4">Ze heeft een hatchet nodig om haar uit te snijden, gelukkig heb je er een! Handig de zoektocht in.</string>
@@ -1076,4 +1075,15 @@
     <string name="minigame_memory_game_over">Spel is over!\n\nbeloningen:\n%1$s</string>
     <string name="setting_18">Minigames overslaan</string>
     <string name="setting_desc_18">Wanneer ingeschakeld, worden minigames overgeslagen terwijl autoplay is ingeschakeld.</string>
+    <string name="boost_handin_body">Wilt u uw %1$s-boost upgraden naar niveau %2$d in ruil voor %3$dx %1$s?</string>
+    <string name="boost_handin_title">Upgrade item boost</string>
+    <string name="boost_info">Het upgraden van het boostniveau van een item verhoogt hoe waarschijnlijk dit item in slots verschijnt. Het kan zo nodig gedeactiveerd worden.</string>
+    <string name="boost_level">Niveau %s</string>
+    <string name="item_boost">Boost:</string>
+    <string name="item_trophy">Trofee:</string>
+    <string name="trophy_info">Het inleveren van genoeg van een specifiek item maakt de trofee ontgrendeld. Het bezit van een trofee voegt bonus XP toe aan elke sleutelspin!</string>
+    <string name="trophy_items_incomplete">Trofee artikelen ingediend, maar nog niet genoeg voor een trofee!</string>
+    <string name="trophy_progress_achieved">Unlocked!</string>
+    <string name="trophy_unlocked">Trofee ontgrendeld, geniet van je XP-boost!</string>
+    <string name="upgrade">Upgrade</string>
 </resources>

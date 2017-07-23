@@ -911,7 +911,6 @@
     <string name="time_mins">%1$d mins</string>
     <string name="trophies">Trophées</string>
     <string name="trophies_progress">Trophées: %1$d / %2$d (+ %3$,.1f%% XP)</string>
-    <string name="trophy_progress_achieved">%1$s trophée débloqué!</string>
     <string name="tutorial_map_1">Bienvenue dans Blacksmith Slots!\n\nExplorez la zone, discutez avec les gens et essayez de sauver le monde du pourpre!\n\nAppuyez sur le logo pour commencer.</string>
     <string name="tutorial_map_3">Oh non, maman est piégée! Des machines à sous comme celle-ci ont un contour blanc sur la carte.</string>
     <string name="tutorial_map_4">Elle a besoin d\'une hache pour se casser, heureusement, vous en avez une! Entrez la quête.</string>
@@ -1076,4 +1075,15 @@
     <string name="minigame_memory_game_over">Jeu terminé!\n\nRécompenses:\n%1$s</string>
     <string name="setting_18">Skip Minigames</string>
     <string name="setting_desc_18">Lorsqu\'ils sont activés, les mini-jeux seront ignorés tandis que le jeu automatique est activé.</string>
+    <string name="boost_handin_body">Souhaitez-vous améliorer votre %1$s boost au niveau %2$d en échange de %3$dx %1$s?</string>
+    <string name="boost_handin_title">Mise à jour de l\'élément boost</string>
+    <string name="boost_info">La mise à niveau du niveau de boost d\'un élément augmente la probabilité que cet élément apparaisse dans les machines à sous. Il peut être désactivé si nécessaire.</string>
+    <string name="boost_level">Les niveaux</string>
+    <string name="item_boost">Renforcer:</string>
+    <string name="item_trophy">Trophée:</string>
+    <string name="trophy_info">En remettant assez d\'un élément spécifique déverrouille le trophée. Posséder un trophée ajoute du bonus XP à chaque tour de fente!</string>
+    <string name="trophy_items_incomplete">Les objets du trophé sont remis, mais pas encore assez pour un trophée!</string>
+    <string name="trophy_progress_achieved">Débloqué!</string>
+    <string name="trophy_unlocked">Trophée débloqué, profitez de votre boost XP!</string>
+    <string name="upgrade">Surclassement</string>
 </resources>

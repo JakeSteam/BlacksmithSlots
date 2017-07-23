@@ -911,7 +911,6 @@
     <string name="time_mins">%1$d min</string>
     <string name="trophies">Trofeos</string>
     <string name="trophies_progress">Trofeos: %1$d / %2$d (+%3$,1f%% XP)</string>
-    <string name="trophy_progress_achieved">%1$s trofeo desbloqueado!</string>
     <string name="tutorial_map_1">Bienvenido a Blacksmith Slots!\n\nExplore la zona, hable con la gente y trate de salvar el mundo del Purple!\n\nToque el logotipo para comenzar.</string>
     <string name="tutorial_map_3">Oh no, mamá está atrapada! Las tragaperras como ésta tienen un contorno blanco en el mapa.</string>
     <string name="tutorial_map_4">¡Ella necesita un hacha para cortarse a sí misma, por suerte tiene uno! Mano en la búsqueda.</string>
@@ -1076,4 +1075,15 @@
     <string name="minigame_memory_game_over">¡Juego terminado!\n\nRecompensas:\n %1$s</string>
     <string name="setting_18">Saltar Minijuegos</string>
     <string name="setting_desc_18">Cuando está activado, los minijuegos se saltarán mientras se activa la reproducción automática.</string>
+    <string name="boost_handin_body">¿Desea actualizar su aumento de %1$s al nivel %2$d a cambio de %3$dx %1$s?</string>
+    <string name="boost_handin_title">Actualizar elemento aumentar</string>
+    <string name="boost_info">Actualizar el nivel de impulso de un elemento aumenta la probabilidad de que ese elemento aparezca en las ranuras. Se puede desactivar si es necesario.</string>
+    <string name="boost_level">Nivel %s</string>
+    <string name="item_boost">Aumentar:</string>
+    <string name="item_trophy">Trofeo:</string>
+    <string name="trophy_info">Entregar suficiente de un elemento específico desbloquea el trofeo. Poseer un trofeo agrega XP de bonificación a cada giro de la ranura!</string>
+    <string name="trophy_items_incomplete">Trofeo artículos entregados, pero aún no es suficiente para un trofeo!</string>
+    <string name="trophy_progress_achieved">¡Desbloqueado!</string>
+    <string name="trophy_unlocked">Trofeo desbloqueado, disfrute de su impulso XP!</string>
+    <string name="upgrade">Mejorar</string>
 </resources>

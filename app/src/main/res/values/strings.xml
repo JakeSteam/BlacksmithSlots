@@ -1276,8 +1276,8 @@ AESCrypt (https://goo.gl/Ewk2tq) - Support code encryption.
     <string name="boost_level">Level %s</string>
     <string name="item_trophy">Trophy:</string>
     <string name="item_boost">Boost:</string>
-    <string name="question_mark">\?</string>
-    <string name="exclamation_mark">!</string>
+    <string name="question_mark" translatable="false">\?</string>
+    <string name="exclamation_mark" translatable="false">!</string>
     <string name="boost_info">Upgrading an item\'s boost level increases how likely that item is to appear in slots. It can be deactivated if necessary.</string>
     <string name="trophy_info">Handing in enough of a specific item unlocks the trophy. Owning a trophy adds bonus XP to every slot spin!</string>
     <string name="upgrade">Upgrade</string>
