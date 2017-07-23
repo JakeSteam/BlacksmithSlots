@@ -1,5 +1,6 @@
 package uk.co.jakelee.blacksmithslots.main;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -26,6 +27,7 @@ public class MinigameHigherActivity extends MinigameActivity {
     private List<ItemBundle> resources;
     private int multiplier = 5;
     private int currentCard = 6;
+    private boolean isAutospin = false;
     private boolean gambleHigher = false;
     private final Handler handler = new Handler();
     private final int[] cardDrawables = {R.drawable.card_1, R.drawable.card_2,
@@ -43,6 +45,7 @@ public class MinigameHigherActivity extends MinigameActivity {
         ButterKnife.bind(this);
 
         Intent intent = getIntent();
+        isAutospin = intent.getBooleanExtra("autospin", false);
         int slotId = intent.getIntExtra("slot", 0);
         if (slotId == 0) {
             confirmClose();
@@ -53,6 +56,16 @@ public class MinigameHigherActivity extends MinigameActivity {
             resources = slot.getResources();
 
             updateStake();
+        }
+
+        if (isAutospin) {
+            final Activity activity = this;
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    stick(new View(activity));
+                }
+            }, 1000);
         }
     }
 
