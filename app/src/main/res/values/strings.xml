@@ -1298,4 +1298,7 @@ AESCrypt (https://goo.gl/Ewk2tq) - Support code encryption.
     <string name="select_item_question">Are you sure you want to use %1$d %2$s to unlock it for gathering?</string>
     <string name="unlock">Unlock</string>
     <string name="farm_item_unlocked">Unlocked and selected %1$s for %2$s!</string>
+    <string name="upgrade_farm">Upgrade Farm</string>
+    <string name="farm_upgrade_text">Are you sure you want to exchange %1$dx %2$s to upgrade %3$s to level %4$d?\nCapacity: %5$d -> %6$d\nGather Time: %7$s -> %8$s</string>
+    <string name="farm_upgrade_success">Upgraded %1$s to level %2$d!</string>
 </resources>

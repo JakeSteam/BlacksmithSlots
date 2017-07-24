@@ -47,6 +47,20 @@ public class Farm extends SugarRecord {
         this.timesClaimed = 0;
     }
 
+    public Farm(int farm, int slot, int itemRequirement, int itemQuantity, int defaultCapacityMultiplier, long claimMillis) {
+        this.farmId = farm;
+        this.requiredSlot = slot;
+        this.tier = 1;
+        this.itemTier = 0;
+        this.itemType = 0;
+        this.itemRequirement = itemRequirement;
+        this.itemQuantity = itemQuantity;
+        this.defaultCapacityMultiplier = defaultCapacityMultiplier;
+        this.lastClaim = System.currentTimeMillis();
+        this.defaultClaimTime = claimMillis;
+        this.timesClaimed = 0;
+    }
+
     public static Farm get(int farmId) {
         List<Farm> farms = Select.from(Farm.class).where(
                 Condition.prop("a").eq(farmId)).list();
@@ -176,6 +190,19 @@ public class Farm extends SugarRecord {
         return tier == 0 ? (defaultCapacityMultiplier * itemQuantity) : getCurrentCapacity() * 4;
     }
 
+    public boolean upgrade(ItemBundle farmItem) {
+        Inventory inventory = Inventory.get(farmItem);
+        int upgradeCost = getUpgradeCost();
+        if (inventory.getQuantity() >= upgradeCost) {
+            inventory.setQuantity(inventory.getQuantity() - upgradeCost);
+            inventory.save();
+            setTier(getTier() + 1);
+            save();
+            return true;
+        }
+        return false;
+    }
+
     public boolean unlockItem(ItemBundle farmItem) {
         Inventory inventory = Inventory.get(farmItem);
         if (inventory.getQuantity() >= itemRequirement) {
@@ -186,5 +213,19 @@ public class Farm extends SugarRecord {
             return true;
         }
         return false;
+    }
+
+    public Farm getNextTierFarm() {
+        Farm farm = new Farm(
+                this.getFarmId(),
+                this.getRequiredSlot(),
+                this.getItemRequirement(),
+                this.getItemQuantity(),
+                this.getDefaultCapacityMultiplier(),
+                this.getClaimTime());
+        farm.setTier(this.getTier() + 1);
+        farm.setItemTier(this.getItemTier());
+        farm.setItemType(this.getItemType());
+        return farm;
     }
 }

@@ -55,6 +55,7 @@ import uk.co.jakelee.blacksmithslots.helper.TaskHelper;
 import uk.co.jakelee.blacksmithslots.helper.TextHelper;
 import uk.co.jakelee.blacksmithslots.model.Farm;
 import uk.co.jakelee.blacksmithslots.model.Inventory;
+import uk.co.jakelee.blacksmithslots.model.ItemBundle;
 import uk.co.jakelee.blacksmithslots.model.Slot;
 import uk.co.jakelee.blacksmithslots.model.Task;
 import uk.co.jakelee.blacksmithslots.tourguide.Overlay;
@@ -562,7 +563,15 @@ public class MapActivity extends BaseActivity implements
         }
     }
 
-    private void populateFarmInfo() {
+    @OnClick(R.id.upgradeButton)
+    public void upgradeFarm() {
+        Farm farm = Farm.get(selectedFarm);
+        if (selectedFarm > 0 && farm != null) {
+            AlertDialogHelper.confirmFarmUpgrade(this, farm, new ItemBundle(farm.getItemTier(), farm.getItemType(), farm.getItemQuantity()));
+        }
+    }
+
+    public void populateFarmInfo() {
         if (selectedFarm > 0) {
             findViewById(R.id.noSlotSelected).setVisibility(GONE);
             superLockedSlot.setVisibility(GONE);
@@ -591,7 +600,7 @@ public class MapActivity extends BaseActivity implements
                             farm.getCurrentCapacity(),
                             Inventory.getName(this, farm.getItemTier(), farm.getItemType()),
                             farm.getItemQuantity(),
-                            DateHelper.timestampToTime(farm.getClaimTime()),
+                            DateHelper.timestampToShortTime(farm.getClaimTime()),
                             "Some minutes"));
                 }
             }

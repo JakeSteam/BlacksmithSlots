@@ -21,6 +21,7 @@ import uk.co.jakelee.blacksmithslots.BuildConfig;
 import uk.co.jakelee.blacksmithslots.R;
 import uk.co.jakelee.blacksmithslots.constructs.DialogAction;
 import uk.co.jakelee.blacksmithslots.main.FarmItemActivity;
+import uk.co.jakelee.blacksmithslots.main.MapActivity;
 import uk.co.jakelee.blacksmithslots.main.MinigameActivity;
 import uk.co.jakelee.blacksmithslots.main.ShopActivity;
 import uk.co.jakelee.blacksmithslots.main.SlotActivity;
@@ -66,6 +67,36 @@ public class AlertDialogHelper {
                 dialog.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE);
             }
         });
+    }
+
+    public static void confirmFarmUpgrade(final MapActivity activity, final Farm farm, final ItemBundle farmItem) {
+        final String itemName = Inventory.getName(activity, farmItem.getTier(), farmItem.getType());
+        Farm nextTierFarm = farm.getNextTierFarm();
+        displayAlertDialog(activity, activity.getString(R.string.upgrade_farm), String.format(Locale.ENGLISH, activity.getString(R.string.farm_upgrade_text),
+                farm.getUpgradeCost(),
+                itemName,
+                farm.getName(activity),
+                farm.getTier() + 1,
+                farm.getCurrentCapacity(),
+                nextTierFarm.getCurrentCapacity(),
+                DateHelper.timestampToShortTime(farm.getClaimTime()),
+                DateHelper.timestampToShortTime(nextTierFarm.getClaimTime())),
+                new DialogAction(activity.getString(R.string.upgrade), new Runnable() {
+                    @Override
+                    public void run() {
+                        if (farm.upgrade(farmItem)) {
+                            AlertHelper.success(activity, String.format(Locale.ENGLISH, activity.getString(R.string.farm_upgrade_success), farm.getName(activity), farm.getTier()), true);
+                            activity.populateFarmInfo();
+                        } else {
+                            AlertHelper.error(activity, R.string.error_trophy_no_items, false);
+                        }
+                    }
+                }),
+                new DialogAction(activity.getString(R.string.cancel), new Runnable() {
+                    @Override
+                    public void run() {
+                    }
+                }));
     }
 
     public static void confirmFarmItemUnlock(final FarmItemActivity activity, final Farm farm, final ItemBundle farmItem) {
