@@ -571,6 +571,19 @@ public class MapActivity extends BaseActivity implements
         }
     }
 
+    @OnClick(R.id.claimButton)
+    public void claimFarmItems() {
+        Farm farm = Farm.get(selectedFarm);
+        if (selectedFarm > 0 && farm != null) {
+            if (farm.claim()) {
+                populateFarmInfo();
+                AlertHelper.success(this, String.format(Locale.ENGLISH, getString(R.string.farm_claim_items), farm.getName(this)), true);
+            } else {
+                AlertHelper.error(this, getString(R.string.error_farm_claim_none), false);
+            }
+        }
+    }
+
     public void populateFarmInfo() {
         if (selectedFarm > 0) {
             findViewById(R.id.noSlotSelected).setVisibility(GONE);
@@ -595,13 +608,16 @@ public class MapActivity extends BaseActivity implements
                     findViewById(R.id.upgradeButton).setVisibility(View.VISIBLE);
                     ((TextView)findViewById(R.id.upgradeButton)).setText(String.format(Locale.ENGLISH, "Upgrade (%1$dx)", farm.getUpgradeCost()));
                     findViewById(R.id.claimButton).setVisibility(View.VISIBLE);
+
+                    int earnedCapacity = farm.getEarnedQuantity();
+                    int currentCapacity = farm.getCurrentCapacity();
                     ((TextView)findViewById(R.id.farmDesc)).setText(String.format(Locale.ENGLISH, getString(R.string.farm_unlocked_desc),
-                            0,
-                            farm.getCurrentCapacity(),
+                            earnedCapacity,
+                            currentCapacity,
                             Inventory.getName(this, farm.getItemTier(), farm.getItemType()),
                             farm.getItemQuantity(),
                             DateHelper.timestampToShortTime(farm.getClaimTime()),
-                            "Some minutes"));
+                            earnedCapacity == currentCapacity ? "N/A" : DateHelper.timestampToShortTime(farm.getTimeToNextEarn())));
                 }
             }
         }

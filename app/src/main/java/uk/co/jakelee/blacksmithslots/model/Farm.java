@@ -190,6 +190,22 @@ public class Farm extends SugarRecord {
         return tier == 0 ? (defaultCapacityMultiplier * itemQuantity) : getCurrentCapacity() * 4;
     }
 
+    public int getEarnedQuantity() {
+        long timePerEarn = getClaimTime();
+        long timeDifference = System.currentTimeMillis() - getLastClaim();
+        int earns = (int)(timeDifference / timePerEarn);
+        int totalEarned = earns * getItemQuantity();
+        if (totalEarned > getCurrentCapacity()) {
+            totalEarned = getCurrentCapacity();
+        }
+        return totalEarned;
+        //long leftoverTime = timeDifference - (timePerEarn * earns);
+    }
+
+    public long getTimeToNextEarn() {
+        return getClaimTime() - ((System.currentTimeMillis() - getLastClaim()) % getClaimTime());
+    }
+
     public boolean upgrade(ItemBundle farmItem) {
         Inventory inventory = Inventory.get(farmItem);
         int upgradeCost = getUpgradeCost();
@@ -198,6 +214,26 @@ public class Farm extends SugarRecord {
             inventory.save();
             setTier(getTier() + 1);
             save();
+            return true;
+        }
+        return false;
+    }
+
+    public boolean claim() {
+        if (getItemTier() > 0 && getItemType() > 0) {
+            int quantityEarned = getEarnedQuantity();
+            if (quantityEarned == 0) {
+                return false;
+            }
+            long unusedTime = getClaimTime() - getTimeToNextEarn();
+            Inventory inventory = Inventory.getInventory(getItemTier(), getItemType());
+            inventory.setQuantity(inventory.getQuantity() + getCurrentCapacity());
+            inventory.save();
+
+            setLastClaim(System.currentTimeMillis() - unusedTime);
+            setTimesClaimed(getTimesClaimed() + 1);
+            save();
+
             return true;
         }
         return false;
