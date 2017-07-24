@@ -244,7 +244,7 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
                 itemBundles.add(new ItemBundle(Enums.Farm.Merchant, Enums.Tier.None, Enums.Type.Fish));
 
 
-                farms.add(new Farm(Enums.Farm.Sands, Enums.Slot.Map5Gate, 40, 10, 3, 10));
+                farms.add(new Farm(Enums.Farm.Sands, Enums.Slot.Map4Guard, 40, 10, 3, 10));
                 itemBundles.add(new ItemBundle(Enums.Farm.Sands, Enums.Tier.None, Enums.Type.SandBlue));
                 itemBundles.add(new ItemBundle(Enums.Farm.Sands, Enums.Tier.None, Enums.Type.SandGreen));
                 itemBundles.add(new ItemBundle(Enums.Farm.Sands, Enums.Tier.None, Enums.Type.SandRed));

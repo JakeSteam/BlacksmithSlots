@@ -53,6 +53,8 @@ import uk.co.jakelee.blacksmithslots.helper.Runnables;
 import uk.co.jakelee.blacksmithslots.helper.SoundHelper;
 import uk.co.jakelee.blacksmithslots.helper.TaskHelper;
 import uk.co.jakelee.blacksmithslots.helper.TextHelper;
+import uk.co.jakelee.blacksmithslots.model.Farm;
+import uk.co.jakelee.blacksmithslots.model.Inventory;
 import uk.co.jakelee.blacksmithslots.model.Slot;
 import uk.co.jakelee.blacksmithslots.model.Task;
 import uk.co.jakelee.blacksmithslots.tourguide.Overlay;
@@ -89,6 +91,8 @@ public class MapActivity extends BaseActivity implements
     TextView lockedTaskProgressText;
     @BindView(R.id.unlockedSlot)
     RelativeLayout unlockedSlot;
+    @BindView(R.id.farmLayout)
+    RelativeLayout farmLayout;
     @BindView(R.id.slotUnlockedDescription)
     TextView unlockedDescription;
     @BindView(R.id.watchAdvert)
@@ -102,6 +106,7 @@ public class MapActivity extends BaseActivity implements
     @BindView(R.id.googlePlayLoginRow)
     LinearLayout googlePlayLoginRow;
     private int selectedSlot = 1;
+    private int selectedFarm = 0;
     private final Handler handler = new Handler();
     private MapPagerAdapter mapPagerAdapter;
     public AdvertHelper advertHelper;
@@ -357,11 +362,14 @@ public class MapActivity extends BaseActivity implements
     }
 
     public void selectFarm(View v) {
-        Toast.makeText(this, "Farm: #" + Integer.parseInt((String) v.getTag()), Toast.LENGTH_SHORT).show();
+        selectedFarm = Integer.parseInt((String) v.getTag());
+        findViewById(R.id.slotInfo).setVisibility(View.GONE);
+        populateFarmInfo();
     }
 
     public void selectSlot(View v) {
         selectedSlot = Integer.parseInt((String) v.getTag());
+        findViewById(R.id.slotInfo).setVisibility(View.VISIBLE);
         populateSlotInfo();
         if (isFirstInstall) {
             runTutorial(4);
@@ -485,7 +493,7 @@ public class MapActivity extends BaseActivity implements
         }
     }
 
-    @OnClick({R.id.lockedClose, R.id.unlockedClose, R.id.superlockedClose})
+    @OnClick({R.id.lockedClose, R.id.unlockedClose, R.id.superlockedClose, R.id.farmClose})
     public void loadSidebar(View v) {
         noSlotSidebar.setVisibility(View.VISIBLE);
     }
@@ -539,7 +547,40 @@ public class MapActivity extends BaseActivity implements
         mapPagerAdapter.notifyDataSetChanged();
     }
 
+    private void populateFarmInfo() {
+        if (selectedFarm > 0) {
+            findViewById(R.id.noSlotSelected).setVisibility(GONE);
+            superLockedSlot.setVisibility(GONE);
+            lockedSlot.setVisibility(GONE);
+            unlockedSlot.setVisibility(GONE);
+            farmLayout.setVisibility(View.VISIBLE);
+            Farm farm = Farm.get(selectedFarm);
+            if (farm != null) {
+                ((TextView) findViewById(R.id.farmTitle)).setText(String.format(Locale.ENGLISH, getString(R.string.farm_title), farm.getTier(), farm.getName(this)));
+
+                findViewById(R.id.upgradeButton).setVisibility(View.GONE);
+                findViewById(R.id.claimButton).setVisibility(View.GONE);
+                if (TaskHelper.isSlotLocked(farm.getRequiredSlot())) {
+                    ((TextView)findViewById(R.id.farmDesc)).setText(String.format(Locale.ENGLISH, getString(R.string.farm_locked_desc), Slot.getName(this, farm.getRequiredSlot())));
+                } else if (farm.getItemTier() == 0){
+                    ((TextView)findViewById(R.id.farmDesc)).setText(R.string.farm_unlocked_unselected_desc);
+                } else {
+                    findViewById(R.id.upgradeButton).setVisibility(View.VISIBLE);
+                    findViewById(R.id.claimButton).setVisibility(View.VISIBLE);
+                    ((TextView)findViewById(R.id.farmDesc)).setText(String.format(Locale.ENGLISH, getString(R.string.farm_unlocked_desc),
+                            0,
+                            farm.getCurrentCapacity(),
+                            Inventory.getName(this, farm.getItemTier(), farm.getItemType()),
+                            farm.getItemQuantity(),
+                            DateHelper.timestampToTime(farm.getClaimTime()),
+                            "Some minutes"));
+                }
+            }
+        }
+    }
+
     private void populateSlotInfo() {
+        farmLayout.setVisibility(GONE);
         if (selectedSlot > 0) {
             findViewById(R.id.noSlotSelected).setVisibility(GONE);
             Slot slot = Slot.get(selectedSlot);

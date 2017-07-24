@@ -1,15 +1,20 @@
 package uk.co.jakelee.blacksmithslots.model;
 
+import android.content.Context;
+
 import com.orm.SugarRecord;
 import com.orm.dsl.Column;
 import com.orm.dsl.Table;
 import com.orm.query.Condition;
 import com.orm.query.Select;
 
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import uk.co.jakelee.blacksmithslots.helper.Constants;
 import uk.co.jakelee.blacksmithslots.helper.Enums;
+import uk.co.jakelee.blacksmithslots.helper.TaskHelper;
+import uk.co.jakelee.blacksmithslots.helper.TextHelper;
 
 @Table(name = "l")
 public class Farm extends SugarRecord {
@@ -42,8 +47,22 @@ public class Farm extends SugarRecord {
         this.timesClaimed = 0;
     }
 
+    public static Farm get(int farmId) {
+        List<Farm> farms = Select.from(Farm.class).where(
+                Condition.prop("a").eq(farmId)).list();
+        return farms.size() > 0 ? farms.get(0) : null;
+    }
+
+    public int getRequiredSlot() {
+        return requiredSlot;
+    }
+
+    public void setRequiredSlot(int requiredSlot) {
+        this.requiredSlot = requiredSlot;
+    }
+
     public int getTier() {
-        return tier;
+        return TaskHelper.isSlotLocked(requiredSlot) ? 0 : tier;
     }
 
     public void setTier(int tier) {
@@ -98,6 +117,10 @@ public class Farm extends SugarRecord {
         this.timesClaimed = timesClaimed;
     }
 
+    public String getName(Context context) {
+        return TextHelper.getInstance(context).getText("farm_" + farmId + "_name");
+    }
+
     public ItemBundle getActiveBundle() {
         return Select.from(ItemBundle.class).where(
                 Condition.prop("f").eq(Enums.ItemBundleType.FarmReward.value),
@@ -113,7 +136,7 @@ public class Farm extends SugarRecord {
             return 0;
         }
 
-        return (int)(defaultCapacityMultiplier * (Math.pow(2, (tier / 2) - 0.5)));
+        return (int)((defaultCapacityMultiplier * itemQuantity) * (Math.pow(2, ((double)tier / 2) - 0.5)));
     }
 
     // Each tier is -10%
@@ -126,6 +149,6 @@ public class Farm extends SugarRecord {
 
     // Usually double capacity
     public int getUpgradeCost() {
-        return tier == 0 ? defaultCapacityMultiplier : getCurrentCapacity() * 2;
+        return tier == 0 ? (defaultCapacityMultiplier * itemQuantity) : getCurrentCapacity() * 2;
     }
 }

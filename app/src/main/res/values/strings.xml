@@ -1283,4 +1283,15 @@ AESCrypt (https://goo.gl/Ewk2tq) - Support code encryption.
     <string name="boost_handin_body">Would you like to upgrade your %1$s boost to level %2$d in exchange for %3$dx %1$s?</string>
     <string name="trophy_unlocked">Trophy unlocked, enjoy your XP boost!</string>
     <string name="trophy_items_incomplete">Trophy items handed in, but not yet enough for a trophy!</string>
+    <string name="farm_1_name">Mine</string>
+    <string name="farm_2_name">Secondaries</string>
+    <string name="farm_3_name">Fruit Tree</string>
+    <string name="farm_4_name">Food Stand</string>
+    <string name="farm_5_name">Sand Rocks</string>
+    <string name="farm_6_name">Gem Deposit</string>
+    <string name="farm_title">Lv %1$d %2$s</string>
+    <string name="change">Select Item</string>
+    <string name="farm_locked_desc">Unlocking this farm requires unlocking slot \"%s\".</string>
+    <string name="farm_unlocked_unselected_desc">Select an item to begin collecting!</string>
+    <string name="farm_unlocked_desc">%1$d/%2$dx %3$s %4$d per %5$s Next: %6$s</string>
 </resources>
