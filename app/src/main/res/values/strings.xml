@@ -1047,6 +1047,7 @@
     <string name="statistictype_5_name">Misc</string>
     <string name="statistictype_6_name">Minigames</string>
     <string name="statistictype_7_name">Version</string>
+    <string name="statistictype_8_name">Farms</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
     <string name="alert_autospin">Autospin</string>
@@ -1303,4 +1304,9 @@ AESCrypt (https://goo.gl/Ewk2tq) - Support code encryption.
     <string name="farm_upgrade_success">Upgraded %1$s to level %2$d!</string>
     <string name="error_farm_claim_none">You can\'t claim 0 items!</string>
     <string name="farm_claim_items">Claimed %1$s\'s items!</string>
+    <string name="na">N/A</string>
+    <string name="statistic_farm_earnings">%s Earnings</string>
+    <string name="statistic_farm_capacity">%s Capacity</string>
+    <string name="statistic_farm_item">%s Item</string>
+    <string name="item_per_time">%1$d per %2$s</string>
 </resources>
