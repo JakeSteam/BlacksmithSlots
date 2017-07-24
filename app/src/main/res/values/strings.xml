@@ -230,6 +230,7 @@
     <string name="setting_16">Orientation</string>
     <string name="setting_17">Prestige</string>
     <string name="setting_18">Skip Minigames</string>
+    <string name="setting_19">Farm Notification</string>
 
     <string name="setting_desc_1">Enables and disables the in-game background music.</string>
     <string name="setting_desc_2">Enables and disables the in-game sound effects.</string>
@@ -1309,4 +1310,7 @@ AESCrypt (https://goo.gl/Ewk2tq) - Support code encryption.
     <string name="statistic_farm_capacity">%s Capacity</string>
     <string name="statistic_farm_item">%s Item</string>
     <string name="item_per_time">%1$d per %2$s</string>
+    <string name="statistic_farm_claimed_items">%s Claimed Items</string>
+    <string name="notification_pass_bonus">Your blacksmith pass bonus is ready to claim!</string>
+    <string name="notification_farm_bonus">A farm area has reached capacity!</string>
 </resources>

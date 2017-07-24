@@ -28,7 +28,7 @@ public class Farm extends SugarRecord {
     @Column(name="h") private long lastClaim;
     @Column(name="i") private int defaultCapacityMultiplier;
     @Column(name="j") private long defaultClaimTime;
-    @Column(name="k") private int timesClaimed;
+    @Column(name="k") private int amountClaimed;
 
     public Farm() {
     }
@@ -44,7 +44,7 @@ public class Farm extends SugarRecord {
         this.defaultCapacityMultiplier = defaultCapacityMultiplier;
         this.lastClaim = System.currentTimeMillis();
         this.defaultClaimTime = TimeUnit.MINUTES.toMillis(claimMinutes);
-        this.timesClaimed = 0;
+        this.amountClaimed = 0;
     }
 
     public Farm(int farm, int slot, int itemRequirement, int itemQuantity, int defaultCapacityMultiplier, long claimMillis) {
@@ -58,7 +58,7 @@ public class Farm extends SugarRecord {
         this.defaultCapacityMultiplier = defaultCapacityMultiplier;
         this.lastClaim = System.currentTimeMillis();
         this.defaultClaimTime = claimMillis;
-        this.timesClaimed = 0;
+        this.amountClaimed = 0;
     }
 
     public static Farm get(int farmId) {
@@ -131,12 +131,12 @@ public class Farm extends SugarRecord {
         this.defaultClaimTime = defaultClaimTime;
     }
 
-    public int getTimesClaimed() {
-        return timesClaimed;
+    public int getAmountClaimed() {
+        return amountClaimed;
     }
 
-    public void setTimesClaimed(int timesClaimed) {
-        this.timesClaimed = timesClaimed;
+    public void setAmountClaimed(int amountClaimed) {
+        this.amountClaimed = amountClaimed;
     }
 
     public int getItemRequirement() {
@@ -231,7 +231,7 @@ public class Farm extends SugarRecord {
             inventory.save();
 
             setLastClaim(System.currentTimeMillis() - unusedTime);
-            setTimesClaimed(getTimesClaimed() + 1);
+            setAmountClaimed(quantityEarned);
             save();
 
             return true;

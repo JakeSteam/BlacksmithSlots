@@ -29,6 +29,7 @@ public class Constants {
 
     public final static int NOTIFICATION_PERIODIC_BONUS = 100;
     public final static int NOTIFICATION_PASS_BONUS = 101;
+    public final static int NOTIFICATION_FARM_BONUS = 102;
 
     public final static int ORIENTATION_AUTO = 4;
     public final static int ORIENTATION_INBETWEEN = 5;

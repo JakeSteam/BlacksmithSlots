@@ -124,6 +124,8 @@
 
     <style name="FarmClickArea" parent="SlotClickArea">
         <item name="android:onClick">selectFarm</item>
+        <item name="layout_heightPercent">6.66%</item>
+        <item name="layout_widthPercent">6.66%</item>
     </style>
 
     <style name="SlotPerson">

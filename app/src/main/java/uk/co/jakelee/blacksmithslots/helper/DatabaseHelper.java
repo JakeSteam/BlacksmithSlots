@@ -259,6 +259,8 @@ public class DatabaseHelper extends AsyncTask<String, String, String> {
                 ItemBundle.saveInTx(itemBundles);
                 Farm.saveInTx(farms);
 
+                new Setting(Enums.SettingGroup.Notifications, Enums.Setting.FarmNotification, true).save();
+
             }
         };
     }

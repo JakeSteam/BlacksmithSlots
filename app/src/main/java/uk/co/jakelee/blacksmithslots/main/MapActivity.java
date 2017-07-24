@@ -336,6 +336,9 @@ public class MapActivity extends BaseActivity implements
         if (getBoolean(Enums.Setting.BlacksmithPassNotification)) {
             NotificationHelper.addBlacksmithPassNotification(this, notificationSound);
         }
+        if (getBoolean(Enums.Setting.FarmNotification)) {
+            NotificationHelper.addFarmNotification(this, notificationSound);
+        }
 
         handler.removeCallbacks(null);
     }
