@@ -20,11 +20,14 @@ import java.util.Locale;
 import uk.co.jakelee.blacksmithslots.BuildConfig;
 import uk.co.jakelee.blacksmithslots.R;
 import uk.co.jakelee.blacksmithslots.constructs.DialogAction;
+import uk.co.jakelee.blacksmithslots.main.FarmItemActivity;
 import uk.co.jakelee.blacksmithslots.main.MinigameActivity;
 import uk.co.jakelee.blacksmithslots.main.ShopActivity;
 import uk.co.jakelee.blacksmithslots.main.SlotActivity;
 import uk.co.jakelee.blacksmithslots.main.TrophyActivity;
+import uk.co.jakelee.blacksmithslots.model.Farm;
 import uk.co.jakelee.blacksmithslots.model.Inventory;
+import uk.co.jakelee.blacksmithslots.model.ItemBundle;
 import uk.co.jakelee.blacksmithslots.model.SupportCode;
 import uk.co.jakelee.blacksmithslots.model.Upgrade;
 
@@ -63,6 +66,32 @@ public class AlertDialogHelper {
                 dialog.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE);
             }
         });
+    }
+
+    public static void confirmFarmItemUnlock(final FarmItemActivity activity, final Farm farm, final ItemBundle farmItem) {
+        final String itemName = Inventory.getName(activity, farmItem.getTier(), farmItem.getType());
+        displayAlertDialog(activity, activity.getString(R.string.select_item), String.format(Locale.ENGLISH, activity.getString(R.string.select_item_question),
+                farm.getItemRequirement(),
+                itemName),
+                new DialogAction(activity.getString(R.string.unlock), new Runnable() {
+                    @Override
+                    public void run() {
+                        if (farm.unlockItem(farmItem)) {
+                            farm.setItemTier(farmItem.getTier().value);
+                            farm.setItemType(farmItem.getType().value);
+                            farm.save();
+                            AlertHelper.success(activity, String.format(Locale.ENGLISH, activity.getString(R.string.farm_item_unlocked), itemName, farm.getName(activity)), true);
+                            activity.displayFarmItems(farm.getFarmId());
+                        } else {
+                            AlertHelper.error(activity, R.string.error_trophy_no_items, false);
+                        }
+                    }
+                }),
+                new DialogAction(activity.getString(R.string.cancel), new Runnable() {
+                    @Override
+                    public void run() {
+                    }
+                }));
     }
 
     public static void confirmPrestige(final Activity activity) {

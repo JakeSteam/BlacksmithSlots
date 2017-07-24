@@ -99,7 +99,7 @@ public class ItemBundle extends SugarRecord {
     public ItemBundle(Enums.Farm farm, Enums.Tier tier, Enums.Type type) {
         this.tier = tier.value;
         this.type = type.value;
-        this.quantity = 0; // used as tier
+        this.quantity = 0; // used for boolean unlocked
         this.identifier = farm.value;
         this.weighting = 0;
         this.bundleType = Enums.ItemBundleType.FarmReward.value;

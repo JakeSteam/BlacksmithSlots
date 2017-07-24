@@ -221,6 +221,10 @@ public class MapActivity extends BaseActivity implements
             }
         }
 
+        if (selectedFarm > 0) {
+            populateFarmInfo();
+        }
+
         updateWinItemsButton();
     }
 
@@ -362,12 +366,14 @@ public class MapActivity extends BaseActivity implements
     }
 
     public void selectFarm(View v) {
+        selectedSlot = 0;
         selectedFarm = Integer.parseInt((String) v.getTag());
         findViewById(R.id.slotInfo).setVisibility(View.GONE);
         populateFarmInfo();
     }
 
     public void selectSlot(View v) {
+        selectedFarm = 0;
         selectedSlot = Integer.parseInt((String) v.getTag());
         findViewById(R.id.slotInfo).setVisibility(View.VISIBLE);
         populateSlotInfo();
@@ -547,6 +553,15 @@ public class MapActivity extends BaseActivity implements
         mapPagerAdapter.notifyDataSetChanged();
     }
 
+    @OnClick(R.id.changeButton)
+    public void changeItem() {
+        if (selectedFarm > 0) {
+            startActivity(new Intent(this, FarmItemActivity.class)
+                    .putExtra(Constants.INTENT_FARM, selectedFarm)
+                    .addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT));
+        }
+    }
+
     private void populateFarmInfo() {
         if (selectedFarm > 0) {
             findViewById(R.id.noSlotSelected).setVisibility(GONE);
@@ -560,12 +575,16 @@ public class MapActivity extends BaseActivity implements
 
                 findViewById(R.id.upgradeButton).setVisibility(View.GONE);
                 findViewById(R.id.claimButton).setVisibility(View.GONE);
+                findViewById(R.id.changeButton).setVisibility(View.GONE);
                 if (TaskHelper.isSlotLocked(farm.getRequiredSlot())) {
                     ((TextView)findViewById(R.id.farmDesc)).setText(String.format(Locale.ENGLISH, getString(R.string.farm_locked_desc), Slot.getName(this, farm.getRequiredSlot())));
                 } else if (farm.getItemTier() == 0){
+                    findViewById(R.id.changeButton).setVisibility(View.VISIBLE);
                     ((TextView)findViewById(R.id.farmDesc)).setText(R.string.farm_unlocked_unselected_desc);
                 } else {
+                    findViewById(R.id.changeButton).setVisibility(View.VISIBLE);
                     findViewById(R.id.upgradeButton).setVisibility(View.VISIBLE);
+                    ((TextView)findViewById(R.id.upgradeButton)).setText(String.format(Locale.ENGLISH, "Upgrade (%1$dx)", farm.getUpgradeCost()));
                     findViewById(R.id.claimButton).setVisibility(View.VISIBLE);
                     ((TextView)findViewById(R.id.farmDesc)).setText(String.format(Locale.ENGLISH, getString(R.string.farm_unlocked_desc),
                             0,

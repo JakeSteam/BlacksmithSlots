@@ -76,6 +76,9 @@
             android:name=".main.LogActivity"
             android:theme="@style/Theme.Dimmed" />
         <activity
+            android:name=".main.FarmItemActivity"
+            android:theme="@style/Theme.Dimmed" />
+        <activity
             android:name=".main.InventoryActivity"
             android:theme="@style/Theme.Dimmed" />
         <activity

@@ -328,8 +328,7 @@
                     android:id="@+id/upgradeButton"
                     style="@style/SlotText"
                     android:layout_width="match_parent"
-                    android:background="@drawable/box_yellow"
-                    android:text="Upgrade (100x)" />
+                    android:background="@drawable/box_yellow" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -348,7 +347,7 @@
                         style="@style/SlotText"
                         android:layout_width="match_parent"
                         android:background="@drawable/box_yellow"
-                        android:text="@string/change"/>
+                        android:text="@string/select_item"/>
                 </LinearLayout>
             </LinearLayout>
 

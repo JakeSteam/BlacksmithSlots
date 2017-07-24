@@ -53,6 +53,14 @@ public class Farm extends SugarRecord {
         return farms.size() > 0 ? farms.get(0) : null;
     }
 
+    public int getFarmId() {
+        return farmId;
+    }
+
+    public void setFarmId(int farmId) {
+        this.farmId = farmId;
+    }
+
     public int getRequiredSlot() {
         return requiredSlot;
     }
@@ -117,6 +125,22 @@ public class Farm extends SugarRecord {
         this.timesClaimed = timesClaimed;
     }
 
+    public int getItemRequirement() {
+        return itemRequirement;
+    }
+
+    public void setItemRequirement(int itemRequirement) {
+        this.itemRequirement = itemRequirement;
+    }
+
+    public int getDefaultCapacityMultiplier() {
+        return defaultCapacityMultiplier;
+    }
+
+    public void setDefaultCapacityMultiplier(int defaultCapacityMultiplier) {
+        this.defaultCapacityMultiplier = defaultCapacityMultiplier;
+    }
+
     public String getName(Context context) {
         return TextHelper.getInstance(context).getText("farm_" + farmId + "_name");
     }
@@ -149,6 +173,18 @@ public class Farm extends SugarRecord {
 
     // Usually double capacity
     public int getUpgradeCost() {
-        return tier == 0 ? (defaultCapacityMultiplier * itemQuantity) : getCurrentCapacity() * 2;
+        return tier == 0 ? (defaultCapacityMultiplier * itemQuantity) : getCurrentCapacity() * 4;
+    }
+
+    public boolean unlockItem(ItemBundle farmItem) {
+        Inventory inventory = Inventory.get(farmItem);
+        if (inventory.getQuantity() >= itemRequirement) {
+            inventory.setQuantity(inventory.getQuantity() - itemRequirement);
+            inventory.save();
+            farmItem.setQuantity(1);
+            farmItem.save();
+            return true;
+        }
+        return false;
     }
 }

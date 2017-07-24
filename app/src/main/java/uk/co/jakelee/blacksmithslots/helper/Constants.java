@@ -59,6 +59,7 @@ public class Constants {
 
     // Intents
     public final static String INTENT_SLOT = "uk.co.jakelee.blacksmithslots.slot";
+    public final static String INTENT_FARM = "uk.co.jakelee.blacksmithslots.farm";
 
     // Used for income calculations
     public final static int BRONZE_MIN_LEVEL = 1;
