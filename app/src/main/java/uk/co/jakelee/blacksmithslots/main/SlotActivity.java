@@ -83,6 +83,14 @@ public class SlotActivity extends BaseActivity {
         }
     }
 
+    @Override
+    public void onStop() {
+        super.onStop();
+        if (slotHelper != null) {
+            slotHelper.stop();
+        }
+    }
+
     private void startTutorial() {
         boolean isLandscape = getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE;
 

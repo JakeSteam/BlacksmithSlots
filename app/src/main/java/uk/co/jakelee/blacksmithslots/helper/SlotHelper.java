@@ -71,6 +71,11 @@ public class SlotHelper {
         handler.removeCallbacksAndMessages(null);
     }
 
+    public void stop() {
+        pause();
+        autospinsLeft = 0;
+    }
+
     public void createRoutes() {
         RelativeLayout container = activity.findViewById(R.id.slotArea);
         RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
