@@ -100,6 +100,8 @@ public class MapActivity extends BaseActivity implements
     TextView watchAdvert;
     @BindView(R.id.winItems)
     TextView winItems;
+    @BindView(R.id.farmItems)
+    TextView farmItems;
     @BindView(R.id.claimBonus)
     TextView claimBonus;
     @BindView(R.id.googlePlayRow)
@@ -156,6 +158,7 @@ public class MapActivity extends BaseActivity implements
             setAdvertUnclaimable();
         }
         updateWinItemsButton();
+        updateFarmItemsButton();
     }
 
     private void updateWinItemsButton() {
@@ -167,6 +170,13 @@ public class MapActivity extends BaseActivity implements
                 maxCharges));
     }
 
+    private void updateFarmItemsButton() {
+        int unclaimedItems = Farm.getUnclaimedItems();
+        farmItems.setBackgroundResource(unclaimedItems > 0 ? R.drawable.box_green : R.drawable.box_orange);
+        farmItems.setText(String.format(Locale.ENGLISH, getString(R.string.farm_items),
+                unclaimedItems));
+    }
+
     private void createMapPager() {
         mapPagerAdapter = new MapPagerAdapter(this);
         mapPager.setAdapter(mapPagerAdapter);
@@ -175,6 +185,15 @@ public class MapActivity extends BaseActivity implements
         indicator.setupWithViewPager(mapPager);
         indicator.addOnPageChangeListener(mapChangeListener());
         mapPager.setCurrentItem(1, false);
+    }
+
+    @OnClick(R.id.farmItems)
+    public void farmItems() {
+        mapPager.setCurrentItem(0, true);
+        if (!prefs.getBoolean("seenFarmInfo", false)) {
+            AlertHelper.info(this, getString(R.string.farm_tutorial), false);
+            prefs.edit().putBoolean("seenFarmInfo", true).apply();
+        }
     }
 
     @NonNull
@@ -188,12 +207,18 @@ public class MapActivity extends BaseActivity implements
                 String mapName = TextHelper.getInstance(getApplicationContext()).getText(DisplayHelper.getMapString(position));
                 mapTextView.setText(mapName);
                 selectedSlot = 0;
+                selectedFarm = 0;
+                handler.removeCallbacks(populateFarmRunnable);
                 loadSidebar(null);
 
                 if (isFirstInstall) {
                     isFirstInstall = false;
                     endTutorial();
                     prefs.edit().putInt("tutorialStageCompleted", 3).apply();
+                }
+
+                if (position == 0) {
+                    updateFarmCounts();
                 }
             }
         };
@@ -247,6 +272,7 @@ public class MapActivity extends BaseActivity implements
             @Override
             public void run() {
                 GooglePlayHelper.UpdateAchievements();
+                updateFarmItemsButton();
                 handler.postDelayed(this, DateHelper.MILLISECONDS_IN_SECOND * DateHelper.SECONDS_IN_MINUTE);
             }
         };
@@ -261,7 +287,6 @@ public class MapActivity extends BaseActivity implements
             case 1:
                 runTutorial(getString(R.string.tutorial_map_1), findViewById(R.id.title), isLandscape ? Gravity.LEFT : Gravity.TOP, true);
                 break;
-            //case 2: runTutorial("The world can be navigated by swiping left and right, there's plenty of areas to be explored in your quest to defeat the Purple!", findViewById(R.id.settings), Gravity.LEFT, true); break;
             case 3:
                 runTutorial(getString(R.string.tutorial_map_3), findViewById(R.id.firstSlot), Gravity.RIGHT, true);
                 break;
@@ -368,8 +393,6 @@ public class MapActivity extends BaseActivity implements
             }
         }
     }
-
-
 
     public void selectFarm(View v) {
         selectedSlot = 0;
@@ -518,6 +541,7 @@ public class MapActivity extends BaseActivity implements
     @OnClick({R.id.lockedClose, R.id.unlockedClose, R.id.superlockedClose, R.id.farmClose})
     public void loadSidebar(View v) {
         noSlotSidebar.setVisibility(View.VISIBLE);
+        handler.removeCallbacks(populateFarmRunnable);
     }
 
     @OnClick(R.id.handInButton)
@@ -592,9 +616,22 @@ public class MapActivity extends BaseActivity implements
         if (selectedFarm > 0 && farm != null) {
             if (farm.claim()) {
                 populateFarmInfo();
+                updateFarmItemsButton();
+                updateFarmCounts();
                 AlertHelper.success(this, String.format(Locale.ENGLISH, getString(R.string.farm_claim_items), farm.getName(this)), true);
             } else {
                 AlertHelper.error(this, getString(R.string.error_farm_claim_none), false);
+            }
+        }
+    }
+
+    private void updateFarmCounts() {
+        List<Farm> farms = Farm.listAll(Farm.class);
+        for (int i = 1; i <= farms.size(); i++) {
+            int indicatorId = getResources().getIdentifier("farm" + i + "indicator", "id", getPackageName());
+            TextView indicator = findViewById(indicatorId);
+            if (indicator != null && farms.get(i-1).getItemTier() > 0) {
+                indicator.setText(Integer.toString(farms.get(i-1).getEarnedQuantity()));
             }
         }
     }

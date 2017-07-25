@@ -185,6 +185,15 @@ public class Farm extends SugarRecord {
         return (long)(defaultClaimTime * (Math.pow(Constants.FARM_TIME_ADJUST, tier - 1)));
     }
 
+    public static int getUnclaimedItems() {
+        int total = 0;
+        List<Farm> farms = Farm.listAll(Farm.class);
+        for (Farm farm : farms) {
+            total += farm.getEarnedQuantity();
+        }
+        return total;
+    }
+
     // Usually double capacity
     public int getUpgradeCost() {
         return tier == 0 ? (defaultCapacityMultiplier * itemQuantity) : getCurrentCapacity() * 4;

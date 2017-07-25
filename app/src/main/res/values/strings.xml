@@ -1272,7 +1272,7 @@ AESCrypt (https://goo.gl/Ewk2tq) - Support code encryption.
     <string name="patch_1_0_2" translatable="false">Patch 1.0.2:\n- Fixed items being offscreen in portrait mode\n- Fixed a lack of iron hammers\n- Fixed prestiges not being included in slot chances screen</string>
     <string name="patch_1_0_3" translatable="false">Patch 1.0.3:\n- Fixed impossible item\n- Fixed minigame skip not always applying\n- Fixed getting odd items in chest activity\n- Added outlining resource on slot screen when 0 remaining</string>
     <string name="patch_1_0_3b" translatable="false">Patch 1.0.3b:\n- Tiny fix to prevent crash on minigame-only slot</string>
-    <string name="patch_1_1_0" translatable="false">Patch 1.1.0:\n- Added item upgrades! Merged with the existing trophies, they allow you to improve reward probabilities!\n- Fixed leaderboards and achievements.\n- Fixed action buttons appearing on slot open.</string>
+    <string name="patch_1_1_0" translatable="false">Patch 1.1.0:\n- Added item farming! Visit left of Home Sweet Home to begin!\n- Added item upgrades! Merged with the existing trophies, they allow you to improve reward probabilities!\n- Fixed leaderboards and achievements.\n- Fixed action buttons appearing on slot open.</string>
     <string name="boost_level">Level %s</string>
     <string name="item_trophy">Trophy:</string>
     <string name="item_boost">Boost:</string>
@@ -1313,4 +1313,6 @@ AESCrypt (https://goo.gl/Ewk2tq) - Support code encryption.
     <string name="statistic_farm_claimed_items">%s Claimed Items</string>
     <string name="notification_pass_bonus">Your blacksmith pass bonus is ready to claim!</string>
     <string name="notification_farm_bonus">A farm area has reached capacity!</string>
+    <string name="farm_items">Farm Items (%d)</string>
+    <string name="farm_tutorial">Farms are a way of earning free resources over time! Unlock farm areas, and select which items to gather.</string>
 </resources>
