@@ -1291,11 +1291,11 @@ AESCrypt (https://goo.gl/Ewk2tq) - Support code encryption.
     <string name="farm_4_name">Food Stand</string>
     <string name="farm_5_name">Sand Rocks</string>
     <string name="farm_6_name">Gem Deposit</string>
-    <string name="farm_title">Lv %1$d %2$s</string>
+    <string name="farm_title" translatable="false">Lv %1$d %2$s</string>
     <string name="select_item">Select Item</string>
     <string name="farm_locked_desc">Unlocking this farm requires unlocking slot \"%s\".</string>
     <string name="farm_unlocked_unselected_desc">Select an item to begin collecting!</string>
-    <string name="farm_unlocked_desc">%1$d/%2$dx %3$s\n%4$d per %5$s\nNext: %6$s</string>
+    <string name="farm_unlocked_desc" translatable="false">%1$d/%2$dx %3$s\n%4$d per %5$s\nNext: %6$s</string>
     <string name="select_item_desc">Items can be unlocked for gathering in exchange for a collection of them!</string>
     <string name="select_item_question">Are you sure you want to use %1$d %2$s to unlock it for gathering?</string>
     <string name="unlock">Unlock</string>
@@ -1305,11 +1305,11 @@ AESCrypt (https://goo.gl/Ewk2tq) - Support code encryption.
     <string name="farm_upgrade_success">Upgraded %1$s to level %2$d!</string>
     <string name="error_farm_claim_none">You can\'t claim 0 items!</string>
     <string name="farm_claim_items">Claimed %1$s\'s items!</string>
-    <string name="na">N/A</string>
+    <string name="na" translatable="false">N/A</string>
     <string name="statistic_farm_earnings">%s Earnings</string>
     <string name="statistic_farm_capacity">%s Capacity</string>
     <string name="statistic_farm_item">%s Item</string>
-    <string name="item_per_time">%1$d per %2$s</string>
+    <string name="item_per_time" translatable="false">%1$d per %2$s</string>
     <string name="statistic_farm_claimed_items">%s Claimed Items</string>
     <string name="notification_pass_bonus">Your blacksmith pass bonus is ready to claim!</string>
     <string name="notification_farm_bonus">A farm area has reached capacity!</string>
