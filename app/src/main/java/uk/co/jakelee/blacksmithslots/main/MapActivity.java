@@ -369,14 +369,26 @@ public class MapActivity extends BaseActivity implements
         }
     }
 
+
+
     public void selectFarm(View v) {
         selectedSlot = 0;
         selectedFarm = Integer.parseInt((String) v.getTag());
         findViewById(R.id.slotInfo).setVisibility(View.GONE);
-        populateFarmInfo();
+        handler.post(populateFarmRunnable);
     }
 
+    @NonNull
+    private Runnable populateFarmRunnable = new Runnable() {
+        @Override
+        public void run() {
+            populateFarmInfo();
+            handler.postDelayed(this, 1000);
+        }
+    };
+
     public void selectSlot(View v) {
+        handler.removeCallbacks(populateFarmRunnable);
         selectedFarm = 0;
         selectedSlot = Integer.parseInt((String) v.getTag());
         findViewById(R.id.slotInfo).setVisibility(View.VISIBLE);
