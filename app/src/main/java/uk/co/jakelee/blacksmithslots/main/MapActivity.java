@@ -184,7 +184,7 @@ public class MapActivity extends BaseActivity implements
         ViewPagerIndicator indicator = findViewById(R.id.view_pager_indicator);
         indicator.setupWithViewPager(mapPager);
         indicator.addOnPageChangeListener(mapChangeListener());
-        mapPager.setCurrentItem(1, false);
+        mapPager.setCurrentItem(prefs.getInt("savedMapPosition", 1), false);
     }
 
     @OnClick(R.id.farmItems)
@@ -366,6 +366,7 @@ public class MapActivity extends BaseActivity implements
         }
 
         handler.removeCallbacks(null);
+        prefs.edit().putInt("savedMapPosition", mapPager.getCurrentItem()).apply();
     }
 
     private void ratingPrompt() {
