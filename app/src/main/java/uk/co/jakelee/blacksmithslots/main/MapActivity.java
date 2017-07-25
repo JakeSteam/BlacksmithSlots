@@ -108,6 +108,8 @@ public class MapActivity extends BaseActivity implements
     LinearLayout googlePlayRow;
     @BindView(R.id.googlePlayLoginRow)
     LinearLayout googlePlayLoginRow;
+    @BindView(R.id.leftArrow) ImageView leftArrow;
+    @BindView(R.id.rightArrow) ImageView rightArrow;
     private int selectedSlot = 1;
     private int selectedFarm = 0;
     private final Handler handler = new Handler();
@@ -201,8 +203,8 @@ public class MapActivity extends BaseActivity implements
         return new ViewPager.SimpleOnPageChangeListener() {
             public void onPageSelected(int position) {
                 SoundHelper.playSound(getApplicationContext(), SoundHelper.swipeSounds);
-                findViewById(R.id.leftArrow).setVisibility(position == 0 ? View.INVISIBLE : View.VISIBLE);
-                findViewById(R.id.rightArrow).setVisibility(position == (MapPagerAdapter.townLayouts.length - 1) ? View.INVISIBLE : View.VISIBLE);
+                leftArrow.setVisibility(position == 0 ? View.INVISIBLE : View.VISIBLE);
+                rightArrow.setVisibility(position == (MapPagerAdapter.townLayouts.length - 1) ? View.INVISIBLE : View.VISIBLE);
 
                 String mapName = TextHelper.getInstance(getApplicationContext()).getText(DisplayHelper.getMapString(position));
                 mapTextView.setText(mapName);
@@ -255,13 +257,13 @@ public class MapActivity extends BaseActivity implements
     }
 
     private void updateText() {
-        ((TextView)findViewById(R.id.inventory)).setText(R.string.inventory);
-        ((TextView)findViewById(R.id.displayHint)).setText(R.string.hints);
-        ((TextView)findViewById(R.id.claimBonus)).setText(R.string.claim_bonus);
-        ((TextView)findViewById(R.id.openShop)).setText(R.string.shop);
-        ((TextView)findViewById(R.id.openTrophy)).setText(R.string.trophies);
-        ((TextView)findViewById(R.id.openCredits)).setText(R.string.credits);
-        ((TextView)findViewById(R.id.watchAdvert)).setText(R.string.watch_advert);
+        ((TextView) findViewById(R.id.inventory)).setText(R.string.inventory);
+        ((TextView) findViewById(R.id.displayHint)).setText(R.string.hints);
+        ((TextView) findViewById(R.id.claimBonus)).setText(R.string.claim_bonus);
+        ((TextView) findViewById(R.id.openShop)).setText(R.string.shop);
+        ((TextView) findViewById(R.id.openTrophy)).setText(R.string.trophies);
+        ((TextView) findViewById(R.id.openCredits)).setText(R.string.credits);
+        ((TextView) findViewById(R.id.watchAdvert)).setText(R.string.watch_advert);
     }
 
     @Override
@@ -631,8 +633,8 @@ public class MapActivity extends BaseActivity implements
         for (int i = 1; i <= farms.size(); i++) {
             int indicatorId = getResources().getIdentifier("farm" + i + "indicator", "id", getPackageName());
             TextView indicator = findViewById(indicatorId);
-            if (indicator != null && farms.get(i-1).getItemTier() > 0) {
-                indicator.setText(Integer.toString(farms.get(i-1).getEarnedQuantity()));
+            if (indicator != null && farms.get(i - 1).getItemTier() > 0) {
+                indicator.setText(Integer.toString(farms.get(i - 1).getEarnedQuantity()));
             }
         }
     }
@@ -652,19 +654,19 @@ public class MapActivity extends BaseActivity implements
                 findViewById(R.id.claimButton).setVisibility(View.GONE);
                 findViewById(R.id.changeButton).setVisibility(View.GONE);
                 if (TaskHelper.isSlotLocked(farm.getRequiredSlot())) {
-                    ((TextView)findViewById(R.id.farmDesc)).setText(String.format(Locale.ENGLISH, getString(R.string.farm_locked_desc), Slot.getName(this, farm.getRequiredSlot())));
-                } else if (farm.getItemTier() == 0){
+                    ((TextView) findViewById(R.id.farmDesc)).setText(String.format(Locale.ENGLISH, getString(R.string.farm_locked_desc), Slot.getName(this, farm.getRequiredSlot())));
+                } else if (farm.getItemTier() == 0) {
                     findViewById(R.id.changeButton).setVisibility(View.VISIBLE);
-                    ((TextView)findViewById(R.id.farmDesc)).setText(R.string.farm_unlocked_unselected_desc);
+                    ((TextView) findViewById(R.id.farmDesc)).setText(R.string.farm_unlocked_unselected_desc);
                 } else {
                     findViewById(R.id.changeButton).setVisibility(View.VISIBLE);
                     findViewById(R.id.upgradeButton).setVisibility(View.VISIBLE);
-                    ((TextView)findViewById(R.id.upgradeButton)).setText(String.format(Locale.ENGLISH, "Upgrade (%1$dx)", farm.getUpgradeCost()));
+                    ((TextView) findViewById(R.id.upgradeButton)).setText(String.format(Locale.ENGLISH, "Upgrade (%1$dx)", farm.getUpgradeCost()));
                     findViewById(R.id.claimButton).setVisibility(View.VISIBLE);
 
                     int earnedCapacity = farm.getEarnedQuantity();
                     int currentCapacity = farm.getCurrentCapacity();
-                    ((TextView)findViewById(R.id.farmDesc)).setText(String.format(Locale.ENGLISH, getString(R.string.farm_unlocked_desc),
+                    ((TextView) findViewById(R.id.farmDesc)).setText(String.format(Locale.ENGLISH, getString(R.string.farm_unlocked_desc),
                             earnedCapacity,
                             currentCapacity,
                             Inventory.getName(this, farm.getItemTier(), farm.getItemType()),

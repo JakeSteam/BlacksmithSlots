@@ -228,12 +228,12 @@ public class AlertDialogHelper {
                 }));
     }
 
-    public static void outOfItems(final Activity activity, final int itemTier, final int itemType) {
+    public static void outOfItems(final Activity activity, final SlotHelper slotHelper, final int itemTier, final int itemType) {
         displayAlertDialog(activity, activity.getString(R.string.outOfItems), activity.getString(R.string.outOfItemsLong),
                 new DialogAction(activity.getString(R.string.lowerBet), new Runnable() {
                     @Override
                     public void run() {
-
+                        slotHelper.minimiseBet();
                     }
                 }),
                 new DialogAction(activity.getString(R.string.exit), new Runnable() {

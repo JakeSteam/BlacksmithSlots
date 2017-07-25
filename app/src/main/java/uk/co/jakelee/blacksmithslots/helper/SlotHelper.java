@@ -404,7 +404,7 @@ public class SlotHelper {
                 if (failedItem.getType() == Enums.Type.Bar.value) {
                     failedItem.setType(Enums.Type.Ore.value);
                 }
-                AlertDialogHelper.outOfItems(activity, failedItem.getTier(), failedItem.getType());
+                AlertDialogHelper.outOfItems(activity, this, failedItem.getTier(), failedItem.getType());
             } else {
                 SoundHelper.playSound(activity, SoundHelper.spinSounds);
                 if (highlightedRoutes != null) {
@@ -589,6 +589,13 @@ public class SlotHelper {
             afterStakeChangeUpdate();
             resetRouteColours();
         }
+    }
+
+    public void minimiseBet() {
+        slot.setCurrentRows(slot.getMinimumRows());
+        slot.setCurrentStake(slot.getMinimumStake());
+        slot.save();
+        afterStakeChangeUpdate();
     }
 
     public void autospin(int spins) {
