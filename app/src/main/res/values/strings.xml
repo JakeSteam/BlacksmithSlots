@@ -230,6 +230,7 @@
     <string name="setting_16">Orientation</string>
     <string name="setting_17">Prestige</string>
     <string name="setting_18">Skip Minigames</string>
+    <string name="setting_19">Farm Notification</string>
 
     <string name="setting_desc_1">Enables and disables the in-game background music.</string>
     <string name="setting_desc_2">Enables and disables the in-game sound effects.</string>
@@ -247,7 +248,7 @@
     <string name="setting_desc_14">Logout of Google Play.</string>
     <string name="setting_desc_15">Enables auto-saving, which can be managed via the Google Play settings on the map screen.</string>
     <string name="setting_desc_16">Configures the game to either lock to portrait or landscape, or match the device\'s current orientation.</string>
-    <string name="setting_desc_17">At level 25+ and VIP level 1+, you can prestige. This will reset your game progress, but keep your current statistics (except XP) and trophy progress. You will receive +1 wildcard per slot, but -20% XP.</string>
+    <string name="setting_desc_17">At level 25+ and VIP level 1+, you can prestige. This will reset your game progress, but keep your current statistics (except XP) and upgrade / trophy progress. You will receive +1 wildcard per slot, but -20% XP.</string>
     <string name="setting_desc_18">When enabled, minigames will be skipped whilst autoplay is enabled.</string>
 
     <string name="orientation_4">Auto-rotate</string>
@@ -990,9 +991,7 @@
     <string name="slot_100_unlocked">Oh, you have! Come on in!</string>
     <string name="task_100_1_text">Have you been before?</string>
 
-
-
-
+    <string name="map_0">Family Farm</string>
     <string name="map_1">Home Sweet Home</string>
     <string name="map_2">The Neighbourhood</string>
     <string name="map_3">The Forest</string>
@@ -1049,6 +1048,7 @@
     <string name="statistictype_5_name">Misc</string>
     <string name="statistictype_6_name">Minigames</string>
     <string name="statistictype_7_name">Version</string>
+    <string name="statistictype_8_name">Farms</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
     <string name="alert_autospin">Autospin</string>
@@ -1165,15 +1165,15 @@ AESCrypt (https://goo.gl/Ewk2tq) - Support code encryption.
     <string name="minigame_chest_win_25">Wow, very nice! You\'ve earned yourself %1$s!</string>
     <string name="pb_save_import">Save has prestiged %1$d times. %2$s</string>
     <string name="claimed_prefix">Claimed:</string>
-    <string name="trophies">Trophies</string>
+    <string name="trophies">Upgrades</string>
     <string name="trophies_progress">Trophies:\u00A0\u00A0%1$d/%2$d\u00A0\u00A0(+%3$,.1f%% XP)</string>
-    <string name="trophy_progress_unachieved" translatable="false">%1$d/%2$dx %3$s</string>
+    <string name="trophy_progress_unachieved" translatable="false">%1$d/%2$dx</string>
     <string name="hand_in_items">Hand in items</string>
     <string name="hand_in_items_long">How many %1$s would you like to hand in?\n\nHanding in %2$d will unlock the trophy!</string>
     <string name="error_trophy_no_items">You can\'t hand in items you don\'t own!</string>
     <string name="get_fact">Get fact!</string>
     <string name="hints">Hints</string>
-    <string name="trophy_progress_achieved">%1$s trophy unlocked!</string>
+    <string name="trophy_progress_achieved">Unlocked!</string>
     <string name="extra_wildcards">Extra Wildcards</string>
     <string name="vip_comparison">VIP Comparison</string>
     <string name="upgrade_vip_level">Upgrade VIP Level</string>
@@ -1272,4 +1272,47 @@ AESCrypt (https://goo.gl/Ewk2tq) - Support code encryption.
     <string name="patch_1_0_2" translatable="false">Patch 1.0.2:\n- Fixed items being offscreen in portrait mode\n- Fixed a lack of iron hammers\n- Fixed prestiges not being included in slot chances screen</string>
     <string name="patch_1_0_3" translatable="false">Patch 1.0.3:\n- Fixed impossible item\n- Fixed minigame skip not always applying\n- Fixed getting odd items in chest activity\n- Added outlining resource on slot screen when 0 remaining</string>
     <string name="patch_1_0_3b" translatable="false">Patch 1.0.3b:\n- Tiny fix to prevent crash on minigame-only slot</string>
+    <string name="patch_1_1_0" translatable="false">Patch 1.1.0:\n- Added item farming! Visit left of Home Sweet Home to begin.\n- Added item upgrades! Merged with the existing trophy system, they allow you to improve reward probabilities.\n- Made minigames autocomplete if autospinning.\n- Added loading last opened map on game start.\n- Made lower bet... actually lower bet.\n- Fixed leaderboards and achievements.\n- Fixed action buttons appearing on slot open.</string>
+    <string name="boost_level">Level %s</string>
+    <string name="item_trophy">Trophy:</string>
+    <string name="item_boost">Boost:</string>
+    <string name="question_mark" translatable="false">\?</string>
+    <string name="exclamation_mark" translatable="false">!</string>
+    <string name="boost_info">Upgrading an item\'s boost level increases how likely that item is to appear in slots. It can be deactivated if necessary.</string>
+    <string name="trophy_info">Handing in enough of a specific item unlocks the trophy. Owning a trophy adds bonus XP to every slot spin!</string>
+    <string name="upgrade">Upgrade</string>
+    <string name="boost_handin_title">Upgrade item boost</string>
+    <string name="boost_handin_body">Would you like to upgrade your %1$s boost to level %2$d in exchange for %3$dx %1$s?</string>
+    <string name="trophy_unlocked">Trophy unlocked, enjoy your XP boost!</string>
+    <string name="trophy_items_incomplete">Trophy items handed in, but not yet enough for a trophy!</string>
+    <string name="farm_1_name">Mine</string>
+    <string name="farm_2_name">Secondaries</string>
+    <string name="farm_3_name">Fruit Tree</string>
+    <string name="farm_4_name">Food Stand</string>
+    <string name="farm_5_name">Sand Rocks</string>
+    <string name="farm_6_name">Gem Deposit</string>
+    <string name="farm_title" translatable="false">Lv %1$d %2$s</string>
+    <string name="select_item">Select Item</string>
+    <string name="farm_locked_desc">Unlocking this farm requires unlocking slot \"%s\".</string>
+    <string name="farm_unlocked_unselected_desc">Select an item to begin collecting!</string>
+    <string name="farm_unlocked_desc" translatable="false">%1$d/%2$dx %3$s\n%4$d per %5$s\nNext: %6$s</string>
+    <string name="select_item_desc">Items can be unlocked for gathering in exchange for a collection of them!</string>
+    <string name="select_item_question">Are you sure you want to use %1$d %2$s to unlock it for gathering?</string>
+    <string name="unlock">Unlock</string>
+    <string name="farm_item_unlocked">Unlocked and selected %1$s for %2$s!</string>
+    <string name="upgrade_farm">Upgrade Farm</string>
+    <string name="farm_upgrade_text">Are you sure you want to exchange %1$dx %2$s to upgrade %3$s to level %4$d?\nCapacity: %5$d -> %6$d\nGather Time: %7$s -> %8$s</string>
+    <string name="farm_upgrade_success">Upgraded %1$s to level %2$d!</string>
+    <string name="error_farm_claim_none">You can\'t claim 0 items!</string>
+    <string name="farm_claim_items">Claimed %1$s\'s items!</string>
+    <string name="na" translatable="false">N/A</string>
+    <string name="statistic_farm_earnings">%s Earnings</string>
+    <string name="statistic_farm_capacity">%s Capacity</string>
+    <string name="statistic_farm_item">%s Item</string>
+    <string name="item_per_time" translatable="false">%1$d per %2$s</string>
+    <string name="statistic_farm_claimed_items">%s Claimed Items</string>
+    <string name="notification_pass_bonus">Your blacksmith pass bonus is ready to claim!</string>
+    <string name="notification_farm_bonus">A farm area has reached capacity!</string>
+    <string name="farm_items">Farm Items (%d)</string>
+    <string name="farm_tutorial">Farms are a way of earning free resources over time! Unlock farm areas, and select which items to gather.</string>
 </resources>

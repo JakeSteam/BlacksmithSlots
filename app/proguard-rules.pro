@@ -47,6 +47,7 @@ public static final ** CREATOR;
 -keep class com.google.android.gms.** {
   *;
 }
+-dontwarn com.google.android.gms.internal.zzhu
 
 -dontwarn com.batch.android.mediation.**
 

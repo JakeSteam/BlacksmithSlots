@@ -19,6 +19,8 @@ import uk.co.jakelee.blacksmithslots.helper.DateHelper;
 import uk.co.jakelee.blacksmithslots.helper.DisplayHelper;
 import uk.co.jakelee.blacksmithslots.helper.Enums;
 import uk.co.jakelee.blacksmithslots.helper.IncomeHelper;
+import uk.co.jakelee.blacksmithslots.model.Farm;
+import uk.co.jakelee.blacksmithslots.model.Inventory;
 import uk.co.jakelee.blacksmithslots.model.Statistic;
 
 public class StatisticsActivity extends BaseActivity {
@@ -49,12 +51,27 @@ public class StatisticsActivity extends BaseActivity {
             if (statisticType == Enums.StatisticType.Bonuses) {
                 long nextClaim = IncomeHelper.getNextPeriodicClaimTime();
                 statTable.addView(DisplayHelper.getTableRow(inflater, getString(R.string.statistic_next_claim_name), (nextClaim > 0 && nextClaim > System.currentTimeMillis() ? DateHelper.timestampToDateTime(nextClaim) : getString(R.string.never))));
-            }
-
-            if (statisticType == Enums.StatisticType.Version) {
+            } else if (statisticType == Enums.StatisticType.Version) {
                 statTable.addView(DisplayHelper.getTableRow(inflater, getString(R.string.statistic_version_name), BuildConfig.VERSION_NAME + " (" + BuildConfig.BUILD_TYPE + ")"));
                 statTable.addView(DisplayHelper.getTableRow(inflater, getString(R.string.statistic_version_number), "" + BuildConfig.VERSION_CODE));
                 statTable.addView(DisplayHelper.getTableRow(inflater, getString(R.string.statistic_version_database), "" + DatabaseHelper.LATEST_PATCH));
+            } else if (statisticType == Enums.StatisticType.Farms) {
+                List<Farm> farms = Farm.listAll(Farm.class);
+                for (Farm farm : farms) {
+                    String name = farm.getName(this);
+                    statTable.addView(DisplayHelper.getTableRow(inflater,
+                            String.format(Locale.ENGLISH, getString(R.string.statistic_farm_earnings), name),
+                            farm.getTier() == 0 ? getString(R.string.na) : String.format(Locale.ENGLISH, getString(R.string.item_per_time), farm.getItemQuantity(), DateHelper.timestampToShortTime(farm.getClaimTime()))));
+                    statTable.addView(DisplayHelper.getTableRow(inflater,
+                            String.format(Locale.ENGLISH, getString(R.string.statistic_farm_capacity), name),
+                            Integer.toString(farm.getCurrentCapacity())));
+                    statTable.addView(DisplayHelper.getTableRow(inflater,
+                            String.format(Locale.ENGLISH, getString(R.string.statistic_farm_item), name),
+                            farm.getItemTier() == 0 ? getString(R.string.na) : Inventory.getName(this, farm.getItemTier(), farm.getItemType())));
+                    statTable.addView(DisplayHelper.getTableRow(inflater,
+                            String.format(Locale.ENGLISH, getString(R.string.statistic_farm_claimed_items), name),
+                            Integer.toString(farm.getAmountClaimed())));
+                }
             }
         }
     }

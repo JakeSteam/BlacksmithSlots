@@ -10,6 +10,9 @@ public class Constants {
     public final static int STATUS_NO_MATCH = 0;
     public final static int STATUS_MATCH = 1;
 
+    public final static int ITEM_TIER_BASE = 100;
+    public final static int ITEM_TIER_MULTIPLIER = 4;
+
     public final static int ROWS = 5;
     public final static Double LEVEL_MODIFIER = 0.07;
     public final static int STARTING_XP = 205;
@@ -22,9 +25,11 @@ public class Constants {
     public static final int MINUTES_PER_CHARGE = 10;
     public static final int CHARGE_MAX = 5;
     public static final int MEMORY_GAME_LIVES = 5;
+    public static final double FARM_TIME_ADJUST = 0.95;
 
     public final static int NOTIFICATION_PERIODIC_BONUS = 100;
     public final static int NOTIFICATION_PASS_BONUS = 101;
+    public final static int NOTIFICATION_FARM_BONUS = 102;
 
     public final static int ORIENTATION_AUTO = 4;
     public final static int ORIENTATION_INBETWEEN = 5;
@@ -55,6 +60,7 @@ public class Constants {
 
     // Intents
     public final static String INTENT_SLOT = "uk.co.jakelee.blacksmithslots.slot";
+    public final static String INTENT_FARM = "uk.co.jakelee.blacksmithslots.farm";
 
     // Used for income calculations
     public final static int BRONZE_MIN_LEVEL = 1;

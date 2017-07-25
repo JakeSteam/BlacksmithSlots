@@ -21,6 +21,15 @@ public class NotificationHelper extends BroadcastReceiver {
     private static final String NOTIFICATION_TYPE = "uk.co.jakelee.notification_type";
     private static boolean useSounds = false;
 
+    public static void addFarmNotification(Context context, boolean useSoundsSetting) {
+        useSounds = useSoundsSetting;
+
+        long nextClaimTime = IncomeHelper.getNextFarmMaxTime();
+        if (System.currentTimeMillis() < nextClaimTime) {
+            NotificationHelper.addNotification(context, nextClaimTime, Constants.NOTIFICATION_FARM_BONUS);
+        }
+    }
+
     public static void addBonusNotification(Context context, boolean useSoundsSetting) {
         useSounds = useSoundsSetting;
 
@@ -82,6 +91,10 @@ public class NotificationHelper extends BroadcastReceiver {
         String notificationText = "";
         if (notificationType == Constants.NOTIFICATION_PERIODIC_BONUS) {
             notificationText = context.getString(R.string.notification_periodic_bonus);
+        } else if (notificationType == Constants.NOTIFICATION_PASS_BONUS) {
+            notificationText = context.getString(R.string.notification_pass_bonus);
+        } else if (notificationType == Constants.NOTIFICATION_FARM_BONUS) {
+            notificationText = context.getString(R.string.notification_farm_bonus);
         }
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context);

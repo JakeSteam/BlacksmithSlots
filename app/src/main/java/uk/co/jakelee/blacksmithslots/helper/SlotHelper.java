@@ -68,8 +68,12 @@ public class SlotHelper {
     }
 
     public void pause() {
-        autospinsLeft = 0;
         handler.removeCallbacksAndMessages(null);
+    }
+
+    public void stop() {
+        pause();
+        autospinsLeft = 0;
     }
 
     public void createRoutes() {
@@ -116,7 +120,7 @@ public class SlotHelper {
             } else {
                 AlertHelper.info(activity, activity.getString(R.string.minigame_won_nothing), false);
             }
-        } else if (requestCode == Constants.MINIGAME_CHEST) {
+        } else if (requestCode == Constants.MINIGAME_CHEST && data != null) {
             if (data.getIntExtra("quantity", 0) > 0) {
                 ItemBundle winnings = new ItemBundle(
                         data.getIntExtra("tier", 0),
@@ -129,6 +133,10 @@ public class SlotHelper {
             } else {
                 AlertHelper.info(activity, activity.getString(R.string.minigame_won_nothing), false);
             }
+        }
+
+        if (autospinsLeft > 0) {
+            spin(false);
         }
     }
 
@@ -170,6 +178,7 @@ public class SlotHelper {
                             if (classToLoad != null && requestCode > 0) {
                                 activity.startActivityForResult(new Intent(activity, classToLoad)
                                                 .addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT)
+                                                .putExtra("autospin", autospinsLeft > 0)
                                                 .putExtra("slot", slot.getSlotId()),
                                         requestCode);
                             }
@@ -279,7 +288,6 @@ public class SlotHelper {
                 // Wowsa, they got a minigame match!
                 if (type != Enums.Type.Wildcard) {
                     if (!Setting.get(Enums.Setting.SkipMinigames).getBooleanValue()) {
-                        autospinsLeft = 0;
                         minigameToLoad = type;
                     }
                 }
@@ -396,7 +404,7 @@ public class SlotHelper {
                 if (failedItem.getType() == Enums.Type.Bar.value) {
                     failedItem.setType(Enums.Type.Ore.value);
                 }
-                AlertDialogHelper.outOfItems(activity, failedItem.getTier(), failedItem.getType());
+                AlertDialogHelper.outOfItems(activity, this, failedItem.getTier(), failedItem.getType());
             } else {
                 SoundHelper.playSound(activity, SoundHelper.spinSounds);
                 if (highlightedRoutes != null) {
@@ -581,6 +589,13 @@ public class SlotHelper {
             afterStakeChangeUpdate();
             resetRouteColours();
         }
+    }
+
+    public void minimiseBet() {
+        slot.setCurrentRows(slot.getMinimumRows());
+        slot.setCurrentStake(slot.getMinimumStake());
+        slot.save();
+        afterStakeChangeUpdate();
     }
 
     public void autospin(int spins) {

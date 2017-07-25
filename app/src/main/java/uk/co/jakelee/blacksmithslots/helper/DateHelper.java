@@ -29,6 +29,12 @@ public class DateHelper {
         return String.format(Locale.ENGLISH, "%1$dhr %2$dmin", hours, minutes);
     }
 
+    public static String timestampToShortTime(long timestamp) {
+        long minutes = TimeUnit.MILLISECONDS.toMinutes(timestamp);
+        long seconds = TimeUnit.MILLISECONDS.toSeconds(timestamp) - (minutes * 60);
+        return String.format(Locale.ENGLISH, "%1$dmin %2$dsec", minutes, seconds);
+    }
+
     public static Calendar getYesterdayMidnight() {
         Calendar calendar = Calendar.getInstance();
         calendar.add(Calendar.DAY_OF_YEAR, -1);

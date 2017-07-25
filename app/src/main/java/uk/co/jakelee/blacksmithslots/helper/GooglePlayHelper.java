@@ -35,14 +35,16 @@ import uk.co.jakelee.blacksmithslots.BuildConfig;
 import uk.co.jakelee.blacksmithslots.R;
 import uk.co.jakelee.blacksmithslots.main.MapActivity;
 import uk.co.jakelee.blacksmithslots.model.Achievement;
+import uk.co.jakelee.blacksmithslots.model.Farm;
 import uk.co.jakelee.blacksmithslots.model.Iap;
 import uk.co.jakelee.blacksmithslots.model.Inventory;
+import uk.co.jakelee.blacksmithslots.model.ItemBundle;
 import uk.co.jakelee.blacksmithslots.model.Message;
 import uk.co.jakelee.blacksmithslots.model.Setting;
 import uk.co.jakelee.blacksmithslots.model.Statistic;
 import uk.co.jakelee.blacksmithslots.model.SupportCode;
 import uk.co.jakelee.blacksmithslots.model.Task;
-import uk.co.jakelee.blacksmithslots.model.Trophy;
+import uk.co.jakelee.blacksmithslots.model.Upgrade;
 
 import static android.content.Context.MODE_PRIVATE;
 
@@ -389,7 +391,9 @@ public class GooglePlayHelper implements com.google.android.gms.common.api.Resul
             Statistic.class,
             SupportCode.class,
             Task.class,
-            Trophy.class
+            Upgrade.class,
+            ItemBundle.class,
+            Farm.class
     };
 
     public static byte[] createBackup() {

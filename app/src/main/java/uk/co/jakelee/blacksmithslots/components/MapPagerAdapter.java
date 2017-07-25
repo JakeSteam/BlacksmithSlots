@@ -27,7 +27,7 @@ import uk.co.jakelee.blacksmithslots.model.Slot;
 
 public class MapPagerAdapter extends PagerAdapter {
     private final LayoutInflater mLayoutInflater;
-    public final static int[] townLayouts = {R.layout.custom_map_1, R.layout.custom_map_2, R.layout.custom_map_3,
+    public final static int[] townLayouts = {R.layout.custom_map_0, R.layout.custom_map_1, R.layout.custom_map_2, R.layout.custom_map_3,
             R.layout.custom_map_4, R.layout.custom_map_5, R.layout.custom_map_6,
             R.layout.custom_map_7, R.layout.custom_map_8, R.layout.custom_map_9,
             R.layout.custom_map_10, R.layout.custom_map_11, R.layout.custom_map_12,
@@ -54,17 +54,19 @@ public class MapPagerAdapter extends PagerAdapter {
 
         View itemView = mLayoutInflater.inflate(townLayouts[position], container, false);
 
-        // The lowest required slot for this map
-        Slot firstSlotUnlocked = Select.from(Slot.class).where(Condition.prop("m").eq(position + 1)).orderBy("k ASC").first();
-        boolean isUnlocked = Constants.DEBUG_UNLOCK_ALL || (position == 0 || firstSlotUnlocked == null || !TaskHelper.isSlotLocked(firstSlotUnlocked.getRequiredSlot()));
-        itemView.findViewById(R.id.lockedMapBlocker).setVisibility(isUnlocked ? View.GONE : View.VISIBLE);
-        if (!isUnlocked) {
-            Slot requiredSlot = Slot.get(firstSlotUnlocked.getRequiredSlot());
-            if (requiredSlot != null) {
-                ((TextView) itemView.findViewById(R.id.lockedMapText)).setText(String.format(Locale.ENGLISH,
-                        itemView.getContext().getString(R.string.alert_map_locked),
-                        TextHelper.getInstance(container.getContext()).getText(DisplayHelper.getMapString(position + 1)),
-                        requiredSlot.getName(container.getContext())));
+        if (position > 0) {
+            // The lowest required slot for this map
+            Slot firstSlotUnlocked = Select.from(Slot.class).where(Condition.prop("m").eq(position)).orderBy("k ASC").first();
+            boolean isUnlocked = Constants.DEBUG_UNLOCK_ALL || (position == 1 || firstSlotUnlocked == null || !TaskHelper.isSlotLocked(firstSlotUnlocked.getRequiredSlot()));
+            itemView.findViewById(R.id.lockedMapBlocker).setVisibility(isUnlocked ? View.GONE : View.VISIBLE);
+            if (!isUnlocked) {
+                Slot requiredSlot = Slot.get(firstSlotUnlocked.getRequiredSlot());
+                if (requiredSlot != null) {
+                    ((TextView) itemView.findViewById(R.id.lockedMapText)).setText(String.format(Locale.ENGLISH,
+                            itemView.getContext().getString(R.string.alert_map_locked),
+                            TextHelper.getInstance(container.getContext()).getText(DisplayHelper.getMapString(position)),
+                            requiredSlot.getName(container.getContext())));
+                }
             }
         }
 

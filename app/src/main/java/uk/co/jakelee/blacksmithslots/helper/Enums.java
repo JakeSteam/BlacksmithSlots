@@ -18,6 +18,22 @@ public class Enums {
         }
     }
 
+    public enum Farm {
+        Mine(1), Secondaries(2), Fruit(3), Merchant(4), Sands(5), Gems(6);
+        public final int value;
+        Farm(int value) {
+            this.value = value;
+        }
+        public static Farm get(int value) {
+            for (Farm item : Farm.values()) {
+                if (value == item.value) {
+                    return item;
+                }
+            }
+            return null;
+        }
+    }
+
     public enum Language {
         English(1), Chinese(2), Dutch(3), French(4), German(5), Korean(6), Portuguese(7), Russian(8), Spanish(9);
         public final int value;
@@ -61,7 +77,7 @@ public class Enums {
     }
 
     public enum ItemBundleType {
-        SlotResource(1), SlotReward(2), IapReward(3), PassReward(4);
+        SlotResource(1), SlotReward(2), IapReward(3), PassReward(4), FarmReward(5);
         public final int value;
         ItemBundleType(int value) {
             this.value = value;
@@ -123,7 +139,8 @@ public class Enums {
 
     public enum Setting {
         Music(1), Sound(2), AttemptLogin(3), OnlyActiveResources(5), Language(6), NotificationSounds(7), PeriodicBonusNotification(8), SaveImported(9),
-        OnlyShowStocked(10), OrderByTier(11), OrderReversed(12), BlacksmithPassNotification(13), PlayLogout(14), Autosave(15), Orientation(16), Prestige(17), SkipMinigames(18);
+        OnlyShowStocked(10), OrderByTier(11), OrderReversed(12), BlacksmithPassNotification(13), PlayLogout(14), Autosave(15), Orientation(16), Prestige(17),
+        SkipMinigames(18), FarmNotification(19);
         public final int value;
         Setting(int value) {
             this.value = value;
@@ -209,7 +226,7 @@ public class Enums {
     }
 
     public enum StatisticType {
-        Progress(1), Events(2), Bonuses(3), BlacksmithPass(4), Misc(5), Minigames(6), Version(7);
+        Progress(1), Events(2), Bonuses(3), BlacksmithPass(4), Misc(5), Minigames(6), Version(7), Farms(8);
         public final int value;
         StatisticType(int value) {
             this.value = value;

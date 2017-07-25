@@ -1,6 +1,5 @@
 package uk.co.jakelee.blacksmithslots.main;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
@@ -49,37 +48,17 @@ public class SlotActivity extends BaseActivity {
             finish();
         } else {
             final SlotActivity activity = this;
-            final ProgressDialog alert = new ProgressDialog(this);
-            alert.setIndeterminate(true);
-            alert.setTitle(getString(R.string.loading_title));
-            alert.setMessage(getString(R.string.loading_body));
-            alert.show();
             final Handler handler = new Handler();
-            handler.postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    slotHelper = new SlotHelper(activity, handler, slot);
-                    slotHelper.setBackground();
-                    slotHelper.createWheel();
-                    slotHelper.createRoutes();
-                    slotHelper.updateResourceCount();
-                    slotHelper.afterSpinUpdate();
+            slotHelper = new SlotHelper(activity, handler, slot);
+            slotHelper.setBackground();
+            slotHelper.createWheel();
+            slotHelper.createRoutes();
+            slotHelper.updateResourceCount();
+            slotHelper.afterSpinUpdate();
 
-                    if (isFirstInstall && prefs.getInt("tutorialStageCompleted", 0) < 2) {
-                        startTutorial();
-                    }
-
-                    handler.postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            if (alert.isShowing()) {
-                                alert.dismiss();
-                            }
-                        }
-                    }, 60);
-
-                }
-            }, 50);
+            if (isFirstInstall && prefs.getInt("tutorialStageCompleted", 0) < 2) {
+                startTutorial();
+            }
         }
         ((TextView)findViewById(R.id.vipLevel)).setText(String.format(Locale.ENGLISH, getString(R.string.vip_level_display), LevelHelper.getVipLevel()));
 
@@ -101,6 +80,14 @@ public class SlotActivity extends BaseActivity {
         super.onPause();
         if(slotHelper != null) {
             slotHelper.pause();
+        }
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        if (slotHelper != null) {
+            slotHelper.stop();
         }
     }
 

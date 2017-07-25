@@ -20,13 +20,17 @@ import java.util.Locale;
 import uk.co.jakelee.blacksmithslots.BuildConfig;
 import uk.co.jakelee.blacksmithslots.R;
 import uk.co.jakelee.blacksmithslots.constructs.DialogAction;
+import uk.co.jakelee.blacksmithslots.main.FarmItemActivity;
+import uk.co.jakelee.blacksmithslots.main.MapActivity;
 import uk.co.jakelee.blacksmithslots.main.MinigameActivity;
 import uk.co.jakelee.blacksmithslots.main.ShopActivity;
 import uk.co.jakelee.blacksmithslots.main.SlotActivity;
 import uk.co.jakelee.blacksmithslots.main.TrophyActivity;
+import uk.co.jakelee.blacksmithslots.model.Farm;
 import uk.co.jakelee.blacksmithslots.model.Inventory;
+import uk.co.jakelee.blacksmithslots.model.ItemBundle;
 import uk.co.jakelee.blacksmithslots.model.SupportCode;
-import uk.co.jakelee.blacksmithslots.model.Trophy;
+import uk.co.jakelee.blacksmithslots.model.Upgrade;
 
 public class AlertDialogHelper {
 
@@ -63,6 +67,62 @@ public class AlertDialogHelper {
                 dialog.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE);
             }
         });
+    }
+
+    public static void confirmFarmUpgrade(final MapActivity activity, final Farm farm, final ItemBundle farmItem) {
+        final String itemName = Inventory.getName(activity, farmItem.getTier(), farmItem.getType());
+        Farm nextTierFarm = farm.getNextTierFarm();
+        displayAlertDialog(activity, activity.getString(R.string.upgrade_farm), String.format(Locale.ENGLISH, activity.getString(R.string.farm_upgrade_text),
+                farm.getUpgradeCost(),
+                itemName,
+                farm.getName(activity),
+                farm.getTier() + 1,
+                farm.getCurrentCapacity(),
+                nextTierFarm.getCurrentCapacity(),
+                DateHelper.timestampToShortTime(farm.getClaimTime()),
+                DateHelper.timestampToShortTime(nextTierFarm.getClaimTime())),
+                new DialogAction(activity.getString(R.string.upgrade), new Runnable() {
+                    @Override
+                    public void run() {
+                        if (farm.upgrade(farmItem)) {
+                            AlertHelper.success(activity, String.format(Locale.ENGLISH, activity.getString(R.string.farm_upgrade_success), farm.getName(activity), farm.getTier()), true);
+                            activity.populateFarmInfo();
+                        } else {
+                            AlertHelper.error(activity, R.string.error_trophy_no_items, false);
+                        }
+                    }
+                }),
+                new DialogAction(activity.getString(R.string.cancel), new Runnable() {
+                    @Override
+                    public void run() {
+                    }
+                }));
+    }
+
+    public static void confirmFarmItemUnlock(final FarmItemActivity activity, final Farm farm, final ItemBundle farmItem) {
+        final String itemName = Inventory.getName(activity, farmItem.getTier(), farmItem.getType());
+        displayAlertDialog(activity, activity.getString(R.string.select_item), String.format(Locale.ENGLISH, activity.getString(R.string.select_item_question),
+                farm.getItemRequirement(),
+                itemName),
+                new DialogAction(activity.getString(R.string.unlock), new Runnable() {
+                    @Override
+                    public void run() {
+                        if (farm.unlockItem(farmItem)) {
+                            farm.setItemTier(farmItem.getTier().value);
+                            farm.setItemType(farmItem.getType().value);
+                            farm.save();
+                            AlertHelper.success(activity, String.format(Locale.ENGLISH, activity.getString(R.string.farm_item_unlocked), itemName, farm.getName(activity)), true);
+                            activity.displayFarmItems(farm.getFarmId());
+                        } else {
+                            AlertHelper.error(activity, R.string.error_trophy_no_items, false);
+                        }
+                    }
+                }),
+                new DialogAction(activity.getString(R.string.cancel), new Runnable() {
+                    @Override
+                    public void run() {
+                    }
+                }));
     }
 
     public static void confirmPrestige(final Activity activity) {
@@ -117,15 +177,37 @@ public class AlertDialogHelper {
         dialog.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE);
     }
 
-    public static void trophyHandIn(final TrophyActivity activity, Trophy trophy, Inventory inventory) {
+    public static void boostHandIn(final TrophyActivity activity, Upgrade upgrade, Inventory inventory) {
         String itemName = inventory.getName(activity);
-        final int maximumPossible = trophy.getItemsRemaining() > inventory.getQuantity() ? inventory.getQuantity() : trophy.getItemsRemaining();
+
+        displayAlertDialog(activity, activity.getString(R.string.boost_handin_title),
+                String.format(Locale.ENGLISH, activity.getString(R.string.boost_handin_body),
+                        itemName,
+                        upgrade.getBoostTier() + 1,
+                        upgrade.getBoostTierUpgradeCost()),
+                new DialogAction(activity.getString(R.string.cancel), new Runnable() {
+                    @Override
+                    public void run() {
+
+                    }
+                }),
+                new DialogAction(activity.getString(R.string.upgrade), new Runnable() {
+                    @Override
+                    public void run() {
+                        activity.upgradeBoostTier();
+                    }
+                }));
+    }
+
+    public static void trophyHandIn(final TrophyActivity activity, Upgrade upgrade, Inventory inventory) {
+        String itemName = inventory.getName(activity);
+        final int maximumPossible = upgrade.getItemsRemaining() > inventory.getQuantity() ? inventory.getQuantity() : upgrade.getItemsRemaining();
         final int halfMax = (int)Math.ceil(maximumPossible / 2d);
 
         displayAlertDialog(activity, activity.getString(R.string.hand_in_items),
                 String.format(Locale.ENGLISH, activity.getString(R.string.hand_in_items_long),
                     itemName,
-                    trophy.getItemsRequired() - trophy.getItemsHandedIn()),
+                    upgrade.getItemsRequired() - upgrade.getItemsHandedIn()),
                 new DialogAction(activity.getString(R.string.cancel), new Runnable() {
                     @Override
                     public void run() {
@@ -135,23 +217,23 @@ public class AlertDialogHelper {
                 new DialogAction(maximumPossible + "", new Runnable() {
                     @Override
                     public void run() {
-                        activity.handInItems(maximumPossible);
+                        activity.handInTrophyItems(maximumPossible);
                     }
                 }),
                 new DialogAction(halfMax + "", new Runnable() {
                     @Override
                     public void run() {
-                        activity.handInItems(halfMax);
+                        activity.handInTrophyItems(halfMax);
                     }
                 }));
     }
 
-    public static void outOfItems(final Activity activity, final int itemTier, final int itemType) {
+    public static void outOfItems(final Activity activity, final SlotHelper slotHelper, final int itemTier, final int itemType) {
         displayAlertDialog(activity, activity.getString(R.string.outOfItems), activity.getString(R.string.outOfItemsLong),
                 new DialogAction(activity.getString(R.string.lowerBet), new Runnable() {
                     @Override
                     public void run() {
-
+                        slotHelper.minimiseBet();
                     }
                 }),
                 new DialogAction(activity.getString(R.string.exit), new Runnable() {

@@ -287,6 +287,81 @@
             </ScrollView>
         </RelativeLayout>
 
+        <!-- Farm layout -->
+        <RelativeLayout
+            android:id="@+id/farmLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/slotInfo"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:id="@+id/bottomButtonBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:orientation="vertical">
+
+                <uk.co.jakelee.blacksmithslots.components.FontTextView
+                    android:id="@+id/upgradeButton"
+                    style="@style/SlotText"
+                    android:layout_width="match_parent"
+                    android:background="@drawable/box_yellow" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <uk.co.jakelee.blacksmithslots.components.FontTextView
+                        android:id="@+id/farmClose"
+                        style="@style/SlotText"
+                        android:layout_width="wrap_content"
+                        android:layout_marginRight="5dp"
+                        android:background="@drawable/box_orange"
+                        android:text="@string/x" />
+
+                    <uk.co.jakelee.blacksmithslots.components.FontTextView
+                        android:id="@+id/changeButton"
+                        style="@style/SlotText"
+                        android:layout_width="match_parent"
+                        android:background="@drawable/box_yellow"
+                        android:text="@string/select_item"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <ScrollView
+                style="@style/VerticalScrollbar"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_above="@id/bottomButtonBar">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <uk.co.jakelee.blacksmithslots.components.FontTextView
+                        android:id="@+id/farmTitle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        style="@style/SidebarText"
+                        android:textSize="30sp"/>
+                    <uk.co.jakelee.blacksmithslots.components.FontTextView
+                        android:id="@+id/claimButton"
+                        style="@style/SlotText"
+                        android:layout_width="match_parent"
+                        android:background="@drawable/box_yellow"
+                        android:text="@string/pass_claim"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp" />
+                    <uk.co.jakelee.blacksmithslots.components.FontTextView
+                        android:id="@+id/farmDesc"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        style="@style/SidebarText"/>
+                </LinearLayout>
+            </ScrollView>
+        </RelativeLayout>
+
         <!-- No slot selected -->
         <LinearLayout
             android:id="@+id/noSlotSelected"
@@ -323,6 +398,26 @@
                         android:background="@drawable/box_green"
                         android:maxLines="2"
                         android:text="@string/inventory" />
+
+                    <uk.co.jakelee.blacksmithslots.components.FontTextView
+                        android:id="@+id/farmItems"
+                        style="@style/SlotText"
+                        android:layout_width="match_parent"
+                        android:layout_marginBottom="3dp"
+                        android:layout_marginTop="3dp"
+                        android:background="@drawable/box_green"
+                        android:maxLines="2"
+                        android:text="@string/farm_items" />
+
+                    <uk.co.jakelee.blacksmithslots.components.FontTextView
+                        android:id="@+id/openTrophy"
+                        style="@style/SlotText"
+                        android:layout_width="match_parent"
+                        android:layout_marginBottom="3dp"
+                        android:layout_marginTop="3dp"
+                        android:background="@drawable/box_green"
+                        android:maxLines="2"
+                        android:text="@string/trophies" />
 
                     <uk.co.jakelee.blacksmithslots.components.FontTextView
                         android:id="@+id/winItems"
@@ -388,16 +483,6 @@
                         android:background="@drawable/box_yellow"
                         android:maxLines="2"
                         android:text="@string/shop" />
-
-                    <uk.co.jakelee.blacksmithslots.components.FontTextView
-                        android:id="@+id/openTrophy"
-                        style="@style/SlotText"
-                        android:layout_width="match_parent"
-                        android:layout_marginBottom="3dp"
-                        android:layout_marginTop="3dp"
-                        android:background="@drawable/box_green"
-                        android:maxLines="2"
-                        android:text="@string/trophies" />
 
                     <uk.co.jakelee.blacksmithslots.components.FontTextView
                         android:id="@+id/displayHint"

@@ -8,6 +8,7 @@ import java.util.Locale;
 
 import uk.co.jakelee.blacksmithslots.R;
 import uk.co.jakelee.blacksmithslots.constructs.TierRange;
+import uk.co.jakelee.blacksmithslots.model.Farm;
 import uk.co.jakelee.blacksmithslots.model.Inventory;
 import uk.co.jakelee.blacksmithslots.model.ItemBundle;
 import uk.co.jakelee.blacksmithslots.model.Statistic;
@@ -19,6 +20,22 @@ public class IncomeHelper {
 
     public static boolean canClaimPeriodicBonus() {
         return getNextPeriodicClaimTime() - System.currentTimeMillis() <= 0;
+    }
+
+    public static long getNextFarmMaxTime() {
+        List<Farm> farms = Farm.listAll(Farm.class);
+        long soonestTime = 0;
+        for (Farm farm : farms) {
+            if (farm.getItemTier() > 0) {
+                int maxEarns = (int) Math.ceil(farm.getCurrentCapacity() / (double) farm.getItemQuantity());
+                long maxEarnDuration = maxEarns * farm.getClaimTime();
+                long maxEarnTime = farm.getLastClaim() + maxEarnDuration;
+                if (maxEarnTime < soonestTime || soonestTime == 0) {
+                    soonestTime = maxEarnTime;
+                }
+            }
+        }
+        return soonestTime;
     }
 
     public static long getNextPeriodicClaimTime() {

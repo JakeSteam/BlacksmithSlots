@@ -26,6 +26,7 @@ public class MinigameDiceActivity extends MinigameActivity {
     private List<ItemBundle> resources;
     private int multiplier = 1;
     private int diceRolled = 0;
+    private boolean isAutospin = false;
     private final Handler handler = new Handler();
     private final int[] diceDrawables = {R.drawable.dice_1, R.drawable.dice_2, R.drawable.dice_3, R.drawable.dice_4, R.drawable.dice_5, R.drawable.dice_6};
 
@@ -41,6 +42,7 @@ public class MinigameDiceActivity extends MinigameActivity {
         ButterKnife.bind(this);
 
         Intent intent = getIntent();
+        isAutospin = intent.getBooleanExtra("autospin", false);
         int slotId = intent.getIntExtra("slot", 0);
         if (slotId == 0) {
             confirmClose();
@@ -50,10 +52,14 @@ public class MinigameDiceActivity extends MinigameActivity {
         if (slot != null) {
             resources = slot.getResources();
         }
+
+        if (isAutospin) {
+            roll();
+        }
     }
 
     @OnClick(R.id.roll)
-    public void roll(View v) {
+    public void roll() {
         SoundHelper.playSound(this, SoundHelper.diceSounds);
         roll.setVisibility(View.INVISIBLE);
 
@@ -62,7 +68,6 @@ public class MinigameDiceActivity extends MinigameActivity {
             final ImageView dice = (ImageView)diceContainer.getChildAt(i);
             final int millisecondsToRollFor = CalculationHelper.randomNumber(800, 1600);
             handler.post(getDiceRollRunnable(startTime, dice, millisecondsToRollFor));
-
         }
     }
 
@@ -98,7 +103,18 @@ public class MinigameDiceActivity extends MinigameActivity {
             description.setText(String.format(Locale.ENGLISH, getString(R.string.dice_total_multiplier),
                     multiplier,
                     DisplayHelper.bundlesToString(this, resources, multiplier)));
+
+            if (isAutospin) {
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        confirmClose();
+                    }
+                }, 1000);
+            }
         }
+
+
     }
 
     public void forceClose(View v) {

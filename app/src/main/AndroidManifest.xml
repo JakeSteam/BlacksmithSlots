@@ -27,7 +27,7 @@
             android:value="blacksmithslots.db" />
         <meta-data
             android:name="VERSION"
-            android:value="1" />
+            android:value="2" />
         <meta-data
             android:name="QUERY_LOG"
             android:value="false" />
@@ -74,6 +74,9 @@
             android:theme="@style/Theme.Dimmed" />
         <activity
             android:name=".main.LogActivity"
+            android:theme="@style/Theme.Dimmed" />
+        <activity
+            android:name=".main.FarmItemActivity"
             android:theme="@style/Theme.Dimmed" />
         <activity
             android:name=".main.InventoryActivity"

@@ -53,6 +53,9 @@ import uk.co.jakelee.blacksmithslots.helper.Runnables;
 import uk.co.jakelee.blacksmithslots.helper.SoundHelper;
 import uk.co.jakelee.blacksmithslots.helper.TaskHelper;
 import uk.co.jakelee.blacksmithslots.helper.TextHelper;
+import uk.co.jakelee.blacksmithslots.model.Farm;
+import uk.co.jakelee.blacksmithslots.model.Inventory;
+import uk.co.jakelee.blacksmithslots.model.ItemBundle;
 import uk.co.jakelee.blacksmithslots.model.Slot;
 import uk.co.jakelee.blacksmithslots.model.Task;
 import uk.co.jakelee.blacksmithslots.tourguide.Overlay;
@@ -89,19 +92,26 @@ public class MapActivity extends BaseActivity implements
     TextView lockedTaskProgressText;
     @BindView(R.id.unlockedSlot)
     RelativeLayout unlockedSlot;
+    @BindView(R.id.farmLayout)
+    RelativeLayout farmLayout;
     @BindView(R.id.slotUnlockedDescription)
     TextView unlockedDescription;
     @BindView(R.id.watchAdvert)
     TextView watchAdvert;
     @BindView(R.id.winItems)
     TextView winItems;
+    @BindView(R.id.farmItems)
+    TextView farmItems;
     @BindView(R.id.claimBonus)
     TextView claimBonus;
     @BindView(R.id.googlePlayRow)
     LinearLayout googlePlayRow;
     @BindView(R.id.googlePlayLoginRow)
     LinearLayout googlePlayLoginRow;
+    @BindView(R.id.leftArrow) ImageView leftArrow;
+    @BindView(R.id.rightArrow) ImageView rightArrow;
     private int selectedSlot = 1;
+    private int selectedFarm = 0;
     private final Handler handler = new Handler();
     private MapPagerAdapter mapPagerAdapter;
     public AdvertHelper advertHelper;
@@ -150,6 +160,7 @@ public class MapActivity extends BaseActivity implements
             setAdvertUnclaimable();
         }
         updateWinItemsButton();
+        updateFarmItemsButton();
     }
 
     private void updateWinItemsButton() {
@@ -161,6 +172,13 @@ public class MapActivity extends BaseActivity implements
                 maxCharges));
     }
 
+    private void updateFarmItemsButton() {
+        int unclaimedItems = Farm.getUnclaimedItems();
+        farmItems.setBackgroundResource(unclaimedItems > 0 ? R.drawable.box_green : R.drawable.box_orange);
+        farmItems.setText(String.format(Locale.ENGLISH, getString(R.string.farm_items),
+                unclaimedItems));
+    }
+
     private void createMapPager() {
         mapPagerAdapter = new MapPagerAdapter(this);
         mapPager.setAdapter(mapPagerAdapter);
@@ -168,6 +186,16 @@ public class MapActivity extends BaseActivity implements
         ViewPagerIndicator indicator = findViewById(R.id.view_pager_indicator);
         indicator.setupWithViewPager(mapPager);
         indicator.addOnPageChangeListener(mapChangeListener());
+        mapPager.setCurrentItem(prefs.getInt("savedMapPosition", 1), false);
+    }
+
+    @OnClick(R.id.farmItems)
+    public void farmItems() {
+        mapPager.setCurrentItem(0, true);
+        if (!prefs.getBoolean("seenFarmInfo", false)) {
+            AlertHelper.info(this, getString(R.string.farm_tutorial), false);
+            prefs.edit().putBoolean("seenFarmInfo", true).apply();
+        }
     }
 
     @NonNull
@@ -175,18 +203,24 @@ public class MapActivity extends BaseActivity implements
         return new ViewPager.SimpleOnPageChangeListener() {
             public void onPageSelected(int position) {
                 SoundHelper.playSound(getApplicationContext(), SoundHelper.swipeSounds);
-                findViewById(R.id.leftArrow).setVisibility(position == 0 ? View.INVISIBLE : View.VISIBLE);
-                findViewById(R.id.rightArrow).setVisibility(position == (MapPagerAdapter.townLayouts.length - 1) ? View.INVISIBLE : View.VISIBLE);
+                leftArrow.setVisibility(position == 0 ? View.INVISIBLE : View.VISIBLE);
+                rightArrow.setVisibility(position == (MapPagerAdapter.townLayouts.length - 1) ? View.INVISIBLE : View.VISIBLE);
 
-                String mapName = TextHelper.getInstance(getApplicationContext()).getText(DisplayHelper.getMapString(position + 1));
+                String mapName = TextHelper.getInstance(getApplicationContext()).getText(DisplayHelper.getMapString(position));
                 mapTextView.setText(mapName);
                 selectedSlot = 0;
+                selectedFarm = 0;
+                handler.removeCallbacks(populateFarmRunnable);
                 loadSidebar(null);
 
                 if (isFirstInstall) {
                     isFirstInstall = false;
                     endTutorial();
                     prefs.edit().putInt("tutorialStageCompleted", 3).apply();
+                }
+
+                if (position == 0) {
+                    updateFarmCounts();
                 }
             }
         };
@@ -215,17 +249,21 @@ public class MapActivity extends BaseActivity implements
             }
         }
 
+        if (selectedFarm > 0) {
+            populateFarmInfo();
+        }
+
         updateWinItemsButton();
     }
 
     private void updateText() {
-        ((TextView)findViewById(R.id.inventory)).setText(R.string.inventory);
-        ((TextView)findViewById(R.id.displayHint)).setText(R.string.hints);
-        ((TextView)findViewById(R.id.claimBonus)).setText(R.string.claim_bonus);
-        ((TextView)findViewById(R.id.openShop)).setText(R.string.shop);
-        ((TextView)findViewById(R.id.openTrophy)).setText(R.string.trophies);
-        ((TextView)findViewById(R.id.openCredits)).setText(R.string.credits);
-        ((TextView)findViewById(R.id.watchAdvert)).setText(R.string.watch_advert);
+        ((TextView) findViewById(R.id.inventory)).setText(R.string.inventory);
+        ((TextView) findViewById(R.id.displayHint)).setText(R.string.hints);
+        ((TextView) findViewById(R.id.claimBonus)).setText(R.string.claim_bonus);
+        ((TextView) findViewById(R.id.openShop)).setText(R.string.shop);
+        ((TextView) findViewById(R.id.openTrophy)).setText(R.string.trophies);
+        ((TextView) findViewById(R.id.openCredits)).setText(R.string.credits);
+        ((TextView) findViewById(R.id.watchAdvert)).setText(R.string.watch_advert);
     }
 
     @Override
@@ -236,6 +274,7 @@ public class MapActivity extends BaseActivity implements
             @Override
             public void run() {
                 GooglePlayHelper.UpdateAchievements();
+                updateFarmItemsButton();
                 handler.postDelayed(this, DateHelper.MILLISECONDS_IN_SECOND * DateHelper.SECONDS_IN_MINUTE);
             }
         };
@@ -250,7 +289,6 @@ public class MapActivity extends BaseActivity implements
             case 1:
                 runTutorial(getString(R.string.tutorial_map_1), findViewById(R.id.title), isLandscape ? Gravity.LEFT : Gravity.TOP, true);
                 break;
-            //case 2: runTutorial("The world can be navigated by swiping left and right, there's plenty of areas to be explored in your quest to defeat the Purple!", findViewById(R.id.settings), Gravity.LEFT, true); break;
             case 3:
                 runTutorial(getString(R.string.tutorial_map_3), findViewById(R.id.firstSlot), Gravity.RIGHT, true);
                 break;
@@ -325,9 +363,12 @@ public class MapActivity extends BaseActivity implements
         if (getBoolean(Enums.Setting.BlacksmithPassNotification)) {
             NotificationHelper.addBlacksmithPassNotification(this, notificationSound);
         }
+        if (getBoolean(Enums.Setting.FarmNotification)) {
+            NotificationHelper.addFarmNotification(this, notificationSound);
+        }
 
-        GooglePlayHelper.mGoogleApiClient.disconnect();
         handler.removeCallbacks(null);
+        prefs.edit().putInt("savedMapPosition", mapPager.getCurrentItem()).apply();
     }
 
     private void ratingPrompt() {
@@ -356,8 +397,27 @@ public class MapActivity extends BaseActivity implements
         }
     }
 
+    public void selectFarm(View v) {
+        selectedSlot = 0;
+        selectedFarm = Integer.parseInt((String) v.getTag());
+        findViewById(R.id.slotInfo).setVisibility(View.GONE);
+        handler.post(populateFarmRunnable);
+    }
+
+    @NonNull
+    private Runnable populateFarmRunnable = new Runnable() {
+        @Override
+        public void run() {
+            populateFarmInfo();
+            handler.postDelayed(this, 1000);
+        }
+    };
+
     public void selectSlot(View v) {
+        handler.removeCallbacks(populateFarmRunnable);
+        selectedFarm = 0;
         selectedSlot = Integer.parseInt((String) v.getTag());
+        findViewById(R.id.slotInfo).setVisibility(View.VISIBLE);
         populateSlotInfo();
         if (isFirstInstall) {
             runTutorial(4);
@@ -481,9 +541,10 @@ public class MapActivity extends BaseActivity implements
         }
     }
 
-    @OnClick({R.id.lockedClose, R.id.unlockedClose, R.id.superlockedClose})
+    @OnClick({R.id.lockedClose, R.id.unlockedClose, R.id.superlockedClose, R.id.farmClose})
     public void loadSidebar(View v) {
         noSlotSidebar.setVisibility(View.VISIBLE);
+        handler.removeCallbacks(populateFarmRunnable);
     }
 
     @OnClick(R.id.handInButton)
@@ -535,7 +596,90 @@ public class MapActivity extends BaseActivity implements
         mapPagerAdapter.notifyDataSetChanged();
     }
 
+    @OnClick(R.id.changeButton)
+    public void changeItem() {
+        if (selectedFarm > 0) {
+            startActivity(new Intent(this, FarmItemActivity.class)
+                    .putExtra(Constants.INTENT_FARM, selectedFarm)
+                    .addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT));
+        }
+    }
+
+    @OnClick(R.id.upgradeButton)
+    public void upgradeFarm() {
+        Farm farm = Farm.get(selectedFarm);
+        if (selectedFarm > 0 && farm != null) {
+            AlertDialogHelper.confirmFarmUpgrade(this, farm, new ItemBundle(farm.getItemTier(), farm.getItemType(), farm.getItemQuantity()));
+        }
+    }
+
+    @OnClick(R.id.claimButton)
+    public void claimFarmItems() {
+        Farm farm = Farm.get(selectedFarm);
+        if (selectedFarm > 0 && farm != null) {
+            if (farm.claim()) {
+                populateFarmInfo();
+                updateFarmItemsButton();
+                updateFarmCounts();
+                AlertHelper.success(this, String.format(Locale.ENGLISH, getString(R.string.farm_claim_items), farm.getName(this)), true);
+            } else {
+                AlertHelper.error(this, getString(R.string.error_farm_claim_none), false);
+            }
+        }
+    }
+
+    private void updateFarmCounts() {
+        List<Farm> farms = Farm.listAll(Farm.class);
+        for (int i = 1; i <= farms.size(); i++) {
+            int indicatorId = getResources().getIdentifier("farm" + i + "indicator", "id", getPackageName());
+            TextView indicator = findViewById(indicatorId);
+            if (indicator != null && farms.get(i - 1).getItemTier() > 0) {
+                indicator.setText(Integer.toString(farms.get(i - 1).getEarnedQuantity()));
+            }
+        }
+    }
+
+    public void populateFarmInfo() {
+        if (selectedFarm > 0) {
+            findViewById(R.id.noSlotSelected).setVisibility(GONE);
+            superLockedSlot.setVisibility(GONE);
+            lockedSlot.setVisibility(GONE);
+            unlockedSlot.setVisibility(GONE);
+            farmLayout.setVisibility(View.VISIBLE);
+            Farm farm = Farm.get(selectedFarm);
+            if (farm != null) {
+                ((TextView) findViewById(R.id.farmTitle)).setText(String.format(Locale.ENGLISH, getString(R.string.farm_title), farm.getTier(), farm.getName(this)));
+
+                findViewById(R.id.upgradeButton).setVisibility(View.GONE);
+                findViewById(R.id.claimButton).setVisibility(View.GONE);
+                findViewById(R.id.changeButton).setVisibility(View.GONE);
+                if (TaskHelper.isSlotLocked(farm.getRequiredSlot())) {
+                    ((TextView) findViewById(R.id.farmDesc)).setText(String.format(Locale.ENGLISH, getString(R.string.farm_locked_desc), Slot.getName(this, farm.getRequiredSlot())));
+                } else if (farm.getItemTier() == 0) {
+                    findViewById(R.id.changeButton).setVisibility(View.VISIBLE);
+                    ((TextView) findViewById(R.id.farmDesc)).setText(R.string.farm_unlocked_unselected_desc);
+                } else {
+                    findViewById(R.id.changeButton).setVisibility(View.VISIBLE);
+                    findViewById(R.id.upgradeButton).setVisibility(View.VISIBLE);
+                    ((TextView) findViewById(R.id.upgradeButton)).setText(String.format(Locale.ENGLISH, "Upgrade (%1$dx)", farm.getUpgradeCost()));
+                    findViewById(R.id.claimButton).setVisibility(View.VISIBLE);
+
+                    int earnedCapacity = farm.getEarnedQuantity();
+                    int currentCapacity = farm.getCurrentCapacity();
+                    ((TextView) findViewById(R.id.farmDesc)).setText(String.format(Locale.ENGLISH, getString(R.string.farm_unlocked_desc),
+                            earnedCapacity,
+                            currentCapacity,
+                            Inventory.getName(this, farm.getItemTier(), farm.getItemType()),
+                            farm.getItemQuantity(),
+                            DateHelper.timestampToShortTime(farm.getClaimTime()),
+                            earnedCapacity == currentCapacity ? "N/A" : DateHelper.timestampToShortTime(farm.getTimeToNextEarn())));
+                }
+            }
+        }
+    }
+
     private void populateSlotInfo() {
+        farmLayout.setVisibility(GONE);
         if (selectedSlot > 0) {
             findViewById(R.id.noSlotSelected).setVisibility(GONE);
             Slot slot = Slot.get(selectedSlot);
