@@ -167,7 +167,7 @@
     <string name="pass_days">День %1$d:</string>
     <string name="pass_days_left">Осталось %1$d дня в день</string>
     <string name="pass_desc_owned">Пока ваш Blacksmith Pass действителен, вы будете получать бесплатные предметы каждый день!\n\nПроверяйте в любое время между 00:00 и 23:59, чтобы требовать!</string>
-    <string name="pass_desc_unowned">Приобретение Blacksmith Pass дает вам право на %1$d дневных бесплатных дней!\\m\\mВаша первая покупка также обновит вас до VIP 1! Высшие VIP-уровни зарабатывают больше с прохода BS!</string>
+    <string name="pass_desc_unowned">Приобретение Blacksmith Pass дает вам право на %1$d дневных бесплатных дней!\n\nВаша первая покупка также обновит вас до VIP 1! Высшие VIP-уровни зарабатывают больше с прохода BS!</string>
     <string name="pass_purchase">Купить Pass ( %1$s)</string>
     <string name="pb_save_import">Сохранить имеет престиж %1$d раз.  %2$s</string>
     <string name="progress_installed">Игра установлена!</string>

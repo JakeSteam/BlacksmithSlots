@@ -167,7 +167,7 @@
     <string name="pass_days">日%1$d：</string>
     <string name="pass_days_left">剩下%1$d天</string>
     <string name="pass_desc_owned">当您的铁匠通票有效时，您将每天收到免费物品！\n\n00:00至23:59之间的任何时间返回！</string>
-    <string name="pass_desc_unowned">购买铁匠通票可以让您享受免费每日1天的优惠！\n\n您的第一次购买也将升级到VIP 1！ 更高的VIP级别从BS通行证获得更多的收益！</string>
+    <string name="pass_desc_unowned">购买铁匠通票可以%1$d让您享受免费每日1天的优惠！\n\n您的第一次购买也将升级到VIP 1！ 更高的VIP级别从BS通行证获得更多的收益！</string>
     <string name="pass_purchase">购买通行证（%1$s）</string>
     <string name="pb_save_import">保存已预订%1$d次。%2$s</string>
     <string name="progress_installed">游戏安装！</string>
