@@ -633,7 +633,7 @@ public class MapActivity extends BaseActivity implements
         for (int i = 1; i <= farms.size(); i++) {
             int indicatorId = getResources().getIdentifier("farm" + i + "indicator", "id", getPackageName());
             TextView indicator = findViewById(indicatorId);
-            if (indicator != null && farms.get(i - 1).getItemTier() > 0) {
+            if (indicator != null && (farms.get(i - 1).getItemTier() > 0 || farms.get(i - 1).getItemType() > 0)) {
                 indicator.setText(Integer.toString(farms.get(i - 1).getEarnedQuantity()));
             }
         }
@@ -655,7 +655,7 @@ public class MapActivity extends BaseActivity implements
                 findViewById(R.id.changeButton).setVisibility(View.GONE);
                 if (TaskHelper.isSlotLocked(farm.getRequiredSlot())) {
                     ((TextView) findViewById(R.id.farmDesc)).setText(String.format(Locale.ENGLISH, getString(R.string.farm_locked_desc), Slot.getName(this, farm.getRequiredSlot())));
-                } else if (farm.getItemTier() == 0) {
+                } else if (farm.getItemTier() == 0 && farm.getItemType() == 0) {
                     findViewById(R.id.changeButton).setVisibility(View.VISIBLE);
                     ((TextView) findViewById(R.id.farmDesc)).setText(R.string.farm_unlocked_unselected_desc);
                 } else {

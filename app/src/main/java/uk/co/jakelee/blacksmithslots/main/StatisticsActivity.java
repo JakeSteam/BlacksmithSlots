@@ -67,7 +67,7 @@ public class StatisticsActivity extends BaseActivity {
                             Integer.toString(farm.getCurrentCapacity())));
                     statTable.addView(DisplayHelper.getTableRow(inflater,
                             String.format(Locale.ENGLISH, getString(R.string.statistic_farm_item), name),
-                            farm.getItemTier() == 0 ? getString(R.string.na) : Inventory.getName(this, farm.getItemTier(), farm.getItemType())));
+                            (farm.getItemTier() == 0 && farm.getItemType() == 0) ? getString(R.string.na) : Inventory.getName(this, farm.getItemTier(), farm.getItemType())));
                     statTable.addView(DisplayHelper.getTableRow(inflater,
                             String.format(Locale.ENGLISH, getString(R.string.statistic_farm_claimed_items), name),
                             Integer.toString(farm.getAmountClaimed())));
