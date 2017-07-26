@@ -26,7 +26,7 @@ public class IncomeHelper {
         List<Farm> farms = Farm.listAll(Farm.class);
         long soonestTime = 0;
         for (Farm farm : farms) {
-            if (farm.getItemTier() > 0) {
+            if (farm.getItemTier() > 0 || farm.getItemType() > 0) {
                 int maxEarns = (int) Math.ceil(farm.getCurrentCapacity() / (double) farm.getItemQuantity());
                 long maxEarnDuration = maxEarns * farm.getClaimTime();
                 long maxEarnTime = farm.getLastClaim() + maxEarnDuration;

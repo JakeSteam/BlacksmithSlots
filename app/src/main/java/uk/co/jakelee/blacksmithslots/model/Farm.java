@@ -229,7 +229,7 @@ public class Farm extends SugarRecord {
     }
 
     public boolean claim() {
-        if (getItemTier() > 0 && getItemType() > 0) {
+        if (getItemTier() > 0 || getItemType() > 0) {
             int quantityEarned = getEarnedQuantity();
             if (quantityEarned == 0) {
                 return false;
