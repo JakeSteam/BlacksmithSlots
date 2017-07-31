@@ -103,11 +103,25 @@ public class Upgrade extends SugarRecord {
         return getBoostTier(itemBundle.getTier().value, itemBundle.getType().value);
     }
 
+    public static int getActiveBoostTier(ItemBundle itemBundle) {
+        return getActiveBoostTier(itemBundle.getTier().value, itemBundle.getType().value);
+    }
+
     public static int getBoostTier(int tier, int type) {
         Upgrade upgrade = Select.from(Upgrade.class).where(
                 Condition.prop("a").eq(tier),
                 Condition.prop("b").eq(type)).first();
         if (upgrade != null) {
+            return upgrade.getBoostTier();
+        }
+        return 0;
+    }
+
+    public static int getActiveBoostTier(int tier, int type) {
+        Upgrade upgrade = Select.from(Upgrade.class).where(
+                Condition.prop("a").eq(tier),
+                Condition.prop("b").eq(type)).first();
+        if (upgrade != null && upgrade.isBoostEnabled()) {
             return upgrade.getBoostTier();
         }
         return 0;
