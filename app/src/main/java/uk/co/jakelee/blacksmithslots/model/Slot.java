@@ -198,7 +198,7 @@ public class Slot extends SugarRecord {
         int vipLevel = LevelHelper.getVipLevel();
         int prestige = Statistic.get(Enums.Statistic.Prestiges).getIntValue();
         for (ItemBundle bundle : rawItemBundles) {
-            int boostTier = Upgrade.getBoostTier(bundle);
+            int boostTier = Upgrade.getActiveBoostTier(bundle);
 
             // Add one item bundle per weighting point!
             for (int i = 0; i < bundle.getWeighting() + boostTier; i++) {

@@ -1078,7 +1078,7 @@
     <string name="boost_handin_body">Souhaitez-vous améliorer votre %1$s boost au niveau %2$d en échange de %3$dx %1$s?</string>
     <string name="boost_handin_title">Mise à jour de l\'élément boost</string>
     <string name="boost_info">La mise à niveau du niveau de boost d\'un élément augmente la probabilité que cet élément apparaisse dans les machines à sous. Il peut être désactivé si nécessaire.</string>
-    <string name="boost_level">Les niveaux</string>
+    <string name="boost_level">%s niveaux</string>
     <string name="item_boost">Renforcer:</string>
     <string name="item_trophy">Trophée:</string>
     <string name="trophy_info">En remettant assez d\'un élément spécifique déverrouille le trophée. Posséder un trophée ajoute du bonus XP à chaque tour de fente!</string>
