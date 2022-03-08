@@ -4,6 +4,16 @@ This is the source code of [Blacksmith Slots](https://play.google.com/store/apps
 
 ## Screenshots
 
+Game trailer: https://www.youtube.com/watch?v=d1J1LDp8vps
+
+| In slot | Map | Idle game | Trophies | Stats |
+| -- | -- | -- | -- | -- |
+| ![image](https://user-images.githubusercontent.com/12380876/157328444-17df8157-6a9b-4bf5-b5ca-a6116d034d24.png) | ![image](https://user-images.githubusercontent.com/12380876/157328488-2244cc56-eb26-4f2c-8de4-59b430b33ec3.png) | ![image](https://user-images.githubusercontent.com/12380876/157328530-9d45ad8c-870c-4b47-a4e1-8a00d05c3dd4.png) | ![image](https://user-images.githubusercontent.com/12380876/157328557-a5fa88f0-423e-4eda-900b-fe00bca2c67d.png) | ![image](https://user-images.githubusercontent.com/12380876/157328623-6f0d2b03-9e1a-40d0-9c25-44e1c711e3f7.png) |
+
+
+
+
+
 ## Play Store description
 
 The world has been infected by the mysterious Purple, can you spin the slots to craft the items needed to save the world?
