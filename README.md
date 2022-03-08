@@ -62,12 +62,7 @@ Happy spinning, blacksmiths!
 * `Enums.java` contains most of the game data definition, with `DatabaseHelper.java` storing the rest.
 * It requires an older version of Android Studio to build, and likely a lot of changes.
 
-## Original repository metadata
-* First commit: 18th February 2017
-* Last commit: 26th July 2017
-* Total commits: 499
-* Releases: 13
-
 ## Licensing
 * Entire repository is under the MIT license, essentially do whatever you want but don't blame me if it breaks!
-* All images are modified versions of [Kenney](https://www.kenney.nl/assets?s=city) assets.
+* 377 images have been redacted due to being paid assets by [7soul])(https://twitter.com/7souldesign).
+* All uncensored images are modified versions of [Kenney](https://www.kenney.nl/assets?s=city) assets.
