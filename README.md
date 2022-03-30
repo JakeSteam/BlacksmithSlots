@@ -74,5 +74,5 @@ Happy spinning, blacksmiths!
 
 ## Licensing
 * Entire repository is under the MIT license, essentially do whatever you want but don't blame me if it breaks!
-* 377 images have been redacted due to being paid assets by [7soul])(https://twitter.com/7souldesign).
+* 377 images have been redacted due to being paid assets by [7soul](https://twitter.com/7souldesign).
 * All uncensored images are modified versions of [Kenney](https://www.kenney.nl/assets?s=city) assets.
