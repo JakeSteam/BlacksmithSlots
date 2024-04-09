@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
-import android.support.annotation.NonNull;
 import android.util.Pair;
 import android.view.View;
 import android.widget.TableRow;
@@ -18,6 +17,8 @@ import uk.co.jakelee.blacksmithslots.model.Setting;
 import uk.co.jakelee.blacksmithslots.model.Statistic;
 
 import static uk.co.jakelee.blacksmithslots.model.Setting.get;
+
+import androidx.annotation.NonNull;
 
 public class Listeners {
 

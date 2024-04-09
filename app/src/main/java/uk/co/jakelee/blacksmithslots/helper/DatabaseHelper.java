@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.os.AsyncTask;
-import android.support.annotation.NonNull;
 import android.util.Log;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -31,6 +30,8 @@ import uk.co.jakelee.blacksmithslots.model.Task;
 import uk.co.jakelee.blacksmithslots.model.Upgrade;
 
 import static android.content.Context.MODE_PRIVATE;
+
+import androidx.annotation.NonNull;
 
 public class DatabaseHelper extends AsyncTask<String, String, String> {
     public final static int NO_DATABASE = 0;

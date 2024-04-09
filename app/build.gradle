@@ -10,6 +10,10 @@ android {
         versionCode 22
         versionName "2.0.0"
     }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
     buildTypes {
         release {
             minifyEnabled false
@@ -19,6 +23,13 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+    }
+    tasks.withType(JavaCompile).configureEach{
+        options.fork = true
+        options.forkOptions.jvmArgs +=[
+                '--add-exports=jdk.compiler/com.sun.tools.javac.tree=ALL-UNNAMED',
+                '--add-exports=jdk.compiler/com.sun.tools.javac.code=ALL-UNNAMED',
+                '--add-exports=jdk.compiler/com.sun.tools.javac.util=ALL-UNNAMED']
     }
 }
 
@@ -48,7 +59,7 @@ dependencies {
     implementation 'pl.droidsonroids.gif:android-gif-drawable:1.1.16'
     implementation 'de.keyboardsurfer.android.widget:crouton:1.8.5@aar'
     implementation 'com.anjlab.android.iab.v3:library:1.0.40'
-    implementation 'com.jakewharton:butterknife:8.7.0'
+    implementation 'com.jakewharton:butterknife:10.2.3'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.3'
     implementation 'com.scottyab:aescrypt:0.0.1'
-    annotationProcessor 'com.jakewharton:butterknife-compiler:8.7.0'
 }

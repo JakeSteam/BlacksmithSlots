@@ -1,12 +1,13 @@
 package uk.co.jakelee.blacksmithslots.main;
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
 
 import com.orm.query.Condition;
 import com.orm.query.Select;

@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
-import android.support.annotation.NonNull;
 import android.util.Log;
 import android.util.Pair;
 
@@ -47,6 +46,8 @@ import uk.co.jakelee.blacksmithslots.model.Task;
 import uk.co.jakelee.blacksmithslots.model.Upgrade;
 
 import static android.content.Context.MODE_PRIVATE;
+
+import androidx.annotation.NonNull;
 
 public class GooglePlayHelper implements com.google.android.gms.common.api.ResultCallback {
     public static final int RC_ACHIEVEMENTS = 9002;

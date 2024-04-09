@@ -3,7 +3,6 @@ package uk.co.jakelee.blacksmithslots.helper;
 import android.content.Intent;
 import android.graphics.PorterDuff;
 import android.os.Handler;
-import android.support.v4.content.ContextCompat;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.util.Pair;
@@ -17,6 +16,8 @@ import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TableLayout;
 import android.widget.TextView;
+
+import androidx.core.content.ContextCompat;
 
 import com.orm.query.Select;
 import com.squareup.picasso.Picasso;
