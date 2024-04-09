@@ -53,7 +53,6 @@ public static final ** CREATOR;
 
 -dontwarn com.batch.android.BatchPushService
 
--keep class com.tapjoy.** { *; }
 -keep class com.moat.** { *; }
 -keepattributes JavascriptInterface
 -keepattributes *Annotation*
@@ -71,4 +70,3 @@ public static final *** NULL;
 public static final ** CREATOR;
 }
 -keep class com.google.android.gms.ads.identifier.** { *; }
--dontwarn com.tapjoy.**

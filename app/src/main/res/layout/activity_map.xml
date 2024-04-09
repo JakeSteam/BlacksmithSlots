@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.percent.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.percentlayout.widget.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_map"
@@ -569,7 +569,7 @@
         android:layout_height="wrap_content"
         android:layout_toLeftOf="@id/sidebar" />
 
-    <android.support.percent.PercentRelativeLayout
+    <androidx.percentlayout.widget.PercentRelativeLayout
         android:layout_height="match_parent"
         android:layout_width="match_parent"
         android:layout_alignLeft="@id/townScroller"
@@ -583,7 +583,7 @@
             app:layout_heightPercent="24%"
             app:layout_widthPercent="20%"
             android:visibility="gone"/>
-    </android.support.percent.PercentRelativeLayout>
+    </androidx.percentlayout.widget.PercentRelativeLayout>
 
     <uk.co.jakelee.blacksmithslots.components.FontTextView
         android:id="@+id/mapName"
@@ -641,4 +641,4 @@
         android:layout_height="wrap_content"
         android:onClick="closeAlert"
         android:orientation="horizontal" />
-</android.support.percent.PercentRelativeLayout>
+</androidx.percentlayout.widget.PercentRelativeLayout>

@@ -7,8 +7,6 @@ import android.content.res.Configuration;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.annotation.NonNull;
-import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
@@ -23,7 +21,6 @@ import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.drive.Drive;
 import com.google.android.gms.games.Games;
-import com.tapjoy.TJPlacement;
 
 import java.util.List;
 import java.util.Locale;
@@ -65,6 +62,9 @@ import uk.co.jakelee.blacksmithslots.tourguide.TourGuide;
 
 import static android.view.View.GONE;
 import static uk.co.jakelee.blacksmithslots.model.Setting.getBoolean;
+
+import androidx.annotation.NonNull;
+import androidx.viewpager.widget.ViewPager;
 
 public class MapActivity extends BaseActivity implements
         GoogleApiClient.ConnectionCallbacks,
@@ -117,7 +117,6 @@ public class MapActivity extends BaseActivity implements
     public AdvertHelper advertHelper;
     private boolean isFirstInstall = false;
     private TourGuide mTutorialHandler;
-    private TJPlacement advertPlacement;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -135,7 +134,6 @@ public class MapActivity extends BaseActivity implements
         checkBonuses();
 
         advertHelper = AdvertHelper.getInstance(this);
-        advertPlacement = new TJPlacement(this, "WatchAdvert", advertHelper);
 
         mapTextView.setText(R.string.map_1);
 
@@ -532,7 +530,7 @@ public class MapActivity extends BaseActivity implements
     public void rewardAdvertItems(View v) {
         if (IncomeHelper.canWatchAdvert()) {
             AlertHelper.info(this, getString(R.string.advert_load_start), false);
-            advertHelper.showAdvert(this, advertPlacement);
+            advertHelper.showAdvert(this);
         } else {
             AlertHelper.error(this, String.format(Locale.ENGLISH,
                     getString(R.string.error_advert_not_ready),

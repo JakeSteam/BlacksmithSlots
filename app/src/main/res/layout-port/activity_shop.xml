@@ -40,7 +40,7 @@
                 android:text="@string/tab_bundle"
                 style="@style/ShopTabs" />
         </LinearLayout>
-        <android.support.percent.PercentRelativeLayout
+        <androidx.percentlayout.widget.PercentRelativeLayout
             android:id="@+id/passTab"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -125,7 +125,7 @@
                         android:showDividers="middle" />
                 </ScrollView>
             </LinearLayout>
-        </android.support.percent.PercentRelativeLayout>
+        </androidx.percentlayout.widget.PercentRelativeLayout>
         <RelativeLayout
             android:id="@+id/vipTab"
             android:layout_width="match_parent"

@@ -11,11 +11,6 @@ import com.applovin.sdk.AppLovinAdDisplayListener;
 import com.applovin.sdk.AppLovinAdRewardListener;
 import com.applovin.sdk.AppLovinAdVideoPlaybackListener;
 import com.applovin.sdk.AppLovinSdk;
-import com.tapjoy.TJActionRequest;
-import com.tapjoy.TJError;
-import com.tapjoy.TJPlacement;
-import com.tapjoy.TJPlacementListener;
-import com.tapjoy.Tapjoy;
 
 import java.util.Map;
 
@@ -24,7 +19,7 @@ import uk.co.jakelee.blacksmithslots.main.InterstitialActivity;
 import uk.co.jakelee.blacksmithslots.main.MapActivity;
 import uk.co.jakelee.blacksmithslots.model.Statistic;
 
-public class AdvertHelper implements AppLovinAdRewardListener, AppLovinAdDisplayListener, AppLovinAdVideoPlaybackListener, TJPlacementListener {
+public class AdvertHelper implements AppLovinAdRewardListener, AppLovinAdDisplayListener, AppLovinAdVideoPlaybackListener {
     private AppLovinIncentivizedInterstitial advert;
     private MapActivity activity;
     private final Context context;
@@ -34,8 +29,6 @@ public class AdvertHelper implements AppLovinAdRewardListener, AppLovinAdDisplay
 
     private AdvertHelper(Context context) {
         this.context = context;
-
-        Tapjoy.connect(context, "0GdMCMz9T7usON1Y31Z0vgECyFfksewNKvvG7ugayPBzgGvec4MYEtJlgvih", null);
 
         AppLovinSdk.initializeSdk(context);
         advert = AppLovinIncentivizedInterstitial.create(context);
@@ -49,7 +42,7 @@ public class AdvertHelper implements AppLovinAdRewardListener, AppLovinAdDisplay
         return dhInstance;
     }
 
-    public void showAdvert(final MapActivity activity, TJPlacement adPlacement) {
+    public void showAdvert(final MapActivity activity) {
         this.activity = activity;
         verified = false;
         tryingToLoad = true;
@@ -59,7 +52,6 @@ public class AdvertHelper implements AppLovinAdRewardListener, AppLovinAdDisplay
             advert.show(activity, this, this, this);
         } else {
             Log.d("Advert", "3");
-            adPlacement.requestContent();
             new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {
@@ -108,21 +100,4 @@ public class AdvertHelper implements AppLovinAdRewardListener, AppLovinAdDisplay
     @Override public void validationRequestFailed(AppLovinAd appLovinAd, int i) {}
     @Override public void userDeclinedToViewAd(AppLovinAd appLovinAd) {}
 
-    public void onContentReady(TJPlacement placement) {
-        tryingToLoad = false;
-        placement.showContent();
-        Log.d("TJ", "Ready");
-    }
-    public void onContentDismiss(TJPlacement placement) {
-        verified = true;
-        tryReward();
-
-        Log.d("TJ", "Rewarded");
-    }
-    public void onPurchaseRequest(TJPlacement placement, TJActionRequest tjActionRequest, String string) {} // Called when the SDK has made contact with Tapjoy's servers. It does not necessarily mean that any content is available.
-    public void onRewardRequest(TJPlacement placement, TJActionRequest tjActionRequest, String string, int number) {} // Called when the SDK has made contact with Tapjoy's servers. It does not necessarily mean that any content is available.
-    public void onRequestSuccess(TJPlacement placement) {} // Called when the SDK has made contact with Tapjoy's servers. It does not necessarily mean that any content is available.
-    public void onRequestFailure(TJPlacement placement, TJError error) {} // Called when there was a problem during connecting Tapjoy servers.
-    public void onContentShow(TJPlacement placement) {
-    } // Called when the content is showed.
 }

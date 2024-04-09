@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<android.support.percent.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.percentlayout.widget.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/parent"
@@ -8,7 +8,7 @@
     android:layout_width="match_parent"
     tools:context="uk.co.jakelee.blacksmithslots.main.SlotActivity">
 
-    <android.support.percent.PercentRelativeLayout
+    <androidx.percentlayout.widget.PercentRelativeLayout
         android:id="@+id/mainSlotArea"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -65,7 +65,7 @@
                 android:paddingBottom="5dp"/>
         </LinearLayout>
 
-        <android.support.percent.PercentRelativeLayout
+        <androidx.percentlayout.widget.PercentRelativeLayout
             android:id="@+id/inventoryContainer"
             android:layout_width="match_parent"
             app:layout_widthPercent="33%"
@@ -101,7 +101,7 @@
                     android:stretchColumns="1"
                     android:shrinkColumns="1" />
             </ScrollView>
-        </android.support.percent.PercentRelativeLayout>
+        </androidx.percentlayout.widget.PercentRelativeLayout>
 
         <RelativeLayout
             android:id="@+id/slotArea"
@@ -220,7 +220,7 @@
                 android:layout_alignTop="@id/slotContainer"
                 android:layout_alignBottom="@id/slotContainer" />
         </RelativeLayout>
-    </android.support.percent.PercentRelativeLayout>
+    </androidx.percentlayout.widget.PercentRelativeLayout>
 
     <LinearLayout
         android:id="@+id/croutonview"
@@ -229,4 +229,4 @@
         android:orientation="horizontal"
         android:onClick="closeAlert"/>
 
-</android.support.percent.PercentRelativeLayout>
+</androidx.percentlayout.widget.PercentRelativeLayout>
