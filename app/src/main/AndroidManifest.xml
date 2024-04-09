@@ -47,7 +47,7 @@
 
         <service android:name=".service.MusicService" />
 
-        <activity
+        <activity android:exported="true"
             android:name=".main.SplashScreenActivity"
             android:theme="@style/AppTheme.Splash">
             <intent-filter>

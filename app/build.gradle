@@ -7,7 +7,7 @@ android {
         applicationId "uk.co.jakelee.blacksmithslots"
         minSdkVersion 19
         targetSdkVersion apiVersion
-        versionCode 22
+        versionCode 23
         versionName "2.0.0"
     }
     compileOptions {
@@ -54,7 +54,7 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.8.0'
     implementation 'com.github.satyan:sugar:1.5'
     implementation 'com.squareup.picasso:picasso:2.5.2'
-    implementation 'com.anjlab.android.iab.v3:library:1.0.31'
+    implementation 'com.anjlab.android.iab.v3:library:2.1.0'
     implementation 'com.github.hotchemi:android-rate:1.0.1'
     implementation 'pl.droidsonroids.gif:android-gif-drawable:1.1.16'
     implementation 'de.keyboardsurfer.android.widget:crouton:1.8.5@aar'

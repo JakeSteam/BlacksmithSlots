@@ -17,7 +17,7 @@ buildscript {
 }
 
 ext {
-    apiVersion = 26
+    apiVersion = 33
     supportLibraryVersion = '25.1.0'
     playLibraryVersion = '17.0.0'
 }

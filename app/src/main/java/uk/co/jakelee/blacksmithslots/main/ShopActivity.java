@@ -22,8 +22,8 @@ import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 
 import com.anjlab.android.iab.v3.BillingProcessor;
+import com.anjlab.android.iab.v3.PurchaseInfo;
 import com.anjlab.android.iab.v3.SkuDetails;
-import com.anjlab.android.iab.v3.TransactionDetails;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -360,12 +360,6 @@ public class ShopActivity extends BaseActivity implements BillingProcessor.IBill
     }
 
     private String getPriceIfPossible(String iapName, String defaultPrice) {
-        if (bp != null) {
-            SkuDetails iapInfo = bp.getPurchaseListingDetails(iapName);
-            if (iapInfo != null) {
-                return iapInfo.priceText;
-            }
-        }
         return defaultPrice;
     }
 
@@ -385,9 +379,9 @@ public class ShopActivity extends BaseActivity implements BillingProcessor.IBill
     }
 
     @Override
-    public void onProductPurchased(String productId, TransactionDetails details) {
+    public void onProductPurchased(String productId, PurchaseInfo details) {
         productId = productId.toLowerCase();
-        bp.consumePurchase(productId);
+        bp.consumePurchaseAsync(productId, null);
 
         Iap iap = Iap.get(productId);
         iap.setTimesPurchased(iap.getTimesPurchased() + 1);
@@ -456,20 +450,11 @@ public class ShopActivity extends BaseActivity implements BillingProcessor.IBill
 
     @Override
     public void onBillingError(int errorCode, Throwable error) {
-        if (errorCode != com.anjlab.android.iab.v3.Constants.BILLING_RESPONSE_RESULT_USER_CANCELED) {
-            AlertHelper.error(this, getString(R.string.error_iap_failed) + errorCode, false);
-        }
+        AlertHelper.error(this, getString(R.string.error_iap_failed) + errorCode, false);
     }
 
     @Override
     public void onPurchaseHistoryRestored() {
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (!bp.handleActivityResult(requestCode, resultCode, data)) {
-            super.onActivityResult(requestCode, resultCode, data);
-        }
     }
 
     private void buyIAP(String iapId) {
