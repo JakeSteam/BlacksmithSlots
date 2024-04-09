@@ -2,6 +2,7 @@ apply plugin: 'com.android.library'
 
 buildscript {
     repositories {
+        google()
         jcenter()
         maven {
             url 'https://maven.google.com'
@@ -15,10 +16,10 @@ buildscript {
 
 dependencies {
 
-    compile "com.android.support:appcompat-v7:${supportLibraryVersion}"
-    compile "com.android.support:support-v4:${supportLibraryVersion}"
-    compile "com.google.android.gms:play-services-games:${playLibraryVersion}"
-    compile "com.google.android.gms:play-services-plus:${playLibraryVersion}"
+    implementation "com.android.support:appcompat-v7:${supportLibraryVersion}"
+    implementation "com.android.support:support-v4:${supportLibraryVersion}"
+    implementation "com.google.android.gms:play-services-games:${playLibraryVersion}"
+    implementation "com.google.android.gms:play-services-plus:${playLibraryVersion}"
 }
 
 android {
